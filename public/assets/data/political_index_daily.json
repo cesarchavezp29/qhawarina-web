@@ -1,24 +1,45 @@
 {
   "metadata": {
-    "generated_at": "2026-02-15T10:46:19.202815",
-    "coverage_days": 404,
+    "generated_at": "2026-02-17T02:13:32.497548",
+    "coverage_days": 413,
     "rss_feeds": 81
   },
   "current": {
-    "date": "2026-02-08",
-    "score": 0.533,
-    "level": "MEDIO",
-    "articles_total": 4,
-    "articles_political": 3,
-    "articles_economic": 1
+    "date": "2026-02-17",
+    "score": 0.767,
+    "level": "ALTO",
+    "articles_total": 63,
+    "articles_political": 52,
+    "articles_economic": 11
   },
   "aggregates": {
-    "7d_avg": 0.526,
-    "30d_avg": 0.553,
-    "90d_max": 0.778,
-    "90d_max_date": "2026-01-21"
+    "7d_avg": 0.665,
+    "30d_avg": 0.588,
+    "90d_max": 0.838,
+    "90d_max_date": "2026-02-14"
   },
   "major_events": [
+    {
+      "date": "2026-02-17",
+      "score": 0.767,
+      "level": "ALTO",
+      "summary": "Event summary (load from reports)",
+      "report_url": "/political/daily-reports/2026-02-17.html"
+    },
+    {
+      "date": "2026-02-14",
+      "score": 0.838,
+      "level": "ALTO",
+      "summary": "Event summary (load from reports)",
+      "report_url": "/political/daily-reports/2026-02-14.html"
+    },
+    {
+      "date": "2026-02-11",
+      "score": 0.758,
+      "level": "ALTO",
+      "summary": "Event summary (load from reports)",
+      "report_url": "/political/daily-reports/2026-02-11.html"
+    },
     {
       "date": "2026-01-21",
       "score": 0.778,
@@ -57,364 +78,724 @@
   ],
   "daily_series": [
     {
-      "date": "2025-11-11",
-      "score": 0.467
-    },
-    {
-      "date": "2025-11-12",
-      "score": 0.524
-    },
-    {
-      "date": "2025-11-13",
-      "score": 0.489
-    },
-    {
-      "date": "2025-11-14",
-      "score": 0.28
-    },
-    {
-      "date": "2025-11-15",
-      "score": 0.333
-    },
-    {
-      "date": "2025-11-16",
-      "score": 0.24
-    },
-    {
-      "date": "2025-11-17",
-      "score": 0.425
-    },
-    {
-      "date": "2025-11-18",
-      "score": 0.453
-    },
-    {
-      "date": "2025-11-19",
-      "score": 0.433
-    },
-    {
       "date": "2025-11-20",
-      "score": 0.486
+      "score": 0.506,
+      "score_raw": 0.486,
+      "n_articles": 19,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-21",
-      "score": 0.524
+      "score": 0.513,
+      "score_raw": 0.524,
+      "n_articles": 20,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-22",
-      "score": 0.587
+      "score": 0.533,
+      "score_raw": 0.587,
+      "n_articles": 6,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-23",
-      "score": 0.633
+      "score": 0.541,
+      "score_raw": 0.633,
+      "n_articles": 5,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-24",
-      "score": 0.473
+      "score": 0.559,
+      "score_raw": 0.473,
+      "n_articles": 11,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-25",
-      "score": 0.594
+      "score": 0.557,
+      "score_raw": 0.594,
+      "n_articles": 12,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-26",
-      "score": 0.49
+      "score": 0.536,
+      "score_raw": 0.49,
+      "n_articles": 24,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-27",
-      "score": 0.611
+      "score": 0.491,
+      "score_raw": 0.611,
+      "n_articles": 19,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-28",
-      "score": 0.515
+      "score": 0.476,
+      "score_raw": 0.515,
+      "n_articles": 15,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-29",
-      "score": 0.433
+      "score": 0.456,
+      "score_raw": 0.433,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-11-30",
-      "score": 0.32
+      "score": 0.479,
+      "score_raw": 0.32,
+      "n_articles": 5,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-01",
-      "score": 0.367
+      "score": 0.474,
+      "score_raw": 0.367,
+      "n_articles": 7,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-02",
-      "score": 0.456
+      "score": 0.46,
+      "score_raw": 0.456,
+      "n_articles": 24,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-03",
-      "score": 0.652
+      "score": 0.435,
+      "score_raw": 0.652,
+      "n_articles": 20,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-04",
-      "score": 0.573
+      "score": 0.418,
+      "score_raw": 0.573,
+      "n_articles": 23,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-05",
-      "score": 0.419
+      "score": 0.419,
+      "score_raw": 0.419,
+      "n_articles": 15,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-06",
-      "score": 0.257
+      "score": 0.41,
+      "score_raw": 0.257,
+      "n_articles": 7,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-07",
-      "score": 0.2
+      "score": 0.375,
+      "score_raw": 0.2,
+      "n_articles": 3,
+      "low_coverage": true,
+      "provisional": false
     },
     {
       "date": "2025-12-08",
-      "score": 0.373
+      "score": 0.354,
+      "score_raw": 0.373,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-09",
-      "score": 0.395
+      "score": 0.363,
+      "score_raw": 0.395,
+      "n_articles": 11,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-10",
-      "score": 0.408
+      "score": 0.402,
+      "score_raw": 0.408,
+      "n_articles": 11,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-11",
-      "score": 0.427
+      "score": 0.434,
+      "score_raw": 0.427,
+      "n_articles": 17,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-12",
-      "score": 0.48
+      "score": 0.442,
+      "score_raw": 0.48,
+      "n_articles": 7,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-13",
-      "score": 0.533
+      "score": 0.452,
+      "score_raw": 0.533,
+      "n_articles": 4,
+      "low_coverage": true,
+      "provisional": false
     },
     {
       "date": "2025-12-14",
-      "score": 0.419
+      "score": 0.469,
+      "score_raw": 0.419,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-15",
-      "score": 0.428
+      "score": 0.488,
+      "score_raw": 0.428,
+      "n_articles": 21,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-16",
-      "score": 0.467
+      "score": 0.494,
+      "score_raw": 0.467,
+      "n_articles": 14,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-17",
-      "score": 0.529
+      "score": 0.463,
+      "score_raw": 0.529,
+      "n_articles": 20,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-18",
-      "score": 0.56
+      "score": 0.451,
+      "score_raw": 0.56,
+      "n_articles": 14,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-19",
-      "score": 0.52
+      "score": 0.437,
+      "score_raw": 0.52,
+      "n_articles": 11,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-20",
-      "score": 0.32
+      "score": 0.435,
+      "score_raw": 0.32,
+      "n_articles": 5,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-21",
-      "score": 0.333
+      "score": 0.417,
+      "score_raw": 0.333,
+      "n_articles": 5,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-22",
-      "score": 0.333
+      "score": 0.388,
+      "score_raw": 0.333,
+      "n_articles": 9,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-23",
-      "score": 0.453
+      "score": 0.391,
+      "score_raw": 0.453,
+      "n_articles": 10,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-24",
-      "score": 0.4
+      "score": 0.395,
+      "score_raw": 0.4,
+      "n_articles": 9,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-25",
-      "score": 0.358
+      "score": 0.419,
+      "score_raw": 0.358,
+      "n_articles": 9,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-26",
-      "score": 0.538
+      "score": 0.447,
+      "score_raw": 0.538,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-27",
-      "score": 0.35
+      "score": 0.445,
+      "score_raw": 0.35,
+      "n_articles": 4,
+      "low_coverage": true,
+      "provisional": false
     },
     {
       "date": "2025-12-28",
-      "score": 0.5
+      "score": 0.454,
+      "score_raw": 0.5,
+      "n_articles": 6,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-29",
-      "score": 0.533
+      "score": 0.467,
+      "score_raw": 0.533,
+      "n_articles": 10,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-30",
-      "score": 0.433
+      "score": 0.465,
+      "score_raw": 0.433,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2025-12-31",
-      "score": 0.467
+      "score": 0.479,
+      "score_raw": 0.467,
+      "n_articles": 12,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-01",
-      "score": 0.448
+      "score": 0.446,
+      "score_raw": 0.448,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-02",
-      "score": 0.527
+      "score": 0.398,
+      "score_raw": 0.527,
+      "n_articles": 14,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-03",
-      "score": 0.448
+      "score": 0.417,
+      "score_raw": 0.448,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-04",
-      "score": 0.267
+      "score": 0.422,
+      "score_raw": 0.267,
+      "n_articles": 6,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-05",
-      "score": 0.2
+      "score": 0.427,
+      "score_raw": 0.2,
+      "n_articles": 8,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-06",
-      "score": 0.561
+      "score": 0.421,
+      "score_raw": 0.561,
+      "n_articles": 16,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-07",
-      "score": 0.508
+      "score": 0.441,
+      "score_raw": 0.508,
+      "n_articles": 17,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-08",
-      "score": 0.48
+      "score": 0.488,
+      "score_raw": 0.48,
+      "n_articles": 17,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-09",
-      "score": 0.483
+      "score": 0.537,
+      "score_raw": 0.483,
+      "n_articles": 15,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-10",
-      "score": 0.587
+      "score": 0.517,
+      "score_raw": 0.587,
+      "n_articles": 6,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-11",
-      "score": 0.6
+      "score": 0.51,
+      "score_raw": 0.6,
+      "n_articles": 3,
+      "low_coverage": true,
+      "provisional": false
     },
     {
       "date": "2026-01-12",
-      "score": 0.543
+      "score": 0.512,
+      "score_raw": 0.543,
+      "n_articles": 23,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-13",
-      "score": 0.419
+      "score": 0.511,
+      "score_raw": 0.419,
+      "n_articles": 15,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-14",
-      "score": 0.456
+      "score": 0.505,
+      "score_raw": 0.456,
+      "n_articles": 21,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-15",
-      "score": 0.494
+      "score": 0.503,
+      "score_raw": 0.494,
+      "n_articles": 17,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-16",
-      "score": 0.478
+      "score": 0.503,
+      "score_raw": 0.478,
+      "n_articles": 17,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-17",
-      "score": 0.547
+      "score": 0.522,
+      "score_raw": 0.547,
+      "n_articles": 7,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-18",
-      "score": 0.582
+      "score": 0.568,
+      "score_raw": 0.582,
+      "n_articles": 7,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-19",
-      "score": 0.545
+      "score": 0.597,
+      "score_raw": 0.545,
+      "n_articles": 31,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-20",
-      "score": 0.555
+      "score": 0.614,
+      "score_raw": 0.555,
+      "n_articles": 21,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-21",
-      "score": 0.778
+      "score": 0.631,
+      "score_raw": 0.778,
+      "n_articles": 40,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-22",
-      "score": 0.697
+      "score": 0.615,
+      "score_raw": 0.697,
+      "n_articles": 30,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-23",
-      "score": 0.593
+      "score": 0.619,
+      "score_raw": 0.593,
+      "n_articles": 19,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-24",
-      "score": 0.667
+      "score": 0.62,
+      "score_raw": 0.667,
+      "n_articles": 4,
+      "low_coverage": true,
+      "provisional": false
     },
     {
       "date": "2026-01-25",
-      "score": 0.473
+      "score": 0.575,
+      "score_raw": 0.473,
+      "n_articles": 11,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-26",
-      "score": 0.567
+      "score": 0.547,
+      "score_raw": 0.567,
+      "n_articles": 14,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-27",
-      "score": 0.565
+      "score": 0.549,
+      "score_raw": 0.565,
+      "n_articles": 19,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-28",
-      "score": 0.466
+      "score": 0.529,
+      "score_raw": 0.466,
+      "n_articles": 26,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-29",
-      "score": 0.5
+      "score": 0.556,
+      "score_raw": 0.5,
+      "n_articles": 23,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-30",
-      "score": 0.602
+      "score": 0.552,
+      "score_raw": 0.602,
+      "n_articles": 12,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-01-31",
-      "score": 0.533
+      "score": 0.538,
+      "score_raw": 0.533,
+      "n_articles": 10,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-01",
-      "score": 0.66
+      "score": 0.551,
+      "score_raw": 0.66,
+      "n_articles": 10,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-02",
-      "score": 0.54
+      "score": 0.554,
+      "score_raw": 0.54,
+      "n_articles": 19,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-03",
-      "score": 0.467
+      "score": 0.537,
+      "score_raw": 0.467,
+      "n_articles": 13,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-04",
-      "score": 0.556
+      "score": 0.544,
+      "score_raw": 0.556,
+      "n_articles": 18,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-05",
-      "score": 0.518
+      "score": 0.526,
+      "score_raw": 0.518,
+      "n_articles": 13,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-06",
-      "score": 0.483
+      "score": 0.534,
+      "score_raw": 0.483,
+      "n_articles": 18,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-07",
-      "score": 0.582
+      "score": 0.525,
+      "score_raw": 0.582,
+      "n_articles": 29,
+      "low_coverage": false,
+      "provisional": false
     },
     {
       "date": "2026-02-08",
-      "score": 0.533
+      "score": 0.553,
+      "score_raw": 0.533,
+      "n_articles": 4,
+      "low_coverage": true,
+      "provisional": false
+    },
+    {
+      "date": "2026-02-09",
+      "score": 0.58,
+      "score_raw": 0.6,
+      "n_articles": 1,
+      "low_coverage": true,
+      "provisional": false
+    },
+    {
+      "date": "2026-02-10",
+      "score": 0.549,
+      "score_raw": 0.4,
+      "n_articles": 1,
+      "low_coverage": true,
+      "provisional": false
+    },
+    {
+      "date": "2026-02-11",
+      "score": 0.586,
+      "score_raw": 0.758,
+      "n_articles": 33,
+      "low_coverage": false,
+      "provisional": false
+    },
+    {
+      "date": "2026-02-12",
+      "score": 0.616,
+      "score_raw": 0.704,
+      "n_articles": 41,
+      "low_coverage": false,
+      "provisional": false
+    },
+    {
+      "date": "2026-02-13",
+      "score": 0.637,
+      "score_raw": 0.267,
+      "n_articles": 1,
+      "low_coverage": true,
+      "provisional": true
+    },
+    {
+      "date": "2026-02-14",
+      "score": 0.69,
+      "score_raw": 0.838,
+      "n_articles": 9,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-02-15",
+      "score": 0.678,
+      "score_raw": 0.744,
+      "n_articles": 23,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-02-16",
+      "score": 0.673,
+      "score_raw": 0.75,
+      "n_articles": 75,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-02-17",
+      "score": 0.775,
+      "score_raw": 0.767,
+      "n_articles": 63,
+      "low_coverage": false,
+      "provisional": true
     }
   ]
 }
