@@ -2,7 +2,7 @@ import Link from "next/link";
 import LastUpdate from "../components/stats/LastUpdate";
 
 export default function EstadisticasPage() {
-  const lastUpdate = "16-Feb-2026";
+  const lastUpdate = "17-Feb-2026";
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -189,8 +189,8 @@ export default function EstadisticasPage() {
                 </div>
               </div>
               <div className="ml-6 text-right">
-                <p className="text-3xl font-bold text-yellow-600">MEDIO</p>
-                <p className="text-sm text-gray-500">0.53</p>
+                <p className="text-3xl font-bold text-red-600">ALTO</p>
+                <p className="text-sm text-gray-500">0.767 · 17-Feb-2026</p>
               </div>
             </div>
           </div>
