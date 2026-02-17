@@ -11,7 +11,7 @@ interface PoliticalData {
   current: { date: string; score: number; level: string; articles_total: number };
   aggregates: { '7d_avg': number; '30d_avg': number; year_max: number; year_max_date: string };
   major_events: Array<{ date: string; score: number; level: string; summary: string }>;
-  daily_series: Array<{ date: string; score: number }>;
+  daily_series: Array<{ date: string; score: number; score_raw: number; n_articles: number; low_coverage: boolean }>;
 }
 
 export default function PoliticalPage() {
@@ -30,6 +30,8 @@ export default function PoliticalPage() {
 
   const dates = data.daily_series.map(d => d.date);
   const scores = data.daily_series.map(d => d.score);
+  const scoresRaw = data.daily_series.map(d => d.score_raw);
+  const nArticles = data.daily_series.map(d => d.n_articles);
 
   const getLevelText = (level: string) => {
     if (level === 'BAJO') return 'Bajo';
@@ -88,18 +90,28 @@ export default function PoliticalPage() {
             data={[
               {
                 x: dates,
+                y: scoresRaw,
+                type: 'bar',
+                name: 'Score diario (raw)',
+                marker: { color: 'rgba(220, 38, 38, 0.25)' },
+                hovertemplate: '<b>%{x}</b><br>Raw: %{y:.3f}<extra></extra>',
+              },
+              {
+                x: dates,
                 y: scores,
                 type: 'scatter',
                 mode: 'lines',
-                fill: 'tozeroy',
-                fillcolor: 'rgba(220, 38, 38, 0.1)',
-                line: { color: '#DC2626', width: 2 }
+                name: 'Tendencia (7d)',
+                line: { color: '#DC2626', width: 2.5 },
+                hovertemplate: '<b>%{x}</b><br>Tendencia: %{y:.3f}<extra></extra>',
               }
             ]}
             layout={{
               autosize: true,
-              height: 400,
-              hovermode: 'x',
+              height: 420,
+              hovermode: 'x unified',
+              barmode: 'overlay',
+              legend: { orientation: 'h', y: 1.08, x: 0 },
               xaxis: { title: 'Fecha', gridcolor: '#E5E7EB' },
               yaxis: {
                 title: 'Índice de Inestabilidad (0-1)',
@@ -150,18 +162,26 @@ export default function PoliticalPage() {
             className="w-full"
             useResizeHandler
           />
-          <div className="mt-4 text-xs text-gray-600 flex gap-6">
+          <div className="mt-4 text-xs text-gray-600 flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
+              <div className="w-8 h-3 bg-red-200 rounded"></div>
+              <span>Score diario raw (barras)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-0.5 bg-red-600"></div>
+              <span>Tendencia 7d suavizada (línea)</span>
+            </div>
+            <div className="flex items-center gap-2 ml-4">
               <div className="w-4 h-4 bg-green-100 border border-gray-300"></div>
-              <span>Bajo (0.00-0.33)</span>
+              <span>Bajo (0.00–0.33)</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 bg-yellow-100 border border-gray-300"></div>
-              <span>Medio (0.33-0.66)</span>
+              <span>Medio (0.33–0.66)</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 bg-red-100 border border-gray-300"></div>
-              <span>Alto (0.66-1.00)</span>
+              <span>Alto (0.66–1.00)</span>
             </div>
           </div>
         </div>
