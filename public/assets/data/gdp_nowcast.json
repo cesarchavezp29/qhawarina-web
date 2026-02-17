@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-16T00:31:45.394695",
+    "generated_at": "2026-02-17T13:42:41.102307",
     "model": "DynamicFactorModel",
     "model_params": {
       "k_factors": 3,
@@ -426,50 +426,50 @@
     {
       "quarter": "2020-Q1",
       "official": -3.57,
-      "nowcast": 2.77,
-      "error": 6.35
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2020-Q2",
       "official": -30.05,
-      "nowcast": 2.77,
-      "error": 32.83
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2020-Q3",
       "official": -8.69,
-      "nowcast": 2.77,
-      "error": 11.46
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2020-Q4",
       "official": -1.38,
-      "nowcast": 2.77,
-      "error": 4.15
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2021-Q1",
       "official": 4.23,
-      "nowcast": 2.77,
-      "error": -1.46
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2021-Q2",
       "official": 42.09,
-      "nowcast": 2.77,
-      "error": -39.32
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2021-Q3",
       "official": 11.76,
-      "nowcast": 2.77,
-      "error": -8.98
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2021-Q4",
       "official": 3.46,
-      "nowcast": 2.77,
-      "error": -0.68
+      "nowcast": null,
+      "error": null
     },
     {
       "quarter": "2022-Q1",
@@ -662,14 +662,14 @@
     {
       "year": 2020,
       "official": -10.92,
-      "nowcast": 2.77,
-      "error": 13.7
+      "nowcast": null,
+      "error": null
     },
     {
       "year": 2021,
       "official": 15.38,
-      "nowcast": 2.77,
-      "error": -12.61
+      "nowcast": null,
+      "error": null
     },
     {
       "year": 2022,
