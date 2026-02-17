@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "statistics": "Estadísticas",
+    "data": "Datos",
+    "scenarios": "Escenarios",
+    "methodology": "Metodología",
+    "api": "API",
+    "about": "Sobre Nosotros",
+    "seeAll": "Ver todas"
+  },
+  "home": {
+    "title": "QHAWARINA",
+    "subtitle": "Nowcasting Económico en Tiempo Real para Perú",
+    "keyIndicators": "Indicadores Económicos Clave",
+    "gdpGrowth": "Crecimiento PBI (interanual)",
+    "inflation": "Inflación (mensual)",
+    "povertyRate": "Tasa de Pobreza",
+    "politicalRisk": "Riesgo Político",
+    "view": "Ver",
+    "counterfactualTitle": "Análisis Contrafactual",
+    "counterfactualSubtitle": "Simula escenarios económicos y evalúa su impacto antes de que ocurran. ¿Qué pasaría si el PBI cae a 0%? ¿Y si hay una crisis política?",
+    "prebuiltScenarios": "escenarios pre-construidos",
+    "crossModelPropagation": "Propagación cross-model",
+    "instantResults": "Resultados instantáneos",
+    "exploreScenarios": "Explorar Escenarios",
+    "exampleScenario": "Ejemplo: Recesión Leve",
+    "baseline": "Baseline",
+    "counterfactual": "Counterfactual",
+    "impact": "Impacto",
+    "poverty": "Pobreza",
+    "about": {
+      "title": "Sobre Qhawarina",
+      "description": "Plataforma de nowcasting económico en tiempo real para Perú utilizando Modelos de Factores Dinámicos, Gradient Boosting y clasificación GPT-4o sobre 490+ indicadores.",
+      "update": "Actualización diaria a las 08:00 PET. Todos los datos y modelos son código abierto bajo licencia CC BY 4.0."
+    },
+    "methodology": {
+      "title": "Metodología",
+      "gdp": "DFM 2 factores, puente Ridge (α=1.0), ventana móvil 7 años",
+      "inflation": "DFM 2 factores con rezagos + componente AR(1)",
+      "poverty": "GBR en panel departamental + desagregación NTL",
+      "political": "81 feeds RSS, clasificación binaria GPT-4o"
+    },
+    "performance": {
+      "title": "Rendimiento de Modelos (Fuera de Muestra)",
+      "rmseGdp": "RMSE PBI",
+      "rmseInflation": "RMSE Inflación",
+      "rmsePoverty": "RMSE Pobreza",
+      "coverage": "Cobertura",
+      "indicators": "Indicadores económicos"
+    }
+  },
+  "stats": {
+    "gdp": "PBI",
+    "inflation": "Inflación",
+    "poverty": "Pobreza",
+    "politicalRisk": "Riesgo Político"
+  },
+  "about": {
+    "title": "Sobre Qhawarina",
+    "subtitle": "Democratizando el acceso a información económica en tiempo real para todos los peruanos",
+    "origin": {
+      "title": "¿Cómo nació Qhawarina?",
+      "question": "¿Por qué los peruanos tenemos que esperar semanas o meses para saber cómo va nuestra economía?",
+      "story1": "En 2024, mientras analistas de bancos de inversión y organismos internacionales tenían acceso a modelos sofisticados de nowcasting económico, el peruano promedio —el emprendedor en Gamarra, la agricultora en Ayacucho, el estudiante planeando su futuro— navegaba con información desactualizada.",
+      "story2": "Creemos que la información económica es un bien público. Qhawarina existe para nivelar el campo de juego: usar la misma tecnología que emplean los grandes fondos de inversión, pero ponerla al servicio de todos, gratuitamente, con transparencia total."
+    },
+    "meaning": {
+      "title": "¿Qué significa \"Qhawarina\"?",
+      "etymology": "Qhawarina proviene del quechua \"qhaway\" (mirar, observar) con el sufijo \"-rina\" (instrumento para). Literalmente: \"instrumento para mirar\" o \"lugar desde donde se observa\".",
+      "metaphor": "Como el qhawarina tradicional —un mirador en las alturas desde donde se vigila el territorio—, nuestro proyecto ofrece una vista panorámica, anticipada y clara de la economía peruana.",
+      "quote": "Desde las alturas de los Andes, los antiguos peruanos observaban el territorio para anticipar las cosechas, el clima, los movimientos. Hoy, desde nuestro qhawarina digital, observamos la economía para anticipar tendencias antes de que lleguen."
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "text": "Proveer nowcasting económico de clase mundial para Perú, abierto y gratuito, con la misma rigurosidad técnica que los modelos privados pero con transparencia total."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "text": "Convertirnos en la fuente de referencia para nowcasting económico en Perú, expandiendo cobertura a:",
+      "items": {
+        "sectoral": "PBI sectorial (construcción, manufactura, servicios)",
+        "employment": "Empleo formal y mercado laboral",
+        "subnational": "Indicadores provinciales/distritales"
+      }
+    },
+    "footer": "Hecho con ❤️ para Perú • Open source, siempre gratis, siempre transparente"
+  },
+  "scenarios": {
+    "title": "Análisis Contrafactual",
+    "subtitle": "Explora escenarios hipotéticos y su impacto en la economía peruana. ¿Qué pasaría si...?",
+    "premiumBadge": "PREMIUM",
+    "premiumSubtitle": "Característica exclusiva para suscriptores",
+    "premiumTitle": "Toma Decisiones Estratégicas Basadas en Datos",
+    "premiumDescription": "Simula shocks económicos y evalúa su impacto antes de que ocurran. Herramienta esencial para planificación empresarial y análisis de riesgo.",
+    "subscribe": "Contratar",
+    "selectScenario": "Selecciona un Escenario",
+    "shocksSimulated": "Shocks Simulados:",
+    "endogenousShock": "Shock Endógeno",
+    "exogenousShock": "Shock Exógeno",
+    "baselineVsCounterfactual": "Baseline vs Contrafactual",
+    "indicator": "Indicador",
+    "propagatedImpacts": "Impactos Propagados (Cross-Model)",
+    "interpretation": "Interpretación",
+    "totalGdpImpact": "Impacto Total PBI",
+    "inflationImpact": "Impacto Inflación",
+    "povertyImpact": "Impacto Pobreza",
+    "transmissionMechanism": "Mecanismo de Transmisión",
+    "customScenariosTitle": "¿Necesitas escenarios personalizados?",
+    "customScenariosDescription": "Suscríbete al plan Premium para crear escenarios personalizados, ajustar parámetros de shocks, y acceder a análisis sectorial detallado.",
+    "viewPremiumPlans": "Ver Planes Premium",
+    "contactSales": "Contactar Ventas"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "lastUpdate": "Última actualización",
+    "model": "Modelo",
+    "source": "Fuente",
+    "new": "NUEVO",
+    "pro": "PRO"
+  }
+}

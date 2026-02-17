@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "method": "Jevons bilateral index (geometric mean)",
+    "base_date": "2026-02-10",
+    "base_value": 100,
+    "stores": [
+      "Plaza Vea",
+      "Metro",
+      "Wong"
+    ],
+    "frequency": "daily",
+    "total_skus": 42710
+  },
+  "daily_series": [
+    {
+      "date": "2026-02-10",
+      "index_all": 100.0,
+      "n_products": 42710
+    },
+    {
+      "date": "2026-02-11",
+      "index_all": 99.51,
+      "n_products": 40737
+    },
+    {
+      "date": "2026-02-14",
+      "index_all": 99.47,
+      "n_products": 41486
+    }
+  ]
+}

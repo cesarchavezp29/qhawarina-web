@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+:root {
+  /* Professional color palette (BCRP/Fed inspired) */
+  --primary: #1e40af;        /* Azul institucional */
+  --secondary: #64748b;      /* Gris neutro */
+  --accent: #059669;         /* Verde para positivos */
+  --warning: #f59e0b;        /* Naranja para advertencias */
+  --danger: #dc2626;         /* Rojo para negativos */
+  --bg-light: #f8fafc;       /* Fondo claro */
+  --bg-card: #ffffff;        /* Tarjetas */
+  --border: #e2e8f0;         /* Bordes sutiles */
+  --text-primary: #1e293b;   /* Texto principal */
+  --text-secondary: #64748b; /* Texto secundario */
+}

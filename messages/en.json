@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Home",
+    "statistics": "Statistics",
+    "data": "Data",
+    "scenarios": "Scenarios",
+    "methodology": "Methodology",
+    "api": "API",
+    "about": "About Us",
+    "seeAll": "See all"
+  },
+  "home": {
+    "title": "QHAWARINA",
+    "subtitle": "Real-Time Economic Nowcasting for Peru",
+    "keyIndicators": "Key Economic Indicators",
+    "gdpGrowth": "GDP Growth (YoY)",
+    "inflation": "Inflation (monthly)",
+    "povertyRate": "Poverty Rate",
+    "politicalRisk": "Political Risk",
+    "view": "View",
+    "counterfactualTitle": "Counterfactual Analysis",
+    "counterfactualSubtitle": "Simulate economic scenarios and evaluate their impact before they occur. What if GDP drops to 0%? What if there's a political crisis?",
+    "prebuiltScenarios": "pre-built scenarios",
+    "crossModelPropagation": "Cross-model propagation",
+    "instantResults": "Instant results",
+    "exploreScenarios": "Explore Scenarios",
+    "exampleScenario": "Example: Mild Recession",
+    "baseline": "Baseline",
+    "counterfactual": "Counterfactual",
+    "impact": "Impact",
+    "poverty": "Poverty",
+    "about": {
+      "title": "About Qhawarina",
+      "description": "Real-time economic nowcasting platform for Peru using Dynamic Factor Models, Gradient Boosting, and GPT-4o classification on 490+ indicators.",
+      "update": "Daily update at 08:00 PET. All data and models are open source under CC BY 4.0 license."
+    },
+    "methodology": {
+      "title": "Methodology",
+      "gdp": "DFM 2 factors, Ridge bridge (α=1.0), 7-year rolling window",
+      "inflation": "DFM 2 factors with lags + AR(1) component",
+      "poverty": "GBR on departmental panel + NTL disaggregation",
+      "political": "81 RSS feeds, binary GPT-4o classification"
+    },
+    "performance": {
+      "title": "Model Performance (Out-of-Sample)",
+      "rmseGdp": "GDP RMSE",
+      "rmseInflation": "Inflation RMSE",
+      "rmsePoverty": "Poverty RMSE",
+      "coverage": "Coverage",
+      "indicators": "Economic indicators"
+    }
+  },
+  "stats": {
+    "gdp": "GDP",
+    "inflation": "Inflation",
+    "poverty": "Poverty",
+    "politicalRisk": "Political Risk"
+  },
+  "about": {
+    "title": "About Qhawarina",
+    "subtitle": "Democratizing access to real-time economic information for all Peruvians",
+    "origin": {
+      "title": "How was Qhawarina born?",
+      "question": "Why do Peruvians have to wait weeks or months to know how our economy is doing?",
+      "story1": "In 2024, while analysts at investment banks and international organizations had access to sophisticated economic nowcasting models, the average Peruvian—the entrepreneur in Gamarra, the farmer in Ayacucho, the student planning their future—navigated with outdated information.",
+      "story2": "We believe economic information is a public good. Qhawarina exists to level the playing field: use the same technology employed by large investment funds, but put it at the service of everyone, for free, with complete transparency."
+    },
+    "meaning": {
+      "title": "What does \"Qhawarina\" mean?",
+      "etymology": "Qhawarina comes from the Quechua \"qhaway\" (to watch, to observe) with the suffix \"-rina\" (instrument for). Literally: \"instrument for watching\" or \"place from which to observe\".",
+      "metaphor": "Like the traditional qhawarina—a lookout in the heights from which the territory is watched—our project offers a panoramic, anticipatory, and clear view of the Peruvian economy.",
+      "quote": "From the heights of the Andes, ancient Peruvians observed the territory to anticipate harvests, weather, movements. Today, from our digital qhawarina, we observe the economy to anticipate trends before they arrive."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "Provide world-class economic nowcasting for Peru, open and free, with the same technical rigor as private models but with complete transparency."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "Become the reference source for economic nowcasting in Peru, expanding coverage to:",
+      "items": {
+        "sectoral": "Sectoral GDP (construction, manufacturing, services)",
+        "employment": "Formal employment and labor market",
+        "subnational": "Provincial/district indicators"
+      }
+    },
+    "footer": "Made with ❤️ for Peru • Open source, always free, always transparent"
+  },
+  "scenarios": {
+    "title": "Counterfactual Analysis",
+    "subtitle": "Explore hypothetical scenarios and their impact on the Peruvian economy. What if...?",
+    "premiumBadge": "PREMIUM",
+    "premiumSubtitle": "Exclusive feature for subscribers",
+    "premiumTitle": "Make Data-Driven Strategic Decisions",
+    "premiumDescription": "Simulate economic shocks and evaluate their impact before they occur. Essential tool for business planning and risk analysis.",
+    "subscribe": "Subscribe",
+    "selectScenario": "Select a Scenario",
+    "shocksSimulated": "Simulated Shocks:",
+    "endogenousShock": "Endogenous Shock",
+    "exogenousShock": "Exogenous Shock",
+    "baselineVsCounterfactual": "Baseline vs Counterfactual",
+    "indicator": "Indicator",
+    "propagatedImpacts": "Propagated Impacts (Cross-Model)",
+    "interpretation": "Interpretation",
+    "totalGdpImpact": "Total GDP Impact",
+    "inflationImpact": "Inflation Impact",
+    "povertyImpact": "Poverty Impact",
+    "transmissionMechanism": "Transmission Mechanism",
+    "customScenariosTitle": "Need custom scenarios?",
+    "customScenariosDescription": "Subscribe to the Premium plan to create custom scenarios, adjust shock parameters, and access detailed sectoral analysis.",
+    "viewPremiumPlans": "View Premium Plans",
+    "contactSales": "Contact Sales"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "lastUpdate": "Last update",
+    "model": "Model",
+    "source": "Source",
+    "new": "NEW",
+    "pro": "PRO"
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "methodology": "Jevons bilateral price index, chain-linked daily",
+    "base_date": "2026-02-10",
+    "base_value": 100,
+    "last_date": "2026-02-16",
+    "n_days": 4,
+    "stores": [
+      "Plaza Vea",
+      "Metro",
+      "Wong"
+    ],
+    "n_products_approx": 42000,
+    "ratio_filter": "0.5 < ratio < 2.0",
+    "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
+    "updated": "2026-02-16"
+  },
+  "categories": {
+    "arroz_cereales": {
+      "label_es": "Arroz y Cereales",
+      "label_en": "Rice & Cereals",
+      "color": "#f97316",
+      "cpi_weight": 4.2
+    },
+    "pan_harinas": {
+      "label_es": "Pan y Harinas",
+      "label_en": "Bread & Flour",
+      "color": "#eab308",
+      "cpi_weight": 3.1
+    },
+    "carnes": {
+      "label_es": "Carnes",
+      "label_en": "Meat",
+      "color": "#ef4444",
+      "cpi_weight": 5.8
+    },
+    "pescados_mariscos": {
+      "label_es": "Pescados y Mariscos",
+      "label_en": "Fish & Seafood",
+      "color": "#3b82f6",
+      "cpi_weight": 1.9
+    },
+    "lacteos": {
+      "label_es": "Lácteos y Huevos",
+      "label_en": "Dairy & Eggs",
+      "color": "#a3e635",
+      "cpi_weight": 3.4
+    },
+    "frutas": {
+      "label_es": "Frutas",
+      "label_en": "Fruits",
+      "color": "#22c55e",
+      "cpi_weight": 2.1
+    },
+    "verduras": {
+      "label_es": "Verduras",
+      "label_en": "Vegetables",
+      "color": "#16a34a",
+      "cpi_weight": 2.3
+    },
+    "aceites_grasas": {
+      "label_es": "Aceites y Grasas",
+      "label_en": "Oils & Fats",
+      "color": "#84cc16",
+      "cpi_weight": 1.2
+    },
+    "azucar_dulces": {
+      "label_es": "Azúcar y Dulces",
+      "label_en": "Sugar & Sweets",
+      "color": "#f472b6",
+      "cpi_weight": 1.1
+    },
+    "bebidas": {
+      "label_es": "Bebidas",
+      "label_en": "Beverages",
+      "color": "#06b6d4",
+      "cpi_weight": 1.8
+    },
+    "limpieza": {
+      "label_es": "Limpieza",
+      "label_en": "Cleaning",
+      "color": "#8b5cf6",
+      "cpi_weight": 2.4
+    },
+    "cuidado_personal": {
+      "label_es": "Cuidado Personal",
+      "label_en": "Personal Care",
+      "color": "#ec4899",
+      "cpi_weight": 2.9
+    }
+  },
+  "series": [
+    {
+      "date": "2026-02-10",
+      "index_all": 100.0,
+      "index_food": 100.0,
+      "index_nonfood": 100.0,
+      "var_all": null,
+      "var_food": null,
+      "cum_pct": 0,
+      "index_arroz_cereales": 100.0,
+      "index_pan_harinas": 100.0,
+      "index_carnes": 100.0,
+      "index_pescados_mariscos": 100.0,
+      "index_lacteos": 100.0,
+      "index_frutas": 100.0,
+      "index_verduras": 100.0,
+      "index_aceites_grasas": 100.0,
+      "index_azucar_dulces": 100.0,
+      "index_bebidas": 100.0,
+      "index_limpieza": 100.0,
+      "index_cuidado_personal": 100.0,
+      "index_other": 100.0
+    },
+    {
+      "date": "2026-02-11",
+      "index_all": 99.5111,
+      "index_food": 99.464,
+      "index_nonfood": 99.6529,
+      "var_all": -0.4889,
+      "var_food": -0.536,
+      "cum_pct": -0.4889,
+      "index_arroz_cereales": 100.0377,
+      "index_pan_harinas": 99.6987,
+      "index_carnes": 99.4343,
+      "index_pescados_mariscos": 100.0043,
+      "index_lacteos": 99.4204,
+      "index_frutas": 99.0743,
+      "index_verduras": 99.5164,
+      "index_aceites_grasas": 99.8152,
+      "index_azucar_dulces": 97.8749,
+      "index_bebidas": 99.5348,
+      "index_limpieza": 99.5119,
+      "index_cuidado_personal": 99.4176,
+      "index_other": 99.8959
+    },
+    {
+      "date": "2026-02-14",
+      "index_all": 99.4809,
+      "index_food": 99.4247,
+      "index_nonfood": 99.6496,
+      "var_all": -0.0303,
+      "var_food": -0.0395,
+      "cum_pct": -0.5191,
+      "index_arroz_cereales": 100.0465,
+      "index_pan_harinas": 99.6762,
+      "index_carnes": 99.3991,
+      "index_pescados_mariscos": 100.0043,
+      "index_lacteos": 99.4247,
+      "index_frutas": 98.7906,
+      "index_verduras": 99.5164,
+      "index_aceites_grasas": 99.8152,
+      "index_azucar_dulces": 97.8639,
+      "index_bebidas": 99.5334,
+      "index_limpieza": 99.513,
+      "index_cuidado_personal": 99.4166,
+      "index_other": 99.8877
+    },
+    {
+      "date": "2026-02-16",
+      "index_all": 99.8817,
+      "index_food": 99.8144,
+      "index_nonfood": 100.0835,
+      "var_all": 0.4029,
+      "var_food": 0.392,
+      "cum_pct": -0.1183,
+      "index_arroz_cereales": 100.229,
+      "index_pan_harinas": 99.7659,
+      "index_carnes": 99.75,
+      "index_pescados_mariscos": 101.003,
+      "index_lacteos": 100.0037,
+      "index_frutas": 99.2191,
+      "index_verduras": 99.5187,
+      "index_aceites_grasas": 99.0834,
+      "index_azucar_dulces": 101.7794,
+      "index_bebidas": 99.5569,
+      "index_limpieza": 99.8717,
+      "index_cuidado_personal": 99.5123,
+      "index_other": 100.6095
+    }
+  ],
+  "latest": {
+    "date": "2026-02-16",
+    "index_all": 99.8817,
+    "index_food": 99.8144,
+    "cum_pct": -0.1183,
+    "var_all": 0.4029
+  }
+}

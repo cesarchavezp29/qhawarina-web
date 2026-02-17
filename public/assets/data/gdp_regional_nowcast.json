@@ -1,0 +1,187 @@
+{
+  "metadata": {
+    "method": "NTL-based spatial disaggregation",
+    "target_period": "2025-Q4",
+    "national_gdp_yoy": 2.13,
+    "n_departments": 25,
+    "ntl_months": 12,
+    "note": "Homogeneous growth assumption: all departments grow at national rate. NTL shares represent spatial distribution of economic activity."
+  },
+  "departmental_nowcasts": [
+    {
+      "dept_code": "01",
+      "department": "Amazonas",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.025,
+      "gdp_contribution": 0.0533
+    },
+    {
+      "dept_code": "02",
+      "department": "Ancash",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0487,
+      "gdp_contribution": 0.1037
+    },
+    {
+      "dept_code": "03",
+      "department": "Apurímac",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.024,
+      "gdp_contribution": 0.0511
+    },
+    {
+      "dept_code": "04",
+      "department": "Arequipa",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0504,
+      "gdp_contribution": 0.1074
+    },
+    {
+      "dept_code": "05",
+      "department": "Ayacucho",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0804,
+      "gdp_contribution": 0.1712
+    },
+    {
+      "dept_code": "06",
+      "department": "Cajamarca",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0672,
+      "gdp_contribution": 0.1431
+    },
+    {
+      "dept_code": "07",
+      "department": "Callao",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0016,
+      "gdp_contribution": 0.0033
+    },
+    {
+      "dept_code": "08",
+      "department": "Cusco",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0344,
+      "gdp_contribution": 0.0733
+    },
+    {
+      "dept_code": "09",
+      "department": "Huancavelica",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0305,
+      "gdp_contribution": 0.065
+    },
+    {
+      "dept_code": "10",
+      "department": "Huánuco",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0183,
+      "gdp_contribution": 0.0389
+    },
+    {
+      "dept_code": "11",
+      "department": "Ica",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0152,
+      "gdp_contribution": 0.0323
+    },
+    {
+      "dept_code": "12",
+      "department": "Junín",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0273,
+      "gdp_contribution": 0.0582
+    },
+    {
+      "dept_code": "13",
+      "department": "La Libertad",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0251,
+      "gdp_contribution": 0.0534
+    },
+    {
+      "dept_code": "14",
+      "department": "Lambayeque",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0199,
+      "gdp_contribution": 0.0424
+    },
+    {
+      "dept_code": "15",
+      "department": "Lima",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.2097,
+      "gdp_contribution": 0.4466
+    },
+    {
+      "dept_code": "16",
+      "department": "Loreto",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0161,
+      "gdp_contribution": 0.0343
+    },
+    {
+      "dept_code": "17",
+      "department": "Madre de Dios",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0036,
+      "gdp_contribution": 0.0077
+    },
+    {
+      "dept_code": "18",
+      "department": "Moquegua",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0924,
+      "gdp_contribution": 0.1967
+    },
+    {
+      "dept_code": "19",
+      "department": "Pasco",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0053,
+      "gdp_contribution": 0.0112
+    },
+    {
+      "dept_code": "20",
+      "department": "Piura",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0993,
+      "gdp_contribution": 0.2114
+    },
+    {
+      "dept_code": "21",
+      "department": "Puno",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0359,
+      "gdp_contribution": 0.0765
+    },
+    {
+      "dept_code": "22",
+      "department": "San Martín",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0164,
+      "gdp_contribution": 0.0349
+    },
+    {
+      "dept_code": "23",
+      "department": "Tacna",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0256,
+      "gdp_contribution": 0.0545
+    },
+    {
+      "dept_code": "24",
+      "department": "Tumbes",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0224,
+      "gdp_contribution": 0.0478
+    },
+    {
+      "dept_code": "25",
+      "department": "Ucayali",
+      "gdp_yoy": 2.13,
+      "ntl_share": 0.0055,
+      "gdp_contribution": 0.0118
+    }
+  ]
+}

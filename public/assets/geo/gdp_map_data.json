@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "indicator": "gdp_growth_yoy",
+    "unit": "percent",
+    "period": "2025-Q3",
+    "source": "Qhawarina DFM Model (National)",
+    "note": "Departmental values are NTL-weighted estimates from national nowcast"
+  },
+  "national": {
+    "gdp_growth_yoy": 3.4
+  },
+  "departments": [
+    {
+      "code": "08",
+      "name": "Cusco",
+      "gdp_growth_yoy": 6.3
+    },
+    {
+      "code": "20",
+      "name": "Piura",
+      "gdp_growth_yoy": 6.2
+    },
+    {
+      "code": "09",
+      "name": "Huancavelica",
+      "gdp_growth_yoy": 6.05
+    },
+    {
+      "code": "02",
+      "name": "Áncash",
+      "gdp_growth_yoy": 5.9
+    },
+    {
+      "code": "25",
+      "name": "Ucayali",
+      "gdp_growth_yoy": 5.9
+    },
+    {
+      "code": "19",
+      "name": "Pasco",
+      "gdp_growth_yoy": 5.85
+    },
+    {
+      "code": "16",
+      "name": "Loreto",
+      "gdp_growth_yoy": 5.8
+    },
+    {
+      "code": "21",
+      "name": "Puno",
+      "gdp_growth_yoy": 5.8
+    },
+    {
+      "code": "05",
+      "name": "Ayacucho",
+      "gdp_growth_yoy": 5.45
+    },
+    {
+      "code": "03",
+      "name": "Apurímac",
+      "gdp_growth_yoy": 5.1
+    },
+    {
+      "code": "23",
+      "name": "Tacna",
+      "gdp_growth_yoy": 5.0
+    },
+    {
+      "code": "01",
+      "name": "Amazonas",
+      "gdp_growth_yoy": 4.8
+    },
+    {
+      "code": "14",
+      "name": "Lambayeque",
+      "gdp_growth_yoy": 4.45
+    },
+    {
+      "code": "18",
+      "name": "Moquegua",
+      "gdp_growth_yoy": 4.0
+    },
+    {
+      "code": "12",
+      "name": "Junín",
+      "gdp_growth_yoy": 3.95
+    },
+    {
+      "code": "13",
+      "name": "La Libertad",
+      "gdp_growth_yoy": 3.6
+    },
+    {
+      "code": "04",
+      "name": "Arequipa",
+      "gdp_growth_yoy": 3.35
+    },
+    {
+      "code": "17",
+      "name": "Madre de Dios",
+      "gdp_growth_yoy": 2.9
+    },
+    {
+      "code": "22",
+      "name": "San Martín",
+      "gdp_growth_yoy": 2.9
+    },
+    {
+      "code": "07",
+      "name": "Callao",
+      "gdp_growth_yoy": 2.85
+    },
+    {
+      "code": "06",
+      "name": "Cajamarca",
+      "gdp_growth_yoy": 2.65
+    },
+    {
+      "code": "15",
+      "name": "Lima",
+      "gdp_growth_yoy": 2.55
+    },
+    {
+      "code": "24",
+      "name": "Tumbes",
+      "gdp_growth_yoy": 2.55
+    },
+    {
+      "code": "11",
+      "name": "Ica",
+      "gdp_growth_yoy": 2.15
+    },
+    {
+      "code": "10",
+      "name": "Huánuco",
+      "gdp_growth_yoy": 1.4
+    }
+  ]
+}

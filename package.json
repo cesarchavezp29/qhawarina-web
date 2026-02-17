@@ -1,0 +1,40 @@
+{
+  "name": "qhawarina",
+  "version": "1.0.0",
+  "description": "Economic nowcasting platform for Peru",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.1.5",
+    "d3-geo": "^3.1.1",
+    "framer-motion": "^11.11.11",
+    "lucide-react": "^0.564.0",
+    "mapbox-gl": "^3.7.0",
+    "next": "14.2.18",
+    "next-intl": "^4.8.3",
+    "plotly.js": "^2.35.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-plotly.js": "^2.6.0",
+    "react-simple-maps": "^3.0.0",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/mapbox-gl": "^3.4.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-simple-maps": "^3.0.6",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

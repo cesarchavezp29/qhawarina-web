@@ -1,0 +1,926 @@
+{
+  "metadata": {
+    "generated_at": "2026-02-15T20:29:39.406163",
+    "model": "GradientBoostingRegressor",
+    "target_year": 2025,
+    "departments": 26,
+    "districts": 1891
+  },
+  "national": {
+    "poverty_rate": 26.0,
+    "unit": "percent"
+  },
+  "departments": [
+    {
+      "code": "16",
+      "name": "Loreto",
+      "poverty_rate_2024": 43.3,
+      "poverty_rate_2025_nowcast": 40.8,
+      "change_pp": -2.5
+    },
+    {
+      "code": "21",
+      "name": "Puno",
+      "poverty_rate_2024": 41.7,
+      "poverty_rate_2025_nowcast": 39.2,
+      "change_pp": -2.5
+    },
+    {
+      "code": "19",
+      "name": "Pasco",
+      "poverty_rate_2024": 41.2,
+      "poverty_rate_2025_nowcast": 38.7,
+      "change_pp": -2.5
+    },
+    {
+      "code": "06",
+      "name": "Cajamarca",
+      "poverty_rate_2024": 39.9,
+      "poverty_rate_2025_nowcast": 37.4,
+      "change_pp": -2.5
+    },
+    {
+      "code": "10",
+      "name": "Huánuco",
+      "poverty_rate_2024": 37.4,
+      "poverty_rate_2025_nowcast": 34.9,
+      "change_pp": -2.5
+    },
+    {
+      "code": "09",
+      "name": "Huancavelica",
+      "poverty_rate_2024": 34.5,
+      "poverty_rate_2025_nowcast": 32.0,
+      "change_pp": -2.5
+    },
+    {
+      "code": "05",
+      "name": "Ayacucho",
+      "poverty_rate_2024": 33.9,
+      "poverty_rate_2025_nowcast": 31.4,
+      "change_pp": -2.5
+    },
+    {
+      "code": "20",
+      "name": "Piura",
+      "poverty_rate_2024": 33.5,
+      "poverty_rate_2025_nowcast": 31.0,
+      "change_pp": -2.5
+    },
+    {
+      "code": "13",
+      "name": "La Libertad",
+      "poverty_rate_2024": 32.6,
+      "poverty_rate_2025_nowcast": 30.1,
+      "change_pp": -2.5
+    },
+    {
+      "code": "24",
+      "name": "Tumbes",
+      "poverty_rate_2024": 28.9,
+      "poverty_rate_2025_nowcast": 26.4,
+      "change_pp": -2.5
+    },
+    {
+      "code": "07",
+      "name": "Callao",
+      "poverty_rate_2024": 28.4,
+      "poverty_rate_2025_nowcast": 25.9,
+      "change_pp": -2.5
+    },
+    {
+      "code": "15",
+      "name": "Lima",
+      "poverty_rate_2024": 28.4,
+      "poverty_rate_2025_nowcast": 25.9,
+      "change_pp": -2.5
+    },
+    {
+      "code": "25",
+      "name": "Ucayali",
+      "poverty_rate_2024": 28.3,
+      "poverty_rate_2025_nowcast": 25.8,
+      "change_pp": -2.5
+    },
+    {
+      "code": "01",
+      "name": "Amazonas",
+      "poverty_rate_2024": 26.3,
+      "poverty_rate_2025_nowcast": 23.8,
+      "change_pp": -2.5
+    },
+    {
+      "code": "02",
+      "name": "Áncash",
+      "poverty_rate_2024": 25.4,
+      "poverty_rate_2025_nowcast": 22.9,
+      "change_pp": -2.5
+    },
+    {
+      "code": "23",
+      "name": "Tacna",
+      "poverty_rate_2024": 25.1,
+      "poverty_rate_2025_nowcast": 22.6,
+      "change_pp": -2.5
+    },
+    {
+      "code": "03",
+      "name": "Apurímac",
+      "poverty_rate_2024": 24.4,
+      "poverty_rate_2025_nowcast": 21.9,
+      "change_pp": -2.5
+    },
+    {
+      "code": "22",
+      "name": "San Martín",
+      "poverty_rate_2024": 23.3,
+      "poverty_rate_2025_nowcast": 20.8,
+      "change_pp": -2.5
+    },
+    {
+      "code": "08",
+      "name": "Cusco",
+      "poverty_rate_2024": 21.2,
+      "poverty_rate_2025_nowcast": 18.7,
+      "change_pp": -2.5
+    },
+    {
+      "code": "12",
+      "name": "Junín",
+      "poverty_rate_2024": 19.4,
+      "poverty_rate_2025_nowcast": 16.9,
+      "change_pp": -2.5
+    },
+    {
+      "code": "04",
+      "name": "Arequipa",
+      "poverty_rate_2024": 17.2,
+      "poverty_rate_2025_nowcast": 14.7,
+      "change_pp": -2.5
+    },
+    {
+      "code": "14",
+      "name": "Lambayeque",
+      "poverty_rate_2024": 15.3,
+      "poverty_rate_2025_nowcast": 12.8,
+      "change_pp": -2.5
+    },
+    {
+      "code": "18",
+      "name": "Moquegua",
+      "poverty_rate_2024": 11.8,
+      "poverty_rate_2025_nowcast": 9.3,
+      "change_pp": -2.5
+    },
+    {
+      "code": "17",
+      "name": "Madre de Dios",
+      "poverty_rate_2024": 11.7,
+      "poverty_rate_2025_nowcast": 9.2,
+      "change_pp": -2.5
+    },
+    {
+      "code": "11",
+      "name": "Ica",
+      "poverty_rate_2024": 8.1,
+      "poverty_rate_2025_nowcast": 5.6,
+      "change_pp": -2.5
+    }
+  ],
+  "districts": [
+    {
+      "ubigeo": "010101",
+      "department_code": "01",
+      "poverty_rate_nowcast": 24.8,
+      "ntl_weight": 0.0124
+    },
+    {
+      "ubigeo": "010102",
+      "department_code": "01",
+      "poverty_rate_nowcast": 1.7,
+      "ntl_weight": 0.0008
+    },
+    {
+      "ubigeo": "010103",
+      "department_code": "01",
+      "poverty_rate_nowcast": 38.2,
+      "ntl_weight": 0.0191
+    },
+    {
+      "ubigeo": "010104",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010105",
+      "department_code": "01",
+      "poverty_rate_nowcast": 4.4,
+      "ntl_weight": 0.0022
+    },
+    {
+      "ubigeo": "010106",
+      "department_code": "01",
+      "poverty_rate_nowcast": 20.3,
+      "ntl_weight": 0.0102
+    },
+    {
+      "ubigeo": "010107",
+      "department_code": "01",
+      "poverty_rate_nowcast": 0.6,
+      "ntl_weight": 0.0003
+    },
+    {
+      "ubigeo": "010108",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010109",
+      "department_code": "01",
+      "poverty_rate_nowcast": 17.9,
+      "ntl_weight": 0.009
+    },
+    {
+      "ubigeo": "010110",
+      "department_code": "01",
+      "poverty_rate_nowcast": 13.2,
+      "ntl_weight": 0.0066
+    },
+    {
+      "ubigeo": "010111",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010112",
+      "department_code": "01",
+      "poverty_rate_nowcast": 41.2,
+      "ntl_weight": 0.0206
+    },
+    {
+      "ubigeo": "010113",
+      "department_code": "01",
+      "poverty_rate_nowcast": 6.3,
+      "ntl_weight": 0.0032
+    },
+    {
+      "ubigeo": "010114",
+      "department_code": "01",
+      "poverty_rate_nowcast": 5.6,
+      "ntl_weight": 0.0028
+    },
+    {
+      "ubigeo": "010115",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010116",
+      "department_code": "01",
+      "poverty_rate_nowcast": 0.5,
+      "ntl_weight": 0.0003
+    },
+    {
+      "ubigeo": "010117",
+      "department_code": "01",
+      "poverty_rate_nowcast": 3.4,
+      "ntl_weight": 0.0017
+    },
+    {
+      "ubigeo": "010118",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010119",
+      "department_code": "01",
+      "poverty_rate_nowcast": 38.5,
+      "ntl_weight": 0.0193
+    },
+    {
+      "ubigeo": "010120",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010121",
+      "department_code": "01",
+      "poverty_rate_nowcast": 11.6,
+      "ntl_weight": 0.0058
+    },
+    {
+      "ubigeo": "010201",
+      "department_code": "01",
+      "poverty_rate_nowcast": 14.2,
+      "ntl_weight": 0.0071
+    },
+    {
+      "ubigeo": "010202",
+      "department_code": "01",
+      "poverty_rate_nowcast": 6.1,
+      "ntl_weight": 0.003
+    },
+    {
+      "ubigeo": "010203",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010204",
+      "department_code": "01",
+      "poverty_rate_nowcast": 3.5,
+      "ntl_weight": 0.0018
+    },
+    {
+      "ubigeo": "010205",
+      "department_code": "01",
+      "poverty_rate_nowcast": 18.5,
+      "ntl_weight": 0.0093
+    },
+    {
+      "ubigeo": "010206",
+      "department_code": "01",
+      "poverty_rate_nowcast": 10.6,
+      "ntl_weight": 0.0053
+    },
+    {
+      "ubigeo": "010301",
+      "department_code": "01",
+      "poverty_rate_nowcast": 3.2,
+      "ntl_weight": 0.0016
+    },
+    {
+      "ubigeo": "010302",
+      "department_code": "01",
+      "poverty_rate_nowcast": 0.6,
+      "ntl_weight": 0.0003
+    },
+    {
+      "ubigeo": "010303",
+      "department_code": "01",
+      "poverty_rate_nowcast": 12.5,
+      "ntl_weight": 0.0063
+    },
+    {
+      "ubigeo": "010304",
+      "department_code": "01",
+      "poverty_rate_nowcast": 1.2,
+      "ntl_weight": 0.0006
+    },
+    {
+      "ubigeo": "010305",
+      "department_code": "01",
+      "poverty_rate_nowcast": 4.7,
+      "ntl_weight": 0.0024
+    },
+    {
+      "ubigeo": "010306",
+      "department_code": "01",
+      "poverty_rate_nowcast": 3.8,
+      "ntl_weight": 0.0019
+    },
+    {
+      "ubigeo": "010307",
+      "department_code": "01",
+      "poverty_rate_nowcast": 11.0,
+      "ntl_weight": 0.0055
+    },
+    {
+      "ubigeo": "010308",
+      "department_code": "01",
+      "poverty_rate_nowcast": 1.5,
+      "ntl_weight": 0.0007
+    },
+    {
+      "ubigeo": "010309",
+      "department_code": "01",
+      "poverty_rate_nowcast": 6.9,
+      "ntl_weight": 0.0034
+    },
+    {
+      "ubigeo": "010310",
+      "department_code": "01",
+      "poverty_rate_nowcast": 16.9,
+      "ntl_weight": 0.0085
+    },
+    {
+      "ubigeo": "010311",
+      "department_code": "01",
+      "poverty_rate_nowcast": 31.3,
+      "ntl_weight": 0.0157
+    },
+    {
+      "ubigeo": "010312",
+      "department_code": "01",
+      "poverty_rate_nowcast": 5.8,
+      "ntl_weight": 0.0029
+    },
+    {
+      "ubigeo": "010401",
+      "department_code": "01",
+      "poverty_rate_nowcast": 13.7,
+      "ntl_weight": 0.0068
+    },
+    {
+      "ubigeo": "010402",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010403",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010501",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010502",
+      "department_code": "01",
+      "poverty_rate_nowcast": 0.4,
+      "ntl_weight": 0.0002
+    },
+    {
+      "ubigeo": "010503",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010504",
+      "department_code": "01",
+      "poverty_rate_nowcast": 34.6,
+      "ntl_weight": 0.0173
+    },
+    {
+      "ubigeo": "010505",
+      "department_code": "01",
+      "poverty_rate_nowcast": 13.6,
+      "ntl_weight": 0.0068
+    },
+    {
+      "ubigeo": "010506",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010507",
+      "department_code": "01",
+      "poverty_rate_nowcast": 1.0,
+      "ntl_weight": 0.0005
+    },
+    {
+      "ubigeo": "010508",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010509",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010510",
+      "department_code": "01",
+      "poverty_rate_nowcast": 33.7,
+      "ntl_weight": 0.0169
+    },
+    {
+      "ubigeo": "010511",
+      "department_code": "01",
+      "poverty_rate_nowcast": 20.8,
+      "ntl_weight": 0.0104
+    },
+    {
+      "ubigeo": "010512",
+      "department_code": "01",
+      "poverty_rate_nowcast": 6.1,
+      "ntl_weight": 0.0031
+    },
+    {
+      "ubigeo": "010513",
+      "department_code": "01",
+      "poverty_rate_nowcast": 40.8,
+      "ntl_weight": 0.0204
+    },
+    {
+      "ubigeo": "010514",
+      "department_code": "01",
+      "poverty_rate_nowcast": 16.8,
+      "ntl_weight": 0.0084
+    },
+    {
+      "ubigeo": "010515",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010516",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010517",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010518",
+      "department_code": "01",
+      "poverty_rate_nowcast": 15.0,
+      "ntl_weight": 0.0075
+    },
+    {
+      "ubigeo": "010519",
+      "department_code": "01",
+      "poverty_rate_nowcast": 39.7,
+      "ntl_weight": 0.0199
+    },
+    {
+      "ubigeo": "010520",
+      "department_code": "01",
+      "poverty_rate_nowcast": 45.1,
+      "ntl_weight": 0.0226
+    },
+    {
+      "ubigeo": "010521",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010522",
+      "department_code": "01",
+      "poverty_rate_nowcast": 1.1,
+      "ntl_weight": 0.0005
+    },
+    {
+      "ubigeo": "010523",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010601",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010602",
+      "department_code": "01",
+      "poverty_rate_nowcast": 7.4,
+      "ntl_weight": 0.0037
+    },
+    {
+      "ubigeo": "010603",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010604",
+      "department_code": "01",
+      "poverty_rate_nowcast": 15.8,
+      "ntl_weight": 0.0079
+    },
+    {
+      "ubigeo": "010605",
+      "department_code": "01",
+      "poverty_rate_nowcast": 19.1,
+      "ntl_weight": 0.0096
+    },
+    {
+      "ubigeo": "010606",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010607",
+      "department_code": "01",
+      "poverty_rate_nowcast": 12.7,
+      "ntl_weight": 0.0064
+    },
+    {
+      "ubigeo": "010608",
+      "department_code": "01",
+      "poverty_rate_nowcast": 9.2,
+      "ntl_weight": 0.0046
+    },
+    {
+      "ubigeo": "010609",
+      "department_code": "01",
+      "poverty_rate_nowcast": 10.3,
+      "ntl_weight": 0.0052
+    },
+    {
+      "ubigeo": "010610",
+      "department_code": "01",
+      "poverty_rate_nowcast": 52.4,
+      "ntl_weight": 0.0262
+    },
+    {
+      "ubigeo": "010611",
+      "department_code": "01",
+      "poverty_rate_nowcast": 13.3,
+      "ntl_weight": 0.0066
+    },
+    {
+      "ubigeo": "010612",
+      "department_code": "01",
+      "poverty_rate_nowcast": 1.1,
+      "ntl_weight": 0.0005
+    },
+    {
+      "ubigeo": "010701",
+      "department_code": "01",
+      "poverty_rate_nowcast": 4.3,
+      "ntl_weight": 0.0021
+    },
+    {
+      "ubigeo": "010702",
+      "department_code": "01",
+      "poverty_rate_nowcast": 11.9,
+      "ntl_weight": 0.0059
+    },
+    {
+      "ubigeo": "010703",
+      "department_code": "01",
+      "poverty_rate_nowcast": 2.7,
+      "ntl_weight": 0.0013
+    },
+    {
+      "ubigeo": "010704",
+      "department_code": "01",
+      "poverty_rate_nowcast": 4.3,
+      "ntl_weight": 0.0022
+    },
+    {
+      "ubigeo": "010705",
+      "department_code": "01",
+      "poverty_rate_nowcast": 8.1,
+      "ntl_weight": 0.004
+    },
+    {
+      "ubigeo": "010706",
+      "department_code": "01",
+      "poverty_rate_nowcast": 2.6,
+      "ntl_weight": 0.0013
+    },
+    {
+      "ubigeo": "010707",
+      "department_code": "01",
+      "poverty_rate_nowcast": 6.7,
+      "ntl_weight": 0.0034
+    },
+    {
+      "ubigeo": "020101",
+      "department_code": "02",
+      "poverty_rate_nowcast": 22.4,
+      "ntl_weight": 0.0059
+    },
+    {
+      "ubigeo": "020102",
+      "department_code": "02",
+      "poverty_rate_nowcast": 6.9,
+      "ntl_weight": 0.0018
+    },
+    {
+      "ubigeo": "020103",
+      "department_code": "02",
+      "poverty_rate_nowcast": 5.1,
+      "ntl_weight": 0.0014
+    },
+    {
+      "ubigeo": "020104",
+      "department_code": "02",
+      "poverty_rate_nowcast": 44.5,
+      "ntl_weight": 0.0117
+    },
+    {
+      "ubigeo": "020105",
+      "department_code": "02",
+      "poverty_rate_nowcast": 22.5,
+      "ntl_weight": 0.0059
+    },
+    {
+      "ubigeo": "020106",
+      "department_code": "02",
+      "poverty_rate_nowcast": 14.3,
+      "ntl_weight": 0.0038
+    },
+    {
+      "ubigeo": "020107",
+      "department_code": "02",
+      "poverty_rate_nowcast": 8.5,
+      "ntl_weight": 0.0022
+    },
+    {
+      "ubigeo": "020108",
+      "department_code": "02",
+      "poverty_rate_nowcast": 15.5,
+      "ntl_weight": 0.0041
+    },
+    {
+      "ubigeo": "020109",
+      "department_code": "02",
+      "poverty_rate_nowcast": 6.5,
+      "ntl_weight": 0.0017
+    },
+    {
+      "ubigeo": "020110",
+      "department_code": "02",
+      "poverty_rate_nowcast": 4.8,
+      "ntl_weight": 0.0013
+    },
+    {
+      "ubigeo": "020111",
+      "department_code": "02",
+      "poverty_rate_nowcast": 29.0,
+      "ntl_weight": 0.0076
+    },
+    {
+      "ubigeo": "020112",
+      "department_code": "02",
+      "poverty_rate_nowcast": 48.4,
+      "ntl_weight": 0.0127
+    },
+    {
+      "ubigeo": "020201",
+      "department_code": "02",
+      "poverty_rate_nowcast": 11.4,
+      "ntl_weight": 0.003
+    },
+    {
+      "ubigeo": "020202",
+      "department_code": "02",
+      "poverty_rate_nowcast": 48.4,
+      "ntl_weight": 0.0127
+    },
+    {
+      "ubigeo": "020203",
+      "department_code": "02",
+      "poverty_rate_nowcast": 48.4,
+      "ntl_weight": 0.0127
+    },
+    {
+      "ubigeo": "020204",
+      "department_code": "02",
+      "poverty_rate_nowcast": 26.8,
+      "ntl_weight": 0.007
+    }
+  ],
+  "historical_series": [
+    {
+      "year": 2004,
+      "official": 61.7,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2005,
+      "official": 59.0,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2006,
+      "official": 54.0,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2007,
+      "official": 47.7,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2008,
+      "official": 42.7,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2009,
+      "official": 39.3,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2010,
+      "official": 34.8,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2011,
+      "official": 31.3,
+      "nowcast": null,
+      "error": null
+    },
+    {
+      "year": 2012,
+      "official": 29.0,
+      "nowcast": 27.6,
+      "error": -1.4
+    },
+    {
+      "year": 2013,
+      "official": 27.3,
+      "nowcast": 26.5,
+      "error": -0.9
+    },
+    {
+      "year": 2014,
+      "official": 26.9,
+      "nowcast": 25.2,
+      "error": -1.7
+    },
+    {
+      "year": 2015,
+      "official": 25.2,
+      "nowcast": 24.4,
+      "error": -0.8
+    },
+    {
+      "year": 2016,
+      "official": 24.1,
+      "nowcast": 24.1,
+      "error": 0.0
+    },
+    {
+      "year": 2017,
+      "official": 24.1,
+      "nowcast": 21.8,
+      "error": -2.3
+    },
+    {
+      "year": 2018,
+      "official": 22.5,
+      "nowcast": 22.8,
+      "error": 0.3
+    },
+    {
+      "year": 2019,
+      "official": 21.9,
+      "nowcast": 21.6,
+      "error": -0.4
+    },
+    {
+      "year": 2020,
+      "official": 30.6,
+      "nowcast": 20.2,
+      "error": -10.4
+    },
+    {
+      "year": 2021,
+      "official": 25.3,
+      "nowcast": 29.9,
+      "error": 4.6
+    },
+    {
+      "year": 2022,
+      "official": 26.8,
+      "nowcast": 24.6,
+      "error": -2.2
+    },
+    {
+      "year": 2023,
+      "official": 28.3,
+      "nowcast": 25.7,
+      "error": -2.5
+    },
+    {
+      "year": 2024,
+      "official": 26.2,
+      "nowcast": 27.1,
+      "error": 0.9
+    }
+  ],
+  "backtest_metrics": {
+    "rmse": 2.54,
+    "mae": 1.89,
+    "r2": 0.76,
+    "relative_rmse_vs_ar1": 0.958
+  }
+}

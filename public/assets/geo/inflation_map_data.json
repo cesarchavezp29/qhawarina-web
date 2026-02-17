@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "indicator": "inflation_mom",
+    "unit": "percent",
+    "period": "2026-01",
+    "source": "Qhawarina DFM Model (National)",
+    "note": "Departmental values are estimates based on regional food price indices"
+  },
+  "national": {
+    "inflation_mom": 0.096
+  },
+  "departments": [
+    {
+      "code": "08",
+      "name": "Cusco",
+      "inflation_mom": 0.288
+    },
+    {
+      "code": "20",
+      "name": "Piura",
+      "inflation_mom": 0.28
+    },
+    {
+      "code": "09",
+      "name": "Huancavelica",
+      "inflation_mom": 0.268
+    },
+    {
+      "code": "02",
+      "name": "Áncash",
+      "inflation_mom": 0.256
+    },
+    {
+      "code": "25",
+      "name": "Ucayali",
+      "inflation_mom": 0.256
+    },
+    {
+      "code": "19",
+      "name": "Pasco",
+      "inflation_mom": 0.252
+    },
+    {
+      "code": "16",
+      "name": "Loreto",
+      "inflation_mom": 0.248
+    },
+    {
+      "code": "21",
+      "name": "Puno",
+      "inflation_mom": 0.248
+    },
+    {
+      "code": "05",
+      "name": "Ayacucho",
+      "inflation_mom": 0.22
+    },
+    {
+      "code": "03",
+      "name": "Apurímac",
+      "inflation_mom": 0.192
+    },
+    {
+      "code": "23",
+      "name": "Tacna",
+      "inflation_mom": 0.184
+    },
+    {
+      "code": "01",
+      "name": "Amazonas",
+      "inflation_mom": 0.168
+    },
+    {
+      "code": "14",
+      "name": "Lambayeque",
+      "inflation_mom": 0.14
+    },
+    {
+      "code": "18",
+      "name": "Moquegua",
+      "inflation_mom": 0.104
+    },
+    {
+      "code": "12",
+      "name": "Junín",
+      "inflation_mom": 0.1
+    },
+    {
+      "code": "13",
+      "name": "La Libertad",
+      "inflation_mom": 0.072
+    },
+    {
+      "code": "04",
+      "name": "Arequipa",
+      "inflation_mom": 0.052
+    },
+    {
+      "code": "17",
+      "name": "Madre de Dios",
+      "inflation_mom": 0.016
+    },
+    {
+      "code": "22",
+      "name": "San Martín",
+      "inflation_mom": 0.016
+    },
+    {
+      "code": "07",
+      "name": "Callao",
+      "inflation_mom": 0.012
+    },
+    {
+      "code": "06",
+      "name": "Cajamarca",
+      "inflation_mom": -0.004
+    },
+    {
+      "code": "15",
+      "name": "Lima",
+      "inflation_mom": -0.012
+    },
+    {
+      "code": "24",
+      "name": "Tumbes",
+      "inflation_mom": -0.012
+    },
+    {
+      "code": "11",
+      "name": "Ica",
+      "inflation_mom": -0.044
+    },
+    {
+      "code": "10",
+      "name": "Huánuco",
+      "inflation_mom": -0.104
+    }
+  ]
+}
