@@ -9,7 +9,7 @@ const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
   current: { date: string; score: number; level: string; articles_total: number };
-  aggregates: { '7d_avg': number; '30d_avg': number; '90d_max': number; '90d_max_date': string };
+  aggregates: { '7d_avg': number; '30d_avg': number; year_max: number; year_max_date: string };
   major_events: Array<{ date: string; score: number; level: string; summary: string }>;
   daily_series: Array<{ date: string; score: number }>;
 }
@@ -69,10 +69,10 @@ export default function PoliticalPage() {
             <div className="text-2xl font-semibold text-gray-900">{data.aggregates['30d_avg'].toFixed(3)}</div>
           </div>
           <div className="border border-gray-300 p-4">
-            <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Máx. 90d</div>
-            <div className="text-2xl font-semibold text-gray-900">{data.aggregates['90d_max'].toFixed(3)}</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Máx. 1 año</div>
+            <div className="text-2xl font-semibold text-gray-900">{data.aggregates['year_max'].toFixed(3)}</div>
             <div className="text-xs text-gray-600 mt-1">
-              {new Date(data.aggregates['90d_max_date']).toLocaleDateString('es-PE', { day: 'numeric', month: 'short' })}
+              {new Date(data.aggregates['year_max_date']).toLocaleDateString('es-PE', { day: 'numeric', month: 'short' })}
             </div>
           </div>
           <div className="border border-gray-300 p-4">
@@ -83,7 +83,7 @@ export default function PoliticalPage() {
 
         {/* Gráfico */}
         <div className="border border-gray-300 p-6 mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Serie Temporal (Últimos 90 días)</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Serie Temporal — Último año</h2>
           <Plot
             data={[
               {
@@ -170,12 +170,12 @@ export default function PoliticalPage() {
         <div className="border border-gray-300 mb-8">
           <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-              Eventos Principales (Score &gt; 0.75)
+              Períodos de Alta Inestabilidad
             </h3>
           </div>
           {data.major_events.length === 0 ? (
             <div className="p-8 text-center text-sm text-gray-600">
-              No hay eventos de alta inestabilidad en los últimos 90 días
+              No hay períodos de alta inestabilidad en el último año
             </div>
           ) : (
             <div className="divide-y divide-gray-200 bg-white">

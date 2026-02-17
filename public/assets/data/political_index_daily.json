@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-17T13:24:24.404980",
+    "generated_at": "2026-02-17T13:27:49.962311",
     "coverage_days": 413,
     "rss_feeds": 81
   },
@@ -15,8 +15,8 @@
   "aggregates": {
     "7d_avg": 0.665,
     "30d_avg": 0.588,
-    "90d_max": 0.838,
-    "90d_max_date": "2026-02-14"
+    "year_max": 0.775,
+    "year_max_date": "2026-02-17"
   },
   "major_events": [
     {
