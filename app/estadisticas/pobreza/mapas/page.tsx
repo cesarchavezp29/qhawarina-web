@@ -253,7 +253,11 @@ export default function PobrezaMapasPage() {
                       len: 0.8,
                       ticksuffix: '%',
                     },
-                    hovertemplate: '<b>%{location}</b><br>Pobreza: %{z:.1f}%<extra></extra>',
+                    text: validDists.map((id: string) => {
+                      const rate = districtMap.get(id)!;
+                      return `Ubigeo: ${id}<br>Pobreza: ${rate.toFixed(1)}%`;
+                    }),
+                    hovertemplate: '%{text}<extra></extra>',
                     marker: { line: { color: '#ffffff', width: 0.3 } },
                   } as any]}
                   layout={{
