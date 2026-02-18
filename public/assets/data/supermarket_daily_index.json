@@ -9,23 +9,49 @@
       "Wong"
     ],
     "frequency": "daily",
-    "total_skus": 42710
+    "generated_at": "2026-02-18T17:15:17.199726",
+    "total_skus": 40472
   },
   "daily_series": [
     {
       "date": "2026-02-10",
       "index_all": 100.0,
-      "n_products": 42710
+      "index_food": 100.0,
+      "index_nonfood": 100.0,
+      "var_all": null,
+      "n_products": 0
     },
     {
       "date": "2026-02-11",
       "index_all": 99.51,
-      "n_products": 40737
+      "index_food": 99.46,
+      "index_nonfood": 99.65,
+      "var_all": -0.489,
+      "n_products": 38978
     },
     {
       "date": "2026-02-14",
-      "index_all": 99.47,
-      "n_products": 41486
+      "index_all": 99.48,
+      "index_food": 99.42,
+      "index_nonfood": 99.65,
+      "var_all": -0.03,
+      "n_products": 40004
+    },
+    {
+      "date": "2026-02-16",
+      "index_all": 99.88,
+      "index_food": 99.81,
+      "index_nonfood": 100.08,
+      "var_all": 0.403,
+      "n_products": 40355
+    },
+    {
+      "date": "2026-02-18",
+      "index_all": 99.82,
+      "index_food": 99.72,
+      "index_nonfood": 100.14,
+      "var_all": -0.058,
+      "n_products": 40472
     }
   ]
 }
