@@ -30,6 +30,12 @@ export default function HomePage() {
 
   if (loading) return <LoadingSkeleton />;
 
+  // Pre-compute filtered series for charts (avoid IIFE in JSX)
+  const CHART_START = '2025-03-01';
+  const polSeries = (data?.political?.daily_series ?? []).filter((d: any) => d.date >= CHART_START);
+  const fxSeries = (data?.political?.daily_fx_series ?? []).filter((d: any) => d.date >= CHART_START);
+  const scatterSeries = (data?.political?.monthly_series ?? []).filter((m: any) => m.fx_yoy !== null);
+
   return (
     <div className="bg-gray-50">
       {/* Contenido Principal */}
@@ -143,22 +149,17 @@ export default function HomePage() {
         </section>
 
         {/* Charts: Timeline + Scatter */}
-        {data.political.daily_series?.length > 0 && (
+        {polSeries.length > 0 && (
           <section className="mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4 tracking-tight">
               Riesgo Político vs. Tipo de Cambio
             </h2>
             <div className="grid grid-cols-2 gap-4">
 
-              {/* Chart 1: Political (bars) + daily FX rate (line, y2), from Mar 2025 */}
-              {(() => {
-                const CUT = '2025-03-01';
-                const polSeries = data.political.daily_series.filter((d: any) => d.date >= CUT);
-                const fxSeries = (data.political.daily_fx_series ?? []).filter((d: any) => d.date >= CUT);
-                return (
+              {/* Chart 1: Political (bars) + daily TC (line, right y-axis) */}
               <div className="border border-gray-300 p-4 bg-white">
                 <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-                  Evolución — Inestabilidad Política y Tipo de Cambio (diario, desde mar. 2025)
+                  Evolución diaria — Inestabilidad Política y TC PEN/USD (desde mar. 2025)
                 </div>
                 <Plot
                   data={[
@@ -201,7 +202,7 @@ export default function HomePage() {
                     legend: { orientation: 'h', y: -0.22, x: 0, font: { size: 10 } },
                     xaxis: { gridcolor: '#E5E7EB', tickfont: { size: 10 } },
                     yaxis: { range: [0, 1], gridcolor: '#E5E7EB', tickfont: { size: 10 }, title: { text: 'Índice (0-1)', font: { size: 9 } } },
-                    yaxis2: { overlaying: 'y', side: 'right', tickfont: { size: 10 }, title: { text: 'S/ por USD', font: { size: 9 } }, showgrid: false, tickprefix: 'S/ ' },
+                    yaxis2: { anchor: 'x', overlaying: 'y', side: 'right', tickfont: { size: 10 }, title: { text: 'S/ por USD', font: { size: 9 } }, showgrid: false },
                     plot_bgcolor: '#fff',
                     paper_bgcolor: '#fff',
                     font: { family: 'Inter, sans-serif', size: 11 },
@@ -214,28 +215,26 @@ export default function HomePage() {
                   <Link href="/political" className="text-blue-600 hover:underline">Ver índice completo →</Link>
                 </div>
               </div>
-                );
-              })()}
 
               {/* Chart 2: Scatter — monthly political avg vs FX YoY */}
-              {data.political.monthly_series?.some((m: any) => m.fx_yoy !== null) && (
+              {scatterSeries.length > 0 && (
                 <div className="border border-gray-300 p-4 bg-white">
                   <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-                    Dispersión — Inestabilidad Política vs. TC (var. anual)
+                    Dispersión mensual — Inestabilidad Política vs. TC (var. anual)
                   </div>
                   <Plot
                     data={[
                       {
-                        x: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.political_avg),
-                        y: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.fx_yoy),
-                        text: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.month),
+                        x: scatterSeries.map((m: any) => m.political_avg),
+                        y: scatterSeries.map((m: any) => m.fx_yoy),
+                        text: scatterSeries.map((m: any) => m.month),
                         type: 'scatter',
                         mode: 'markers+text',
                         textposition: 'top center',
                         textfont: { size: 8, color: '#6B7280' },
                         marker: {
                           size: 10,
-                          color: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.political_avg),
+                          color: scatterSeries.map((m: any) => m.political_avg),
                           colorscale: [[0, '#DBEAFE'], [0.5, '#F59E0B'], [1, '#DC2626']],
                           showscale: false,
                           line: { color: '#9CA3AF', width: 0.5 },
@@ -249,7 +248,7 @@ export default function HomePage() {
                       margin: { l: 52, r: 16, t: 8, b: 52 },
                       showlegend: false,
                       xaxis: { title: { text: 'Índice político mensual (0-1)', font: { size: 10 } }, gridcolor: '#E5E7EB', tickfont: { size: 10 } },
-                      yaxis: { title: { text: 'Tipo de cambio var. anual (%)', font: { size: 10 } }, gridcolor: '#E5E7EB', tickfont: { size: 10 } },
+                      yaxis: { title: { text: 'TC var. anual (%)', font: { size: 10 } }, gridcolor: '#E5E7EB', tickfont: { size: 10 } },
                       plot_bgcolor: '#fff',
                       paper_bgcolor: '#fff',
                       font: { family: 'Inter, sans-serif', size: 11 },
