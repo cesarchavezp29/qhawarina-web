@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 // Parse YYYY-MM-DD as local date (avoids UTC-to-local day-shift bug)
 function parseLocalDate(dateStr: string): Date {
@@ -138,6 +141,151 @@ export default function HomePage() {
             </table>
           </div>
         </section>
+
+        {/* Charts: Political + FX + Scatter */}
+        {data.political.daily_series?.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4 tracking-tight">
+              Riesgo Político vs. Tipo de Cambio
+            </h2>
+            <div className="grid grid-cols-3 gap-4">
+
+              {/* Chart 1: Political instability (daily, last 90 days) */}
+              <div className="border border-gray-300 p-4 bg-white">
+                <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                  Inestabilidad Política — Últimos 90 días
+                </div>
+                <Plot
+                  data={[
+                    {
+                      x: data.political.daily_series.slice(-90).map((d: any) => d.date),
+                      y: data.political.daily_series.slice(-90).map((d: any) => d.score_raw),
+                      type: 'bar',
+                      name: 'Score diario',
+                      marker: { color: 'rgba(220, 38, 38, 0.25)' },
+                      hovertemplate: '<b>%{x}</b><br>%{y:.3f}<extra></extra>',
+                    },
+                    {
+                      x: data.political.daily_series.slice(-90).map((d: any) => d.date),
+                      y: data.political.daily_series.slice(-90).map((d: any) => d.score),
+                      type: 'scatter',
+                      mode: 'lines',
+                      name: 'Tendencia 7d',
+                      line: { color: '#DC2626', width: 2 },
+                      hovertemplate: '<b>%{x}</b><br>%{y:.3f}<extra></extra>',
+                    },
+                  ]}
+                  layout={{
+                    autosize: true,
+                    height: 240,
+                    margin: { l: 36, r: 8, t: 8, b: 40 },
+                    hovermode: 'x unified',
+                    barmode: 'overlay',
+                    showlegend: false,
+                    xaxis: { gridcolor: '#E5E7EB', tickfont: { size: 10 } },
+                    yaxis: { range: [0, 1], gridcolor: '#E5E7EB', tickfont: { size: 10 } },
+                    plot_bgcolor: '#fff',
+                    paper_bgcolor: '#fff',
+                    font: { family: 'Inter, sans-serif', size: 11 },
+                  }}
+                  config={{ responsive: true, displaylogo: false, displayModeBar: false }}
+                  className="w-full"
+                  useResizeHandler
+                />
+                <div className="text-xs text-gray-500 mt-1 text-right">
+                  <Link href="/political" className="text-blue-600 hover:underline">Ver detalle →</Link>
+                </div>
+              </div>
+
+              {/* Chart 2: Exchange rate level (monthly) */}
+              {data.political.monthly_series?.some((m: any) => m.fx_level !== null) && (
+                <div className="border border-gray-300 p-4 bg-white">
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                    Tipo de Cambio — PEN/USD (mensual)
+                  </div>
+                  <Plot
+                    data={[
+                      {
+                        x: data.political.monthly_series.filter((m: any) => m.fx_level !== null).map((m: any) => m.month),
+                        y: data.political.monthly_series.filter((m: any) => m.fx_level !== null).map((m: any) => m.fx_level),
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        name: 'PEN/USD',
+                        line: { color: '#2563EB', width: 2 },
+                        marker: { size: 4, color: '#2563EB' },
+                        hovertemplate: '<b>%{x}</b><br>S/ %{y:.4f}<extra></extra>',
+                      },
+                    ]}
+                    layout={{
+                      autosize: true,
+                      height: 240,
+                      margin: { l: 48, r: 8, t: 8, b: 40 },
+                      showlegend: false,
+                      xaxis: { gridcolor: '#E5E7EB', tickfont: { size: 10 } },
+                      yaxis: { gridcolor: '#E5E7EB', tickfont: { size: 10 }, tickprefix: 'S/ ' },
+                      plot_bgcolor: '#fff',
+                      paper_bgcolor: '#fff',
+                      font: { family: 'Inter, sans-serif', size: 11 },
+                    }}
+                    config={{ responsive: true, displaylogo: false, displayModeBar: false }}
+                    className="w-full"
+                    useResizeHandler
+                  />
+                  <div className="text-xs text-gray-500 mt-1">
+                    Fuente: BCRP (PN01246PM) · promedio mensual
+                  </div>
+                </div>
+              )}
+
+              {/* Chart 3: Scatter — political avg vs FX YoY */}
+              {data.political.monthly_series?.some((m: any) => m.fx_yoy !== null) && (
+                <div className="border border-gray-300 p-4 bg-white">
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                    Riesgo Político vs. TC (var. interanual)
+                  </div>
+                  <Plot
+                    data={[
+                      {
+                        x: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.political_avg),
+                        y: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.fx_yoy),
+                        text: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.month),
+                        type: 'scatter',
+                        mode: 'markers+text',
+                        textposition: 'top center',
+                        textfont: { size: 8, color: '#6B7280' },
+                        marker: {
+                          size: 8,
+                          color: data.political.monthly_series.filter((m: any) => m.fx_yoy !== null).map((m: any) => m.political_avg),
+                          colorscale: [[0, '#DBEAFE'], [0.5, '#F59E0B'], [1, '#DC2626']],
+                          showscale: false,
+                        },
+                        hovertemplate: '<b>%{text}</b><br>Político: %{x:.3f}<br>TC yoy: %{y:.1f}%<extra></extra>',
+                      },
+                    ]}
+                    layout={{
+                      autosize: true,
+                      height: 240,
+                      margin: { l: 48, r: 8, t: 8, b: 48 },
+                      showlegend: false,
+                      xaxis: { title: { text: 'Índice político (0-1)', font: { size: 10 } }, gridcolor: '#E5E7EB', tickfont: { size: 10 } },
+                      yaxis: { title: { text: 'TC var. anual (%)', font: { size: 10 } }, gridcolor: '#E5E7EB', tickfont: { size: 10 } },
+                      plot_bgcolor: '#fff',
+                      paper_bgcolor: '#fff',
+                      font: { family: 'Inter, sans-serif', size: 11 },
+                    }}
+                    config={{ responsive: true, displaylogo: false, displayModeBar: false }}
+                    className="w-full"
+                    useResizeHandler
+                  />
+                  <div className="text-xs text-gray-500 mt-1">
+                    Correlación mensual: inestabilidad política vs. apreciación del sol
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </section>
+        )}
 
         {/* NEW: Counterfactual Analysis Feature */}
         <section className="mb-8">
