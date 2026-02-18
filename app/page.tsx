@@ -150,16 +150,21 @@ export default function HomePage() {
             </h2>
             <div className="grid grid-cols-2 gap-4">
 
-              {/* Chart 1: Political (bars) + daily FX rate (line, y2) */}
+              {/* Chart 1: Political (bars) + daily FX rate (line, y2), from Mar 2025 */}
+              {(() => {
+                const CUT = '2025-03-01';
+                const polSeries = data.political.daily_series.filter((d: any) => d.date >= CUT);
+                const fxSeries = (data.political.daily_fx_series ?? []).filter((d: any) => d.date >= CUT);
+                return (
               <div className="border border-gray-300 p-4 bg-white">
                 <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-                  Evolución — Inestabilidad Política y Tipo de Cambio (diario)
+                  Evolución — Inestabilidad Política y Tipo de Cambio (diario, desde mar. 2025)
                 </div>
                 <Plot
                   data={[
                     {
-                      x: data.political.daily_series.map((d: any) => d.date),
-                      y: data.political.daily_series.map((d: any) => d.score_raw),
+                      x: polSeries.map((d: any) => d.date),
+                      y: polSeries.map((d: any) => d.score_raw),
                       type: 'bar',
                       name: 'Político (raw)',
                       yaxis: 'y',
@@ -167,8 +172,8 @@ export default function HomePage() {
                       hovertemplate: '<b>%{x}</b><br>Político: %{y:.3f}<extra></extra>',
                     },
                     {
-                      x: data.political.daily_series.map((d: any) => d.date),
-                      y: data.political.daily_series.map((d: any) => d.score),
+                      x: polSeries.map((d: any) => d.date),
+                      y: polSeries.map((d: any) => d.score),
                       type: 'scatter',
                       mode: 'lines',
                       name: 'Político (7d)',
@@ -176,9 +181,9 @@ export default function HomePage() {
                       line: { color: '#DC2626', width: 2 },
                       hovertemplate: '<b>%{x}</b><br>Tend. 7d: %{y:.3f}<extra></extra>',
                     },
-                    ...(data.political.daily_fx_series?.length > 0 ? [{
-                      x: data.political.daily_fx_series.map((d: any) => d.date),
-                      y: data.political.daily_fx_series.map((d: any) => d.fx),
+                    ...(fxSeries.length > 0 ? [{
+                      x: fxSeries.map((d: any) => d.date),
+                      y: fxSeries.map((d: any) => d.fx),
                       type: 'scatter' as const,
                       mode: 'lines' as const,
                       name: 'TC PEN/USD',
@@ -209,6 +214,8 @@ export default function HomePage() {
                   <Link href="/political" className="text-blue-600 hover:underline">Ver índice completo →</Link>
                 </div>
               </div>
+                );
+              })()}
 
               {/* Chart 2: Scatter — monthly political avg vs FX YoY */}
               {data.political.monthly_series?.some((m: any) => m.fx_yoy !== null) && (
