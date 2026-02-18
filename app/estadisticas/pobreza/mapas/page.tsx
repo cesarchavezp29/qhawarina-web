@@ -35,17 +35,22 @@ export default function PobrezaMapasPage() {
   const [deptGeojson, setDeptGeojson] = useState<object | null>(null);
   const [distGeojson, setDistGeojson] = useState<object | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [level, setLevel] = useState<ViewLevel>('department');
   const [loadingDist, setLoadingDist] = useState(false);
   const [sortCol, setSortCol] = useState<'poverty_rate_2025_nowcast' | 'change_pp'>('poverty_rate_2025_nowcast');
 
   useEffect(() => {
     Promise.all([
-      fetch('/assets/data/poverty_nowcast.json').then(r => r.json()),
-      fetch('/assets/data/peru_departamentos.geojson').then(r => r.json()),
+      fetch('/assets/data/poverty_nowcast.json').then(r => { if (!r.ok) throw new Error(`poverty_nowcast.json: ${r.status}`); return r.json(); }),
+      fetch('/assets/data/peru_departamentos.geojson').then(r => { if (!r.ok) throw new Error(`peru_departamentos.geojson: ${r.status}`); return r.json(); }),
     ]).then(([d, gj]) => {
       setData(d);
       setDeptGeojson(gj);
+      setLoading(false);
+    }).catch(e => {
+      console.error('Error loading poverty data:', e);
+      setError(e.message);
       setLoading(false);
     });
   }, []);
@@ -63,10 +68,20 @@ export default function PobrezaMapasPage() {
     if (l === 'district') loadDistrictGeo();
   };
 
-  if (loading || !data) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-500">Cargando datos de pobreza...</p>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center flex-col gap-4">
+        <p className="text-red-600 font-medium">Error cargando datos de pobreza</p>
+        {error && <p className="text-sm text-gray-500 font-mono">{error}</p>}
+        <p className="text-sm text-gray-400">Revisa la consola del navegador para más detalles.</p>
       </div>
     );
   }
