@@ -150,16 +150,16 @@ export default function HomePage() {
             </h2>
             <div className="grid grid-cols-2 gap-4">
 
-              {/* Chart 1: Political (bars) + FX rate (line, y2) — dual axis timeline */}
+              {/* Chart 1: Political (bars) + daily FX rate (line, y2) */}
               <div className="border border-gray-300 p-4 bg-white">
                 <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-                  Evolución — Inestabilidad Política y Tipo de Cambio
+                  Evolución — Inestabilidad Política y Tipo de Cambio (diario)
                 </div>
                 <Plot
                   data={[
                     {
-                      x: data.political.daily_series.slice(-90).map((d: any) => d.date),
-                      y: data.political.daily_series.slice(-90).map((d: any) => d.score_raw),
+                      x: data.political.daily_series.map((d: any) => d.date),
+                      y: data.political.daily_series.map((d: any) => d.score_raw),
                       type: 'bar',
                       name: 'Político (raw)',
                       yaxis: 'y',
@@ -167,8 +167,8 @@ export default function HomePage() {
                       hovertemplate: '<b>%{x}</b><br>Político: %{y:.3f}<extra></extra>',
                     },
                     {
-                      x: data.political.daily_series.slice(-90).map((d: any) => d.date),
-                      y: data.political.daily_series.slice(-90).map((d: any) => d.score),
+                      x: data.political.daily_series.map((d: any) => d.date),
+                      y: data.political.daily_series.map((d: any) => d.score),
                       type: 'scatter',
                       mode: 'lines',
                       name: 'Político (7d)',
@@ -176,25 +176,24 @@ export default function HomePage() {
                       line: { color: '#DC2626', width: 2 },
                       hovertemplate: '<b>%{x}</b><br>Tend. 7d: %{y:.3f}<extra></extra>',
                     },
-                    ...(data.political.monthly_series?.some((m: any) => m.fx_level !== null) ? [{
-                      x: data.political.monthly_series.filter((m: any) => m.fx_level !== null).map((m: any) => m.month + '-15'),
-                      y: data.political.monthly_series.filter((m: any) => m.fx_level !== null).map((m: any) => m.fx_level),
+                    ...(data.political.daily_fx_series?.length > 0 ? [{
+                      x: data.political.daily_fx_series.map((d: any) => d.date),
+                      y: data.political.daily_fx_series.map((d: any) => d.fx),
                       type: 'scatter' as const,
-                      mode: 'lines+markers' as const,
+                      mode: 'lines' as const,
                       name: 'TC PEN/USD',
                       yaxis: 'y2',
-                      line: { color: '#2563EB', width: 2, dash: 'dot' as const },
-                      marker: { size: 5, color: '#2563EB' },
+                      line: { color: '#2563EB', width: 1.5 },
                       hovertemplate: '<b>%{x}</b><br>TC: S/ %{y:.4f}<extra></extra>',
                     }] : []),
                   ]}
                   layout={{
                     autosize: true,
                     height: 280,
-                    margin: { l: 40, r: 48, t: 8, b: 40 },
+                    margin: { l: 40, r: 52, t: 8, b: 40 },
                     hovermode: 'x unified',
                     barmode: 'overlay',
-                    legend: { orientation: 'h', y: -0.2, x: 0, font: { size: 10 } },
+                    legend: { orientation: 'h', y: -0.22, x: 0, font: { size: 10 } },
                     xaxis: { gridcolor: '#E5E7EB', tickfont: { size: 10 } },
                     yaxis: { range: [0, 1], gridcolor: '#E5E7EB', tickfont: { size: 10 }, title: { text: 'Índice (0-1)', font: { size: 9 } } },
                     yaxis2: { overlaying: 'y', side: 'right', tickfont: { size: 10 }, title: { text: 'S/ por USD', font: { size: 9 } }, showgrid: false, tickprefix: 'S/ ' },
