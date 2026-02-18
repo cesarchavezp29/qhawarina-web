@@ -1,35 +1,43 @@
 {
   "metadata": {
-    "generated_at": "2026-02-17T13:27:49.962311",
-    "coverage_days": 413,
+    "generated_at": "2026-02-18T09:43:34.900655",
+    "coverage_days": 414,
     "rss_feeds": 81
   },
   "current": {
-    "date": "2026-02-17",
-    "score": 0.767,
+    "date": "2026-02-18",
+    "score": 0.813,
     "level": "ALTO",
-    "articles_total": 63,
+    "articles_total": 70,
     "articles_political": 52,
-    "articles_economic": 11
+    "articles_economic": 18
   },
   "aggregates": {
-    "7d_avg": 0.665,
-    "30d_avg": 0.588,
-    "year_max": 0.775,
+    "7d_avg": 0.699,
+    "30d_avg": 0.596,
+    "year_max": 0.784,
     "year_max_date": "2026-02-17"
   },
   "major_events": [
     {
-      "date": "2026-02-17",
-      "score": 0.775,
+      "date": "2026-02-18",
+      "score": 0.771,
       "level": "ALTO",
-      "n_articles": 63,
+      "n_articles": 70,
+      "summary": "Event summary (load from reports)",
+      "report_url": "/political/daily-reports/2026-02-18.html"
+    },
+    {
+      "date": "2026-02-17",
+      "score": 0.784,
+      "level": "ALTO",
+      "n_articles": 88,
       "summary": "Event summary (load from reports)",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
       "date": "2026-02-16",
-      "score": 0.673,
+      "score": 0.698,
       "level": "ALTO",
       "n_articles": 75,
       "summary": "Event summary (load from reports)",
@@ -37,7 +45,7 @@
     },
     {
       "date": "2026-02-15",
-      "score": 0.678,
+      "score": 0.699,
       "level": "ALTO",
       "n_articles": 23,
       "summary": "Event summary (load from reports)",
@@ -45,7 +53,7 @@
     },
     {
       "date": "2026-02-14",
-      "score": 0.69,
+      "score": 0.691,
       "level": "ALTO",
       "n_articles": 9,
       "summary": "Event summary (load from reports)",
@@ -90,25 +98,9 @@
       "n_articles": 49,
       "summary": "Event summary (load from reports)",
       "report_url": "/political/daily-reports/2025-01-24.html"
-    },
-    {
-      "date": "2025-01-23",
-      "score": 0.711,
-      "level": "ALTO",
-      "n_articles": 53,
-      "summary": "Event summary (load from reports)",
-      "report_url": "/political/daily-reports/2025-01-23.html"
     }
   ],
   "daily_series": [
-    {
-      "date": "2025-02-18",
-      "score": 0.483,
-      "score_raw": 0.689,
-      "n_articles": 55,
-      "low_coverage": false,
-      "provisional": false
-    },
     {
       "date": "2025-02-19",
       "score": 0.516,
@@ -2987,11 +2979,11 @@
       "score_raw": 0.267,
       "n_articles": 1,
       "low_coverage": true,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-02-14",
-      "score": 0.69,
+      "score": 0.691,
       "score_raw": 0.838,
       "n_articles": 9,
       "low_coverage": false,
@@ -2999,7 +2991,7 @@
     },
     {
       "date": "2026-02-15",
-      "score": 0.678,
+      "score": 0.699,
       "score_raw": 0.744,
       "n_articles": 23,
       "low_coverage": false,
@@ -3007,7 +2999,7 @@
     },
     {
       "date": "2026-02-16",
-      "score": 0.673,
+      "score": 0.698,
       "score_raw": 0.75,
       "n_articles": 75,
       "low_coverage": false,
@@ -3015,9 +3007,17 @@
     },
     {
       "date": "2026-02-17",
-      "score": 0.775,
-      "score_raw": 0.767,
-      "n_articles": 63,
+      "score": 0.784,
+      "score_raw": 0.777,
+      "n_articles": 88,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-02-18",
+      "score": 0.771,
+      "score_raw": 0.813,
+      "n_articles": 70,
       "low_coverage": false,
       "provisional": true
     }
