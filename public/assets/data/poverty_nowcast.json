@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-15T20:29:39.406163",
+    "generated_at": "2026-02-18T08:37:31.130254",
     "model": "GradientBoostingRegressor",
     "target_year": 2025,
     "departments": 26,
@@ -14,177 +14,177 @@
     {
       "code": "16",
       "name": "Loreto",
-      "poverty_rate_2024": 43.3,
+      "poverty_rate_2024": 43.0,
       "poverty_rate_2025_nowcast": 40.8,
-      "change_pp": -2.5
+      "change_pp": -2.2
     },
     {
       "code": "21",
       "name": "Puno",
-      "poverty_rate_2024": 41.7,
+      "poverty_rate_2024": 39.9,
       "poverty_rate_2025_nowcast": 39.2,
-      "change_pp": -2.5
+      "change_pp": -0.8
     },
     {
       "code": "19",
       "name": "Pasco",
-      "poverty_rate_2024": 41.2,
+      "poverty_rate_2024": 39.0,
       "poverty_rate_2025_nowcast": 38.7,
-      "change_pp": -2.5
+      "change_pp": -0.2
     },
     {
       "code": "06",
       "name": "Cajamarca",
-      "poverty_rate_2024": 39.9,
+      "poverty_rate_2024": 45.0,
       "poverty_rate_2025_nowcast": 37.4,
-      "change_pp": -2.5
+      "change_pp": -7.6
     },
     {
       "code": "10",
       "name": "Huánuco",
-      "poverty_rate_2024": 37.4,
+      "poverty_rate_2024": 39.0,
       "poverty_rate_2025_nowcast": 34.9,
-      "change_pp": -2.5
+      "change_pp": -4.0
     },
     {
       "code": "09",
       "name": "Huancavelica",
-      "poverty_rate_2024": 34.5,
+      "poverty_rate_2024": 33.4,
       "poverty_rate_2025_nowcast": 32.0,
-      "change_pp": -2.5
+      "change_pp": -1.4
     },
     {
       "code": "05",
       "name": "Ayacucho",
-      "poverty_rate_2024": 33.9,
+      "poverty_rate_2024": 32.8,
       "poverty_rate_2025_nowcast": 31.4,
-      "change_pp": -2.5
+      "change_pp": -1.4
     },
     {
       "code": "20",
       "name": "Piura",
-      "poverty_rate_2024": 33.5,
+      "poverty_rate_2024": 31.9,
       "poverty_rate_2025_nowcast": 31.0,
-      "change_pp": -2.5
+      "change_pp": -0.8
     },
     {
       "code": "13",
       "name": "La Libertad",
-      "poverty_rate_2024": 32.6,
+      "poverty_rate_2024": 30.2,
       "poverty_rate_2025_nowcast": 30.1,
-      "change_pp": -2.5
+      "change_pp": -0.1
     },
     {
       "code": "24",
       "name": "Tumbes",
-      "poverty_rate_2024": 28.9,
+      "poverty_rate_2024": 26.9,
       "poverty_rate_2025_nowcast": 26.4,
-      "change_pp": -2.5
+      "change_pp": -0.5
     },
     {
       "code": "07",
       "name": "Callao",
-      "poverty_rate_2024": 28.4,
+      "poverty_rate_2024": 27.9,
       "poverty_rate_2025_nowcast": 25.9,
-      "change_pp": -2.5
+      "change_pp": -2.0
     },
     {
       "code": "15",
       "name": "Lima",
-      "poverty_rate_2024": 28.4,
+      "poverty_rate_2024": 27.7,
       "poverty_rate_2025_nowcast": 25.9,
-      "change_pp": -2.5
+      "change_pp": -1.8
     },
     {
       "code": "25",
       "name": "Ucayali",
-      "poverty_rate_2024": 28.3,
+      "poverty_rate_2024": 27.1,
       "poverty_rate_2025_nowcast": 25.8,
-      "change_pp": -2.5
+      "change_pp": -1.2
     },
     {
       "code": "01",
       "name": "Amazonas",
-      "poverty_rate_2024": 26.3,
+      "poverty_rate_2024": 25.7,
       "poverty_rate_2025_nowcast": 23.8,
-      "change_pp": -2.5
+      "change_pp": -2.0
     },
     {
       "code": "02",
       "name": "Áncash",
-      "poverty_rate_2024": 25.4,
+      "poverty_rate_2024": 22.8,
       "poverty_rate_2025_nowcast": 22.9,
-      "change_pp": -2.5
+      "change_pp": 0.1
     },
     {
       "code": "23",
       "name": "Tacna",
-      "poverty_rate_2024": 25.1,
+      "poverty_rate_2024": 24.0,
       "poverty_rate_2025_nowcast": 22.6,
-      "change_pp": -2.5
+      "change_pp": -1.4
     },
     {
       "code": "03",
       "name": "Apurímac",
-      "poverty_rate_2024": 24.4,
+      "poverty_rate_2024": 24.0,
       "poverty_rate_2025_nowcast": 21.9,
-      "change_pp": -2.5
+      "change_pp": -2.1
     },
     {
       "code": "22",
       "name": "San Martín",
-      "poverty_rate_2024": 23.3,
+      "poverty_rate_2024": 22.0,
       "poverty_rate_2025_nowcast": 20.8,
-      "change_pp": -2.5
+      "change_pp": -1.2
     },
     {
       "code": "08",
       "name": "Cusco",
-      "poverty_rate_2024": 21.2,
+      "poverty_rate_2024": 18.5,
       "poverty_rate_2025_nowcast": 18.7,
-      "change_pp": -2.5
+      "change_pp": 0.2
     },
     {
       "code": "12",
       "name": "Junín",
-      "poverty_rate_2024": 19.4,
+      "poverty_rate_2024": 18.5,
       "poverty_rate_2025_nowcast": 16.9,
-      "change_pp": -2.5
+      "change_pp": -1.6
     },
     {
       "code": "04",
       "name": "Arequipa",
-      "poverty_rate_2024": 17.2,
+      "poverty_rate_2024": 15.8,
       "poverty_rate_2025_nowcast": 14.7,
-      "change_pp": -2.5
+      "change_pp": -1.1
     },
     {
       "code": "14",
       "name": "Lambayeque",
-      "poverty_rate_2024": 15.3,
+      "poverty_rate_2024": 14.0,
       "poverty_rate_2025_nowcast": 12.8,
-      "change_pp": -2.5
+      "change_pp": -1.3
     },
     {
       "code": "18",
       "name": "Moquegua",
-      "poverty_rate_2024": 11.8,
+      "poverty_rate_2024": 11.0,
       "poverty_rate_2025_nowcast": 9.3,
-      "change_pp": -2.5
+      "change_pp": -1.7
     },
     {
       "code": "17",
       "name": "Madre de Dios",
-      "poverty_rate_2024": 11.7,
+      "poverty_rate_2024": 11.1,
       "poverty_rate_2025_nowcast": 9.2,
-      "change_pp": -2.5
+      "change_pp": -2.0
     },
     {
       "code": "11",
       "name": "Ica",
-      "poverty_rate_2024": 8.1,
+      "poverty_rate_2024": 6.0,
       "poverty_rate_2025_nowcast": 5.6,
-      "change_pp": -2.5
+      "change_pp": -0.5
     }
   ],
   "districts": [
