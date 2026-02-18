@@ -3,6 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+// Parse YYYY-MM-DD as local date (avoids UTC-to-local day-shift bug)
+function parseLocalDate(dateStr: string): Date {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
 export default function HomePage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -140,7 +146,7 @@ export default function HomePage() {
                     {data.political.current.score.toFixed(3)}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
-                    {new Date(data.political.current.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    {parseLocalDate(data.political.current.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
                     GPT-4o
