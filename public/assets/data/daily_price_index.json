@@ -3,8 +3,8 @@
     "methodology": "Jevons bilateral price index, chain-linked daily",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-02-18",
-    "n_days": 7,
+    "last_date": "2026-02-20",
+    "n_days": 9,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -13,7 +13,7 @@
     "n_products_approx": 42000,
     "ratio_filter": "0.5 < ratio < 2.0",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-02-18"
+    "updated": "2026-02-20"
   },
   "categories": {
     "arroz_cereales": {
@@ -250,13 +250,59 @@
       "index_limpieza": 99.8387,
       "index_cuidado_personal": 99.6823,
       "index_other": 100.6571
+    },
+    {
+      "date": "2026-02-19",
+      "index_all": 99.7548,
+      "index_food": 99.6827,
+      "index_nonfood": 99.9505,
+      "var_all": -0.069,
+      "var_food": -0.0354,
+      "cum_pct": -0.2452,
+      "interpolated": false,
+      "index_arroz_cereales": 99.6703,
+      "index_pan_harinas": 99.6571,
+      "index_carnes": 99.4394,
+      "index_pescados_mariscos": 101.249,
+      "index_lacteos": 100.235,
+      "index_frutas": 99.8374,
+      "index_verduras": 99.19,
+      "index_aceites_grasas": 99.016,
+      "index_azucar_dulces": 102.4437,
+      "index_bebidas": 99.2295,
+      "index_limpieza": 99.3459,
+      "index_cuidado_personal": 99.6689,
+      "index_other": 100.6364
+    },
+    {
+      "date": "2026-02-20",
+      "index_all": 99.456,
+      "index_food": 99.3537,
+      "index_nonfood": 99.7612,
+      "var_all": -0.2995,
+      "var_food": -0.33,
+      "cum_pct": -0.544,
+      "interpolated": false,
+      "index_arroz_cereales": 99.5554,
+      "index_pan_harinas": 99.3997,
+      "index_carnes": 99.1229,
+      "index_pescados_mariscos": 99.7482,
+      "index_lacteos": 99.5047,
+      "index_frutas": 100.0214,
+      "index_verduras": 98.9063,
+      "index_aceites_grasas": 98.9856,
+      "index_azucar_dulces": 100.9389,
+      "index_bebidas": 99.2648,
+      "index_limpieza": 99.1606,
+      "index_cuidado_personal": 99.4863,
+      "index_other": 100.4421
     }
   ],
   "latest": {
-    "date": "2026-02-18",
-    "index_all": 99.8237,
-    "index_food": 99.718,
-    "cum_pct": -0.1763,
-    "var_all": -0.029
+    "date": "2026-02-20",
+    "index_all": 99.456,
+    "index_food": 99.3537,
+    "cum_pct": -0.544,
+    "var_all": -0.2995
   }
 }
