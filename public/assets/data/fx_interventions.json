@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-23T09:17:35.299956",
+    "generated_at": "2026-02-28T09:57:31.488135",
     "sources": {
       "spot": "PD04659MD — Compras netas spot BCRP (Mill. USD)",
       "swaps": "PD04660MD — Swaps cambiarios netos BCRP (Mill. USD)",
@@ -20,54 +20,21 @@
       "bvl": "Puntos del índice",
       "reference_rate": "Tasa de política monetaria anual (%)"
     },
-    "coverage": "2020-01-01 a 2026-02-23",
-    "n_days_daily": 453,
+    "coverage": "2020-01-01 a 2026-02-28",
+    "n_days_daily": 455,
     "n_months_monthly": 68
   },
   "latest": {
-    "date": "2026-02-19",
-    "fx": 3.3636,
+    "date": "2026-02-26",
+    "fx": 3.3567,
     "spot_net_purchases": 0.0,
     "swaps_net": 0.0,
     "reference_rate": 4.25,
-    "bond_sol_10y": null,
-    "bond_usd_10y": null,
-    "bvl": 54508.0
+    "bond_sol_10y": 5.85,
+    "bond_usd_10y": 4.959,
+    "bvl": 56468.0
   },
   "daily_series": [
-    {
-      "date": "2024-02-26",
-      "spot_net_purchases": 0.0,
-      "swaps_net": 0.0,
-      "total_intervention": 0.0,
-      "fx": 3.7982,
-      "reference_rate": 6.25,
-      "bond_sol_10y": 6.89,
-      "bond_usd_10y": 5.557,
-      "bvl": 28610.0
-    },
-    {
-      "date": "2024-02-27",
-      "spot_net_purchases": 0.0,
-      "swaps_net": 0.0,
-      "total_intervention": 0.0,
-      "fx": 3.7888,
-      "reference_rate": 6.25,
-      "bond_sol_10y": 6.86,
-      "bond_usd_10y": 5.586,
-      "bvl": 28533.0
-    },
-    {
-      "date": "2024-02-28",
-      "spot_net_purchases": 0.0,
-      "swaps_net": 0.0,
-      "total_intervention": 0.0,
-      "fx": 3.7942,
-      "reference_rate": 6.25,
-      "bond_sol_10y": 6.84,
-      "bond_usd_10y": 5.595,
-      "bvl": 28053.0
-    },
     {
       "date": "2024-02-29",
       "spot_net_purchases": 0.0,
@@ -5003,12 +4970,67 @@
       "total_intervention": 0.0,
       "fx": 3.3636,
       "reference_rate": 4.25,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 5.81,
+      "bond_usd_10y": 5.004,
       "bvl": 54508.0
     },
     {
       "date": "2026-02-20",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.3591,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 5.83,
+      "bond_usd_10y": 5.005,
+      "bvl": 54581.0
+    },
+    {
+      "date": "2026-02-23",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.3584,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 5.79,
+      "bond_usd_10y": 4.984,
+      "bvl": 55028.0
+    },
+    {
+      "date": "2026-02-24",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.3591,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 5.79,
+      "bond_usd_10y": 4.989,
+      "bvl": 55720.0
+    },
+    {
+      "date": "2026-02-25",
+      "spot_net_purchases": 24.0,
+      "swaps_net": 0.0,
+      "total_intervention": 24.0,
+      "fx": 3.357,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 5.83,
+      "bond_usd_10y": 4.99,
+      "bvl": 56885.0
+    },
+    {
+      "date": "2026-02-26",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.3567,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 5.85,
+      "bond_usd_10y": 4.959,
+      "bvl": 56468.0
+    },
+    {
+      "date": "2026-02-27",
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
@@ -5826,15 +5848,15 @@
     },
     {
       "month": "2026-02",
-      "spot_net_purchases": 41.0,
+      "spot_net_purchases": 65.0,
       "swaps_net": 0.0,
-      "total_intervention": 41.0,
-      "fx_avg": 3.3573,
-      "bond_sol_avg": 5.79,
-      "bond_usd_avg": 5.102,
-      "bvl_end": 54508.0,
+      "total_intervention": 65.0,
+      "fx_avg": 3.3575,
+      "bond_sol_avg": 5.798,
+      "bond_usd_avg": 5.066,
+      "bvl_end": 56468.0,
       "reference_rate": 4.25,
-      "n_days": 15
+      "n_days": 20
     }
   ]
 }
