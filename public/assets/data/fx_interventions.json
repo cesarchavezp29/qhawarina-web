@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-02-28T09:57:31.488135",
+    "generated_at": "2026-03-03T09:02:57.619505",
     "sources": {
       "spot": "PD04659MD — Compras netas spot BCRP (Mill. USD)",
       "swaps": "PD04660MD — Swaps cambiarios netos BCRP (Mill. USD)",
@@ -20,43 +20,21 @@
       "bvl": "Puntos del índice",
       "reference_rate": "Tasa de política monetaria anual (%)"
     },
-    "coverage": "2020-01-01 a 2026-02-28",
-    "n_days_daily": 455,
-    "n_months_monthly": 68
+    "coverage": "2020-01-01 a 2026-03-03",
+    "n_days_daily": 454,
+    "n_months_monthly": 69
   },
   "latest": {
-    "date": "2026-02-26",
-    "fx": 3.3567,
-    "spot_net_purchases": 0.0,
+    "date": "2026-02-27",
+    "fx": 3.3559,
+    "spot_net_purchases": 12.0,
     "swaps_net": 0.0,
     "reference_rate": 4.25,
-    "bond_sol_10y": 5.85,
-    "bond_usd_10y": 4.959,
-    "bvl": 56468.0
+    "bond_sol_10y": null,
+    "bond_usd_10y": null,
+    "bvl": 57529.0
   },
   "daily_series": [
-    {
-      "date": "2024-02-29",
-      "spot_net_purchases": 0.0,
-      "swaps_net": 0.0,
-      "total_intervention": 0.0,
-      "fx": 3.7812,
-      "reference_rate": 6.25,
-      "bond_sol_10y": 6.86,
-      "bond_usd_10y": 5.554,
-      "bvl": 28232.0
-    },
-    {
-      "date": "2024-03-01",
-      "spot_net_purchases": 0.0,
-      "swaps_net": 0.0,
-      "total_intervention": 0.0,
-      "fx": 3.7702,
-      "reference_rate": 6.25,
-      "bond_sol_10y": 6.83,
-      "bond_usd_10y": 5.524,
-      "bvl": 28331.0
-    },
     {
       "date": "2024-03-04",
       "spot_net_purchases": -2.0,
@@ -5031,6 +5009,17 @@
     },
     {
       "date": "2026-02-27",
+      "spot_net_purchases": 12.0,
+      "swaps_net": 0.0,
+      "total_intervention": 12.0,
+      "fx": 3.3559,
+      "reference_rate": 4.25,
+      "bond_sol_10y": null,
+      "bond_usd_10y": null,
+      "bvl": 57529.0
+    },
+    {
+      "date": "2026-03-02",
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
@@ -5848,15 +5837,27 @@
     },
     {
       "month": "2026-02",
-      "spot_net_purchases": 65.0,
+      "spot_net_purchases": 77.0,
       "swaps_net": 0.0,
-      "total_intervention": 65.0,
-      "fx_avg": 3.3575,
+      "total_intervention": 77.0,
+      "fx_avg": 3.3574,
       "bond_sol_avg": 5.798,
       "bond_usd_avg": 5.066,
-      "bvl_end": 56468.0,
+      "bvl_end": 57529.0,
       "reference_rate": 4.25,
       "n_days": 20
+    },
+    {
+      "month": "2026-03",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx_avg": null,
+      "bond_sol_avg": null,
+      "bond_usd_avg": null,
+      "bvl_end": null,
+      "reference_rate": 4.25,
+      "n_days": 1
     }
   ]
 }

@@ -3,8 +3,8 @@
     "methodology": "Jevons bilateral price index, chain-linked daily",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-02-28",
-    "n_days": 19,
+    "last_date": "2026-03-03",
+    "n_days": 22,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -13,7 +13,7 @@
     "n_products_approx": 42000,
     "ratio_filter": "0.5 < ratio < 2.0",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-02-28"
+    "updated": "2026-03-03"
   },
   "categories": {
     "arroz_cereales": {
@@ -526,13 +526,82 @@
       "index_limpieza": 99.0993,
       "index_cuidado_personal": 99.8578,
       "index_other": 99.8211
+    },
+    {
+      "date": "2026-03-01",
+      "index_all": 100.08,
+      "index_food": 99.9766,
+      "index_nonfood": 100.3967,
+      "var_all": 0.7461,
+      "var_food": 0.7302,
+      "cum_pct": 0.08,
+      "interpolated": false,
+      "index_arroz_cereales": 100.9825,
+      "index_pan_harinas": 99.8651,
+      "index_carnes": 99.7686,
+      "index_pescados_mariscos": 102.3834,
+      "index_lacteos": 100.3708,
+      "index_frutas": 100.0992,
+      "index_verduras": 99.1787,
+      "index_aceites_grasas": 100.0876,
+      "index_azucar_dulces": 101.421,
+      "index_bebidas": 99.5169,
+      "index_limpieza": 99.4634,
+      "index_cuidado_personal": 100.9586,
+      "index_other": 100.731
+    },
+    {
+      "date": "2026-03-02",
+      "index_all": 100.4037,
+      "index_food": 100.2839,
+      "index_nonfood": 100.7707,
+      "var_all": 0.3234,
+      "var_food": 0.3074,
+      "cum_pct": 0.4037,
+      "interpolated": false,
+      "index_arroz_cereales": 99.9962,
+      "index_pan_harinas": 100.1359,
+      "index_carnes": 100.3267,
+      "index_pescados_mariscos": 102.3108,
+      "index_lacteos": 100.209,
+      "index_frutas": 99.9898,
+      "index_verduras": 99.247,
+      "index_aceites_grasas": 99.996,
+      "index_azucar_dulces": 101.5006,
+      "index_bebidas": 100.9303,
+      "index_limpieza": 99.4665,
+      "index_cuidado_personal": 101.2174,
+      "index_other": 101.4555
+    },
+    {
+      "date": "2026-03-03",
+      "index_all": 100.634,
+      "index_food": 100.5378,
+      "index_nonfood": 100.9284,
+      "var_all": 0.2294,
+      "var_food": 0.2532,
+      "cum_pct": 0.634,
+      "interpolated": false,
+      "index_arroz_cereales": 100.374,
+      "index_pan_harinas": 100.4255,
+      "index_carnes": 100.5319,
+      "index_pescados_mariscos": 102.4783,
+      "index_lacteos": 100.52,
+      "index_frutas": 100.9666,
+      "index_verduras": 100.0978,
+      "index_aceites_grasas": 99.6209,
+      "index_azucar_dulces": 101.8266,
+      "index_bebidas": 100.0217,
+      "index_limpieza": 99.7555,
+      "index_cuidado_personal": 101.6213,
+      "index_other": 101.3581
     }
   ],
   "latest": {
-    "date": "2026-02-28",
-    "index_all": 99.3388,
-    "index_food": 99.2519,
-    "cum_pct": -0.6612,
-    "var_all": -0.0132
+    "date": "2026-03-03",
+    "index_all": 100.634,
+    "index_food": 100.5378,
+    "cum_pct": 0.634,
+    "var_all": 0.2294
   }
 }

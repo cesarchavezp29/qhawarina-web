@@ -1,69 +1,69 @@
 {
   "metadata": {
-    "generated_at": "2026-02-28T09:56:58.849340",
+    "generated_at": "2026-03-03T09:02:36.026570",
     "model": "DynamicFactorModel",
     "model_params": {
       "k_factors": 2,
       "include_factor_lags": 1,
       "include_target_ar": true
     },
-    "data_vintage": "2026-01",
+    "data_vintage": "2026-02",
     "series_coverage": "25/26"
   },
   "nowcast": {
-    "target_period": "2026-02",
-    "value": 0.108,
+    "target_period": "2026-03",
+    "value": 0.205,
     "unit": "percent_3m_ma",
-    "bridge_r2": 0.819
+    "bridge_r2": 0.821
   },
   "forecasts": [
     {
-      "month": "2026-02",
-      "value": 0.131,
-      "lower": -0.058,
-      "upper": 0.319
-    },
-    {
       "month": "2026-03",
-      "value": 0.142,
-      "lower": -0.046,
-      "upper": 0.33
+      "value": 0.207,
+      "lower": 0.017,
+      "upper": 0.397
     },
     {
       "month": "2026-04",
-      "value": 0.162,
-      "lower": -0.026,
-      "upper": 0.351
+      "value": 0.233,
+      "lower": 0.043,
+      "upper": 0.423
     },
     {
       "month": "2026-05",
-      "value": 0.183,
-      "lower": -0.005,
-      "upper": 0.372
+      "value": 0.246,
+      "lower": 0.056,
+      "upper": 0.436
     },
     {
       "month": "2026-06",
-      "value": 0.202,
-      "lower": 0.013,
-      "upper": 0.39
+      "value": 0.252,
+      "lower": 0.061,
+      "upper": 0.442
     },
     {
       "month": "2026-07",
-      "value": 0.217,
-      "lower": 0.028,
-      "upper": 0.405
+      "value": 0.254,
+      "lower": 0.064,
+      "upper": 0.444
+    },
+    {
+      "month": "2026-08",
+      "value": 0.256,
+      "lower": 0.066,
+      "upper": 0.446
     }
   ],
   "monthly_series": [
     {
       "month": "2004-01",
-      "official": null,
+      "official": 0.537,
       "nowcast": null,
       "error": null
     },
     {
       "month": "2004-02",
-      "official": null,
+      "official": 0.812,
       "nowcast": null,
       "error": null
     },
