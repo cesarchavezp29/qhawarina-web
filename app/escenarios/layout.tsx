@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: 'Escenarios Contrafactuales | Qhawarina',
-  description: '10 escenarios económicos para Perú: recesión leve, crisis política, boom de commodities, pandemia global y más. Análisis contrafactual con DFM.',
+  title: "Scenarios — Counterfactual Analysis | Qhawarina",
+  description: "10 pre-built economic scenarios with cross-model propagation for Peru: recession, inflation spike, political crisis, and more.",
 };
 export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }

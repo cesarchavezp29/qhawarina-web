@@ -3,8 +3,8 @@
     "methodology": "Jevons bilateral price index, chain-linked daily",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-03",
-    "n_days": 22,
+    "last_date": "2026-03-04",
+    "n_days": 23,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -13,7 +13,7 @@
     "n_products_approx": 42000,
     "ratio_filter": "0.5 < ratio < 2.0",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-03"
+    "updated": "2026-03-04"
   },
   "categories": {
     "arroz_cereales": {
@@ -595,13 +595,36 @@
       "index_limpieza": 99.7555,
       "index_cuidado_personal": 101.6213,
       "index_other": 101.3581
+    },
+    {
+      "date": "2026-03-04",
+      "index_all": 100.13,
+      "index_food": 100.0183,
+      "index_nonfood": 100.47,
+      "var_all": -0.5008,
+      "var_food": -0.5167,
+      "cum_pct": 0.13,
+      "interpolated": false,
+      "index_arroz_cereales": 100.1328,
+      "index_pan_harinas": 99.9854,
+      "index_carnes": 100.0539,
+      "index_pescados_mariscos": 102.2844,
+      "index_lacteos": 99.9869,
+      "index_frutas": 99.8763,
+      "index_verduras": 99.1694,
+      "index_aceites_grasas": 99.3243,
+      "index_azucar_dulces": 100.8776,
+      "index_bebidas": 99.678,
+      "index_limpieza": 99.4079,
+      "index_cuidado_personal": 100.5035,
+      "index_other": 101.2751
     }
   ],
   "latest": {
-    "date": "2026-03-03",
-    "index_all": 100.634,
-    "index_food": 100.5378,
-    "cum_pct": 0.634,
-    "var_all": 0.2294
+    "date": "2026-03-04",
+    "index_all": 100.13,
+    "index_food": 100.0183,
+    "cum_pct": 0.13,
+    "var_all": -0.5008
   }
 }
