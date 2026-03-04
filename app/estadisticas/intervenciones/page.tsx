@@ -3,6 +3,8 @@
 import { useState, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import ShareButton from "../../components/ShareButton";
+import EmbedWidget from "../../components/EmbedWidget";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -448,6 +450,10 @@ export default function IntervencionesBCRPPage() {
             <p className="text-gray-500 text-sm">
               Fuente: Estadísticas BCRP · Cobertura: {data.metadata.coverage} · Actualizado: {fmtDate(latest.date)}
             </p>
+          </div>
+          <div className="flex gap-2 shrink-0">
+            <ShareButton title="Mercado Cambiario — Qhawarina" text={`TC PEN/USD: ${latest.fx?.toFixed(4)} | Tasa BCRP: ${latest.reference_rate?.toFixed(2)}% — Qhawarina`} />
+            <EmbedWidget path="/estadisticas/intervenciones" title="Mercado Cambiario — Qhawarina" height={700} />
           </div>
         </div>
 

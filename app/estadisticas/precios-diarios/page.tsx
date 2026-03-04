@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import ShareButton from "../../components/ShareButton";
+import EmbedWidget from "../../components/EmbedWidget";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -246,9 +248,13 @@ export default function PreciosDiariosPage() {
               {data.metadata.n_products_approx.toLocaleString()}+ productos
             </p>
           </div>
-          <div className="text-right">
-            <p className="text-xs text-gray-500">Actualizado</p>
-            <p className="font-semibold text-gray-900">{data.latest.date}</p>
+          <div className="flex items-center gap-3">
+            <div className="text-right">
+              <p className="text-xs text-gray-500">Actualizado</p>
+              <p className="font-semibold text-gray-900">{data.latest.date}</p>
+            </div>
+            <ShareButton title="Precios Diarios BPP — Qhawarina" text={`Índice BPP ${data.latest.date}: ${data.latest.index_all.toFixed(2)} (var ${data.latest.var_all > 0 ? '+' : ''}${data.latest.var_all.toFixed(3)}%) — Qhawarina`} />
+            <EmbedWidget path="/estadisticas/precios-diarios" title="Precios Diarios BPP — Qhawarina" height={700} />
           </div>
         </div>
 

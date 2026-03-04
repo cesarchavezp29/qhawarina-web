@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import BackToTop from "./components/BackToTop";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   description: "Predicciones diarias de PBI, inflación y pobreza para Perú usando modelos de factores dinámicos. Datos abiertos y metodología transparente.",
   keywords: "Peru GDP, nowcasting, inflation, poverty, economic indicators, BCRP, INEI",
   manifest: "/manifest.json",
+  alternates: { types: { 'application/rss+xml': '/feed.xml' } },
   themeColor: "#1e40af",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Qhawarina" },
   openGraph: {
@@ -47,6 +49,7 @@ export default async function RootLayout({
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
+          <BackToTop />
         </NextIntlClientProvider>
       </body>
     </html>

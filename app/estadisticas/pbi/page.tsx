@@ -6,6 +6,7 @@ import LastUpdate from "../../components/stats/LastUpdate";
 import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
+import PageSkeleton from "../../components/PageSkeleton";
 
 interface GDPData {
   metadata: { generated_at: string };
@@ -26,7 +27,7 @@ export default function PBIPage() {
       .catch(() => { setError(true); setLoading(false); });
   }, []);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><p className="text-gray-500">Cargando datos...</p></div>;
+  if (loading) return <PageSkeleton cards={3} />;
   if (error || !data) return <div className="min-h-screen flex items-center justify-center"><p className="text-red-500">Error cargando datos. <button onClick={() => window.location.reload()} className="underline">Reintentar</button></p></div>;
 
   return (

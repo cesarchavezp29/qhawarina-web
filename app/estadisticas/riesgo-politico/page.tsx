@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LastUpdate from '../../components/stats/LastUpdate';
 import EmbedWidget from '../../components/EmbedWidget';
+import ShareButton from '../../components/ShareButton';
+import PageSkeleton from '../../components/PageSkeleton';
 
 interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
@@ -30,7 +32,7 @@ export default function RiesgoPoliticoPage() {
       .catch(() => { setError(true); setLoading(false); });
   }, []);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><p className="text-gray-500">Cargando datos...</p></div>;
+  if (loading) return <PageSkeleton cards={2} />;
   if (error || !data) return <div className="min-h-screen flex items-center justify-center"><p className="text-red-500">Error cargando datos. <button onClick={() => window.location.reload()} className="underline">Reintentar</button></p></div>;
 
   const level = data.current.level;
@@ -47,7 +49,10 @@ export default function RiesgoPoliticoPage() {
 
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
           <h1 className="text-4xl font-bold text-gray-900">Índice de Riesgo Político</h1>
-          <EmbedWidget path="/estadisticas/riesgo-politico" title="Índice de Riesgo Político — Qhawarina" height={600} />
+          <div className="flex gap-2">
+            <ShareButton title="Riesgo Político — Qhawarina" text={`Índice de Riesgo Político Perú: ${data.current.score.toFixed(3)} (${data.current.level}) — Qhawarina`} />
+            <EmbedWidget path="/estadisticas/riesgo-politico" title="Índice de Riesgo Político — Qhawarina" height={600} />
+          </div>
         </div>
 
         {/* Current score */}
