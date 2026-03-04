@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
 import EmbedWidget from "../../components/EmbedWidget";
+import ShareButton from "../../components/ShareButton";
+import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 
 interface GDPData {
   metadata: { generated_at: string };
@@ -38,10 +40,14 @@ export default function PBIPage() {
 
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
           <h1 className="text-4xl font-bold text-gray-900">Producto Bruto Interno</h1>
-          <EmbedWidget path="/estadisticas/pbi" title="PBI — Nowcasting Qhawarina" height={600} />
+          <div className="flex gap-2">
+            <ShareButton title="PBI — Qhawarina" text={`Nowcast PBI ${data.nowcast.target_period}: ${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(2)}% — Qhawarina`} />
+            <EmbedWidget path="/estadisticas/pbi" title="PBI — Nowcasting Qhawarina" height={600} />
+          </div>
         </div>
         <p className="text-lg text-gray-600">Nowcast trimestral - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(2)}%</p>
         <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
+        <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName="los datos del PBI" />
 
         {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">

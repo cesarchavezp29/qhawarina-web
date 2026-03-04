@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../LanguageSwitcher";
+import SearchModal from "../SearchModal";
 
 export default function Header() {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
@@ -153,6 +154,9 @@ export default function Header() {
             >
               {t("about")}
             </Link>
+
+            {/* Search */}
+            <SearchModal />
 
             {/* Language Switcher */}
             <LanguageSwitcher />

@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
+import EmbedWidget from "../../components/EmbedWidget";
+import ShareButton from "../../components/ShareButton";
+import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 
 interface InflationData {
   metadata: { generated_at: string };
@@ -35,9 +38,16 @@ export default function InflacionPage() {
           <span className="text-gray-900 font-medium">Inflación</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Inflación</h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">Inflación</h1>
+          <div className="flex gap-2">
+            <ShareButton title="Inflación — Qhawarina" text={`Nowcast de inflación ${data.nowcast.target_period}: ${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(3)}% — Qhawarina`} />
+            <EmbedWidget path="/estadisticas/inflacion" title="Inflación — Nowcasting Qhawarina" height={600} />
+          </div>
+        </div>
         <p className="text-lg text-gray-600">Nowcast mensual - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(3)}%</p>
         <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
+        <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName="los datos de inflación" />
 
         {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">

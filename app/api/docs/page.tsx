@@ -1,6 +1,71 @@
-/**
- * API Documentation Page
- */
+'use client';
+
+import { useState } from 'react';
+
+function ApiKeyForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [org, setOrg] = useState('');
+  const [use, setUse] = useState('research');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`[Qhawarina API Key] Solicitud de ${name}`);
+    const body = encodeURIComponent(
+      `Nombre: ${name}\nEmail: ${email}\nOrganización: ${org}\nUso previsto: ${use}\n\nPor favor envíame una API key de Qhawarina.`
+    );
+    window.location.href = `mailto:info@qhawarina.pe?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-sm">
+        ✓ Se abrió tu cliente de correo. Responderemos en 24–48 horas.
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3 mt-4">
+      <div className="grid sm:grid-cols-2 gap-3">
+        <div>
+          <label className="block text-xs font-medium text-gray-600 mb-1">Nombre *</label>
+          <input required type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Tu nombre"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
+        </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-600 mb-1">Email *</label>
+          <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="tu@email.com"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
+        </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-600 mb-1">Organización</label>
+          <input type="text" value={org} onChange={e => setOrg(e.target.value)} placeholder="Universidad, empresa, etc."
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
+        </div>
+        <div>
+          <label className="block text-xs font-medium text-gray-600 mb-1">Uso previsto *</label>
+          <select required value={use} onChange={e => setUse(e.target.value)}
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+            <option value="research">Investigación académica</option>
+            <option value="journalism">Periodismo / medios</option>
+            <option value="business">Análisis empresarial</option>
+            <option value="government">Sector público</option>
+            <option value="personal">Proyecto personal</option>
+            <option value="other">Otro</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit"
+        className="px-5 py-2 bg-blue-800 text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors">
+        Solicitar API Key →
+      </button>
+      <p className="text-xs text-gray-400">Gratuita para investigación y uso no comercial. Respuesta en 24–48 h.</p>
+    </form>
+  );
+}
 
 export default function ApiDocsPage() {
   return (
@@ -27,12 +92,11 @@ curl https://qhawarina.pe/api/nowcast/gdp
 curl -H "X-API-Key: tu_api_key" https://qhawarina.pe/api/nowcast/gdp`}</code>
             </pre>
           </div>
-          <p className="text-sm text-gray-600">
-            <strong>Solicita tu API key:</strong> Contacta{" "}
-            <a href="mailto:info@qhawarina.pe" className="text-blue-700 hover:underline">
-              info@qhawarina.pe
-            </a>
-          </p>
+          <div className="mt-4 border-t border-gray-100 pt-4">
+            <p className="text-sm font-semibold text-gray-700 mb-1">Solicita tu API key</p>
+            <p className="text-xs text-gray-500 mb-3">Gratuita para investigación. Mayor throughput para uso comercial.</p>
+            <ApiKeyForm />
+          </div>
         </div>
 
         {/* Endpoints */}

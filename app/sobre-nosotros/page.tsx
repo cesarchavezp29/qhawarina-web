@@ -1,3 +1,83 @@
+'use client';
+
+import { useState } from 'react';
+
+function ContactForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [topic, setTopic] = useState('general');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`[Qhawarina - ${topic}] Mensaje de ${name}`);
+    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\nAsunto: ${topic}\n\n${message}`);
+    window.location.href = `mailto:info@qhawarina.pe?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Tu nombre"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="tu@email.com"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          />
+        </div>
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
+        <select
+          value={topic}
+          onChange={e => setTopic(e.target.value)}
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+        >
+          <option value="general">Consulta general</option>
+          <option value="datos">Datos y API</option>
+          <option value="metodologia">Metodología</option>
+          <option value="colaboracion">Colaboración / Contribuir</option>
+          <option value="prensa">Prensa / Medios</option>
+          <option value="error">Reporte de error</option>
+        </select>
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+        <textarea
+          required
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+          rows={4}
+          placeholder="Escribe tu mensaje aquí..."
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
+        />
+      </div>
+      <button
+        type="submit"
+        className="w-full sm:w-auto px-6 py-2.5 bg-blue-800 text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors"
+      >
+        Enviar mensaje →
+      </button>
+      <p className="text-xs text-gray-400">Se abrirá tu cliente de correo con el mensaje pre-llenado.</p>
+    </form>
+  );
+}
+
 export default function SobreNosotrosPage() {
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -296,14 +376,14 @@ export default function SobreNosotrosPage() {
             <span className="text-3xl mr-3">💬</span>
             Contacto
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-700 mb-2">
             ¿Tienes preguntas, sugerencias o quieres colaborar? Nos encantaría escucharte:
           </p>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="flex flex-wrap gap-4 mb-2">
             <div className="flex items-center p-4 bg-gray-50 rounded-lg">
               <span className="text-2xl mr-3">📧</span>
               <div>
-                <div className="text-sm text-gray-600 mb-1">Email</div>
+                <div className="text-sm text-gray-600 mb-1">Email directo</div>
                 <a href="mailto:info@qhawarina.pe" className="text-blue-700 hover:underline font-medium">
                   info@qhawarina.pe
                 </a>
@@ -324,6 +404,7 @@ export default function SobreNosotrosPage() {
               </div>
             </div>
           </div>
+          <ContactForm />
         </div>
 
         {/* Footer note */}

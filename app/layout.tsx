@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Qhawarina - Nowcasting Económico para Perú",
   description: "Predicciones diarias de PBI, inflación y pobreza para Perú usando modelos de factores dinámicos. Datos abiertos y metodología transparente.",
   keywords: "Peru GDP, nowcasting, inflation, poverty, economic indicators, BCRP, INEI",
+  manifest: "/manifest.json",
+  themeColor: "#1e40af",
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "Qhawarina" },
   openGraph: {
     title: "Qhawarina - Economic Nowcasting for Peru",
     description: "Daily GDP, inflation, and poverty predictions for Peru",
@@ -19,20 +22,13 @@ export const metadata: Metadata = {
     siteName: "Qhawarina",
     locale: "es_PE",
     type: "website",
-    images: [
-      {
-        url: "https://qhawarina.pe/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Qhawarina - Nowcasting Económico para Perú",
-      },
-    ],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Qhawarina - Nowcasting Económico para Perú" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Qhawarina - Economic Nowcasting for Peru",
     description: "Daily GDP, inflation, and poverty predictions for Peru",
-    images: ["https://qhawarina.pe/og-image.png"],
+    images: ["/opengraph-image"],
   },
 };
 

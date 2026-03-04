@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
 import EmbedWidget from "../../components/EmbedWidget";
+import ShareButton from "../../components/ShareButton";
+import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 
 interface PovertyData {
   metadata: { target_year: number; generated_at: string };
@@ -45,10 +47,14 @@ export default function PobrezaPage() {
 
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
           <h1 className="text-4xl font-bold text-gray-900">Pobreza Monetaria</h1>
-          <EmbedWidget path="/estadisticas/pobreza" title="Pobreza — Nowcasting Qhawarina" height={600} />
+          <div className="flex gap-2">
+            <ShareButton title="Pobreza — Qhawarina" text={`Nowcast de pobreza ${data.metadata.target_year}: ${nationalAvg.toFixed(1)}% — Qhawarina`} />
+            <EmbedWidget path="/estadisticas/pobreza" title="Pobreza — Nowcasting Qhawarina" height={600} />
+          </div>
         </div>
         <p className="text-lg text-gray-600">Nowcast anual - {data.metadata.target_year}: {nationalAvg.toFixed(1)}%</p>
         <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
+        <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName="los datos de pobreza" />
 
         {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
