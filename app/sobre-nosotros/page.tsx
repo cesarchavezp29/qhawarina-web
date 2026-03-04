@@ -276,7 +276,7 @@ export default function SobreNosotrosPage() {
             </div>
             <div className="flex justify-center space-x-4">
               <a
-                href="https://github.com/btorressz/nexus"
+                href="https://github.com/cesarchavezp29/qhawarina"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-white text-blue-700 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
@@ -314,12 +314,12 @@ export default function SobreNosotrosPage() {
               <div>
                 <div className="text-sm text-gray-600 mb-1">GitHub</div>
                 <a
-                  href="https://github.com/btorressz/nexus"
+                  href="https://github.com/cesarchavezp29/qhawarina"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-700 hover:underline font-medium"
                 >
-                  github.com/btorressz/nexus
+                  github.com/cesarchavezp29/qhawarina
                 </a>
               </div>
             </div>

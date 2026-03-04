@@ -224,30 +224,13 @@ export default function EscenariosPage() {
           </p>
         </div>
 
-        {/* Premium Badge */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg p-6 mb-8 text-white">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center mb-2">
-                <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold mr-3">
-                  PREMIUM
-                </span>
-                <span className="text-sm opacity-90">
-                  Característica exclusiva para suscriptores
-                </span>
-              </div>
-              <h2 className="text-2xl font-bold mb-2">
-                Toma Decisiones Estratégicas Basadas en Datos
-              </h2>
-              <p className="text-blue-100">
-                Simula shocks económicos y evalúa su impacto antes de que ocurran.
-                Herramienta esencial para planificación empresarial y análisis de riesgo.
-              </p>
-            </div>
-            <button className="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors whitespace-nowrap">
-              Contratar →
-            </button>
-          </div>
+        {/* Intro */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <p className="text-blue-900 text-sm leading-relaxed">
+            Explora el impacto cuantificado de cada escenario en PBI, inflación y pobreza,
+            calculado con modelos de factores dinámicos entrenados sobre datos históricos peruanos.
+            Selecciona un escenario para ver el análisis completo.
+          </p>
         </div>
 
         {/* Scenario Selector */}
@@ -556,23 +539,13 @@ export default function EscenariosPage() {
               )}
             </div>
 
-            {/* CTA */}
-            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg border border-blue-200 p-8 text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                ¿Necesitas escenarios personalizados?
-              </h3>
-              <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-                Suscríbete al plan Premium para crear escenarios personalizados,
-                ajustar parámetros de shocks, y acceder a análisis sectorial detallado.
+            {/* Methodology note */}
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
+              <p className="text-sm text-gray-600">
+                Escenarios calculados con modelos DFM + Ridge entrenados sobre datos 2004–2024.
+                Ver <a href="/metodologia" className="text-blue-700 hover:underline">metodología completa</a> o{' '}
+                <a href="/simuladores" className="text-blue-700 hover:underline">crear simulaciones personalizadas</a>.
               </p>
-              <div className="flex justify-center gap-4">
-                <button className="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                  Ver Planes Premium
-                </button>
-                <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold border-2 border-blue-700 hover:bg-blue-50 transition-colors">
-                  Contactar Ventas
-                </button>
-              </div>
             </div>
           </>
         )}

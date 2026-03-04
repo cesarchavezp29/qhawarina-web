@@ -123,12 +123,9 @@ export default function Header() {
 
             <Link
               href="/escenarios"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors flex items-center"
+              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
             >
               {t("scenarios")}
-              <span className="ml-1 text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold">
-                PRO
-              </span>
             </Link>
 
             <Link

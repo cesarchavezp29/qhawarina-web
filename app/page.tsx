@@ -39,6 +39,25 @@ export default function HomePage() {
 
   if (loading) return <LoadingSkeleton />;
 
+  const allFailed = data && Object.values(data).every((v) => v === null);
+  if (allFailed) return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center max-w-md px-6">
+        <p className="text-4xl mb-4">⚠️</p>
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">Error cargando datos</h2>
+        <p className="text-gray-600 text-sm mb-6">
+          No se pudieron cargar los archivos de datos. Intenta recargar la página.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-5 py-2 bg-blue-700 text-white text-sm font-medium hover:bg-blue-800"
+        >
+          Recargar
+        </button>
+      </div>
+    </div>
+  );
+
   // Pre-compute filtered series for charts (avoid IIFE in JSX)
   const CHART_START = '2025-03-01';
   const polSeries = (data?.political?.daily_series ?? []).filter((d: any) => d.date >= CHART_START);
