@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "scenario_name": "Commodity Boom",
+    "scenario_description": "Copper/gold prices surge, driving GDP and FX appreciation",
+    "tags": [
+      "external",
+      "commodity",
+      "positive"
+    ],
+    "generated_at": "2026-03-03T20:52:45.688582",
+    "target_period_gdp": "2026-01",
+    "target_period_inflation": "2026-02"
+  },
+  "baseline": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "counterfactual": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "direct_impacts": {
+    "gdp": 0.0,
+    "inflation": 0.0
+  },
+  "propagated_impacts": {
+    "individual": {
+      "gdp_shock": {
+        "poverty_impact_pp": -0.0,
+        "employment_impact_pp": 0.0,
+        "mechanism": "GDP shock → Poverty (Okun-style), Employment"
+      },
+      "inflation_shock": {
+        "poverty_impact_pp": 0.0,
+        "real_income_loss_pct": 0.0,
+        "mechanism": "Inflation → Real income erosion → Poverty"
+      }
+    },
+    "aggregate": {
+      "gdp_total_pp": 0.0,
+      "inflation_total_monthly_pp": 0.0,
+      "poverty_total_pp": 0.0
+    },
+    "interpretation": "Minimal aggregate impact detected."
+  },
+  "shocks": {
+    "exogenous": [
+      {
+        "series_id": "PN01450PM",
+        "shock_type": "percentage",
+        "shock_value": 0.25,
+        "description": "Export prices +25%"
+      },
+      {
+        "series_id": "PN01246PM",
+        "shock_type": "percentage",
+        "shock_value": -0.1,
+        "description": "Sol appreciates 10%"
+      }
+    ],
+    "endogenous": []
+  }
+}

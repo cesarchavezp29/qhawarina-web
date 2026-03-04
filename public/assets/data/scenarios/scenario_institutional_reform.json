@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "scenario_name": "Institutional Reform",
+    "scenario_description": "Political stability improves significantly (-1.5 sigma)",
+    "tags": [
+      "political",
+      "reform",
+      "positive"
+    ],
+    "generated_at": "2026-03-03T20:52:23.816588",
+    "target_period_gdp": "2026-01",
+    "target_period_inflation": "2026-02"
+  },
+  "baseline": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "counterfactual": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "direct_impacts": {
+    "gdp": 0.0,
+    "inflation": 0.0
+  },
+  "propagated_impacts": {
+    "individual": {
+      "gdp_shock": {
+        "poverty_impact_pp": -0.0,
+        "employment_impact_pp": 0.0,
+        "mechanism": "GDP shock → Poverty (Okun-style), Employment"
+      },
+      "inflation_shock": {
+        "poverty_impact_pp": 0.0,
+        "real_income_loss_pct": 0.0,
+        "mechanism": "Inflation → Real income erosion → Poverty"
+      }
+    },
+    "aggregate": {
+      "gdp_total_pp": 0.0,
+      "inflation_total_monthly_pp": 0.0,
+      "poverty_total_pp": 0.0
+    },
+    "interpretation": "Minimal aggregate impact detected."
+  },
+  "shocks": {
+    "exogenous": [
+      {
+        "series_id": "FINANCIAL_STRESS_INDEX",
+        "shock_type": "sigma",
+        "shock_value": -1.5,
+        "description": "Political stability improves (reforms, elections)"
+      },
+      {
+        "series_id": "PD37981AM",
+        "shock_type": "percentage",
+        "shock_value": 0.2,
+        "description": "Business confidence rises 20%"
+      }
+    ],
+    "endogenous": []
+  }
+}

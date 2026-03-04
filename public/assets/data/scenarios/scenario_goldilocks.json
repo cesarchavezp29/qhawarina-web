@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "scenario_name": "Goldilocks Scenario",
+    "scenario_description": "Ideal conditions: Moderate growth, low inflation, political stability",
+    "tags": [
+      "positive",
+      "ideal",
+      "planning"
+    ],
+    "generated_at": "2026-03-03T20:53:45.122975",
+    "target_period_gdp": "2026-01",
+    "target_period_inflation": "2026-02"
+  },
+  "baseline": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "counterfactual": {
+    "gdp": {
+      "gdp_yoy": 3.5,
+      "forced": true,
+      "description": "Healthy GDP growth 3.5%"
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.17,
+      "forced": true,
+      "description": "Target inflation ~2% annual"
+    }
+  },
+  "direct_impacts": {
+    "gdp": 4.71817687532546,
+    "inflation": -0.03492177329746285
+  },
+  "propagated_impacts": {
+    "individual": {
+      "gdp_shock": {
+        "poverty_impact_pp": -2.35908843766273,
+        "employment_impact_pp": 2.8309061251952756,
+        "mechanism": "GDP shock → Poverty (Okun-style), Employment"
+      },
+      "inflation_shock": {
+        "poverty_impact_pp": -0.12571838387086626,
+        "real_income_loss_pct": -0.4190612795695542,
+        "mechanism": "Inflation → Real income erosion → Poverty"
+      }
+    },
+    "aggregate": {
+      "gdp_total_pp": 4.71817687532546,
+      "inflation_total_monthly_pp": -0.03492177329746285,
+      "poverty_total_pp": -2.484806821533596
+    },
+    "interpretation": "GDP would increase by 4.7pp. Poverty would decrease by 2.5pp."
+  },
+  "shocks": {
+    "exogenous": [
+      {
+        "series_id": "FINANCIAL_STRESS_INDEX",
+        "shock_type": "sigma",
+        "shock_value": -1.0,
+        "description": "Political stability (-1 sigma)"
+      }
+    ],
+    "endogenous": [
+      {
+        "target": "gdp",
+        "forced_value": 3.5,
+        "description": "Healthy GDP growth 3.5%",
+        "period": "2026-Q2"
+      },
+      {
+        "target": "inflation",
+        "forced_value": 0.17,
+        "description": "Target inflation ~2% annual",
+        "period": "2026-03"
+      }
+    ]
+  }
+}

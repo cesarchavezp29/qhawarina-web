@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "scenario_name": "Inflation Spike",
+    "scenario_description": "Inflation jumps to 0.5% monthly (6% annual), driven by food and FX",
+    "tags": [
+      "inflation",
+      "food",
+      "external"
+    ],
+    "generated_at": "2026-03-03T20:51:13.539348",
+    "target_period_gdp": "2026-01",
+    "target_period_inflation": "2026-02"
+  },
+  "baseline": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "counterfactual": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.5,
+      "forced": true,
+      "description": "Inflation = 0.5% monthly"
+    }
+  },
+  "direct_impacts": {
+    "gdp": 0.0,
+    "inflation": 0.29507822670253714
+  },
+  "propagated_impacts": {
+    "individual": {
+      "gdp_shock": {
+        "poverty_impact_pp": -0.0,
+        "employment_impact_pp": 0.0,
+        "mechanism": "GDP shock → Poverty (Okun-style), Employment"
+      },
+      "inflation_shock": {
+        "poverty_impact_pp": 1.0622816161291337,
+        "real_income_loss_pct": 3.5409387204304457,
+        "mechanism": "Inflation → Real income erosion → Poverty"
+      }
+    },
+    "aggregate": {
+      "gdp_total_pp": 0.0,
+      "inflation_total_monthly_pp": 0.29507822670253714,
+      "poverty_total_pp": 1.0622816161291337
+    },
+    "interpretation": "Inflation would increase by 3.5pp annually. Poverty would increase by 1.1pp."
+  },
+  "shocks": {
+    "exogenous": [
+      {
+        "series_id": "MIDAGRI_CHICKEN_VAR",
+        "shock_type": "percentage",
+        "shock_value": 0.3,
+        "description": "Chicken prices +30%"
+      },
+      {
+        "series_id": "PN01246PM",
+        "shock_type": "percentage",
+        "shock_value": 0.1,
+        "description": "Sol depreciates 10%"
+      }
+    ],
+    "endogenous": [
+      {
+        "target": "inflation",
+        "forced_value": 0.5,
+        "description": "Inflation = 0.5% monthly",
+        "period": "2026-03"
+      }
+    ]
+  }
+}

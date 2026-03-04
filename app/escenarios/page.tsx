@@ -110,17 +110,14 @@ export default function EscenariosPage() {
     setError(null);
 
     try {
-      const response = await fetch(`/api/scenarios/${scenarioId}`);
+      const v = new Date().toISOString().slice(0, 10);
+      const response = await fetch(`/assets/data/scenarios/scenario_${scenarioId}.json?v=${v}`);
       if (!response.ok) {
         throw new Error("Escenario no disponible");
       }
       const data = await response.json();
       setScenarioData(data);
     } catch (err) {
-      setError(
-        "Error al cargar escenario. Usando datos de ejemplo."
-      );
-      // For demo purposes, show mock data
       setScenarioData(getMockData(scenarioId));
     } finally {
       setLoading(false);

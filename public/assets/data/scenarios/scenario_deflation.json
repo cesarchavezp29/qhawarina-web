@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "scenario_name": "Deflation",
+    "scenario_description": "Prices fall -0.2% monthly due to demand collapse",
+    "tags": [
+      "deflation",
+      "demand_shock"
+    ],
+    "generated_at": "2026-03-03T20:51:37.006320",
+    "target_period_gdp": "2026-01",
+    "target_period_inflation": "2026-02"
+  },
+  "baseline": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": 0.20492177329746286,
+      "ipc_3m_ma": null
+    }
+  },
+  "counterfactual": {
+    "gdp": {
+      "gdp_yoy": -1.2181768753254603,
+      "confidence_lower": null,
+      "confidence_upper": null
+    },
+    "inflation": {
+      "ipc_monthly_var": -0.2,
+      "forced": true,
+      "description": "Deflation -0.2% monthly"
+    }
+  },
+  "direct_impacts": {
+    "gdp": 0.0,
+    "inflation": -0.4049217732974629
+  },
+  "propagated_impacts": {
+    "individual": {
+      "gdp_shock": {
+        "poverty_impact_pp": -0.0,
+        "employment_impact_pp": 0.0,
+        "mechanism": "GDP shock → Poverty (Okun-style), Employment"
+      },
+      "inflation_shock": {
+        "poverty_impact_pp": -1.4577183838708663,
+        "real_income_loss_pct": -4.859061279569555,
+        "mechanism": "Inflation → Real income erosion → Poverty"
+      }
+    },
+    "aggregate": {
+      "gdp_total_pp": 0.0,
+      "inflation_total_monthly_pp": -0.4049217732974629,
+      "poverty_total_pp": -1.4577183838708663
+    },
+    "interpretation": "Inflation would decrease by 4.9pp annually. Poverty would decrease by 1.5pp."
+  },
+  "shocks": {
+    "exogenous": [
+      {
+        "series_id": "SUPERMARKET_FOOD_VAR",
+        "shock_type": "absolute",
+        "shock_value": -0.5,
+        "description": "Food prices fall sharply"
+      }
+    ],
+    "endogenous": [
+      {
+        "target": "inflation",
+        "forced_value": -0.2,
+        "description": "Deflation -0.2% monthly",
+        "period": "2026-03"
+      }
+    ]
+  }
+}
