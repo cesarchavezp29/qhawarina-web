@@ -284,7 +284,7 @@ export default function HomePage() {
                   useResizeHandler
                 />
                 <div className="text-xs text-gray-500 mt-1 text-right">
-                  <Link href="/political" className="text-blue-600 hover:underline">Ver índice completo →</Link>
+                  <Link href="/estadisticas/riesgo-politico" className="text-blue-600 hover:underline">Ver índice completo →</Link>
                 </div>
               </div>
 

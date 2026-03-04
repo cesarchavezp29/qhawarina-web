@@ -315,7 +315,7 @@ function InflacionCalc({ inflData }: { inflData: InflData | null }) {
   const baseMonthlyRate = inflData?.nowcast.value ?? 0.2;
   const [amount, setAmount]       = useState(1000);
   const [startDate, setStartDate] = useState('2024-01-01');
-  const [endDate, setEndDate]     = useState('2026-02-28');
+  const [endDate, setEndDate]     = useState(() => new Date().toISOString().slice(0, 10));
   const [category, setCategory]   = useState('all');
   const [results, setResults]     = useState<any>(null);
   const [loading, setLoading]     = useState(false);
