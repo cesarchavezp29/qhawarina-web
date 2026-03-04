@@ -1,4 +1,18 @@
-import LastUpdate from "../../../components/stats/LastUpdate";
+'use client';
+import { useEffect, useState } from 'react';
+
+function DynamicLastUpdate({ src }: { src: string }) {
+  const [dateStr, setDateStr] = useState('');
+  useEffect(() => {
+    fetch(src + '?v=' + new Date().toISOString().slice(0, 10))
+      .then(r => r.json()).then(d => {
+        const iso = d?.metadata?.generated_at ?? new Date().toISOString();
+        setDateStr(new Date(iso).toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' }));
+      }).catch(() => setDateStr(new Date().toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' })));
+  }, [src]);
+  if (!dateStr) return null;
+  return <div className="flex items-center justify-end text-sm text-gray-500"><svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Última actualización: {dateStr}</span></div>;
+}
 
 export default function InflacionMetodologiaPage() {
   return (
@@ -20,7 +34,7 @@ export default function InflacionMetodologiaPage() {
           Metodología - Nowcast de Inflación
         </h1>
         <div className="mt-4">
-          <LastUpdate date="16-Feb-2026" />
+          <DynamicLastUpdate src="/assets/data/inflation_nowcast.json" />
         </div>
 
         {/* Overview */}
