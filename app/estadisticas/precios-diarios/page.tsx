@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import ShareButton from "../../components/ShareButton";
 import EmbedWidget from "../../components/EmbedWidget";
 
@@ -51,6 +52,7 @@ interface PriceIndexData {
 type ViewMode = "index" | "daily_change" | "cumulative";
 
 export default function PreciosDiariosPage() {
+  const isEn = useLocale() === 'en';
   const [data, setData] = useState<PriceIndexData | null>(null);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState<ViewMode>("index");
@@ -69,7 +71,7 @@ export default function PreciosDiariosPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Cargando índice de precios...</p>
+        <p className="text-gray-500">{isEn ? 'Loading price index...' : 'Cargando índice de precios...'}</p>
       </div>
     );
   }
@@ -79,12 +81,18 @@ export default function PreciosDiariosPage() {
       <div className="bg-gray-50 min-h-screen py-12">
         <div className="max-w-5xl mx-auto px-4">
           <nav className="text-sm text-gray-500 mb-6">
-            <Link href="/estadisticas" className="hover:text-blue-700">Estadísticas</Link>
+            <Link href="/estadisticas" className="hover:text-blue-700">
+              {isEn ? 'Statistics' : 'Estadísticas'}
+            </Link>
             <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Precios Diarios</span>
+            <span className="text-gray-900 font-medium">
+              {isEn ? 'Daily Prices' : 'Precios Diarios'}
+            </span>
           </nav>
 
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Índice de Precios Diario</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            {isEn ? 'Daily Price Index' : 'Índice de Precios Diario'}
+          </h1>
 
           {/* Methodology banner even without data */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-8">
@@ -95,17 +103,16 @@ export default function PreciosDiariosPage() {
                   Qhawarina BPP — Billion Prices Project para Perú
                 </h2>
                 <p className="text-blue-800 mb-4">
-                  Primer índice de precios diario para Perú, basado en la metodología de{" "}
-                  <strong>Alberto Cavallo (MIT)</strong>. Recopilamos precios de 42,000+ productos
-                  en Plaza Vea, Metro y Wong cada día y construimos un índice Jevons bilateral
-                  chain-linked.
+                  {isEn
+                    ? <>First daily price index for Peru, based on the methodology of <strong>Alberto Cavallo (MIT)</strong>. We collect prices of 42,000+ products at Plaza Vea, Metro and Wong every day and build a bilateral chain-linked Jevons index.</>
+                    : <>Primer índice de precios diario para Perú, basado en la metodología de <strong>Alberto Cavallo (MIT)</strong>. Recopilamos precios de 42,000+ productos en Plaza Vea, Metro y Wong cada día y construimos un índice Jevons bilateral chain-linked.</>}
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                   {[
-                    { label: "Productos", value: "42,000+" },
-                    { label: "Tiendas", value: "3 cadenas" },
-                    { label: "Método", value: "Jevons BPP" },
-                    { label: "Frecuencia", value: "Diaria" },
+                    { label: isEn ? "Products" : "Productos", value: "42,000+" },
+                    { label: isEn ? "Stores" : "Tiendas", value: isEn ? "3 chains" : "3 cadenas" },
+                    { label: isEn ? "Method" : "Método", value: "Jevons BPP" },
+                    { label: isEn ? "Frequency" : "Frecuencia", value: isEn ? "Daily" : "Diaria" },
                   ].map((item) => (
                     <div key={item.label} className="bg-white rounded-lg p-3 text-center">
                       <p className="text-2xl font-bold text-blue-800">{item.value}</p>
@@ -118,18 +125,22 @@ export default function PreciosDiariosPage() {
           </div>
 
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
-            <h3 className="font-semibold text-amber-900 mb-2">⏳ Acumulando datos</h3>
+            <h3 className="font-semibold text-amber-900 mb-2">
+              {isEn ? '⏳ Accumulating data' : '⏳ Acumulando datos'}
+            </h3>
             <p className="text-amber-800 text-sm">
-              El índice comenzó el <strong>10 de febrero 2026</strong>. Necesitamos al menos
-              30 días de scraping diario para que la serie sea estadísticamente significativa.
-              El scraper corre automáticamente cada día a las 07:00 AM y actualiza este índice.
+              {isEn
+                ? <>The index started on <strong>February 10, 2026</strong>. We need at least 30 days of daily scraping for the series to be statistically significant. The scraper runs automatically every day at 07:00 AM and updates this index.</>
+                : <>El índice comenzó el <strong>10 de febrero 2026</strong>. Necesitamos al menos 30 días de scraping diario para que la serie sea estadísticamente significativa. El scraper corre automáticamente cada día a las 07:00 AM y actualiza este índice.</>}
             </p>
             <p className="text-amber-700 text-xs mt-2">
-              Comparación con el IPC oficial del INEI disponible desde que tengamos 1+ mes de datos.
+              {isEn
+                ? 'Comparison with the official INEI CPI available once we have 1+ month of data.'
+                : 'Comparación con el IPC oficial del INEI disponible desde que tengamos 1+ mes de datos.'}
             </p>
           </div>
 
-          <MethodologySection />
+          <MethodologySection isEn={isEn} />
         </div>
       </div>
     );
@@ -137,7 +148,6 @@ export default function PreciosDiariosPage() {
 
   const dates = data.series.map((r) => r.date);
 
-  // Main traces
   const getYValues = (key: string) => {
     if (viewMode === "index") return data.series.map((r) => r[key] as number);
     if (viewMode === "daily_change") {
@@ -148,23 +158,27 @@ export default function PreciosDiariosPage() {
         return ((curr / prev - 1) * 100);
       });
     }
-    // cumulative
     const base = data.series[0][key] as number;
     return data.series.map((r) => ((r[key] as number) / base - 1) * 100);
   };
 
-  const yAxisLabel =
-    viewMode === "index"
-      ? `Índice (${data.metadata.base_date} = 100)`
+  const yAxisLabel = isEn
+    ? viewMode === "index"
+      ? `Index (${data.metadata.base_date} = 100)`
       : viewMode === "daily_change"
-      ? "Variación diaria (%)"
-      : "Variación acumulada (%)";
+      ? "Daily change (%)"
+      : "Cumulative change (%)"
+    : viewMode === "index"
+    ? `Índice (${data.metadata.base_date} = 100)`
+    : viewMode === "daily_change"
+    ? "Variación diaria (%)"
+    : "Variación acumulada (%)";
 
   const mainTraces = [
     {
       x: dates,
       y: getYValues("index_all"),
-      name: "Todos los productos",
+      name: isEn ? "All products" : "Todos los productos",
       type: "scatter" as const,
       mode: "lines+markers" as const,
       line: { color: "#1d4ed8", width: 3 },
@@ -173,7 +187,7 @@ export default function PreciosDiariosPage() {
     {
       x: dates,
       y: getYValues("index_food"),
-      name: "Alimentos y bebidas",
+      name: isEn ? "Food & beverages" : "Alimentos y bebidas",
       type: "scatter" as const,
       mode: "lines+markers" as const,
       line: { color: "#ef4444", width: 2 },
@@ -182,7 +196,7 @@ export default function PreciosDiariosPage() {
     {
       x: dates,
       y: getYValues("index_nonfood"),
-      name: "No alimentario",
+      name: isEn ? "Non-food" : "No alimentario",
       type: "scatter" as const,
       mode: "lines+markers" as const,
       line: { color: "#8b5cf6", width: 2 },
@@ -190,12 +204,11 @@ export default function PreciosDiariosPage() {
     },
   ];
 
-  // Category traces
   const catTraces = showCategories
     ? Object.entries(data.categories).map(([catId, meta]) => ({
         x: dates,
         y: getYValues(`index_${catId}`),
-        name: meta.label_es,
+        name: isEn ? meta.label_en : meta.label_es,
         type: "scatter" as const,
         mode: "lines" as const,
         line: { color: meta.color, width: 1.5, dash: "dot" as const },
@@ -224,70 +237,86 @@ export default function PreciosDiariosPage() {
   const dailyAvgPct = (Math.pow(data.series[n - 1].index_all / 100, 1 / Math.max(n - 1, 1)) - 1) * 100;
   const annualizedPct = dailyAvgPct * 365;
 
+  const viewModeLabels: Record<ViewMode, string> = isEn
+    ? { index: "Index", daily_change: "Daily var.", cumulative: "Cumulative" }
+    : { index: "Índice", daily_change: "Var. diaria", cumulative: "Acumulado" };
+
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
-          <Link href="/estadisticas" className="hover:text-blue-700">Estadísticas</Link>
+          <Link href="/estadisticas" className="hover:text-blue-700">
+            {isEn ? 'Statistics' : 'Estadísticas'}
+          </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900 font-medium">Precios Diarios</span>
+          <span className="text-gray-900 font-medium">
+            {isEn ? 'Daily Prices' : 'Precios Diarios'}
+          </span>
         </nav>
 
         {/* Header */}
         <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-4xl font-bold text-gray-900">Índice de Precios Diario</h1>
+              <h1 className="text-4xl font-bold text-gray-900">
+                {isEn ? 'Daily Price Index' : 'Índice de Precios Diario'}
+              </h1>
               <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-bold rounded-full">
                 QHAWARINA BPP
               </span>
             </div>
             <p className="text-lg text-gray-600">
-              Metodología Cavallo (MIT) · {data.metadata.stores.join(", ")} ·{" "}
-              {data.metadata.n_products_approx.toLocaleString()}+ productos
+              {isEn ? 'Cavallo (MIT) method' : 'Metodología Cavallo (MIT)'} · {data.metadata.stores.join(", ")} ·{" "}
+              {data.metadata.n_products_approx.toLocaleString()}+ {isEn ? 'products' : 'productos'}
             </p>
           </div>
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <p className="text-xs text-gray-500">Actualizado</p>
+              <p className="text-xs text-gray-500">{isEn ? 'Updated' : 'Actualizado'}</p>
               <p className="font-semibold text-gray-900">{data.latest.date}</p>
             </div>
-            <ShareButton title="Precios Diarios BPP — Qhawarina" text={`Índice BPP ${data.latest.date}: ${data.latest.index_all.toFixed(2)} (var ${data.latest.var_all > 0 ? '+' : ''}${data.latest.var_all.toFixed(3)}%) — Qhawarina`} />
-            <EmbedWidget path="/estadisticas/precios-diarios" title="Precios Diarios BPP — Qhawarina" height={700} />
+            <ShareButton
+              title={isEn ? "Daily Prices BPP — Qhawarina" : "Precios Diarios BPP — Qhawarina"}
+              text={`BPP Index ${data.latest.date}: ${data.latest.index_all.toFixed(2)} (var ${data.latest.var_all > 0 ? '+' : ''}${data.latest.var_all.toFixed(3)}%) — Qhawarina`}
+            />
+            <EmbedWidget
+              path="/estadisticas/precios-diarios"
+              title={isEn ? "Daily Prices BPP — Qhawarina" : "Precios Diarios BPP — Qhawarina"}
+              height={700}
+            />
           </div>
         </div>
 
         {/* KPI Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-            <p className="text-xs text-gray-500 mb-1">Índice actual</p>
-            <p className="text-3xl font-bold text-blue-800">
-              {data.latest.index_all?.toFixed(2)}
-            </p>
+            <p className="text-xs text-gray-500 mb-1">{isEn ? 'Current index' : 'Índice actual'}</p>
+            <p className="text-3xl font-bold text-blue-800">{data.latest.index_all?.toFixed(2)}</p>
             <p className="text-xs text-gray-400">base {data.metadata.base_date} = 100</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-            <p className="text-xs text-gray-500 mb-1">Variación última sesión</p>
+            <p className="text-xs text-gray-500 mb-1">{isEn ? 'Last session change' : 'Variación última sesión'}</p>
             <p className={`text-3xl font-bold ${(data.latest.var_all ?? 0) >= 0 ? "text-red-600" : "text-green-600"}`}>
-              {(data.latest.var_all ?? 0) >= 0 ? "+" : ""}
-              {((data.latest.var_all ?? 0)).toFixed(3)}%
+              {(data.latest.var_all ?? 0) >= 0 ? "+" : ""}{((data.latest.var_all ?? 0)).toFixed(3)}%
             </p>
-            <p className="text-xs text-gray-400">variación diaria</p>
+            <p className="text-xs text-gray-400">{isEn ? 'daily change' : 'variación diaria'}</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-            <p className="text-xs text-gray-500 mb-1">Acumulado</p>
+            <p className="text-xs text-gray-500 mb-1">{isEn ? 'Cumulative' : 'Acumulado'}</p>
             <p className={`text-3xl font-bold ${cumPct >= 0 ? "text-red-600" : "text-green-600"}`}>
               {cumPct >= 0 ? "+" : ""}{cumPct.toFixed(2)}%
             </p>
-            <p className="text-xs text-gray-400">desde {data.metadata.base_date}</p>
+            <p className="text-xs text-gray-400">{isEn ? `since ${data.metadata.base_date}` : `desde ${data.metadata.base_date}`}</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-            <p className="text-xs text-gray-500 mb-1">Ritmo anualizado</p>
+            <p className="text-xs text-gray-500 mb-1">{isEn ? 'Annualized pace' : 'Ritmo anualizado'}</p>
             <p className={`text-3xl font-bold ${annualizedPct >= 0 ? "text-orange-600" : "text-green-600"}`}>
               {annualizedPct >= 0 ? "+" : ""}{annualizedPct.toFixed(1)}%
             </p>
-            <p className="text-xs text-gray-400">proyección si ritmo actual continúa</p>
+            <p className="text-xs text-gray-400">
+              {isEn ? 'projection if current pace continues' : 'proyección si ritmo actual continúa'}
+            </p>
           </div>
         </div>
 
@@ -296,8 +325,9 @@ export default function PreciosDiariosPage() {
           <div className="bg-amber-50 border border-amber-200 rounded-lg px-5 py-3 mb-6 flex items-center gap-3">
             <span className="text-amber-600">⚠️</span>
             <p className="text-sm text-amber-800">
-              <strong>{n} días de datos</strong> disponibles. La serie se vuelve estadísticamente
-              robusta a partir de 30 días. El scraper acumula datos cada día automáticamente.
+              {isEn
+                ? <><strong>{n} days of data</strong> available. The series becomes statistically robust after 30 days. The scraper accumulates data automatically every day.</>
+                : <><strong>{n} días de datos</strong> disponibles. La serie se vuelve estadísticamente robusta a partir de 30 días. El scraper acumula datos cada día automáticamente.</>}
             </p>
           </div>
         )}
@@ -311,24 +341,22 @@ export default function PreciosDiariosPage() {
                   key={mode}
                   onClick={() => setViewMode(mode)}
                   className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                    viewMode === mode
-                      ? "bg-blue-800 text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    viewMode === mode ? "bg-blue-800 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  {mode === "index" ? "Índice" : mode === "daily_change" ? "Var. diaria" : "Acumulado"}
+                  {viewModeLabels[mode]}
                 </button>
               ))}
             </div>
             <button
               onClick={() => setShowCategories(!showCategories)}
               className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                showCategories
-                  ? "bg-purple-100 text-purple-800"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                showCategories ? "bg-purple-100 text-purple-800" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
-              {showCategories ? "Ocultar categorías" : "Ver por categoría"}
+              {showCategories
+                ? (isEn ? 'Hide categories' : 'Ocultar categorías')
+                : (isEn ? 'Show by category' : 'Ver por categoría')}
             </button>
           </div>
 
@@ -353,15 +381,18 @@ export default function PreciosDiariosPage() {
           />
 
           <p className="text-xs text-gray-500 mt-3">
-            Fuente: Qhawarina / Plaza Vea / Metro / Wong — Índice Jevons bilateral chain-linked,
-            base {data.metadata.base_date} = 100. Filtro: 0.5 &lt; ratio &lt; 2.0.
+            {isEn
+              ? <>Source: Qhawarina / Plaza Vea / Metro / Wong — Bilateral chain-linked Jevons index, base {data.metadata.base_date} = 100. Filter: 0.5 &lt; ratio &lt; 2.0.</>
+              : <>Fuente: Qhawarina / Plaza Vea / Metro / Wong — Índice Jevons bilateral chain-linked, base {data.metadata.base_date} = 100. Filtro: 0.5 &lt; ratio &lt; 2.0.</>}
           </p>
         </div>
 
         {/* Category breakdown */}
         {data.categories && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 mb-4">Índice por Categoría (último día)</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">
+              {isEn ? 'Index by Category (latest day)' : 'Índice por Categoría (último día)'}
+            </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {Object.entries(data.categories).map(([catId, meta]) => {
                 const latestRecord = data.series[data.series.length - 1];
@@ -374,7 +405,9 @@ export default function PreciosDiariosPage() {
                     style={{ borderLeft: `3px solid ${meta.color}` }}
                   >
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium text-gray-700 truncate">{meta.label_es}</p>
+                      <p className="text-xs font-medium text-gray-700 truncate">
+                        {isEn ? meta.label_en : meta.label_es}
+                      </p>
                       <p className="text-sm font-bold" style={{ color: meta.color }}>
                         {idx?.toFixed(2)}
                         <span className={`ml-1 text-xs ${change >= 0 ? "text-red-500" : "text-green-500"}`}>
@@ -389,65 +422,79 @@ export default function PreciosDiariosPage() {
           </div>
         )}
 
-        <MethodologySection />
+        <MethodologySection isEn={isEn} />
       </div>
     </div>
   );
 }
 
 
-function MethodologySection() {
+function MethodologySection({ isEn }: { isEn: boolean }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div className="bg-white rounded-xl border border-gray-200 p-6">
-        <h3 className="font-semibold text-gray-900 mb-3">📐 Metodología</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">
+          {isEn ? '📐 Methodology' : '📐 Metodología'}
+        </h3>
         <div className="space-y-3 text-sm text-gray-700">
           <div>
-            <p className="font-medium">1. Recopilación de precios</p>
-            <p className="text-gray-500">42,000+ productos de Plaza Vea, Metro y Wong scrapeados via API VTEX cada día hábil.</p>
+            <p className="font-medium">{isEn ? '1. Price collection' : '1. Recopilación de precios'}</p>
+            <p className="text-gray-500">
+              {isEn
+                ? '42,000+ products from Plaza Vea, Metro and Wong scraped via the VTEX API each business day.'
+                : '42,000+ productos de Plaza Vea, Metro y Wong scrapeados via API VTEX cada día hábil.'}
+            </p>
           </div>
           <div>
-            <p className="font-medium">2. Índice Jevons bilateral</p>
-            <p className="text-gray-500">Para cada par de días consecutivos, se empareja cada producto por (tienda, SKU) y se calcula la media geométrica de los ratios de precio: <code className="bg-gray-100 px-1 rounded">exp(mean(log(p_t/p_{"{t-1}"}))</code></p>
+            <p className="font-medium">{isEn ? '2. Bilateral Jevons index' : '2. Índice Jevons bilateral'}</p>
+            <p className="text-gray-500">
+              {isEn
+                ? <>For each consecutive pair of days, each product is matched by (store, SKU) and the geometric mean of price ratios is computed: <code className="bg-gray-100 px-1 rounded">exp(mean(log(p_t/p_{"{t-1}"}))</code></>
+                : <>Para cada par de días consecutivos, se empareja cada producto por (tienda, SKU) y se calcula la media geométrica de los ratios de precio: <code className="bg-gray-100 px-1 rounded">exp(mean(log(p_t/p_{"{t-1}"}))</code></>}
+            </p>
           </div>
           <div>
-            <p className="font-medium">3. Filtro de outliers</p>
-            <p className="text-gray-500">Se excluyen ratios fuera del rango [0.5, 2.0] para eliminar errores de datos y promociones temporales extremas.</p>
+            <p className="font-medium">{isEn ? '3. Outlier filter' : '3. Filtro de outliers'}</p>
+            <p className="text-gray-500">
+              {isEn
+                ? 'Ratios outside the range [0.5, 2.0] are excluded to remove data errors and extreme temporary promotions.'
+                : 'Se excluyen ratios fuera del rango [0.5, 2.0] para eliminar errores de datos y promociones temporales extremas.'}
+            </p>
           </div>
           <div>
-            <p className="font-medium">4. Chain-linking</p>
-            <p className="text-gray-500">Los índices diarios se encadenan multiplicativamente: Index_t = Index_{"{t-1}"} × Jevons_t</p>
+            <p className="font-medium">{isEn ? '4. Chain-linking' : '4. Chain-linking'}</p>
+            <p className="text-gray-500">
+              {isEn
+                ? <>Daily indices are multiplicatively chained: Index_t = Index_{"{t-1}"} × Jevons_t</>
+                : <>Los índices diarios se encadenan multiplicativamente: Index_t = Index_{"{t-1}"} × Jevons_t</>}
+            </p>
           </div>
         </div>
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6">
-        <h3 className="font-semibold text-gray-900 mb-3">🔬 Referencia académica</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">
+          {isEn ? '🔬 Academic reference' : '🔬 Referencia académica'}
+        </h3>
         <div className="bg-blue-50 rounded-lg p-4 mb-4">
           <p className="text-sm font-medium text-blue-900">Billion Prices Project (BPP)</p>
-          <p className="text-sm text-blue-700">Alberto Cavallo & Roberto Rigobon (MIT)</p>
+          <p className="text-sm text-blue-700">Alberto Cavallo &amp; Roberto Rigobon (MIT)</p>
           <p className="text-xs text-blue-600 mt-1">
-            "The Billion Prices Project: Using Online Prices for Measurement and Research"
+            &ldquo;The Billion Prices Project: Using Online Prices for Measurement and Research&rdquo;
             <br />Journal of Economic Perspectives, 2016.
           </p>
         </div>
         <p className="text-sm text-gray-600">
-          El BPP original cubre 22 países y ha demostrado que los precios online adelantan
-          al IPC oficial por <strong>2-4 semanas</strong>. Qhawarina aplica esta metodología
-          al mercado peruano por primera vez.
+          {isEn
+            ? <>The original BPP covers 22 countries and has shown that online prices lead the official CPI by <strong>2–4 weeks</strong>. Qhawarina applies this methodology to the Peruvian market for the first time.</>
+            : <>El BPP original cubre 22 países y ha demostrado que los precios online adelantan al IPC oficial por <strong>2-4 semanas</strong>. Qhawarina aplica esta metodología al mercado peruano por primera vez.</>}
         </p>
         <div className="mt-4 flex gap-3">
-          <Link
-            href="/estadisticas/inflacion/categorias"
-            className="text-sm text-blue-700 hover:underline"
-          >
-            Ver IPC oficial →
+          <Link href="/estadisticas/inflacion/categorias" className="text-sm text-blue-700 hover:underline">
+            {isEn ? 'View official CPI →' : 'Ver IPC oficial →'}
           </Link>
-          <Link
-            href="/datos"
-            className="text-sm text-blue-700 hover:underline"
-          >
-            Descargar datos →
+          <Link href="/datos" className="text-sm text-blue-700 hover:underline">
+            {isEn ? 'Download data →' : 'Descargar datos →'}
           </Link>
         </div>
       </div>

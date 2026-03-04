@@ -14,7 +14,10 @@ export const metadata: Metadata = {
   description: "Predicciones diarias de PBI, inflación y pobreza para Perú usando modelos de factores dinámicos. Datos abiertos y metodología transparente.",
   keywords: "Peru GDP, nowcasting, inflation, poverty, economic indicators, BCRP, INEI",
   manifest: "/manifest.json",
-  alternates: { types: { 'application/rss+xml': '/feed.xml' } },
+  alternates: {
+    types: { 'application/rss+xml': '/feed.xml' },
+    languages: { 'es-PE': 'https://qhawarina.pe', 'en': 'https://qhawarina.pe' },
+  },
   themeColor: "#1e40af",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Qhawarina" },
   openGraph: {
