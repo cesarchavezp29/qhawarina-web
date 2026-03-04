@@ -25,6 +25,12 @@ async function handler(
     }
 
     const scenarioId = context.params.id;
+
+    // Validate scenarioId to prevent path traversal
+    if (!scenarioId || !/^[a-z0-9_-]+$/i.test(scenarioId)) {
+      return errorResponse("Invalid scenario ID", "INVALID_ID", 400);
+    }
+
     const scenarioPath = path.join(
       process.cwd(),
       "public",

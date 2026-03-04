@@ -101,8 +101,8 @@ export function withApiMiddleware(
       return new NextResponse(null, { status: 200, headers });
     }
 
-    // Extract API key
-    const apiKey = req.headers.get("X-API-Key") || req.nextUrl.searchParams.get("api_key");
+    // Extract API key from header only (not query params — keys in URLs end up in logs)
+    const apiKey = req.headers.get("X-API-Key");
 
     // Validate API key
     const auth = validateApiKey(apiKey);
@@ -155,7 +155,6 @@ export function withApiMiddleware(
         {
           error: "Internal server error",
           code: "INTERNAL_ERROR",
-          message: error.message,
         },
         { status: 500, headers }
       );
