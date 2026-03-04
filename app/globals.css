@@ -14,6 +14,28 @@
   }
 }
 
+@media print {
+  header, nav, footer, .print\:hidden,
+  [class*="BackToTop"], [class*="SearchModal"] {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .min-h-screen {
+    min-height: unset !important;
+  }
+  a[href]::after {
+    content: none !important;
+  }
+  .border {
+    border-color: #ccc !important;
+  }
+  @page {
+    margin: 1.5cm;
+  }
+}
+
 :root {
   /* Professional color palette (BCRP/Fed inspired) */
   --primary: #1e40af;        /* Azul institucional */

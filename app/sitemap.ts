@@ -34,6 +34,7 @@ const routes = [
   '/reportes',
   '/metodologia',
   '/sobre-nosotros',
+  '/api/docs',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

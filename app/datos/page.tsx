@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useLocale } from "next-intl";
+import BreadcrumbJsonLd from "../components/BreadcrumbJsonLd";
 
 interface DataFile {
   name: string;
@@ -231,15 +233,17 @@ function fmtBytes(bytes: number): string {
   return `${bytes} B`;
 }
 
-function fmtLastMod(header: string | null): string {
+function fmtLastMod(header: string | null, locale: string): string {
   if (!header) return "—";
-  return new Date(header).toLocaleDateString("es-PE", {
+  return new Date(header).toLocaleDateString(locale === "en" ? "en-US" : "es-PE", {
     month: "short",
     year: "numeric",
   });
 }
 
 export default function DatosPage() {
+  const locale = useLocale();
+  const isEn = locale === "en";
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [meta, setMeta] = useState<Record<string, FileMeta>>({});
   const [search, setSearch] = useState("");
@@ -266,7 +270,7 @@ export default function DatosPage() {
         const res = await fetch(`/assets/data/${filename}`, { method: "HEAD" });
         const bytes = parseInt(res.headers.get("content-length") ?? "0", 10);
         const lastMod = res.headers.get("last-modified");
-        return { filename, size: fmtBytes(bytes), updated: fmtLastMod(lastMod) };
+        return { filename, size: fmtBytes(bytes), updated: fmtLastMod(lastMod, locale) };
       })
     ).then((results) => {
       const map: Record<string, FileMeta> = {};
@@ -281,12 +285,15 @@ export default function DatosPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
+      <BreadcrumbJsonLd crumbs={[{ name: "Qhawarina", href: "/" }, { name: isEn ? "Open Data" : "Datos Abiertos", href: "/datos" }]} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Datos Abiertos</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{isEn ? "Open Data" : "Datos Abiertos"}</h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            Todos los datos de Qhawarina son de acceso libre bajo licencia{" "}
+            {isEn
+              ? "All Qhawarina data is freely accessible under the "
+              : "Todos los datos de Qhawarina son de acceso libre bajo licencia "}
             <a
               href="https://creativecommons.org/licenses/by/4.0/"
               className="text-blue-700 hover:underline"
@@ -295,7 +302,9 @@ export default function DatosPage() {
             >
               CC BY 4.0
             </a>
-            . Descarga directo — sin registro, sin API key.
+            {isEn
+              ? " license. Direct download — no registration, no API key."
+              : ". Descarga directo — sin registro, sin API key."}
           </p>
 
           {/* Search */}
@@ -307,7 +316,7 @@ export default function DatosPage() {
               type="text"
               value={search}
               onChange={(e) => { setSearch(e.target.value); setActiveSection(null); }}
-              placeholder="Buscar dataset..."
+              placeholder={isEn ? "Search dataset..." : "Buscar dataset..."}
               className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
             {search && (
@@ -323,19 +332,19 @@ export default function DatosPage() {
           <div className="mt-6 flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-blue-800">{totalFiles}</span>
-              <span className="text-gray-600">archivos disponibles</span>
+              <span className="text-gray-600">{isEn ? "files available" : "archivos disponibles"}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-blue-800">490+</span>
-              <span className="text-gray-600">series económicas</span>
+              <span className="text-gray-600">{isEn ? "economic series" : "series económicas"}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-blue-800">Diario</span>
-              <span className="text-gray-600">actualización</span>
+              <span className="text-gray-600">{isEn ? "update frequency" : "actualización"}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-blue-800">CC BY 4.0</span>
-              <span className="text-gray-600">licencia abierta</span>
+              <span className="text-gray-600">{isEn ? "open license" : "licencia abierta"}</span>
             </div>
           </div>
         </div>
@@ -367,7 +376,7 @@ export default function DatosPage() {
               onClick={() => setActiveSection(null)}
               className="px-4 py-2 rounded-full text-sm text-gray-500 hover:text-gray-700 underline"
             >
-              Ver todo
+              {isEn ? "Show all" : "Ver todo"}
             </button>
           )}
         </div>
@@ -375,7 +384,7 @@ export default function DatosPage() {
         {/* Sections */}
         <div className="space-y-10">
           {filteredSections.length === 0 && (
-            <p className="text-gray-500 text-sm py-4">No se encontraron datasets para &quot;{search}&quot;.</p>
+            <p className="text-gray-500 text-sm py-4">{isEn ? `No datasets found for "${search}".` : `No se encontraron datasets para "${search}".`}</p>
           )}
           {filteredSections.map((section) => {
             const colors = COLOR_MAP[section.color];
@@ -426,8 +435,8 @@ export default function DatosPage() {
                             <span>·</span>
                             <span>
                               {fileMeta
-                                ? `Act.: ${fileMeta.updated}`
-                                : "cargando…"}
+                                ? `${isEn ? "Upd.:" : "Act.:"} ${fileMeta.updated}`
+                                : isEn ? "loading…" : "cargando…"}
                             </span>
                           </div>
 
@@ -449,7 +458,7 @@ export default function DatosPage() {
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                               />
                             </svg>
-                            Descargar
+                            {isEn ? "Download" : "Descargar"}
                           </a>
                         </div>
                       </div>
@@ -464,26 +473,26 @@ export default function DatosPage() {
         {/* License + Citation */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-3">📄 Licencia</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">📄 {isEn ? "License" : "Licencia"}</h3>
             <p className="text-sm text-gray-600 mb-3">
-              Todos los datos de Qhawarina están disponibles bajo licencia{" "}
-              <strong>Creative Commons BY 4.0</strong>. Puedes usar, modificar y
-              redistribuir libremente con atribución.
+              {isEn
+                ? <>All Qhawarina data is available under <strong>Creative Commons BY 4.0</strong>. You can freely use, modify and redistribute with attribution.</>
+                : <>Todos los datos de Qhawarina están disponibles bajo licencia <strong>Creative Commons BY 4.0</strong>. Puedes usar, modificar y redistribuir libremente con atribución.</>}
             </p>
             <p className="text-xs text-gray-500">
-              Datos originales: BCRP, INEI, MIDAGRI (dominio público peruano).
-              Modelos y procesamiento: Qhawarina CC BY 4.0.
+              {isEn
+                ? "Original data: BCRP, INEI, MIDAGRI (Peruvian public domain). Models and processing: Qhawarina CC BY 4.0."
+                : "Datos originales: BCRP, INEI, MIDAGRI (dominio público peruano). Modelos y procesamiento: Qhawarina CC BY 4.0."}
             </p>
           </div>
 
           <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-3">📖 Cómo citar</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">📖 {isEn ? "How to cite" : "Cómo citar"}</h3>
             <div className="bg-gray-50 rounded p-3 text-xs font-mono text-gray-700 leading-relaxed">
-              Qhawarina ({new Date().getFullYear()}). Nowcasting Económico para
-              Perú. Datos disponibles en qhawarina.pe/datos. Licencia CC BY 4.0.
+              Qhawarina ({new Date().getFullYear()}). {isEn ? "Economic Nowcasting for Peru. Data available at qhawarina.pe/datos. License CC BY 4.0." : "Nowcasting Económico para Perú. Datos disponibles en qhawarina.pe/datos. Licencia CC BY 4.0."}
             </div>
             <p className="text-xs text-gray-500 mt-2">
-              Para uso académico, incluye la fecha de descarga.
+              {isEn ? "For academic use, include the download date." : "Para uso académico, incluye la fecha de descarga."}
             </p>
           </div>
         </div>
@@ -492,18 +501,19 @@ export default function DatosPage() {
         <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-6 flex items-center justify-between">
           <div>
             <h3 className="font-semibold text-blue-900">
-              ¿Necesitas acceso programático?
+              {isEn ? "Need programmatic access?" : "¿Necesitas acceso programático?"}
             </h3>
             <p className="text-sm text-blue-700 mt-1">
-              La API de Qhawarina permite obtener datos en tiempo real con rate
-              limiting y actualización automática.
+              {isEn
+                ? "The Qhawarina API allows you to retrieve real-time data with rate limiting and automatic updates."
+                : "La API de Qhawarina permite obtener datos en tiempo real con rate limiting y actualización automática."}
             </p>
           </div>
           <Link
             href="/api/docs"
             className="shrink-0 ml-4 px-4 py-2 bg-blue-800 text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors"
           >
-            Ver API →
+            {isEn ? "View API →" : "Ver API →"}
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 
 type ReportType = 'diario-economico' | 'diario-politico' | 'mensual-economico' | 'mensual-politico';
 
@@ -589,6 +590,7 @@ function Loading() {
 const BASE = '/assets/data';
 
 export default function ReportesPage() {
+  const isEn = useLocale() === 'en';
   const [activeTab, setActiveTab] = useState<ReportType>('diario-economico');
   const [data, setData] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
@@ -615,7 +617,12 @@ export default function ReportesPage() {
     });
   }, []);
 
-  const tabs: { id: ReportType; label: string }[] = [
+  const tabs: { id: ReportType; label: string }[] = isEn ? [
+    { id: 'diario-economico', label: 'Daily Economic' },
+    { id: 'diario-politico', label: 'Daily Political' },
+    { id: 'mensual-economico', label: 'Monthly Economic' },
+    { id: 'mensual-politico', label: 'Monthly Political' },
+  ] : [
     { id: 'diario-economico', label: 'Diario Económico' },
     { id: 'diario-politico', label: 'Diario Político' },
     { id: 'mensual-economico', label: 'Mensual Económico' },
@@ -627,10 +634,11 @@ export default function ReportesPage() {
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* Título */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-1">Reportes</h1>
+          <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-1">{isEn ? "Reports" : "Reportes"}</h1>
           <p className="text-sm text-gray-500">
-            Informes generados automáticamente con datos en tiempo real.
-            Usa el botón &ldquo;Imprimir / Guardar PDF&rdquo; en cada reporte para exportar.
+            {isEn
+              ? 'Automatically generated reports with real-time data. Use the "Print / Save PDF" button in each report to export.'
+              : 'Informes generados automáticamente con datos en tiempo real. Usa el botón "Imprimir / Guardar PDF" en cada reporte para exportar.'}
           </p>
         </div>
 
@@ -676,8 +684,9 @@ export default function ReportesPage() {
         {/* Footer note */}
         <div className="mt-12 pt-6 border-t border-gray-200">
           <p className="text-xs text-gray-400">
-            Datos actualizados diariamente · Fuentes: BCRP, INEI, MIDAGRI, QHAWARINA ·
-            Licencia CC BY 4.0 · Los nowcasts son estimaciones estadísticas, no pronósticos oficiales.
+            {isEn
+              ? "Updated daily · Sources: BCRP, INEI, MIDAGRI, QHAWARINA · License CC BY 4.0 · Nowcasts are statistical estimates, not official forecasts."
+              : "Datos actualizados diariamente · Fuentes: BCRP, INEI, MIDAGRI, QHAWARINA · Licencia CC BY 4.0 · Los nowcasts son estimaciones estadísticas, no pronósticos oficiales."}
           </p>
         </div>
       </main>

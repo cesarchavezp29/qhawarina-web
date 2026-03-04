@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import LastUpdate from "../../components/stats/LastUpdate";
 import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
@@ -15,9 +16,43 @@ interface GDPData {
 }
 
 export default function PBIPage() {
+  const locale = useLocale();
+  const isEn = locale === 'en';
+
+  const T = isEn ? {
+    breadcrumb: 'Statistics',
+    title: 'Gross Domestic Product',
+    nowcastLabel: 'Quarterly nowcast',
+    cardCharts: 'Time Series',
+    cardChartsDesc: 'Quarterly GDP historical series',
+    cardSectors: 'Economic Sectors',
+    cardSectorsDesc: 'Breakdown by productive sector',
+    cardMaps: 'Regional Distribution',
+    cardMapsDesc: 'Departmental breakdown with NTL',
+    methodology: 'View full methodology →',
+    error: 'Error loading data.',
+    retry: 'Retry',
+    dataName: 'GDP data',
+    shareText: (period: string, val: string) => `GDP Nowcast ${period}: ${val} — Qhawarina`,
+  } : {
+    breadcrumb: 'Estadísticas',
+    title: 'Producto Bruto Interno',
+    nowcastLabel: 'Nowcast trimestral',
+    cardCharts: 'Evolución Temporal',
+    cardChartsDesc: 'Serie histórica trimestral del PBI',
+    cardSectors: 'Sectores Económicos',
+    cardSectorsDesc: 'Desagregación por sector productivo',
+    cardMaps: 'Distribución Regional',
+    cardMapsDesc: 'Desagregación departamental con NTL',
+    methodology: 'Ver metodología completa →',
+    error: 'Error cargando datos.',
+    retry: 'Reintentar',
+    dataName: 'los datos del PBI',
+    shareText: (period: string, val: string) => `Nowcast PBI ${period}: ${val} — Qhawarina`,
+  };
+
   const [data, setData] = useState<GDPData | null>(null);
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -28,74 +63,77 @@ export default function PBIPage() {
   }, []);
 
   if (loading) return <PageSkeleton cards={3} />;
-  if (error || !data) return <div className="min-h-screen flex items-center justify-center"><p className="text-red-500">Error cargando datos. <button onClick={() => window.location.reload()} className="underline">Reintentar</button></p></div>;
+  if (error || !data) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <p className="text-red-500">{T.error} <button onClick={() => window.location.reload()} className="underline">{T.retry}</button></p>
+    </div>
+  );
+
+  const valStr = `${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(2)}%`;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">Estadísticas</a>
+          <a href="/estadisticas" className="hover:text-blue-700">{T.breadcrumb}</a>
           {" / "}
-          <span className="text-gray-900 font-medium">PBI</span>
+          <span className="text-gray-900 font-medium">{isEn ? 'GDP' : 'PBI'}</span>
         </nav>
 
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
-          <h1 className="text-4xl font-bold text-gray-900">Producto Bruto Interno</h1>
+          <h1 className="text-4xl font-bold text-gray-900">{T.title}</h1>
           <div className="flex gap-2">
-            <ShareButton title="PBI — Qhawarina" text={`Nowcast PBI ${data.nowcast.target_period}: ${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(2)}% — Qhawarina`} />
-            <EmbedWidget path="/estadisticas/pbi" title="PBI — Nowcasting Qhawarina" height={600} />
+            <ShareButton title={`${isEn ? 'GDP' : 'PBI'} — Qhawarina`} text={T.shareText(data.nowcast.target_period, valStr)} />
+            <EmbedWidget path="/estadisticas/pbi" title={`${isEn ? 'GDP' : 'PBI'} — Nowcasting Qhawarina`} height={600} />
           </div>
         </div>
-        <p className="text-lg text-gray-600">Nowcast trimestral - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(2)}%</p>
-        <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
-        <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName="los datos del PBI" />
+        <p className="text-lg text-gray-600">{T.nowcastLabel} - {data.nowcast.target_period}: {valStr}</p>
+        <div className="mt-4">
+          <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
+        </div>
+        <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName={T.dataName} />
 
-        {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Time Series Chart */}
           <Link href="/estadisticas/pbi/graficos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
                 <div className="text-4xl">📊</div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">Evolución Temporal</h2>
-                  <p className="text-sm text-gray-600 mt-1">Serie histórica trimestral del PBI</p>
+                  <h2 className="text-xl font-bold text-gray-900">{T.cardCharts}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{T.cardChartsDesc}</p>
                 </div>
               </div>
             </div>
           </Link>
 
-          {/* Sectoral Breakdown */}
           <Link href="/estadisticas/pbi/sectores">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
                 <div className="text-4xl">🏭</div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">Sectores Económicos</h2>
-                  <p className="text-sm text-gray-600 mt-1">Desagregación por sector productivo</p>
+                  <h2 className="text-xl font-bold text-gray-900">{T.cardSectors}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{T.cardSectorsDesc}</p>
                 </div>
               </div>
             </div>
           </Link>
 
-          {/* Regional Map */}
           <Link href="/estadisticas/pbi/mapas">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
                 <div className="text-4xl">🗺️</div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">Distribución Regional</h2>
-                  <p className="text-sm text-gray-600 mt-1">Desagregación departamental con NTL</p>
+                  <h2 className="text-xl font-bold text-gray-900">{T.cardMaps}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{T.cardMapsDesc}</p>
                 </div>
               </div>
             </div>
           </Link>
         </div>
 
-        {/* Methodology Link */}
         <div className="mt-8 text-center">
           <a href="/estadisticas/pbi/metodologia" className="text-blue-700 hover:text-blue-900 font-medium">
-            📖 Ver metodología completa →
+            📖 {T.methodology}
           </a>
         </div>
       </div>
