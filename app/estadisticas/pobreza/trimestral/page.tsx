@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import LastUpdate from "../../../components/stats/LastUpdate";
+import { useLocale } from 'next-intl';
 import {
   LineChart,
   Line,
@@ -25,6 +26,7 @@ interface MonthlyData {
 }
 
 export default function PobrezaTrimestralPage() {
+  const isEn = useLocale() === 'en';
   const [quarterlyData, setQuarterlyData] = useState<QuarterlyData[]>([]);
   const [monthlyData, setMonthlyData] = useState<MonthlyData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -40,7 +42,8 @@ export default function PobrezaTrimestralPage() {
         setQuarterlyData(quarterly.national_quarterly || []);
         setMonthlyData(monthly.national_monthly || []);
         if (quarterly.metadata?.generated_at) {
-          setLastUpdate(new Date(quarterly.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' }));
+          const locale = isEn ? 'en-US' : 'es-PE';
+          setLastUpdate(new Date(quarterly.metadata.generated_at).toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' }));
         }
         setLoading(false);
       })
@@ -48,12 +51,12 @@ export default function PobrezaTrimestralPage() {
         console.error("Error loading poverty data:", err);
         setLoading(false);
       });
-  }, []);
+  }, [isEn]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Cargando datos...</p>
+        <p className="text-gray-500">{isEn ? 'Loading data...' : 'Cargando datos...'}</p>
       </div>
     );
   }
@@ -69,23 +72,23 @@ export default function PobrezaTrimestralPage() {
         <div className="mb-8">
           <nav className="text-sm text-gray-500 mb-4">
             <a href="/estadisticas" className="hover:text-blue-700">
-              Estadísticas
+              {isEn ? 'Statistics' : 'Estadísticas'}
             </a>
             {" / "}
             <a href="/estadisticas/pobreza" className="hover:text-blue-700">
-              Pobreza
+              {isEn ? 'Poverty' : 'Pobreza'}
             </a>
             {" / "}
-            <span className="text-gray-900 font-medium">Trimestral</span>
+            <span className="text-gray-900 font-medium">{isEn ? 'Quarterly' : 'Trimestral'}</span>
           </nav>
 
           <div className="flex items-baseline justify-between">
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                Pobreza de Alta Frecuencia
+                {isEn ? 'High-Frequency Poverty' : 'Pobreza de Alta Frecuencia'}
               </h1>
               <p className="text-lg text-gray-600">
-                Desagregación temporal mensual y trimestral
+                {isEn ? 'Monthly and quarterly temporal disaggregation' : 'Desagregación temporal mensual y trimestral'}
               </p>
             </div>
             <div className="flex gap-2">
@@ -97,7 +100,7 @@ export default function PobrezaTrimestralPage() {
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
               >
-                Mensual
+                {isEn ? 'Monthly' : 'Mensual'}
               </button>
               <button
                 onClick={() => setViewMode("quarterly")}
@@ -107,7 +110,7 @@ export default function PobrezaTrimestralPage() {
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
               >
-                Trimestral
+                {isEn ? 'Quarterly' : 'Trimestral'}
               </button>
             </div>
           </div>
@@ -121,7 +124,7 @@ export default function PobrezaTrimestralPage() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">
-                Tasa Nacional
+                {isEn ? 'National Rate' : 'Tasa Nacional'}
               </h2>
               <p className="text-5xl font-bold text-gray-900">
                 {viewMode === "monthly"
@@ -133,14 +136,16 @@ export default function PobrezaTrimestralPage() {
               </p>
             </div>
             <div className="text-right">
-              <p className="text-sm text-gray-500 mb-1">Serie disponible:</p>
+              <p className="text-sm text-gray-500 mb-1">{isEn ? 'Series available:' : 'Serie disponible:'}</p>
               <p className="text-lg font-medium text-gray-700">
                 {viewMode === "monthly"
-                  ? `2012-01 a ${latestMonth?.month}`
-                  : `2004-Q1 a ${latestQuarter?.quarter}`}
+                  ? `2012-01 ${isEn ? 'to' : 'a'} ${latestMonth?.month}`
+                  : `2004-Q1 ${isEn ? 'to' : 'a'} ${latestQuarter?.quarter}`}
               </p>
               <p className="text-sm text-gray-500 mt-2">
-                {viewMode === "monthly" ? `${monthlyData.length} meses` : `${quarterlyData.length} trimestres`}
+                {viewMode === "monthly"
+                  ? `${monthlyData.length} ${isEn ? 'months' : 'meses'}`
+                  : `${quarterlyData.length} ${isEn ? 'quarters' : 'trimestres'}`}
               </p>
             </div>
           </div>
@@ -150,8 +155,8 @@ export default function PobrezaTrimestralPage() {
         <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             {viewMode === "monthly"
-              ? "Serie Mensual (2012-2025) - 3M-MA"
-              : "Serie Trimestral (2004-2025)"}
+              ? (isEn ? "Monthly Series (2012–2025) — 3M-MA" : "Serie Mensual (2012-2025) - 3M-MA")
+              : (isEn ? "Quarterly Series (2004–2025)" : "Serie Trimestral (2004-2025)")}
           </h3>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={currentData}>
@@ -166,7 +171,7 @@ export default function PobrezaTrimestralPage() {
                 tick={{ fontSize: 12 }}
                 stroke="#6b7280"
                 label={{
-                  value: "Tasa de Pobreza (%)",
+                  value: isEn ? "Poverty Rate (%)" : "Tasa de Pobreza (%)",
                   angle: -90,
                   position: "insideLeft",
                   style: { fontSize: 12, fill: "#6b7280" },
@@ -178,7 +183,7 @@ export default function PobrezaTrimestralPage() {
                   border: "1px solid #e5e7eb",
                   borderRadius: "0.375rem",
                 }}
-                formatter={(value: number) => [`${value.toFixed(1)}%`, "Pobreza"]}
+                formatter={(value: number) => [`${value.toFixed(1)}%`, isEn ? "Poverty" : "Pobreza"]}
               />
               <Legend />
               <Line
@@ -187,7 +192,7 @@ export default function PobrezaTrimestralPage() {
                 stroke="#dc2626"
                 strokeWidth={2}
                 dot={{ fill: "#dc2626", r: 3 }}
-                name="Tasa Trimestral"
+                name={isEn ? "Quarterly Rate" : "Tasa Trimestral"}
                 connectNulls
               />
             </LineChart>
@@ -213,7 +218,7 @@ export default function PobrezaTrimestralPage() {
               }}
               className="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 text-sm font-medium"
             >
-              Descargar CSV
+              {isEn ? 'Download CSV' : 'Descargar CSV'}
             </button>
           </div>
         </div>
@@ -221,57 +226,65 @@ export default function PobrezaTrimestralPage() {
         {/* Methodology */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Metodología
+            {isEn ? 'Methodology' : 'Metodología'}
           </h3>
           <div className="prose prose-sm max-w-none text-gray-700">
             <p className="mb-4">
-              Este indicador utiliza <strong>desagregación temporal</strong> (método
-              Chow-Lin) para distribuir las tasas anuales de pobreza publicadas por
-              INEI a frecuencia trimestral.
+              {isEn
+                ? 'This indicator uses temporal disaggregation (Chow-Lin method) to distribute INEI annual poverty rates to quarterly frequency.'
+                : 'Este indicador utiliza desagregación temporal (método Chow-Lin) para distribuir las tasas anuales de pobreza publicadas por INEI a frecuencia trimestral.'}
             </p>
 
             <h4 className="text-base font-semibold text-gray-900 mt-6 mb-2">
-              Indicadores de alta frecuencia
+              {isEn ? 'High-frequency indicators' : 'Indicadores de alta frecuencia'}
             </h4>
             <ul className="list-disc pl-6 mb-4 space-y-1">
               <li>
-                <strong>PBI trimestral:</strong> Proxy del ingreso de los hogares
+                <strong>{isEn ? 'Quarterly GDP:' : 'PBI trimestral:'}</strong>{' '}
+                {isEn ? 'Proxy for household income' : 'Proxy del ingreso de los hogares'}
               </li>
               <li>
-                <strong>IPC mensual:</strong> Ajuste por cambios en la línea de
-                pobreza
+                <strong>{isEn ? 'Monthly CPI:' : 'IPC mensual:'}</strong>{' '}
+                {isEn ? 'Adjustment for changes in the poverty line' : 'Ajuste por cambios en la línea de pobreza'}
               </li>
             </ul>
 
             <h4 className="text-base font-semibold text-gray-900 mt-6 mb-2">
-              Ventajas del enfoque trimestral
+              {isEn ? 'Advantages of quarterly approach' : 'Ventajas del enfoque trimestral'}
             </h4>
             <ul className="list-disc pl-6 mb-4 space-y-1">
               <li>
-                Permite seguimiento intra-anual de cambios en condiciones sociales
+                {isEn
+                  ? 'Enables intra-annual tracking of changes in social conditions'
+                  : 'Permite seguimiento intra-anual de cambios en condiciones sociales'}
               </li>
               <li>
-                Identifica tendencias estacionales y fluctuaciones de corto plazo
+                {isEn
+                  ? 'Identifies seasonal trends and short-term fluctuations'
+                  : 'Identifica tendencias estacionales y fluctuaciones de corto plazo'}
               </li>
               <li>
-                Compatible con frecuencia de otros indicadores macroeconómicos
+                {isEn
+                  ? 'Compatible with frequency of other macroeconomic indicators'
+                  : 'Compatible con frecuencia de otros indicadores macroeconómicos'}
               </li>
             </ul>
 
             <h4 className="text-base font-semibold text-gray-900 mt-6 mb-2">
-              Referencia
+              {isEn ? 'Reference' : 'Referencia'}
             </h4>
             <p className="text-sm">
-              INDEC Argentina (2016), &quot;Metodología de estimación trimestral de
-              pobreza e indigencia&quot;. El método Chow-Lin es estándar para
-              desagregación temporal en series económicas.
+              {isEn
+                ? 'INDEC Argentina (2016), "Quarterly estimation methodology for poverty and indigence". The Chow-Lin method is standard for temporal disaggregation in economic series.'
+                : 'INDEC Argentina (2016), "Metodología de estimación trimestral de pobreza e indigencia". El método Chow-Lin es estándar para desagregación temporal en series económicas.'}
             </p>
 
             <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
               <p className="text-sm text-blue-900">
-                <strong>Nota:</strong> Los valores trimestrales son estimaciones
-                basadas en la distribución intra-anual de los indicadores. Los valores
-                anuales oficiales de INEI se mantienen como referencia.
+                <strong>{isEn ? 'Note:' : 'Nota:'}</strong>{' '}
+                {isEn
+                  ? 'Quarterly values are estimates based on the intra-annual distribution of indicators. Official annual INEI values are maintained as reference.'
+                  : 'Los valores trimestrales son estimaciones basadas en la distribución intra-anual de los indicadores. Los valores anuales oficiales de INEI se mantienen como referencia.'}
               </p>
             </div>
           </div>

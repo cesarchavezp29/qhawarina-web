@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useLocale } from 'next-intl';
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -35,6 +36,7 @@ interface SectoralData {
 }
 
 export default function PBISectoresPage() {
+  const isEn = useLocale() === 'en';
   const [data, setData] = useState<SectoralData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedSectors, setSelectedSectors] = useState<string[]>([]);
@@ -54,7 +56,7 @@ export default function PBISectoresPage() {
   if (loading || !data) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Cargando datos...</p>
+        <p className="text-gray-500">{isEn ? "Loading data..." : "Cargando datos..."}</p>
       </div>
     );
   }
@@ -80,7 +82,7 @@ export default function PBISectoresPage() {
       y: data.total_gdp.values,
       type: "scatter" as const,
       mode: "lines" as const,
-      name: "PBI Total",
+      name: isEn ? "Total GDP" : "PBI Total",
       line: { color: "#1f2937", width: 3, dash: "dash" },
     },
     // Individual sectors
@@ -89,7 +91,7 @@ export default function PBISectoresPage() {
       y: sector.values,
       type: "scatter" as const,
       mode: "lines+markers" as const,
-      name: sector.name_es,
+      name: isEn ? sector.name_en : sector.name_es,
       line: { color: sector.color, width: 2 },
       marker: { size: 4, color: sector.color },
     })),
@@ -97,15 +99,15 @@ export default function PBISectoresPage() {
 
   const layout = {
     title: {
-      text: "Crecimiento del PBI por Sector Económico",
+      text: isEn ? "GDP Growth by Economic Sector" : "Crecimiento del PBI por Sector Económico",
       font: { size: 18, color: "#1f2937" },
     },
     xaxis: {
-      title: "Trimestre",
+      title: isEn ? "Quarter" : "Trimestre",
       gridcolor: "#e5e7eb",
     },
     yaxis: {
-      title: "Variación % interanual",
+      title: isEn ? "YoY % change" : "Variación % interanual",
       gridcolor: "#e5e7eb",
       zeroline: true,
       zerolinecolor: "#9ca3af",
@@ -131,23 +133,25 @@ export default function PBISectoresPage() {
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
           <Link href="/estadisticas" className="hover:text-blue-700">
-            Estadísticas
+            {isEn ? "Statistics" : "Estadísticas"}
           </Link>
           <span className="mx-2">/</span>
           <Link href="/estadisticas/pbi" className="hover:text-blue-700">
             PBI
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900 font-medium">Sectores Económicos</span>
+          <span className="text-gray-900 font-medium">{isEn ? "Economic Sectors" : "Sectores Económicos"}</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            PBI por Sector Económico
+            {isEn ? "GDP by Economic Sector" : "PBI por Sector Económico"}
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            Desagregación del crecimiento económico por sectores productivos. Datos del INEI procesados por el BCRP.
+            {isEn
+              ? "Breakdown of economic growth by productive sectors. Data from INEI processed by BCRP."
+              : "Desagregación del crecimiento económico por sectores productivos. Datos del INEI procesados por el BCRP."}
           </p>
         </div>
 
@@ -167,7 +171,7 @@ export default function PBISectoresPage() {
             >
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-sm font-medium text-gray-600">
-                  {sector.name_es}
+                  {isEn ? sector.name_en : sector.name_es}
                 </h3>
                 <input
                   type="checkbox"
@@ -211,31 +215,49 @@ export default function PBISectoresPage() {
             useResizeHandler
           />
           <p className="text-sm text-gray-500 mt-4">
-            <strong>Fuente:</strong> {data.metadata.source} • Última actualización:{" "}
-            {new Date(data.metadata.last_update).toLocaleDateString("es-PE")}
+            {isEn ? (
+              <><strong>Source:</strong> {data.metadata.source} • Last update: {new Date(data.metadata.last_update).toLocaleDateString('en-US')}</>
+            ) : (
+              <><strong>Fuente:</strong> {data.metadata.source} • Última actualización:{" "}{new Date(data.metadata.last_update).toLocaleDateString("es-PE")}</>
+            )}
           </p>
         </div>
 
         {/* Insights */}
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg mb-8">
           <h3 className="text-lg font-semibold text-blue-900 mb-3">
-            💡 Interpretación
+            {isEn ? "💡 Interpretation" : "💡 Interpretación"}
           </h3>
           <ul className="space-y-2 text-blue-800">
             <li>
-              <strong>Agropecuario ({data.sectors.find(s => s.id === "agropecuario")?.latest_value.toFixed(1)}%):</strong> Sector primario con alta variabilidad estacional. Incluye agricultura, ganadería y silvicultura.
+              <strong>{isEn ? "Agriculture" : "Agropecuario"} ({data.sectors.find(s => s.id === "agropecuario")?.latest_value.toFixed(1)}%):</strong>{" "}
+              {isEn
+                ? "Primary sector with high seasonal variability. Includes agriculture, livestock, and forestry."
+                : "Sector primario con alta variabilidad estacional. Incluye agricultura, ganadería y silvicultura."}
             </li>
             <li>
-              <strong>Minería ({data.sectors.find(s => s.id === "mineria")?.latest_value.toFixed(1)}%):</strong> Sector extractivo clave para las exportaciones. Depende de precios internacionales del cobre, oro, plata.
+              <strong>{isEn ? "Mining" : "Minería"} ({data.sectors.find(s => s.id === "mineria")?.latest_value.toFixed(1)}%):</strong>{" "}
+              {isEn
+                ? "Key extractive sector for exports. Depends on international prices of copper, gold, silver."
+                : "Sector extractivo clave para las exportaciones. Depende de precios internacionales del cobre, oro, plata."}
             </li>
             <li>
-              <strong>Manufactura ({data.sectors.find(s => s.id === "manufactura")?.latest_value.toFixed(1)}%):</strong> Sector industrial. Incluye procesamiento primario y no primario.
+              <strong>{isEn ? "Manufacturing" : "Manufactura"} ({data.sectors.find(s => s.id === "manufactura")?.latest_value.toFixed(1)}%):</strong>{" "}
+              {isEn
+                ? "Industrial sector. Includes primary and non-primary processing."
+                : "Sector industrial. Incluye procesamiento primario y no primario."}
             </li>
             <li>
-              <strong>Construcción ({data.sectors.find(s => s.id === "construccion")?.latest_value.toFixed(1)}%):</strong> Indicador adelantado del empleo. Sensible a inversión pública e inmobiliaria.
+              <strong>{isEn ? "Construction" : "Construcción"} ({data.sectors.find(s => s.id === "construccion")?.latest_value.toFixed(1)}%):</strong>{" "}
+              {isEn
+                ? "Leading employment indicator. Sensitive to public and real estate investment."
+                : "Indicador adelantado del empleo. Sensible a inversión pública e inmobiliaria."}
             </li>
             <li>
-              <strong>Servicios ({data.sectors.find(s => s.id === "servicios")?.latest_value.toFixed(1)}%):</strong> Mayor sector de la economía peruana (~50% del PBI). Incluye transporte, telecomunicaciones, finanzas, turismo.
+              <strong>{isEn ? "Services" : "Servicios"} ({data.sectors.find(s => s.id === "servicios")?.latest_value.toFixed(1)}%):</strong>{" "}
+              {isEn
+                ? "Largest sector of the Peruvian economy (~50% of GDP). Includes transport, telecommunications, finance, tourism."
+                : "Mayor sector de la economía peruana (~50% del PBI). Incluye transporte, telecomunicaciones, finanzas, turismo."}
             </li>
           </ul>
         </div>
@@ -243,27 +265,32 @@ export default function PBISectoresPage() {
         {/* Methodology Note */}
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-3">
-            📖 Nota Metodológica
+            {isEn ? "📖 Methodological Note" : "📖 Nota Metodológica"}
           </h3>
           <p className="text-gray-700 mb-4">
-            Los datos sectoriales provienen de las Cuentas Nacionales del INEI, publicadas por el BCRP.
-            Las cifras muestran la variación porcentual interanual del valor agregado bruto (VAB) de cada sector.
+            {isEn
+              ? "Sectoral data comes from INEI National Accounts, published by BCRP. Figures show YoY % change in gross value added (GVA) for each sector."
+              : "Los datos sectoriales provienen de las Cuentas Nacionales del INEI, publicadas por el BCRP. Las cifras muestran la variación porcentual interanual del valor agregado bruto (VAB) de cada sector."}
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Frecuencia:</strong> Trimestral • <strong>Unidad:</strong> % YoY • <strong>Serie base:</strong> Año 2007 = 100
+            {isEn ? (
+              <><strong>Frequency:</strong> Quarterly • <strong>Unit:</strong> % YoY • <strong>Base series:</strong> Year 2007 = 100</>
+            ) : (
+              <><strong>Frecuencia:</strong> Trimestral • <strong>Unidad:</strong> % YoY • <strong>Serie base:</strong> Año 2007 = 100</>
+            )}
           </p>
           <div className="mt-4 flex gap-4">
             <Link
               href="/estadisticas/pbi/metodologia"
               className="text-blue-700 hover:text-blue-800 font-medium"
             >
-              Ver metodología completa →
+              {isEn ? "View full methodology →" : "Ver metodología completa →"}
             </Link>
             <Link
               href="/estadisticas/pbi"
               className="text-blue-700 hover:text-blue-800 font-medium"
             >
-              ← Volver a PBI
+              {isEn ? "← Back to GDP" : "← Volver a PBI"}
             </Link>
           </div>
         </div>

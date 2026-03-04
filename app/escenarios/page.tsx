@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowRight, TrendingUp, TrendingDown } from "lucide-react";
+import { useLocale } from 'next-intl';
 
 interface ScenarioMetadata {
   scenario_name: string;
@@ -70,20 +71,21 @@ interface ScenarioData {
 }
 
 const SCENARIOS = [
-  { id: "mild_recession", name: "Recesión Leve", category: "recession" },
-  { id: "severe_recession", name: "Recesión Severa", category: "recession" },
-  { id: "inflation_spike", name: "Spike Inflacionario", category: "inflation" },
-  { id: "deflation", name: "Deflación", category: "inflation" },
-  { id: "political_crisis", name: "Crisis Política", category: "political" },
+  { id: "mild_recession", name: "Recesión Leve", name_en: "Mild Recession", category: "recession" },
+  { id: "severe_recession", name: "Recesión Severa", name_en: "Severe Recession", category: "recession" },
+  { id: "inflation_spike", name: "Spike Inflacionario", name_en: "Inflationary Spike", category: "inflation" },
+  { id: "deflation", name: "Deflación", name_en: "Deflation", category: "inflation" },
+  { id: "political_crisis", name: "Crisis Política", name_en: "Political Crisis", category: "political" },
   {
     id: "institutional_reform",
     name: "Reforma Institucional",
+    name_en: "Institutional Reform",
     category: "political",
   },
-  { id: "commodity_boom", name: "Boom de Commodities", category: "external" },
-  { id: "global_recession", name: "Recesión Global", category: "external" },
-  { id: "perfect_storm", name: "Tormenta Perfecta", category: "stress" },
-  { id: "goldilocks", name: "Escenario Ideal", category: "positive" },
+  { id: "commodity_boom", name: "Boom de Commodities", name_en: "Commodity Boom", category: "external" },
+  { id: "global_recession", name: "Recesión Global", name_en: "Global Recession", category: "external" },
+  { id: "perfect_storm", name: "Tormenta Perfecta", name_en: "Perfect Storm", category: "stress" },
+  { id: "goldilocks", name: "Escenario Ideal", name_en: "Ideal Scenario", category: "positive" },
 ];
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -96,6 +98,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function EscenariosPage() {
+  const isEn = useLocale() === 'en';
   const [selectedScenario, setSelectedScenario] = useState<string>("mild_recession");
   const [scenarioData, setScenarioData] = useState<ScenarioData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -128,9 +131,9 @@ export default function EscenariosPage() {
     // Mock data for demo
     return {
       metadata: {
-        scenario_name: SCENARIOS.find((s) => s.id === scenarioId)?.name || "",
+        scenario_name: SCENARIOS.find((s) => s.id === scenarioId)?.[isEn ? 'name_en' : 'name'] || "",
         scenario_description:
-          "Escenario de simulación para análisis contrafactual",
+          isEn ? "Simulation scenario for counterfactual analysis" : "Escenario de simulación para análisis contrafactual",
         tags: ["demo"],
         generated_at: new Date().toISOString(),
         target_period_gdp: "2026-Q2",
@@ -216,27 +219,28 @@ export default function EscenariosPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Análisis Contrafactual
+            {isEn ? "Counterfactual Analysis" : "Análisis Contrafactual"}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl">
-            Explora escenarios hipotéticos y su impacto en la economía peruana.
-            ¿Qué pasaría si...?
+            {isEn
+              ? "Explore hypothetical scenarios and their impact on the Peruvian economy. What would happen if...?"
+              : "Explora escenarios hipotéticos y su impacto en la economía peruana. ¿Qué pasaría si...?"}
           </p>
         </div>
 
         {/* Intro */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
           <p className="text-blue-900 text-sm leading-relaxed">
-            Explora el impacto cuantificado de cada escenario en PBI, inflación y pobreza,
-            calculado con modelos de factores dinámicos entrenados sobre datos históricos peruanos.
-            Selecciona un escenario para ver el análisis completo.
+            {isEn
+              ? "Explore the quantified impact of each scenario on GDP, inflation, and poverty, calculated using dynamic factor models trained on Peruvian historical data. Select a scenario to see the full analysis."
+              : "Explora el impacto cuantificado de cada escenario en PBI, inflación y pobreza, calculado con modelos de factores dinámicos entrenados sobre datos históricos peruanos. Selecciona un escenario para ver el análisis completo."}
           </p>
         </div>
 
         {/* Scenario Selector */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
           <label className="block text-sm font-semibold text-gray-700 mb-3">
-            Selecciona un Escenario
+            {isEn ? "Select a Scenario" : "Selecciona un Escenario"}
           </label>
           <select
             value={selectedScenario}
@@ -245,7 +249,7 @@ export default function EscenariosPage() {
           >
             {SCENARIOS.map((scenario) => (
               <option key={scenario.id} value={scenario.id}>
-                {scenario.name}
+                {isEn ? scenario.name_en : scenario.name}
               </option>
             ))}
           </select>
@@ -254,7 +258,7 @@ export default function EscenariosPage() {
         {loading && (
           <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mx-auto mb-4"></div>
-            <p className="text-gray-600">Cargando escenario...</p>
+            <p className="text-gray-600">{isEn ? "Loading scenario..." : "Cargando escenario..."}</p>
           </div>
         )}
 
@@ -292,7 +296,7 @@ export default function EscenariosPage() {
               {/* Shocks */}
               <div className="border-t border-gray-200 pt-4 mt-4">
                 <h3 className="font-semibold text-gray-900 mb-3">
-                  Shocks Simulados:
+                  {isEn ? "Simulated Shocks:" : "Shocks Simulados:"}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {scenarioData.shocks.endogenous.map((shock, idx) => (
@@ -303,7 +307,7 @@ export default function EscenariosPage() {
                       <span className="text-2xl mr-3">🎯</span>
                       <div>
                         <div className="text-sm font-semibold text-red-900">
-                          Shock Endógeno
+                          {isEn ? "Endogenous Shock" : "Shock Endógeno"}
                         </div>
                         <div className="text-sm text-red-700">
                           {shock.description}
@@ -319,7 +323,7 @@ export default function EscenariosPage() {
                       <span className="text-2xl mr-3">⚡</span>
                       <div>
                         <div className="text-sm font-semibold text-blue-900">
-                          Shock Exógeno
+                          {isEn ? "Exogenous Shock" : "Shock Exógeno"}
                         </div>
                         <div className="text-sm text-blue-700">
                           {shock.description}
@@ -343,7 +347,7 @@ export default function EscenariosPage() {
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
                       <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                        Indicador
+                        {isEn ? "Indicator" : "Indicador"}
                       </th>
                       <th className="px-6 py-3 text-right text-sm font-semibold text-gray-700">
                         Baseline
@@ -355,7 +359,7 @@ export default function EscenariosPage() {
                         Contrafactual
                       </th>
                       <th className="px-6 py-3 text-right text-sm font-semibold text-gray-700">
-                        Impacto
+                        {isEn ? "Impact" : "Impacto"}
                       </th>
                     </tr>
                   </thead>
@@ -365,10 +369,10 @@ export default function EscenariosPage() {
                       <tr>
                         <td className="px-6 py-4">
                           <div className="font-medium text-gray-900">
-                            PBI (YoY)
+                            {isEn ? "GDP (YoY)" : "PBI (YoY)"}
                           </div>
                           <div className="text-sm text-gray-500">
-                            Crecimiento anual
+                            {isEn ? "Annual growth" : "Crecimiento anual"}
                           </div>
                         </td>
                         <td className="px-6 py-4 text-right text-lg font-semibold text-gray-900">
@@ -399,10 +403,10 @@ export default function EscenariosPage() {
                         <tr>
                           <td className="px-6 py-4">
                             <div className="font-medium text-gray-900">
-                              Inflación (Mensual)
+                              {isEn ? "Inflation (Monthly)" : "Inflación (Mensual)"}
                             </div>
                             <div className="text-sm text-gray-500">
-                              Variación IPC mensual
+                              {isEn ? "Monthly CPI change" : "Variación IPC mensual"}
                             </div>
                           </td>
                           <td className="px-6 py-4 text-right text-lg font-semibold text-gray-900">
@@ -440,11 +444,11 @@ export default function EscenariosPage() {
             {/* Propagated Impacts */}
             <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
               <h2 className="text-xl font-bold text-gray-900 mb-4">
-                Impactos Propagados (Cross-Model)
+                {isEn ? "Propagated Impacts (Cross-Model)" : "Impactos Propagados (Cross-Model)"}
               </h2>
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                 <p className="text-blue-900 leading-relaxed">
-                  <strong>Interpretación:</strong>{" "}
+                  <strong>{isEn ? "Interpretation:" : "Interpretación:"}</strong>{" "}
                   {scenarioData.propagated_impacts.interpretation}
                 </p>
               </div>
@@ -453,7 +457,7 @@ export default function EscenariosPage() {
                 {/* GDP Impact */}
                 <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <div className="text-sm font-semibold text-gray-600 mb-1">
-                    Impacto Total PBI
+                    {isEn ? "Total GDP Impact" : "Impacto Total PBI"}
                   </div>
                   <div
                     className={`text-3xl font-bold ${getImpactColor(
@@ -469,7 +473,7 @@ export default function EscenariosPage() {
                 {/* Inflation Impact */}
                 <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <div className="text-sm font-semibold text-gray-600 mb-1">
-                    Impacto Inflación
+                    {isEn ? "Inflation Impact" : "Impacto Inflación"}
                   </div>
                   <div
                     className={`text-3xl font-bold ${getImpactColor(
@@ -482,13 +486,13 @@ export default function EscenariosPage() {
                         .inflation_total_monthly_pp
                     )}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">mensual</div>
+                  <div className="text-xs text-gray-500 mt-1">{isEn ? "monthly" : "mensual"}</div>
                 </div>
 
                 {/* Poverty Impact */}
                 <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <div className="text-sm font-semibold text-gray-600 mb-1">
-                    Impacto Pobreza
+                    {isEn ? "Poverty Impact" : "Impacto Pobreza"}
                   </div>
                   <div
                     className={`text-3xl font-bold ${getImpactColor(
@@ -506,7 +510,7 @@ export default function EscenariosPage() {
               {scenarioData.propagated_impacts.individual.gdp_shock && (
                 <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <div className="text-sm font-semibold text-gray-700 mb-2">
-                    📊 Mecanismo de Transmisión
+                    {isEn ? "📊 Transmission Mechanism" : "📊 Mecanismo de Transmisión"}
                   </div>
                   <p className="text-sm text-gray-600">
                     {scenarioData.propagated_impacts.individual.gdp_shock.mechanism}
@@ -514,7 +518,7 @@ export default function EscenariosPage() {
                   <div className="grid md:grid-cols-2 gap-4 mt-3">
                     <div>
                       <span className="text-xs text-gray-500">
-                        Impacto en Pobreza:
+                        {isEn ? "Poverty Impact:" : "Impacto en Pobreza:"}
                       </span>
                       <span className="ml-2 font-semibold text-gray-900">
                         {formatPP(
@@ -525,7 +529,7 @@ export default function EscenariosPage() {
                     </div>
                     <div>
                       <span className="text-xs text-gray-500">
-                        Impacto en Empleo:
+                        {isEn ? "Employment Impact:" : "Impacto en Empleo:"}
                       </span>
                       <span className="ml-2 font-semibold text-gray-900">
                         {formatPP(
@@ -542,9 +546,13 @@ export default function EscenariosPage() {
             {/* Methodology note */}
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
               <p className="text-sm text-gray-600">
-                Escenarios calculados con modelos DFM + Ridge entrenados sobre datos 2004–2024.
-                Ver <a href="/metodologia" className="text-blue-700 hover:underline">metodología completa</a> o{' '}
-                <a href="/simuladores" className="text-blue-700 hover:underline">crear simulaciones personalizadas</a>.
+                {isEn ? (
+                  <>Scenarios calculated using DFM + Ridge models trained on 2004–2024 data. See <a href="/metodologia" className="text-blue-700 hover:underline">full methodology</a> or <a href="/simuladores" className="text-blue-700 hover:underline">create custom simulations</a>.</>
+                ) : (
+                  <>Escenarios calculados con modelos DFM + Ridge entrenados sobre datos 2004–2024.
+                  Ver <a href="/metodologia" className="text-blue-700 hover:underline">metodología completa</a> o{' '}
+                  <a href="/simuladores" className="text-blue-700 hover:underline">crear simulaciones personalizadas</a>.</>
+                )}
               </p>
             </div>
           </>

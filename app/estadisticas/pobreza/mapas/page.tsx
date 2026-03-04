@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import LastUpdate from "../../../components/stats/LastUpdate";
+import { useLocale } from 'next-intl';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
@@ -31,6 +32,7 @@ interface PovertyData {
 type ViewLevel = 'department' | 'district';
 
 export default function PobrezaMapasPage() {
+  const isEn = useLocale() === 'en';
   const [data, setData] = useState<PovertyData | null>(null);
   const [deptGeojson, setDeptGeojson] = useState<object | null>(null);
   const [distGeojson, setDistGeojson] = useState<object | null>(null);
@@ -71,7 +73,7 @@ export default function PobrezaMapasPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Cargando datos de pobreza...</p>
+        <p className="text-gray-500">{isEn ? 'Loading poverty data...' : 'Cargando datos de pobreza...'}</p>
       </div>
     );
   }
@@ -79,9 +81,11 @@ export default function PobrezaMapasPage() {
   if (error || !data) {
     return (
       <div className="min-h-screen flex items-center justify-center flex-col gap-4">
-        <p className="text-red-600 font-medium">Error cargando datos de pobreza</p>
+        <p className="text-red-600 font-medium">{isEn ? 'Error loading poverty data' : 'Error cargando datos de pobreza'}</p>
         {error && <p className="text-sm text-gray-500 font-mono">{error}</p>}
-        <p className="text-sm text-gray-400">Revisa la consola del navegador para más detalles.</p>
+        <p className="text-sm text-gray-400">
+          {isEn ? 'Check the browser console for more details.' : 'Revisa la consola del navegador para más detalles.'}
+        </p>
       </div>
     );
   }
@@ -96,51 +100,61 @@ export default function PobrezaMapasPage() {
   const bot3 = [...data.departments].sort((a, b) => a.poverty_rate_2025_nowcast - b.poverty_rate_2025_nowcast).slice(0, 3);
   const mostImproved = [...data.departments].sort((a, b) => a.change_pp - b.change_pp)[0];
 
-  // Build district lookup for choropleth
   const districtMap = new Map(data.districts.map(d => [d.ubigeo, d.poverty_rate_nowcast]));
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">Estadísticas</a>
-          {" / "}
-          <a href="/estadisticas/pobreza" className="hover:text-blue-700">Pobreza</a>
-          {" / "}
-          <span className="text-gray-900 font-medium">Mapas</span>
+          <a href="/estadisticas" className="hover:text-blue-700">{isEn ? 'Statistics' : 'Estadísticas'}</a>
+          {' / '}
+          <a href="/estadisticas/pobreza" className="hover:text-blue-700">{isEn ? 'Poverty' : 'Pobreza'}</a>
+          {' / '}
+          <span className="text-gray-900 font-medium">{isEn ? 'Maps' : 'Mapas'}</span>
         </nav>
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          Distribución Regional — Pobreza
+          {isEn ? 'Regional Distribution — Poverty' : 'Distribución Regional — Pobreza'}
         </h1>
         <p className="text-lg text-gray-600 mb-1">
-          Nowcast {data.metadata.target_year} por departamento · modelo {data.metadata.model}
+          {isEn
+            ? `Nowcast ${data.metadata.target_year} by department · model ${data.metadata.model}`
+            : `Nowcast ${data.metadata.target_year} por departamento · modelo ${data.metadata.model}`}
         </p>
         <p className="text-sm text-gray-500 mb-4">
-          Nacional: <strong className="text-red-700">{data.national.poverty_rate.toFixed(1)}%</strong>
-          {' · '}Fuente: INEI ENAHO, desagregación NTL satélital
+          {isEn ? 'National:' : 'Nacional:'}{' '}
+          <strong className="text-red-700">{data.national.poverty_rate.toFixed(1)}%</strong>
+          {' · '}{isEn ? 'Source: INEI ENAHO, satellite NTL disaggregation' : 'Fuente: INEI ENAHO, desagregación NTL satélital'}
         </p>
         <div className="mt-2 mb-8"><LastUpdate date="18-Feb-2026" /></div>
 
         {/* Key Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-lg border border-gray-200 p-5">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Tasa Nacional</div>
+            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+              {isEn ? 'National Rate' : 'Tasa Nacional'}
+            </div>
             <div className="text-3xl font-bold text-red-700">{data.national.poverty_rate.toFixed(1)}%</div>
             <div className="text-xs text-gray-500 mt-1">Nowcast {data.metadata.target_year}</div>
           </div>
           <div className="bg-white rounded-lg border border-gray-200 p-5">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Mayor Pobreza</div>
+            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+              {isEn ? 'Highest Poverty' : 'Mayor Pobreza'}
+            </div>
             <div className="text-xl font-bold text-red-800">{top3[0].poverty_rate_2025_nowcast.toFixed(1)}%</div>
             <div className="text-xs text-gray-700 mt-1">{top3[0].name}</div>
           </div>
           <div className="bg-white rounded-lg border border-gray-200 p-5">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Menor Pobreza</div>
+            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+              {isEn ? 'Lowest Poverty' : 'Menor Pobreza'}
+            </div>
             <div className="text-xl font-bold text-green-700">{bot3[0].poverty_rate_2025_nowcast.toFixed(1)}%</div>
             <div className="text-xs text-gray-700 mt-1">{bot3[0].name}</div>
           </div>
           <div className="bg-white rounded-lg border border-gray-200 p-5">
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Mayor Mejora</div>
+            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+              {isEn ? 'Most Improved' : 'Mayor Mejora'}
+            </div>
             <div className="text-xl font-bold text-green-600">{mostImproved.change_pp.toFixed(1)} pp</div>
             <div className="text-xs text-gray-700 mt-1">{mostImproved.name}</div>
           </div>
@@ -157,7 +171,7 @@ export default function PobrezaMapasPage() {
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
               }`}
             >
-              Departamental (25)
+              {isEn ? 'Departmental (25)' : 'Departamental (25)'}
             </button>
             <button
               onClick={() => handleLevelChange('district')}
@@ -167,7 +181,7 @@ export default function PobrezaMapasPage() {
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
               }`}
             >
-              Distrital (1,891) {loadingDist && '⏳'}
+              {isEn ? 'District (1,891)' : 'Distrital (1,891)'} {loadingDist && '⏳'}
             </button>
           </div>
         </div>
@@ -175,7 +189,11 @@ export default function PobrezaMapasPage() {
         {/* Choropleth Map — Departmental */}
         {level === 'department' && deptGeojson && (
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Tasa de Pobreza por Departamento — {data.metadata.target_year}</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">
+              {isEn
+                ? `Poverty Rate by Department — ${data.metadata.target_year}`
+                : `Tasa de Pobreza por Departamento — ${data.metadata.target_year}`}
+            </h2>
             <Plot
               data={[{
                 type: 'choropleth' as const,
@@ -196,13 +214,13 @@ export default function PobrezaMapasPage() {
                 zmin: 0,
                 zmax: 50,
                 colorbar: {
-                  title: { text: 'Pobreza (%)', side: 'right' as const },
+                  title: { text: isEn ? 'Poverty (%)' : 'Pobreza (%)', side: 'right' as const },
                   thickness: 15,
                   len: 0.8,
                   ticksuffix: '%',
                 },
                 text: data.departments.map(d =>
-                  `${d.name}<br>Nowcast: ${d.poverty_rate_2025_nowcast.toFixed(1)}%<br>2024: ${d.poverty_rate_2024.toFixed(1)}%<br>Cambio: ${d.change_pp > 0 ? '+' : ''}${d.change_pp.toFixed(1)} pp`
+                  `${d.name}<br>${isEn ? 'Nowcast:' : 'Nowcast:'} ${d.poverty_rate_2025_nowcast.toFixed(1)}%<br>2024: ${d.poverty_rate_2024.toFixed(1)}%<br>${isEn ? 'Change:' : 'Cambio:'} ${d.change_pp > 0 ? '+' : ''}${d.change_pp.toFixed(1)} pp`
                 ),
                 hovertemplate: '%{text}<extra></extra>',
                 marker: { line: { color: '#ffffff', width: 0.8 } },
@@ -221,7 +239,9 @@ export default function PobrezaMapasPage() {
               style={{ width: '100%' }}
             />
             <p className="text-xs text-gray-500 mt-3">
-              Amarillo = menor pobreza · Rojo oscuro = mayor pobreza. Escala: 0–50%. Hover para ver detalles.
+              {isEn
+                ? 'Yellow = lower poverty · Dark red = higher poverty. Scale: 0–50%. Hover for details.'
+                : 'Amarillo = menor pobreza · Rojo oscuro = mayor pobreza. Escala: 0–50%. Hover para ver detalles.'}
             </p>
           </div>
         )}
@@ -229,14 +249,17 @@ export default function PobrezaMapasPage() {
         {/* Choropleth Map — District */}
         {level === 'district' && (
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Tasa de Pobreza por Distrito — {data.metadata.target_year}</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">
+              {isEn
+                ? `Poverty Rate by District — ${data.metadata.target_year}`
+                : `Tasa de Pobreza por Distrito — ${data.metadata.target_year}`}
+            </h2>
             {loadingDist && (
               <div className="h-48 flex items-center justify-center text-gray-500">
-                Cargando mapa distrital (1.8 MB)...
+                {isEn ? 'Loading district map (1.8 MB)...' : 'Cargando mapa distrital (1.8 MB)...'}
               </div>
             )}
             {!loadingDist && distGeojson && (() => {
-              // Match districts: GeoJSON IDDIST (6-char) → data ubigeo (6-char)
               const gj = distGeojson as any;
               const validDists = gj.features
                 .map((f: any) => f.properties.IDDIST)
@@ -263,14 +286,14 @@ export default function PobrezaMapasPage() {
                     zmin: 0,
                     zmax: 80,
                     colorbar: {
-                      title: { text: 'Pobreza (%)', side: 'right' as const },
+                      title: { text: isEn ? 'Poverty (%)' : 'Pobreza (%)', side: 'right' as const },
                       thickness: 15,
                       len: 0.8,
                       ticksuffix: '%',
                     },
                     text: validDists.map((id: string) => {
                       const rate = districtMap.get(id)!;
-                      return `Ubigeo: ${id}<br>Pobreza: ${rate.toFixed(1)}%`;
+                      return `Ubigeo: ${id}<br>${isEn ? 'Poverty:' : 'Pobreza:'} ${rate.toFixed(1)}%`;
                     }),
                     hovertemplate: '%{text}<extra></extra>',
                     marker: { line: { color: '#ffffff', width: 0.3 } },
@@ -291,9 +314,9 @@ export default function PobrezaMapasPage() {
               );
             })()}
             <p className="text-xs text-gray-500 mt-3">
-              1,891 distritos. Desagregación via luces nocturnas (NTL). Distritos sin datos aparecen en gris.
+              {isEn ? '1,891 districts. Disaggregation via nighttime lights (NTL). Districts without data appear in grey.' : '1,891 distritos. Desagregación via luces nocturnas (NTL). Distritos sin datos aparecen en gris.'}
               <a href="/assets/data/poverty_districts_full.csv" download className="ml-2 text-blue-600 hover:underline">
-                Descargar CSV completo
+                {isEn ? 'Download full CSV' : 'Descargar CSV completo'}
               </a>
             </p>
           </div>
@@ -302,7 +325,11 @@ export default function PobrezaMapasPage() {
         {/* Change Map */}
         {level === 'department' && deptGeojson && (
           <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Cambio en Pobreza — 2024 → {data.metadata.target_year} (pp)</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">
+              {isEn
+                ? `Change in Poverty — 2024 → ${data.metadata.target_year} (pp)`
+                : `Cambio en Pobreza — 2024 → ${data.metadata.target_year} (pp)`}
+            </h2>
             <Plot
               data={[{
                 type: 'choropleth' as const,
@@ -321,7 +348,7 @@ export default function PobrezaMapasPage() {
                 zmin: -10,
                 zmax: 5,
                 colorbar: {
-                  title: { text: 'Cambio (pp)', side: 'right' as const },
+                  title: { text: isEn ? 'Change (pp)' : 'Cambio (pp)', side: 'right' as const },
                   thickness: 15,
                   len: 0.8,
                 },
@@ -345,7 +372,9 @@ export default function PobrezaMapasPage() {
               style={{ width: '100%' }}
             />
             <p className="text-xs text-gray-500 mt-3">
-              Verde = reducción de pobreza · Rojo = aumento. Comparado con tasa oficial INEI 2024.
+              {isEn
+                ? 'Green = poverty reduction · Red = increase. Compared to official INEI 2024 rates.'
+                : 'Verde = reducción de pobreza · Rojo = aumento. Comparado con tasa oficial INEI 2024.'}
             </p>
           </div>
         )}
@@ -353,20 +382,22 @@ export default function PobrezaMapasPage() {
         {/* Department Table */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">Ranking Departamental</h2>
+            <h2 className="text-xl font-bold text-gray-900">
+              {isEn ? 'Departmental Ranking' : 'Ranking Departamental'}
+            </h2>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-gray-500">Ordenar:</span>
+              <span className="text-xs text-gray-500">{isEn ? 'Sort:' : 'Ordenar:'}</span>
               <button onClick={() => setSortCol('poverty_rate_2025_nowcast')}
                 className={`px-3 py-1 rounded border text-xs font-medium transition-colors ${sortCol === 'poverty_rate_2025_nowcast' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`}>
-                Tasa
+                {isEn ? 'Rate' : 'Tasa'}
               </button>
               <button onClick={() => setSortCol('change_pp')}
                 className={`px-3 py-1 rounded border text-xs font-medium transition-colors ${sortCol === 'change_pp' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`}>
-                Cambio
+                {isEn ? 'Change' : 'Cambio'}
               </button>
               <a href="/assets/data/poverty_districts_full.csv" download
                 className="ml-2 px-3 py-1 bg-gray-100 text-gray-700 rounded border border-gray-300 text-xs hover:bg-gray-200">
-                CSV Distrital
+                {isEn ? 'District CSV' : 'CSV Distrital'}
               </a>
             </div>
           </div>
@@ -375,11 +406,21 @@ export default function PobrezaMapasPage() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">#</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Departamento</th>
-                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">2024 Oficial</th>
-                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">{data.metadata.target_year} Nowcast</th>
-                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Cambio (pp)</th>
-                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Barra</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    {isEn ? 'Department' : 'Departamento'}
+                  </th>
+                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                    {isEn ? '2024 Official' : '2024 Oficial'}
+                  </th>
+                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                    {data.metadata.target_year} Nowcast
+                  </th>
+                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                    {isEn ? 'Change (pp)' : 'Cambio (pp)'}
+                  </th>
+                  <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                    {isEn ? 'Bar' : 'Barra'}
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-100">
@@ -416,20 +457,27 @@ export default function PobrezaMapasPage() {
 
         {/* Methodology */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h3 className="text-base font-semibold text-blue-900 mb-3">Metodología</h3>
+          <h3 className="text-base font-semibold text-blue-900 mb-3">
+            {isEn ? 'Methodology' : 'Metodología'}
+          </h3>
           <div className="text-sm text-blue-800 space-y-2">
             <p>
-              <strong>Modelo:</strong> {data.metadata.model} entrenado sobre datos ENAHO 2012–2024 usando
-              indicadores de panel departamental (crédito, electricidad, recaudación, turismo, NTL).
-              Método: predicción de cambio anual + rezago de pobreza como ancla.
+              <strong>{isEn ? 'Model:' : 'Modelo:'}</strong>{' '}
+              {isEn
+                ? `${data.metadata.model} trained on ENAHO 2012–2024 data using departmental panel indicators (credit, electricity, tax revenue, tourism, NTL). Method: annual change prediction + poverty lag as anchor.`
+                : `${data.metadata.model} entrenado sobre datos ENAHO 2012–2024 usando indicadores de panel departamental (crédito, electricidad, recaudación, turismo, NTL). Método: predicción de cambio anual + rezago de pobreza como ancla.`}
             </p>
             <p>
-              <strong>Desagregación distrital:</strong> Tasa departamental distribuida a 1,891 distritos
-              usando luces nocturnas (NTL VIIRS) como proxy invertido de riqueza (mayor NTL = menor pobreza relativa).
+              <strong>{isEn ? 'District disaggregation:' : 'Desagregación distrital:'}</strong>{' '}
+              {isEn
+                ? 'Departmental rate distributed to 1,891 districts using nighttime lights (NTL VIIRS) as inverse proxy for wealth (higher NTL = lower relative poverty).'
+                : 'Tasa departamental distribuida a 1,891 distritos usando luces nocturnas (NTL VIIRS) como proxy invertido de riqueza (mayor NTL = menor pobreza relativa).'}
             </p>
             <p>
-              <strong>Cambio vs 2024:</strong> Comparado con tasas oficiales INEI ENAHO 2024 (publicadas Jul 2025).
-              El nowcast 2025 se actualizará con datos ENAHO 2025 cuando estén disponibles.
+              <strong>{isEn ? 'Change vs 2024:' : 'Cambio vs 2024:'}</strong>{' '}
+              {isEn
+                ? 'Compared to official INEI ENAHO 2024 rates (published Jul 2025). The 2025 nowcast will be updated with 2025 ENAHO data when available.'
+                : 'Comparado con tasas oficiales INEI ENAHO 2024 (publicadas Jul 2025). El nowcast 2025 se actualizará con datos ENAHO 2025 cuando estén disponibles.'}
             </p>
           </div>
         </div>

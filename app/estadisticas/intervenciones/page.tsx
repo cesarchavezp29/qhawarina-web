@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import ShareButton from "../../components/ShareButton";
 import EmbedWidget from "../../components/EmbedWidget";
+import { useLocale } from 'next-intl';
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -15,85 +16,106 @@ const VARIABLES = [
     key: "spot_net_purchases" as const,
     keyM: "spot_net_purchases",
     label: "Spot neto",
+    label_en: "Net Spot",
     labelFull: "Compras netas spot BCRP",
+    labelFull_en: "BCRP Net Spot Purchases",
     unit: "Mill. USD",
     color: "#1d4ed8",
     type: "bar" as const,
     dash: undefined,
     group: "int" as const,
     description: "Compras (positivo) o ventas (negativo) netas de dólares en el mercado spot.",
+    description_en: "Net purchases (positive) or sales (negative) of dollars in the spot market.",
   },
   {
     key: "swaps_net" as const,
     keyM: "swaps_net",
     label: "Swaps neto",
+    label_en: "Net Swaps",
     labelFull: "Swaps cambiarios netos BCRP",
+    labelFull_en: "BCRP Net FX Swaps",
     unit: "Mill. USD",
     color: "#7c3aed",
     type: "bar" as const,
     dash: undefined,
     group: "int" as const,
     description: "Swaps de compra menos swaps de venta netos.",
+    description_en: "Net swap purchases minus swap sales.",
   },
   {
     key: "fx" as const,
     keyM: "fx_avg",
     label: "TC PEN/USD",
+    label_en: "FX PEN/USD",
     labelFull: "Tipo de cambio interbancario",
+    labelFull_en: "Interbank exchange rate",
     unit: "PEN/USD",
     color: "#059669",
     type: "line" as const,
     dash: "solid",
     group: "fin" as const,
     description: "Tipo de cambio interbancario venta (soles por dólar).",
+    description_en: "Interbank selling exchange rate (soles per dollar).",
   },
   {
     key: "bond_sol_10y" as const,
     keyM: "bond_sol_avg",
     label: "Bono Sol 10a",
+    label_en: "10Y Sol Bond",
     labelFull: "Bono soberano 10 años (S/)",
+    labelFull_en: "10-year sovereign bond (S/)",
     unit: "%",
     color: "#dc2626",
     type: "line" as const,
     dash: "solid",
     group: "fin" as const,
     description: "Rendimiento anual del bono soberano peruano a 10 años en soles.",
+    description_en: "Annual yield of the Peruvian 10-year sovereign bond in soles.",
   },
   {
     key: "bond_usd_10y" as const,
     keyM: "bond_usd_avg",
     label: "Bono USD 10a",
+    label_en: "10Y USD Bond",
     labelFull: "Bono soberano 10 años (USD)",
+    labelFull_en: "10-year sovereign bond (USD)",
     unit: "%",
     color: "#9333ea",
     type: "line" as const,
     dash: "dot",
     group: "fin" as const,
     description: "Rendimiento anual del bono soberano peruano a 10 años en dólares.",
+    description_en: "Annual yield of the Peruvian 10-year sovereign bond in dollars.",
   },
   {
     key: "reference_rate" as const,
     keyM: "reference_rate",
     label: "Tasa Ref.",
+    label_en: "Ref. Rate",
     labelFull: "Tasa de referencia BCRP",
+    labelFull_en: "BCRP reference rate",
     unit: "%",
     color: "#0891b2",
     type: "line" as const,
     dash: "dash",
     group: "fin" as const,
     description: "Tasa de política monetaria del BCRP.",
+    description_en: "BCRP monetary policy rate.",
   },
   {
     key: "bvl" as const,
     keyM: "bvl_end",
     label: "BVL",
+    label_en: "BVL",
     labelFull: "BVL Índice General",
+    labelFull_en: "BVL General Index",
     unit: "pts",
     color: "#f59e0b",
     type: "line" as const,
     dash: "solid",
     group: "mkt" as const,
     description: "Índice General de la Bolsa de Valores de Lima.",
+    description_en: "Lima Stock Exchange General Index.",
   },
 ] as const;
 
@@ -157,8 +179,8 @@ function parseLocalDate(dateStr: string): Date {
   return new Date(y, m - 1, d);
 }
 
-function fmtDate(dateStr: string): string {
-  return parseLocalDate(dateStr).toLocaleDateString("es-PE", {
+function fmtDate(dateStr: string, locale: string): string {
+  return parseLocalDate(dateStr).toLocaleDateString(locale, {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -193,10 +215,12 @@ function VarPill({
   variable,
   active,
   onClick,
+  labelText,
 }: {
   variable: (typeof VARIABLES)[number];
   active: boolean;
   onClick: () => void;
+  labelText: string;
 }) {
   return (
     <button
@@ -213,7 +237,7 @@ function VarPill({
         className="w-2.5 h-2.5 rounded-full flex-shrink-0"
         style={{ backgroundColor: active ? "white" : variable.color }}
       />
-      <span>{variable.label}</span>
+      <span>{labelText}</span>
       <span className={`text-xs ${active ? "opacity-70" : "text-gray-400"}`}>
         {variable.unit}
       </span>
@@ -224,6 +248,7 @@ function VarPill({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function IntervencionesBCRPPage() {
+  const isEn = useLocale() === 'en';
   const [data, setData] = useState<FXData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Set<VarKey>>(
@@ -283,10 +308,6 @@ export default function IntervencionesBCRPPage() {
         const yVals = normalized ? normalizeToBase(rawVals) : rawVals;
 
         const isBar = varDef.type === "bar" && !normalized;
-        // Axis assignment when NOT normalized:
-        // - bars → y1 (left, Mill.USD)
-        // - lines when bars also present → y2 (right)
-        // - lines when only lines → y1
         const yaxis =
           normalized || (!hasBars && hasLines)
             ? "y"
@@ -294,11 +315,13 @@ export default function IntervencionesBCRPPage() {
             ? "y"
             : "y2";
 
+        const traceName = isEn ? varDef.label_en : varDef.label;
+
         if (isBar) {
           return {
             x: xLabels,
             y: yVals,
-            name: varDef.label,
+            name: traceName,
             type: "bar" as const,
             marker: {
               color: (yVals as (number | null)[]).map((v) =>
@@ -312,7 +335,7 @@ export default function IntervencionesBCRPPage() {
           return {
             x: xLabels,
             y: yVals,
-            name: varDef.label,
+            name: traceName,
             type: "scatter" as const,
             mode: "lines" as const,
             line: {
@@ -331,12 +354,12 @@ export default function IntervencionesBCRPPage() {
 
     // Build layout
     const leftTitle = normalized
-      ? "Variación desde inicio (%)"
+      ? (isEn ? "Cumulative change from start (%)" : "Variación desde inicio (%)")
       : hasBars
       ? "Mill. USD"
       : selectedVars.length === 1
       ? `${selectedVars[0].unit}`
-      : "Valor";
+      : (isEn ? "Value" : "Valor");
 
     const rightTitle = normalized
       ? ""
@@ -379,12 +402,12 @@ export default function IntervencionesBCRPPage() {
     };
 
     return { traces, layout, hasScale };
-  }, [data, selected, viewMode, normalized]);
+  }, [data, selected, viewMode, normalized, isEn]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Cargando datos del mercado cambiario...</p>
+        <p className="text-gray-500">{isEn ? "Loading FX market data..." : "Cargando datos del mercado cambiario..."}</p>
       </div>
     );
   }
@@ -394,11 +417,11 @@ export default function IntervencionesBCRPPage() {
       <div className="bg-gray-50 min-h-screen py-12">
         <div className="max-w-5xl mx-auto px-4">
           <nav className="text-sm text-gray-500 mb-6">
-            <Link href="/estadisticas" className="hover:text-blue-700">Estadísticas</Link>
+            <Link href="/estadisticas" className="hover:text-blue-700">{isEn ? "Statistics" : "Estadísticas"}</Link>
             <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Mercado Cambiario</span>
+            <span className="text-gray-900 font-medium">{isEn ? "FX Market" : "Mercado Cambiario"}</span>
           </nav>
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">Mercado Cambiario & Intervenciones BCRP</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-6">{isEn ? "FX Market & BCRP Interventions" : "Mercado Cambiario & Intervenciones BCRP"}</h1>
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
             <p className="text-amber-800">
               Ejecuta el pipeline de exportación para generar los datos más recientes.
@@ -413,9 +436,9 @@ export default function IntervencionesBCRPPage() {
   const prevMonth = monthly_series[monthly_series.length - 2] ?? null;
 
   const GROUP_LABELS: Record<string, string> = {
-    int: "Intervenciones",
-    fin: "Financiero",
-    mkt: "Mercado",
+    int: isEn ? "Interventions" : "Intervenciones",
+    fin: isEn ? "Financial" : "Financiero",
+    mkt: isEn ? "Market" : "Mercado",
   };
 
   // Group variables
@@ -425,15 +448,17 @@ export default function IntervencionesBCRPPage() {
     vars: VARIABLES.filter((v) => v.group === g),
   }));
 
+  const locale = isEn ? 'en-US' : 'es-PE';
+
   return (
     <div className="bg-gray-50 min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
-          <Link href="/estadisticas" className="hover:text-blue-700">Estadísticas</Link>
+          <Link href="/estadisticas" className="hover:text-blue-700">{isEn ? "Statistics" : "Estadísticas"}</Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900 font-medium">Mercado Cambiario</span>
+          <span className="text-gray-900 font-medium">{isEn ? "FX Market" : "Mercado Cambiario"}</span>
         </nav>
 
         {/* Header */}
@@ -441,14 +466,16 @@ export default function IntervencionesBCRPPage() {
           <div>
             <div className="flex items-center gap-3 mb-1">
               <h1 className="text-3xl font-bold text-gray-900">
-                Mercado Cambiario & Intervenciones BCRP
+                {isEn ? "FX Market & BCRP Interventions" : "Mercado Cambiario & Intervenciones BCRP"}
               </h1>
               <span className="px-3 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">
-                FLOTACIÓN SUCIA
+                {isEn ? "MANAGED FLOAT" : "FLOTACIÓN SUCIA"}
               </span>
             </div>
             <p className="text-gray-500 text-sm">
-              Fuente: Estadísticas BCRP · Cobertura: {data.metadata.coverage} · Actualizado: {fmtDate(latest.date)}
+              {isEn
+                ? `Source: BCRP Statistics · Coverage: ${data.metadata.coverage} · Updated: ${fmtDate(latest.date, 'en-US')}`
+                : `Fuente: Estadísticas BCRP · Cobertura: ${data.metadata.coverage} · Actualizado: ${fmtDate(latest.date, 'es-PE')}`}
             </p>
           </div>
           <div className="flex gap-2 shrink-0">
@@ -460,10 +487,10 @@ export default function IntervencionesBCRPPage() {
         {/* KPI Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           {[
-            { label: "TC PEN/USD", val: latest.fx?.toFixed(4), unit: "venta interbancaria", color: "text-emerald-700" },
-            { label: "Tasa referencia BCRP", val: latest.reference_rate ? `${latest.reference_rate.toFixed(2)}%` : "—", unit: "política monetaria", color: "text-blue-800" },
-            { label: "Intervención spot", val: latest.spot_net_purchases !== null ? `${latest.spot_net_purchases > 0 ? "+" : ""}${latest.spot_net_purchases.toFixed(0)} M` : "—", unit: "último día (USD)", color: latest.spot_net_purchases !== null && latest.spot_net_purchases >= 0 ? "text-blue-700" : "text-red-600" },
-            { label: "Bono soberano 10a S/", val: latest.bond_sol_10y ? `${latest.bond_sol_10y.toFixed(2)}%` : "—", unit: "rendimiento anual", color: "text-red-700" },
+            { label: isEn ? "FX PEN/USD" : "TC PEN/USD", val: latest.fx?.toFixed(4), unit: isEn ? "interbank selling" : "venta interbancaria", color: "text-emerald-700" },
+            { label: isEn ? "BCRP Reference Rate" : "Tasa referencia BCRP", val: latest.reference_rate ? `${latest.reference_rate.toFixed(2)}%` : "—", unit: isEn ? "monetary policy" : "política monetaria", color: "text-blue-800" },
+            { label: isEn ? "Spot Intervention" : "Intervención spot", val: latest.spot_net_purchases !== null ? `${latest.spot_net_purchases > 0 ? "+" : ""}${latest.spot_net_purchases.toFixed(0)} M` : "—", unit: isEn ? "last day (USD)" : "último día (USD)", color: latest.spot_net_purchases !== null && latest.spot_net_purchases >= 0 ? "text-blue-700" : "text-red-600" },
+            { label: isEn ? "10Y Sovereign Bond (S/)" : "Bono soberano 10a S/", val: latest.bond_sol_10y ? `${latest.bond_sol_10y.toFixed(2)}%` : "—", unit: isEn ? "annual yield" : "rendimiento anual", color: "text-red-700" },
           ].map((kpi) => (
             <div key={kpi.label} className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
               <p className="text-xs text-gray-500 mb-1">{kpi.label}</p>
@@ -491,6 +518,7 @@ export default function IntervencionesBCRPPage() {
                       variable={v}
                       active={selected.has(v.key)}
                       onClick={() => toggleVar(v.key)}
+                      labelText={isEn ? v.label_en : v.label}
                     />
                   ))}
                 </div>
@@ -511,7 +539,7 @@ export default function IntervencionesBCRPPage() {
                         : "bg-white text-gray-600 hover:bg-gray-50"
                     }`}
                   >
-                    {mode === "diario" ? "Diario (2a)" : "Mensual (2020–)"}
+                    {mode === "diario" ? (isEn ? "Daily (2Y)" : "Diario (2a)") : (isEn ? "Monthly (2020–)" : "Mensual (2020–)")}
                   </button>
                 ))}
               </div>
@@ -526,7 +554,7 @@ export default function IntervencionesBCRPPage() {
                 }`}
               >
                 <span>{normalized ? "✓" : "○"}</span>
-                Normalizar (base=100)
+                {isEn ? "Normalize (base=100)" : "Normalizar (base=100)"}
               </button>
             </div>
           </div>
@@ -536,13 +564,16 @@ export default function IntervencionesBCRPPage() {
             <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-2 mb-4 flex items-center gap-2">
               <span className="text-amber-600 text-sm">⚠️</span>
               <p className="text-sm text-amber-800">
-                <strong>BVL</strong> tiene escala muy diferente al TC y bonos.
-                Activa <strong>Normalizar</strong> para comparar tendencias.
+                {isEn ? (
+                  <><strong>BVL</strong> has a very different scale from FX and bonds. Enable <strong>Normalize</strong> to compare trends.</>
+                ) : (
+                  <><strong>BVL</strong> tiene escala muy diferente al TC y bonos. Activa <strong>Normalizar</strong> para comparar tendencias.</>
+                )}
               </p>
             </div>
           )}
 
-          {/* Chart — key forces full remount when selections change (react-plotly.js quirk) */}
+          {/* Chart */}
           <Plot
             key={`${viewMode}-${normalized ? 1 : 0}-${[...selected].sort().join(",")}`}
             data={traces as any}
@@ -566,8 +597,12 @@ export default function IntervencionesBCRPPage() {
 
           <p className="text-xs text-gray-400 mt-3">
             {normalized
-              ? "Variación porcentual acumulada desde el inicio del período seleccionado (base=0%)."
-              : "Datos diarios (2 años) o mensuales acumulados (desde ene 2020). Barras: Mill. USD · Líneas: escala derecha."}
+              ? (isEn
+                  ? "Cumulative percentage change since the start of the selected period (base=0%)."
+                  : "Variación porcentual acumulada desde el inicio del período seleccionado (base=0%).")
+              : (isEn
+                  ? "Daily (2 years) or monthly cumulative (since Jan 2020). Bars: Mill. USD · Lines: right axis."
+                  : "Datos diarios (2 años) o mensuales acumulados (desde ene 2020). Barras: Mill. USD · Líneas: escala derecha.")}
             {" "}Fuente: BCRP.
           </p>
         </div>
@@ -576,7 +611,7 @@ export default function IntervencionesBCRPPage() {
         {prevMonth && (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
             <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-              <p className="text-xs text-gray-500">Spot acumulado mes anterior</p>
+              <p className="text-xs text-gray-500">{isEn ? "Spot accumulated previous month" : "Spot acumulado mes anterior"}</p>
               <p className="text-xs text-gray-400 mb-1">{prevMonth.month}</p>
               <p className={`text-xl font-bold ${prevMonth.spot_net_purchases >= 0 ? "text-blue-700" : "text-red-600"}`}>
                 {prevMonth.spot_net_purchases >= 0 ? "+" : ""}
@@ -584,7 +619,7 @@ export default function IntervencionesBCRPPage() {
               </p>
             </div>
             <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-              <p className="text-xs text-gray-500">Swaps acumulados</p>
+              <p className="text-xs text-gray-500">{isEn ? "Accumulated swaps" : "Swaps acumulados"}</p>
               <p className="text-xs text-gray-400 mb-1">{prevMonth.month}</p>
               <p className={`text-xl font-bold ${prevMonth.swaps_net >= 0 ? "text-violet-700" : "text-orange-600"}`}>
                 {prevMonth.swaps_net >= 0 ? "+" : ""}
@@ -592,14 +627,14 @@ export default function IntervencionesBCRPPage() {
               </p>
             </div>
             <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-              <p className="text-xs text-gray-500">TC promedio</p>
+              <p className="text-xs text-gray-500">{isEn ? "Avg FX rate" : "TC promedio"}</p>
               <p className="text-xs text-gray-400 mb-1">{prevMonth.month}</p>
               <p className="text-xl font-bold text-emerald-700">
                 {prevMonth.fx_avg?.toFixed(4) ?? "—"} PEN/USD
               </p>
             </div>
             <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-              <p className="text-xs text-gray-500">BVL cierre</p>
+              <p className="text-xs text-gray-500">{isEn ? "BVL close" : "BVL cierre"}</p>
               <p className="text-xs text-gray-400 mb-1">{prevMonth.month}</p>
               <p className="text-xl font-bold text-amber-700">
                 {prevMonth.bvl_end?.toLocaleString("es-PE", { maximumFractionDigits: 0 }) ?? "—"}
@@ -608,7 +643,7 @@ export default function IntervencionesBCRPPage() {
           </div>
         )}
 
-        <MethodologySection />
+        <MethodologySection isEn={isEn} />
       </div>
     </div>
   );
@@ -616,7 +651,6 @@ export default function IntervencionesBCRPPage() {
 
 // ─── Dark color helper ────────────────────────────────────────────────────────
 function adjustColorDark(hex: string): string {
-  // Returns a slightly darker/desaturated version of a hex color for negative bars
   const variants: Record<string, string> = {
     "#1d4ed8": "#1e40af",
     "#7c3aed": "#6d28d9",
@@ -625,39 +659,45 @@ function adjustColorDark(hex: string): string {
 }
 
 // ─── Methodology ─────────────────────────────────────────────────────────────
-function MethodologySection() {
+function MethodologySection({ isEn }: { isEn: boolean }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="bg-white rounded-xl border border-gray-200 p-5">
-        <h3 className="font-semibold text-gray-900 mb-3">🏦 Instrumentos de intervención BCRP</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">
+          {isEn ? "🏦 BCRP Intervention Instruments" : "🏦 Instrumentos de intervención BCRP"}
+        </h3>
         <div className="space-y-3 text-sm text-gray-700">
           <div>
             <p className="font-medium">Spot neto (PD04659MD)</p>
             <p className="text-gray-500">
-              Compras o ventas directas de dólares en el mercado interbancario. Efecto inmediato
-              sobre el tipo de cambio. Positivo = BCRP compró dólares (absorbió presión apreciadora del sol).
+              {isEn
+                ? "Direct purchases or sales of dollars in the interbank market. Immediate effect on the exchange rate. Positive = BCRP bought dollars (absorbed appreciating pressure on the sol)."
+                : "Compras o ventas directas de dólares en el mercado interbancario. Efecto inmediato sobre el tipo de cambio. Positivo = BCRP compró dólares (absorbió presión apreciadora del sol)."}
             </p>
           </div>
           <div>
             <p className="font-medium">Swaps cambiarios (PD04660MD)</p>
             <p className="text-gray-500">
-              Contratos de compra/venta de dólares con recompra a futuro. Afectan la
-              liquidez en dólares sin modificar permanentemente las reservas internacionales.
+              {isEn
+                ? "Dollar buy/sell contracts with future repurchase. Affect dollar liquidity without permanently changing international reserves."
+                : "Contratos de compra/venta de dólares con recompra a futuro. Afectan la liquidez en dólares sin modificar permanentemente las reservas internacionales."}
             </p>
           </div>
           <div>
-            <p className="font-medium">¿Por qué interviene el BCRP?</p>
+            <p className="font-medium">{isEn ? "Why does BCRP intervene?" : "¿Por qué interviene el BCRP?"}</p>
             <p className="text-gray-500">
-              Para suavizar la volatilidad excesiva del sol, reducir la inflación importada
-              y mantener la confianza en la moneda. El BCRP no defiende un nivel específico
-              de TC (flotación sucia, no caja de conversión).
+              {isEn
+                ? "To smooth excessive sol volatility, reduce imported inflation, and maintain confidence in the currency. The BCRP does not defend a specific exchange rate level (managed float, not a currency board)."
+                : "Para suavizar la volatilidad excesiva del sol, reducir la inflación importada y mantener la confianza en la moneda. El BCRP no defiende un nivel específico de TC (flotación sucia, no caja de conversión)."}
             </p>
           </div>
         </div>
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-5">
-        <h3 className="font-semibold text-gray-900 mb-3">📊 Guía del selector de variables</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">
+          {isEn ? "📊 Variable Selector Guide" : "📊 Guía del selector de variables"}
+        </h3>
         <div className="space-y-2 text-sm">
           {VARIABLES.map((v) => (
             <div key={v.key} className="flex items-start gap-2">
@@ -666,23 +706,26 @@ function MethodologySection() {
                 style={{ backgroundColor: v.color }}
               />
               <div>
-                <span className="font-medium text-gray-800">{v.labelFull}</span>
+                <span className="font-medium text-gray-800">{isEn ? v.labelFull_en : v.labelFull}</span>
                 <span className="text-gray-400 ml-1 text-xs">({v.unit})</span>
-                <p className="text-gray-500 text-xs">{v.description}</p>
+                <p className="text-gray-500 text-xs">{isEn ? v.description_en : v.description}</p>
               </div>
             </div>
           ))}
           <p className="text-xs text-gray-400 mt-3 pt-3 border-t">
-            Tip: Activa <strong>Normalizar</strong> para comparar tendencias entre variables
-            de escala muy diferente (ej. BVL vs TC).
+            {isEn ? (
+              <>Tip: Enable <strong>Normalize</strong> to compare trends between variables with very different scales (e.g. BVL vs FX).</>
+            ) : (
+              <>Tip: Activa <strong>Normalizar</strong> para comparar tendencias entre variables de escala muy diferente (ej. BVL vs TC).</>
+            )}
           </p>
         </div>
         <div className="mt-4 flex gap-3">
           <Link href="/estadisticas/riesgo-politico" className="text-sm text-blue-700 hover:underline">
-            Ver riesgo político →
+            {isEn ? "View political risk →" : "Ver riesgo político →"}
           </Link>
           <Link href="/datos" className="text-sm text-blue-700 hover:underline">
-            Descargar datos →
+            {isEn ? "Download data →" : "Descargar datos →"}
           </Link>
         </div>
       </div>

@@ -1,68 +1,78 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useLocale } from 'next-intl';
 
-function DynamicLastUpdate({ src }: { src: string }) {
+function DynamicLastUpdate({ src, isEn }: { src: string; isEn: boolean }) {
   const [dateStr, setDateStr] = useState('');
   useEffect(() => {
+    const locale = isEn ? 'en-US' : 'es-PE';
     fetch(src + '?v=' + new Date().toISOString().slice(0, 10))
       .then(r => r.json()).then(d => {
         const iso = d?.metadata?.generated_at ?? new Date().toISOString();
-        setDateStr(new Date(iso).toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' }));
-      }).catch(() => setDateStr(new Date().toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' })));
-  }, [src]);
+        setDateStr(new Date(iso).toLocaleDateString(locale, { day: '2-digit', month: 'long', year: 'numeric' }));
+      }).catch(() => setDateStr(new Date().toLocaleDateString(locale, { day: '2-digit', month: 'long', year: 'numeric' })));
+  }, [src, isEn]);
   if (!dateStr) return null;
-  return <div className="flex items-center justify-end text-sm text-gray-500"><svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Última actualización: {dateStr}</span></div>;
+  return (
+    <div className="flex items-center justify-end text-sm text-gray-500">
+      <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>{isEn ? 'Last updated:' : 'Última actualización:'} {dateStr}</span>
+    </div>
+  );
 }
 
 export default function PobrezaMetodologiaPage() {
+  const isEn = useLocale() === 'en';
+
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="text-sm text-gray-500 mb-4">
           <a href="/estadisticas" className="hover:text-blue-700">
-            Estadísticas
+            {isEn ? 'Statistics' : 'Estadísticas'}
           </a>
           {" / "}
           <a href="/estadisticas/pobreza" className="hover:text-blue-700">
-            Pobreza
+            {isEn ? 'Poverty' : 'Pobreza'}
           </a>
           {" / "}
-          <span className="text-gray-900 font-medium">Metodología</span>
+          <span className="text-gray-900 font-medium">{isEn ? 'Methodology' : 'Metodología'}</span>
         </nav>
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          Metodología - Nowcast de Pobreza
+          {isEn ? 'Methodology — Poverty Nowcast' : 'Metodología - Nowcast de Pobreza'}
         </h1>
         <div className="mt-4">
-          <DynamicLastUpdate src="/assets/data/poverty_nowcast.json" />
+          <DynamicLastUpdate src="/assets/data/poverty_nowcast.json" isEn={isEn} />
         </div>
 
         {/* Overview */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Resumen Ejecutivo
+            {isEn ? 'Executive Summary' : 'Resumen Ejecutivo'}
           </h2>
           <p className="text-gray-700 mb-4">
-            El nowcast de pobreza utiliza un <strong>modelo de panel departamental con Gradient Boosting Regressor (GBR)</strong> que
-            predice cambios año-a-año en tasas de pobreza para 24 departamentos. El modelo combina indicadores económicos
-            departamentales (crédito, empleo) con datos satelitales de luces nocturnas (NTL) para estimar pobreza monetaria
-            con 6-12 meses de anticipación respecto a la publicación oficial anual de INEI.
+            {isEn
+              ? <>The poverty nowcast uses a <strong>departmental panel model with Gradient Boosting Regressor (GBR)</strong> that predicts year-on-year changes in poverty rates for 24 departments. The model combines departmental economic indicators (credit, employment) with nighttime light (NTL) satellite data to estimate monetary poverty 6–12 months ahead of the official annual INEI publication.</>
+              : <>El nowcast de pobreza utiliza un <strong>modelo de panel departamental con Gradient Boosting Regressor (GBR)</strong> que predice cambios año-a-año en tasas de pobreza para 24 departamentos. El modelo combina indicadores económicos departamentales (crédito, empleo) con datos satelitales de luces nocturnas (NTL) para estimar pobreza monetaria con 6-12 meses de anticipación respecto a la publicación oficial anual de INEI.</>}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="bg-blue-50 p-4 rounded-lg">
-              <div className="text-sm text-gray-600 mb-1">RMSE Anual</div>
+              <div className="text-sm text-gray-600 mb-1">{isEn ? 'Annual RMSE' : 'RMSE Anual'}</div>
               <div className="text-2xl font-bold text-blue-900">2.54 pp</div>
-              <div className="text-xs text-gray-600">excl. COVID</div>
+              <div className="text-xs text-gray-600">{isEn ? 'excl. COVID' : 'excl. COVID'}</div>
             </div>
             <div className="bg-green-50 p-4 rounded-lg">
-              <div className="text-sm text-gray-600 mb-1">vs AR(1)</div>
+              <div className="text-sm text-gray-600 mb-1">{isEn ? 'vs AR(1)' : 'vs AR(1)'}</div>
               <div className="text-2xl font-bold text-green-900">-4.2%</div>
               <div className="text-xs text-gray-600">Rel.RMSE = 0.953</div>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg">
-              <div className="text-sm text-gray-600 mb-1">GBR vs Ridge</div>
+              <div className="text-sm text-gray-600 mb-1">{isEn ? 'GBR vs Ridge' : 'GBR vs Ridge'}</div>
               <div className="text-2xl font-bold text-purple-900">-25%</div>
-              <div className="text-xs text-gray-600">RMSE reduction</div>
+              <div className="text-xs text-gray-600">{isEn ? 'RMSE reduction' : 'RMSE reduction'}</div>
             </div>
           </div>
         </div>
@@ -70,15 +80,16 @@ export default function PobrezaMetodologiaPage() {
         {/* Model Architecture */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            1. Arquitectura del Modelo
+            {isEn ? '1. Model Architecture' : '1. Arquitectura del Modelo'}
           </h2>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            1.1 Panel PovertyNowcaster con GBR
+            {isEn ? '1.1 Panel PovertyNowcaster with GBR' : '1.1 Panel PovertyNowcaster con GBR'}
           </h3>
           <p className="text-gray-700 mb-4">
-            El modelo opera sobre un panel de 24 departamentos × 20 años (2004-2024). Usa un <strong>change-prediction approach</strong>:
-            predice el cambio en pobreza, luego lo suma al valor observado en t-1.
+            {isEn
+              ? <>The model operates on a panel of 24 departments × 20 years (2004–2024). It uses a <strong>change-prediction approach</strong>: it predicts the change in poverty, then adds it to the observed value at t-1.</>
+              : <>El modelo opera sobre un panel de 24 departamentos × 20 años (2004-2024). Usa un <strong>change-prediction approach</strong>: predice el cambio en pobreza, luego lo suma al valor observado en t-1.</>}
           </p>
           <div className="bg-gray-100 p-4 rounded font-mono text-sm mb-4 overflow-x-auto">
             Δpobreza<sub>d,t</sub> = GBR(X<sub>d,t</sub>, pobreza<sub>d,t-1</sub>)
@@ -86,46 +97,49 @@ export default function PobrezaMetodologiaPage() {
             pobreza<sub>d,t</sub> = pobreza<sub>d,t-1</sub> + Δpobreza<sub>d,t</sub>
           </div>
           <p className="text-gray-700 mb-4">
-            Donde:
+            {isEn ? 'Where:' : 'Donde:'}
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700">
-            <li><strong>d</strong>: Departamento (24 unidades, Callao fusionado con Lima)</li>
-            <li><strong>X<sub>d,t</sub></strong>: Features departamentales agregadas a frecuencia anual</li>
-            <li><strong>pobreza<sub>d,t-1</sub></strong>: Rezago de pobreza (muy predictivo)</li>
-            <li><strong>GBR</strong>: Gradient Boosting Regressor (scikit-learn) con 100 árboles, max_depth=3</li>
+            <li><strong>d</strong>: {isEn ? 'Department (24 units, Callao merged with Lima)' : 'Departamento (24 unidades, Callao fusionado con Lima)'}</li>
+            <li><strong>X<sub>d,t</sub></strong>: {isEn ? 'Departmental features aggregated to annual frequency' : 'Features departamentales agregadas a frecuencia anual'}</li>
+            <li><strong>pobreza<sub>d,t-1</sub></strong>: {isEn ? 'Poverty lag (highly predictive)' : 'Rezago de pobreza (muy predictivo)'}</li>
+            <li><strong>GBR</strong>: {isEn ? 'Gradient Boosting Regressor (scikit-learn) with 100 trees, max_depth=3' : 'Gradient Boosting Regressor (scikit-learn) con 100 árboles, max_depth=3'}</li>
           </ul>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            1.2 ¿Por qué Change-Prediction?
+            {isEn ? '1.2 Why Change-Prediction?' : '1.2 ¿Por qué Change-Prediction?'}
           </h3>
           <p className="text-gray-700 mb-4">
-            Intentos anteriores de predecir niveles directos fallaron:
+            {isEn ? 'Earlier attempts to predict levels directly failed:' : 'Intentos anteriores de predecir niveles directos fallaron:'}
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-700">
             <li>
-              <strong>Fixed-effects demeaning:</strong> RMSE = 24.5 pp (inestable con N=24, produce predicciones negativas)
+              <strong>{isEn ? 'Fixed-effects demeaning:' : 'Fixed-effects demeaning:'}</strong>{' '}
+              {isEn ? 'RMSE = 24.5 pp (unstable with N=24, produces negative predictions)' : 'RMSE = 24.5 pp (inestable con N=24, produce predicciones negativas)'}
             </li>
             <li>
-              <strong>Level prediction con Ridge:</strong> RMSE = 13.7 pp (pierde info del rezago AR tras estandarización)
+              <strong>{isEn ? 'Level prediction with Ridge:' : 'Level prediction con Ridge:'}</strong>{' '}
+              {isEn ? 'RMSE = 13.7 pp (loses AR lag info after standardization)' : 'RMSE = 13.7 pp (pierde info del rezago AR tras estandarización)'}
             </li>
             <li>
-              <strong>Change prediction (actual):</strong> RMSE = 2.54 pp ✓ — preserva información del rezago
+              <strong>{isEn ? 'Change prediction (current):' : 'Change prediction (actual):'}</strong>{' '}
+              {isEn ? 'RMSE = 2.54 pp ✓ — preserves lag information' : 'RMSE = 2.54 pp ✓ — preserva información del rezago'}
             </li>
           </ul>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            1.3 Gradient Boosting vs Ridge
+            {isEn ? '1.3 Gradient Boosting vs Ridge' : '1.3 Gradient Boosting vs Ridge'}
           </h3>
           <p className="text-gray-700 mb-4">
-            GBR superó dramáticamente a Ridge lineal:
+            {isEn ? 'GBR dramatically outperformed linear Ridge:' : 'GBR superó dramáticamente a Ridge lineal:'}
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Modelo</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Model' : 'Modelo'}</th>
                   <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">RMSE (pp)</th>
-                  <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Casos Extremos</th>
+                  <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">{isEn ? 'Extreme Cases' : 'Casos Extremos'}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -135,7 +149,7 @@ export default function PobrezaMetodologiaPage() {
                   <td className="px-4 py-2 text-gray-600">Junín: -10pp, Moquegua: -6pp</td>
                 </tr>
                 <tr className="bg-green-50">
-                  <td className="px-4 py-2 font-semibold text-gray-900">GBR (100 trees)</td>
+                  <td className="px-4 py-2 font-semibold text-gray-900">{isEn ? 'GBR (100 trees)' : 'GBR (100 trees)'}</td>
                   <td className="px-4 py-2 text-right font-bold text-green-900">2.54</td>
                   <td className="px-4 py-2 text-green-800">Junín: +4pp, Moquegua: +0.5pp</td>
                 </tr>
@@ -143,24 +157,36 @@ export default function PobrezaMetodologiaPage() {
             </table>
           </div>
           <p className="text-gray-700 mt-4">
-            GBR captura no-linealidades en la relación entre crédito/empleo/NTL y pobreza que Ridge no puede modelar.
+            {isEn
+              ? 'GBR captures non-linearities in the relationship between credit/employment/NTL and poverty that Ridge cannot model.'
+              : 'GBR captura no-linealidades en la relación entre crédito/empleo/NTL y pobreza que Ridge no puede modelar.'}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            1.4 Manejo de COVID-19
+            {isEn ? '1.4 COVID-19 Handling' : '1.4 Manejo de COVID-19'}
           </h3>
           <p className="text-gray-700 mb-4">
-            Similar a GDP/Inflación, excluimos 2020-2021 de training Y evaluación:
+            {isEn
+              ? 'Like GDP/Inflation, we exclude 2020–2021 from both training AND evaluation:'
+              : 'Similar a GDP/Inflación, excluimos 2020-2021 de training Y evaluación:'}
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-700">
             <li>
-              <strong>Resultado:</strong> RMSE mejora de 4.6 pp (con COVID) a 3.2 pp (sin COVID) — reducción de 30%
+              <strong>{isEn ? 'Result:' : 'Resultado:'}</strong>{' '}
+              {isEn
+                ? 'RMSE improves from 4.6 pp (with COVID) to 3.2 pp (without COVID) — 30% reduction'
+                : 'RMSE mejora de 4.6 pp (con COVID) a 3.2 pp (sin COVID) — reducción de 30%'}
             </li>
             <li>
-              <strong>&quot;2018 structural break&quot; = 100% COVID:</strong> pre-2018 RMSE=1.39pp vs post-2018 excl. COVID RMSE=1.57pp (p=0.79, NO significativo)
+              <strong>{isEn ? '"2018 structural break" = 100% COVID:' : '"2018 structural break" = 100% COVID:'}</strong>{' '}
+              {isEn
+                ? 'pre-2018 RMSE=1.39pp vs post-2018 excl. COVID RMSE=1.57pp (p=0.79, NOT significant)'
+                : 'pre-2018 RMSE=1.39pp vs post-2018 excl. COVID RMSE=1.57pp (p=0.79, NO significativo)'}
             </li>
             <li>
-              El supuesto &quot;quiebre en 2018&quot; desapareció al excluir COVID — era un artefacto del shock 2020
+              {isEn
+                ? 'The supposed "2018 break" disappeared when COVID was excluded — it was an artifact of the 2020 shock'
+                : 'El supuesto "quiebre en 2018" desapareció al excluir COVID — era un artefacto del shock 2020'}
             </li>
           </ul>
         </div>
@@ -168,53 +194,55 @@ export default function PobrezaMetodologiaPage() {
         {/* Data Sources */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            2. Fuentes de Datos
+            {isEn ? '2. Data Sources' : '2. Fuentes de Datos'}
           </h2>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            2.1 Features Departamentales
+            {isEn ? '2.1 Departmental Features' : '2.1 Features Departamentales'}
           </h3>
           <p className="text-gray-700 mb-4">
-            Panel departamental mensual (25 depts × ~260 meses) agregado a frecuencia anual:
+            {isEn
+              ? 'Monthly departmental panel (25 depts × ~260 months) aggregated to annual frequency:'
+              : 'Panel departamental mensual (25 depts × ~260 meses) agregado a frecuencia anual:'}
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Categoría</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Series</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Fuente</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Category' : 'Categoría'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Series' : 'Series'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Source' : 'Fuente'}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Crédito</td>
-                  <td className="px-4 py-2 text-gray-700">Crédito total, consumo, MiPyme (YoY%)</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Credit' : 'Crédito'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Total credit, consumer, MiPyme (YoY%)' : 'Crédito total, consumo, MiPyme (YoY%)'}</td>
                   <td className="px-4 py-2 text-gray-600">BCRP</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Depósitos</td>
-                  <td className="px-4 py-2 text-gray-700">Depósitos vista, ahorro, plazo (YoY%)</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Deposits' : 'Depósitos'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Demand, savings, term deposits (YoY%)' : 'Depósitos vista, ahorro, plazo (YoY%)'}</td>
                   <td className="px-4 py-2 text-gray-600">BCRP</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Electricidad</td>
-                  <td className="px-4 py-2 text-gray-700">Producción eléctrica departamental (YoY%)</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Electricity' : 'Electricidad'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Departmental electricity production (YoY%)' : 'Producción eléctrica departamental (YoY%)'}</td>
                   <td className="px-4 py-2 text-gray-600">BCRP</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Empleo</td>
-                  <td className="px-4 py-2 text-gray-700">Afiliados pensiones (ONP/AFP, YoY%)</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Employment' : 'Empleo'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Pension affiliates (ONP/AFP, YoY%)' : 'Afiliados pensiones (ONP/AFP, YoY%)'}</td>
                   <td className="px-4 py-2 text-gray-600">BCRP</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Fiscal</td>
-                  <td className="px-4 py-2 text-gray-700">Recaudación tributaria, gasto regional/local (YoY%)</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Fiscal' : 'Fiscal'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Tax collection, regional/local spending (YoY%)' : 'Recaudación tributaria, gasto regional/local (YoY%)'}</td>
                   <td className="px-4 py-2 text-gray-600">MEF/SUNAT</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Satelital</td>
-                  <td className="px-4 py-2 text-gray-700">Luces nocturnas (NTL) suma departamental (log)</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Satellite' : 'Satelital'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Nighttime lights (NTL) departmental sum (log)' : 'Luces nocturnas (NTL) suma departamental (log)'}</td>
                   <td className="px-4 py-2 text-gray-600">NOAA-VIIRS</td>
                 </tr>
               </tbody>
@@ -222,50 +250,56 @@ export default function PobrezaMetodologiaPage() {
           </div>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            2.2 Luces Nocturnas (NTL) como Proxy
+            {isEn ? '2.2 Nighttime Lights (NTL) as Proxy' : '2.2 Luces Nocturnas (NTL) como Proxy'}
           </h3>
           <p className="text-gray-700 mb-4">
-            NTL mensual se agrega a anual y se transforma con log(1+x) para estabilizar varianza:
+            {isEn
+              ? 'Monthly NTL is aggregated to annual and transformed with log(1+x) to stabilize variance:'
+              : 'NTL mensual se agrega a anual y se transforma con log(1+x) para estabilizar varianza:'}
           </p>
           <div className="bg-gray-100 p-4 rounded font-mono text-sm mb-4">
             NTL_annual<sub>d,t</sub> = log(1 + mean(NTL_monthly<sub>d,t</sub>))
           </div>
           <p className="text-gray-700 mb-4">
-            <strong>Ventajas:</strong>
+            <strong>{isEn ? 'Advantages:' : 'Ventajas:'}</strong>
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700">
-            <li>Cobertura universal (25 departamentos sin gaps)</li>
-            <li>Frecuencia mensual → permite nowcasting intra-año</li>
-            <li>Correlaciona negativamente con pobreza (más luz = menos pobreza)</li>
-            <li>Sin rezago de publicación (~15 días desde fin de mes)</li>
+            <li>{isEn ? 'Universal coverage (25 departments, no gaps)' : 'Cobertura universal (25 departamentos sin gaps)'}</li>
+            <li>{isEn ? 'Monthly frequency → enables intra-year nowcasting' : 'Frecuencia mensual → permite nowcasting intra-año'}</li>
+            <li>{isEn ? 'Negatively correlated with poverty (more light = less poverty)' : 'Correlaciona negativamente con pobreza (más luz = menos pobreza)'}</li>
+            <li>{isEn ? 'No publication lag (~15 days from end of month)' : 'Sin rezago de publicación (~15 días desde fin de mes)'}</li>
           </ul>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            2.3 Target: Pobreza Monetaria Departamental (INEI)
+            {isEn ? '2.3 Target: Departmental Monetary Poverty (INEI)' : '2.3 Target: Pobreza Monetaria Departamental (INEI)'}
           </h3>
           <p className="text-gray-700 mb-4">
-            Tasa de pobreza monetaria (% población bajo línea de pobreza) por departamento. Publicado anualmente
-            con ~6-7 meses de rezago (ej: datos 2024 publicados en Mayo 2025).
+            {isEn
+              ? 'Monetary poverty rate (% population below poverty line) by department. Published annually with ~6–7 months lag (e.g., 2024 data published in May 2025).'
+              : 'Tasa de pobreza monetaria (% población bajo línea de pobreza) por departamento. Publicado anualmente con ~6-7 meses de rezago (ej: datos 2024 publicados en Mayo 2025).'}
           </p>
           <p className="text-gray-700 mb-4">
-            <strong>Cobertura:</strong> 24 departamentos (Callao fusionado con Lima en datos oficiales), 2004-2024.
+            <strong>{isEn ? 'Coverage:' : 'Cobertura:'}</strong>{' '}
+            {isEn
+              ? '24 departments (Callao merged with Lima in official data), 2004–2024.'
+              : '24 departamentos (Callao fusionado con Lima en datos oficiales), 2004-2024.'}
           </p>
         </div>
 
         {/* Performance */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            3. Desempeño y Validación
+            {isEn ? '3. Performance and Validation' : '3. Desempeño y Validación'}
           </h2>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            3.1 Backtest Anual (2012-2024, excl. COVID)
+            {isEn ? '3.1 Annual Backtest (2012–2024, excl. COVID)' : '3.1 Backtest Anual (2012-2024, excl. COVID)'}
           </h3>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Modelo</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Model' : 'Modelo'}</th>
                   <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">RMSE (pp)</th>
                   <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">MAE (pp)</th>
                   <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Rel.RMSE</th>
@@ -273,19 +307,19 @@ export default function PobrezaMetodologiaPage() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 <tr className="bg-blue-50">
-                  <td className="px-4 py-2 font-semibold text-gray-900">Panel GBR (change-pred)</td>
+                  <td className="px-4 py-2 font-semibold text-gray-900">{isEn ? 'Panel GBR (change-pred)' : 'Panel GBR (change-pred)'}</td>
                   <td className="px-4 py-2 text-right font-bold text-blue-900">2.54</td>
                   <td className="px-4 py-2 text-right text-blue-900">1.89</td>
                   <td className="px-4 py-2 text-right text-blue-900">0.953</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900">AR(1) Departamental</td>
+                  <td className="px-4 py-2 text-gray-900">{isEn ? 'AR(1) Departmental' : 'AR(1) Departamental'}</td>
                   <td className="px-4 py-2 text-right text-gray-700">2.65</td>
                   <td className="px-4 py-2 text-right text-gray-700">1.97</td>
                   <td className="px-4 py-2 text-right text-gray-700">1.000</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900">Random Walk</td>
+                  <td className="px-4 py-2 text-gray-900">{isEn ? 'Random Walk' : 'Random Walk'}</td>
                   <td className="px-4 py-2 text-right text-gray-700">2.78</td>
                   <td className="px-4 py-2 text-right text-gray-700">2.11</td>
                   <td className="px-4 py-2 text-right text-gray-700">1.049</td>
@@ -294,35 +328,40 @@ export default function PobrezaMetodologiaPage() {
             </table>
           </div>
           <p className="text-gray-700 mt-4">
-            <strong>Primera vez que GBR supera AR(1)</strong> en backtests de pobreza (Rel.RMSE = 0.953, -4.7% error).
-            Anteriormente Ridge no lograba vencer benchmarks naive.
+            {isEn
+              ? <><strong>First time GBR beats AR(1)</strong> in poverty backtests (Rel.RMSE = 0.953, -4.7% error). Ridge never managed to beat naive benchmarks.</>
+              : <><strong>Primera vez que GBR supera AR(1)</strong> en backtests de pobreza (Rel.RMSE = 0.953, -4.7% error). Anteriormente Ridge no lograba vencer benchmarks naive.</>}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            3.2 Nowcasting Mensual (2012-2024)
+            {isEn ? '3.2 Monthly Nowcasting (2012–2024)' : '3.2 Nowcasting Mensual (2012-2024)'}
           </h3>
           <p className="text-gray-700 mb-4">
-            El modelo también produce nowcasts <strong>mensuales</strong> usando rolling windows de 12 meses sobre el panel:
+            {isEn
+              ? <>The model also produces <strong>monthly</strong> nowcasts using 12-month rolling windows over the panel:</>
+              : <>El modelo también produce nowcasts <strong>mensuales</strong> usando rolling windows de 12 meses sobre el panel:</>}
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700">
-            <li><strong>RMSE mensual:</strong> ~4.3-4.5 pp (estable en meses 3, 6, 9, 12)</li>
-            <li><strong>Within-year noise:</strong> 0.5-0.7 pp (bien debajo de 2pp threshold)</li>
-            <li><strong>Monthly revisions:</strong> 0.6-0.7 pp (pequeñas y estables)</li>
-            <li><strong>Rel.RMSE vs AR1:</strong> 0.989 (-1.1% vs AR1) — ligeramente mejor que anual</li>
+            <li><strong>{isEn ? 'Monthly RMSE:' : 'RMSE mensual:'}</strong> {isEn ? '~4.3–4.5 pp (stable across months 3, 6, 9, 12)' : '~4.3-4.5 pp (estable en meses 3, 6, 9, 12)'}</li>
+            <li><strong>{isEn ? 'Within-year noise:' : 'Within-year noise:'}</strong> {isEn ? '0.5–0.7 pp (well below 2pp threshold)' : '0.5-0.7 pp (bien debajo de 2pp threshold)'}</li>
+            <li><strong>{isEn ? 'Monthly revisions:' : 'Monthly revisions:'}</strong> {isEn ? '0.6–0.7 pp (small and stable)' : '0.6-0.7 pp (pequeñas y estables)'}</li>
+            <li><strong>{isEn ? 'Rel.RMSE vs AR1:' : 'Rel.RMSE vs AR1:'}</strong> {isEn ? '0.989 (-1.1% vs AR1) — slightly better than annual' : '0.989 (-1.1% vs AR1) — ligeramente mejor que anual'}</li>
           </ul>
           <p className="text-gray-700">
-            El ruido intra-año es bajo, por lo que <strong>NO se requiere suavizado</strong> adicional.
+            {isEn
+              ? <>Intra-year noise is low, so <strong>no additional smoothing is required</strong>.</>
+              : <>El ruido intra-año es bajo, por lo que <strong>NO se requiere suavizado</strong> adicional.</>}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            3.3 Nowcast Actual (2024)
+            {isEn ? '3.3 Current Nowcast (2024)' : '3.3 Nowcast Actual (2024)'}
           </h3>
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-green-900 font-medium">
-              Pobreza Nacional 2024: <strong>26.8%</strong>
+              {isEn ? 'National Poverty 2024:' : 'Pobreza Nacional 2024:'} <strong>26.8%</strong>
             </p>
             <p className="text-sm text-green-800 mt-2">
-              24 departamentos | Panel completo a través de Nov-2024
+              {isEn ? '24 departments | Full panel through Nov-2024' : '24 departamentos | Panel completo a través de Nov-2024'}
             </p>
           </div>
         </div>
@@ -330,58 +369,69 @@ export default function PobrezaMetodologiaPage() {
         {/* Quarterly Nowcasting */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            4. Nowcasting Trimestral
+            {isEn ? '4. Quarterly Nowcasting' : '4. Nowcasting Trimestral'}
           </h2>
           <p className="text-gray-700 mb-4">
-            Complemento a nowcasts anuales/mensuales: predicciones <strong>trimestrales</strong> usando
-            desagregación temporal (Chow-Lin) para interpolar entre años.
+            {isEn
+              ? <>Complement to annual/monthly nowcasts: <strong>quarterly</strong> predictions using temporal disaggregation (Chow-Lin) to interpolate between years.</>
+              : <>Complemento a nowcasts anuales/mensuales: predicciones <strong>trimestrales</strong> usando desagregación temporal (Chow-Lin) para interpolar entre años.</>}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            4.1 Método Chow-Lin
+            {isEn ? '4.1 Chow-Lin Method' : '4.1 Método Chow-Lin'}
           </h3>
           <p className="text-gray-700 mb-4">
-            Desagrega observaciones anuales a frecuencia trimestral usando indicadores de alta frecuencia como related series:
+            {isEn
+              ? 'Disaggregates annual observations to quarterly frequency using high-frequency indicators as related series:'
+              : 'Desagrega observaciones anuales a frecuencia trimestral usando indicadores de alta frecuencia como related series:'}
           </p>
           <div className="bg-gray-100 p-4 rounded font-mono text-sm mb-4">
             pobreza_quarterly = ChowLin(pobreza_annual, related=[empleo_q, credito_q, ntl_q])
           </div>
           <p className="text-gray-700 mb-4">
-            <strong>Ventajas:</strong>
+            <strong>{isEn ? 'Advantages:' : 'Ventajas:'}</strong>
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700">
-            <li>Preserva totales anuales (suma de 4 trimestres = valor anual)</li>
-            <li>Captura variación intra-año usando indicadores mensuales agregados a trimestral</li>
-            <li>Métodos GLS minimizan autocorrelación residual</li>
+            <li>{isEn ? 'Preserves annual totals (sum of 4 quarters = annual value)' : 'Preserva totales anuales (suma de 4 trimestres = valor anual)'}</li>
+            <li>{isEn ? 'Captures intra-year variation using monthly indicators aggregated to quarterly' : 'Captura variación intra-año usando indicadores mensuales agregados a trimestral'}</li>
+            <li>{isEn ? 'GLS methods minimize residual autocorrelation' : 'Métodos GLS minimizan autocorrelación residual'}</li>
           </ul>
           <p className="text-gray-700">
-            Ver{" "}
+            {isEn ? 'See ' : 'Ver '}
             <a href="/estadisticas/pobreza/graficos" className="text-blue-700 hover:underline">
-              gráficos trimestrales
+              {isEn ? 'quarterly charts' : 'gráficos trimestrales'}
             </a>
-            {" "}para series desagregadas.
+            {isEn ? ' for disaggregated series.' : ' para series desagregadas.'}
           </p>
         </div>
 
         {/* Limitations */}
         <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-yellow-900 mb-3">⚠️ Limitaciones</h3>
+          <h3 className="text-lg font-semibold text-yellow-900 mb-3">⚠️ {isEn ? 'Limitations' : 'Limitaciones'}</h3>
           <ul className="list-disc pl-6 space-y-2 text-yellow-800 text-sm">
             <li>
-              <strong>N pequeño:</strong> Solo 24 departamentos → varianza alta en estimaciones departamentales.
-              Nacional es más estable.
+              <strong>{isEn ? 'Small N:' : 'N pequeño:'}</strong>{' '}
+              {isEn
+                ? 'Only 24 departments → high variance in departmental estimates. National is more stable.'
+                : 'Solo 24 departamentos → varianza alta en estimaciones departamentales. Nacional es más estable.'}
             </li>
             <li>
-              <strong>Rezago de features:</strong> Algunos indicadores departamentales (crédito, empleo) tienen
-              1-2 meses de publication lag, limitando la anticipación del nowcast.
+              <strong>{isEn ? 'Feature lag:' : 'Rezago de features:'}</strong>{' '}
+              {isEn
+                ? 'Some departmental indicators (credit, employment) have 1–2 months publication lag, limiting nowcast lead time.'
+                : 'Algunos indicadores departamentales (crédito, empleo) tienen 1-2 meses de publication lag, limitando la anticipación del nowcast.'}
             </li>
             <li>
-              <strong>Heterogeneidad regional:</strong> Relaciones crédito-pobreza pueden variar por departamento
-              (ej: Lima vs Amazonas). GBR captura algo de no-linealidad pero no interacciones espaciales complejas.
+              <strong>{isEn ? 'Regional heterogeneity:' : 'Heterogeneidad regional:'}</strong>{' '}
+              {isEn
+                ? 'Credit-poverty relationships may vary by department (e.g., Lima vs Amazonas). GBR captures some non-linearity but not complex spatial interactions.'
+                : 'Relaciones crédito-pobreza pueden variar por departamento (ej: Lima vs Amazonas). GBR captura algo de no-linealidad pero no interacciones espaciales complejas.'}
             </li>
             <li>
-              <strong>COVID como outlier extremo:</strong> Exclusión total de 2020-2021 reduce datos disponibles
-              (de 20 años a 18 años efectivos). Trade-off necesario para evitar distorsión.
+              <strong>{isEn ? 'COVID as extreme outlier:' : 'COVID como outlier extremo:'}</strong>{' '}
+              {isEn
+                ? 'Full exclusion of 2020–2021 reduces available data (from 20 years to 18 effective years). A necessary trade-off to avoid distortion.'
+                : 'Exclusión total de 2020-2021 reduce datos disponibles (de 20 años a 18 años efectivos). Trade-off necesario para evitar distorsión.'}
             </li>
           </ul>
         </div>
@@ -389,25 +439,25 @@ export default function PobrezaMetodologiaPage() {
         {/* References */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Referencias
+            {isEn ? 'References' : 'Referencias'}
           </h2>
           <div className="space-y-3 text-sm text-gray-700">
             <p>
-              <strong>Elbers, C., Lanjouw, J. O., & Lanjouw, P. (2003).</strong> &quot;Micro-level estimation
+              <strong>Elbers, C., Lanjouw, J. O., &amp; Lanjouw, P. (2003).</strong> &quot;Micro-level estimation
               of poverty and inequality.&quot; <em>Econometrica</em>, 71(1), 355-364.
             </p>
             <p>
-              <strong>Zhao, X., Yu, B., Liu, Y., Chen, Z., Li, Q., Wang, C., & Wu, J. (2019).</strong>
+              <strong>Zhao, X., Yu, B., Liu, Y., Chen, Z., Li, Q., Wang, C., &amp; Wu, J. (2019).</strong>
               {" "}&quot;Estimation of poverty using random forest regression with multi-source data: A case
               study in Bangladesh.&quot; <em>Remote Sensing</em>, 11(4), 375.
             </p>
             <p>
-              <strong>Jean, N., Burke, M., Xie, M., Davis, W. M., Lobell, D. B., & Ermon, S. (2016).</strong>
+              <strong>Jean, N., Burke, M., Xie, M., Davis, W. M., Lobell, D. B., &amp; Ermon, S. (2016).</strong>
               {" "}&quot;Combining satellite imagery and machine learning to predict poverty.&quot;{" "}
               <em>Science</em>, 353(6301), 790-794.
             </p>
             <p>
-              <strong>Chow, G. C., & Lin, A. L. (1971).</strong> &quot;Best linear unbiased interpolation,
+              <strong>Chow, G. C., &amp; Lin, A. L. (1971).</strong> &quot;Best linear unbiased interpolation,
               distribution, and extrapolation of time series by related series.&quot;{" "}
               <em>The Review of Economics and Statistics</em>, 53(4), 372-375.
             </p>
@@ -417,18 +467,19 @@ export default function PobrezaMetodologiaPage() {
         {/* Code Link */}
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600 mb-2">
-            Código fuente disponible en el{" "}
+            {isEn ? 'Source code available in the ' : 'Código fuente disponible en el '}
             <a
               href="https://github.com/btorressz/nexus"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-700 hover:text-blue-900 font-medium"
             >
-              repositorio NEXUS
+              {isEn ? 'NEXUS repository' : 'repositorio NEXUS'}
             </a>
           </p>
           <p className="text-xs text-gray-500">
-            Ver: <code className="bg-gray-100 px-2 py-1 rounded">src/models/poverty.py</code>,{" "}
+            {isEn ? 'See:' : 'Ver:'}{' '}
+            <code className="bg-gray-100 px-2 py-1 rounded">src/models/poverty.py</code>,{" "}
             <code className="bg-gray-100 px-2 py-1 rounded">src/processing/spatial_disagg.py</code>,{" "}
             <code className="bg-gray-100 px-2 py-1 rounded">scripts/run_poverty_backtest.py</code>
           </p>

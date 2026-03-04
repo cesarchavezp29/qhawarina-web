@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useLocale } from 'next-intl';
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -35,6 +36,7 @@ interface InflationData {
 type ChartMode = "monthly" | "12m";
 
 export default function InflacionCategoriasPage() {
+  const isEn = useLocale() === 'en';
   const [data, setData] = useState<InflationData | null>(null);
   const [loading, setLoading] = useState(true);
   const [chartMode, setChartMode] = useState<ChartMode>("12m");
@@ -53,7 +55,7 @@ export default function InflacionCategoriasPage() {
   if (loading || !data) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Cargando datos...</p>
+        <p className="text-gray-500">{isEn ? 'Loading data...' : 'Cargando datos...'}</p>
       </div>
     );
   }
@@ -67,15 +69,14 @@ export default function InflacionCategoriasPage() {
   const visible = data.categories.filter((c) => selectedIds.includes(c.id));
 
   const valueKey = chartMode === "monthly" ? "values_monthly" : "values_12m";
-  const latestKey =
-    chartMode === "monthly" ? "latest_monthly" : "latest_12m";
+  const latestKey = chartMode === "monthly" ? "latest_monthly" : "latest_12m";
 
   const traces = visible.map((cat) => ({
     x: cat.dates,
     y: cat[valueKey],
     type: "scatter" as const,
     mode: "lines" as const,
-    name: cat.name_es,
+    name: isEn ? cat.name_en : cat.name_es,
     line: {
       color: cat.color,
       width: cat.id === "total" ? 3 : 1.5,
@@ -83,7 +84,9 @@ export default function InflacionCategoriasPage() {
     },
   }));
 
-  const unit = chartMode === "monthly" ? "var% mensual" : "var% interanual";
+  const unit = chartMode === "monthly"
+    ? (isEn ? "% monthly change" : "var% mensual")
+    : (isEn ? "% 12-month change" : "var% interanual");
 
   const layout = {
     xaxis: { title: "", gridcolor: "#e5e7eb" },
@@ -108,7 +111,6 @@ export default function InflacionCategoriasPage() {
     },
     height: 460,
     shapes: [
-      // BCRP target band: 1%-3%
       {
         type: "rect" as const,
         xref: "paper" as const,
@@ -127,7 +129,7 @@ export default function InflacionCategoriasPage() {
               yref: "y" as const,
               x: 0.01,
               y: 2,
-              text: "Meta BCRP: 1%–3%",
+              text: isEn ? "BCRP target: 1%–3%" : "Meta BCRP: 1%–3%",
               showarrow: false,
               font: { color: "#16a34a", size: 11 },
             },
@@ -141,24 +143,25 @@ export default function InflacionCategoriasPage() {
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
           <Link href="/estadisticas" className="hover:text-blue-700">
-            Estadísticas
+            {isEn ? 'Statistics' : 'Estadísticas'}
           </Link>
           <span className="mx-2">/</span>
           <Link href="/estadisticas/inflacion" className="hover:text-blue-700">
-            Inflación
+            {isEn ? 'Inflation' : 'Inflación'}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900 font-medium">Categorías</span>
+          <span className="text-gray-900 font-medium">{isEn ? 'Categories' : 'Categorías'}</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Inflación por Categoría
+            {isEn ? 'Inflation by Category' : 'Inflación por Categoría'}
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            Desagregación del IPC de Lima Metropolitana por categorías analíticas.
-            Cobertura: diciembre 2010 – {data.metadata.last_update}.
+            {isEn
+              ? `Breakdown of Lima Metropolitan CPI by analytical categories. Coverage: December 2010 – ${data.metadata.last_update}.`
+              : `Desagregación del IPC de Lima Metropolitana por categorías analíticas. Cobertura: diciembre 2010 – ${data.metadata.last_update}.`}
           </p>
         </div>
 
@@ -182,7 +185,7 @@ export default function InflacionCategoriasPage() {
               >
                 <div className="flex items-start justify-between mb-1">
                   <p className="text-xs font-medium text-gray-500 leading-tight">
-                    {cat.name_es}
+                    {isEn ? cat.name_en : cat.name_es}
                     {cat.weight_pct && (
                       <span className="ml-1 text-gray-400">
                         ({cat.weight_pct}%)
@@ -191,7 +194,7 @@ export default function InflacionCategoriasPage() {
                   </p>
                   {isInTarget && (
                     <span className="text-xs text-green-600 font-semibold ml-1 shrink-0">
-                      Meta ✓
+                      {isEn ? 'On target ✓' : 'Meta ✓'}
                     </span>
                   )}
                 </div>
@@ -203,8 +206,10 @@ export default function InflacionCategoriasPage() {
                   {val.toFixed(chartMode === "monthly" ? 3 : 2)}%
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
-                  {chartMode === "monthly" ? "mes a mes" : "12 meses"} •{" "}
-                  {cat.latest_date}
+                  {chartMode === "monthly"
+                    ? (isEn ? "month-to-month" : "mes a mes")
+                    : (isEn ? "12 months" : "12 meses")}{" "}
+                  • {cat.latest_date}
                 </p>
               </div>
             );
@@ -224,7 +229,7 @@ export default function InflacionCategoriasPage() {
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
-                12 meses (YoY)
+                {isEn ? '12 months (YoY)' : '12 meses (YoY)'}
               </button>
               <button
                 onClick={() => setChartMode("monthly")}
@@ -234,7 +239,7 @@ export default function InflacionCategoriasPage() {
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
-                Mensual (m/m)
+                {isEn ? 'Monthly (m/m)' : 'Mensual (m/m)'}
               </button>
             </div>
             <div className="flex gap-2">
@@ -242,14 +247,14 @@ export default function InflacionCategoriasPage() {
                 onClick={() => setSelectedIds(data.categories.map((c) => c.id))}
                 className="text-xs text-blue-700 hover:underline"
               >
-                Todas
+                {isEn ? 'All' : 'Todas'}
               </button>
               <span className="text-gray-300">|</span>
               <button
                 onClick={() => setSelectedIds([])}
                 className="text-xs text-blue-700 hover:underline"
               >
-                Ninguna
+                {isEn ? 'None' : 'Ninguna'}
               </button>
             </div>
           </div>
@@ -275,11 +280,11 @@ export default function InflacionCategoriasPage() {
           />
 
           <p className="text-sm text-gray-500 mt-3">
-            <strong>Fuente:</strong> {data.metadata.source} •{" "}
-            <strong>Cobertura:</strong> {data.metadata.coverage} •{" "}
+            <strong>{isEn ? 'Source:' : 'Fuente:'}</strong> {data.metadata.source} •{" "}
+            <strong>{isEn ? 'Coverage:' : 'Cobertura:'}</strong> {data.metadata.coverage} •{" "}
             {chartMode === "12m" && (
               <span className="text-green-700">
-                La banda verde indica el rango meta del BCRP (1%–3%)
+                {isEn ? 'The green band indicates the BCRP target range (1%–3%)' : 'La banda verde indica el rango meta del BCRP (1%–3%)'}
               </span>
             )}
           </p>
@@ -289,7 +294,7 @@ export default function InflacionCategoriasPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Interpretación de Categorías
+              {isEn ? 'Category Interpretation' : 'Interpretación de Categorías'}
             </h3>
             <div className="space-y-3">
               {data.categories
@@ -302,11 +307,10 @@ export default function InflacionCategoriasPage() {
                     />
                     <div>
                       <p className="text-sm font-medium text-gray-900">
-                        {cat.name_es}
+                        {isEn ? cat.name_en : cat.name_es}
                         {cat.weight_pct && (
                           <span className="text-gray-500 font-normal">
-                            {" "}
-                            (~{cat.weight_pct}% del IPC)
+                            {" "}(~{cat.weight_pct}% {isEn ? 'of CPI' : 'del IPC'})
                           </span>
                         )}
                       </p>
@@ -321,45 +325,47 @@ export default function InflacionCategoriasPage() {
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-blue-900 mb-4">
-              Señales de Política Monetaria
+              {isEn ? 'Monetary Policy Signals' : 'Señales de Política Monetaria'}
             </h3>
             <div className="space-y-4 text-sm text-blue-800">
               <div>
-                <p className="font-medium">Inflación Subyacente vs No Subyacente</p>
+                <p className="font-medium">{isEn ? 'Core vs Non-Core Inflation' : 'Inflación Subyacente vs No Subyacente'}</p>
                 <p className="text-blue-700 mt-1">
-                  La inflación subyacente refleja presiones domésticas persistentes.
-                  Si la subyacente sube mientras la no subyacente baja, el BCRP
-                  tiene más razón para subir tasas.
+                  {isEn
+                    ? 'Core inflation reflects persistent domestic pressures. If core rises while non-core falls, BCRP has more reason to raise rates.'
+                    : 'La inflación subyacente refleja presiones domésticas persistentes. Si la subyacente sube mientras la no subyacente baja, el BCRP tiene más razón para subir tasas.'}
                 </p>
               </div>
               <div>
-                <p className="font-medium">Transables vs No Transables</p>
+                <p className="font-medium">{isEn ? 'Tradables vs Non-Tradables' : 'Transables vs No Transables'}</p>
                 <p className="text-blue-700 mt-1">
-                  Inflación de transables refleja tipo de cambio e importaciones.
-                  No transables refleja demanda interna y costos laborales locales.
+                  {isEn
+                    ? 'Tradables inflation reflects exchange rate and imports. Non-tradables reflects domestic demand and local labor costs.'
+                    : 'Inflación de transables refleja tipo de cambio e importaciones. No transables refleja demanda interna y costos laborales locales.'}
                 </p>
               </div>
               <div>
-                <p className="font-medium">Alimentos</p>
+                <p className="font-medium">{isEn ? 'Food' : 'Alimentos'}</p>
                 <p className="text-blue-700 mt-1">
-                  Alta volatilidad por factores climáticos (El Niño, heladas).
-                  El BCRP mira el core para calibrar su política, no los alimentos.
+                  {isEn
+                    ? 'High volatility from climate factors (El Niño, frost). BCRP looks at core to calibrate policy, not food.'
+                    : 'Alta volatilidad por factores climáticos (El Niño, heladas). El BCRP mira el core para calibrar su política, no los alimentos.'}
                 </p>
               </div>
               <div className="bg-white rounded p-3 mt-2">
                 <p className="font-semibold text-gray-900">
-                  Meta actual BCRP: 1% – 3% (12m)
+                  {isEn ? 'BCRP current target: 1% – 3% (12m)' : 'Meta actual BCRP: 1% – 3% (12m)'}
                 </p>
                 <p className="text-gray-700">
-                  IPC Total actual:{" "}
+                  {isEn ? 'Total CPI current:' : 'IPC Total actual:'}{" "}
                   <strong style={{ color: total?.color }}>
                     {total
                       ? `${total.latest_12m > 0 ? "+" : ""}${total.latest_12m.toFixed(2)}%`
                       : "N/D"}
                   </strong>{" "}
                   {total && total.latest_12m >= 1 && total.latest_12m <= 3
-                    ? "✅ Dentro de meta"
-                    : "⚠️ Fuera de meta"}
+                    ? (isEn ? "✅ Within target" : "✅ Dentro de meta")
+                    : (isEn ? "⚠️ Outside target" : "⚠️ Fuera de meta")}
                 </p>
               </div>
             </div>
@@ -373,19 +379,19 @@ export default function InflacionCategoriasPage() {
               href="/estadisticas/inflacion"
               className="text-blue-700 hover:text-blue-800 font-medium"
             >
-              ← Volver a Inflación
+              {isEn ? '← Back to Inflation' : '← Volver a Inflación'}
             </Link>
             <Link
               href="/estadisticas/inflacion/graficos"
               className="text-blue-700 hover:text-blue-800 font-medium"
             >
-              Ver gráficos históricos →
+              {isEn ? 'View historical charts →' : 'Ver gráficos históricos →'}
             </Link>
             <Link
               href="/estadisticas/inflacion/metodologia"
               className="text-blue-700 hover:text-blue-800 font-medium"
             >
-              Ver metodología →
+              {isEn ? 'View methodology →' : 'Ver metodología →'}
             </Link>
           </div>
         </div>
