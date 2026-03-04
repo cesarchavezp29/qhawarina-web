@@ -7,7 +7,14 @@ import LanguageSwitcher from "../LanguageSwitcher";
 
 export default function Header() {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileStatsOpen, setIsMobileStatsOpen] = useState(false);
   const t = useTranslations("nav");
+
+  const closeMobile = () => {
+    setIsMobileOpen(false);
+    setIsMobileStatsOpen(false);
+  };
 
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm">
@@ -15,13 +22,13 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center" onClick={closeMobile}>
               <span className="text-2xl font-bold text-blue-800">QHAWARINA</span>
             </Link>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex items-center space-x-8">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
               className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
@@ -94,6 +101,12 @@ export default function Header() {
                     >
                       Mercado Cambiario
                     </Link>
+                    <Link
+                      href="/estadisticas/calendario"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
+                    >
+                      Calendario de Publicaciones
+                    </Link>
                     <div className="border-t border-gray-200 my-1"></div>
                     <Link
                       href="/estadisticas"
@@ -120,7 +133,6 @@ export default function Header() {
               {t("data")}
             </Link>
 
-
             <Link
               href="/escenarios"
               className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
@@ -136,13 +148,6 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/api/docs"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
-            >
-              {t("api")}
-            </Link>
-
-            <Link
               href="/sobre-nosotros"
               className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
             >
@@ -152,8 +157,100 @@ export default function Header() {
             {/* Language Switcher */}
             <LanguageSwitcher />
           </nav>
+
+          {/* Mobile: Language switcher + hamburger */}
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+              className="p-2 rounded-md text-gray-700 hover:text-blue-800 hover:bg-gray-100 transition-colors"
+              aria-label="Abrir menú"
+            >
+              {isMobileOpen ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileOpen && (
+        <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="px-4 py-3 space-y-1">
+            <Link
+              href="/"
+              onClick={closeMobile}
+              className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md"
+            >
+              {t("home")}
+            </Link>
+
+            {/* Mobile Estadísticas accordion */}
+            <div>
+              <button
+                onClick={() => setIsMobileStatsOpen(!isMobileStatsOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md"
+              >
+                {t("statistics")}
+                <svg
+                  className={`h-4 w-4 transition-transform ${isMobileStatsOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isMobileStatsOpen && (
+                <div className="pl-4 mt-1 space-y-1">
+                  {[
+                    ["/estadisticas/pbi", "PBI"],
+                    ["/estadisticas/inflacion", "Inflación"],
+                    ["/estadisticas/pobreza", "Pobreza"],
+                    ["/estadisticas/riesgo-politico", "Riesgo Político"],
+                    ["/estadisticas/precios-diarios", "Precios Diarios"],
+                    ["/estadisticas/intervenciones", "Mercado Cambiario"],
+                    ["/estadisticas/calendario", "Calendario"],
+                    ["/estadisticas", "Ver todo →"],
+                  ].map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobile}
+                      className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link href="/simuladores" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
+              Simuladores
+            </Link>
+            <Link href="/datos" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
+              {t("data")}
+            </Link>
+            <Link href="/escenarios" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
+              {t("scenarios")}
+            </Link>
+            <Link href="/metodologia" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
+              {t("methodology")}
+            </Link>
+            <Link href="/sobre-nosotros" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
+              {t("about")}
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

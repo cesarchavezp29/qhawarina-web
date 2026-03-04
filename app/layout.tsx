@@ -19,11 +19,20 @@ export const metadata: Metadata = {
     siteName: "Qhawarina",
     locale: "es_PE",
     type: "website",
+    images: [
+      {
+        url: "https://qhawarina.pe/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Qhawarina - Nowcasting Económico para Perú",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Qhawarina - Economic Nowcasting for Peru",
     description: "Daily GDP, inflation, and poverty predictions for Peru",
+    images: ["https://qhawarina.pe/og-image.png"],
   },
 };
 

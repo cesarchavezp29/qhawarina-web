@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
+import EmbedWidget from "../../components/EmbedWidget";
 
 interface GDPData {
   metadata: { generated_at: string };
@@ -35,7 +36,10 @@ export default function PBIPage() {
           <span className="text-gray-900 font-medium">PBI</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Producto Bruto Interno</h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">Producto Bruto Interno</h1>
+          <EmbedWidget path="/estadisticas/pbi" title="PBI — Nowcasting Qhawarina" height={600} />
+        </div>
         <p className="text-lg text-gray-600">Nowcast trimestral - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(2)}%</p>
         <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
 

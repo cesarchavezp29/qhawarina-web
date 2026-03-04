@@ -242,8 +242,21 @@ function fmtLastMod(header: string | null): string {
 export default function DatosPage() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [meta, setMeta] = useState<Record<string, FileMeta>>({});
+  const [search, setSearch] = useState("");
 
   const totalFiles = DATA_SECTIONS.reduce((sum, s) => sum + s.files.length, 0);
+
+  const filteredSections = search.trim()
+    ? DATA_SECTIONS.map((s) => ({
+        ...s,
+        files: s.files.filter(
+          (f) =>
+            f.name.toLowerCase().includes(search.toLowerCase()) ||
+            f.description.toLowerCase().includes(search.toLowerCase()) ||
+            f.file.toLowerCase().includes(search.toLowerCase())
+        ),
+      })).filter((s) => s.files.length > 0)
+    : DATA_SECTIONS.filter((s) => !activeSection || s.id === activeSection);
 
   useEffect(() => {
     const allFiles = DATA_SECTIONS.flatMap((s) => s.files.map((f) => f.file));
@@ -284,6 +297,27 @@ export default function DatosPage() {
             </a>
             . Descarga directo — sin registro, sin API key.
           </p>
+
+          {/* Search */}
+          <div className="mt-6 relative max-w-md">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+            </svg>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => { setSearch(e.target.value); setActiveSection(null); }}
+              placeholder="Buscar dataset..."
+              className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            />
+            {search && (
+              <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
 
           {/* Stats bar */}
           <div className="mt-6 flex flex-wrap gap-6">
@@ -340,9 +374,10 @@ export default function DatosPage() {
 
         {/* Sections */}
         <div className="space-y-10">
-          {DATA_SECTIONS.filter(
-            (s) => !activeSection || s.id === activeSection
-          ).map((section) => {
+          {filteredSections.length === 0 && (
+            <p className="text-gray-500 text-sm py-4">No se encontraron datasets para &quot;{search}&quot;.</p>
+          )}
+          {filteredSections.map((section) => {
             const colors = COLOR_MAP[section.color];
             return (
               <div key={section.id}>

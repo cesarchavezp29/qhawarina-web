@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
+import EmbedWidget from "../../components/EmbedWidget";
 
 interface PovertyData {
   metadata: { target_year: number; generated_at: string };
@@ -42,13 +43,15 @@ export default function PobrezaPage() {
           <span className="text-gray-900 font-medium">Pobreza</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Pobreza Monetaria</h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">Pobreza Monetaria</h1>
+          <EmbedWidget path="/estadisticas/pobreza" title="Pobreza — Nowcasting Qhawarina" height={600} />
+        </div>
         <p className="text-lg text-gray-600">Nowcast anual - {data.metadata.target_year}: {nationalAvg.toFixed(1)}%</p>
         <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
 
         {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Time Series Chart */}
           <Link href="/estadisticas/pobreza/graficos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
@@ -61,7 +64,6 @@ export default function PobrezaPage() {
             </div>
           </Link>
 
-          {/* Regional Map */}
           <Link href="/estadisticas/pobreza/mapas">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
@@ -69,6 +71,18 @@ export default function PobrezaPage() {
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">Distribución Regional</h2>
                   <p className="text-sm text-gray-600 mt-1">Nowcast departamental con NTL</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/estadisticas/pobreza/distritos">
+            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
+              <div className="flex items-center gap-4">
+                <div className="text-4xl">🏘️</div>
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">Explorador Distrital</h2>
+                  <p className="text-sm text-gray-600 mt-1">~1,800 distritos con proxy NTL</p>
                 </div>
               </div>
             </div>
