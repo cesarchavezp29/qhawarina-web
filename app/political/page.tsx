@@ -25,7 +25,7 @@ export default function PoliticalPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/assets/data/political_index_daily.json')
+    fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().split('T')[0]}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); });
   }, []);

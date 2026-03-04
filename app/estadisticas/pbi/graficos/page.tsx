@@ -7,6 +7,7 @@ import LastUpdate from "../../../components/stats/LastUpdate";
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface GDPData {
+  metadata: { generated_at: string };
   recent_quarters: Array<{ quarter: string; official: number | null; nowcast: number | null }>;
   quarterly_series: Array<{ quarter: string; official: number | null; nowcast: number | null; nowcast_full: number | null }>;
   annual_series: Array<{ year: number; official: number | null; nowcast: number | null; nowcast_full: number | null }>;
@@ -19,7 +20,7 @@ export default function PBIGraficosPage() {
   const [frequency, setFrequency] = useState<'annual' | 'quarterly'>('quarterly');
 
   useEffect(() => {
-    fetch('/assets/data/gdp_nowcast.json')
+    fetch(`/assets/data/gdp_nowcast.json?v=${new Date().toISOString().split('T')[0]}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); });
   }, []);
@@ -41,7 +42,7 @@ export default function PBIGraficosPage() {
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">PBI - Evolución Temporal</h1>
         <p className="text-lg text-gray-600">Nowcast trimestral - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(2)}%</p>
-        <div className="mt-4"><LastUpdate date="15-Feb-2026" /></div>
+        <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
 
         {/* TIMELINE CHART with Annual/Quarterly Toggle */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-6">

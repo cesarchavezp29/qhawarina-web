@@ -5,6 +5,7 @@ import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
 
 interface InflationData {
+  metadata: { generated_at: string };
   recent_months: Array<{ month: string; official: number | null; nowcast: number | null }>;
   nowcast: { target_period: string; value: number };
 }
@@ -14,7 +15,7 @@ export default function InflacionPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/assets/data/inflation_nowcast.json')
+    fetch(`/assets/data/inflation_nowcast.json?v=${new Date().toISOString().split('T')[0]}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); });
   }, []);
@@ -34,7 +35,7 @@ export default function InflacionPage() {
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Inflación</h1>
         <p className="text-lg text-gray-600">Nowcast mensual - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(3)}%</p>
-        <div className="mt-4"><LastUpdate date="15-Feb-2026" /></div>
+        <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
 
         {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">

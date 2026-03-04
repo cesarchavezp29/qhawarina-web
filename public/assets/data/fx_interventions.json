@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-03T09:02:57.619505",
+    "generated_at": "2026-03-03T19:53:28.512872",
     "sources": {
       "spot": "PD04659MD — Compras netas spot BCRP (Mill. USD)",
       "swaps": "PD04660MD — Swaps cambiarios netos BCRP (Mill. USD)",
@@ -21,18 +21,18 @@
       "reference_rate": "Tasa de política monetaria anual (%)"
     },
     "coverage": "2020-01-01 a 2026-03-03",
-    "n_days_daily": 454,
-    "n_months_monthly": 69
+    "n_days_daily": 498,
+    "n_months_monthly": 75
   },
   "latest": {
-    "date": "2026-02-27",
-    "fx": 3.3559,
-    "spot_net_purchases": 12.0,
+    "date": "2026-03-02",
+    "fx": 3.3651,
+    "spot_net_purchases": 0.0,
     "swaps_net": 0.0,
     "reference_rate": 4.25,
     "bond_sol_10y": null,
     "bond_usd_10y": null,
-    "bvl": 57529.0
+    "bvl": 57419.0
   },
   "daily_series": [
     {
@@ -403,11 +403,11 @@
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
-      "fx": null,
+      "fx": 3.6997,
       "reference_rate": 6.0,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
-      "bvl": null
+      "bond_sol_10y": 7.5,
+      "bond_usd_10y": 5.987,
+      "bvl": 27599.0
     },
     {
       "date": "2024-04-22",
@@ -1107,11 +1107,11 @@
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
-      "fx": null,
+      "fx": 3.7452,
       "reference_rate": 5.75,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
-      "bvl": null
+      "bond_sol_10y": 6.96,
+      "bond_usd_10y": 5.558,
+      "bvl": 29667.0
     },
     {
       "date": "2024-07-22",
@@ -1241,8 +1241,8 @@
       "total_intervention": 0.0,
       "fx": 3.7443,
       "reference_rate": 5.5,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 6.55,
+      "bond_usd_10y": 5.303,
       "bvl": 28616.0
     },
     {
@@ -1252,8 +1252,8 @@
       "total_intervention": 0.0,
       "fx": 3.7477,
       "reference_rate": 5.5,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 6.55,
+      "bond_usd_10y": 5.303,
       "bvl": 28459.0
     },
     {
@@ -1263,8 +1263,8 @@
       "total_intervention": 0.0,
       "fx": 3.7382,
       "reference_rate": 5.5,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 6.55,
+      "bond_usd_10y": 5.303,
       "bvl": 28540.0
     },
     {
@@ -1274,8 +1274,8 @@
       "total_intervention": 0.0,
       "fx": 3.7372,
       "reference_rate": 5.5,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 6.55,
+      "bond_usd_10y": 5.303,
       "bvl": 28953.0
     },
     {
@@ -1349,11 +1349,11 @@
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
-      "fx": null,
+      "fx": 3.746,
       "reference_rate": 5.5,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
-      "bvl": null
+      "bond_sol_10y": 6.53,
+      "bond_usd_10y": 5.031,
+      "bvl": 28429.0
     },
     {
       "date": "2024-08-26",
@@ -1398,6 +1398,237 @@
       "bond_sol_10y": 6.54,
       "bond_usd_10y": 5.09,
       "bvl": 28442.0
+    },
+    {
+      "date": "2024-09-02",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.765,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.55,
+      "bond_usd_10y": 5.09,
+      "bvl": 28721.0
+    },
+    {
+      "date": "2024-09-03",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7837,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.55,
+      "bond_usd_10y": 5.153,
+      "bvl": 28082.0
+    },
+    {
+      "date": "2024-09-04",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7967,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.53,
+      "bond_usd_10y": 5.124,
+      "bvl": 28026.0
+    },
+    {
+      "date": "2024-09-05",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7948,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.52,
+      "bond_usd_10y": 5.088,
+      "bvl": 28304.0
+    },
+    {
+      "date": "2024-09-06",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7967,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.48,
+      "bond_usd_10y": 5.081,
+      "bvl": 28065.0
+    },
+    {
+      "date": "2024-09-09",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.8118,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.43,
+      "bond_usd_10y": 5.059,
+      "bvl": 28283.0
+    },
+    {
+      "date": "2024-09-10",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.8185,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.44,
+      "bond_usd_10y": 5.036,
+      "bvl": 28007.0
+    },
+    {
+      "date": "2024-09-11",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.788,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.4,
+      "bond_usd_10y": 5.021,
+      "bvl": 28191.0
+    },
+    {
+      "date": "2024-09-12",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7688,
+      "reference_rate": 5.5,
+      "bond_sol_10y": 6.42,
+      "bond_usd_10y": 5.027,
+      "bvl": 28540.0
+    },
+    {
+      "date": "2024-09-13",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7695,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.39,
+      "bond_usd_10y": 4.989,
+      "bvl": 28951.0
+    },
+    {
+      "date": "2024-09-16",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7837,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.33,
+      "bond_usd_10y": 4.92,
+      "bvl": 28869.0
+    },
+    {
+      "date": "2024-09-17",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7735,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.29,
+      "bond_usd_10y": 4.928,
+      "bvl": 28697.0
+    },
+    {
+      "date": "2024-09-18",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7588,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.25,
+      "bond_usd_10y": 4.954,
+      "bvl": 29094.0
+    },
+    {
+      "date": "2024-09-19",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7478,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.22,
+      "bond_usd_10y": 4.934,
+      "bvl": 29214.0
+    },
+    {
+      "date": "2024-09-20",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7518,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.229,
+      "bond_usd_10y": 5.004,
+      "bvl": 29307.0
+    },
+    {
+      "date": "2024-09-23",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7702,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.25,
+      "bond_usd_10y": 5.03,
+      "bvl": 29357.0
+    },
+    {
+      "date": "2024-09-24",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7642,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.28,
+      "bond_usd_10y": 5.024,
+      "bvl": 29808.0
+    },
+    {
+      "date": "2024-09-25",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7623,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.29,
+      "bond_usd_10y": 5.021,
+      "bvl": 29612.0
+    },
+    {
+      "date": "2024-09-26",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7308,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.29,
+      "bond_usd_10y": 5.015,
+      "bvl": 30160.0
+    },
+    {
+      "date": "2024-09-27",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7155,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.24,
+      "bond_usd_10y": 4.981,
+      "bvl": 30282.0
+    },
+    {
+      "date": "2024-09-30",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.7082,
+      "reference_rate": 5.25,
+      "bond_sol_10y": 6.22,
+      "bond_usd_10y": 4.981,
+      "bvl": 29942.0
     },
     {
       "date": "2024-10-01",
@@ -1921,11 +2152,11 @@
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
-      "fx": null,
+      "fx": 3.7218,
       "reference_rate": 5.0,
       "bond_sol_10y": 6.55,
       "bond_usd_10y": 5.422,
-      "bvl": null
+      "bvl": 29468.0
     },
     {
       "date": "2024-12-10",
@@ -2022,8 +2253,8 @@
       "total_intervention": 0.0,
       "fx": 3.7242,
       "reference_rate": 5.0,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 6.77,
+      "bond_usd_10y": 5.961,
       "bvl": 29116.0
     },
     {
@@ -3714,11 +3945,11 @@
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
-      "fx": null,
+      "fx": 3.5583,
       "reference_rate": 4.5,
       "bond_sol_10y": 5.97,
       "bond_usd_10y": 5.243,
-      "bvl": null
+      "bvl": 33636.0
     },
     {
       "date": "2025-08-07",
@@ -3906,6 +4137,248 @@
       "bond_sol_10y": 6.02,
       "bond_usd_10y": 5.285,
       "bvl": 34938.0
+    },
+    {
+      "date": "2025-09-01",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5342,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.23,
+      "bond_usd_10y": 5.285,
+      "bvl": 35214.0
+    },
+    {
+      "date": "2025-09-02",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5415,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.26,
+      "bond_usd_10y": 5.335,
+      "bvl": 35375.0
+    },
+    {
+      "date": "2025-09-03",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5318,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.21,
+      "bond_usd_10y": 5.285,
+      "bvl": 35737.0
+    },
+    {
+      "date": "2025-09-04",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5335,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.18,
+      "bond_usd_10y": 5.22,
+      "bvl": 35749.0
+    },
+    {
+      "date": "2025-09-05",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5212,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.08,
+      "bond_usd_10y": 5.108,
+      "bvl": 35782.0
+    },
+    {
+      "date": "2025-09-08",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5163,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.07,
+      "bond_usd_10y": 5.063,
+      "bvl": 35944.0
+    },
+    {
+      "date": "2025-09-09",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.505,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.09,
+      "bond_usd_10y": 5.074,
+      "bvl": 35556.0
+    },
+    {
+      "date": "2025-09-10",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4863,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 6.02,
+      "bond_usd_10y": 5.004,
+      "bvl": 35482.0
+    },
+    {
+      "date": "2025-09-11",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.481,
+      "reference_rate": 4.5,
+      "bond_sol_10y": 5.99,
+      "bond_usd_10y": 4.942,
+      "bvl": 35887.0
+    },
+    {
+      "date": "2025-09-12",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4953,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.0,
+      "bond_usd_10y": 5.002,
+      "bvl": 36170.0
+    },
+    {
+      "date": "2025-09-15",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.493,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.15,
+      "bond_usd_10y": 4.997,
+      "bvl": 36487.0
+    },
+    {
+      "date": "2025-09-16",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4842,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.21,
+      "bond_usd_10y": 5.005,
+      "bvl": 36524.0
+    },
+    {
+      "date": "2025-09-17",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4832,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.15,
+      "bond_usd_10y": 5.025,
+      "bvl": 36370.0
+    },
+    {
+      "date": "2025-09-18",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4868,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.14,
+      "bond_usd_10y": 5.05,
+      "bvl": 35776.0
+    },
+    {
+      "date": "2025-09-19",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4936,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.14,
+      "bond_usd_10y": 5.082,
+      "bvl": 36228.0
+    },
+    {
+      "date": "2025-09-22",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5048,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.14,
+      "bond_usd_10y": 5.113,
+      "bvl": 36925.0
+    },
+    {
+      "date": "2025-09-23",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5012,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.13,
+      "bond_usd_10y": 5.087,
+      "bvl": 36926.0
+    },
+    {
+      "date": "2025-09-24",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5076,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.14,
+      "bond_usd_10y": 5.109,
+      "bvl": 37763.0
+    },
+    {
+      "date": "2025-09-25",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.5071,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.15,
+      "bond_usd_10y": 5.163,
+      "bvl": 37647.0
+    },
+    {
+      "date": "2025-09-26",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4969,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.15,
+      "bond_usd_10y": 5.178,
+      "bvl": 37711.0
+    },
+    {
+      "date": "2025-09-29",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.4824,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.09,
+      "bond_usd_10y": 5.162,
+      "bvl": 38319.0
+    },
+    {
+      "date": "2025-09-30",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.473,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 6.05,
+      "bond_usd_10y": 5.169,
+      "bvl": 38055.0
     },
     {
       "date": "2025-10-01",
@@ -5014,20 +5487,31 @@
       "total_intervention": 12.0,
       "fx": 3.3559,
       "reference_rate": 4.25,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
+      "bond_sol_10y": 5.85,
+      "bond_usd_10y": 4.959,
       "bvl": 57529.0
     },
     {
       "date": "2026-03-02",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx": 3.3651,
+      "reference_rate": 4.25,
+      "bond_sol_10y": 5.85,
+      "bond_usd_10y": 4.959,
+      "bvl": 57419.0
+    },
+    {
+      "date": "2026-03-03",
       "spot_net_purchases": null,
       "swaps_net": null,
       "total_intervention": 0.0,
-      "fx": null,
+      "fx": 3.3651,
       "reference_rate": 4.25,
-      "bond_sol_10y": null,
-      "bond_usd_10y": null,
-      "bvl": null
+      "bond_sol_10y": 5.85,
+      "bond_usd_10y": 4.959,
+      "bvl": 57419.0
     }
   ],
   "monthly_series": [
@@ -5126,6 +5610,18 @@
       "bvl_end": 18577.0,
       "reference_rate": 0.25,
       "n_days": 22
+    },
+    {
+      "month": "2020-09",
+      "spot_net_purchases": -1.0,
+      "swaps_net": 0.0,
+      "total_intervention": -1.0,
+      "fx_avg": 3.5565,
+      "bond_sol_avg": 4.153,
+      "bond_usd_avg": 1.8,
+      "bvl_end": 17949.0,
+      "reference_rate": 0.25,
+      "n_days": 25
     },
     {
       "month": "2020-10",
@@ -5260,6 +5756,18 @@
       "n_days": 21
     },
     {
+      "month": "2021-09",
+      "spot_net_purchases": -2596.0,
+      "swaps_net": 0.0,
+      "total_intervention": -2596.0,
+      "fx_avg": 4.1087,
+      "bond_sol_avg": 6.342,
+      "bond_usd_avg": 2.601,
+      "bvl_end": 18279.0,
+      "reference_rate": 1.0,
+      "n_days": 22
+    },
+    {
       "month": "2021-10",
       "spot_net_purchases": -776.0,
       "swaps_net": 0.0,
@@ -5389,6 +5897,18 @@
       "bond_usd_avg": 4.538,
       "bvl_end": 18853.0,
       "reference_rate": 6.5,
+      "n_days": 22
+    },
+    {
+      "month": "2022-09",
+      "spot_net_purchases": -100.0,
+      "swaps_net": 0.0,
+      "total_intervention": -100.0,
+      "fx_avg": 3.9006,
+      "bond_sol_avg": 8.306,
+      "bond_usd_avg": 5.265,
+      "bvl_end": 19448.0,
+      "reference_rate": 6.75,
       "n_days": 22
     },
     {
@@ -5524,6 +6044,18 @@
       "n_days": 22
     },
     {
+      "month": "2023-09",
+      "spot_net_purchases": -13.0,
+      "swaps_net": 0.0,
+      "total_intervention": -13.0,
+      "fx_avg": 3.7312,
+      "bond_sol_avg": 6.969,
+      "bond_usd_avg": 5.817,
+      "bvl_end": 22528.0,
+      "reference_rate": 7.5,
+      "n_days": 21
+    },
+    {
       "month": "2023-10",
       "spot_net_purchases": -67.0,
       "swaps_net": 0.0,
@@ -5653,6 +6185,18 @@
       "bond_usd_avg": 5.171,
       "bvl_end": 28442.0,
       "reference_rate": 5.5,
+      "n_days": 21
+    },
+    {
+      "month": "2024-09",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx_avg": 3.7695,
+      "bond_sol_avg": 6.362,
+      "bond_usd_avg": 5.022,
+      "bvl_end": 29942.0,
+      "reference_rate": 5.25,
       "n_days": 21
     },
     {
@@ -5788,6 +6332,18 @@
       "n_days": 21
     },
     {
+      "month": "2025-09",
+      "spot_net_purchases": 0.0,
+      "swaps_net": 0.0,
+      "total_intervention": 0.0,
+      "fx_avg": 3.5027,
+      "bond_sol_avg": 6.126,
+      "bond_usd_avg": 5.112,
+      "bvl_end": 38055.0,
+      "reference_rate": 4.25,
+      "n_days": 22
+    },
+    {
       "month": "2025-10",
       "spot_net_purchases": 0.0,
       "swaps_net": 0.0,
@@ -5852,12 +6408,12 @@
       "spot_net_purchases": 0.0,
       "swaps_net": 0.0,
       "total_intervention": 0.0,
-      "fx_avg": null,
+      "fx_avg": 3.3651,
       "bond_sol_avg": null,
       "bond_usd_avg": null,
-      "bvl_end": null,
+      "bvl_end": 57419.0,
       "reference_rate": 4.25,
-      "n_days": 1
+      "n_days": 2
     }
   ]
 }

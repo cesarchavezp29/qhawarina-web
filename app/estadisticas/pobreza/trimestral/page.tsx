@@ -29,16 +29,19 @@ export default function PobrezaTrimestralPage() {
   const [monthlyData, setMonthlyData] = useState<MonthlyData[]>([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState<"quarterly" | "monthly">("monthly");
-  const lastUpdate = "15-Feb-2026";
+  const [lastUpdate, setLastUpdate] = useState<string>("");
 
   useEffect(() => {
     Promise.all([
-      fetch("/assets/data/poverty_quarterly.json").then((res) => res.json()),
-      fetch("/assets/data/poverty_monthly.json").then((res) => res.json()),
+      fetch(`/assets/data/poverty_quarterly.json?v=${new Date().toISOString().split('T')[0]}`).then((res) => res.json()),
+      fetch(`/assets/data/poverty_monthly.json?v=${new Date().toISOString().split('T')[0]}`).then((res) => res.json()),
     ])
       .then(([quarterly, monthly]) => {
         setQuarterlyData(quarterly.national_quarterly || []);
         setMonthlyData(monthly.national_monthly || []);
+        if (quarterly.metadata?.generated_at) {
+          setLastUpdate(new Date(quarterly.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' }));
+        }
         setLoading(false);
       })
       .catch((err) => {

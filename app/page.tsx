@@ -17,13 +17,22 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([
-      fetch('/assets/data/gdp_nowcast.json').then(r => r.json()),
-      fetch('/assets/data/inflation_nowcast.json').then(r => r.json()),
-      fetch('/assets/data/poverty_nowcast.json').then(r => r.json()),
-      fetch('/assets/data/political_index_daily.json').then(r => r.json())
-    ]).then(([gdp, inflation, poverty, political]) => {
-      setData({ gdp, inflation, poverty, political });
+    Promise.allSettled([
+      fetch(`/assets/data/gdp_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/inflation_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/fx_interventions.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/daily_price_index.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+    ]).then(([gdpR, inflR, povR, polR, fxR, pricesR]) => {
+      setData({
+        gdp:       gdpR.status === 'fulfilled' ? gdpR.value : null,
+        inflation: inflR.status === 'fulfilled' ? inflR.value : null,
+        poverty:   povR.status === 'fulfilled' ? povR.value : null,
+        political: polR.status === 'fulfilled' ? polR.value : null,
+        fx:        fxR.status === 'fulfilled' ? fxR.value : null,
+        prices:    pricesR.status === 'fulfilled' ? pricesR.value : null,
+      });
       setLoading(false);
     });
   }, []);
@@ -72,10 +81,10 @@ export default function HomePage() {
                     Crecimiento PBI (interanual)
                   </td>
                   <td className="px-6 py-4 text-right text-base font-semibold text-gray-900">
-                    {data.gdp.nowcast.value > 0 ? '+' : ''}{data.gdp.nowcast.value.toFixed(2)}%
+                    {data.gdp?.nowcast?.value != null ? `${data.gdp.nowcast.value > 0 ? '+' : ''}${data.gdp.nowcast.value.toFixed(2)}%` : '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
-                    {data.gdp.nowcast.target_period}
+                    {data.gdp?.nowcast?.target_period ?? '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
                     DFM-Ridge
@@ -91,10 +100,10 @@ export default function HomePage() {
                     Inflación (mensual)
                   </td>
                   <td className="px-6 py-4 text-right text-base font-semibold text-gray-900">
-                    {data.inflation.nowcast.value > 0 ? '+' : ''}{data.inflation.nowcast.value.toFixed(3)}%
+                    {data.inflation?.nowcast?.value != null ? `${data.inflation.nowcast.value > 0 ? '+' : ''}${data.inflation.nowcast.value.toFixed(3)}%` : '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
-                    {data.inflation.nowcast.target_period}
+                    {data.inflation?.nowcast?.target_period ?? '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
                     DFM-AR(1)
@@ -110,10 +119,10 @@ export default function HomePage() {
                     Tasa de Pobreza
                   </td>
                   <td className="px-6 py-4 text-right text-base font-semibold text-gray-900">
-                    {data.poverty.national.poverty_rate.toFixed(1)}%
+                    {data.poverty?.national?.poverty_rate != null ? `${data.poverty.national.poverty_rate.toFixed(1)}%` : '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
-                    {data.poverty.metadata.target_year}
+                    {data.poverty?.metadata?.target_year ?? '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
                     GBR
@@ -129,20 +138,64 @@ export default function HomePage() {
                     Índice de Riesgo Político
                   </td>
                   <td className="px-6 py-4 text-right text-base font-semibold text-gray-900">
-                    {data.political.current.score.toFixed(3)}
+                    {data.political?.current?.score != null ? data.political.current.score.toFixed(3) : '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
-                    {parseLocalDate(data.political.current.date).toLocaleDateString('es-PE', { day: 'numeric', month: 'short' })}
+                    {data.political?.current?.date ? parseLocalDate(data.political.current.date).toLocaleDateString('es-PE', { day: 'numeric', month: 'short' }) : '—'}
                   </td>
                   <td className="px-6 py-4 text-right text-sm text-gray-600">
                     GPT-4o
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <Link href="/political" className="text-sm text-blue-600 hover:text-blue-800 font-medium">
+                    <Link href="/estadisticas/riesgo-politico" className="text-sm text-blue-600 hover:text-blue-800 font-medium">
                       Ver →
                     </Link>
                   </td>
                 </tr>
+                {data.fx?.latest && (
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                      Tipo de Cambio PEN/USD
+                    </td>
+                    <td className="px-6 py-4 text-right text-base font-semibold text-gray-900">
+                      {data.fx.latest.fx != null ? `S/ ${data.fx.latest.fx.toFixed(4)}` : '—'}
+                    </td>
+                    <td className="px-6 py-4 text-right text-sm text-gray-600">
+                      {data.fx.latest.date ?? '—'}
+                    </td>
+                    <td className="px-6 py-4 text-right text-sm text-gray-600">
+                      BCRP
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <Link href="/estadisticas/intervenciones" className="text-sm text-blue-600 hover:text-blue-800 font-medium">
+                        Ver →
+                      </Link>
+                    </td>
+                  </tr>
+                )}
+                {data.prices?.latest && (
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                      Precios Diarios (BPP)
+                    </td>
+                    <td className="px-6 py-4 text-right text-base font-semibold text-gray-900">
+                      {data.prices.latest.var_all != null
+                        ? `${data.prices.latest.var_all >= 0 ? '+' : ''}${data.prices.latest.var_all.toFixed(3)}%`
+                        : '—'}
+                    </td>
+                    <td className="px-6 py-4 text-right text-sm text-gray-600">
+                      {data.prices.latest.date ?? '—'}
+                    </td>
+                    <td className="px-6 py-4 text-right text-sm text-gray-600">
+                      Jevons
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <Link href="/estadisticas/precios-diarios" className="text-sm text-blue-600 hover:text-blue-800 font-medium">
+                        Ver →
+                      </Link>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -316,20 +369,32 @@ export default function HomePage() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-blue-200">PBI Baseline:</span>
-                      <span className="font-bold">+2.5%</span>
+                      <span className="font-bold">
+                        {data.gdp?.nowcast?.value != null
+                          ? `${data.gdp.nowcast.value >= 0 ? '+' : ''}${data.gdp.nowcast.value.toFixed(1)}%`
+                          : '+2.5%'}
+                      </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-blue-200">PBI Counterfactual:</span>
+                      <span className="text-blue-200">PBI Contrafactual:</span>
                       <span className="font-bold">0.0%</span>
                     </div>
                     <div className="h-px bg-white/20 my-2"></div>
                     <div className="flex justify-between">
                       <span className="text-blue-200">Impacto:</span>
-                      <span className="font-bold text-red-300">-2.5pp</span>
+                      <span className="font-bold text-red-300">
+                        {data.gdp?.nowcast?.value != null
+                          ? `-${data.gdp.nowcast.value.toFixed(1)}pp`
+                          : '-2.5pp'}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-blue-200">Pobreza:</span>
-                      <span className="font-bold text-red-300">+1.25pp</span>
+                      <span className="font-bold text-red-300">
+                        {data.gdp?.nowcast?.value != null
+                          ? `+${(data.gdp.nowcast.value * 0.5).toFixed(2)}pp`
+                          : '+1.25pp'}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -373,18 +438,30 @@ export default function HomePage() {
           <div className="grid grid-cols-4 gap-4">
             <div className="border border-gray-300 p-4 bg-white">
               <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">RMSE PBI</div>
-              <div className="text-2xl font-semibold text-gray-900">{data.gdp.backtest_metrics.rmse.toFixed(2)}pp</div>
-              <div className="text-xs text-gray-600 mt-1">R² = {data.gdp.backtest_metrics.r2.toFixed(3)}</div>
+              <div className="text-2xl font-semibold text-gray-900">
+                {data.gdp?.backtest_metrics?.rmse != null ? `${data.gdp.backtest_metrics.rmse.toFixed(2)}pp` : '—'}
+              </div>
+              <div className="text-xs text-gray-600 mt-1">
+                {data.gdp?.backtest_metrics?.r2 != null ? `R² = ${data.gdp.backtest_metrics.r2.toFixed(3)}` : ''}
+              </div>
             </div>
             <div className="border border-gray-300 p-4 bg-white">
               <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">RMSE Inflación</div>
-              <div className="text-2xl font-semibold text-gray-900">{data.inflation.backtest_metrics.rmse.toFixed(3)}pp</div>
-              <div className="text-xs text-gray-600 mt-1">R² = {data.inflation.backtest_metrics.r2.toFixed(3)}</div>
+              <div className="text-2xl font-semibold text-gray-900">
+                {data.inflation?.backtest_metrics?.rmse != null ? `${data.inflation.backtest_metrics.rmse.toFixed(3)}pp` : '—'}
+              </div>
+              <div className="text-xs text-gray-600 mt-1">
+                {data.inflation?.backtest_metrics?.r2 != null ? `R² = ${data.inflation.backtest_metrics.r2.toFixed(3)}` : ''}
+              </div>
             </div>
             <div className="border border-gray-300 p-4 bg-white">
               <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">RMSE Pobreza</div>
-              <div className="text-2xl font-semibold text-gray-900">{data.poverty.backtest_metrics.rmse.toFixed(2)}pp</div>
-              <div className="text-xs text-gray-600 mt-1">R² = {data.poverty.backtest_metrics.r2.toFixed(3)}</div>
+              <div className="text-2xl font-semibold text-gray-900">
+                {data.poverty?.backtest_metrics?.rmse != null ? `${data.poverty.backtest_metrics.rmse.toFixed(2)}pp` : '—'}
+              </div>
+              <div className="text-xs text-gray-600 mt-1">
+                {data.poverty?.backtest_metrics?.r2 != null ? `R² = ${data.poverty.backtest_metrics.r2.toFixed(3)}` : ''}
+              </div>
             </div>
             <div className="border border-gray-300 p-4 bg-white">
               <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Cobertura</div>

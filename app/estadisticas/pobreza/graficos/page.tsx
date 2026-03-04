@@ -7,7 +7,7 @@ import LastUpdate from "../../../components/stats/LastUpdate";
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface PovertyData {
-  metadata: { target_year: number };
+  metadata: { target_year: number; generated_at: string };
   departments: Array<{
     code: string;
     name: string;
@@ -41,8 +41,8 @@ export default function PobrezaGraficosPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch('/assets/data/poverty_nowcast.json').then(r => r.json()),
-      fetch('/assets/data/poverty_quarterly.json').then(r => r.json())
+      fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/poverty_quarterly.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json())
     ]).then(([annualData, qData]) => {
       setData(annualData);
       setQuarterlyData(qData);
@@ -69,7 +69,7 @@ export default function PobrezaGraficosPage() {
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Pobreza - Evolución Temporal</h1>
         <p className="text-lg text-gray-600">Nowcast anual - {data.metadata.target_year}: {nationalAvg.toFixed(1)}%</p>
-        <div className="mt-4"><LastUpdate date="15-Feb-2026" /></div>
+        <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
 
         {/* TIMELINE CHART with Annual/Quarterly Toggle */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-6">

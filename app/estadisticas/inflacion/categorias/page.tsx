@@ -41,7 +41,7 @@ export default function InflacionCategoriasPage() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("/assets/data/inflation_categories.json")
+    fetch(`/assets/data/inflation_categories.json?v=${new Date().toISOString().split('T')[0]}`)
       .then((r) => r.json())
       .then((d) => {
         setData(d);

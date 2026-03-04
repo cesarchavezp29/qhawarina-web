@@ -5,7 +5,7 @@ import Link from 'next/link';
 import LastUpdate from "../../components/stats/LastUpdate";
 
 interface PovertyData {
-  metadata: { target_year: number };
+  metadata: { target_year: number; generated_at: string };
   departments: Array<{
     code: string;
     name: string;
@@ -20,7 +20,7 @@ export default function PobrezaPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/assets/data/poverty_nowcast.json')
+    fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); });
   }, []);
@@ -42,7 +42,7 @@ export default function PobrezaPage() {
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Pobreza Monetaria</h1>
         <p className="text-lg text-gray-600">Nowcast anual - {data.metadata.target_year}: {nationalAvg.toFixed(1)}%</p>
-        <div className="mt-4"><LastUpdate date="15-Feb-2026" /></div>
+        <div className="mt-4"><LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} /></div>
 
         {/* Navigation Cards */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">

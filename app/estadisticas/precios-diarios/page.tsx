@@ -55,7 +55,7 @@ export default function PreciosDiariosPage() {
   const [showCategories, setShowCategories] = useState(false);
 
   useEffect(() => {
-    fetch("/assets/data/daily_price_index.json")
+    fetch(`/assets/data/daily_price_index.json?v=${new Date().toISOString().split('T')[0]}`)
       .then((r) => r.json())
       .then((d) => {
         setData(d);

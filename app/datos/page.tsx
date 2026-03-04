@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface DataFile {
@@ -8,8 +8,6 @@ interface DataFile {
   description: string;
   file: string;
   format: "JSON" | "CSV";
-  size: string;
-  updated: string;
   rows?: string;
 }
 
@@ -20,6 +18,11 @@ interface DataSection {
   color: string;
   description: string;
   files: DataFile[];
+}
+
+interface FileMeta {
+  size: string;
+  updated: string;
 }
 
 const DATA_SECTIONS: DataSection[] = [
@@ -35,32 +38,30 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Predicción trimestral del crecimiento del PBI. Incluye valores oficiales históricos, predicciones y métricas del modelo DFM.",
         file: "gdp_nowcast.json",
         format: "JSON",
-        size: "15 KB",
-        updated: "Feb 2026",
       },
       {
         name: "Nowcast Inflación",
         description: "Predicción mensual de inflación (var% mensual y 12 meses). Serie histórica desde 2010.",
         file: "inflation_nowcast.json",
         format: "JSON",
-        size: "37 KB",
-        updated: "Feb 2026",
       },
       {
         name: "Nowcast Pobreza",
         description: "Predicción anual de pobreza monetaria a nivel nacional. Incluye intervalos de confianza.",
         file: "poverty_nowcast.json",
         format: "JSON",
-        size: "20 KB",
-        updated: "Feb 2026",
       },
       {
         name: "Índice Político Diario",
         description: "Índice de riesgo político para Perú. Basado en clasificación GPT-4o de 81 feeds RSS.",
         file: "political_index_daily.json",
         format: "JSON",
-        size: "7 KB",
-        updated: "Feb 2026",
+      },
+      {
+        name: "Mercado Cambiario / Intervenciones BCRP",
+        description: "Tipo de cambio PEN/USD, intervenciones spot y swaps del BCRP, tasa de referencia, bonos soberanos y BVL. Desde 2020, frecuencia diaria y mensual.",
+        file: "fx_interventions.json",
+        format: "JSON",
       },
     ],
   },
@@ -76,8 +77,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Crecimiento trimestral del PBI desagregado en 8 sectores: Agropecuario, Pesca, Minería, Manufactura, Electricidad, Construcción, Comercio y Servicios.",
         file: "gdp_sectoral.json",
         format: "JSON",
-        size: "29 KB",
-        updated: "Feb 2026",
         rows: "87 trimestres",
       },
       {
@@ -85,8 +84,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "IPC de Lima Metropolitana desagregado en 7 categorías: Alimentos, Sin Alimentos, Core, Subyacente, Transables, No Transables. Desde 2010.",
         file: "inflation_categories.json",
         format: "JSON",
-        size: "70 KB",
-        updated: "Feb 2026",
         rows: "192 meses",
       },
       {
@@ -94,8 +91,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Proxy de actividad económica por departamento usando Nighttime Lights (NTL) satelital.",
         file: "gdp_regional_nowcast.json",
         format: "JSON",
-        size: "4 KB",
-        updated: "Feb 2026",
         rows: "25 departamentos",
       },
       {
@@ -103,16 +98,12 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Serie trimestral de tasa de pobreza departamental. Interpolación del modelo GBR.",
         file: "poverty_quarterly.json",
         format: "JSON",
-        size: "20 KB",
-        updated: "Feb 2026",
       },
       {
         name: "Pobreza Mensual",
         description: "Serie mensual de pobreza por departamento. Incluye predicciones Qhawarina.",
         file: "poverty_monthly.json",
         format: "JSON",
-        size: "16 KB",
-        updated: "Feb 2026",
       },
     ],
   },
@@ -128,8 +119,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "58 series económicas nacionales en formato largo. Incluye valor bruto, desestacionalizado, log, dlog y variaciones interanuales. Fuente: BCRP, INEI, MIDAGRI, Supermercados.",
         file: "panel_national_monthly.csv",
         format: "CSV",
-        size: "2.2 MB",
-        updated: "Feb 2026",
         rows: "~25,000 obs",
       },
       {
@@ -137,8 +126,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "233 series a nivel departamental (25 depts × ~10 categorías). Incluye NTL, BCRP series regionales, crédito, empleo y más.",
         file: "panel_departmental_monthly.csv",
         format: "CSV",
-        size: "16.5 MB",
-        updated: "Feb 2026",
         rows: "~250,000 obs",
       },
       {
@@ -146,8 +133,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Proxy de pobreza a nivel distrital usando Nighttime Lights. Desagregación sub-departamental.",
         file: "poverty_districts_full.csv",
         format: "CSV",
-        size: "138 KB",
-        updated: "Feb 2026",
         rows: "~1,800 distritos",
       },
     ],
@@ -164,8 +149,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Predicciones históricas del DFM de PBI vs valores oficiales. Incluye RMSE, errores por trimestre y comparación con benchmarks AR1 y Random Walk.",
         file: "backtest_gdp.csv",
         format: "CSV",
-        size: "9 KB",
-        updated: "Feb 2026",
         rows: "~80 trimestres",
       },
       {
@@ -173,8 +156,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Predicciones históricas del DFM de inflación. Evaluación mensual fuera de muestra desde 2015.",
         file: "backtest_inflation.csv",
         format: "CSV",
-        size: "44 KB",
-        updated: "Feb 2026",
         rows: "~120 meses",
       },
       {
@@ -182,8 +163,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Predicciones históricas del modelo GBR de pobreza departamental. Comparación con AR1.",
         file: "backtest_poverty.csv",
         format: "CSV",
-        size: "14 KB",
-        updated: "Feb 2026",
         rows: "~480 dept-año",
       },
     ],
@@ -200,8 +179,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Índice Jevons chain-linked diario de Plaza Vea, Metro y Wong. 42,000+ productos. Metodología Cavallo & Rigobon (MIT). Base = 100 desde 10-Feb-2026.",
         file: "daily_price_index.json",
         format: "JSON",
-        size: "4 KB",
-        updated: "Feb 2026",
         rows: "Diario",
       },
       {
@@ -209,9 +186,6 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Agregado mensual del índice de precios de supermercados. Crece cada mes con nuevos datos scrapeados.",
         file: "supermarket_monthly_prices.csv",
         format: "CSV",
-        size: "1 KB",
-        updated: "Feb 2026",
-        rows: "1 mes",
       },
     ],
   },
@@ -250,10 +224,47 @@ const COLOR_MAP: Record<string, { bg: string; border: string; badge: string; tex
   },
 };
 
+function fmtBytes(bytes: number): string {
+  if (bytes <= 0) return "—";
+  if (bytes >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  if (bytes >= 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${bytes} B`;
+}
+
+function fmtLastMod(header: string | null): string {
+  if (!header) return "—";
+  return new Date(header).toLocaleDateString("es-PE", {
+    month: "short",
+    year: "numeric",
+  });
+}
+
 export default function DatosPage() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [meta, setMeta] = useState<Record<string, FileMeta>>({});
 
   const totalFiles = DATA_SECTIONS.reduce((sum, s) => sum + s.files.length, 0);
+
+  useEffect(() => {
+    const allFiles = DATA_SECTIONS.flatMap((s) => s.files.map((f) => f.file));
+
+    Promise.allSettled(
+      allFiles.map(async (filename) => {
+        const res = await fetch(`/assets/data/${filename}`, { method: "HEAD" });
+        const bytes = parseInt(res.headers.get("content-length") ?? "0", 10);
+        const lastMod = res.headers.get("last-modified");
+        return { filename, size: fmtBytes(bytes), updated: fmtLastMod(lastMod) };
+      })
+    ).then((results) => {
+      const map: Record<string, FileMeta> = {};
+      for (const r of results) {
+        if (r.status === "fulfilled") {
+          map[r.value.filename] = { size: r.value.size, updated: r.value.updated };
+        }
+      }
+      setMeta(map);
+    });
+  }, []);
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -346,62 +357,69 @@ export default function DatosPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {section.files.map((file) => (
-                    <div
-                      key={file.file}
-                      className="bg-white rounded-lg border border-gray-200 p-5 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="font-semibold text-gray-900">
-                          {file.name}
-                        </h3>
-                        <span
-                          className={`text-xs font-mono px-2 py-0.5 rounded font-medium ${colors.badge}`}
-                        >
-                          {file.format}
-                        </span>
-                      </div>
-
-                      <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                        {file.description}
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-gray-400">
-                          <span>{file.size}</span>
-                          {file.rows && (
-                            <>
-                              <span>·</span>
-                              <span>{file.rows}</span>
-                            </>
-                          )}
-                          <span>·</span>
-                          <span>Actualizado: {file.updated}</span>
+                  {section.files.map((file) => {
+                    const fileMeta = meta[file.file];
+                    return (
+                      <div
+                        key={file.file}
+                        className="bg-white rounded-lg border border-gray-200 p-5 hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex items-start justify-between mb-2">
+                          <h3 className="font-semibold text-gray-900">
+                            {file.name}
+                          </h3>
+                          <span
+                            className={`text-xs font-mono px-2 py-0.5 rounded font-medium ${colors.badge}`}
+                          >
+                            {file.format}
+                          </span>
                         </div>
 
-                        <a
-                          href={`/assets/data/${file.file}`}
-                          download={file.file}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${colors.bg} ${colors.text} hover:opacity-80`}
-                        >
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                        <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                          {file.description}
+                        </p>
+
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3 text-xs text-gray-400">
+                            <span>{fileMeta?.size ?? "…"}</span>
+                            {file.rows && (
+                              <>
+                                <span>·</span>
+                                <span>{file.rows}</span>
+                              </>
+                            )}
+                            <span>·</span>
+                            <span>
+                              {fileMeta
+                                ? `Act.: ${fileMeta.updated}`
+                                : "cargando…"}
+                            </span>
+                          </div>
+
+                          <a
+                            href={`/assets/data/${file.file}`}
+                            download={file.file}
+                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${colors.bg} ${colors.text} hover:opacity-80`}
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                            />
-                          </svg>
-                          Descargar
-                        </a>
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                              />
+                            </svg>
+                            Descargar
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );

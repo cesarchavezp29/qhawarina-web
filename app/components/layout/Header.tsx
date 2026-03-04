@@ -88,6 +88,12 @@ export default function Header() {
                     >
                       Precios Diarios
                     </Link>
+                    <Link
+                      href="/estadisticas/intervenciones"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
+                    >
+                      Mercado Cambiario
+                    </Link>
                     <div className="border-t border-gray-200 my-1"></div>
                     <Link
                       href="/estadisticas"
@@ -101,11 +107,19 @@ export default function Header() {
             </div>
 
             <Link
+              href="/simuladores"
+              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
+            >
+              Simuladores
+            </Link>
+
+            <Link
               href="/datos"
               className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
             >
               {t("data")}
             </Link>
+
 
             <Link
               href="/escenarios"

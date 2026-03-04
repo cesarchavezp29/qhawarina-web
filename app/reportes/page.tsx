@@ -1,170 +1,650 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-
-// Parse YYYY-MM-DD as local date (avoids UTC-to-local day-shift bug)
-function parseLocalDate(dateStr: string): Date {
-  const [y, m, d] = dateStr.split('-').map(Number);
-  return new Date(y, m - 1, d);
-}
 
 type ReportType = 'diario-economico' | 'diario-politico' | 'mensual-economico' | 'mensual-politico';
 
-interface Report {
-  id: string;
-  title: string;
-  date: string;
-  filename: string;
-  size: string;
-  description: string;
+function fmt(v: number | null | undefined, decimals = 2, suffix = '') {
+  if (v == null || isNaN(v)) return '—';
+  return v.toFixed(decimals) + suffix;
 }
 
-export default function ReportesPage() {
-  const [activeTab, setActiveTab] = useState<ReportType>('diario-economico');
-  const [reports, setReports] = useState<Record<ReportType, Report[]>>({
-    'diario-economico': [],
-    'diario-politico': [],
-    'mensual-economico': [],
-    'mensual-politico': []
+function fmtDate(dateStr: string) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('es-PE', {
+    day: '2-digit', month: 'long', year: 'numeric'
   });
-  const [loading, setLoading] = useState(true);
+}
 
-  useEffect(() => {
-    // Simulated data - in production, this would fetch from an API
-    const sampleReports: Record<ReportType, Report[]> = {
-      'diario-economico': [
-        {
-          id: '2026-02-15',
-          title: 'Reporte Económico Diario',
-          date: '2026-02-15',
-          filename: 'reporte_economico_2026-02-15.pdf',
-          size: '1.2 MB',
-          description: 'Indicadores clave: PBI, inflación, tipo de cambio, reservas, crédito'
-        },
-        {
-          id: '2026-02-14',
-          title: 'Reporte Económico Diario',
-          date: '2026-02-14',
-          filename: 'reporte_economico_2026-02-14.pdf',
-          size: '1.1 MB',
-          description: 'Indicadores clave: PBI, inflación, tipo de cambio, reservas, crédito'
-        }
-      ],
-      'diario-politico': [
-        {
-          id: '2026-02-15',
-          title: 'Reporte Político Diario',
-          date: '2026-02-15',
-          filename: 'reporte_politico_2026-02-15.pdf',
-          size: '0.8 MB',
-          description: 'Índice de inestabilidad, eventos destacados, análisis de noticias'
-        },
-        {
-          id: '2026-02-14',
-          title: 'Reporte Político Diario',
-          date: '2026-02-14',
-          filename: 'reporte_politico_2026-02-14.pdf',
-          size: '0.9 MB',
-          description: 'Índice de inestabilidad, eventos destacados, análisis de noticias'
-        }
-      ],
-      'mensual-economico': [
-        {
-          id: '2026-01',
-          title: 'Reporte Económico Mensual - Enero 2026',
-          date: '2026-02-01',
-          filename: 'reporte_economico_mensual_2026-01.pdf',
-          size: '3.5 MB',
-          description: 'Análisis completo: nowcasts, backtests, tendencias, comparativas regionales'
-        },
-        {
-          id: '2025-12',
-          title: 'Reporte Económico Mensual - Diciembre 2025',
-          date: '2026-01-01',
-          filename: 'reporte_economico_mensual_2025-12.pdf',
-          size: '3.4 MB',
-          description: 'Análisis completo: nowcasts, backtests, tendencias, comparativas regionales'
-        }
-      ],
-      'mensual-politico': [
-        {
-          id: '2026-01',
-          title: 'Reporte Político Mensual - Enero 2026',
-          date: '2026-02-01',
-          filename: 'reporte_politico_mensual_2026-01.pdf',
-          size: '2.1 MB',
-          description: 'Resumen mensual: tendencias, eventos críticos, análisis de componentes'
-        },
-        {
-          id: '2025-12',
-          title: 'Reporte Político Mensual - Diciembre 2025',
-          date: '2026-01-01',
-          filename: 'reporte_politico_mensual_2025-12.pdf',
-          size: '2.0 MB',
-          description: 'Resumen mensual: tendencias, eventos críticos, análisis de componentes'
-        }
-      ]
-    };
+function fmtMonth(monthStr: string) {
+  const [y, m] = monthStr.split('-').map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString('es-PE', { month: 'long', year: 'numeric' });
+}
 
-    setReports(sampleReports);
-    setLoading(false);
-  }, []);
+function levelColor(level: string) {
+  if (level === 'CRÍTICO') return 'text-red-700 bg-red-50 border-red-200';
+  if (level === 'ALTO') return 'text-orange-700 bg-orange-50 border-orange-200';
+  if (level === 'MODERADO') return 'text-yellow-700 bg-yellow-50 border-yellow-200';
+  return 'text-green-700 bg-green-50 border-green-200';
+}
 
-  const tabs: { id: ReportType; label: string; description: string }[] = [
-    { id: 'diario-economico', label: 'Diario Económico', description: 'Actualizaciones diarias de indicadores económicos' },
-    { id: 'diario-politico', label: 'Diario Político', description: 'Índice de inestabilidad y eventos políticos diarios' },
-    { id: 'mensual-economico', label: 'Mensual Económico', description: 'Análisis mensual completo de economía' },
-    { id: 'mensual-politico', label: 'Mensual Político', description: 'Resumen mensual de riesgo político' }
-  ];
+// ---------- Sub-report components ----------
 
-  const currentReports = reports[activeTab];
+function DiarioEconomico({ fx, dpi, gdp, inf }: { fx: any; dpi: any; gdp: any; inf: any }) {
+  if (!fx || !gdp || !inf) return <Loading />;
+  const latest = fx.latest || {};
+  const dpiLatest = dpi?.latest || {};
+  const gdpNow = gdp.nowcast || {};
+  const infNow = inf.nowcast || {};
+  const infRecent = inf.recent_months || [];
+  const last3 = infRecent.slice(-3);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-300 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 py-4">
-          <div className="flex items-baseline justify-between">
-            <div className="flex items-baseline gap-6">
-              <Link href="/" className="text-2xl font-bold text-gray-900 tracking-tight">
-                QHAWARINA
-              </Link>
-              <nav className="flex gap-6 text-sm">
-                <Link href="/gdp" className="text-gray-600 hover:text-gray-900 font-medium">PBI</Link>
-                <Link href="/inflation" className="text-gray-600 hover:text-gray-900 font-medium">Inflación</Link>
-                <Link href="/poverty" className="text-gray-600 hover:text-gray-900 font-medium">Pobreza</Link>
-                <Link href="/political" className="text-gray-600 hover:text-gray-900 font-medium">Riesgo Político</Link>
-                <Link href="/reportes" className="text-gray-900 font-semibold">Reportes</Link>
-                <Link href="/data" className="text-gray-600 hover:text-gray-900 font-medium">Datos</Link>
-              </nav>
+    <div className="space-y-8">
+      {/* Reporte Header */}
+      <div className="border-b border-gray-300 pb-4">
+        <div className="flex items-baseline justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">Reporte Económico Diario</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {latest.date ? fmtDate(latest.date) : '—'} · Fuente: BCRP, INEI, QHAWARINA
+            </p>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="px-4 py-2 text-xs font-medium bg-blue-600 text-white hover:bg-blue-700 print:hidden"
+          >
+            Imprimir / Guardar PDF
+          </button>
+        </div>
+      </div>
+
+      {/* Mercado Cambiario */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Mercado Cambiario
+        </h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <KpiCard label="TC PEN/USD" value={fmt(latest.fx, 4)} unit="S/ por USD" />
+          <KpiCard label="Tasa Referencia BCRP" value={fmt(latest.reference_rate, 2)} unit="%" />
+          <KpiCard label="Bono Sol 10a" value={fmt(latest.bond_sol_10y, 2)} unit="%" />
+          <KpiCard label="BVL" value={latest.bvl != null ? latest.bvl.toLocaleString('es-PE', { maximumFractionDigits: 0 }) : '—'} unit="puntos" />
+        </div>
+      </section>
+
+      {/* Nowcasts */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Nowcasts QHAWARINA
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border border-gray-200 p-5">
+            <p className="text-xs text-gray-500 mb-1">PBI — {gdpNow.target_period || '—'}</p>
+            <p className="text-3xl font-bold text-gray-900">{fmt(gdpNow.value, 2)}%</p>
+            <p className="text-xs text-gray-500 mt-1">variación interanual · DFM + Bridge R²={fmt(gdpNow.bridge_r2, 3)}</p>
+            <div className="mt-3 text-xs text-gray-600">
+              RMSE histórico: {fmt(gdp.backtest_metrics?.rmse, 2)} pp ·
+              Rel.RMSE vs AR1: {fmt(gdp.backtest_metrics?.relative_rmse_vs_ar1, 3)}
+            </div>
+          </div>
+          <div className="border border-gray-200 p-5">
+            <p className="text-xs text-gray-500 mb-1">Inflación — {infNow.target_period || '—'}</p>
+            <p className="text-3xl font-bold text-gray-900">{fmt(infNow.value, 3)}%</p>
+            <p className="text-xs text-gray-500 mt-1">promedio móvil 3 meses · DFM + Bridge R²={fmt(infNow.bridge_r2, 3)}</p>
+            <div className="mt-3 text-xs text-gray-600">
+              RMSE histórico: {fmt(inf.backtest_metrics?.rmse, 3)} pp ·
+              Rel.RMSE vs AR1: {fmt(inf.backtest_metrics?.relative_rmse_vs_ar1, 3)}
             </div>
           </div>
         </div>
-      </header>
+      </section>
 
-      <main className="max-w-[1400px] mx-auto px-6 py-8">
+      {/* Inflación Reciente */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Inflación Mensual — Últimos 3 Meses
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Mes</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Oficial (%)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Nowcast (%)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Error (pp)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {last3.map((r: any) => (
+                <tr key={r.month} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-gray-700">{fmtMonth(r.month)}</td>
+                  <td className="px-4 py-2 text-right font-mono">
+                    {r.official != null ? fmt(r.official, 3) : '—'}
+                  </td>
+                  <td className="px-4 py-2 text-right font-mono">{fmt(r.nowcast, 3)}</td>
+                  <td className={`px-4 py-2 text-right font-mono ${r.error != null && r.error > 0 ? 'text-red-600' : 'text-green-700'}`}>
+                    {r.error != null ? (r.error > 0 ? '+' : '') + fmt(r.error, 3) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Precios Supermercados */}
+      {dpiLatest.date && (
+        <section>
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+            Índice de Precios de Supermercados (BPP)
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <KpiCard label="Índice General" value={fmt(dpiLatest.index_all, 3)} unit="(base=100)" />
+            <KpiCard label="Índice Alimentos" value={fmt(dpiLatest.index_food, 3)} unit="(base=100)" />
+            <KpiCard label="Var. diaria" value={fmt(dpiLatest.var_all, 4)} unit="%" />
+            <KpiCard label="Acum. mensual" value={fmt(dpiLatest.cum_pct, 3)} unit="%" />
+          </div>
+          <p className="text-xs text-gray-400 mt-2">
+            Plaza Vea, Metro, Wong · ~42 000 productos · Método Jevons · {dpiLatest.date ? fmtDate(dpiLatest.date) : ''}
+          </p>
+        </section>
+      )}
+    </div>
+  );
+}
+
+function DiarioPolitico({ pol }: { pol: any }) {
+  if (!pol) return <Loading />;
+  const cur = pol.current || {};
+  const agg = pol.aggregates || {};
+  const daily = (pol.daily_series || []).slice(-14).reverse();
+
+  return (
+    <div className="space-y-8">
+      <div className="border-b border-gray-300 pb-4">
+        <div className="flex items-baseline justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">Reporte Político Diario</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {cur.date ? fmtDate(cur.date) : '—'} · Fuente: RSS, análisis NLP, QHAWARINA
+            </p>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="px-4 py-2 text-xs font-medium bg-blue-600 text-white hover:bg-blue-700 print:hidden"
+          >
+            Imprimir / Guardar PDF
+          </button>
+        </div>
+      </div>
+
+      {/* Índice hoy */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Índice de Inestabilidad Política — Hoy
+        </h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <KpiCard label="Puntuación (0–1)" value={fmt(cur.score, 3)} unit="" />
+          <div className="border border-gray-200 p-4">
+            <p className="text-xs text-gray-500 mb-1">Nivel</p>
+            <span className={`inline-block text-sm font-bold px-2 py-1 border ${levelColor(cur.level || '')}`}>
+              {cur.level || '—'}
+            </span>
+          </div>
+          <KpiCard label="Artículos totales" value={cur.articles_total?.toString() || '—'} unit="" />
+          <KpiCard label="Artículos políticos" value={cur.articles_political?.toString() || '—'} unit="" />
+        </div>
+      </section>
+
+      {/* Promedios */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Promedios Móviles
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <KpiCard label="Promedio 7 días" value={fmt(agg['7d_avg'], 3)} unit="" />
+          <KpiCard label="Promedio 30 días" value={fmt(agg['30d_avg'], 3)} unit="" />
+          <div className="border border-gray-200 p-4">
+            <p className="text-xs text-gray-500 mb-1">Máximo del año</p>
+            <p className="text-2xl font-bold text-gray-900">{fmt(agg.year_max, 3)}</p>
+            <p className="text-xs text-gray-400 mt-1">{agg.year_max_date ? fmtDate(agg.year_max_date) : ''}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Últimos 14 días */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Últimos 14 Días
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Fecha</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Puntuación</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Artículos</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Provisional</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {daily.map((r: any) => (
+                <tr key={r.date} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-gray-700">{fmtDate(r.date)}</td>
+                  <td className="px-4 py-2 text-right font-mono font-semibold">
+                    {fmt(r.score, 3)}
+                  </td>
+                  <td className="px-4 py-2 text-right text-gray-600">{r.n_articles ?? '—'}</td>
+                  <td className="px-4 py-2 text-right text-gray-400 text-xs">
+                    {r.provisional ? 'Sí' : 'No'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">
+          Índice provisional: estimado parcial del día, sujeto a revisión.
+        </p>
+      </section>
+    </div>
+  );
+}
+
+function MensualEconomico({ gdp, inf, pov }: { gdp: any; inf: any; pov: any }) {
+  if (!gdp || !inf || !pov) return <Loading />;
+  const gdpNow = gdp.nowcast || {};
+  const infNow = inf.nowcast || {};
+  const recentQ = (gdp.recent_quarters || []).slice(-6);
+  const recentM = (inf.recent_months || []).slice(-6);
+  const national = pov.national || {};
+  const historical = (pov.historical_series || []).slice(-4);
+  const today = new Date().toLocaleDateString('es-PE', { month: 'long', year: 'numeric' });
+
+  return (
+    <div className="space-y-8">
+      <div className="border-b border-gray-300 pb-4">
+        <div className="flex items-baseline justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">Reporte Económico Mensual</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {today} · Fuente: BCRP, INEI, QHAWARINA
+            </p>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="px-4 py-2 text-xs font-medium bg-blue-600 text-white hover:bg-blue-700 print:hidden"
+          >
+            Imprimir / Guardar PDF
+          </button>
+        </div>
+      </div>
+
+      {/* Resumen Nowcasts */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Nowcasts — Resumen
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="border border-gray-200 p-5">
+            <p className="text-xs text-gray-500 mb-1">PBI — {gdpNow.target_period}</p>
+            <p className="text-3xl font-bold text-gray-900">{fmt(gdpNow.value, 2)}%</p>
+            <p className="text-xs text-gray-500">var. interanual</p>
+            <div className="mt-2 text-xs text-gray-400">
+              RMSE: {fmt(gdp.backtest_metrics?.rmse, 2)} pp
+            </div>
+          </div>
+          <div className="border border-gray-200 p-5">
+            <p className="text-xs text-gray-500 mb-1">Inflación — {infNow.target_period}</p>
+            <p className="text-3xl font-bold text-gray-900">{fmt(infNow.value, 3)}%</p>
+            <p className="text-xs text-gray-500">promedio móvil 3 meses</p>
+            <div className="mt-2 text-xs text-gray-400">
+              RMSE: {fmt(inf.backtest_metrics?.rmse, 3)} pp
+            </div>
+          </div>
+          <div className="border border-gray-200 p-5">
+            <p className="text-xs text-gray-500 mb-1">Pobreza — 2024</p>
+            <p className="text-3xl font-bold text-gray-900">{fmt(national.poverty_rate, 1)}%</p>
+            <p className="text-xs text-gray-500">tasa nacional</p>
+            <div className="mt-2 text-xs text-gray-400">
+              RMSE: {fmt(pov.backtest_metrics?.rmse, 2)} pp
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PBI Trimestral */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          PBI — Últimos 6 Trimestres
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Trimestre</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Oficial (% a/a)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Nowcast (% a/a)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Error (pp)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {recentQ.map((r: any) => (
+                <tr key={r.quarter} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 font-mono text-gray-700">{r.quarter}</td>
+                  <td className="px-4 py-2 text-right font-mono">
+                    {r.official != null ? fmt(r.official, 2) : '—'}
+                  </td>
+                  <td className="px-4 py-2 text-right font-mono">{fmt(r.nowcast, 2)}</td>
+                  <td className={`px-4 py-2 text-right font-mono ${r.error != null && Math.abs(r.error) > 2 ? 'text-orange-600' : 'text-gray-600'}`}>
+                    {r.error != null ? (r.error > 0 ? '+' : '') + fmt(r.error, 2) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Inflación Mensual */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Inflación — Últimos 6 Meses
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Mes</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Oficial (%)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Nowcast (%)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Error (pp)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {recentM.map((r: any) => (
+                <tr key={r.month} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-gray-700">{fmtMonth(r.month)}</td>
+                  <td className="px-4 py-2 text-right font-mono">
+                    {r.official != null ? fmt(r.official, 3) : '—'}
+                  </td>
+                  <td className="px-4 py-2 text-right font-mono">{fmt(r.nowcast, 3)}</td>
+                  <td className={`px-4 py-2 text-right font-mono ${r.error != null && r.error > 0 ? 'text-red-600' : 'text-green-700'}`}>
+                    {r.error != null ? (r.error > 0 ? '+' : '') + fmt(r.error, 3) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Pobreza Histórica */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Pobreza — Últimos 4 Años
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Año</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Oficial (%)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Nowcast (%)</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Error (pp)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {historical.map((r: any) => (
+                <tr key={r.year} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-gray-700">{r.year}</td>
+                  <td className="px-4 py-2 text-right font-mono">
+                    {r.official != null ? fmt(r.official, 1) : '—'}
+                  </td>
+                  <td className="px-4 py-2 text-right font-mono">{fmt(r.nowcast, 1)}</td>
+                  <td className={`px-4 py-2 text-right font-mono ${r.error != null && r.error > 0 ? 'text-red-600' : 'text-green-700'}`}>
+                    {r.error != null ? (r.error > 0 ? '+' : '') + fmt(r.error, 1) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Calidad de Modelos */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Calidad de Modelos (Backtesting)
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Modelo</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">RMSE</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">MAE</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">R²</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Rel. vs AR1</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {[
+                { name: 'PBI (pp)', m: gdp.backtest_metrics },
+                { name: 'Inflación (pp)', m: inf.backtest_metrics },
+                { name: 'Pobreza (pp)', m: pov.backtest_metrics },
+              ].map(({ name, m }) => (
+                <tr key={name} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-gray-700">{name}</td>
+                  <td className="px-4 py-2 text-right font-mono">{m ? fmt(m.rmse, 2) : '—'}</td>
+                  <td className="px-4 py-2 text-right font-mono">{m ? fmt(m.mae, 2) : '—'}</td>
+                  <td className="px-4 py-2 text-right font-mono">{m ? fmt(m.r2, 3) : '—'}</td>
+                  <td className={`px-4 py-2 text-right font-mono ${m && m.relative_rmse_vs_ar1 < 1 ? 'text-green-700' : 'text-red-600'}`}>
+                    {m ? fmt(m.relative_rmse_vs_ar1, 3) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">
+          Rel. vs AR1 &lt; 1.0 indica que el modelo supera al benchmark AR(1).
+        </p>
+      </section>
+    </div>
+  );
+}
+
+function MensualPolitico({ pol }: { pol: any }) {
+  if (!pol) return <Loading />;
+  const monthly = (pol.monthly_series || []).slice(-6).reverse();
+  const agg = pol.aggregates || {};
+  const cur = pol.current || {};
+
+  return (
+    <div className="space-y-8">
+      <div className="border-b border-gray-300 pb-4">
+        <div className="flex items-baseline justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">Reporte Político Mensual</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {new Date().toLocaleDateString('es-PE', { month: 'long', year: 'numeric' })} ·
+              Fuente: RSS, análisis NLP, QHAWARINA
+            </p>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="px-4 py-2 text-xs font-medium bg-blue-600 text-white hover:bg-blue-700 print:hidden"
+          >
+            Imprimir / Guardar PDF
+          </button>
+        </div>
+      </div>
+
+      {/* Situación actual */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Situación Actual
+        </h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <KpiCard label="Puntuación hoy" value={fmt(cur.score, 3)} unit="" />
+          <div className="border border-gray-200 p-4">
+            <p className="text-xs text-gray-500 mb-1">Nivel</p>
+            <span className={`inline-block text-sm font-bold px-2 py-1 border ${levelColor(cur.level || '')}`}>
+              {cur.level || '—'}
+            </span>
+          </div>
+          <KpiCard label="Promedio 7 días" value={fmt(agg['7d_avg'], 3)} unit="" />
+          <KpiCard label="Promedio 30 días" value={fmt(agg['30d_avg'], 3)} unit="" />
+        </div>
+      </section>
+
+      {/* Tabla mensual */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Promedios Mensuales — Últimos 6 Meses
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border border-gray-200">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-2 font-semibold text-gray-700">Mes</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">Índice Promedio</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">TC PEN/USD</th>
+                <th className="text-right px-4 py-2 font-semibold text-gray-700">TC Var. a/a (%)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {monthly.map((r: any) => (
+                <tr key={r.month} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 text-gray-700">{fmtMonth(r.month)}</td>
+                  <td className="px-4 py-2 text-right font-mono font-semibold">
+                    {fmt(r.political_avg, 3)}
+                  </td>
+                  <td className="px-4 py-2 text-right font-mono">
+                    {r.fx_level != null ? fmt(r.fx_level, 4) : '—'}
+                  </td>
+                  <td className={`px-4 py-2 text-right font-mono ${r.fx_yoy != null && r.fx_yoy > 0 ? 'text-red-600' : 'text-green-700'}`}>
+                    {r.fx_yoy != null ? (r.fx_yoy > 0 ? '+' : '') + fmt(r.fx_yoy, 2) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">
+          TC var. interanual: signo positivo = sol más débil vs USD.
+          Datos del mes en curso son preliminares.
+        </p>
+      </section>
+
+      {/* Máximo del año */}
+      <section>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-3">
+          Pico de Inestabilidad — {new Date().getFullYear()}
+        </h3>
+        <div className="border border-orange-200 bg-orange-50 p-5">
+          <div className="flex items-baseline gap-6">
+            <div>
+              <p className="text-xs text-orange-700 mb-1">Puntuación máxima</p>
+              <p className="text-3xl font-bold text-orange-900">{fmt(agg.year_max, 3)}</p>
+            </div>
+            <div>
+              <p className="text-xs text-orange-700 mb-1">Fecha</p>
+              <p className="text-lg font-semibold text-orange-900">
+                {agg.year_max_date ? fmtDate(agg.year_max_date) : '—'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ---------- Shared components ----------
+
+function KpiCard({ label, value, unit }: { label: string; value: string; unit: string }) {
+  return (
+    <div className="border border-gray-200 p-4">
+      <p className="text-xs text-gray-500 mb-1">{label}</p>
+      <p className="text-2xl font-bold text-gray-900">{value}</p>
+      {unit && <p className="text-xs text-gray-400 mt-0.5">{unit}</p>}
+    </div>
+  );
+}
+
+function Loading() {
+  return (
+    <div className="space-y-4 animate-pulse">
+      {[1, 2, 3].map(i => (
+        <div key={i} className="h-20 bg-gray-100 rounded" />
+      ))}
+    </div>
+  );
+}
+
+// ---------- Main page ----------
+
+const BASE = '/assets/data';
+
+export default function ReportesPage() {
+  const [activeTab, setActiveTab] = useState<ReportType>('diario-economico');
+  const [data, setData] = useState<Record<string, any>>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const v = new Date().toISOString().slice(0, 10);
+    Promise.allSettled([
+      fetch(`${BASE}/fx_interventions.json?v=${v}`).then(r => r.json()),
+      fetch(`${BASE}/daily_price_index.json?v=${v}`).then(r => r.json()),
+      fetch(`${BASE}/gdp_nowcast.json?v=${v}`).then(r => r.json()),
+      fetch(`${BASE}/inflation_nowcast.json?v=${v}`).then(r => r.json()),
+      fetch(`${BASE}/poverty_nowcast.json?v=${v}`).then(r => r.json()),
+      fetch(`${BASE}/political_index_daily.json?v=${v}`).then(r => r.json()),
+    ]).then(([fxR, dpiR, gdpR, infR, povR, polR]) => {
+      setData({
+        fx: fxR.status === 'fulfilled' ? fxR.value : null,
+        dpi: dpiR.status === 'fulfilled' ? dpiR.value : null,
+        gdp: gdpR.status === 'fulfilled' ? gdpR.value : null,
+        inf: infR.status === 'fulfilled' ? infR.value : null,
+        pov: povR.status === 'fulfilled' ? povR.value : null,
+        pol: polR.status === 'fulfilled' ? polR.value : null,
+      });
+      setLoading(false);
+    });
+  }, []);
+
+  const tabs: { id: ReportType; label: string }[] = [
+    { id: 'diario-economico', label: 'Diario Económico' },
+    { id: 'diario-politico', label: 'Diario Político' },
+    { id: 'mensual-economico', label: 'Mensual Económico' },
+    { id: 'mensual-politico', label: 'Mensual Político' },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <main className="max-w-5xl mx-auto px-6 py-8">
         {/* Título */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-2">
-            Reportes
-          </h1>
-          <p className="text-sm text-gray-600">
-            Documentos generados automáticamente con análisis económico y político
+          <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-1">Reportes</h1>
+          <p className="text-sm text-gray-500">
+            Informes generados automáticamente con datos en tiempo real.
+            Usa el botón &ldquo;Imprimir / Guardar PDF&rdquo; en cada reporte para exportar.
           </p>
         </div>
 
         {/* Tabs */}
         <div className="border-b border-gray-300 mb-8">
           <nav className="flex gap-1">
-            {tabs.map((tab) => (
+            {tabs.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
+                className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
                   activeTab === tab.id
                     ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                    : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
                 {tab.label}
@@ -173,128 +653,34 @@ export default function ReportesPage() {
           </nav>
         </div>
 
-        {/* Tab Description */}
-        <div className="mb-6 p-4 bg-blue-50 border border-blue-200">
-          <p className="text-sm text-gray-700">
-            <strong>{tabs.find(t => t.id === activeTab)?.label}:</strong>{' '}
-            {tabs.find(t => t.id === activeTab)?.description}
-          </p>
-        </div>
-
-        {/* Reports List */}
+        {/* Content */}
         {loading ? (
-          <LoadingSkeleton />
+          <Loading />
         ) : (
-          <div className="border border-gray-300">
-            <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                Reportes Disponibles ({currentReports.length})
-              </h3>
-            </div>
-
-            {currentReports.length === 0 ? (
-              <div className="p-8 text-center text-gray-600">
-                <p className="text-sm">No hay reportes disponibles en esta categoría.</p>
-              </div>
-            ) : (
-              <div className="divide-y divide-gray-200 bg-white">
-                {currentReports.map((report) => (
-                  <div key={report.id} className="px-6 py-4 hover:bg-gray-50">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h4 className="text-base font-semibold text-gray-900 mb-1">
-                          {report.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 mb-2">
-                          {report.description}
-                        </p>
-                        <div className="flex items-center gap-4 text-xs text-gray-500">
-                          <span className="flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            {parseLocalDate(report.date).toLocaleDateString('es-PE', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                            {report.size}
-                          </span>
-                          <span className="inline-block px-2 py-0.5 bg-gray-100 border border-gray-300 font-mono text-xs">
-                            PDF
-                          </span>
-                        </div>
-                      </div>
-                      <div className="ml-6 flex gap-2">
-                        <button
-                          onClick={() => {
-                            // In production, this would open a preview
-                            window.open(`/assets/reportes/${report.filename}`, '_blank');
-                          }}
-                          className="px-4 py-2 text-xs text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 font-medium"
-                        >
-                          Vista Previa
-                        </button>
-                        <a
-                          href={`/assets/reportes/${report.filename}`}
-                          download
-                          className="px-4 py-2 text-xs text-white bg-blue-600 hover:bg-blue-700 font-medium"
-                        >
-                          Descargar ↓
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <>
+            {activeTab === 'diario-economico' && (
+              <DiarioEconomico fx={data.fx} dpi={data.dpi} gdp={data.gdp} inf={data.inf} />
             )}
-          </div>
+            {activeTab === 'diario-politico' && (
+              <DiarioPolitico pol={data.pol} />
+            )}
+            {activeTab === 'mensual-economico' && (
+              <MensualEconomico gdp={data.gdp} inf={data.inf} pov={data.pov} />
+            )}
+            {activeTab === 'mensual-politico' && (
+              <MensualPolitico pol={data.pol} />
+            )}
+          </>
         )}
 
-        {/* Info Footer */}
-        <div className="mt-8 border border-gray-300 p-6 bg-gray-50">
-          <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">
-            Información
-          </h3>
-          <div className="text-sm text-gray-700 space-y-2">
-            <p>
-              <strong>Generación:</strong> Los reportes se generan automáticamente cada día a las 08:00 PET
-              utilizando los datos más recientes disponibles.
-            </p>
-            <p>
-              <strong>Formato:</strong> Todos los reportes están en formato PDF optimizado para impresión y lectura digital.
-            </p>
-            <p>
-              <strong>Licencia:</strong> Los reportes están disponibles bajo licencia CC BY 4.0.
-              Puedes compartirlos y adaptarlos con atribución apropiada.
-            </p>
-          </div>
+        {/* Footer note */}
+        <div className="mt-12 pt-6 border-t border-gray-200">
+          <p className="text-xs text-gray-400">
+            Datos actualizados diariamente · Fuentes: BCRP, INEI, MIDAGRI, QHAWARINA ·
+            Licencia CC BY 4.0 · Los nowcasts son estimaciones estadísticas, no pronósticos oficiales.
+          </p>
         </div>
       </main>
-    </div>
-  );
-}
-
-function LoadingSkeleton() {
-  return (
-    <div className="border border-gray-300">
-      <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
-        <div className="h-4 bg-gray-200 rounded w-48"></div>
-      </div>
-      <div className="divide-y divide-gray-200">
-        {[1, 2, 3].map(i => (
-          <div key={i} className="px-6 py-4 animate-pulse">
-            <div className="h-5 bg-gray-200 rounded w-2/3 mb-2"></div>
-            <div className="h-4 bg-gray-100 rounded w-full mb-2"></div>
-            <div className="h-3 bg-gray-100 rounded w-1/2"></div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
