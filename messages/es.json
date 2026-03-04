@@ -7,7 +7,12 @@
     "methodology": "Metodología",
     "api": "API",
     "about": "Sobre Nosotros",
-    "seeAll": "Ver todas"
+    "seeAll": "Ver todas",
+    "simulators": "Simuladores",
+    "dailyPrices": "Precios Diarios",
+    "fxMarket": "Mercado Cambiario",
+    "calendar": "Calendario de Publicaciones",
+    "openMenu": "Abrir menú"
   },
   "home": {
     "title": "QHAWARINA",

@@ -7,7 +7,12 @@
     "methodology": "Methodology",
     "api": "API",
     "about": "About Us",
-    "seeAll": "See all"
+    "seeAll": "See all",
+    "simulators": "Simulators",
+    "dailyPrices": "Daily Prices",
+    "fxMarket": "FX Market",
+    "calendar": "Publication Calendar",
+    "openMenu": "Open menu"
   },
   "home": {
     "title": "QHAWARINA",

@@ -11,6 +11,7 @@ export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isMobileStatsOpen, setIsMobileStatsOpen] = useState(false);
   const t = useTranslations("nav");
+  const ts = useTranslations("stats");
 
   const closeMobile = () => {
     setIsMobileOpen(false);
@@ -70,43 +71,43 @@ export default function Header() {
                       href="/estadisticas/pbi"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      PBI
+                      {ts("gdp")}
                     </Link>
                     <Link
                       href="/estadisticas/inflacion"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      Inflación
+                      {ts("inflation")}
                     </Link>
                     <Link
                       href="/estadisticas/pobreza"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      Pobreza
+                      {ts("poverty")}
                     </Link>
                     <Link
                       href="/estadisticas/riesgo-politico"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      Riesgo Político
+                      {ts("politicalRisk")}
                     </Link>
                     <Link
                       href="/estadisticas/precios-diarios"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      Precios Diarios
+                      {t("dailyPrices")}
                     </Link>
                     <Link
                       href="/estadisticas/intervenciones"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      Mercado Cambiario
+                      {t("fxMarket")}
                     </Link>
                     <Link
                       href="/estadisticas/calendario"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
                     >
-                      Calendario de Publicaciones
+                      {t("calendar")}
                     </Link>
                     <div className="border-t border-gray-200 my-1"></div>
                     <Link
@@ -124,7 +125,7 @@ export default function Header() {
               href="/simuladores"
               className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
             >
-              Simuladores
+              {t("simulators")}
             </Link>
 
             <Link
@@ -168,7 +169,7 @@ export default function Header() {
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className="p-2 rounded-md text-gray-700 hover:text-blue-800 hover:bg-gray-100 transition-colors"
-              aria-label="Abrir menú"
+              aria-label={t("openMenu")}
             >
               {isMobileOpen ? (
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -214,31 +215,20 @@ export default function Header() {
               </button>
               {isMobileStatsOpen && (
                 <div className="pl-4 mt-1 space-y-1">
-                  {[
-                    ["/estadisticas/pbi", "PBI"],
-                    ["/estadisticas/inflacion", "Inflación"],
-                    ["/estadisticas/pobreza", "Pobreza"],
-                    ["/estadisticas/riesgo-politico", "Riesgo Político"],
-                    ["/estadisticas/precios-diarios", "Precios Diarios"],
-                    ["/estadisticas/intervenciones", "Mercado Cambiario"],
-                    ["/estadisticas/calendario", "Calendario"],
-                    ["/estadisticas", "Ver todo →"],
-                  ].map(([href, label]) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={closeMobile}
-                      className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md"
-                    >
-                      {label}
-                    </Link>
-                  ))}
+                  <Link href="/estadisticas/pbi" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("gdp")}</Link>
+                  <Link href="/estadisticas/inflacion" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("inflation")}</Link>
+                  <Link href="/estadisticas/pobreza" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("poverty")}</Link>
+                  <Link href="/estadisticas/riesgo-politico" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("politicalRisk")}</Link>
+                  <Link href="/estadisticas/precios-diarios" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{t("dailyPrices")}</Link>
+                  <Link href="/estadisticas/intervenciones" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{t("fxMarket")}</Link>
+                  <Link href="/estadisticas/calendario" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{t("calendar")}</Link>
+                  <Link href="/estadisticas" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-blue-700 hover:text-blue-800 hover:bg-blue-50 rounded-md font-medium">{t("seeAll")} →</Link>
                 </div>
               )}
             </div>
 
             <Link href="/simuladores" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
-              Simuladores
+              {t("simulators")}
             </Link>
             <Link href="/datos" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
               {t("data")}
