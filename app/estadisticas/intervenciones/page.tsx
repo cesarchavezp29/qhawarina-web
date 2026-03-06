@@ -252,7 +252,7 @@ export default function IntervencionesBCRPPage() {
   const [data, setData] = useState<FXData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Set<VarKey>>(
-    new Set(["spot_net_purchases", "fx"])
+    new Set<VarKey>(["spot_net_purchases", "fx"])
   );
   const [viewMode, setViewMode] = useState<ViewMode>("mensual");
   const [normalized, setNormalized] = useState(false);
