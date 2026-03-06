@@ -108,11 +108,10 @@ export default function PeruMap({ data, indicator, level = 'department', onDepar
                       hover: { outline: 'none', cursor: 'pointer', filter: 'brightness(0.9)' },
                       pressed: { outline: 'none' }
                     }}
-                    onMouseEnter={(evt) => {
+                    onMouseEnter={() => {
                       setHoveredDept(deptCode);
                       if (deptData) {
                         setTooltipContent({ name: deptData.name, value: deptData.value });
-                        setTooltipPos({ x: evt.clientX, y: evt.clientY });
                         if (onDepartmentHover) {
                           onDepartmentHover(deptData);
                         }
