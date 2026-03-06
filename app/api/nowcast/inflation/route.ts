@@ -22,6 +22,8 @@ async function handler(req: NextRequest, context: { tier: string }) {
     const rawData = fs.readFileSync(dataPath, "utf-8");
     const data = JSON.parse(rawData);
 
+    const isPro = context.tier === "pro" || context.tier === "enterprise";
+
     // Format response
     const response = {
       indicator: "inflation",
@@ -50,12 +52,8 @@ async function handler(req: NextRequest, context: { tier: string }) {
         n_series: data.metadata.n_series,
         source: "INEI, BCRP, MIDAGRI, Supermercados",
       },
+      ...(isPro ? { historical: data.historical_monthly?.slice(-24) } : {}),
     };
-
-    // Add historical data for pro/enterprise tiers
-    if (context.tier === "pro" || context.tier === "enterprise") {
-      response.historical = data.historical_monthly?.slice(-24); // Last 2 years
-    }
 
     return successResponse(response, {
       tier: context.tier,
