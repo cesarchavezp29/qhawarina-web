@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ArrowRight, TrendingUp, TrendingDown } from "lucide-react";
 import { useLocale } from 'next-intl';
 
@@ -104,11 +104,7 @@ export default function EscenariosPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    loadScenario(selectedScenario);
-  }, [selectedScenario]);
-
-  const loadScenario = async (scenarioId: string) => {
+  const loadScenario = useCallback(async (scenarioId: string) => {
     setLoading(true);
     setError(null);
 
@@ -125,7 +121,11 @@ export default function EscenariosPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadScenario(selectedScenario);
+  }, [selectedScenario, loadScenario]);
 
   const getMockData = (scenarioId: string): ScenarioData => {
     // Mock data for demo

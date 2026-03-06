@@ -281,7 +281,7 @@ export default function DatosPage() {
       }
       setMeta(map);
     });
-  }, []);
+  }, [locale]);
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
