@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 export const metadata: Metadata = {
-  title: 'PBI — Nowcast Trimestral | Qhawarina',
-  description: 'Nowcast trimestral del Producto Bruto Interno de Perú con modelo DFM. Datos históricos desde 2003, predicciones actualizadas diariamente.',
+  title: 'GDP / PBI — Quarterly Nowcast | Qhawarina',
+  description: 'Quarterly GDP nowcast for Peru using Dynamic Factor Models. Historical data since 2003, updated daily. / Nowcast trimestral del PBI de Perú con DFM. Actualizado diariamente.',
 };
 export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }
