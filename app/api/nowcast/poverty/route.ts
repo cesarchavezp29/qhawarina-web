@@ -22,6 +22,8 @@ async function handler(req: NextRequest, context: { tier: string }) {
     const rawData = fs.readFileSync(dataPath, "utf-8");
     const data = JSON.parse(rawData);
 
+    const isPro = context.tier === "pro" || context.tier === "enterprise";
+
     // Format response
     const response = {
       indicator: "poverty",
@@ -52,14 +54,8 @@ async function handler(req: NextRequest, context: { tier: string }) {
         source: "INEI ENAHO, NTL Satelital",
         coverage: "25 departamentos",
       },
+      ...(isPro && data.departmental ? { departmental: data.departmental } : {}),
     };
-
-    // Add departmental breakdown for pro/enterprise tiers
-    if (context.tier === "pro" || context.tier === "enterprise") {
-      if (data.departmental) {
-        response.departmental = data.departmental;
-      }
-    }
 
     return successResponse(response, {
       tier: context.tier,

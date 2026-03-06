@@ -31,6 +31,8 @@ async function handler(req: NextRequest, context: { tier: string }) {
     // Get latest value
     const latest = data.daily_index[data.daily_index.length - 1];
 
+    const isPro = context.tier === "pro" || context.tier === "enterprise";
+
     // Format response
     const response = {
       indicator: "political_risk",
@@ -57,13 +59,11 @@ async function handler(req: NextRequest, context: { tier: string }) {
         source: "81 RSS feeds, GPT-4o classification, BCRP",
         update_frequency: "Daily at 08:00 PET",
       },
+      ...(isPro ? {
+        recent_events: data.recent_events?.slice(-10),
+        historical_daily: data.daily_index.slice(-90),
+      } : {}),
     };
-
-    // Add recent events for pro/enterprise tiers
-    if (context.tier === "pro" || context.tier === "enterprise") {
-      response.recent_events = data.recent_events?.slice(-10);
-      response.historical_daily = data.daily_index.slice(-90); // Last 3 months
-    }
 
     return successResponse(response, {
       tier: context.tier,
