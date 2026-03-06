@@ -183,7 +183,7 @@ export default function PobrezaTrimestralPage() {
                   border: "1px solid #e5e7eb",
                   borderRadius: "0.375rem",
                 }}
-                formatter={(value: number) => [`${value.toFixed(1)}%`, isEn ? "Poverty" : "Pobreza"]}
+                formatter={(value: number | undefined) => [`${(value ?? 0).toFixed(1)}%`, isEn ? "Poverty" : "Pobreza"]}
               />
               <Legend />
               <Line
