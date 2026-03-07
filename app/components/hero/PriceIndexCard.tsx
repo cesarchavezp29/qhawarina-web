@@ -69,7 +69,6 @@ export default function PriceIndexCard({
   const varAll = latest.var_all ?? 0;
   const isUp = cumPct >= 0;
 
-  // Terra for up, deep-red for down
   const accentColor = isUp ? "#C65D3E" : "#9B2226";
   const deltaColor = varAll > 0 ? "#9B2226" : varAll < 0 ? "#2A9D8F" : "#8D99AE";
   const deltaArrow = varAll > 0 ? "▲" : varAll < 0 ? "▼" : "→";
@@ -80,111 +79,150 @@ export default function PriceIndexCard({
   return (
     <Link href="/estadisticas/precios-diarios" className="block group">
       <div
-        className="rounded-lg p-6 flex flex-col gap-4 transition-shadow group-hover:shadow-md"
+        className="flex flex-col gap-4 transition-shadow group-hover:shadow-md"
         style={{
           background: "#FAF8F4",
           border: "1px solid #E8E4DC",
+          borderRadius: 8,
           boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Header row */}
-        <div className="flex items-start justify-between">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span
-                className="text-xs font-bold tracking-widest uppercase"
-                style={{ color: "#C65D3E" }}
-              >
-                Qhawarina
-              </span>
-              <span className="text-xs text-gray-400 uppercase tracking-widest">
-                {isEn ? "· Daily Prices" : "· Precios Diarios"}
-              </span>
-            </div>
-            <h2
-              className="text-lg font-serif leading-tight"
-              style={{ color: "#2D3142", fontFamily: "var(--font-serif, Georgia, serif)" }}
-            >
-              {isEn ? "Daily Price Index" : "Índice de Precios Diarios"}
-            </h2>
-          </div>
-          <span
-            className="text-sm font-medium mt-1 group-hover:underline"
-            style={{ color: "#C65D3E" }}
-          >
-            {isEn ? "View →" : "Ver →"}
-          </span>
+        {/* Gradient top bar */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            background: "linear-gradient(90deg, #C65D3E, #E0A458)",
+          }}
+        />
+
+        {/* QHAWARINA watermark */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: 12,
+            right: 16,
+            fontSize: "3.8rem",
+            fontWeight: 900,
+            color: "#2D3142",
+            opacity: 0.04,
+            userSelect: "none",
+            pointerEvents: "none",
+            fontFamily: "var(--font-outfit, sans-serif)",
+            letterSpacing: "0.04em",
+            lineHeight: 1,
+          }}
+        >
+          QHAWARINA
         </div>
 
-        {/* KPI + sparkline */}
-        <div className="flex items-end gap-4">
-          <div className="flex-1">
-            <div
-              className="tabular-nums leading-none mb-1"
-              style={{
-                fontSize: "3rem",
-                fontWeight: 700,
-                fontFamily: "var(--font-mono, ui-monospace, monospace)",
-                fontFeatureSettings: '"tnum"',
-                color: accentColor,
-              }}
-            >
-              {cumPct >= 0 ? "+" : ""}
-              {cumPct.toFixed(2)}%
-            </div>
-            <div className="text-xs" style={{ color: "#8D99AE" }}>
-              {isEn ? "accumulated this month" : "acumulado mes en curso"}
-            </div>
-            <div className="flex items-center gap-1 mt-2">
-              <span
-                className="text-sm font-semibold tabular-nums"
-                style={{ color: deltaColor, fontFeatureSettings: '"tnum"' }}
-              >
-                {deltaArrow} {varAll >= 0 ? "+" : ""}
-                {varAll.toFixed(3)}%
-              </span>
-              <span className="text-xs" style={{ color: "#8D99AE" }}>
-                {isEn ? "vs yesterday" : "vs ayer"}
-              </span>
-            </div>
-          </div>
-          <div className="flex-1 h-12">
-            <Sparkline data={foodValues} color={accentColor} />
-          </div>
-        </div>
-
-        {/* Top movers */}
-        {topMovers.length > 0 && (
-          <div
-            className="text-xs leading-relaxed"
-            style={{ color: "#2D3142" }}
-          >
-            <span style={{ color: "#8D99AE" }}>{isEn ? "Today: " : "Hoy: "}</span>
-            {topMovers.map((m, i) => (
-              <span key={m.category}>
-                <span style={{ color: m.var > 0 ? "#9B2226" : "#2A9D8F" }}>
-                  {m.label_es} {m.var >= 0 ? "+" : ""}
-                  {m.var.toFixed(1)}%
+        <div className="p-6 pt-7 flex flex-col gap-4">
+          {/* Header row */}
+          <div className="flex items-start justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span
+                  className="text-xs font-bold tracking-widest uppercase"
+                  style={{ color: "#C65D3E" }}
+                >
+                  Qhawarina
                 </span>
-                {i < topMovers.length - 1 && (
-                  <span style={{ color: "#8D99AE" }}> · </span>
-                )}
-              </span>
-            ))}
+                <span className="text-xs text-gray-400 uppercase tracking-widest">
+                  {isEn ? "· Daily Prices" : "· Precios Diarios"}
+                </span>
+              </div>
+              <h2
+                className="text-lg font-serif leading-tight"
+                style={{ color: "#2D3142", fontFamily: "var(--font-serif, Georgia, serif)" }}
+              >
+                {isEn ? "Daily Price Index" : "Índice de Precios Diarios"}
+              </h2>
+            </div>
+            <span
+              className="text-sm font-medium mt-1 group-hover:underline"
+              style={{ color: "#C65D3E" }}
+            >
+              {isEn ? "View →" : "Ver →"}
+            </span>
           </div>
-        )}
 
-        {/* Footer: provenance + timestamp */}
-        <div className="flex items-center justify-between border-t pt-3" style={{ borderColor: "#E8E4DC" }}>
-          <span className="text-xs" style={{ color: "#8D99AE" }}>
-            {isEn
-              ? `Based on ${nProducts.toLocaleString()} prices`
-              : `Basado en ${nProducts.toLocaleString()} precios`}
-            {" · "}Plaza Vea · Metro · Wong
-          </span>
-          <span className="text-xs" style={{ color: "#8D99AE" }}>
-            {formatDate(latest.date, isEn)}
-          </span>
+          {/* KPI + sparkline */}
+          <div className="flex items-end gap-4">
+            <div className="flex-1">
+              <div
+                className="tabular-nums leading-none mb-1"
+                style={{
+                  fontSize: "3rem",
+                  fontWeight: 700,
+                  fontFamily: "var(--font-mono, ui-monospace, monospace)",
+                  fontFeatureSettings: '"tnum"',
+                  color: accentColor,
+                }}
+              >
+                {cumPct >= 0 ? "+" : ""}
+                {cumPct.toFixed(2)}%
+              </div>
+              <div className="text-xs" style={{ color: "#8D99AE" }}>
+                {isEn ? "accumulated this month" : "acumulado mes en curso"}
+              </div>
+              <div className="flex items-center gap-1 mt-2">
+                <span
+                  className="text-sm font-semibold tabular-nums"
+                  style={{ color: deltaColor, fontFeatureSettings: '"tnum"' }}
+                >
+                  {deltaArrow} {varAll >= 0 ? "+" : ""}
+                  {varAll.toFixed(3)}%
+                </span>
+                <span className="text-xs" style={{ color: "#8D99AE" }}>
+                  {isEn ? "vs yesterday" : "vs ayer"}
+                </span>
+              </div>
+            </div>
+            <div className="flex-1 h-12">
+              <Sparkline data={foodValues} color={accentColor} />
+            </div>
+          </div>
+
+          {/* Top movers */}
+          {topMovers.length > 0 && (
+            <div className="text-xs leading-relaxed" style={{ color: "#2D3142" }}>
+              <span style={{ color: "#8D99AE" }}>{isEn ? "Today: " : "Hoy: "}</span>
+              {topMovers.map((m, i) => (
+                <span key={m.category}>
+                  <span style={{ color: m.var > 0 ? "#9B2226" : "#2A9D8F" }}>
+                    {m.label_es} {m.var >= 0 ? "+" : ""}
+                    {m.var.toFixed(1)}%
+                  </span>
+                  {i < topMovers.length - 1 && (
+                    <span style={{ color: "#8D99AE" }}> · </span>
+                  )}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Footer */}
+          <div
+            className="flex items-center justify-between border-t pt-3"
+            style={{ borderColor: "#E8E4DC" }}
+          >
+            <span className="text-xs" style={{ color: "#8D99AE" }}>
+              {isEn
+                ? `${nProducts.toLocaleString()} prices tracked`
+                : `${nProducts.toLocaleString()} precios rastreados`}
+              {" · "}Plaza Vea · Metro · Wong
+            </span>
+            <span className="text-xs" style={{ color: "#8D99AE" }}>
+              {formatDate(latest.date, isEn)}
+            </span>
+          </div>
         </div>
       </div>
     </Link>

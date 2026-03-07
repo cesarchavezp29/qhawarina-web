@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Serif_Display, Outfit, Source_Sans_3, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -7,7 +7,28 @@ import BackToTop from "./components/BackToTop";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSerif = DM_Serif_Display({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const dmMono = DM_Mono({
+  weight: ["300", "400", "500"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Qhawarina - Nowcasting Económico para Perú",
@@ -18,7 +39,7 @@ export const metadata: Metadata = {
     types: { 'application/rss+xml': '/feed.xml' },
     languages: { 'es-PE': 'https://qhawarina.pe', 'en': 'https://qhawarina.pe' },
   },
-  themeColor: "#1e40af",
+  themeColor: "#C65D3E",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Qhawarina" },
   openGraph: {
     title: "Qhawarina - Economic Nowcasting for Peru",
@@ -47,7 +68,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={`${dmSerif.variable} ${outfit.variable} ${sourceSans.variable} ${dmMono.variable} font-sans`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <main className="min-h-screen">{children}</main>

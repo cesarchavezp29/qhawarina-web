@@ -4,8 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900;
+    background-color: #FAF8F4;
+    color: #2D3142;
   }
+
+  /* Scrollbar: subtle, warm-toned */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #F3F0EA; }
+  ::-webkit-scrollbar-thumb { background: #C65D3E55; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C65D3E; }
 }
 
 @layer utilities {
@@ -37,15 +44,26 @@
 }
 
 :root {
-  /* Professional color palette (BCRP/Fed inspired) */
-  --primary: #1e40af;        /* Azul institucional */
-  --secondary: #64748b;      /* Gris neutro */
-  --accent: #059669;         /* Verde para positivos */
-  --warning: #f59e0b;        /* Naranja para advertencias */
-  --danger: #dc2626;         /* Rojo para negativos */
-  --bg-light: #f8fafc;       /* Fondo claro */
-  --bg-card: #ffffff;        /* Tarjetas */
-  --border: #e2e8f0;         /* Bordes sutiles */
-  --text-primary: #1e293b;   /* Texto principal */
-  --text-secondary: #64748b; /* Texto secundario */
+  /* Qhawarina brand tokens */
+  --terra:         #C65D3E;
+  --terra-light:   #fdf3f0;
+  --charcoal:      #2D3142;
+  --warm-white:    #FAF8F4;
+  --warm-border:   #E8E4DC;
+  --warm-surface:  #F3F0EA;
+  --teal:          #2A9D8F;
+  --deep-red:      #9B2226;
+  --amber:         #E0A458;
+  --neutral:       #8D99AE;
+
+  /* Semantic aliases */
+  --color-bg:        var(--warm-white);
+  --color-surface:   #ffffff;
+  --color-border:    var(--warm-border);
+  --color-text:      var(--charcoal);
+  --color-muted:     var(--neutral);
+  --color-accent:    var(--terra);
+  --color-positive:  var(--teal);
+  --color-negative:  var(--deep-red);
+  --color-warning:   var(--amber);
 }

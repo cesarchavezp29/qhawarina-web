@@ -1,0 +1,25 @@
+{
+  "date": "2026-03-07",
+  "headline_es": "Precios diarios: variación acumulada del mes en curso",
+  "headline_en": "Daily prices: month-to-date accumulated change",
+  "body_es": "El índice de precios diarios Qhawarina — basado en 30,000+ precios de supermercados en Lima — registra las variaciones en tiempo real. Las categorías de mayor movimiento hoy se detallan en las tarjetas de indicadores.",
+  "body_en": "The Qhawarina daily price index — based on 30,000+ supermarket prices in Lima — tracks price changes in real time. The largest movers today are shown in the indicator cards below.",
+  "highlights": [
+    {
+      "icon": "🛒",
+      "text_es": "Índice construido con metodología Jevons (media geométrica)",
+      "text_en": "Index built with Jevons methodology (geometric mean)"
+    },
+    {
+      "icon": "🏪",
+      "text_es": "Fuentes: Plaza Vea, Metro, Wong",
+      "text_en": "Sources: Plaza Vea, Metro, Wong"
+    },
+    {
+      "icon": "📊",
+      "text_es": "Datos: BCRP, INEI, MIDAGRI — actualizados a las 08:00 PET",
+      "text_en": "Data: BCRP, INEI, MIDAGRI — updated at 08:00 PET"
+    }
+  ],
+  "updated_at": "2026-03-07T08:00:00"
+}

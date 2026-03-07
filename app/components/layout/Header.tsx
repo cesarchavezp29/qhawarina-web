@@ -18,22 +18,34 @@ export default function Header() {
     setIsMobileStatsOpen(false);
   };
 
+  const navLinkClass =
+    "text-sm font-medium transition-colors px-3 py-2 rounded-sm hover:bg-[#fdf3f0]";
+  const navLinkStyle = { color: "#2D3142" };
+  const navLinkHoverStyle = { color: "#C65D3E" };
+
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <header style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14">
+
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center" onClick={closeMobile}>
-              <span className="text-2xl font-bold text-blue-800">QHAWARINA</span>
+            <Link href="/" onClick={closeMobile} className="flex items-center">
+              <span
+                className="text-xl font-bold tracking-wide"
+                style={{ color: "#C65D3E", fontFamily: "var(--font-outfit, sans-serif)" }}
+              >
+                QHAWARINA
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-1">
             <Link
               href="/"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
+              className={navLinkClass}
+              style={navLinkStyle}
             >
               {t("home")}
             </Link>
@@ -46,120 +58,72 @@ export default function Header() {
             >
               <button
                 onClick={() => setIsStatsOpen(!isStatsOpen)}
-                className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors flex items-center"
+                className={`${navLinkClass} flex items-center gap-1`}
+                style={navLinkStyle}
               >
                 {t("statistics")}
                 <svg
-                  className="ml-1 h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  className={`h-3.5 w-3.5 transition-transform ${isStatsOpen ? "rotate-180" : ""}`}
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
 
               {isStatsOpen && (
-                <div className="absolute left-0 mt-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg z-50">
-                  <div className="py-1">
+                <div
+                  className="absolute left-0 mt-0 w-56 rounded-md shadow-lg z-50 py-1"
+                  style={{ background: "#fff", border: "1px solid #E8E4DC" }}
+                >
+                  {[
+                    ["/estadisticas/pbi", ts("gdp")],
+                    ["/estadisticas/inflacion", ts("inflation")],
+                    ["/estadisticas/pobreza", ts("poverty")],
+                    ["/estadisticas/riesgo-politico", ts("politicalRisk")],
+                    ["/estadisticas/precios-diarios", t("dailyPrices")],
+                    ["/estadisticas/intervenciones", t("fxMarket")],
+                    ["/estadisticas/calendario", t("calendar")],
+                  ].map(([href, label]) => (
                     <Link
-                      href="/estadisticas/pbi"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
+                      key={href}
+                      href={href}
+                      className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
+                      style={{ color: "#2D3142" }}
+                      onClick={closeMobile}
                     >
-                      {ts("gdp")}
+                      {label}
                     </Link>
-                    <Link
-                      href="/estadisticas/inflacion"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
-                    >
-                      {ts("inflation")}
-                    </Link>
-                    <Link
-                      href="/estadisticas/pobreza"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
-                    >
-                      {ts("poverty")}
-                    </Link>
-                    <Link
-                      href="/estadisticas/riesgo-politico"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
-                    >
-                      {ts("politicalRisk")}
-                    </Link>
-                    <Link
-                      href="/estadisticas/precios-diarios"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
-                    >
-                      {t("dailyPrices")}
-                    </Link>
-                    <Link
-                      href="/estadisticas/intervenciones"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
-                    >
-                      {t("fxMarket")}
-                    </Link>
-                    <Link
-                      href="/estadisticas/calendario"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-800"
-                    >
-                      {t("calendar")}
-                    </Link>
-                    <div className="border-t border-gray-200 my-1"></div>
-                    <Link
-                      href="/estadisticas"
-                      className="block px-4 py-2 text-sm text-blue-700 hover:bg-blue-50 font-medium"
-                    >
-                      {t("seeAll")} →
-                    </Link>
-                  </div>
+                  ))}
+                  <div style={{ borderTop: "1px solid #E8E4DC", margin: "4px 0" }} />
+                  <Link
+                    href="/estadisticas"
+                    className="block px-4 py-2 text-sm font-medium transition-colors hover:bg-[#fdf3f0]"
+                    style={{ color: "#C65D3E" }}
+                    onClick={closeMobile}
+                  >
+                    {t("seeAll")} →
+                  </Link>
                 </div>
               )}
             </div>
 
-            <Link
-              href="/simuladores"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
-            >
+            <Link href="/simuladores" className={navLinkClass} style={navLinkStyle}>
               {t("simulators")}
             </Link>
-
-            <Link
-              href="/datos"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
-            >
+            <Link href="/datos" className={navLinkClass} style={navLinkStyle}>
               {t("data")}
             </Link>
-
-            <Link
-              href="/escenarios"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
-            >
+            <Link href="/escenarios" className={navLinkClass} style={navLinkStyle}>
               {t("scenarios")}
             </Link>
-
-            <Link
-              href="/metodologia"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
-            >
+            <Link href="/metodologia" className={navLinkClass} style={navLinkStyle}>
               {t("methodology")}
             </Link>
-
-            <Link
-              href="/sobre-nosotros"
-              className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-colors"
-            >
+            <Link href="/sobre-nosotros" className={navLinkClass} style={navLinkStyle}>
               {t("about")}
             </Link>
 
-            {/* Search */}
             <SearchModal />
-
-            {/* Language Switcher */}
             <LanguageSwitcher />
           </nav>
 
@@ -168,15 +132,16 @@ export default function Header() {
             <LanguageSwitcher />
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-blue-800 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-md transition-colors hover:bg-[#fdf3f0]"
+              style={{ color: "#2D3142" }}
               aria-label={t("openMenu")}
             >
               {isMobileOpen ? (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -187,12 +152,13 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white">
+        <div style={{ borderTop: "1px solid #E8E4DC", background: "#fff" }}>
           <div className="px-4 py-3 space-y-1">
             <Link
               href="/"
               onClick={closeMobile}
-              className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md"
+              className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+              style={{ color: "#2D3142" }}
             >
               {t("home")}
             </Link>
@@ -201,47 +167,67 @@ export default function Header() {
             <div>
               <button
                 onClick={() => setIsMobileStatsOpen(!isMobileStatsOpen)}
-                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md"
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                style={{ color: "#2D3142" }}
               >
                 {t("statistics")}
                 <svg
-                  className={`h-4 w-4 transition-transform ${isMobileStatsOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  className={`h-3.5 w-3.5 transition-transform ${isMobileStatsOpen ? "rotate-180" : ""}`}
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               {isMobileStatsOpen && (
-                <div className="pl-4 mt-1 space-y-1">
-                  <Link href="/estadisticas/pbi" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("gdp")}</Link>
-                  <Link href="/estadisticas/inflacion" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("inflation")}</Link>
-                  <Link href="/estadisticas/pobreza" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("poverty")}</Link>
-                  <Link href="/estadisticas/riesgo-politico" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{ts("politicalRisk")}</Link>
-                  <Link href="/estadisticas/precios-diarios" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{t("dailyPrices")}</Link>
-                  <Link href="/estadisticas/intervenciones" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{t("fxMarket")}</Link>
-                  <Link href="/estadisticas/calendario" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-blue-800 hover:bg-blue-50 rounded-md">{t("calendar")}</Link>
-                  <Link href="/estadisticas" onClick={closeMobile} className="block px-3 py-1.5 text-sm text-blue-700 hover:text-blue-800 hover:bg-blue-50 rounded-md font-medium">{t("seeAll")} →</Link>
+                <div className="pl-4 mt-1 space-y-0.5">
+                  {[
+                    ["/estadisticas/pbi", ts("gdp")],
+                    ["/estadisticas/inflacion", ts("inflation")],
+                    ["/estadisticas/pobreza", ts("poverty")],
+                    ["/estadisticas/riesgo-politico", ts("politicalRisk")],
+                    ["/estadisticas/precios-diarios", t("dailyPrices")],
+                    ["/estadisticas/intervenciones", t("fxMarket")],
+                    ["/estadisticas/calendario", t("calendar")],
+                  ].map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobile}
+                      className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                      style={{ color: "#2D3142" }}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/estadisticas"
+                    onClick={closeMobile}
+                    className="block px-3 py-1.5 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                    style={{ color: "#C65D3E" }}
+                  >
+                    {t("seeAll")} →
+                  </Link>
                 </div>
               )}
             </div>
 
-            <Link href="/simuladores" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
-              {t("simulators")}
-            </Link>
-            <Link href="/datos" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
-              {t("data")}
-            </Link>
-            <Link href="/escenarios" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
-              {t("scenarios")}
-            </Link>
-            <Link href="/metodologia" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
-              {t("methodology")}
-            </Link>
-            <Link href="/sobre-nosotros" onClick={closeMobile} className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md">
-              {t("about")}
-            </Link>
+            {[
+              ["/simuladores", t("simulators")],
+              ["/datos", t("data")],
+              ["/escenarios", t("scenarios")],
+              ["/metodologia", t("methodology")],
+              ["/sobre-nosotros", t("about")],
+            ].map(([href, label]) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={closeMobile}
+                className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                style={{ color: "#2D3142" }}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       )}
