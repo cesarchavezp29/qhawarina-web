@@ -12,7 +12,10 @@
     "dailyPrices": "Precios Diarios",
     "fxMarket": "Mercado Cambiario",
     "calendar": "Calendario de Publicaciones",
-    "openMenu": "Abrir menú"
+    "openMenu": "Abrir menú",
+    "publications": "Publicaciones",
+    "publicationsList": "Ver publicaciones",
+    "reports": "Reportes"
   },
   "home": {
     "title": "QHAWARINA",

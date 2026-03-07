@@ -8,14 +8,17 @@ import SearchModal from "../SearchModal";
 
 export default function Header() {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
+  const [isPubsOpen, setIsPubsOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isMobileStatsOpen, setIsMobileStatsOpen] = useState(false);
+  const [isMobilePubsOpen, setIsMobilePubsOpen] = useState(false);
   const t = useTranslations("nav");
   const ts = useTranslations("stats");
 
   const closeMobile = () => {
     setIsMobileOpen(false);
     setIsMobileStatsOpen(false);
+    setIsMobilePubsOpen(false);
   };
 
   const navLinkClass =
@@ -103,6 +106,49 @@ export default function Header() {
                   >
                     {t("seeAll")} →
                   </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Publicaciones Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsPubsOpen(true)}
+              onMouseLeave={() => setIsPubsOpen(false)}
+            >
+              <button
+                onClick={() => setIsPubsOpen(!isPubsOpen)}
+                className={`${navLinkClass} flex items-center gap-1`}
+                style={navLinkStyle}
+              >
+                {t("publications")}
+                <svg
+                  className={`h-3.5 w-3.5 transition-transform ${isPubsOpen ? "rotate-180" : ""}`}
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isPubsOpen && (
+                <div
+                  className="absolute left-0 mt-0 w-52 rounded-md shadow-lg z-50 py-1"
+                  style={{ background: "#fff", border: "1px solid #E8E4DC" }}
+                >
+                  {[
+                    ["/publicaciones", t("publicationsList")],
+                    ["/reportes", t("reports")],
+                    ["/estadisticas/calendario", t("calendar")],
+                  ].map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
+                      style={{ color: "#2D3142" }}
+                      onClick={closeMobile}
+                    >
+                      {label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
@@ -207,6 +253,42 @@ export default function Header() {
                   >
                     {t("seeAll")} →
                   </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Publicaciones accordion */}
+            <div>
+              <button
+                onClick={() => setIsMobilePubsOpen(!isMobilePubsOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                style={{ color: "#2D3142" }}
+              >
+                {t("publications")}
+                <svg
+                  className={`h-3.5 w-3.5 transition-transform ${isMobilePubsOpen ? "rotate-180" : ""}`}
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isMobilePubsOpen && (
+                <div className="pl-4 mt-1 space-y-0.5">
+                  {[
+                    ["/publicaciones", t("publicationsList")],
+                    ["/reportes", t("reports")],
+                    ["/estadisticas/calendario", t("calendar")],
+                  ].map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobile}
+                      className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                      style={{ color: "#2D3142" }}
+                    >
+                      {label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>

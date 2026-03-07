@@ -44,10 +44,12 @@ export default function Footer() {
   const projectLinks = isEn ? [
     ["/metodologia", "Methodology"],
     ["/sobre-nosotros", "About Us"],
+    ["/institucional", "For Institutions"],
     ["/feed.xml", "RSS Feed"],
   ] : [
     ["/metodologia", "Metodología"],
     ["/sobre-nosotros", "Sobre Nosotros"],
+    ["/institucional", "Para Instituciones"],
     ["/feed.xml", "Feed RSS"],
   ];
 
