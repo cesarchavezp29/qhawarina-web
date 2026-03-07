@@ -7,6 +7,12 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer, Cell, LineChart, Line, ReferenceLine,
 } from 'recharts';
+import {
+  CHART_COLORS,
+  CHART_DEFAULTS,
+  tooltipContentStyle,
+  axisTickStyle,
+} from '../lib/chartTheme';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface GDPData  { nowcast: { value: number; target_period: string } }
@@ -100,11 +106,10 @@ export default function SimuladoresPage() {
             <button
               key={key}
               onClick={() => setTab(key)}
-              className={`px-6 py-3 text-sm font-medium border-b-2 -mb-px transition-colors ${
-                tab === key
-                  ? 'border-blue-600 text-blue-700'
-                  : 'border-transparent text-gray-500 hover:text-gray-900'
-              }`}
+              className="px-6 py-3 text-sm font-medium border-b-2 -mb-px transition-colors"
+              style={tab === key
+                ? { borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }
+                : { borderColor: 'transparent', color: CHART_COLORS.ink3 }}
             >
               {label}
             </button>
@@ -194,7 +199,7 @@ function GDPSimulator({ gdpData }: { gdpData: GDPData | null }) {
             <label className="block text-xs font-medium text-gray-600 mb-1">
               {isEn ? 'GDP Nowcast (model)' : 'PBI Nowcast (modelo)'} — {gdpData?.nowcast.target_period ?? '…'}
             </label>
-            <div className="text-2xl font-bold text-blue-700">{baselineGDP.toFixed(2)}%</div>
+            <div className="text-2xl font-bold" style={{ color: CHART_COLORS.teal }}>{baselineGDP.toFixed(2)}%</div>
             <p className="text-xs text-gray-400 mt-1">
               {isEn ? 'Real DFM model estimate' : 'Estimación real del modelo DFM'}
             </p>
@@ -257,7 +262,8 @@ function GDPSimulator({ gdpData }: { gdpData: GDPData | null }) {
             <button
               onClick={calculate}
               disabled={shocks.length === 0}
-              className="w-full mt-4 bg-blue-600 text-white py-2.5 text-sm font-medium hover:bg-blue-700 disabled:bg-gray-300"
+              className="w-full mt-4 text-white py-2.5 text-sm font-medium disabled:opacity-40"
+              style={{ backgroundColor: CHART_COLORS.terra }}
             >
               {isEn ? 'Calculate Impact' : 'Calcular Impacto'}
             </button>
@@ -300,13 +306,13 @@ function GDPSimulator({ gdpData }: { gdpData: GDPData | null }) {
               </h3>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                  <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip formatter={(v: any) => `${Number(v).toFixed(2)}%`} />
-                  <Legend />
-                  <Bar dataKey="GDP" fill="#3b82f6" name={isEn ? "GDP (%)" : "PBI (%)"} />
-                  <Bar dataKey="Inflation" fill="#f59e0b" name={isEn ? "Inflation (%)" : "Inflación (%)"} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                  <XAxis dataKey="name" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                  <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                  <Tooltip contentStyle={tooltipContentStyle} formatter={(v: any) => `${Number(v).toFixed(2)}%`} />
+                  <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
+                  <Bar dataKey="GDP" fill={CHART_COLORS.teal} name={isEn ? "GDP (%)" : "PBI (%)"} />
+                  <Bar dataKey="Inflation" fill={CHART_COLORS.terra} name={isEn ? "Inflation (%)" : "Inflación (%)"} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -339,7 +345,7 @@ function GDPSimulator({ gdpData }: { gdpData: GDPData | null }) {
               </table>
             </div>
 
-            <div className={`border p-4 text-sm ${results.total_gdp_impact < -1 ? 'bg-red-50 border-red-200 text-red-800' : results.total_gdp_impact > 1 ? 'bg-green-50 border-green-200 text-green-800' : 'bg-blue-50 border-blue-200 text-blue-800'}`}>
+            <div className="border p-4 text-sm" style={results.total_gdp_impact < -1 ? { background: '#fdf2f2', borderColor: CHART_COLORS.red, color: CHART_COLORS.red } : results.total_gdp_impact > 1 ? { background: '#f0faf8', borderColor: CHART_COLORS.teal, color: CHART_COLORS.teal } : { background: CHART_COLORS.surface, borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink }}>
               <strong>{isEn ? 'Interpretation: ' : 'Interpretación: '}</strong>{interpretation()}
             </div>
           </div>
@@ -426,12 +432,13 @@ function InflacionCalc({ inflData }: { inflData: InflData | null }) {
           </div>
 
           <button onClick={calculate} disabled={loading}
-            className="w-full bg-blue-600 text-white py-2.5 text-sm font-medium hover:bg-blue-700 disabled:bg-gray-300">
+            className="w-full text-white py-2.5 text-sm font-medium disabled:opacity-40"
+            style={{ backgroundColor: CHART_COLORS.terra }}>
             {loading ? (isEn ? 'Calculating…' : 'Calculando…') : (isEn ? 'Calculate' : 'Calcular')}
           </button>
 
           {inflData && (
-            <div className="p-3 bg-blue-50 border border-blue-200 text-xs text-blue-800">
+            <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_COLORS.terra}`, color: CHART_COLORS.ink }}>
               {isEn ? 'Base rate:' : 'Tasa base:'} <strong>{baseMonthlyRate.toFixed(3)}%/{isEn ? 'mo' : 'mes'}</strong> (DFM nowcast, {inflData.nowcast.target_period})
             </div>
           )}
@@ -480,12 +487,12 @@ function InflacionCalc({ inflData }: { inflData: InflData | null }) {
               </h3>
               <ResponsiveContainer width="100%" height={240}>
                 <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                  <XAxis dataKey="date" tick={{ fontSize: 10 }} interval="preserveStartEnd" />
-                  <YAxis domain={['auto', 'auto']} tick={{ fontSize: 11 }} />
-                  <Tooltip formatter={(v: any) => `${Number(v).toFixed(2)}`} />
-                  <Line type="monotone" dataKey="index" stroke="#3b82f6" strokeWidth={2} name={isEn ? "Index (base=100)" : "Índice (base=100)"} dot={false} />
-                  <ReferenceLine y={100} stroke="#94a3b8" strokeDasharray="4 4" label={{ value: isEn ? 'Base' : 'Base', fontSize: 10 }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                  <XAxis dataKey="date" tick={axisTickStyle} interval="preserveStartEnd" stroke={CHART_DEFAULTS.axisStroke} />
+                  <YAxis domain={['auto', 'auto']} tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                  <Tooltip contentStyle={tooltipContentStyle} formatter={(v: any) => `${Number(v).toFixed(2)}`} />
+                  <Line type="monotone" dataKey="index" stroke={CHART_COLORS.terra} strokeWidth={2} name={isEn ? "Index (base=100)" : "Índice (base=100)"} dot={false} />
+                  <ReferenceLine y={100} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" label={{ value: isEn ? 'Base' : 'Base', fontSize: CHART_DEFAULTS.axisFontSize }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -547,7 +554,7 @@ function PobrezaProyecciones({ povData }: { povData: PovData | null }) {
     { name: isEn ? 'Projection' : 'Proyección', rate: results.poverty_rate },
   ] : [];
 
-  const barColor = scenario === 'optimistic' ? '#10b981' : scenario === 'pessimistic' ? '#ef4444' : '#3b82f6';
+  const barColor = scenario === 'optimistic' ? CHART_COLORS.teal : scenario === 'pessimistic' ? CHART_COLORS.red : CHART_COLORS.amber;
 
   return (
     <div className="grid lg:grid-cols-3 gap-8">
@@ -609,12 +616,13 @@ function PobrezaProyecciones({ povData }: { povData: PovData | null }) {
           </div>
 
           <button onClick={forecast} disabled={loading || !povData}
-            className="w-full bg-blue-600 text-white py-2.5 text-sm font-medium hover:bg-blue-700 disabled:bg-gray-300">
+            className="w-full text-white py-2.5 text-sm font-medium disabled:opacity-40"
+            style={{ backgroundColor: CHART_COLORS.terra }}>
             {loading ? (isEn ? 'Calculating…' : 'Calculando…') : (isEn ? 'Generate Projection' : 'Generar Proyección')}
           </button>
 
           {povData && (
-            <div className="p-3 bg-blue-50 border border-blue-200 text-xs text-blue-800">
+            <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_COLORS.terra}`, color: CHART_COLORS.ink }}>
               GBR · {povData.metadata.target_year} · {isEn ? 'Real nowcast rates' : 'Tasas reales del nowcast'}
             </div>
           )}
@@ -664,20 +672,23 @@ function PobrezaProyecciones({ povData }: { povData: PovData | null }) {
               </h3>
               <ResponsiveContainer width="100%" height={240}>
                 <BarChart data={barData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                  <YAxis domain={[0, Math.ceil((results.ci_high + 5) / 10) * 10]}
-                    label={{ value: isEn ? 'Poverty (%)' : 'Pobreza (%)', angle: -90, position: 'insideLeft', style: { fontSize: 11 } }}
-                    tick={{ fontSize: 11 }} />
-                  <Tooltip formatter={(v: any) => [`${Number(v).toFixed(1)}%`, isEn ? 'Poverty' : 'Pobreza']} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                  <XAxis dataKey="name" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                  <YAxis
+                    domain={[0, Math.ceil((results.ci_high + 5) / 10) * 10]}
+                    label={{ value: isEn ? 'Poverty (%)' : 'Pobreza (%)', angle: -90, position: 'insideLeft', style: { fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_DEFAULTS.axisStroke } }}
+                    tick={axisTickStyle}
+                    stroke={CHART_DEFAULTS.axisStroke}
+                  />
+                  <Tooltip contentStyle={tooltipContentStyle} formatter={(v: any) => [`${Number(v).toFixed(1)}%`, isEn ? 'Poverty' : 'Pobreza']} />
                   <Bar dataKey="rate" fill={barColor} name={isEn ? "Rate (%)" : "Tasa (%)"} />
-                  <ReferenceLine y={results.ci_low}  stroke="#94a3b8" strokeDasharray="4 4" label={{ value: isEn ? 'CI low' : 'IC inf.', fontSize: 9 }} />
-                  <ReferenceLine y={results.ci_high} stroke="#94a3b8" strokeDasharray="4 4" label={{ value: isEn ? 'CI high' : 'IC sup.', fontSize: 9 }} />
+                  <ReferenceLine y={results.ci_low}  stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" label={{ value: isEn ? 'CI low' : 'IC inf.', fontSize: CHART_DEFAULTS.axisFontSize }} />
+                  <ReferenceLine y={results.ci_high} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" label={{ value: isEn ? 'CI high' : 'IC sup.', fontSize: CHART_DEFAULTS.axisFontSize }} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
 
-            <div className={`border p-4 text-sm ${results.change < -1 ? 'bg-green-50 border-green-200 text-green-800' : results.change > 1 ? 'bg-red-50 border-red-200 text-red-800' : 'bg-blue-50 border-blue-200 text-blue-800'}`}>
+            <div className="border p-4 text-sm" style={results.change < -1 ? { background: '#f0faf8', borderColor: CHART_COLORS.teal, color: CHART_COLORS.teal } : results.change > 1 ? { background: '#fdf2f2', borderColor: CHART_COLORS.red, color: CHART_COLORS.red } : { background: CHART_COLORS.surface, borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink }}>
               {results.change < -1 ? (
                 isEn
                   ? <>Improvement of <strong>{Math.abs(results.change).toFixed(1)}pp</strong> — approximately {Math.abs(Math.round((results.change / 100) * results.pop)).toLocaleString()} people would exit poverty.</>
