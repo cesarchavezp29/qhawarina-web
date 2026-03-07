@@ -6,6 +6,13 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import ShareButton from "../../components/ShareButton";
 import EmbedWidget from "../../components/EmbedWidget";
+import {
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
+import {
+  CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
+} from '../../lib/chartTheme';
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -46,6 +53,7 @@ interface PriceIndexData {
     index_food: number;
     cum_pct: number;
     var_all: number;
+    top_movers?: Array<{ category: string; label_es: string; label_en: string; var: number }>;
   };
 }
 
@@ -321,6 +329,47 @@ export default function PreciosDiariosPage() {
             </p>
           </div>
         </div>
+
+        {/* Category movers chart */}
+        {data.latest.top_movers && data.latest.top_movers.length > 0 && (
+          <div className="rounded-lg border p-6 mb-8" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <h3 className="text-base font-semibold mb-4" style={{ color: CHART_COLORS.ink }}>
+              {isEn ? 'Daily change by category' : 'Variación diaria por categoría'}
+            </h3>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart
+                layout="vertical"
+                data={[...data.latest.top_movers]
+                  .sort((a, b) => b.var - a.var)
+                  .map(m => ({ name: isEn ? m.label_en : m.label_es, var: m.var }))}
+                margin={{ top: 4, right: 50, left: 110, bottom: 4 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} horizontal={false} />
+                <XAxis
+                  type="number"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(2)}%`}
+                />
+                <YAxis type="category" dataKey="name" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} width={105} />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number) => [`${v > 0 ? '+' : ''}${v.toFixed(3)}%`, isEn ? 'Daily change' : 'Variación diaria']}
+                />
+                <Bar dataKey="var" radius={[0, 3, 3, 0]}>
+                  {[...data.latest.top_movers]
+                    .sort((a, b) => b.var - a.var)
+                    .map((entry, i) => (
+                      <Cell key={i} fill={entry.var >= 0 ? CHART_COLORS.terra : CHART_COLORS.teal} />
+                    ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+            <p className="text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
+              {isEn ? 'Terra = price increase · Teal = price decrease' : 'Terra = alza de precio · Verde = baja de precio'}
+            </p>
+          </div>
+        )}
 
         {/* Data coverage notice */}
         {n < 30 && (

@@ -8,11 +8,19 @@ import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, ReferenceLine,
+} from 'recharts';
+import {
+  CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
+} from '../../lib/chartTheme';
 
 interface GDPData {
-  metadata: { generated_at: string };
-  recent_quarters: Array<{ quarter: string; official: number | null; nowcast: number | null }>;
+  metadata: { generated_at: string; model?: string };
+  recent_quarters: Array<{ quarter: string; official: number | null; nowcast: number | null; error?: number | null }>;
   nowcast: { target_period: string; value: number };
+  backtest_metrics?: { rmse: number; mae: number; r2: number };
 }
 
 export default function PBIPage() {
@@ -70,6 +78,17 @@ export default function PBIPage() {
   );
 
   const valStr = `${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(2)}%`;
+
+  // Track Record — last 8 quarters with both official & nowcast values
+  const trackRecord = (data.recent_quarters ?? [])
+    .filter(q => q.official !== null && q.nowcast !== null)
+    .slice(-8)
+    .map(q => ({
+      quarter: q.quarter,
+      [isEn ? 'Nowcast' : 'Nowcast']: q.nowcast,
+      [isEn ? 'INEI Official' : 'INEI Oficial']: q.official,
+    }));
+  const rmse = data.backtest_metrics?.rmse;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -136,6 +155,42 @@ export default function PBIPage() {
             📖 {T.methodology}
           </a>
         </div>
+
+        {/* Track Record Chart */}
+        {trackRecord.length >= 2 && (
+          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <div className="flex items-baseline justify-between mb-4">
+              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Track Record: Nowcast vs INEI Official' : 'Desempeño: Nowcast vs INEI Oficial'}
+              </h3>
+              {rmse && (
+                <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                  RMSE: {rmse.toFixed(2)} pp
+                </span>
+              )}
+            </div>
+            <ResponsiveContainer width="100%" height={320}>
+              <BarChart data={trackRecord} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis dataKey="quarter" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v) => `${v}%`}
+                  label={{ value: isEn ? 'Growth (% YoY)' : 'Crecimiento (% i.a.)', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number) => [`${v?.toFixed(2)}%`]}
+                />
+                <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
+                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+                <Bar dataKey={isEn ? 'Nowcast' : 'Nowcast'} fill={CHART_COLORS.teal} radius={[3, 3, 0, 0]} />
+                <Bar dataKey={isEn ? 'INEI Official' : 'INEI Oficial'} fill={CHART_COLORS.ink3} radius={[3, 3, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
       </div>
     </div>
   );

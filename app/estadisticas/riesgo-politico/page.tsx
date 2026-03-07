@@ -7,10 +7,18 @@ import LastUpdate from '../../components/stats/LastUpdate';
 import EmbedWidget from '../../components/EmbedWidget';
 import ShareButton from '../../components/ShareButton';
 import PageSkeleton from '../../components/PageSkeleton';
+import {
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
+import {
+  CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
+} from '../../lib/chartTheme';
 
 interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
   current: { date: string; score: number; level: string; articles_total: number; articles_political: number; articles_economic: number };
+  monthly_series?: Array<{ month: string; political_avg: number }>;
 }
 
 const LEVEL_STYLES: Record<string, { bg: string; text: string; border: string }> = {
@@ -77,6 +85,18 @@ export default function RiesgoPoliticoPage() {
 
   const level = data.current.level;
   const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MEDIO'];
+
+  // Monthly average trend — last 6 non-zero months
+  const monthlyTrend = (data.monthly_series ?? [])
+    .filter(m => m.political_avg > 0)
+    .slice(-6)
+    .map(m => ({
+      month: m.month.slice(0, 7),
+      score: parseFloat((m.political_avg * 100).toFixed(2)),
+    }));
+
+  const barColor = (score: number) =>
+    score < 3 ? CHART_COLORS.teal : score < 7 ? CHART_COLORS.amber : CHART_COLORS.red;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -148,6 +168,38 @@ export default function RiesgoPoliticoPage() {
             </div>
           </Link>
         </div>
+
+        {/* Monthly Trend Chart */}
+        {monthlyTrend.length >= 2 ? (
+          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: CHART_COLORS.ink }}>
+              {isEn ? 'Monthly Average Risk Score' : 'Promedio Mensual del Índice de Riesgo'}
+            </h3>
+            <ResponsiveContainer width="100%" height={280}>
+              <BarChart data={monthlyTrend} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis dataKey="month" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} tickFormatter={v => `${v}`}
+                  label={{ value: isEn ? 'Score (×100)' : 'Puntaje (×100)', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number) => [`${v.toFixed(2)}`, isEn ? 'Risk score ×100' : 'Puntaje de riesgo ×100']}
+                />
+                <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+                  {monthlyTrend.map((entry, i) => (
+                    <Cell key={i} fill={barColor(entry.score)} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+            <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+              {isEn
+                ? 'Teal <3 · Amber 3–7 · Red >7. Scale ×100 for readability.'
+                : 'Verde <3 · Ámbar 3–7 · Rojo >7. Escala ×100 para legibilidad.'}
+            </p>
+          </div>
+        ) : null}
       </div>
     </div>
   );

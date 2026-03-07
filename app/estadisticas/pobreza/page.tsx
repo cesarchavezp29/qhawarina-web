@@ -8,6 +8,13 @@ import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
+import {
+  CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
+} from '../../lib/chartTheme';
 
 interface PovertyData {
   metadata: { target_year: number; generated_at: string };
@@ -72,6 +79,15 @@ export default function PobrezaPage() {
 
   const nationalRate = data.national?.poverty_rate
     ?? data.departments.reduce((sum, d) => sum + d.poverty_rate_2025_nowcast, 0) / data.departments.length;
+
+  // Department rankings sorted descending by 2024 official rate
+  const deptRanking = [...data.departments]
+    .sort((a, b) => b.poverty_rate_2024 - a.poverty_rate_2024)
+    .map(d => ({
+      name: d.name,
+      [isEn ? '2024' : '2024']: d.poverty_rate_2024,
+      [isEn ? '2025 Nowcast' : 'Nowcast 2025']: d.poverty_rate_2025_nowcast,
+    }));
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -138,6 +154,49 @@ export default function PobrezaPage() {
             📖 {T.methodology}
           </a>
         </div>
+
+        {/* Department Rankings Chart */}
+        {deptRanking.length > 0 && (
+          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <h3 className="text-lg font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>
+              {isEn
+                ? 'Poverty by Department — 2025 Projection'
+                : 'Pobreza por Departamento — Proyección 2025'}
+            </h3>
+            <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
+              {isEn ? 'Sorted by 2024 official rate (INEI). Amber = 2025 nowcast.' : 'Ordenado por tasa oficial 2024 (INEI). Ámbar = nowcast 2025.'}
+            </p>
+            <ResponsiveContainer width="100%" height={620}>
+              <BarChart
+                layout="vertical"
+                data={deptRanking}
+                margin={{ top: 4, right: 40, left: 90, bottom: 4 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} horizontal={false} />
+                <XAxis
+                  type="number"
+                  domain={[0, 50]}
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={v => `${v}%`}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  width={85}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number, name: string) => [`${v?.toFixed(1)}%`, name]}
+                />
+                <Bar dataKey="2024" fill={CHART_COLORS.ink3} radius={[0, 3, 3, 0]} />
+                <Bar dataKey={isEn ? '2025 Nowcast' : 'Nowcast 2025'} fill={CHART_COLORS.amber} radius={[0, 3, 3, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
       </div>
     </div>
   );
