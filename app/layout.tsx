@@ -73,7 +73,7 @@ const jsonLd = {
   "foundingDate": "2026",
   "areaServed": "Peru",
   "knowsAbout": ["GDP nowcasting", "inflation tracking", "poverty estimation", "political risk"],
-  "sameAs": ["https://github.com/cesarchavezp29/qhawarina"],
+  "sameAs": ["https://github.com/cesarchavezp29/qhawarina", "https://x.com/qhawarinape"],
 };
 
 export default async function RootLayout({
