@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Outfit, Source_Sans_3, DM_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -58,6 +59,23 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": "Qhawarina",
+  "url": "https://qhawarina.pe",
+  "description": "Centro de investigación en datos económicos de alta frecuencia para el Perú",
+  "founder": {
+    "@type": "Person",
+    "name": "Carlos César Chávez Padilla",
+    "jobTitle": "Fundador y Director",
+  },
+  "foundingDate": "2026",
+  "areaServed": "Peru",
+  "knowsAbout": ["GDP nowcasting", "inflation tracking", "poverty estimation", "political risk"],
+  "sameAs": ["https://github.com/cesarchavezp29/qhawarina"],
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -69,7 +87,26 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${dmSerif.variable} ${outfit.variable} ${sourceSans.variable} ${dmMono.variable} font-sans`}>
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GPS8W83784"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GPS8W83784');
+          `}
+        </Script>
+
         <NextIntlClientProvider locale={locale} messages={messages}>
+          {/* JSON-LD structured data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />

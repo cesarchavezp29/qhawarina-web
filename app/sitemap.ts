@@ -1,47 +1,27 @@
-import { MetadataRoute } from 'next';
-
-const BASE = 'https://qhawarina.pe';
-const NOW = new Date();
-
-const routes = [
-  '/',
-  '/estadisticas',
-  '/estadisticas/pbi',
-  '/estadisticas/pbi/graficos',
-  '/estadisticas/pbi/sectores',
-  '/estadisticas/pbi/mapas',
-  '/estadisticas/pbi/metodologia',
-  '/estadisticas/inflacion',
-  '/estadisticas/inflacion/graficos',
-  '/estadisticas/inflacion/categorias',
-  '/estadisticas/inflacion/mapas',
-  '/estadisticas/inflacion/precios-alta-frecuencia',
-  '/estadisticas/inflacion/metodologia',
-  '/estadisticas/pobreza',
-  '/estadisticas/pobreza/graficos',
-  '/estadisticas/pobreza/mapas',
-  '/estadisticas/pobreza/trimestral',
-  '/estadisticas/pobreza/metodologia',
-  '/estadisticas/pobreza/distritos',
-  '/estadisticas/riesgo-politico',
-  '/estadisticas/riesgo-politico/metodologia',
-  '/estadisticas/precios-diarios',
-  '/estadisticas/intervenciones',
-  '/estadisticas/calendario',
-  '/simuladores',
-  '/escenarios',
-  '/datos',
-  '/reportes',
-  '/metodologia',
-  '/sobre-nosotros',
-  '/api/docs',
-];
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `${BASE}${route}`,
-    lastModified: NOW,
-    changeFrequency: route === '/' ? 'daily' : route.includes('metodologia') ? 'monthly' : 'weekly',
-    priority: route === '/' ? 1.0 : route === '/estadisticas' ? 0.9 : 0.7,
-  }));
+  const baseUrl = 'https://qhawarina.pe'
+  const now = new Date().toISOString()
+  return [
+    { url: baseUrl, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
+    { url: `${baseUrl}/estadisticas/pbi`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/estadisticas/inflacion`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
+    { url: `${baseUrl}/estadisticas/precios-diarios`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
+    { url: `${baseUrl}/estadisticas/pobreza`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/estadisticas/riesgo-politico`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
+    { url: `${baseUrl}/estadisticas/intervenciones`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
+    { url: `${baseUrl}/estadisticas/pobreza/distritos`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/estadisticas/calendario`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 },
+    { url: `${baseUrl}/publicaciones`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/reportes`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${baseUrl}/datos`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/api/docs`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/metodologia`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/sobre-nosotros`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/institucional`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/prensa`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
+    { url: `${baseUrl}/simuladores`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${baseUrl}/escenarios`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+  ]
 }
