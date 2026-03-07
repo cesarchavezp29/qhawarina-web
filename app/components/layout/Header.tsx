@@ -24,16 +24,19 @@ export default function Header() {
   const isEn = useLocale() === "en";
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isPubsOpen, setIsPubsOpen]         = useState(false);
+  const [isDataOpen, setIsDataOpen]         = useState(false);
   const [isAboutOpen, setIsAboutOpen]       = useState(false);
   const [isMobileOpen, setIsMobileOpen]     = useState(false);
   const [mobileResearch, setMobileResearch] = useState(false);
   const [mobilePubs, setMobilePubs]         = useState(false);
+  const [mobileData, setMobileData]         = useState(false);
   const [mobileAbout, setMobileAbout]       = useState(false);
 
   const closeMobile = () => {
     setIsMobileOpen(false);
     setMobileResearch(false);
     setMobilePubs(false);
+    setMobileData(false);
     setMobileAbout(false);
   };
 
@@ -67,10 +70,24 @@ export default function Header() {
     ["/reportes",               "Reports"],
     ["/publicaciones",          "Publications"],
     ["/estadisticas/calendario","Economic Calendar"],
+    ["/metodologia",            "Methodology"],
   ] : [
     ["/reportes",               "Reportes"],
     ["/publicaciones",          "Publicaciones"],
     ["/estadisticas/calendario","Calendario Económico"],
+    ["/metodologia",            "Metodología"],
+  ];
+
+  const dataItems = isEn ? [
+    ["/datos",      "Open Data"],
+    ["/api/docs",   "API"],
+    ["/simuladores","Simulators"],
+    ["/escenarios", "Scenarios"],
+  ] : [
+    ["/datos",      "Datos Abiertos"],
+    ["/api/docs",   "API"],
+    ["/simuladores","Simuladores"],
+    ["/escenarios", "Escenarios"],
   ];
 
   const aboutItems = isEn ? [
@@ -171,9 +188,35 @@ export default function Header() {
             </div>
 
             {/* 3. DATOS */}
-            <Link href="/datos" className={navLink} style={ink}>
-              {dataLabel}
-            </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsDataOpen(true)}
+              onMouseLeave={() => setIsDataOpen(false)}
+            >
+              <button
+                onClick={() => setIsDataOpen(!isDataOpen)}
+                className={navBtn}
+                style={ink}
+              >
+                {dataLabel}
+                {chevron(isDataOpen)}
+              </button>
+              {isDataOpen && (
+                <div className="absolute left-0 mt-0 w-44 rounded-md shadow-lg z-50 py-1" style={dropdownStyle}>
+                  {dataItems.map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
+                      style={ink}
+                      onClick={closeMobile}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* 4. NOSOTROS */}
             <div
@@ -292,15 +335,32 @@ export default function Header() {
               )}
             </div>
 
-            {/* Mobile: Datos */}
-            <Link
-              href="/datos"
-              onClick={closeMobile}
-              className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
-              style={ink}
-            >
-              {dataLabel}
-            </Link>
+            {/* Mobile: Datos accordion */}
+            <div>
+              <button
+                onClick={() => setMobileData(!mobileData)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                style={ink}
+              >
+                {dataLabel}
+                {chevron(mobileData)}
+              </button>
+              {mobileData && (
+                <div className="pl-4 mt-1 space-y-0.5">
+                  {dataItems.map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobile}
+                      className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                      style={ink}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Mobile: Nosotros accordion */}
             <div>
