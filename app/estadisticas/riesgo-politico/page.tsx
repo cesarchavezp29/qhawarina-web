@@ -9,7 +9,7 @@ import ShareButton from '../../components/ShareButton';
 import ChartShareButton from '../../components/ChartShareButton';
 import PageSkeleton from '../../components/PageSkeleton';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine,
+  AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine,
   ResponsiveContainer,
 } from 'recharts';
 import {
@@ -19,6 +19,7 @@ import {
 interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
   current: { date: string; score: number; level: string; articles_total: number; articles_political: number; articles_economic: number };
+  daily_series?: Array<{ date: string; score: number }>;
   monthly_series?: Array<{ month: string; political_avg: number }>;
 }
 
@@ -88,7 +89,12 @@ export default function RiesgoPoliticoPage() {
   const level = data.current.level;
   const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MODERADO'];
 
-  // Monthly average trend — last 6 non-zero months
+  // Daily PRR trend — last 90 days
+  const dailyTrend = (data.daily_series ?? [])
+    .slice(-90)
+    .map(d => ({ date: d.date, score: d.score }));
+
+  // Monthly average trend — last 6 non-zero months (for secondary chart)
   const monthlyTrend = (data.monthly_series ?? [])
     .filter(m => m.political_avg > 0)
     .slice(-6)
@@ -97,7 +103,7 @@ export default function RiesgoPoliticoPage() {
       score: parseFloat((m.political_avg).toFixed(1)),
     }));
 
-  // PRR thresholds: BAJO<80, MODERADO 80-120, ELEVADO 120-160, ALTO/CRITICO>160
+  // PRR thresholds for monthly bar colors
   const barColor = (score: number) =>
     score < 80 ? CHART_COLORS.teal : score < 120 ? CHART_COLORS.amber : CHART_COLORS.red;
 
@@ -172,34 +178,68 @@ export default function RiesgoPoliticoPage() {
           </Link>
         </div>
 
-        {/* Monthly Trend Chart */}
-        {monthlyTrend.length >= 2 ? (
-          <div className="mt-10 rounded-lg border p-6 relative" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+        {/* Daily PRR Chart — last 90 days */}
+        {dailyTrend.length >= 2 && (
+          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Monthly Average Risk Score' : 'Promedio Mensual del Índice de Riesgo'}
+                {isEn ? 'Daily Risk Score — last 90 days' : 'Índice diario de riesgo — últimos 90 días'}
               </h3>
               <ChartShareButton
                 url="https://qhawarina.pe/estadisticas/riesgo-politico"
                 shareText={isEn
-                  ? `📊 Peru Political Risk (monthly avg): ${monthlyTrend.at(-1)?.score ?? '—'} PRR — Qhawarina`
-                  : `📊 Riesgo político Perú (promedio mensual): ${monthlyTrend.at(-1)?.score ?? '—'} PRR — Qhawarina`}
+                  ? `📊 Peru Political Risk: PRR ${Math.round(data.current.score)} today (${data.current.level}) — Qhawarina`
+                  : `📊 Riesgo político Perú: PRR ${Math.round(data.current.score)} hoy (${data.current.level}) — Qhawarina`}
               />
             </div>
             <ResponsiveContainer width="100%" height={280}>
+              <AreaChart data={dailyTrend} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis dataKey="date" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                  interval={Math.floor(dailyTrend.length / 6)}
+                />
+                <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                  label={{ value: 'PRR', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number | undefined) => [`${Math.round(v ?? 0)}`, 'PRR']}
+                />
+                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2"
+                  label={{ value: isEn ? 'avg (100)' : 'media (100)', position: 'insideTopRight', style: { fontSize: 9, fill: CHART_COLORS.ink3 } }}
+                />
+                <Area type="monotone" dataKey="score"
+                  stroke="#C65D3E" fill="#C65D3E" fillOpacity={0.12}
+                  dot={false} strokeWidth={1.5} />
+              </AreaChart>
+            </ResponsiveContainer>
+            <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+              {isEn ? 'PRR = Political Risk Rating. Mean = 100 (dashed line). Source: Qhawarina AI-GPR · 11 RSS feeds.'
+                : 'PRR = Índice de Riesgo Político. Media = 100 (línea punteada). Fuente: Qhawarina AI-GPR · 11 feeds RSS.'}
+            </p>
+          </div>
+        )}
+
+        {/* Monthly Average Trend Chart */}
+        {monthlyTrend.length >= 2 && (
+          <div className="mt-8 rounded-lg border p-6 relative" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Monthly Average Risk Score' : 'Promedio Mensual del Índice de Riesgo'}
+              </h3>
+            </div>
+            <ResponsiveContainer width="100%" height={220}>
               <BarChart data={monthlyTrend} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
                 <XAxis dataKey="month" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} tickFormatter={v => `${v}`}
+                <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
                   label={{ value: 'PRR', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
                   formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}`, 'PRR']}
                 />
-                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2"
-                  label={{ value: isEn ? 'avg (100)' : 'media (100)', position: 'insideTopRight', style: { fontSize: 9, fill: CHART_COLORS.ink3 } }}
-                />
+                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2" />
                 <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                   {monthlyTrend.map((entry, i) => (
                     <Cell key={i} fill={barColor(entry.score)} />
@@ -213,7 +253,7 @@ export default function RiesgoPoliticoPage() {
                 : 'Verde <80 (Bajo) · Ámbar 80–120 (Moderado) · Rojo >120 (Elevado+). Media = 100.'}
             </p>
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );

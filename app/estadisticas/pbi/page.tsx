@@ -10,8 +10,9 @@ import ChartShareButton from "../../components/ChartShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-  ResponsiveContainer, ReferenceLine,
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, ReferenceLine, ComposedChart, Line,
+  AreaChart, Area,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -23,6 +24,29 @@ interface GDPData {
   nowcast: { target_period: string; value: number };
   backtest_metrics?: { rmse: number; mae: number; r2: number };
 }
+
+interface ContribData {
+  metadata: { latest_quarter: string; total_yoy_latest: number | null };
+  sector_keys: string[];
+  sector_labels: Record<string, string>;
+  contributions: Array<Record<string, string | number>>;
+  shares: Array<Record<string, string | number>>;
+}
+
+// Sector colors — consistent across all 3 charts
+const SECTOR_COLORS: Record<string, string> = {
+  Servicios:   '#8D99AE',
+  Comercio:    '#E0A458',
+  Manufactura: '#C65D3E',
+  Mineria:     '#2A9D8F',
+  Construc:    '#9B2226',
+  Agro:        '#4A7C59',
+  Electr:      '#7ECFC0',
+  Pesca:       '#F0C987',
+};
+
+// Sector display order for stacked charts (largest first)
+const SECTOR_ORDER = ['Servicios', 'Manufactura', 'Mineria', 'Comercio', 'Construc', 'Agro', 'Electr', 'Pesca'];
 
 export default function PBIPage() {
   const locale = useLocale();
@@ -60,15 +84,21 @@ export default function PBIPage() {
     shareText: (period: string, val: string) => `📊 Nowcast PBI Perú ${period}: ${val} interanual | Qhawarina\nhttps://qhawarina.pe/estadisticas/pbi`,
   };
 
-  const [data, setData] = useState<GDPData | null>(null);
+  const [data, setData]     = useState<GDPData | null>(null);
+  const [contrib, setContrib] = useState<ContribData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError]   = useState(false);
 
   useEffect(() => {
-    fetch(`/assets/data/gdp_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`)
-      .then(r => r.json())
-      .then(d => { setData(d); setLoading(false); })
-      .catch(() => { setError(true); setLoading(false); });
+    const v = new Date().toISOString().slice(0, 13);
+    Promise.all([
+      fetch(`/assets/data/gdp_nowcast.json?v=${v}`).then(r => r.json()),
+      fetch(`/assets/data/gdp_contributions.json?v=${v}`).then(r => r.json()).catch(() => null),
+    ]).then(([gdp, con]) => {
+      setData(gdp);
+      setContrib(con);
+      setLoading(false);
+    }).catch(() => { setError(true); setLoading(false); });
   }, []);
 
   if (loading) return <PageSkeleton cards={3} />;
@@ -90,6 +120,22 @@ export default function PBIPage() {
       [isEn ? 'INEI Official' : 'INEI Oficial']: q.official,
     }));
   const rmse = data.backtest_metrics?.rmse;
+
+  // Latest quarter waterfall (Chart 3)
+  const latestContribs = contrib
+    ? SECTOR_ORDER
+        .filter(k => k in SECTOR_COLORS)
+        .map(k => ({
+          sector: contrib.sector_labels[k] ?? k,
+          value: contrib.contributions.at(-1)?.[k] as number ?? 0,
+          color: SECTOR_COLORS[k],
+        }))
+        .filter(d => d.value !== undefined)
+        .sort((a, b) => Math.abs(b.value) - Math.abs(a.value))
+    : [];
+
+  const latestQ    = contrib?.metadata?.latest_quarter ?? '';
+  const totalYoY   = contrib?.metadata?.total_yoy_latest;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -199,6 +245,170 @@ export default function PBIPage() {
               </BarChart>
             </ResponsiveContainer>
           </div>
+        )}
+
+        {contrib && latestContribs.length > 0 && (
+          <>
+            {/* Chart 3: Latest quarter waterfall */}
+            <div className="mt-8 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                    {isEn ? `Sectoral contribution — ${latestQ}` : `Contribución sectorial — ${latestQ}`}
+                  </h3>
+                  {totalYoY !== null && totalYoY !== undefined && (
+                    <p className="text-sm mt-0.5" style={{ color: CHART_COLORS.ink3 }}>
+                      {isEn ? `Total YoY: ${totalYoY > 0 ? '+' : ''}${totalYoY?.toFixed(2)}%` : `Total i.a.: ${totalYoY > 0 ? '+' : ''}${totalYoY?.toFixed(2)}%`}
+                    </p>
+                  )}
+                </div>
+                <ChartShareButton
+                  url="https://qhawarina.pe/estadisticas/pbi"
+                  shareText={isEn
+                    ? `📊 Peru GDP ${latestQ}: Services +${contrib.contributions.at(-1)?.['Servicios'] ?? '?'}pp, Construction +${contrib.contributions.at(-1)?.['Construc'] ?? '?'}pp. Total: +${totalYoY?.toFixed(2) ?? '?'}% — Qhawarina`
+                    : `📊 PBI Perú ${latestQ}: Servicios +${contrib.contributions.at(-1)?.['Servicios'] ?? '?'}pp, Construcción +${contrib.contributions.at(-1)?.['Construc'] ?? '?'}pp. Total: +${totalYoY?.toFixed(2) ?? '?'}% — Qhawarina`}
+                />
+              </div>
+              <ResponsiveContainer width="100%" height={260}>
+                <BarChart layout="vertical" data={latestContribs} margin={{ top: 4, right: 60, left: 90, bottom: 4 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} horizontal={false} />
+                  <XAxis
+                    type="number"
+                    tick={axisTickStyle}
+                    stroke={CHART_DEFAULTS.axisStroke}
+                    tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)} pp`}
+                  />
+                  <YAxis type="category" dataKey="sector" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} width={85} />
+                  <Tooltip
+                    contentStyle={tooltipContentStyle}
+                    formatter={(v: number) => [`${v > 0 ? '+' : ''}${v.toFixed(2)} pp`, isEn ? 'Contribution' : 'Contribución']}
+                  />
+                  <ReferenceLine x={0} stroke={CHART_DEFAULTS.axisStroke} />
+                  <Bar dataKey="value" radius={[0, 3, 3, 0]}>
+                    {latestContribs.map((entry, i) => (
+                      <Cell key={i} fill={entry.value >= 0 ? CHART_COLORS.teal : CHART_COLORS.red} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+              <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+                {isEn
+                  ? `contribution_i = (GDP_i,t − GDP_i,t−4) / GDP_total,t−4 × 100. Source: BCRP (constant 2007 soles).`
+                  : `contribución_i = (PBI_i,t − PBI_i,t−4) / PBI_total,t−4 × 100. Fuente: BCRP (soles constantes 2007).`}
+              </p>
+            </div>
+
+            {/* Chart 2: Contributions over time (stacked bar + line) */}
+            {contrib.contributions.length >= 4 && (
+              <div className="mt-8 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                    {isEn ? 'Growth contribution by sector (pp)' : 'Contribución al crecimiento del PBI por sector (pp)'}
+                  </h3>
+                  <ChartShareButton
+                    url="https://qhawarina.pe/estadisticas/pbi"
+                    shareText={isEn
+                      ? `📊 Peru GDP growth decomposition: Servicios leads at +${contrib.contributions.at(-1)?.['Servicios'] ?? '?'}pp in ${latestQ} — Qhawarina`
+                      : `📊 Descomposición PBI Perú: Servicios lidera con +${contrib.contributions.at(-1)?.['Servicios'] ?? '?'}pp en ${latestQ} — Qhawarina`}
+                  />
+                </div>
+                <ResponsiveContainer width="100%" height={320}>
+                  <ComposedChart data={contrib.contributions} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                    <XAxis dataKey="quarter" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                    <YAxis
+                      tick={axisTickStyle}
+                      stroke={CHART_DEFAULTS.axisStroke}
+                      tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)}`}
+                      label={{ value: 'pp', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                    />
+                    <Tooltip
+                      contentStyle={tooltipContentStyle}
+                      formatter={(v: number, name: string) => [
+                        `${v > 0 ? '+' : ''}${typeof v === 'number' ? v.toFixed(2) : v} ${name === (isEn ? 'Total YoY' : 'Total i.a.') ? '%' : 'pp'}`,
+                        name,
+                      ]}
+                    />
+                    <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
+                    <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+                    {SECTOR_ORDER.map(key => (
+                      <Bar key={key} dataKey={key} name={contrib.sector_labels[key] ?? key}
+                        fill={SECTOR_COLORS[key]} stackId="a" />
+                    ))}
+                    <Line
+                      type="monotone"
+                      dataKey="total_yoy"
+                      name={isEn ? 'Total YoY' : 'Total i.a.'}
+                      stroke={CHART_COLORS.ink}
+                      strokeWidth={2}
+                      dot={{ r: 3, fill: CHART_COLORS.ink }}
+                    />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
+            )}
+
+            {/* Chart 1: GDP composition over time (stacked area) */}
+            {contrib.shares.length >= 8 && (
+              <div className="mt-8 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                      {isEn ? 'GDP composition by sector (%)' : 'Estructura del PBI por sector (%)'}
+                    </h3>
+                    <p className="text-xs mt-0.5" style={{ color: CHART_COLORS.ink3 }}>
+                      {isEn ? 'Servicios: 45.6% (2006) → 50.3% (2025)' : 'Servicios: 45.6% (2006) → 50.3% (2025) · Minería: 15.5% → 11.8%'}
+                    </p>
+                  </div>
+                  <ChartShareButton
+                    url="https://qhawarina.pe/estadisticas/pbi"
+                    shareText={isEn
+                      ? `📊 Peru GDP structure: Services now ${contrib.shares.at(-1)?.['Servicios'] ?? '?'}% of GDP (2025) — structural shift over 20 years. Qhawarina`
+                      : `📊 Estructura PBI Perú: Servicios representa ${contrib.shares.at(-1)?.['Servicios'] ?? '?'}% del PBI (2025) — transformación estructural 20 años. Qhawarina`}
+                  />
+                </div>
+                <ResponsiveContainer width="100%" height={300}>
+                  <AreaChart data={contrib.shares} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                    <XAxis
+                      dataKey="quarter"
+                      tick={axisTickStyle}
+                      stroke={CHART_DEFAULTS.axisStroke}
+                      interval={15}
+                    />
+                    <YAxis
+                      tick={axisTickStyle}
+                      stroke={CHART_DEFAULTS.axisStroke}
+                      tickFormatter={v => `${v.toFixed(0)}%`}
+                      domain={[0, 100]}
+                    />
+                    <Tooltip
+                      contentStyle={tooltipContentStyle}
+                      formatter={(v: number, name: string) => [`${v?.toFixed(1) ?? '—'}%`, name]}
+                    />
+                    <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
+                    {SECTOR_ORDER.map(key => (
+                      <Area
+                        key={key}
+                        type="monotone"
+                        dataKey={key}
+                        name={contrib.sector_labels[key] ?? key}
+                        stackId="1"
+                        fill={SECTOR_COLORS[key]}
+                        stroke={SECTOR_COLORS[key]}
+                        fillOpacity={0.85}
+                      />
+                    ))}
+                  </AreaChart>
+                </ResponsiveContainer>
+                <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+                  {isEn
+                    ? 'share_i,t = GDP_i,t / GDP_total,t × 100. Source: BCRP (constant 2007 soles).'
+                    : 'participación_i,t = PBI_i,t / PBI_total,t × 100. Fuente: BCRP (soles constantes 2007).'}
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

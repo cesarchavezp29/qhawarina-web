@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import {
   AreaChart, Area, BarChart, Bar,
-  XAxis, YAxis, Tooltip, ResponsiveContainer,
+  XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine,
 } from 'recharts';
 import {
   CHART_COLORS, tooltipContentStyle,
@@ -108,10 +108,9 @@ export default function HomePage() {
     .slice(-9)
     .map((r: any) => ({ date: r.month, value: r.official }));
 
-  const polSeries = (data?.political?.monthly_series ?? [])
-    .filter((r: any) => r.political_avg > 0)
-    .slice(-6)
-    .map((r: any) => ({ month: r.month, value: +(r.political_avg).toFixed(1) }));
+  const polSeries = (data?.political?.daily_series ?? [])
+    .slice(-90)
+    .map((r: any) => ({ date: r.date, value: r.score }));
 
   const gdpTrack = (data?.gdp?.quarterly_series ?? [])
     .filter((r: any) => r.official != null || r.nowcast != null)
@@ -421,12 +420,13 @@ export default function HomePage() {
                 {polSeries.length > 1 && (
                   <ResponsiveContainer width="100%" height={72}>
                     <AreaChart data={polSeries} margin={{ top: 2, right: 2, left: -20, bottom: 0 }}>
-                      <XAxis dataKey="month" hide />
+                      <XAxis dataKey="date" hide />
                       <YAxis hide />
                       <Tooltip contentStyle={tooltipContentStyle}
-                        formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}/100`, isEn ? 'Risk' : 'Riesgo']} />
+                        formatter={(v: number | undefined) => [`${Math.round(v ?? 0)} PRR`, isEn ? 'Risk' : 'Riesgo']} />
+                      <ReferenceLine y={100} stroke="#E0A458" strokeDasharray="2 2" />
                       <Area type="monotone" dataKey="value"
-                        stroke={CHART_COLORS.amber} fill={CHART_COLORS.amber}
+                        stroke="#C65D3E" fill="#C65D3E"
                         fillOpacity={0.12} dot={false} strokeWidth={1.5} />
                     </AreaChart>
                   </ResponsiveContainer>

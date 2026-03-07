@@ -21,45 +21,39 @@ const LEVEL_CONFIG: Record<string, { color: string; label_es: string; label_en: 
   CRITICO:  { color: "#6B0000", label_es: "Crítico",  label_en: "Critical" },
 };
 
-// Six-zone gradient bar, PRR scale 0-200+ (capped at 200 for display)
-const PRR_MAX = 200;
-const ZONES = [
-  { from: 0,   to: 50,  color: "#8D99AE" },  // MINIMO
-  { from: 50,  to: 80,  color: "#2A9D8F" },  // BAJO
-  { from: 80,  to: 120, color: "#E0A458" },  // MODERADO
-  { from: 120, to: 160, color: "#C65D3E" },  // ELEVADO
-  { from: 160, to: 200, color: "#9B2226" },  // ALTO
-];
+// Continuous gradient bar, PRR scale 0-300 (capped at 300 for display)
+const PRR_MAX = 300;
+const GAUGE_GRADIENT = [
+  "#F0ECE6 0%",
+  "#E0C9B0 20%",
+  "#D4A574 35%",
+  "#C65D3E 55%",
+  "#A63C2A 75%",
+  "#9B2226 90%",
+  "#6B1518 100%",
+].join(", ");
 
 function zoneColor(prr: number): string {
-  return ZONES.find((z) => prr >= z.from && prr < z.to)?.color
-    ?? (prr >= 200 ? "#6B0000" : "#8D99AE");
+  if (prr < 50)  return "#8D99AE";
+  if (prr < 80)  return "#2A9D8F";
+  if (prr < 120) return "#E0A458";
+  if (prr < 160) return "#C65D3E";
+  if (prr < 200) return "#9B2226";
+  return "#6B1518";
 }
 
 function RiskBar({ score }: { score: number }) {
   const pct = Math.max(0, Math.min(PRR_MAX, score)) / PRR_MAX * 100;
-  const color = zoneColor(score);
+  const dotColor = zoneColor(score);
   return (
-    <div className="relative h-2 rounded-full overflow-visible" style={{ background: "#E8E4DC" }}>
-      {/* Colored zones (muted background) */}
-      <div className="absolute inset-0 flex rounded-full overflow-hidden">
-        {ZONES.map((z) => (
-          <div
-            key={z.from}
-            className="h-full"
-            style={{ width: `${(z.to - z.from) / PRR_MAX * 100}%`, background: z.color, opacity: 0.3 }}
-          />
-        ))}
-      </div>
-      {/* Filled portion */}
-      <div
-        className="absolute inset-y-0 left-0 rounded-full transition-all"
-        style={{ width: `${pct}%`, background: color, opacity: 0.9 }}
-      />
+    <div
+      className="relative h-2 rounded-full overflow-visible"
+      style={{ background: `linear-gradient(90deg, ${GAUGE_GRADIENT})` }}
+    >
       {/* Indicator dot */}
       <div
         className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 border-white shadow"
-        style={{ left: `calc(${pct}% - 6px)`, background: color }}
+        style={{ left: `calc(${pct}% - 6px)`, background: dotColor }}
       />
     </div>
   );
@@ -225,12 +219,13 @@ export default function PoliticalRiskCard({
                   {isEn ? cfg.label_en : cfg.label_es}
                 </span>
               </div>
-              {/* PRR gauge bar (mean=100, cap at 200 for display) */}
+              {/* PRR gauge bar (mean=100, cap at 300 for display) */}
               <RiskBar score={score} />
-              <div className="flex justify-between mt-1">
+              <div className="flex justify-between mt-1" style={{ position: 'relative' }}>
                 <span className="text-xs" style={{ color: "#8D99AE" }}>0</span>
-                <span className="text-xs" style={{ color: "#8D99AE" }}>100 (avg)</span>
-                <span className="text-xs" style={{ color: "#8D99AE" }}>200+</span>
+                <span className="text-xs absolute" style={{ color: "#8D99AE", left: '33%', transform: 'translateX(-50%)' }}>100 (avg)</span>
+                <span className="text-xs absolute" style={{ color: "#8D99AE", left: '67%', transform: 'translateX(-50%)' }}>200</span>
+                <span className="text-xs" style={{ color: "#8D99AE" }}>300</span>
               </div>
             </div>
             <div className="flex-1 h-12">
