@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import ShareButton from "../../components/ShareButton";
+import ChartShareButton from "../../components/ChartShareButton";
 import EmbedWidget from "../../components/EmbedWidget";
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -333,9 +334,20 @@ export default function PreciosDiariosPage() {
         {/* Category movers chart */}
         {data.latest.top_movers && data.latest.top_movers.length > 0 && (
           <div className="rounded-lg border p-6 mb-8" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <h3 className="text-base font-semibold mb-4" style={{ color: CHART_COLORS.ink }}>
-              {isEn ? 'Daily change by category' : 'Variación diaria por categoría'}
-            </h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-base font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Daily change by category' : 'Variación diaria por categoría'}
+              </h3>
+              <ChartShareButton
+                url="https://qhawarina.pe/estadisticas/precios-diarios"
+                shareText={(() => {
+                  const top = data.latest.top_movers?.[0];
+                  return isEn
+                    ? `📊 Supermarket prices Peru (today): ${top ? `${top.label_en} ${top.var >= 0 ? '+' : ''}${top.var.toFixed(2)}%` : cumPct.toFixed(2) + '% cumulative'} — Qhawarina`
+                    : `📊 Precios supermercados Perú (hoy): ${top ? `${top.label_es} ${top.var >= 0 ? '+' : ''}${top.var.toFixed(2)}%` : cumPct.toFixed(2) + '% acumulado'} — Qhawarina`;
+                })()}
+              />
+            </div>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart
                 layout="vertical"

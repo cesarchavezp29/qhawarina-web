@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import LastUpdate from "../../components/stats/LastUpdate";
 import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
+import ChartShareButton from "../../components/ChartShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
 import {
@@ -159,15 +160,23 @@ export default function PBIPage() {
         {/* Track Record Chart */}
         {trackRecord.length >= 2 && (
           <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="flex items-baseline justify-between mb-4">
+            <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
                 {isEn ? 'Track Record: Nowcast vs INEI Official' : 'Desempeño: Nowcast vs INEI Oficial'}
               </h3>
-              {rmse && (
-                <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
-                  RMSE: {rmse.toFixed(2)} pp
-                </span>
-              )}
+              <div className="flex items-center gap-3">
+                {rmse && (
+                  <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                    RMSE: {rmse.toFixed(2)} pp
+                  </span>
+                )}
+                <ChartShareButton
+                  url="https://qhawarina.pe/estadisticas/pbi"
+                  shareText={isEn
+                    ? `📊 Peru GDP Nowcast: +${data.nowcast.value?.toFixed(1) ?? '?'}% YoY (${data.nowcast.target_period}) — Qhawarina`
+                    : `📊 Nowcast PBI Perú: +${data.nowcast.value?.toFixed(1) ?? '?'}% interanual (${data.nowcast.target_period}) — Qhawarina`}
+                />
+              </div>
             </div>
             <ResponsiveContainer width="100%" height={320}>
               <BarChart data={trackRecord} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>

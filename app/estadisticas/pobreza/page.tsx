@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import LastUpdate from "../../components/stats/LastUpdate";
 import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
+import ChartShareButton from "../../components/ChartShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
 import {
@@ -158,11 +159,22 @@ export default function PobrezaPage() {
         {/* Department Rankings Chart */}
         {deptRanking.length > 0 && (
           <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <h3 className="text-lg font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>
-              {isEn
-                ? 'Poverty by Department — 2025 Projection'
-                : 'Pobreza por Departamento — Proyección 2025'}
-            </h3>
+            <div className="flex items-start justify-between mb-1">
+              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn
+                  ? 'Poverty by Department — 2025 Projection'
+                  : 'Pobreza por Departamento — Proyección 2025'}
+              </h3>
+              <ChartShareButton
+                url="https://qhawarina.pe/estadisticas/pobreza"
+                shareText={(() => {
+                  const top = data.departments.slice().sort((a, b) => b.poverty_rate_2025_nowcast - a.poverty_rate_2025_nowcast)[0];
+                  return isEn
+                    ? `📊 Peru Poverty by Dept (2025 nowcast): ${top ? `${top.name} ${top.poverty_rate_2025_nowcast.toFixed(1)}%` : ''} — Qhawarina`
+                    : `📊 Pobreza por departamento Perú (nowcast 2025): ${top ? `${top.name} ${top.poverty_rate_2025_nowcast.toFixed(1)}%` : ''} — Qhawarina`;
+                })()}
+              />
+            </div>
             <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
               {isEn ? 'Sorted by 2024 official rate (INEI). Amber = 2025 nowcast.' : 'Ordenado por tasa oficial 2024 (INEI). Ámbar = nowcast 2025.'}
             </p>

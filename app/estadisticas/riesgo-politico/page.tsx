@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import LastUpdate from '../../components/stats/LastUpdate';
 import EmbedWidget from '../../components/EmbedWidget';
 import ShareButton from '../../components/ShareButton';
+import ChartShareButton from '../../components/ChartShareButton';
 import PageSkeleton from '../../components/PageSkeleton';
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine,
@@ -173,10 +174,18 @@ export default function RiesgoPoliticoPage() {
 
         {/* Monthly Trend Chart */}
         {monthlyTrend.length >= 2 ? (
-          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: CHART_COLORS.ink }}>
-              {isEn ? 'Monthly Average Risk Score' : 'Promedio Mensual del Índice de Riesgo'}
-            </h3>
+          <div className="mt-10 rounded-lg border p-6 relative" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Monthly Average Risk Score' : 'Promedio Mensual del Índice de Riesgo'}
+              </h3>
+              <ChartShareButton
+                url="https://qhawarina.pe/estadisticas/riesgo-politico"
+                shareText={isEn
+                  ? `📊 Peru Political Risk (monthly avg): ${monthlyTrend.at(-1)?.score ?? '—'} PRR — Qhawarina`
+                  : `📊 Riesgo político Perú (promedio mensual): ${monthlyTrend.at(-1)?.score ?? '—'} PRR — Qhawarina`}
+              />
+            </div>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={monthlyTrend} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
