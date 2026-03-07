@@ -48,13 +48,13 @@ export default function MetodologiaPage() {
     gdpStats: ['✓ RMSE: 1.47pp (pre-COVID)', '✓ R²: 0.93'],
     infTitle: 'Inflation Nowcast',
     infDesc: 'DFM with lagged factors, 3M-MA target, high-frequency prices (BPP), supermarket and MIDAGRI scraping.',
-    infStats: ['✓ RMSE: 0.319pp', '✓ R²: 0.70-0.82'],
+    infStats: ['✓ RMSE: ~0.32pp (variación mensual)', '✓ Mejor que AR1 y Random Walk'],
     povTitle: 'Poverty Nowcast',
-    povDesc: 'Departmental panel with Gradient Boosting, change-prediction approach, satellite NTL and quarterly Chow-Lin disaggregation.',
+    povDesc: 'Departmental panel with Gradient Boosting: predicts annual changes in poverty using GDP, food inflation, employment and nighttime lights (NTL). Temporal disaggregation Chow-Lin (annual → quarterly). Spatial distribution to districts via NTL dasymetric.',
     povStats: ['✓ RMSE: 2.54pp', '✓ Rel.RMSE: 0.953 vs AR1'],
     polTitle: 'Political Instability Index',
-    polDesc: 'Composite index 50% NLP events + 50% financial stress, BERT classification of ~2,500 news/month, historical validation.',
-    polStats: ['✓ F1-score: 0.75', '✓ Daily update'],
+    polDesc: 'EPU-style index (Economic Policy Uncertainty), 60% political + 40% economic component. Claude Haiku classifies ~2,000 articles/month by category (political/economic/irrelevant) and severity (1–5). Source-standardized and volume-weighted.',
+    polStats: ['✓ Daily update', '✓ ~2,000 articles/month classified'],
     viewMethodology: 'View full methodology',
     principlesTitle: '📊 Methodological Principles',
     principles: [
@@ -85,13 +85,13 @@ export default function MetodologiaPage() {
     gdpStats: ['✓ RMSE: 1.47pp (pre-COVID)', '✓ R²: 0.93'],
     infTitle: 'Nowcast de Inflación',
     infDesc: 'DFM con factores rezagados, target 3M-MA, precios de alta frecuencia (BPP), scraping de supermercados y MIDAGRI.',
-    infStats: ['✓ RMSE: 0.319pp', '✓ R²: 0.70-0.82'],
+    infStats: ['✓ RMSE: ~0.32pp (variación mensual)', '✓ Mejor que AR1 y Random Walk'],
     povTitle: 'Nowcast de Pobreza',
-    povDesc: 'Panel departamental con Gradient Boosting, change-prediction approach, NTL satelital y desagregación Chow-Lin trimestral.',
+    povDesc: 'Panel departamental con Gradient Boosting: predice cambios anuales en pobreza usando PBI, inflación alimentaria, empleo y luminosidad nocturna (NTL). Desagregación temporal Chow-Lin (anual → trimestral). Distribución espacial a distritos por NTL dasimétrica.',
     povStats: ['✓ RMSE: 2.54pp', '✓ Rel.RMSE: 0.953 vs AR1'],
     polTitle: 'Índice de Inestabilidad Política',
-    polDesc: 'Índice compuesto 50% eventos NLP + 50% estrés financiero, clasificación BERT de ~2,500 noticias/mes, validación histórica.',
-    polStats: ['✓ F1-score: 0.75', '✓ Actualización diaria'],
+    polDesc: 'Índice estilo EPU (Economic Policy Uncertainty), 60% componente político + 40% componente económico. Claude Haiku clasifica ~2,000 artículos/mes por categoría (político/económico/irrelevante) y severidad (1–5). Estandarizado por fuente y ponderado por volumen.',
+    polStats: ['✓ Actualización diaria', '✓ ~2,000 artículos/mes clasificados'],
     viewMethodology: 'Ver metodología completa',
     principlesTitle: '📊 Principios Metodológicos',
     principles: [
@@ -123,7 +123,7 @@ export default function MetodologiaPage() {
   const colorMap: Record<string, string> = { blue: 'bg-blue-100 text-blue-800', green: 'bg-green-100 text-green-800', purple: 'bg-purple-100 text-purple-800', red: 'bg-red-100 text-red-800' };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-12" style={{ background: '#FAF8F4' }}>
       <BreadcrumbJsonLd crumbs={[
         { name: 'Qhawarina', href: '/' },
         { name: T.title, href: '/metodologia' },
@@ -161,7 +161,7 @@ export default function MetodologiaPage() {
                   <div className="flex items-center space-x-4 text-xs text-gray-500">
                     {card.stats.map(s => <span key={s}>{s}</span>)}
                   </div>
-                  <div className="mt-3 text-blue-700 font-medium text-sm flex items-center">
+                  <div className="mt-3 font-medium text-sm flex items-center" style={{ color: '#C65D3E' }}>
                     {T.viewMethodology}
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -173,9 +173,9 @@ export default function MetodologiaPage() {
           ))}
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold text-blue-900 mb-3">{T.principlesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-800">
+        <div className="bg-[#fdf3f0] border border-[#E8E4DC] rounded-lg p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-3" style={{ color: '#2D3142' }}>{T.principlesTitle}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" style={{ color: '#2D3142' }}>
             {T.principles.map(p => (
               <div key={p.title}>
                 <h3 className="font-semibold mb-2">{p.title}</h3>
