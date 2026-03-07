@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/estadisticas/intervenciones`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
     { url: `${baseUrl}/estadisticas/pobreza/distritos`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/estadisticas/calendario`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 },
+    { url: `${baseUrl}/columnas`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/publicaciones`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/reportes`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${baseUrl}/datos`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },

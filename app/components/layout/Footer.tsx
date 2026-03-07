@@ -29,17 +29,19 @@ export default function Footer() {
   ];
 
   const toolLinks = isEn ? [
+    ["/columnas",   "Columns"],
     ["/simuladores", "Simulators"],
     ["/escenarios", "Scenarios"],
-    ["/reportes", "Reports"],
-    ["/datos", "Open Data"],
-    ["/api/docs", "API"],
+    ["/reportes",   "Reports"],
+    ["/datos",      "Open Data"],
+    ["/api/docs",   "API"],
   ] : [
+    ["/columnas",   "Columnas"],
     ["/simuladores", "Simuladores"],
     ["/escenarios", "Escenarios"],
-    ["/reportes", "Reportes"],
-    ["/datos", "Datos Abiertos"],
-    ["/api/docs", "API"],
+    ["/reportes",   "Reportes"],
+    ["/datos",      "Datos Abiertos"],
+    ["/api/docs",   "API"],
   ];
 
   const projectLinks = isEn ? [

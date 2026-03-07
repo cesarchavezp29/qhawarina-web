@@ -68,11 +68,13 @@ export default function Header() {
   ];
 
   const pubsItems = isEn ? [
+    ["/columnas",               "Columns"],
     ["/reportes",               "Reports"],
     ["/publicaciones",          "Publications"],
     ["/estadisticas/calendario","Economic Calendar"],
     ["/metodologia",            "Methodology"],
   ] : [
+    ["/columnas",               "Columnas"],
     ["/reportes",               "Reportes"],
     ["/publicaciones",          "Publicaciones"],
     ["/estadisticas/calendario","Calendario Económico"],
