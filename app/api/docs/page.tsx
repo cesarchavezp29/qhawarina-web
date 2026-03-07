@@ -3,80 +3,6 @@
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
 
-function CollabForm({ isEn }: { isEn: boolean }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [org, setOrg] = useState('');
-  const [use, setUse] = useState('research');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = isEn
-      ? encodeURIComponent(`[Qhawarina Data] Request from ${name}`)
-      : encodeURIComponent(`[Qhawarina Datos] Solicitud de ${name}`);
-    const body = isEn
-      ? encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\nOrganization: ${org}\nIntended use: ${use}\n\nHello, I would like to collaborate / request bulk data from Qhawarina.`
-        )
-      : encodeURIComponent(
-          `Nombre: ${name}\nEmail: ${email}\nOrganización: ${org}\nUso previsto: ${use}\n\nHola, me gustaría colaborar / solicitar datos en bulk de Qhawarina.`
-        );
-    window.location.href = `mailto:info@qhawarina.pe?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-sm">
-        {isEn
-          ? '✓ Your email client was opened. We will respond within 24–48 hours.'
-          : '✓ Se abrió tu cliente de correo. Responderemos en 24–48 horas.'}
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-3 mt-4">
-      <div className="grid sm:grid-cols-2 gap-3">
-        <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">{isEn ? 'Name *' : 'Nombre *'}</label>
-          <input required type="text" value={name} onChange={e => setName(e.target.value)}
-            placeholder={isEn ? 'Your name' : 'Tu nombre'}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">Email *</label>
-          <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="tu@email.com"
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">{isEn ? 'Organization' : 'Organización'}</label>
-          <input type="text" value={org} onChange={e => setOrg(e.target.value)}
-            placeholder={isEn ? 'University, company, etc.' : 'Universidad, empresa, etc.'}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">{isEn ? 'Intended use *' : 'Uso previsto *'}</label>
-          <select required value={use} onChange={e => setUse(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
-            <option value="research">{isEn ? 'Academic research' : 'Investigación académica'}</option>
-            <option value="journalism">{isEn ? 'Journalism / media' : 'Periodismo / medios'}</option>
-            <option value="business">{isEn ? 'Business analysis' : 'Análisis empresarial'}</option>
-            <option value="government">{isEn ? 'Public sector' : 'Sector público'}</option>
-            <option value="personal">{isEn ? 'Personal project' : 'Proyecto personal'}</option>
-            <option value="other">{isEn ? 'Other' : 'Otro'}</option>
-          </select>
-        </div>
-      </div>
-      <button type="submit"
-        className="px-5 py-2 bg-blue-800 text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors">
-        {isEn ? 'Send message →' : 'Enviar mensaje →'}
-      </button>
-    </form>
-  );
-}
-
 const ENDPOINTS = [
   {
     path: '/assets/data/political_index_daily.json',
@@ -317,18 +243,103 @@ console.log(prices.latest.cum_pct); // % acumulado desde fecha base`}</code>
           </div>
         </div>
 
-        {/* Contact */}
-        <div className="bg-white rounded-lg border border-gray-200 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            {isEn ? 'Bulk Data & Collaboration' : 'Datos en Bulk y Colaboración'}
-          </h2>
-          <p className="text-gray-600 text-sm mb-4">
-            {isEn
-              ? 'Need bulk historical data, a custom export, or want to collaborate on the project? Send us a message and we will respond within 24–48 hours.'
-              : '¿Necesitas datos históricos en bulk, un export personalizado o quieres colaborar en el proyecto? Envíanos un mensaje y responderemos en 24–48 horas.'}
-          </p>
-          <CollabForm isEn={isEn} />
+        {/* Para instituciones */}
+        <div className="border border-gray-200 rounded-lg overflow-hidden mb-8">
+          <div className="px-8 py-6 border-b border-gray-200">
+            <div className="flex items-baseline gap-3 mb-1">
+              <h2 className="text-xl font-bold text-[#2D3142]">
+                {isEn ? 'For Institutions' : 'Para instituciones'}
+              </h2>
+              <span className="text-xs font-semibold text-[#C65D3E] uppercase tracking-wide border border-[#C65D3E] rounded px-2 py-0.5">
+                {isEn ? 'Granular data' : 'Datos granulares'}
+              </span>
+            </div>
+            <p className="text-sm text-gray-600 max-w-2xl">
+              {isEn
+                ? 'The aggregate indices above are public and always free. The granular data behind them — product-level prices, article feeds, category indices, departmental poverty — is available to institutional clients on request.'
+                : 'Los índices agregados de arriba son públicos y siempre gratuitos. Los datos granulares que los generan — precios por producto, feeds de artículos, índices por categoría, pobreza departamental — están disponibles para clientes institucionales bajo solicitud.'}
+            </p>
+          </div>
+
+          <div className="divide-y divide-gray-100">
+            {(isEn ? [
+              {
+                title: 'Product-level price data',
+                badge: '~42,000 SKUs · daily',
+                desc: 'Full product feed from Plaza Vea, Metro and Wong: product name, SKU, store, category, price, daily change. Delivered as CSV or JSON. Historical archive from launch.',
+                who: 'BCRP, consumer goods companies, hedge funds, consulting firms.',
+              },
+              {
+                title: 'Category-level inflation indices',
+                badge: '8–10 categories · daily',
+                desc: 'Daily price indices disaggregated by basket: meat, dairy, cereals, oils, vegetables, eggs, poultry, personal care, cleaning. With 30-day, 90-day and YoY rates.',
+                who: 'Corporate strategy teams, food industry analysts, macro investors.',
+              },
+              {
+                title: 'Political risk article feed',
+                badge: 'NLP-classified · daily',
+                desc: 'Each article processed by Claude Haiku: headline, source, date, political category, severity, driver phrase. A curated Peruvian political news feed with quantified risk.',
+                who: 'Political risk consultancies, embassies, investment banks with Peru exposure.',
+              },
+              {
+                title: 'Departmental poverty tracking',
+                badge: '24 departments · quarterly',
+                desc: 'Quarterly poverty rate projections with confidence intervals for all 24 departments, between ENAHO publication years. District-level estimates as add-on.',
+                who: 'MIDIS, World Bank, IDB, UNDP, mining companies (social impact monitoring).',
+              },
+            ] : [
+              {
+                title: 'Precios a nivel de producto',
+                badge: '~42,000 SKUs · diario',
+                desc: 'Feed completo de Plaza Vea, Metro y Wong: nombre, SKU, tienda, categoría, precio y variación diaria. Entregado como CSV o JSON. Archivo histórico desde el lanzamiento.',
+                who: 'BCRP, empresas de consumo masivo, fondos de inversión, consultoras.',
+              },
+              {
+                title: 'Índices de inflación por categoría',
+                badge: '8–10 categorías · diario',
+                desc: 'Índices de precios diarios desagregados por canasta: carnes, lácteos, cereales, aceites, verduras, huevos, aves, cuidado personal, limpieza. Con tasas a 30, 90 días e interanual.',
+                who: 'Equipos de estrategia corporativa, analistas de industria alimentaria, inversores macro.',
+              },
+              {
+                title: 'Feed de artículos de riesgo político',
+                badge: 'Clasificado con NLP · diario',
+                desc: 'Cada artículo procesado con Claude Haiku: titular, fuente, fecha, categoría política, severidad y frase driver. Un feed periodístico peruano con riesgo cuantificado.',
+                who: 'Consultoras de riesgo político, embajadas, bancos de inversión con exposición a Perú.',
+              },
+              {
+                title: 'Seguimiento de pobreza departamental',
+                badge: '24 departamentos · trimestral',
+                desc: 'Proyecciones trimestrales de tasa de pobreza con intervalos de confianza para los 24 departamentos, entre publicaciones ENAHO. Estimaciones distritales como complemento.',
+                who: 'MIDIS, Banco Mundial, BID, PNUD, empresas mineras (monitoreo de impacto social).',
+              },
+            ]).map(item => (
+              <div key={item.title} className="px-8 py-5">
+                <div className="flex items-baseline gap-3 mb-1">
+                  <h3 className="text-sm font-semibold text-[#2D3142]">{item.title}</h3>
+                  <span className="text-xs text-gray-400">{item.badge}</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-1">{item.desc}</p>
+                <p className="text-xs text-gray-400">
+                  <span className="font-medium text-gray-500">{isEn ? 'Relevant to: ' : 'Para: '}</span>
+                  {item.who}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="px-8 py-5 bg-gray-50 border-t border-gray-200">
+            <p className="text-sm text-gray-600">
+              {isEn ? 'Institutional inquiries: ' : 'Consultas institucionales: '}
+              <a
+                href="mailto:cchavezp@qhawarina.pe?subject=Consulta institucional — datos granulares"
+                className="text-[#C65D3E] hover:underline font-medium"
+              >
+                cchavezp@qhawarina.pe
+              </a>
+            </p>
+          </div>
         </div>
+
       </div>
     </div>
   );
