@@ -115,8 +115,8 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href="/" onClick={closeMobile} className="flex items-center gap-2">
               <Image
-                src="/favicon.png"
-                alt="Qhawarina"
+                src="/logo-q-64.png"
+                alt="Q"
                 width={32}
                 height={32}
                 className="flex-shrink-0"

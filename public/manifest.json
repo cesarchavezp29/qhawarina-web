@@ -1,23 +1,33 @@
 {
-  "name": "Qhawarina — Nowcasting Económico",
+  "name": "Qhawarina",
   "short_name": "Qhawarina",
-  "description": "Predicciones diarias de PBI, inflación y pobreza para Perú",
+  "description": "Centro de investigación en datos económicos de alta frecuencia para el Perú",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f9fafb",
-  "theme_color": "#1e40af",
+  "background_color": "#FAF8F4",
+  "theme_color": "#C65D3E",
   "orientation": "any",
   "categories": ["finance", "news", "productivity"],
   "lang": "es-PE",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

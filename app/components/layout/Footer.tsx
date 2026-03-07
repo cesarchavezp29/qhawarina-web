@@ -79,8 +79,8 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2 mb-3">
               <Image
-                src="/favicon.png"
-                alt="Qhawarina"
+                src="/logo-q-64.png"
+                alt="Q"
                 width={32}
                 height={32}
                 className="flex-shrink-0"
