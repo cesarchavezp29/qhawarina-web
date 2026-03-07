@@ -393,7 +393,7 @@ export default function HomePage() {
                       <XAxis dataKey="date" hide />
                       <YAxis hide />
                       <Tooltip contentStyle={tooltipContentStyle}
-                        formatter={(v: number) => [`${v?.toFixed(3)}%`, isEn ? 'Monthly' : 'Mensual']} />
+                        formatter={(v: number | undefined) => [`${v?.toFixed(3) ?? '—'}%`, isEn ? 'Monthly' : 'Mensual']} />
                       <Area type="monotone" dataKey="value"
                         stroke={CHART_COLORS.teal} fill={CHART_COLORS.teal}
                         fillOpacity={0.12} dot={false} strokeWidth={1.5} />
@@ -424,7 +424,7 @@ export default function HomePage() {
                       <XAxis dataKey="month" hide />
                       <YAxis hide />
                       <Tooltip contentStyle={tooltipContentStyle}
-                        formatter={(v: number) => [`${v?.toFixed(1)}`, isEn ? 'Risk' : 'Riesgo']} />
+                        formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}`, isEn ? 'Risk' : 'Riesgo']} />
                       <Area type="monotone" dataKey="value"
                         stroke={CHART_COLORS.amber} fill={CHART_COLORS.amber}
                         fillOpacity={0.12} dot={false} strokeWidth={1.5} />
@@ -452,7 +452,7 @@ export default function HomePage() {
                       <XAxis dataKey="q" hide />
                       <YAxis hide />
                       <Tooltip contentStyle={tooltipContentStyle}
-                        formatter={(v: number) => [`${v?.toFixed(1)}%`, '']} />
+                        formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}%`, '']} />
                       <Bar dataKey="INEI" fill={CHART_COLORS.ink3} radius={[2, 2, 0, 0]} />
                       <Bar dataKey="Nowcast" fill={CHART_COLORS.teal} radius={[2, 2, 0, 0]} />
                     </BarChart>

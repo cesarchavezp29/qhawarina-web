@@ -181,7 +181,7 @@ export default function PBIPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number) => [`${v?.toFixed(2)}%`]}
+                  formatter={(v: number | undefined) => [`${v?.toFixed(2) ?? '—'}%`]}
                 />
                 <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
                 <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />

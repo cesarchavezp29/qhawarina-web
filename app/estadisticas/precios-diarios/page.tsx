@@ -354,7 +354,7 @@ export default function PreciosDiariosPage() {
                 <YAxis type="category" dataKey="name" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} width={105} />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number) => [`${v > 0 ? '+' : ''}${v.toFixed(3)}%`, isEn ? 'Daily change' : 'Variación diaria']}
+                  formatter={(v: number | undefined) => [`${(v ?? 0) > 0 ? '+' : ''}${v?.toFixed(3) ?? '—'}%`, isEn ? 'Daily change' : 'Variación diaria']}
                 />
                 <Bar dataKey="var" radius={[0, 3, 3, 0]}>
                   {[...data.latest.top_movers]

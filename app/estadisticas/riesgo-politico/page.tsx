@@ -184,7 +184,7 @@ export default function RiesgoPoliticoPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number) => [`${v.toFixed(2)}`, isEn ? 'Risk score ×100' : 'Puntaje de riesgo ×100']}
+                  formatter={(v: number | undefined) => [`${v?.toFixed(2) ?? '—'}`, isEn ? 'Risk score ×100' : 'Puntaje de riesgo ×100']}
                 />
                 <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                   {monthlyTrend.map((entry, i) => (
