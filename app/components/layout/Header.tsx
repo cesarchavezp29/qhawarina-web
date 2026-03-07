@@ -2,29 +2,78 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import LanguageSwitcher from "../LanguageSwitcher";
 import SearchModal from "../SearchModal";
 
+const chevron = (open: boolean) => (
+  <svg
+    className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
+    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+);
+
+const dropdownStyle = {
+  background: "#fff",
+  border: "1px solid #E8E4DC",
+};
+
 export default function Header() {
-  const [isStatsOpen, setIsStatsOpen] = useState(false);
-  const [isPubsOpen, setIsPubsOpen] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isMobileStatsOpen, setIsMobileStatsOpen] = useState(false);
-  const [isMobilePubsOpen, setIsMobilePubsOpen] = useState(false);
-  const t = useTranslations("nav");
-  const ts = useTranslations("stats");
+  const isEn = useLocale() === "en";
+  const [isResearchOpen, setIsResearchOpen] = useState(false);
+  const [isPubsOpen, setIsPubsOpen]         = useState(false);
+  const [isMobileOpen, setIsMobileOpen]     = useState(false);
+  const [mobileResearch, setMobileResearch] = useState(false);
+  const [mobilePubs, setMobilePubs]         = useState(false);
 
   const closeMobile = () => {
     setIsMobileOpen(false);
-    setIsMobileStatsOpen(false);
-    setIsMobilePubsOpen(false);
+    setMobileResearch(false);
+    setMobilePubs(false);
   };
 
-  const navLinkClass =
+  const navBtn =
+    "text-sm font-medium transition-colors px-3 py-2 rounded-sm hover:bg-[#fdf3f0] flex items-center gap-1";
+  const navLink =
     "text-sm font-medium transition-colors px-3 py-2 rounded-sm hover:bg-[#fdf3f0]";
-  const navLinkStyle = { color: "#2D3142" };
-  const navLinkHoverStyle = { color: "#C65D3E" };
+  const ink = { color: "#2D3142" };
+
+  // ── dropdown item lists ──────────────────────────────────────────────────
+
+  const researchItems = isEn ? [
+    ["/estadisticas/pbi",            "GDP Nowcast"],
+    ["/estadisticas/inflacion",      "Inflation"],
+    ["/estadisticas/precios-diarios","Daily Prices (BPP)"],
+    ["/estadisticas/pobreza",        "Poverty"],
+    ["/estadisticas/riesgo-politico","Political Risk"],
+    ["/estadisticas/intervenciones", "FX Market"],
+    ["/estadisticas/pobreza/distritos", "District Poverty"],
+  ] : [
+    ["/estadisticas/pbi",            "PBI Nowcast"],
+    ["/estadisticas/inflacion",      "Inflación"],
+    ["/estadisticas/precios-diarios","Precios Diarios (BPP)"],
+    ["/estadisticas/pobreza",        "Pobreza"],
+    ["/estadisticas/riesgo-politico","Riesgo Político"],
+    ["/estadisticas/intervenciones", "Mercado Cambiario"],
+    ["/estadisticas/pobreza/distritos", "Pobreza Distrital"],
+  ];
+
+  const pubsItems = isEn ? [
+    ["/reportes",               "Reports"],
+    ["/publicaciones",          "Publications"],
+    ["/estadisticas/calendario","Economic Calendar"],
+  ] : [
+    ["/reportes",               "Reportes"],
+    ["/publicaciones",          "Publicaciones"],
+    ["/estadisticas/calendario","Calendario Económico"],
+  ];
+
+  const researchLabel    = isEn ? "Research"     : "Investigación";
+  const pubsLabel        = isEn ? "Publications" : "Publicaciones";
+  const dataLabel        = isEn ? "Data"         : "Datos";
+  const aboutLabel       = isEn ? "About"        : "Nosotros";
 
   return (
     <header style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
@@ -43,74 +92,41 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav — 4 items */}
           <nav className="hidden md:flex items-center space-x-1">
-            <Link
-              href="/"
-              className={navLinkClass}
-              style={navLinkStyle}
-            >
-              {t("home")}
-            </Link>
 
-            {/* Estadísticas Dropdown */}
+            {/* 1. INVESTIGACIÓN */}
             <div
               className="relative"
-              onMouseEnter={() => setIsStatsOpen(true)}
-              onMouseLeave={() => setIsStatsOpen(false)}
+              onMouseEnter={() => setIsResearchOpen(true)}
+              onMouseLeave={() => setIsResearchOpen(false)}
             >
               <button
-                onClick={() => setIsStatsOpen(!isStatsOpen)}
-                className={`${navLinkClass} flex items-center gap-1`}
-                style={navLinkStyle}
+                onClick={() => setIsResearchOpen(!isResearchOpen)}
+                className={navBtn}
+                style={ink}
               >
-                {t("statistics")}
-                <svg
-                  className={`h-3.5 w-3.5 transition-transform ${isStatsOpen ? "rotate-180" : ""}`}
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                {researchLabel}
+                {chevron(isResearchOpen)}
               </button>
-
-              {isStatsOpen && (
-                <div
-                  className="absolute left-0 mt-0 w-56 rounded-md shadow-lg z-50 py-1"
-                  style={{ background: "#fff", border: "1px solid #E8E4DC" }}
-                >
-                  {[
-                    ["/estadisticas/pbi", ts("gdp")],
-                    ["/estadisticas/inflacion", ts("inflation")],
-                    ["/estadisticas/pobreza", ts("poverty")],
-                    ["/estadisticas/riesgo-politico", ts("politicalRisk")],
-                    ["/estadisticas/precios-diarios", t("dailyPrices")],
-                    ["/estadisticas/intervenciones", t("fxMarket")],
-                    ["/estadisticas/calendario", t("calendar")],
-                  ].map(([href, label]) => (
+              {isResearchOpen && (
+                <div className="absolute left-0 mt-0 w-56 rounded-md shadow-lg z-50 py-1" style={dropdownStyle}>
+                  {researchItems.map(([href, label]) => (
                     <Link
                       key={href}
                       href={href}
                       className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
-                      style={{ color: "#2D3142" }}
+                      style={ink}
                       onClick={closeMobile}
                     >
                       {label}
                     </Link>
                   ))}
-                  <div style={{ borderTop: "1px solid #E8E4DC", margin: "4px 0" }} />
-                  <Link
-                    href="/estadisticas"
-                    className="block px-4 py-2 text-sm font-medium transition-colors hover:bg-[#fdf3f0]"
-                    style={{ color: "#C65D3E" }}
-                    onClick={closeMobile}
-                  >
-                    {t("seeAll")} →
-                  </Link>
                 </div>
               )}
             </div>
 
-            {/* Publicaciones Dropdown */}
+            {/* 2. PUBLICACIONES */}
             <div
               className="relative"
               onMouseEnter={() => setIsPubsOpen(true)}
@@ -118,32 +134,20 @@ export default function Header() {
             >
               <button
                 onClick={() => setIsPubsOpen(!isPubsOpen)}
-                className={`${navLinkClass} flex items-center gap-1`}
-                style={navLinkStyle}
+                className={navBtn}
+                style={ink}
               >
-                {t("publications")}
-                <svg
-                  className={`h-3.5 w-3.5 transition-transform ${isPubsOpen ? "rotate-180" : ""}`}
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                {pubsLabel}
+                {chevron(isPubsOpen)}
               </button>
               {isPubsOpen && (
-                <div
-                  className="absolute left-0 mt-0 w-52 rounded-md shadow-lg z-50 py-1"
-                  style={{ background: "#fff", border: "1px solid #E8E4DC" }}
-                >
-                  {[
-                    ["/publicaciones", t("publicationsList")],
-                    ["/reportes", t("reports")],
-                    ["/estadisticas/calendario", t("calendar")],
-                  ].map(([href, label]) => (
+                <div className="absolute left-0 mt-0 w-52 rounded-md shadow-lg z-50 py-1" style={dropdownStyle}>
+                  {pubsItems.map(([href, label]) => (
                     <Link
                       key={href}
                       href={href}
                       className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
-                      style={{ color: "#2D3142" }}
+                      style={ink}
                       onClick={closeMobile}
                     >
                       {label}
@@ -153,34 +157,28 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/simuladores" className={navLinkClass} style={navLinkStyle}>
-              {t("simulators")}
+            {/* 3. DATOS */}
+            <Link href="/datos" className={navLink} style={ink}>
+              {dataLabel}
             </Link>
-            <Link href="/datos" className={navLinkClass} style={navLinkStyle}>
-              {t("data")}
-            </Link>
-            <Link href="/escenarios" className={navLinkClass} style={navLinkStyle}>
-              {t("scenarios")}
-            </Link>
-            <Link href="/metodologia" className={navLinkClass} style={navLinkStyle}>
-              {t("methodology")}
-            </Link>
-            <Link href="/sobre-nosotros" className={navLinkClass} style={navLinkStyle}>
-              {t("about")}
+
+            {/* 4. NOSOTROS */}
+            <Link href="/sobre-nosotros" className={navLink} style={ink}>
+              {aboutLabel}
             </Link>
 
             <SearchModal />
             <LanguageSwitcher />
           </nav>
 
-          {/* Mobile: Language switcher + hamburger */}
+          {/* Mobile: Language + hamburger */}
           <div className="flex items-center gap-2 md:hidden">
             <LanguageSwitcher />
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className="p-2 rounded-md transition-colors hover:bg-[#fdf3f0]"
-              style={{ color: "#2D3142" }}
-              aria-label={t("openMenu")}
+              style={ink}
+              aria-label={isEn ? "Open menu" : "Abrir menú"}
             >
               {isMobileOpen ? (
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,91 +198,26 @@ export default function Header() {
       {isMobileOpen && (
         <div style={{ borderTop: "1px solid #E8E4DC", background: "#fff" }}>
           <div className="px-4 py-3 space-y-1">
-            <Link
-              href="/"
-              onClick={closeMobile}
-              className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
-              style={{ color: "#2D3142" }}
-            >
-              {t("home")}
-            </Link>
 
-            {/* Mobile Estadísticas accordion */}
+            {/* Mobile: Investigación accordion */}
             <div>
               <button
-                onClick={() => setIsMobileStatsOpen(!isMobileStatsOpen)}
+                onClick={() => setMobileResearch(!mobileResearch)}
                 className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
-                style={{ color: "#2D3142" }}
+                style={ink}
               >
-                {t("statistics")}
-                <svg
-                  className={`h-3.5 w-3.5 transition-transform ${isMobileStatsOpen ? "rotate-180" : ""}`}
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                {researchLabel}
+                {chevron(mobileResearch)}
               </button>
-              {isMobileStatsOpen && (
+              {mobileResearch && (
                 <div className="pl-4 mt-1 space-y-0.5">
-                  {[
-                    ["/estadisticas/pbi", ts("gdp")],
-                    ["/estadisticas/inflacion", ts("inflation")],
-                    ["/estadisticas/pobreza", ts("poverty")],
-                    ["/estadisticas/riesgo-politico", ts("politicalRisk")],
-                    ["/estadisticas/precios-diarios", t("dailyPrices")],
-                    ["/estadisticas/intervenciones", t("fxMarket")],
-                    ["/estadisticas/calendario", t("calendar")],
-                  ].map(([href, label]) => (
+                  {researchItems.map(([href, label]) => (
                     <Link
                       key={href}
                       href={href}
                       onClick={closeMobile}
                       className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
-                      style={{ color: "#2D3142" }}
-                    >
-                      {label}
-                    </Link>
-                  ))}
-                  <Link
-                    href="/estadisticas"
-                    onClick={closeMobile}
-                    className="block px-3 py-1.5 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
-                    style={{ color: "#C65D3E" }}
-                  >
-                    {t("seeAll")} →
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Publicaciones accordion */}
-            <div>
-              <button
-                onClick={() => setIsMobilePubsOpen(!isMobilePubsOpen)}
-                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
-                style={{ color: "#2D3142" }}
-              >
-                {t("publications")}
-                <svg
-                  className={`h-3.5 w-3.5 transition-transform ${isMobilePubsOpen ? "rotate-180" : ""}`}
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {isMobilePubsOpen && (
-                <div className="pl-4 mt-1 space-y-0.5">
-                  {[
-                    ["/publicaciones", t("publicationsList")],
-                    ["/reportes", t("reports")],
-                    ["/estadisticas/calendario", t("calendar")],
-                  ].map(([href, label]) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={closeMobile}
-                      className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
-                      style={{ color: "#2D3142" }}
+                      style={ink}
                     >
                       {label}
                     </Link>
@@ -293,23 +226,49 @@ export default function Header() {
               )}
             </div>
 
+            {/* Mobile: Publicaciones accordion */}
+            <div>
+              <button
+                onClick={() => setMobilePubs(!mobilePubs)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                style={ink}
+              >
+                {pubsLabel}
+                {chevron(mobilePubs)}
+              </button>
+              {mobilePubs && (
+                <div className="pl-4 mt-1 space-y-0.5">
+                  {pubsItems.map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobile}
+                      className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                      style={ink}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile: Datos + Nosotros */}
             {[
-              ["/simuladores", t("simulators")],
-              ["/datos", t("data")],
-              ["/escenarios", t("scenarios")],
-              ["/metodologia", t("methodology")],
-              ["/sobre-nosotros", t("about")],
+              ["/datos",          dataLabel],
+              ["/sobre-nosotros", aboutLabel],
             ].map(([href, label]) => (
               <Link
                 key={href}
                 href={href}
                 onClick={closeMobile}
                 className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
-                style={{ color: "#2D3142" }}
+                style={ink}
               >
                 {label}
               </Link>
             ))}
+
           </div>
         </div>
       )}
