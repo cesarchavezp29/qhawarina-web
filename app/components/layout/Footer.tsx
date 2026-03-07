@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale } from "next-intl";
 
 export default function Footer() {
@@ -76,7 +77,14 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-block mb-3">
+            <Link href="/" className="inline-flex items-center gap-2 mb-3">
+              <Image
+                src="/favicon.png"
+                alt="Qhawarina"
+                width={32}
+                height={32}
+                className="flex-shrink-0"
+              />
               <span
                 className="text-xl font-bold tracking-wide"
                 style={{ color: "#C65D3E", fontFamily: "var(--font-outfit, sans-serif)" }}

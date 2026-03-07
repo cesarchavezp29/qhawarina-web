@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import LanguageSwitcher from "../LanguageSwitcher";
@@ -112,9 +113,16 @@ export default function Header() {
 
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" onClick={closeMobile} className="flex items-center">
+            <Link href="/" onClick={closeMobile} className="flex items-center gap-2">
+              <Image
+                src="/favicon.png"
+                alt="Qhawarina"
+                width={32}
+                height={32}
+                className="flex-shrink-0"
+              />
               <span
-                className="text-xl font-bold tracking-wide"
+                className="hidden sm:inline text-xl font-bold tracking-wide"
                 style={{ color: "#C65D3E", fontFamily: "var(--font-outfit, sans-serif)" }}
               >
                 QHAWARINA
