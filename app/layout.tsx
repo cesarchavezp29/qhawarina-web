@@ -32,8 +32,8 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Qhawarina - Nowcasting Económico para Perú",
-  description: "Predicciones diarias de PBI, inflación y pobreza para Perú usando modelos de factores dinámicos. Datos abiertos y metodología transparente.",
+  title: "Qhawarina — Datos económicos de alta frecuencia para el Perú",
+  description: "Precios diarios, riesgo político, nowcast de PBI y pobreza para el Perú. Datos abiertos, metodología transparente, actualización diaria.",
   keywords: "Peru GDP, nowcasting, inflation, poverty, economic indicators, BCRP, INEI",
   manifest: "/manifest.json",
   icons: {

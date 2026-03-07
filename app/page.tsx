@@ -102,18 +102,18 @@ export default function HomePage() {
   const inflValue = data?.inflation?.nowcast?.value;
   const inflColor = inflValue != null ? (inflValue > 0.3 ? '#9B2226' : inflValue < 0 ? '#2A9D8F' : '#E0A458') : '#2D3142';
 
-  // Mini chart data
-  const inflSeries = (data?.inflation?.series ?? [])
-    .filter((r: any) => r.monthly_var != null)
+  // Mini chart data — using correct field names from JSON schema
+  const inflSeries = (data?.inflation?.monthly_series ?? [])
+    .filter((r: any) => r.official != null)
     .slice(-9)
-    .map((r: any) => ({ date: r.date?.slice(0, 7) ?? '', value: r.monthly_var }));
+    .map((r: any) => ({ date: r.month, value: r.official }));
 
   const polSeries = (data?.political?.monthly_series ?? [])
     .filter((r: any) => r.political_avg > 0)
     .slice(-6)
     .map((r: any) => ({ month: r.month, value: +(r.political_avg * 100).toFixed(1) }));
 
-  const gdpTrack = (data?.gdp?.series ?? [])
+  const gdpTrack = (data?.gdp?.quarterly_series ?? [])
     .filter((r: any) => r.official != null || r.nowcast != null)
     .slice(-6)
     .map((r: any) => ({
@@ -168,8 +168,8 @@ export default function HomePage() {
           </h1>
           <p className="text-lg max-w-2xl leading-relaxed" style={{ color: '#8D99AE' }}>
             {isEn
-              ? 'Daily GDP, inflation, poverty and political risk — powered by 490+ indicators, open models, and real-time data from BCRP, INEI, and Lima supermarkets.'
-              : 'PBI, inflación, pobreza y riesgo político actualizados cada día — con 490+ indicadores, modelos abiertos y datos del BCRP, INEI y supermercados de Lima.'}
+              ? 'Prices, political risk, GDP and poverty — updated daily with open data.'
+              : 'Precios, riesgo político, PBI y pobreza — actualizados diariamente con datos abiertos.'}
           </p>
         </section>
 

@@ -31,19 +31,23 @@ export default function Footer() {
   const publicacionesLinks = isEn ? [
     ["/columnas",    "Columns"],
     ["/reportes",    "Reports"],
-    ["/datos",       "Open Data"],
-    ["/api/docs",    "API"],
-    ["/simuladores", "Simulators"],
-    ["/escenarios",  "Scenarios"],
     ["/metodologia", "Methodology"],
   ] : [
     ["/columnas",    "Columnas"],
     ["/reportes",    "Reportes"],
+    ["/metodologia", "Metodología"],
+  ];
+
+  const datosLinks = isEn ? [
+    ["/datos",       "Open Data"],
+    ["/api/docs",    "API"],
+    ["/simuladores", "Simulators"],
+    ["/escenarios",  "Scenarios"],
+  ] : [
     ["/datos",       "Datos Abiertos"],
     ["/api/docs",    "API"],
     ["/simuladores", "Simuladores"],
     ["/escenarios",  "Escenarios"],
-    ["/metodologia", "Metodología"],
   ];
 
   const institucionalLinks = isEn ? [
@@ -63,7 +67,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "#2D3142", borderTop: "1px solid #3d4258", marginTop: 64 }}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
 
           {/* Col 1: Brand */}
           <div className="col-span-2 md:col-span-1">
@@ -129,7 +133,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Institucional */}
+          {/* Col 4: Datos */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
+              {isEn ? "Data" : "Datos"}
+            </h3>
+            <ul className="space-y-2">
+              {datosLinks.map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm transition-colors hover:text-[#C65D3E]" style={linkStyle}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 5: Institucional */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
               {isEn ? "About" : "Institucional"}

@@ -1,13 +1,24 @@
 {
   "metadata": {
-    "generated_at": "2026-03-06T23:24:04.828764",
+    "generated_at": "2026-03-07T16:37:15.033402",
+    "methodology": "Dynamic Factor Model with Ridge bridge equation (Baker 2023, Aruoba 2020)",
     "model": "DynamicFactorModel",
     "model_params": {
       "k_factors": 3,
       "factor_order": 1,
       "bridge_method": "ridge",
       "bridge_alpha": 1.0,
-      "rolling_window_years": 7
+      "rolling_window_years": 7,
+      "exclude_covid": true
+    },
+    "n_indicators": 37,
+    "training_window": "2007-2024 (rolling 7-year window, excl. COVID 2020-2021)",
+    "last_official_gdp": {
+      "quarter": "2025-Q4",
+      "official": 3.17,
+      "nowcast": null,
+      "nowcast_full": null,
+      "error": null
     },
     "data_vintage": "2025-12",
     "series_coverage": "37/36"
@@ -904,6 +915,57 @@
       "error": null
     }
   ],
+  "forecast_vs_actual": [
+    {
+      "quarter": "2023-Q4",
+      "official": -0.43,
+      "nowcast": 1.42,
+      "error": 1.85
+    },
+    {
+      "quarter": "2024-Q1",
+      "official": 1.49,
+      "nowcast": 1.63,
+      "error": 0.14
+    },
+    {
+      "quarter": "2024-Q2",
+      "official": 3.86,
+      "nowcast": 1.72,
+      "error": -2.13
+    },
+    {
+      "quarter": "2024-Q3",
+      "official": 4.1,
+      "nowcast": 2.48,
+      "error": -1.62
+    },
+    {
+      "quarter": "2024-Q4",
+      "official": 4.44,
+      "nowcast": 3.42,
+      "error": -1.03
+    },
+    {
+      "quarter": "2025-Q1",
+      "official": 4.03,
+      "nowcast": 4.85,
+      "error": 0.82
+    },
+    {
+      "quarter": "2025-Q2",
+      "official": 2.84,
+      "nowcast": 4.22,
+      "error": 1.38
+    },
+    {
+      "quarter": "2025-Q3",
+      "official": 3.77,
+      "nowcast": 3.43,
+      "error": -0.34
+    }
+  ],
+  "subcomponent_contributions": [],
   "top_contributors": [
     {
       "series": "Manufacturing production index",
