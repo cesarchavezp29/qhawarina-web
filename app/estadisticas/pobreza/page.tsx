@@ -189,7 +189,7 @@ export default function PobrezaPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number, name: string) => [`${v?.toFixed(1)}%`, name]}
+                  formatter={(v: number | undefined, name: string | undefined) => [`${v?.toFixed(1) ?? '—'}%`, name ?? '']}
                 />
                 <Bar dataKey="2024" fill={CHART_COLORS.ink3} radius={[0, 3, 3, 0]} />
                 <Bar dataKey={isEn ? '2025 Nowcast' : 'Nowcast 2025'} fill={CHART_COLORS.amber} radius={[0, 3, 3, 0]} />
