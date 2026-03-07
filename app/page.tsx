@@ -114,9 +114,7 @@ export default function HomePage() {
       k => pipelineStatus[k] && !pipelineStatus[k].passed
     );
 
-  // Nota Diaria: show only if date matches today
   const todayStr = new Date().toISOString().split('T')[0];
-  const showNotaDiaria = notaDiaria?.date === todayStr;
 
   // Secondary strip values
   const gdpValue = data?.gdp?.nowcast?.value;
@@ -161,7 +159,12 @@ export default function HomePage() {
               className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
               style={{ background: '#C65D3E18', color: '#C65D3E', border: '1px solid #C65D3E30' }}
             >
-              {isEn ? 'Live · Updated 08:00 PET' : 'En vivo · Actualizado 08:00 PET'}
+              {(() => {
+              const timeStr = pipelineStatus?.run_time
+                ? new Date(pipelineStatus.run_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Lima', hour12: false }) + ' PET'
+                : '—';
+              return isEn ? `Live · Updated ${timeStr}` : `En vivo · Actualizado ${timeStr}`;
+            })()}
             </span>
           </div>
           <h1
@@ -186,7 +189,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Nota Diaria ─────────────────────────────────────────── */}
-        {showNotaDiaria && (
+        {notaDiaria && (
           <section className="mb-8">
             <div
               className="relative overflow-hidden"
@@ -209,6 +212,11 @@ export default function HomePage() {
                     style={{ color: '#C65D3E' }}
                   >
                     {isEn ? 'Daily Brief' : 'Nota Diaria'}
+                    {notaDiaria.date !== todayStr && (
+                      <span className="ml-2 normal-case font-normal" style={{ color: '#8D99AE', opacity: 0.8 }}>
+                        ({isEn ? `Last updated: ${notaDiaria.date}` : `Última actualización: ${notaDiaria.date}`})
+                      </span>
+                    )}
                   </div>
                   <h2
                     className="text-xl mb-2"

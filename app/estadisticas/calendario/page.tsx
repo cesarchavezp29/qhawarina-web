@@ -251,11 +251,11 @@ export default function CalendarioPage() {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">
+          <a href="/estadisticas" className="hover:text-[#C65D3E]">
             {isEn ? 'Statistics' : 'Estadísticas'}
           </a>
           {' / '}
@@ -345,7 +345,7 @@ export default function CalendarioPage() {
                               href={release.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="shrink-0 text-sm text-blue-700 hover:underline"
+                              className="shrink-0 text-sm text-[#C65D3E] hover:underline"
                             >
                               {isEn ? 'View →' : 'Ver →'}
                             </a>

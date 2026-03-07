@@ -130,8 +130,8 @@ export default function PreciosDiariosPage() {
             </h3>
             <p className="text-amber-800 text-sm">
               {isEn
-                ? <>The index started on <strong>February 10, 2026</strong>. We need at least 30 days of daily scraping for the series to be statistically significant. The scraper runs automatically every day at 07:00 AM and updates this index.</>
-                : <>El índice comenzó el <strong>10 de febrero 2026</strong>. Necesitamos al menos 30 días de scraping diario para que la serie sea estadísticamente significativa. El scraper corre automáticamente cada día a las 07:00 AM y actualiza este índice.</>}
+                ? <>The index started on <strong>{data?.metadata?.base_date ?? '2026-02-10'}</strong>. We need at least 30 days of daily scraping for the series to be statistically significant. The scraper runs automatically every day at 07:00 AM and updates this index.</>
+                : <>El índice comenzó el <strong>{data?.metadata?.base_date ?? '2026-02-10'}</strong>. Necesitamos al menos 30 días de scraping diario para que la serie sea estadísticamente significativa. El scraper corre automáticamente cada día a las 07:00 AM y actualiza este índice.</>}
             </p>
             <p className="text-amber-700 text-xs mt-2">
               {isEn
@@ -242,7 +242,7 @@ export default function PreciosDiariosPage() {
     : { index: "Índice", daily_change: "Var. diaria", cumulative: "Acumulado" };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
@@ -278,7 +278,9 @@ export default function PreciosDiariosPage() {
             </div>
             <ShareButton
               title={isEn ? "Daily Prices BPP — Qhawarina" : "Precios Diarios BPP — Qhawarina"}
-              text={`BPP Index ${data.latest.date}: ${data.latest.index_all.toFixed(2)} (var ${data.latest.var_all > 0 ? '+' : ''}${data.latest.var_all.toFixed(3)}%) — Qhawarina`}
+              text={isEn
+                ? `📊 Supermarket prices Peru: ${cumPct >= 0 ? '+' : ''}${cumPct.toFixed(2)}% cumulative | Qhawarina\nhttps://qhawarina.pe/estadisticas/precios-diarios`
+                : `📊 Precios supermercados Perú: ${cumPct >= 0 ? '+' : ''}${cumPct.toFixed(2)}% acumulado | Qhawarina\nhttps://qhawarina.pe/estadisticas/precios-diarios`}
             />
             <EmbedWidget
               path="/estadisticas/precios-diarios"

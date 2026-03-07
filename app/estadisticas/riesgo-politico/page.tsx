@@ -34,12 +34,12 @@ export default function RiesgoPoliticoPage() {
     articlesEconomic: 'Economic articles',
     rssFeeds: 'RSS feeds monitored',
     cardMethodology: 'Methodology',
-    cardMethodologyDesc: 'GPT-4o classification of 81 RSS feeds, components and weights',
+    cardMethodologyDesc: 'Claude Haiku · 11 RSS feeds · 6 sources · components and weights',
     cardDownload: 'Download Data',
     cardDownloadDesc: (days: number) => `Complete daily series — ${days} days of coverage`,
     error: 'Error loading data.',
     retry: 'Retry',
-    shareText: (score: string, level: string) => `Political Risk Index Peru: ${score} (${level}) — Qhawarina`,
+    shareText: (score: number, level: string) => `📊 Political Risk Peru: ${Math.round(score * 100)}/100 (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
   } : {
     breadcrumb: 'Estadísticas',
     title: 'Índice de Riesgo Político',
@@ -49,12 +49,12 @@ export default function RiesgoPoliticoPage() {
     articlesEconomic: 'Artículos económicos',
     rssFeeds: 'Feeds RSS monitoreados',
     cardMethodology: 'Metodología',
-    cardMethodologyDesc: 'Clasificación GPT-4o de 81 feeds RSS, componentes y pesos',
+    cardMethodologyDesc: 'Claude Haiku · 11 feeds RSS · 6 fuentes · componentes y pesos',
     cardDownload: 'Descargar Datos',
     cardDownloadDesc: (days: number) => `Serie diaria completa — ${days} días de cobertura`,
     error: 'Error cargando datos.',
     retry: 'Reintentar',
-    shareText: (score: string, level: string) => `Índice de Riesgo Político Perú: ${score} (${level}) — Qhawarina`,
+    shareText: (score: number, level: string) => `📊 Riesgo político Perú: ${Math.round(score * 100)}/100 (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
   };
 
   const [data, setData] = useState<PoliticalData | null>(null);
@@ -90,7 +90,7 @@ export default function RiesgoPoliticoPage() {
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
           <h1 className="text-4xl font-bold text-gray-900">{T.title}</h1>
           <div className="flex gap-2">
-            <ShareButton title={`${isEn ? 'Political Risk' : 'Riesgo Político'} — Qhawarina`} text={T.shareText(data.current.score.toFixed(3), level)} />
+            <ShareButton title={`${isEn ? 'Political Risk' : 'Riesgo Político'} — Qhawarina`} text={T.shareText(data.current.score, level)} />
             <EmbedWidget path="/estadisticas/riesgo-politico" title={`${isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'} — Qhawarina`} height={600} />
           </div>
         </div>

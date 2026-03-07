@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
 
-function ApiKeyForm({ isEn }: { isEn: boolean }) {
+function CollabForm({ isEn }: { isEn: boolean }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [org, setOrg] = useState('');
@@ -13,14 +13,14 @@ function ApiKeyForm({ isEn }: { isEn: boolean }) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = isEn
-      ? encodeURIComponent(`[Qhawarina API Key] Request from ${name}`)
-      : encodeURIComponent(`[Qhawarina API Key] Solicitud de ${name}`);
+      ? encodeURIComponent(`[Qhawarina Data] Request from ${name}`)
+      : encodeURIComponent(`[Qhawarina Datos] Solicitud de ${name}`);
     const body = isEn
       ? encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\nOrganization: ${org}\nIntended use: ${use}\n\nPlease send me a Qhawarina API key.`
+          `Name: ${name}\nEmail: ${email}\nOrganization: ${org}\nIntended use: ${use}\n\nHello, I would like to collaborate / request bulk data from Qhawarina.`
         )
       : encodeURIComponent(
-          `Nombre: ${name}\nEmail: ${email}\nOrganización: ${org}\nUso previsto: ${use}\n\nPor favor envíame una API key de Qhawarina.`
+          `Nombre: ${name}\nEmail: ${email}\nOrganización: ${org}\nUso previsto: ${use}\n\nHola, me gustaría colaborar / solicitar datos en bulk de Qhawarina.`
         );
     window.location.href = `mailto:info@qhawarina.pe?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -71,31 +71,144 @@ function ApiKeyForm({ isEn }: { isEn: boolean }) {
       </div>
       <button type="submit"
         className="px-5 py-2 bg-blue-800 text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors">
-        {isEn ? 'Request API Key →' : 'Solicitar API Key →'}
+        {isEn ? 'Send message →' : 'Enviar mensaje →'}
       </button>
-      <p className="text-xs text-gray-400">
-        {isEn
-          ? 'Free for research and non-commercial use. Response within 24–48 h.'
-          : 'Gratuita para investigación y uso no comercial. Respuesta en 24–48 h.'}
-      </p>
     </form>
   );
 }
 
-export default function ApiDocsPage() {
+const ENDPOINTS = [
+  {
+    path: '/assets/data/political_index_daily.json',
+    nameEn: 'Political Risk Index',
+    nameEs: 'Índice de Riesgo Político',
+    descEn: 'Daily EPU-style instability index for Peru. Classified by Claude Haiku from 11 RSS feeds · 6 sources.',
+    descEs: 'Índice diario de inestabilidad tipo EPU para Perú. Clasificado con Claude Haiku desde 11 feeds RSS · 6 fuentes.',
+    keysEn: ['metadata.generated_at', 'metadata.rss_feeds', 'current.date', 'current.score (0–1)', 'current.level', 'current.articles_total', 'daily_series[]', 'monthly_series[]', 'aggregates'],
+    update: 'Daily',
+    updateEs: 'Diario',
+    response: `{
+  "metadata": { "generated_at": "2026-03-07T03:35:00Z", "rss_feeds": 11 },
+  "current": { "date": "2026-03-06", "score": 0.34, "level": "MEDIO",
+    "articles_total": 47, "articles_political": 21, "articles_economic": 26 },
+  "aggregates": { "7d_avg": 0.31, "30d_avg": 0.29, "year_max": 0.72 },
+  "daily_series": [ { "date": "...", "score": 0.34, "n_articles": 47 } ],
+  "monthly_series": [ { "month": "2026-02", "political_avg": 0.31, "fx_level": 3.82 } ]
+}`,
+  },
+  {
+    path: '/assets/data/daily_price_index.json',
+    nameEn: 'Daily Price Index (BPP)',
+    nameEs: 'Índice de Precios Diario (BPP)',
+    descEn: 'Jevons bilateral chain-linked price index from Plaza Vea, Metro and Wong. 42,000+ products.',
+    descEs: 'Índice Jevons bilateral chain-linked desde Plaza Vea, Metro y Wong. 42,000+ productos.',
+    keysEn: ['metadata.base_date', 'metadata.last_date', 'metadata.n_days', 'latest.index_all', 'latest.cum_pct', 'series[]', 'categories{}'],
+    update: 'Daily',
+    updateEs: 'Diario',
+    response: `{
+  "metadata": { "base_date": "2026-02-10", "last_date": "2026-03-06", "n_days": 25, "stores": ["Plaza Vea","Metro","Wong"] },
+  "latest": { "date": "2026-03-06", "index_all": 101.24, "index_food": 101.57, "cum_pct": 1.24, "var_all": 0.042 },
+  "series": [ { "date": "2026-02-10", "index_all": 100.0, "index_food": 100.0, "var_all": 0.0, "cum_pct": 0.0 } ],
+  "categories": { "arroz_cereales": { "label_es": "Arroz y cereales", "cpi_weight": 0.048 } }
+}`,
+  },
+  {
+    path: '/assets/data/fx_interventions.json',
+    nameEn: 'FX Market & BCRP Interventions',
+    nameEs: 'Mercado Cambiario e Intervenciones BCRP',
+    descEn: 'PEN/USD exchange rate, BCRP spot and swap interventions, reference rate, BVL and sovereign bonds. Daily (2 years) and monthly (since Jan 2020).',
+    descEs: 'TC PEN/USD, intervenciones spot y swaps BCRP, tasa referencia, BVL y bonos soberanos. Diario (2 años) y mensual (desde ene 2020).',
+    keysEn: ['latest{fx, reference_rate, spot_net_purchases, bond_sol_10y, bvl}', 'daily_series[]', 'monthly_series[]'],
+    update: 'Daily',
+    updateEs: 'Diario',
+    response: `{
+  "metadata": { "coverage": "2020-01 to present", "n_days_daily": 456, "n_months_monthly": 75 },
+  "latest": { "date": "2026-03-06", "fx": 3.8241, "reference_rate": 4.75,
+    "spot_net_purchases": 50.0, "bond_sol_10y": 6.84, "bvl": 22150.3 },
+  "daily_series": [ { "date": "2026-03-06", "fx": 3.8241, "spot_net_purchases": 50.0 } ],
+  "monthly_series": [ { "month": "2026-02", "fx_avg": 3.8190, "spot_net_purchases": 320.0 } ]
+}`,
+  },
+  {
+    path: '/assets/data/gdp_nowcast.json',
+    nameEn: 'GDP Nowcast',
+    nameEs: 'Nowcast PBI',
+    descEn: 'Quarterly GDP growth nowcast (YoY %) using DFM + Ridge bridge. Updated weekly on Sundays.',
+    descEs: 'Nowcast de crecimiento del PBI trimestral (% interanual) con DFM + puente Ridge. Actualizado semanalmente los domingos.',
+    keysEn: ['nowcast.target_period', 'nowcast.value', 'nowcast.bridge_r2', 'backtest_metrics{rmse, r2, relative_rmse_vs_ar1}', 'recent_quarters[]'],
+    update: 'Weekly (Sundays)',
+    updateEs: 'Semanal (domingos)',
+    response: `{
+  "metadata": { "generated_at": "2026-03-01T04:00:00Z" },
+  "nowcast": { "target_period": "2025-Q4", "value": 2.26, "bridge_r2": 0.934 },
+  "backtest_metrics": { "rmse": 1.47, "r2": 0.87, "relative_rmse_vs_ar1": 0.69 },
+  "recent_quarters": [ { "quarter": "2025-Q3", "official": 3.1, "nowcast": 2.9, "error": -0.2 } ]
+}`,
+  },
+  {
+    path: '/assets/data/inflation_nowcast.json',
+    nameEn: 'Inflation Nowcast',
+    nameEs: 'Nowcast Inflación',
+    descEn: 'Monthly inflation nowcast (3-month MA %) using DFM with AR(1) component. Updated weekly on Sundays.',
+    descEs: 'Nowcast de inflación mensual (MA3M %) con DFM y componente AR(1). Actualizado semanalmente los domingos.',
+    keysEn: ['nowcast.target_period', 'nowcast.value', 'backtest_metrics{rmse, relative_rmse_vs_ar1}', 'recent_months[]'],
+    update: 'Weekly (Sundays)',
+    updateEs: 'Semanal (domingos)',
+    response: `{
+  "metadata": { "generated_at": "2026-03-01T04:00:00Z" },
+  "nowcast": { "target_period": "2026-03", "value": 0.213, "bridge_r2": 0.199 },
+  "backtest_metrics": { "rmse": 0.319, "relative_rmse_vs_ar1": 0.991 },
+  "recent_months": [ { "month": "2026-02", "official": 0.19, "nowcast": 0.21, "error": 0.02 } ]
+}`,
+  },
+  {
+    path: '/assets/data/poverty_nowcast.json',
+    nameEn: 'Poverty Nowcast',
+    nameEs: 'Nowcast Pobreza',
+    descEn: 'Annual monetary poverty rate nowcast for Peru and 24 departments using Gradient Boosting + NTL satellite data. Updated annually.',
+    descEs: 'Nowcast anual de tasa de pobreza monetaria para Perú y 24 departamentos con GBR + datos NTL satelital. Actualizado anualmente.',
+    keysEn: ['national.poverty_rate', 'metadata.target_year', 'backtest_metrics', 'departments[]', 'historical_series[]'],
+    update: 'Annual',
+    updateEs: 'Anual',
+    response: `{
+  "metadata": { "target_year": 2025, "generated_at": "2026-01-15T00:00:00Z" },
+  "national": { "poverty_rate": 26.0, "extreme_poverty_rate": 4.8 },
+  "backtest_metrics": { "rmse": 2.54, "relative_rmse_vs_ar1": 0.953 },
+  "departments": [ { "code": "15", "name": "Lima", "poverty_rate_2024": 13.8, "poverty_rate_2025_nowcast": 13.5, "change_pp": -0.3 } ]
+}`,
+  },
+  {
+    path: '/assets/data/pipeline_status.json',
+    nameEn: 'Pipeline Status',
+    nameEs: 'Estado del Pipeline',
+    descEn: 'Last pipeline run time and per-step status (supermarket scrape, RSS classification). Use to check data freshness.',
+    descEs: 'Última ejecución del pipeline y estado por paso (scraping supermercados, clasificación RSS). Para verificar frescura de datos.',
+    keysEn: ['run_time', 'supermarket{passed, n_products}', 'rss{passed, n_articles}'],
+    update: 'Daily',
+    updateEs: 'Diario',
+    response: `{
+  "run_time": "2026-03-07T03:35:00Z",
+  "supermarket": { "passed": true, "n_products": 42317, "stores_ok": 3 },
+  "rss": { "passed": true, "n_articles": 47, "feeds_ok": 11 }
+}`,
+  },
+];
+
+export default function DataAccessPage() {
   const isEn = useLocale() === 'en';
+  const [openEndpoint, setOpenEndpoint] = useState<string | null>(null);
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {isEn ? 'Qhawarina API' : 'API de Qhawarina'}
+            {isEn ? 'Data Access' : 'Acceso a Datos'}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl">
             {isEn
-              ? 'REST API for programmatic access to economic nowcasts and counterfactual analysis.'
-              : 'API REST para acceso programático a nowcasts económicos y análisis contrafactual.'}
+              ? 'All Qhawarina data is published as open static JSON files. No API key, no rate limits, no account needed — free forever under CC BY 4.0.'
+              : 'Todos los datos de Qhawarina se publican como archivos JSON estáticos abiertos. Sin API key, sin límites de tasa, sin cuenta — gratis para siempre bajo CC BY 4.0.'}
           </p>
         </div>
 
@@ -105,418 +218,117 @@ export default function ApiDocsPage() {
           <div className="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
             <pre className="text-green-400 text-sm">
               <code>{isEn
-                ? `# Without API key (20 requests/hour)
-curl https://qhawarina.pe/api/nowcast/gdp
+                ? `// Fetch the political risk index
+const res = await fetch('https://qhawarina.pe/assets/data/political_index_daily.json');
+const data = await res.json();
+console.log(data.current.score);   // e.g. 0.34
+console.log(data.current.level);   // e.g. "MEDIO"
 
-# With API key (100-10,000 requests/hour by tier)
-curl -H "X-API-Key: your_api_key" https://qhawarina.pe/api/nowcast/gdp`
-                : `# Sin API key (20 requests/hora)
-curl https://qhawarina.pe/api/nowcast/gdp
+// Fetch the daily price index
+const prices = await fetch('https://qhawarina.pe/assets/data/daily_price_index.json').then(r => r.json());
+console.log(prices.latest.cum_pct); // cumulative % change since base date`
+                : `// Obtener el índice de riesgo político
+const res = await fetch('https://qhawarina.pe/assets/data/political_index_daily.json');
+const data = await res.json();
+console.log(data.current.score);   // ej. 0.34
+console.log(data.current.level);   // ej. "MEDIO"
 
-# Con API key (100-10,000 requests/hora según tier)
-curl -H "X-API-Key: tu_api_key" https://qhawarina.pe/api/nowcast/gdp`}</code>
+// Obtener el índice de precios diario
+const prices = await fetch('https://qhawarina.pe/assets/data/daily_price_index.json').then(r => r.json());
+console.log(prices.latest.cum_pct); // % acumulado desde fecha base`}</code>
             </pre>
           </div>
-          <div className="mt-4 border-t border-gray-100 pt-4">
-            <p className="text-sm font-semibold text-gray-700 mb-1">
-              {isEn ? 'Request your API key' : 'Solicita tu API key'}
-            </p>
-            <p className="text-xs text-gray-500 mb-3">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+            <p className="text-sm text-emerald-800">
+              <strong>✓ {isEn ? 'No authentication required.' : 'Sin autenticación requerida.'}</strong>{' '}
               {isEn
-                ? 'Free for research. Higher throughput for commercial use.'
-                : 'Gratuita para investigación. Mayor throughput para uso comercial.'}
+                ? 'All endpoints are publicly accessible. Add a cache-busting query parameter (?v=YYYY-MM-DD) to ensure fresh data.'
+                : 'Todos los endpoints son accesibles públicamente. Agrega un parámetro de caché (?v=YYYY-MM-DD) para datos frescos.'}
             </p>
-            <ApiKeyForm isEn={isEn} />
           </div>
         </div>
 
         {/* Endpoints */}
-        <div className="space-y-6">
-          {/* Nowcast Endpoints */}
-          <EndpointSection
-            title={isEn ? 'Nowcast Endpoints' : 'Nowcast Endpoints'}
-            description={isEn
-              ? 'Get the latest nowcasts for economic indicators'
-              : 'Obtén los últimos nowcasts de indicadores económicos'}
-            isEn={isEn}
-            endpoints={[
-              {
-                method: "GET",
-                path: "/api/nowcast/gdp",
-                description: isEn ? "GDP growth nowcast (YoY %)" : "Nowcast de crecimiento del PBI (YoY %)",
-                tier: "Free",
-                response: `{
-  "success": true,
-  "data": {
-    "indicator": "gdp",
-    "nowcast": {
-      "value": 2.26,
-      "target_period": "2025-Q4",
-      "unit": "% YoY"
-    },
-    "model": {
-      "name": "DFM-Ridge",
-      "factors": 2,
-      "r2": 0.934
-    },
-    "backtest_metrics": {
-      "rmse": 1.47,
-      "relative_rmse_vs_ar1": 0.69
-    }
-  }
-}`,
-              },
-              {
-                method: "GET",
-                path: "/api/nowcast/inflation",
-                description: isEn ? "Monthly inflation nowcast (%)" : "Nowcast de inflación mensual (%)",
-                tier: "Free",
-                response: `{
-  "success": true,
-  "data": {
-    "indicator": "inflation",
-    "nowcast": {
-      "value": 0.21,
-      "target_period": "2026-02",
-      "unit": "% monthly",
-      "annualized": 2.52
-    }
-  }
-}`,
-              },
-              {
-                method: "GET",
-                path: "/api/nowcast/poverty",
-                description: isEn ? "National poverty rate nowcast (%)" : "Nowcast de tasa de pobreza nacional (%)",
-                tier: "Free",
-                response: `{
-  "success": true,
-  "data": {
-    "indicator": "poverty",
-    "nowcast": {
-      "national": {
-        "poverty_rate": 26.3,
-        "extreme_poverty_rate": 4.8,
-        "target_year": 2024
-      }
-    }
-  }
-}`,
-              },
-              {
-                method: "GET",
-                path: "/api/nowcast/political",
-                description: isEn ? "Political instability index (z-score)" : "Índice de inestabilidad política (z-score)",
-                tier: "Free",
-                response: `{
-  "success": true,
-  "data": {
-    "indicator": "political_risk",
-    "current": {
-      "index": 0.34,
-      "z_score": 0.52,
-      "date": "2026-02-16",
-      "interpretation": "${isEn ? 'Moderate instability' : 'Inestabilidad moderada'}",
-      "severity": "medium"
-    }
-  }
-}`,
-              },
-            ]}
-          />
-
-          {/* Scenarios Endpoints */}
-          <EndpointSection
-            title={isEn ? 'Scenarios Endpoints (Premium)' : 'Scenarios Endpoints (Premium)'}
-            description={isEn
-              ? 'Counterfactual analysis — simulate economic scenarios'
-              : 'Análisis contrafactual - simula escenarios económicos'}
-            isEn={isEn}
-            endpoints={[
-              {
-                method: "GET",
-                path: "/api/scenarios",
-                description: isEn ? "List available scenarios" : "Lista de escenarios disponibles",
-                tier: "Pro",
-                response: `{
-  "success": true,
-  "data": {
-    "scenarios": [
-      {
-        "id": "mild_recession",
-        "name": "${isEn ? 'Mild Recession' : 'Recesión Leve'}",
-        "description": "${isEn ? 'GDP falls to 0%, financial stress +1σ' : 'PBI cae a 0%, estrés financiero +1σ'}",
-        "tags": ["recession", "mild"],
-        "impacts_summary": {
-          "gdp": -2.5,
-          "inflation": 0.0,
-          "poverty": 1.25
-        }
-      }
-    ],
-    "count": 10
-  }
-}`,
-              },
-              {
-                method: "GET",
-                path: "/api/scenarios/:id",
-                description: isEn ? "Details of a specific scenario" : "Detalles de escenario específico",
-                tier: "Pro",
-                response: `{
-  "success": true,
-  "data": {
-    "id": "mild_recession",
-    "baseline": {
-      "gdp": { "gdp_yoy": 2.5 },
-      "inflation": { "ipc_monthly_var": 0.25 }
-    },
-    "counterfactual": {
-      "gdp": { "gdp_yoy": 0.0, "forced": true },
-      "inflation": { "ipc_monthly_var": 0.25 }
-    },
-    "direct_impacts": {
-      "gdp": -2.5,
-      "inflation": 0.0
-    },
-    "propagated_impacts": {
-      "aggregate": {
-        "poverty_total_pp": 1.25,
-        "employment_impact_pp": -1.5
-      },
-      "interpretation": "${isEn ? 'GDP would fall 2.5pp...' : 'GDP caería 2.5pp...'}"
-    }
-  }
-}`,
-              },
-            ]}
-          />
-
-          {/* Health Check */}
-          <EndpointSection
-            title={isEn ? 'Utility Endpoints' : 'Utility Endpoints'}
-            description={isEn ? 'Utility and monitoring endpoints' : 'Endpoints de utilidad y monitoreo'}
-            isEn={isEn}
-            endpoints={[
-              {
-                method: "GET",
-                path: "/api/health",
-                description: isEn ? "API status and data freshness" : "Estado de la API y freshness de datos",
-                tier: "Public",
-                response: `{
-  "status": "healthy",
-  "version": "1.0.0",
-  "services": {
-    "gdp_nowcast": "ok",
-    "inflation_nowcast": "ok",
-    "poverty_nowcast": "ok",
-    "political_index": "ok"
-  }
-}`,
-              },
-            ]}
-          />
-        </div>
-
-        {/* Rate Limits */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Rate Limits</h2>
-          <div className="grid md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg p-4">
-              <div className="text-sm font-semibold text-gray-600 mb-1">Anonymous</div>
-              <div className="text-2xl font-bold text-gray-900">{isEn ? '20/hour' : '20/hora'}</div>
-              <div className="text-xs text-gray-500 mt-1">{isEn ? 'No API key' : 'Sin API key'}</div>
-            </div>
-            <div className="bg-white rounded-lg p-4">
-              <div className="text-sm font-semibold text-gray-600 mb-1">Free</div>
-              <div className="text-2xl font-bold text-gray-900">{isEn ? '100/hour' : '100/hora'}</div>
-              <div className="text-xs text-gray-500 mt-1">{isEn ? 'Free' : 'Gratis'}</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 border-2 border-blue-500">
-              <div className="text-sm font-semibold text-blue-700 mb-1">Pro</div>
-              <div className="text-2xl font-bold text-blue-700">{isEn ? '1,000/hour' : '1,000/hora'}</div>
-              <div className="text-xs text-blue-600 mt-1">$49/{isEn ? 'mo' : 'mes'}</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 border-2 border-purple-500">
-              <div className="text-sm font-semibold text-purple-700 mb-1">Enterprise</div>
-              <div className="text-2xl font-bold text-purple-700">{isEn ? '10,000/hour' : '10,000/hora'}</div>
-              <div className="text-xs text-purple-600 mt-1">{isEn ? 'Contact us' : 'Contactar'}</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Authentication */}
-        <div className="bg-white rounded-lg border border-gray-200 p-8 mt-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {isEn ? 'Authentication' : 'Autenticación'}
+        <div className="space-y-4 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900">
+            {isEn ? 'Available Endpoints' : 'Endpoints Disponibles'}
           </h2>
-          <p className="text-gray-700 mb-4">
-            {isEn
-              ? <>Include your API key in the <code className="bg-gray-100 px-2 py-1 rounded">X-API-Key</code> header or as a query parameter <code className="bg-gray-100 px-2 py-1 rounded">?api_key=</code></>
-              : <>Incluye tu API key en el header <code className="bg-gray-100 px-2 py-1 rounded">X-API-Key</code> o como query parameter <code className="bg-gray-100 px-2 py-1 rounded">?api_key=</code></>}
-          </p>
-          <div className="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
-            <pre className="text-green-400 text-sm">
-              <code>{isEn
-                ? `# Method 1: Header (recommended)
-curl -H "X-API-Key: your_api_key" https://qhawarina.pe/api/nowcast/gdp
-
-# Method 2: Query parameter
-curl https://qhawarina.pe/api/nowcast/gdp?api_key=your_api_key`
-                : `# Método 1: Header (recomendado)
-curl -H "X-API-Key: tu_api_key" https://qhawarina.pe/api/nowcast/gdp
-
-# Método 2: Query parameter
-curl https://qhawarina.pe/api/nowcast/gdp?api_key=tu_api_key`}</code>
-            </pre>
-          </div>
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-            <p className="text-sm text-yellow-800">
-              <strong>⚠️ {isEn ? 'Important:' : 'Importante:'}</strong>{' '}
-              {isEn
-                ? 'Never expose your API key in client-side code (frontend). Use a backend proxy or environment variables.'
-                : 'Nunca expongas tu API key en código cliente (frontend). Usa un proxy backend o variables de entorno.'}
-            </p>
-          </div>
-        </div>
-
-        {/* Error Responses */}
-        <div className="bg-white rounded-lg border border-gray-200 p-8 mt-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Error Responses
-          </h2>
-          <div className="space-y-4">
-            <ErrorExample
-              code="401 Unauthorized"
-              errorCode="INVALID_API_KEY"
-              message="Invalid API key"
-            />
-            <ErrorExample
-              code="403 Forbidden"
-              errorCode="TIER_UPGRADE_REQUIRED"
-              message="Scenarios API requires Pro or Enterprise tier"
-            />
-            <ErrorExample
-              code="429 Too Many Requests"
-              errorCode="RATE_LIMIT_EXCEEDED"
-              message="Rate limit exceeded"
-              extra={{
-                limit: 100,
-                resetAt: "2026-02-16T15:00:00Z",
-              }}
-            />
-            <ErrorExample
-              code="404 Not Found"
-              errorCode="DATA_NOT_FOUND"
-              message="Scenario 'invalid_id' not found"
-            />
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg p-8 text-white text-center mt-8">
-          <h2 className="text-2xl font-bold mb-3">
-            {isEn ? 'Ready to get started?' : '¿Listo para empezar?'}
-          </h2>
-          <p className="text-blue-100 mb-6">
-            {isEn
-              ? 'Request your API key and access real-time nowcasts'
-              : 'Solicita tu API key y accede a nowcasts en tiempo real'}
-          </p>
-          <a
-            href="mailto:info@qhawarina.pe?subject=API Key Request"
-            className="inline-block bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-          >
-            {isEn ? 'Request API Key →' : 'Solicitar API Key →'}
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function EndpointSection({
-  title,
-  description,
-  endpoints,
-  isEn,
-}: {
-  title: string;
-  description: string;
-  isEn: boolean;
-  endpoints: Array<{
-    method: string;
-    path: string;
-    description: string;
-    tier: string;
-    response: string;
-  }>;
-}) {
-  return (
-    <div className="bg-white rounded-lg border border-gray-200 p-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
-      <p className="text-gray-600 mb-6">{description}</p>
-      <div className="space-y-6">
-        {endpoints.map((endpoint, idx) => (
-          <div key={idx} className="border-l-4 border-blue-500 pl-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="bg-green-100 text-green-800 px-3 py-1 rounded text-sm font-semibold">
-                {endpoint.method}
-              </span>
-              <code className="text-blue-700 font-mono text-sm">
-                {endpoint.path}
-              </code>
-              <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                {endpoint.tier}
-              </span>
-            </div>
-            <p className="text-sm text-gray-600 mb-3">{endpoint.description}</p>
-            <details className="group">
-              <summary className="cursor-pointer text-sm text-blue-700 hover:text-blue-900 font-medium mb-2">
-                {isEn ? 'View example response ▼' : 'Ver ejemplo de respuesta ▼'}
-              </summary>
-              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-green-400 text-xs">
-                  <code>{endpoint.response}</code>
-                </pre>
+          {ENDPOINTS.map((ep) => (
+            <div key={ep.path} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <button
+                className="w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                onClick={() => setOpenEndpoint(openEndpoint === ep.path ? null : ep.path)}
+              >
+                <div className="flex items-center gap-4 flex-wrap">
+                  <span className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs font-semibold">GET</span>
+                  <code className="text-blue-700 font-mono text-sm">{ep.path}</code>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+                    {isEn ? ep.update : ep.updateEs}
+                  </span>
+                </div>
+                <span className="text-gray-400 text-sm ml-2">{openEndpoint === ep.path ? '▲' : '▼'}</span>
+              </button>
+              <div className="px-6 pb-2">
+                <p className="text-sm text-gray-600">{isEn ? ep.nameEn : ep.nameEs} — {isEn ? ep.descEn : ep.descEs}</p>
               </div>
-            </details>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+              {openEndpoint === ep.path && (
+                <div className="px-6 pb-6 border-t border-gray-100 pt-4">
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                      {isEn ? 'Key fields' : 'Campos principales'}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {ep.keysEn.map(k => (
+                        <code key={k} className="text-xs bg-gray-100 px-2 py-0.5 rounded text-gray-700">{k}</code>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                    {isEn ? 'Example response' : 'Ejemplo de respuesta'}
+                  </p>
+                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-green-400 text-xs"><code>{ep.response}</code></pre>
+                  </div>
+                  <div className="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-blue-300 text-xs">
+                      <code>{`fetch('https://qhawarina.pe${ep.path}?v=' + new Date().toISOString().slice(0,10))
+  .then(r => r.json())
+  .then(data => console.log(data));`}</code>
+                    </pre>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
 
-function ErrorExample({
-  code,
-  errorCode,
-  message,
-  extra,
-}: {
-  code: string;
-  errorCode: string;
-  message: string;
-  extra?: Record<string, unknown>;
-}) {
-  return (
-    <div className="border-l-4 border-red-500 pl-4">
-      <div className="font-semibold text-gray-900 mb-1">{code}</div>
-      <div className="bg-gray-900 rounded-lg p-3 overflow-x-auto">
-        <pre className="text-red-400 text-xs">
-          <code>
-            {JSON.stringify(
-              {
-                error: message,
-                code: errorCode,
-                timestamp: "2026-02-16T14:30:00Z",
-                ...extra,
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre>
+        {/* License */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">
+            {isEn ? 'License & Attribution' : 'Licencia y Atribución'}
+          </h2>
+          <p className="text-sm text-gray-700 mb-3">
+            {isEn
+              ? 'All Qhawarina data is published under Creative Commons Attribution 4.0 (CC BY 4.0). You are free to use, share and adapt the data for any purpose, as long as you give appropriate credit.'
+              : 'Todos los datos de Qhawarina se publican bajo Creative Commons Attribution 4.0 (CC BY 4.0). Puedes usar, compartir y adaptar los datos para cualquier fin, siempre que des el crédito correspondiente.'}
+          </p>
+          <div className="bg-white rounded-lg p-4 font-mono text-xs text-gray-700 border border-blue-100">
+            Qhawarina ({new Date().getFullYear()}). <em>Índice de Precios Diarios e Índice de Riesgo Político para Perú</em>. qhawarina.pe. Licencia CC BY 4.0.
+          </div>
+        </div>
+
+        {/* Contact */}
+        <div className="bg-white rounded-lg border border-gray-200 p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            {isEn ? 'Bulk Data & Collaboration' : 'Datos en Bulk y Colaboración'}
+          </h2>
+          <p className="text-gray-600 text-sm mb-4">
+            {isEn
+              ? 'Need bulk historical data, a custom export, or want to collaborate on the project? Send us a message and we will respond within 24–48 hours.'
+              : '¿Necesitas datos históricos en bulk, un export personalizado o quieres colaborar en el proyecto? Envíanos un mensaje y responderemos en 24–48 horas.'}
+          </p>
+          <CollabForm isEn={isEn} />
+        </div>
       </div>
     </div>
   );

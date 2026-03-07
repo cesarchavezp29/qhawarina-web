@@ -651,7 +651,7 @@ export default function ReportesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* Title */}
         <div className="mb-6">
@@ -672,7 +672,7 @@ export default function ReportesPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-blue-600 text-blue-600'
+                    ? 'border-[#C65D3E] text-[#C65D3E]'
                     : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >

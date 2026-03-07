@@ -103,6 +103,7 @@ export default function EscenariosPage() {
   const [scenarioData, setScenarioData] = useState<ScenarioData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isMock, setIsMock] = useState(false);
 
   const loadScenario = useCallback(async (scenarioId: string) => {
     setLoading(true);
@@ -116,8 +117,10 @@ export default function EscenariosPage() {
       }
       const data = await response.json();
       setScenarioData(data);
+      setIsMock(false);
     } catch (err) {
       setScenarioData(getMockData(scenarioId));
+      setIsMock(true);
     } finally {
       setLoading(false);
     }
@@ -268,9 +271,16 @@ export default function EscenariosPage() {
             <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                    {scenarioData.metadata.scenario_name}
-                  </h2>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      {scenarioData.metadata.scenario_name}
+                    </h2>
+                    {isMock && (
+                      <span className="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full border border-amber-200">
+                        {isEn ? 'ILLUSTRATIVE DATA' : 'DATOS ILUSTRATIVOS'}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-gray-600">
                     {scenarioData.metadata.scenario_description}
                   </p>

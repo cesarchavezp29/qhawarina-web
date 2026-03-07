@@ -479,7 +479,7 @@ export default function IntervencionesBCRPPage() {
             </p>
           </div>
           <div className="flex gap-2 shrink-0">
-            <ShareButton title="Mercado Cambiario — Qhawarina" text={`TC PEN/USD: ${latest.fx?.toFixed(4)} | Tasa BCRP: ${latest.reference_rate?.toFixed(2)}% — Qhawarina`} />
+            <ShareButton title={isEn ? "FX Market — Qhawarina" : "Mercado Cambiario — Qhawarina"} text={isEn ? `💱 FX PEN/USD: ${latest.fx?.toFixed(4)} | BCRP Rate: ${latest.reference_rate?.toFixed(2)}% | Qhawarina\nhttps://qhawarina.pe/estadisticas/intervenciones` : `💱 TC PEN/USD: ${latest.fx?.toFixed(4)} | Tasa BCRP: ${latest.reference_rate?.toFixed(2)}% | Qhawarina\nhttps://qhawarina.pe/estadisticas/intervenciones`} />
             <EmbedWidget path="/estadisticas/intervenciones" title="Mercado Cambiario — Qhawarina" height={700} />
           </div>
         </div>

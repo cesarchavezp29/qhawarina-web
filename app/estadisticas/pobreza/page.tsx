@@ -11,6 +11,7 @@ import PageSkeleton from "../../components/PageSkeleton";
 
 interface PovertyData {
   metadata: { target_year: number; generated_at: string };
+  national?: { poverty_rate: number };
   departments: Array<{
     code: string; name: string;
     poverty_rate_2024: number; poverty_rate_2025_nowcast: number; change_pp: number;
@@ -69,7 +70,8 @@ export default function PobrezaPage() {
     </div>
   );
 
-  const nationalAvg = data.departments.reduce((sum, d) => sum + d.poverty_rate_2025_nowcast, 0) / data.departments.length;
+  const nationalRate = data.national?.poverty_rate
+    ?? data.departments.reduce((sum, d) => sum + d.poverty_rate_2025_nowcast, 0) / data.departments.length;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -83,11 +85,11 @@ export default function PobrezaPage() {
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
           <h1 className="text-4xl font-bold text-gray-900">{T.title}</h1>
           <div className="flex gap-2">
-            <ShareButton title={`${isEn ? 'Poverty' : 'Pobreza'} — Qhawarina`} text={`${isEn ? 'Poverty nowcast' : 'Nowcast de pobreza'} ${data.metadata.target_year}: ${nationalAvg.toFixed(1)}% — Qhawarina`} />
+            <ShareButton title={`${isEn ? 'Poverty' : 'Pobreza'} — Qhawarina`} text={isEn ? `📊 Poverty projection Peru ${data.metadata.target_year}: ${nationalRate.toFixed(1)}% national | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza` : `📊 Proyección pobreza Perú ${data.metadata.target_year}: ${nationalRate.toFixed(1)}% nacional | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza`} />
             <EmbedWidget path="/estadisticas/pobreza" title={`${isEn ? 'Poverty' : 'Pobreza'} — Nowcasting Qhawarina`} height={600} />
           </div>
         </div>
-        <p className="text-lg text-gray-600">{T.nowcastLabel} - {data.metadata.target_year}: {nationalAvg.toFixed(1)}%</p>
+        <p className="text-lg text-gray-600">{T.nowcastLabel} - {data.metadata.target_year}: {nationalRate.toFixed(1)}%</p>
         <div className="mt-4">
           <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
         </div>

@@ -33,7 +33,7 @@ export default function PBIPage() {
     error: 'Error loading data.',
     retry: 'Retry',
     dataName: 'GDP data',
-    shareText: (period: string, val: string) => `GDP Nowcast ${period}: ${val} — Qhawarina`,
+    shareText: (period: string, val: string) => `📊 GDP Nowcast Peru ${period}: ${val} YoY | Qhawarina\nhttps://qhawarina.pe/estadisticas/pbi`,
   } : {
     breadcrumb: 'Estadísticas',
     title: 'Producto Bruto Interno',
@@ -48,7 +48,7 @@ export default function PBIPage() {
     error: 'Error cargando datos.',
     retry: 'Reintentar',
     dataName: 'los datos del PBI',
-    shareText: (period: string, val: string) => `Nowcast PBI ${period}: ${val} — Qhawarina`,
+    shareText: (period: string, val: string) => `📊 Nowcast PBI Perú ${period}: ${val} interanual | Qhawarina\nhttps://qhawarina.pe/estadisticas/pbi`,
   };
 
   const [data, setData] = useState<GDPData | null>(null);

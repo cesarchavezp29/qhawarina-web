@@ -81,7 +81,7 @@ export default function InflacionPage() {
         <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
           <h1 className="text-4xl font-bold text-gray-900">{T.title}</h1>
           <div className="flex gap-2">
-            <ShareButton title={`${T.title} — Qhawarina`} text={`${isEn ? 'Inflation nowcast' : 'Nowcast de inflación'} ${data.nowcast.target_period}: ${valStr} — Qhawarina`} />
+            <ShareButton title={`${T.title} — Qhawarina`} text={isEn ? `📊 Inflation Nowcast Peru ${data.nowcast.target_period}: ${valStr} (MA3M) | Qhawarina\nhttps://qhawarina.pe/estadisticas/inflacion` : `📊 Inflación Perú ${data.nowcast.target_period}: ${valStr} (MA3M) | Qhawarina\nhttps://qhawarina.pe/estadisticas/inflacion`} />
             <EmbedWidget path="/estadisticas/inflacion" title={`${T.title} — Nowcasting Qhawarina`} height={600} />
           </div>
         </div>
