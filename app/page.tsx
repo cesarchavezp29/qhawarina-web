@@ -111,7 +111,7 @@ export default function HomePage() {
   const polSeries = (data?.political?.monthly_series ?? [])
     .filter((r: any) => r.political_avg > 0)
     .slice(-6)
-    .map((r: any) => ({ month: r.month, value: +(r.political_avg * 10).toFixed(2) }));
+    .map((r: any) => ({ month: r.month, value: +(r.political_avg * 100).toFixed(1) }));
 
   const gdpTrack = (data?.gdp?.series ?? [])
     .filter((r: any) => r.official != null || r.nowcast != null)
@@ -413,10 +413,10 @@ export default function HomePage() {
                   {isEn ? 'Political Risk' : 'Riesgo Político'}
                 </div>
                 <div className="text-2xl font-bold font-mono mb-3" style={{ color: '#2D3142' }}>
-                  {data?.political?.latest?.political_index != null
-                    ? (data.political.latest.political_index * 10).toFixed(1)
+                  {data?.political?.current?.score != null
+                    ? Math.round(data.political.current.score * 100)
                     : '—'}
-                  <span className="text-sm font-normal ml-1" style={{ color: '#8D99AE' }}>/10</span>
+                  <span className="text-sm font-normal ml-1" style={{ color: '#8D99AE' }}>/100</span>
                 </div>
                 {polSeries.length > 1 && (
                   <ResponsiveContainer width="100%" height={72}>
@@ -424,7 +424,7 @@ export default function HomePage() {
                       <XAxis dataKey="month" hide />
                       <YAxis hide />
                       <Tooltip contentStyle={tooltipContentStyle}
-                        formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}`, isEn ? 'Risk' : 'Riesgo']} />
+                        formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}/100`, isEn ? 'Risk' : 'Riesgo']} />
                       <Area type="monotone" dataKey="value"
                         stroke={CHART_COLORS.amber} fill={CHART_COLORS.amber}
                         fillOpacity={0.12} dot={false} strokeWidth={1.5} />
