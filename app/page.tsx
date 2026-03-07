@@ -111,7 +111,7 @@ export default function HomePage() {
   const polSeries = (data?.political?.monthly_series ?? [])
     .filter((r: any) => r.political_avg > 0)
     .slice(-6)
-    .map((r: any) => ({ month: r.month, value: +(r.political_avg * 100).toFixed(1) }));
+    .map((r: any) => ({ month: r.month, value: +(r.political_avg).toFixed(1) }));
 
   const gdpTrack = (data?.gdp?.quarterly_series ?? [])
     .filter((r: any) => r.official != null || r.nowcast != null)
@@ -414,9 +414,9 @@ export default function HomePage() {
                 </div>
                 <div className="text-2xl font-bold font-mono mb-3" style={{ color: '#2D3142' }}>
                   {data?.political?.current?.score != null
-                    ? Math.round(data.political.current.score * 100)
+                    ? Math.round(data.political.current.score)
                     : '—'}
-                  <span className="text-sm font-normal ml-1" style={{ color: '#8D99AE' }}>/100</span>
+                  <span className="text-sm font-normal ml-1" style={{ color: '#8D99AE' }}>PRR</span>
                 </div>
                 {polSeries.length > 1 && (
                   <ResponsiveContainer width="100%" height={72}>

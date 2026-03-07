@@ -13,46 +13,53 @@ interface PoliticalData {
 }
 
 const LEVEL_CONFIG: Record<string, { color: string; label_es: string; label_en: string }> = {
-  MINIMO:   { color: "#8D99AE", label_es: "Mínimo",  label_en: "Minimal"  },
+  MINIMO:   { color: "#8D99AE", label_es: "Mínimo",   label_en: "Minimal"  },
   BAJO:     { color: "#2A9D8F", label_es: "Bajo",     label_en: "Low"      },
-  MEDIO:    { color: "#E0A458", label_es: "Medio",    label_en: "Moderate" },
-  ALTO:     { color: "#C65D3E", label_es: "Alto",     label_en: "High"     },
-  CRITICAL: { color: "#9B2226", label_es: "Crítico",  label_en: "Critical" },
+  MODERADO: { color: "#E0A458", label_es: "Moderado", label_en: "Moderate" },
+  ELEVADO:  { color: "#C65D3E", label_es: "Elevado",  label_en: "Elevated" },
+  ALTO:     { color: "#9B2226", label_es: "Alto",     label_en: "High"     },
+  CRITICO:  { color: "#6B0000", label_es: "Crítico",  label_en: "Critical" },
 };
 
-// Five-zone gradient bar, score 0-1 internally
+// Six-zone gradient bar, PRR scale 0-200+ (capped at 200 for display)
+const PRR_MAX = 200;
 const ZONES = [
-  { from: 0,   to: 0.2, color: "#8D99AE" },
-  { from: 0.2, to: 0.4, color: "#2A9D8F" },
-  { from: 0.4, to: 0.6, color: "#E0A458" },
-  { from: 0.6, to: 0.8, color: "#C65D3E" },
-  { from: 0.8, to: 1.0, color: "#9B2226" },
+  { from: 0,   to: 50,  color: "#8D99AE" },  // MINIMO
+  { from: 50,  to: 80,  color: "#2A9D8F" },  // BAJO
+  { from: 80,  to: 120, color: "#E0A458" },  // MODERADO
+  { from: 120, to: 160, color: "#C65D3E" },  // ELEVADO
+  { from: 160, to: 200, color: "#9B2226" },  // ALTO
 ];
 
-function zoneColor(score: number): string {
-  return ZONES.find((z) => score >= z.from && score < z.to)?.color
-    ?? (score >= 1 ? "#9B2226" : "#8D99AE");
+function zoneColor(prr: number): string {
+  return ZONES.find((z) => prr >= z.from && prr < z.to)?.color
+    ?? (prr >= 200 ? "#6B0000" : "#8D99AE");
 }
 
 function RiskBar({ score }: { score: number }) {
-  const pct = Math.max(0, Math.min(1, score)) * 100;
+  const pct = Math.max(0, Math.min(PRR_MAX, score)) / PRR_MAX * 100;
+  const color = zoneColor(score);
   return (
     <div className="relative h-2 rounded-full overflow-visible" style={{ background: "#E8E4DC" }}>
       {/* Colored zones (muted background) */}
       <div className="absolute inset-0 flex rounded-full overflow-hidden">
         {ZONES.map((z) => (
-          <div key={z.from} className="h-full" style={{ width: "20%", background: z.color, opacity: 0.3 }} />
+          <div
+            key={z.from}
+            className="h-full"
+            style={{ width: `${(z.to - z.from) / PRR_MAX * 100}%`, background: z.color, opacity: 0.3 }}
+          />
         ))}
       </div>
       {/* Filled portion */}
       <div
         className="absolute inset-y-0 left-0 rounded-full transition-all"
-        style={{ width: `${pct}%`, background: zoneColor(score), opacity: 0.9 }}
+        style={{ width: `${pct}%`, background: color, opacity: 0.9 }}
       />
       {/* Indicator dot */}
       <div
         className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 border-white shadow"
-        style={{ left: `calc(${pct}% - 6px)`, background: zoneColor(score) }}
+        style={{ left: `calc(${pct}% - 6px)`, background: color }}
       />
     </div>
   );
@@ -72,12 +79,14 @@ function Sparkline({ data, color }: { data: number[]; color: string }) {
   const area = `${line} L${w},${h} L0,${h} Z`;
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-full" preserveAspectRatio="none">
-      {/* Threshold line at 0.5 */}
-      <line
-        x1="0" y1={h * 0.15 + (1 - 0.5) * h * 0.85}
-        x2={w} y2={h * 0.15 + (1 - 0.5) * h * 0.85}
-        stroke="#E8E4DC" strokeWidth="1" strokeDasharray="3,3"
-      />
+      {/* Reference line at PRR=100 (average) */}
+      {min < 100 && max > 100 && (
+        <line
+          x1="0" y1={h - ((100 - min) / range) * h * 0.85 - h * 0.075}
+          x2={w} y2={h - ((100 - min) / range) * h * 0.85 - h * 0.075}
+          stroke="#E8E4DC" strokeWidth="1" strokeDasharray="3,3"
+        />
+      )}
       <path d={area} fill={color} fillOpacity={0.12} />
       <path d={line} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
     </svg>
@@ -108,10 +117,9 @@ export default function PoliticalRiskCard({
   const scoreValues = series30.map((r) => r.score);
 
   const score = current.score ?? 0;
-  // Display score as 0-100 integer
-  const score100 = Math.round(score * 100);
+  const scoreDisplay = Math.round(score);  // PRR value (mean=100, unbounded)
   const level = current.level ?? "BAJO";
-  const cfg = LEVEL_CONFIG[level] ?? LEVEL_CONFIG["BAJO"];
+  const cfg = LEVEL_CONFIG[level] ?? LEVEL_CONFIG["MODERADO"];
   const articles = current.articles_total ?? 0;
 
   return (
@@ -205,10 +213,10 @@ export default function PoliticalRiskCard({
                     color: cfg.color,
                   }}
                 >
-                  {score100}
+                  {scoreDisplay}
                 </span>
                 <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#8D99AE" }}>
-                  / 100
+                  PRR
                 </span>
                 <span
                   className="text-sm font-bold px-2 py-0.5 rounded"
@@ -217,11 +225,12 @@ export default function PoliticalRiskCard({
                   {isEn ? cfg.label_en : cfg.label_es}
                 </span>
               </div>
-              {/* Progress bar (still uses 0-1 internally) */}
+              {/* PRR gauge bar (mean=100, cap at 200 for display) */}
               <RiskBar score={score} />
               <div className="flex justify-between mt-1">
                 <span className="text-xs" style={{ color: "#8D99AE" }}>0</span>
-                <span className="text-xs" style={{ color: "#8D99AE" }}>100</span>
+                <span className="text-xs" style={{ color: "#8D99AE" }}>100 (avg)</span>
+                <span className="text-xs" style={{ color: "#8D99AE" }}>200+</span>
               </div>
             </div>
             <div className="flex-1 h-12">
