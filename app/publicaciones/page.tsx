@@ -11,6 +11,7 @@ function ReportCard({
   descEs,
   descEn,
   latestPdf,
+  available = false,
   archive,
   subscribeSubject,
   isEn,
@@ -21,6 +22,7 @@ function ReportCard({
   descEs: string;
   descEn: string;
   latestPdf: string;
+  available?: boolean;
   archive: { label: string; href: string }[];
   subscribeSubject: string;
   isEn: boolean;
@@ -38,17 +40,26 @@ function ReportCard({
         <p className="text-sm text-gray-600 mb-4">{isEn ? descEn : descEs}</p>
 
         <div className="flex flex-wrap items-center gap-3">
-          <a
-            href={latestPdf}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md text-white transition-colors"
-            style={{ backgroundColor: '#C65D3E' }}
-            download
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-            </svg>
-            {isEn ? 'Download latest' : 'Descargar último'}
-          </a>
+          {available ? (
+            <a
+              href={latestPdf}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md text-white transition-colors"
+              style={{ backgroundColor: '#C65D3E' }}
+              download
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              </svg>
+              {isEn ? 'Download latest' : 'Descargar último'}
+            </a>
+          ) : (
+            <span
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md cursor-not-allowed"
+              style={{ backgroundColor: '#f3f4f6', color: '#9ca3af' }}
+            >
+              {isEn ? 'Coming soon' : 'Próximamente'}
+            </span>
+          )}
 
           <button
             onClick={() => setArchiveOpen(!archiveOpen)}
@@ -141,6 +152,7 @@ export default function PublicacionesPage() {
             descEs="Resumen diario de precios, riesgo político y mercado cambiario. Publicado todos los días hábiles."
             descEn="Daily summary of prices, political risk and FX market. Published every business day."
             latestPdf="/assets/reports/latest_daily.pdf"
+            available={false}
             archive={dailyArchive}
             subscribeSubject="Suscripción Reporte Diario"
             isEn={isEn}
@@ -153,6 +165,7 @@ export default function PublicacionesPage() {
             descEs="Análisis semanal con desglose por categorías, perspectiva macro y track record de modelos. Publicado los lunes."
             descEn="Weekly analysis with category breakdown, macro outlook and model track record. Published on Mondays."
             latestPdf="/assets/reports/latest_weekly.pdf"
+            available={false}
             archive={weeklyArchive}
             subscribeSubject="Suscripción Reporte Semanal"
             isEn={isEn}
@@ -165,6 +178,7 @@ export default function PublicacionesPage() {
             descEs="Evaluación trimestral con análisis de desempeño de modelos, cambios metodológicos y perspectiva económica."
             descEn="Quarterly evaluation with model performance analysis, methodological changes and economic outlook."
             latestPdf="/assets/reports/latest_quarterly.pdf"
+            available={false}
             archive={quarterlyArchive}
             subscribeSubject="Suscripción Reporte Trimestral"
             isEn={isEn}
