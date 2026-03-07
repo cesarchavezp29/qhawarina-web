@@ -22,11 +22,12 @@ interface PoliticalData {
 }
 
 const LEVEL_STYLES: Record<string, { bg: string; text: string; border: string }> = {
-  BAJO:         { bg: 'bg-green-50',  text: 'text-green-700',  border: 'border-green-300' },
-  'MEDIO-BAJO': { bg: 'bg-yellow-50', text: 'text-yellow-700', border: 'border-yellow-300' },
-  MEDIO:        { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-300' },
-  ALTO:         { bg: 'bg-red-50',    text: 'text-red-700',    border: 'border-red-300' },
-  'MUY ALTO':   { bg: 'bg-red-100',   text: 'text-red-900',    border: 'border-red-500' },
+  MINIMO:   { bg: 'bg-gray-50',   text: 'text-gray-600',   border: 'border-gray-300'  },
+  BAJO:     { bg: 'bg-green-50',  text: 'text-green-700',  border: 'border-green-300' },
+  MODERADO: { bg: 'bg-yellow-50', text: 'text-yellow-700', border: 'border-yellow-300' },
+  ELEVADO:  { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-300' },
+  ALTO:     { bg: 'bg-red-50',    text: 'text-red-700',    border: 'border-red-300'   },
+  CRITICO:  { bg: 'bg-red-100',   text: 'text-red-900',    border: 'border-red-600'   },
 };
 
 export default function RiesgoPoliticoPage() {
@@ -47,7 +48,7 @@ export default function RiesgoPoliticoPage() {
     cardDownloadDesc: (days: number) => `Complete daily series — ${days} days of coverage`,
     error: 'Error loading data.',
     retry: 'Retry',
-    shareText: (score: number, level: string) => `📊 Political Risk Peru: ${Math.round(score * 100)}/100 (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
+    shareText: (score: number, level: string) => `📊 Political Risk Peru: PRR ${Math.round(score)} (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
   } : {
     breadcrumb: 'Estadísticas',
     title: 'Índice de Riesgo Político',
@@ -62,7 +63,7 @@ export default function RiesgoPoliticoPage() {
     cardDownloadDesc: (days: number) => `Serie diaria completa — ${days} días de cobertura`,
     error: 'Error cargando datos.',
     retry: 'Reintentar',
-    shareText: (score: number, level: string) => `📊 Riesgo político Perú: ${Math.round(score * 100)}/100 (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
+    shareText: (score: number, level: string) => `📊 Riesgo político Perú: PRR ${Math.round(score)} (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
   };
 
   const [data, setData] = useState<PoliticalData | null>(null);
@@ -84,7 +85,7 @@ export default function RiesgoPoliticoPage() {
   );
 
   const level = data.current.level;
-  const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MEDIO'];
+  const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MODERADO'];
 
   // Monthly average trend — last 6 non-zero months
   const monthlyTrend = (data.monthly_series ?? [])
@@ -92,11 +93,12 @@ export default function RiesgoPoliticoPage() {
     .slice(-6)
     .map(m => ({
       month: m.month.slice(0, 7),
-      score: parseFloat((m.political_avg * 100).toFixed(2)),
+      score: parseFloat((m.political_avg).toFixed(1)),
     }));
 
+  // PRR thresholds: BAJO<80, MODERADO 80-120, ELEVADO 120-160, ALTO/CRITICO>160
   const barColor = (score: number) =>
-    score < 3 ? CHART_COLORS.teal : score < 7 ? CHART_COLORS.amber : CHART_COLORS.red;
+    score < 80 ? CHART_COLORS.teal : score < 120 ? CHART_COLORS.amber : CHART_COLORS.red;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -118,7 +120,7 @@ export default function RiesgoPoliticoPage() {
         <div className={`mt-4 inline-flex items-center gap-4 px-5 py-3 rounded-xl border-2 ${styles.border} ${styles.bg}`}>
           <div>
             <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{T.currentLevel}</p>
-            <p className={`text-3xl font-bold ${styles.text}`}>{data.current.score.toFixed(3)}</p>
+            <p className={`text-3xl font-bold ${styles.text}`}>{Math.round(data.current.score)} <span className="text-base font-normal text-gray-400">PRR</span></p>
           </div>
           <div className={`px-3 py-1 rounded-full text-sm font-semibold ${styles.bg} ${styles.text} border ${styles.border}`}>
             {level}
@@ -180,11 +182,11 @@ export default function RiesgoPoliticoPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
                 <XAxis dataKey="month" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
                 <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} tickFormatter={v => `${v}`}
-                  label={{ value: isEn ? 'Score (×100)' : 'Puntaje (×100)', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                  label={{ value: 'PRR', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined) => [`${v?.toFixed(2) ?? '—'}`, isEn ? 'Risk score ×100' : 'Puntaje de riesgo ×100']}
+                  formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}`, 'PRR']}
                 />
                 <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                   {monthlyTrend.map((entry, i) => (
@@ -195,8 +197,8 @@ export default function RiesgoPoliticoPage() {
             </ResponsiveContainer>
             <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
               {isEn
-                ? 'Teal <3 · Amber 3–7 · Red >7. Scale ×100 for readability.'
-                : 'Verde <3 · Ámbar 3–7 · Rojo >7. Escala ×100 para legibilidad.'}
+                ? 'Teal <80 (Bajo) · Amber 80–120 (Moderado) · Red >120 (Elevado+). Mean = 100.'
+                : 'Verde <80 (Bajo) · Ámbar 80–120 (Moderado) · Rojo >120 (Elevado+). Media = 100.'}
             </p>
           </div>
         ) : null}
