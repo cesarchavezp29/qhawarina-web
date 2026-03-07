@@ -24,14 +24,17 @@ export default function Header() {
   const isEn = useLocale() === "en";
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isPubsOpen, setIsPubsOpen]         = useState(false);
+  const [isAboutOpen, setIsAboutOpen]       = useState(false);
   const [isMobileOpen, setIsMobileOpen]     = useState(false);
   const [mobileResearch, setMobileResearch] = useState(false);
   const [mobilePubs, setMobilePubs]         = useState(false);
+  const [mobileAbout, setMobileAbout]       = useState(false);
 
   const closeMobile = () => {
     setIsMobileOpen(false);
     setMobileResearch(false);
     setMobilePubs(false);
+    setMobileAbout(false);
   };
 
   const navBtn =
@@ -70,10 +73,20 @@ export default function Header() {
     ["/estadisticas/calendario","Calendario Económico"],
   ];
 
-  const researchLabel    = isEn ? "Research"     : "Investigación";
-  const pubsLabel        = isEn ? "Publications" : "Publicaciones";
-  const dataLabel        = isEn ? "Data"         : "Datos";
-  const aboutLabel       = isEn ? "About"        : "Nosotros";
+  const aboutItems = isEn ? [
+    ["/sobre-nosotros", "About Qhawarina"],
+    ["/prensa",         "Press"],
+    ["/institucional",  "For Institutions"],
+  ] : [
+    ["/sobre-nosotros", "Sobre Qhawarina"],
+    ["/prensa",         "Prensa"],
+    ["/institucional",  "Para Instituciones"],
+  ];
+
+  const researchLabel = isEn ? "Research"     : "Investigación";
+  const pubsLabel     = isEn ? "Publications" : "Publicaciones";
+  const dataLabel     = isEn ? "Data"         : "Datos";
+  const aboutLabel    = isEn ? "About"        : "Nosotros";
 
   return (
     <header style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
@@ -163,9 +176,35 @@ export default function Header() {
             </Link>
 
             {/* 4. NOSOTROS */}
-            <Link href="/sobre-nosotros" className={navLink} style={ink}>
-              {aboutLabel}
-            </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsAboutOpen(true)}
+              onMouseLeave={() => setIsAboutOpen(false)}
+            >
+              <button
+                onClick={() => setIsAboutOpen(!isAboutOpen)}
+                className={navBtn}
+                style={ink}
+              >
+                {aboutLabel}
+                {chevron(isAboutOpen)}
+              </button>
+              {isAboutOpen && (
+                <div className="absolute right-0 mt-0 w-48 rounded-md shadow-lg z-50 py-1" style={dropdownStyle}>
+                  {aboutItems.map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
+                      style={ink}
+                      onClick={closeMobile}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <SearchModal />
             <LanguageSwitcher />
@@ -253,21 +292,42 @@ export default function Header() {
               )}
             </div>
 
-            {/* Mobile: Datos + Nosotros */}
-            {[
-              ["/datos",          dataLabel],
-              ["/sobre-nosotros", aboutLabel],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={closeMobile}
-                className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+            {/* Mobile: Datos */}
+            <Link
+              href="/datos"
+              onClick={closeMobile}
+              className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+              style={ink}
+            >
+              {dataLabel}
+            </Link>
+
+            {/* Mobile: Nosotros accordion */}
+            <div>
+              <button
+                onClick={() => setMobileAbout(!mobileAbout)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
                 style={ink}
               >
-                {label}
-              </Link>
-            ))}
+                {aboutLabel}
+                {chevron(mobileAbout)}
+              </button>
+              {mobileAbout && (
+                <div className="pl-4 mt-1 space-y-0.5">
+                  {aboutItems.map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobile}
+                      className="block px-3 py-1.5 text-sm rounded-sm hover:bg-[#fdf3f0] transition-colors"
+                      style={ink}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
           </div>
         </div>
