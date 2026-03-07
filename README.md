@@ -1,6 +1,6 @@
 # Qhawarina — Economic Nowcasting for Peru
 
-**Real-time economic intelligence platform for Peru** · [qhawarina.pe](https://qhawarina.pe)
+**Real-time economic intelligence platform for Peru** · [qhawarina.pe](https://qhawarina.pe) · [README (PDF)](https://qhawarina.pe/qhawarina_readme.pdf)
 
 Qhawarina (Quechua: "mañana a la vista") publishes daily-updated nowcasts for:
 
