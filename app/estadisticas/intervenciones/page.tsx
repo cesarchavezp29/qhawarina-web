@@ -258,7 +258,7 @@ export default function IntervencionesBCRPPage() {
   const [normalized, setNormalized] = useState(false);
 
   useEffect(() => {
-    fetch(`/assets/data/fx_interventions.json?v=${new Date().toISOString().split('T')[0]}`)
+    fetch(`/assets/data/fx_interventions.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then((r) => r.json())
       .then((d) => {
         setData(d);

@@ -43,7 +43,7 @@ export default function PBISectoresPage() {
   const [viewMode, setViewMode] = useState<"all" | "selected">("all");
 
   useEffect(() => {
-    fetch(`/assets/data/gdp_sectoral.json?v=${new Date().toISOString().split('T')[0]}`)
+    fetch(`/assets/data/gdp_sectoral.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then((r) => r.json())
       .then((jsonData) => {
         setData(jsonData);

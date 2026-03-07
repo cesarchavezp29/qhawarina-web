@@ -27,7 +27,7 @@ export default function PreciosAltaFrecuenciaPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/assets/data/supermarket_daily_index.json?v=${new Date().toISOString().split('T')[0]}`)
+    fetch(`/assets/data/supermarket_daily_index.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(e => { console.error('Error loading data:', e); setLoading(false); });

@@ -43,8 +43,8 @@ export default function PobrezaGraficosPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
-      fetch(`/assets/data/poverty_quarterly.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json())
+      fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`).then(r => r.json()),
+      fetch(`/assets/data/poverty_quarterly.json?v=${new Date().toISOString().slice(0, 13)}`).then(r => r.json())
     ]).then(([annualData, qData]) => {
       setData(annualData);
       setQuarterlyData(qData);

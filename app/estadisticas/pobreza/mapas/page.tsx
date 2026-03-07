@@ -44,7 +44,7 @@ export default function PobrezaMapasPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => { if (!r.ok) throw new Error(`poverty_nowcast.json: ${r.status}`); return r.json(); }),
+      fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`).then(r => { if (!r.ok) throw new Error(`poverty_nowcast.json: ${r.status}`); return r.json(); }),
       fetch('/assets/data/peru_departamentos.geojson').then(r => { if (!r.ok) throw new Error(`peru_departamentos.geojson: ${r.status}`); return r.json(); }),
     ]).then(([d, gj]) => {
       setData(d);

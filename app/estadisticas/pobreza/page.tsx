@@ -64,7 +64,7 @@ export default function PobrezaPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`)
+    fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => { setError(true); setLoading(false); });

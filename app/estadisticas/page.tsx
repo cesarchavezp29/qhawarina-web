@@ -93,12 +93,12 @@ export default function EstadisticasPage() {
   useEffect(() => {
     const load = async () => {
       const [gdpR, infR, povR, polR, pricesR, fxR] = await Promise.allSettled([
-        fetch(`/assets/data/gdp_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then((r) => r.json()),
-        fetch(`/assets/data/inflation_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then((r) => r.json()),
-        fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then((r) => r.json()),
-        fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().split('T')[0]}`).then((r) => r.json()),
-        fetch(`/assets/data/daily_price_index.json?v=${new Date().toISOString().split('T')[0]}`).then((r) => r.json()),
-        fetch(`/assets/data/fx_interventions.json?v=${new Date().toISOString().split('T')[0]}`).then((r) => r.json()),
+        fetch(`/assets/data/gdp_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`).then((r) => r.json()),
+        fetch(`/assets/data/inflation_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`).then((r) => r.json()),
+        fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`).then((r) => r.json()),
+        fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().slice(0, 13)}`).then((r) => r.json()),
+        fetch(`/assets/data/daily_price_index.json?v=${new Date().toISOString().slice(0, 13)}`).then((r) => r.json()),
+        fetch(`/assets/data/fx_interventions.json?v=${new Date().toISOString().slice(0, 13)}`).then((r) => r.json()),
       ]);
 
       setD({

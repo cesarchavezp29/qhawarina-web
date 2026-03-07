@@ -56,7 +56,7 @@ export default function HomePage() {
   const [columnas, setColumnas] = useState<any[]>([]);
 
   useEffect(() => {
-    const v = new Date().toISOString().split('T')[0];
+    const v = new Date().toISOString().slice(0, 13);
     Promise.allSettled([
       fetch(`/assets/data/gdp_nowcast.json?v=${v}`).then(r => r.json()),
       fetch(`/assets/data/inflation_nowcast.json?v=${v}`).then(r => r.json()),
@@ -94,7 +94,7 @@ export default function HomePage() {
   const hasErrors = pipelineStatus &&
     (['supermarket', 'rss'] as const).some(k => pipelineStatus[k] && !pipelineStatus[k].passed);
 
-  const todayStr = new Date().toISOString().split('T')[0];
+  const todayStr = new Date().toISOString().slice(0, 13);
 
   const gdpValue = data?.gdp?.nowcast?.value;
   const gdpColor = gdpValue != null ? (gdpValue >= 0 ? '#2A9D8F' : '#9B2226') : '#2D3142';

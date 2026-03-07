@@ -54,7 +54,7 @@ export default function InflacionPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`/assets/data/inflation_nowcast.json?v=${new Date().toISOString().split('T')[0]}`)
+    fetch(`/assets/data/inflation_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => { setError(true); setLoading(false); });

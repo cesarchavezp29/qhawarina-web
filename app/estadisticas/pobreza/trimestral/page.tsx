@@ -41,8 +41,8 @@ export default function PobrezaTrimestralPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`/assets/data/poverty_quarterly.json?v=${new Date().toISOString().split('T')[0]}`).then((res) => res.json()),
-      fetch(`/assets/data/poverty_monthly.json?v=${new Date().toISOString().split('T')[0]}`).then((res) => res.json()),
+      fetch(`/assets/data/poverty_quarterly.json?v=${new Date().toISOString().slice(0, 13)}`).then((res) => res.json()),
+      fetch(`/assets/data/poverty_monthly.json?v=${new Date().toISOString().slice(0, 13)}`).then((res) => res.json()),
     ])
       .then(([quarterly, monthly]) => {
         setQuarterlyData(quarterly.national_quarterly || []);

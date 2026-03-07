@@ -8,7 +8,7 @@ import EmbedWidget from '../../components/EmbedWidget';
 import ShareButton from '../../components/ShareButton';
 import PageSkeleton from '../../components/PageSkeleton';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip,
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine,
   ResponsiveContainer,
 } from 'recharts';
 import {
@@ -71,7 +71,7 @@ export default function RiesgoPoliticoPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().split('T')[0]}`)
+    fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => { setError(true); setLoading(false); });
@@ -187,6 +187,9 @@ export default function RiesgoPoliticoPage() {
                 <Tooltip
                   contentStyle={tooltipContentStyle}
                   formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}`, 'PRR']}
+                />
+                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2"
+                  label={{ value: isEn ? 'avg (100)' : 'media (100)', position: 'insideTopRight', style: { fontSize: 9, fill: CHART_COLORS.ink3 } }}
                 />
                 <Bar dataKey="score" radius={[4, 4, 0, 0]}>
                   {monthlyTrend.map((entry, i) => (

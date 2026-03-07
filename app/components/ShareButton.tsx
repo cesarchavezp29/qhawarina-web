@@ -13,21 +13,17 @@ export default function ShareButton({ title = 'Qhawarina', text = 'Nowcasting Ec
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
-    const isMobile = window.innerWidth < 768;
     const shareText = text.includes('http') ? text : `${text}\n${window.location.href}`;
 
-    console.log('[ShareButton] shareText:', shareText);
-
-    if (isMobile && navigator.share) {
+    if (navigator.share) {
       try {
-        await navigator.share({ title, text: shareText });
+        await navigator.share({ title, text: shareText, url: window.location.href });
+        return;
       } catch {
         // user cancelled — fall through to clipboard
-        await copyToClipboard(shareText);
       }
-    } else {
-      await copyToClipboard(shareText);
     }
+    await copyToClipboard(shareText);
   };
 
   const copyToClipboard = async (shareText: string) => {

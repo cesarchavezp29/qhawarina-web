@@ -40,7 +40,7 @@ export default function InflacionMapasPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`/assets/data/inflation_regional_nowcast.json?v=${new Date().toISOString().split('T')[0]}`).then(r => r.json()),
+      fetch(`/assets/data/inflation_regional_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`).then(r => r.json()),
       fetch('/assets/data/peru_departamentos.geojson').then(r => r.json()),
     ]).then(([d, gj]) => {
       setData(d);
