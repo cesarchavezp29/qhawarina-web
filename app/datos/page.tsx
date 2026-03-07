@@ -5,11 +5,20 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import BreadcrumbJsonLd from "../components/BreadcrumbJsonLd";
 
+// Design system — matches app/lib/chartTheme.ts
+const TERRA = "#C65D3E";
+const INK   = "#2D3142";
+const INK3  = "#8D99AE";
+const BG    = "#FAF8F4";
+const SURFACE = "#EDEAE5";
+const BORDER  = "#E8E4DF";
+
 interface DataFile {
   name: string;
   description: string;
   file: string;
   format: "JSON" | "CSV";
+  csvFile?: string;  // companion CSV at /assets/data/csv/
   rows?: string;
 }
 
@@ -17,7 +26,7 @@ interface DataSection {
   id: string;
   title: string;
   icon: string;
-  color: string;
+  badgeClass: string;
   description: string;
   files: DataFile[];
 }
@@ -32,7 +41,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "nowcasts",
     title: "Nowcasts",
     icon: "📡",
-    color: "blue",
+    badgeClass: "bg-teal-100 text-teal-800",
     description: "Predicciones en tiempo real de los modelos Qhawarina. Actualizados diariamente.",
     files: [
       {
@@ -40,6 +49,8 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Predicción trimestral del crecimiento del PBI. Incluye valores oficiales históricos, predicciones y métricas del modelo DFM.",
         file: "gdp_nowcast.json",
         format: "JSON",
+        csvFile: "pbi_nowcast.csv",
+        rows: "88 trimestres",
       },
       {
         name: "Nowcast Inflación",
@@ -48,22 +59,36 @@ const DATA_SECTIONS: DataSection[] = [
         format: "JSON",
       },
       {
-        name: "Nowcast Pobreza",
+        name: "Nowcast Pobreza Nacional",
         description: "Predicción anual de pobreza monetaria a nivel nacional. Incluye intervalos de confianza.",
         file: "poverty_nowcast.json",
         format: "JSON",
+        csvFile: "pobreza_nacional.csv",
+        rows: "21 años",
+      },
+      {
+        name: "Pobreza Departamental",
+        description: "Proyección de pobreza por departamento para 2025. 25 departamentos con cambio en pp vs 2024.",
+        file: "poverty_nowcast.json",
+        format: "JSON",
+        csvFile: "pobreza_departamental.csv",
+        rows: "25 departamentos",
       },
       {
         name: "Índice Político Diario",
-        description: "Índice de riesgo político para Perú. Basado en clasificación GPT-4o de 81 feeds RSS.",
+        description: "Índice de riesgo político para Perú. Basado en clasificación GPT-4o de 11 feeds RSS.",
         file: "political_index_daily.json",
         format: "JSON",
+        csvFile: "riesgo_politico.csv",
+        rows: "365 días",
       },
       {
         name: "Mercado Cambiario / Intervenciones BCRP",
         description: "Tipo de cambio PEN/USD, intervenciones spot y swaps del BCRP, tasa de referencia, bonos soberanos y BVL. Desde 2020, frecuencia diaria y mensual.",
         file: "fx_interventions.json",
         format: "JSON",
+        csvFile: "tipo_cambio.csv",
+        rows: "~500 días",
       },
     ],
   },
@@ -71,7 +96,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "sectoral",
     title: "Desagregaciones",
     icon: "🏭",
-    color: "purple",
+    badgeClass: "bg-amber-100 text-amber-800",
     description: "PBI por sector económico e inflación por categoría analítica.",
     files: [
       {
@@ -113,7 +138,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "panels",
     title: "Paneles de Datos",
     icon: "📊",
-    color: "green",
+    badgeClass: "bg-slate-100 text-slate-700",
     description: "Paneles completos de indicadores económicos en formato largo. Para análisis propios.",
     files: [
       {
@@ -143,7 +168,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "backtests",
     title: "Backtests",
     icon: "🔬",
-    color: "orange",
+    badgeClass: "bg-orange-100 text-orange-800",
     description: "Resultados de evaluación fuera de muestra de los modelos. Transparencia metodológica.",
     files: [
       {
@@ -173,7 +198,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "prices",
     title: "Precios",
     icon: "🛒",
-    color: "red",
+    badgeClass: "bg-red-100 text-red-800",
     description: "Datos de precios de supermercados (BPP — Billion Prices Project para Perú).",
     files: [
       {
@@ -181,6 +206,7 @@ const DATA_SECTIONS: DataSection[] = [
         description: "Índice Jevons chain-linked diario de Plaza Vea, Metro y Wong. 42,000+ productos. Metodología Cavallo & Rigobon (MIT). Base = 100 desde 10-Feb-2026.",
         file: "daily_price_index.json",
         format: "JSON",
+        csvFile: "precios_diarios.csv",
         rows: "Diario",
       },
       {
@@ -192,39 +218,6 @@ const DATA_SECTIONS: DataSection[] = [
     ],
   },
 ];
-
-const COLOR_MAP: Record<string, { bg: string; border: string; badge: string; text: string }> = {
-  blue: {
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    badge: "bg-blue-100 text-blue-800",
-    text: "text-blue-800",
-  },
-  purple: {
-    bg: "bg-purple-50",
-    border: "border-purple-200",
-    badge: "bg-purple-100 text-purple-800",
-    text: "text-purple-800",
-  },
-  green: {
-    bg: "bg-green-50",
-    border: "border-green-200",
-    badge: "bg-green-100 text-green-800",
-    text: "text-green-800",
-  },
-  orange: {
-    bg: "bg-orange-50",
-    border: "border-orange-200",
-    badge: "bg-orange-100 text-orange-800",
-    text: "text-orange-800",
-  },
-  red: {
-    bg: "bg-red-50",
-    border: "border-red-200",
-    badge: "bg-red-100 text-red-800",
-    text: "text-red-800",
-  },
-};
 
 function fmtBytes(bytes: number): string {
   if (bytes <= 0) return "—";
@@ -240,6 +233,12 @@ function fmtLastMod(header: string | null, locale: string): string {
     year: "numeric",
   });
 }
+
+const DownloadIcon = () => (
+  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+  </svg>
+);
 
 export default function DatosPage() {
   const locale = useLocale();
@@ -263,8 +262,9 @@ export default function DatosPage() {
     : DATA_SECTIONS.filter((s) => !activeSection || s.id === activeSection);
 
   useEffect(() => {
-    const allFiles = DATA_SECTIONS.flatMap((s) => s.files.map((f) => f.file));
-
+    const allFiles = Array.from(
+      new Set(DATA_SECTIONS.flatMap((s) => s.files.map((f) => f.file)))
+    );
     Promise.allSettled(
       allFiles.map(async (filename) => {
         const res = await fetch(`/assets/data/${filename}`, { method: "HEAD" });
@@ -284,19 +284,28 @@ export default function DatosPage() {
   }, [locale]);
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <BreadcrumbJsonLd crumbs={[{ name: "Qhawarina", href: "/" }, { name: isEn ? "Open Data" : "Datos Abiertos", href: "/datos" }]} />
+    <div style={{ background: BG }} className="min-h-screen py-12">
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: "Qhawarina", href: "/" },
+          { name: isEn ? "Open Data" : "Datos Abiertos", href: "/datos" },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{isEn ? "Open Data" : "Datos Abiertos"}</h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4" style={{ color: INK }}>
+            {isEn ? "Open Data" : "Datos Abiertos"}
+          </h1>
+          <p className="text-lg max-w-3xl" style={{ color: INK3 }}>
             {isEn
               ? "All Qhawarina data is freely accessible under the "
               : "Todos los datos de Qhawarina son de acceso libre bajo licencia "}
             <a
               href="https://creativecommons.org/licenses/by/4.0/"
-              className="text-blue-700 hover:underline"
+              style={{ color: TERRA }}
+              className="hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -309,7 +318,13 @@ export default function DatosPage() {
 
           {/* Search */}
           <div className="mt-6 relative max-w-md">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4"
+              style={{ color: INK3 }}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
             </svg>
             <input
@@ -317,10 +332,15 @@ export default function DatosPage() {
               value={search}
               onChange={(e) => { setSearch(e.target.value); setActiveSection(null); }}
               placeholder={isEn ? "Search dataset..." : "Buscar dataset..."}
-              className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full pl-9 pr-4 py-2 rounded-lg text-sm outline-none"
+              style={{ border: `1px solid ${BORDER}`, background: "#fff", color: INK }}
             />
             {search && (
-              <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2"
+                style={{ color: INK3 }}
+              >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -330,51 +350,41 @@ export default function DatosPage() {
 
           {/* Stats bar */}
           <div className="mt-6 flex flex-wrap gap-6">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-blue-800">{totalFiles}</span>
-              <span className="text-gray-600">{isEn ? "files available" : "archivos disponibles"}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-blue-800">490+</span>
-              <span className="text-gray-600">{isEn ? "economic series" : "series económicas"}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-blue-800">Diario</span>
-              <span className="text-gray-600">{isEn ? "update frequency" : "actualización"}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-blue-800">CC BY 4.0</span>
-              <span className="text-gray-600">{isEn ? "open license" : "licencia abierta"}</span>
-            </div>
+            {[
+              [String(totalFiles), isEn ? "files available" : "archivos disponibles"],
+              ["490+", isEn ? "economic series" : "series económicas"],
+              ["Diario", isEn ? "update frequency" : "actualización"],
+              ["CC BY 4.0", isEn ? "open license" : "licencia abierta"],
+            ].map(([val, label]) => (
+              <div key={val} className="flex items-center gap-2">
+                <span className="text-2xl font-bold" style={{ color: TERRA }}>{val}</span>
+                <span style={{ color: INK3 }}>{label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Quick nav */}
         <div className="flex flex-wrap gap-2 mb-10">
-          {DATA_SECTIONS.map((section) => {
-            const colors = COLOR_MAP[section.color];
-            return (
-              <button
-                key={section.id}
-                onClick={() =>
-                  setActiveSection(
-                    activeSection === section.id ? null : section.id
-                  )
-                }
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                  activeSection === section.id
-                    ? `${colors.bg} ${colors.border} ${colors.text}`
-                    : "bg-white border-gray-200 text-gray-700 hover:border-gray-400"
-                }`}
-              >
-                {section.icon} {section.title} ({section.files.length})
-              </button>
-            );
-          })}
+          {DATA_SECTIONS.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
+              className="px-4 py-2 rounded-full text-sm font-medium transition-colors border"
+              style={
+                activeSection === section.id
+                  ? { background: SURFACE, borderColor: BORDER, color: INK }
+                  : { background: "#fff", borderColor: BORDER, color: INK3 }
+              }
+            >
+              {section.icon} {section.title} ({section.files.length})
+            </button>
+          ))}
           {activeSection && (
             <button
               onClick={() => setActiveSection(null)}
-              className="px-4 py-2 rounded-full text-sm text-gray-500 hover:text-gray-700 underline"
+              className="px-4 py-2 rounded-full text-sm underline"
+              style={{ color: INK3 }}
             >
               {isEn ? "Show all" : "Ver todo"}
             </button>
@@ -384,126 +394,134 @@ export default function DatosPage() {
         {/* Sections */}
         <div className="space-y-10">
           {filteredSections.length === 0 && (
-            <p className="text-gray-500 text-sm py-4">{isEn ? `No datasets found for "${search}".` : `No se encontraron datasets para "${search}".`}</p>
+            <p className="text-sm py-4" style={{ color: INK3 }}>
+              {isEn ? `No datasets found for "${search}".` : `No se encontraron datasets para "${search}".`}
+            </p>
           )}
-          {filteredSections.map((section) => {
-            const colors = COLOR_MAP[section.color];
-            return (
-              <div key={section.id}>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl">{section.icon}</span>
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900">
-                      {section.title}
-                    </h2>
-                    <p className="text-gray-500 text-sm">{section.description}</p>
-                  </div>
+          {filteredSections.map((section) => (
+            <div key={section.id}>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">{section.icon}</span>
+                <div>
+                  <h2 className="text-2xl font-bold" style={{ color: INK }}>{section.title}</h2>
+                  <p className="text-sm" style={{ color: INK3 }}>{section.description}</p>
                 </div>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {section.files.map((file) => {
-                    const fileMeta = meta[file.file];
-                    return (
-                      <div
-                        key={file.file}
-                        className="bg-white rounded-lg border border-gray-200 p-5 hover:shadow-md transition-shadow"
-                      >
-                        <div className="flex items-start justify-between mb-2">
-                          <h3 className="font-semibold text-gray-900">
-                            {file.name}
-                          </h3>
-                          <span
-                            className={`text-xs font-mono px-2 py-0.5 rounded font-medium ${colors.badge}`}
-                          >
-                            {file.format}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {section.files.map((file) => {
+                  const fileMeta = meta[file.file];
+                  const hasCsv = Boolean(file.csvFile);
+                  return (
+                    <div
+                      key={`${file.file}-${file.name}`}
+                      className="rounded-lg border p-5 hover:shadow-md transition-shadow"
+                      style={{ background: "#fff", borderColor: BORDER }}
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="font-semibold pr-2" style={{ color: INK }}>{file.name}</h3>
+                        <span className={`shrink-0 text-xs font-mono px-2 py-0.5 rounded font-medium ${section.badgeClass}`}>
+                          {hasCsv ? "JSON+CSV" : file.format}
+                        </span>
+                      </div>
+
+                      <p className="text-sm mb-4 leading-relaxed" style={{ color: INK3 }}>
+                        {file.description}
+                      </p>
+
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 text-xs" style={{ color: INK3 }}>
+                          <span>{fileMeta?.size ?? "…"}</span>
+                          {file.rows && <><span>·</span><span>{file.rows}</span></>}
+                          <span>·</span>
+                          <span>
+                            {fileMeta
+                              ? `${isEn ? "Upd.:" : "Act.:"} ${fileMeta.updated}`
+                              : isEn ? "loading…" : "cargando…"}
                           </span>
                         </div>
 
-                        <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                          {file.description}
-                        </p>
-
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3 text-xs text-gray-400">
-                            <span>{fileMeta?.size ?? "…"}</span>
-                            {file.rows && (
-                              <>
-                                <span>·</span>
-                                <span>{file.rows}</span>
-                              </>
-                            )}
-                            <span>·</span>
-                            <span>
-                              {fileMeta
-                                ? `${isEn ? "Upd.:" : "Act.:"} ${fileMeta.updated}`
-                                : isEn ? "loading…" : "cargando…"}
-                            </span>
-                          </div>
-
+                        <div className="flex items-center gap-2 shrink-0">
+                          {/* CSV primary button */}
+                          {hasCsv && (
+                            <a
+                              href={`/assets/data/csv/${file.csvFile}`}
+                              download={file.csvFile}
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium text-white hover:opacity-80 transition-opacity"
+                              style={{ backgroundColor: TERRA }}
+                            >
+                              <DownloadIcon />
+                              CSV
+                            </a>
+                          )}
+                          {/* JSON / main format secondary button */}
                           <a
                             href={`/assets/data/${file.file}`}
                             download={file.file}
-                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${colors.bg} ${colors.text} hover:opacity-80`}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-colors hover:bg-gray-50 border"
+                            style={
+                              hasCsv
+                                ? { borderColor: BORDER, color: INK3 }
+                                : { borderColor: TERRA, color: TERRA, background: "#FDF0EC" }
+                            }
                           >
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                              />
-                            </svg>
-                            {isEn ? "Download" : "Descargar"}
+                            <DownloadIcon />
+                            {hasCsv ? file.format : (isEn ? "Download" : "Descargar")}
                           </a>
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* License + Citation */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-3">📄 {isEn ? "License" : "Licencia"}</h3>
-            <p className="text-sm text-gray-600 mb-3">
+          <div className="rounded-lg border p-6" style={{ background: "#fff", borderColor: BORDER }}>
+            <h3 className="font-semibold mb-3" style={{ color: INK }}>
+              📄 {isEn ? "License" : "Licencia"}
+            </h3>
+            <p className="text-sm mb-3" style={{ color: INK3 }}>
               {isEn
-                ? <>All Qhawarina data is available under <strong>Creative Commons BY 4.0</strong>. You can freely use, modify and redistribute with attribution.</>
-                : <>Todos los datos de Qhawarina están disponibles bajo licencia <strong>Creative Commons BY 4.0</strong>. Puedes usar, modificar y redistribuir libremente con atribución.</>}
+                ? <><strong style={{ color: INK }}>Creative Commons BY 4.0</strong>. You can freely use, modify and redistribute with attribution.</>
+                : <>Todos los datos de Qhawarina están disponibles bajo licencia <strong style={{ color: INK }}>Creative Commons BY 4.0</strong>. Puedes usar, modificar y redistribuir libremente con atribución.</>}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs" style={{ color: INK3 }}>
               {isEn
                 ? "Original data: BCRP, INEI, MIDAGRI (Peruvian public domain). Models and processing: Qhawarina CC BY 4.0."
                 : "Datos originales: BCRP, INEI, MIDAGRI (dominio público peruano). Modelos y procesamiento: Qhawarina CC BY 4.0."}
             </p>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-3">📖 {isEn ? "How to cite" : "Cómo citar"}</h3>
-            <div className="bg-gray-50 rounded p-3 text-xs font-mono text-gray-700 leading-relaxed">
-              Qhawarina ({new Date().getFullYear()}). {isEn ? "Economic Nowcasting for Peru. Data available at qhawarina.pe/datos. License CC BY 4.0." : "Nowcasting Económico para Perú. Datos disponibles en qhawarina.pe/datos. Licencia CC BY 4.0."}
+          <div className="rounded-lg border p-6" style={{ background: "#fff", borderColor: BORDER }}>
+            <h3 className="font-semibold mb-3" style={{ color: INK }}>
+              📖 {isEn ? "How to cite" : "Cómo citar"}
+            </h3>
+            <div className="rounded p-3 text-xs font-mono leading-relaxed" style={{ background: BG, color: INK3 }}>
+              Qhawarina ({new Date().getFullYear()}).{" "}
+              {isEn
+                ? "Economic Nowcasting for Peru. Data available at qhawarina.pe/datos. License CC BY 4.0."
+                : "Nowcasting Económico para Perú. Datos disponibles en qhawarina.pe/datos. Licencia CC BY 4.0."}
             </div>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs mt-2" style={{ color: INK3 }}>
               {isEn ? "For academic use, include the download date." : "Para uso académico, incluye la fecha de descarga."}
             </p>
           </div>
         </div>
 
         {/* API Link */}
-        <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-6 flex items-center justify-between">
+        <div
+          className="mt-6 rounded-lg border p-6 flex items-center justify-between"
+          style={{ background: SURFACE, borderColor: BORDER }}
+        >
           <div>
-            <h3 className="font-semibold text-blue-900">
+            <h3 className="font-semibold" style={{ color: INK }}>
               {isEn ? "Need programmatic access?" : "¿Necesitas acceso programático?"}
             </h3>
-            <p className="text-sm text-blue-700 mt-1">
+            <p className="text-sm mt-1" style={{ color: INK3 }}>
               {isEn
                 ? "The Qhawarina API allows you to retrieve real-time data with rate limiting and automatic updates."
                 : "La API de Qhawarina permite obtener datos en tiempo real con rate limiting y actualización automática."}
@@ -511,7 +529,8 @@ export default function DatosPage() {
           </div>
           <Link
             href="/api/docs"
-            className="shrink-0 ml-4 px-4 py-2 bg-blue-800 text-white rounded-lg text-sm font-medium hover:bg-blue-900 transition-colors"
+            className="shrink-0 ml-4 px-4 py-2 text-white rounded-lg text-sm font-medium hover:opacity-80 transition-opacity"
+            style={{ backgroundColor: TERRA }}
           >
             {isEn ? "View API →" : "Ver API →"}
           </Link>
