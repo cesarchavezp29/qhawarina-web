@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 import { useLocale } from 'next-intl';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
+import PriceIndexCard from "./components/hero/PriceIndexCard";
+import PoliticalRiskCard from "./components/hero/PoliticalRiskCard";
 
 // Parse YYYY-MM-DD as local date (avoids UTC-to-local day-shift bug)
 function parseLocalDate(dateStr: string): Date {
@@ -74,6 +76,26 @@ export default function HomePage() {
     <div className="bg-gray-50">
       {/* Main Content */}
       <main className="max-w-[1400px] mx-auto px-6 py-8">
+        {/* Hero Cards */}
+        <section className="mb-10">
+          <p
+            className="text-sm mb-5 max-w-2xl"
+            style={{ color: "#8D99AE" }}
+          >
+            {isEn
+              ? "Daily tracking of the Peruvian economy. Prices, political risk, GDP and poverty — updated every day with open data."
+              : "Seguimiento diario de la economía peruana. Precios, riesgo político, PBI y pobreza — actualizados cada día con datos abiertos."}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {data.prices && (
+              <PriceIndexCard data={data.prices} isEn={isEn} />
+            )}
+            {data.political && (
+              <PoliticalRiskCard data={data.political} isEn={isEn} />
+            )}
+          </div>
+        </section>
+
         {/* Key Indicators */}
         <section className="mb-12">
           <h2 className="text-lg font-semibold text-gray-900 mb-4 tracking-tight">
