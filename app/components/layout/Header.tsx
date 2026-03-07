@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import LanguageSwitcher from "../LanguageSwitcher";
-import SearchModal from "../SearchModal";
 
 const chevron = (open: boolean) => (
   <svg
@@ -259,7 +258,6 @@ export default function Header() {
               )}
             </div>
 
-            <SearchModal />
             <LanguageSwitcher />
           </nav>
 

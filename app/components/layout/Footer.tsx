@@ -8,66 +8,54 @@ export default function Footer() {
   const isEn = useLocale() === "en";
   const currentYear = new Date().getFullYear();
 
-  const statsLinks = isEn ? [
-    ["/estadisticas/pbi", "GDP"],
-    ["/estadisticas/inflacion", "Inflation"],
-    ["/estadisticas/pobreza", "Poverty"],
-    ["/estadisticas/riesgo-politico", "Political Risk"],
-    ["/estadisticas/precios-diarios", "Daily Prices"],
-    ["/estadisticas/intervenciones", "Exchange Rate"],
-    ["/estadisticas/calendario", "Calendar"],
+  const investigacionLinks = isEn ? [
+    ["/estadisticas/pbi",               "GDP Nowcast"],
+    ["/estadisticas/inflacion",         "Inflation"],
+    ["/estadisticas/precios-diarios",   "Daily Prices (BPP)"],
+    ["/estadisticas/pobreza",           "Poverty"],
+    ["/estadisticas/riesgo-politico",   "Political Risk"],
+    ["/estadisticas/intervenciones",    "FX Market"],
     ["/estadisticas/pobreza/distritos", "District Poverty"],
+    ["/estadisticas/calendario",        "Economic Calendar"],
   ] : [
-    ["/estadisticas/pbi", "PBI"],
-    ["/estadisticas/inflacion", "Inflación"],
-    ["/estadisticas/pobreza", "Pobreza"],
-    ["/estadisticas/riesgo-politico", "Riesgo Político"],
-    ["/estadisticas/precios-diarios", "Precios Diarios"],
-    ["/estadisticas/intervenciones", "Mercado Cambiario"],
-    ["/estadisticas/calendario", "Calendario"],
+    ["/estadisticas/pbi",               "PBI Nowcast"],
+    ["/estadisticas/inflacion",         "Inflación"],
+    ["/estadisticas/precios-diarios",   "Precios Diarios (BPP)"],
+    ["/estadisticas/pobreza",           "Pobreza"],
+    ["/estadisticas/riesgo-politico",   "Riesgo Político"],
+    ["/estadisticas/intervenciones",    "Mercado Cambiario"],
     ["/estadisticas/pobreza/distritos", "Pobreza Distrital"],
+    ["/estadisticas/calendario",        "Calendario Económico"],
   ];
 
-  const toolLinks = isEn ? [
-    ["/columnas",   "Columns"],
+  const publicacionesLinks = isEn ? [
+    ["/columnas",    "Columns"],
+    ["/reportes",    "Reports"],
+    ["/datos",       "Open Data"],
+    ["/api/docs",    "API"],
     ["/simuladores", "Simulators"],
-    ["/escenarios", "Scenarios"],
-    ["/reportes",   "Reports"],
-    ["/datos",      "Open Data"],
-    ["/api/docs",   "API"],
-  ] : [
-    ["/columnas",   "Columnas"],
-    ["/simuladores", "Simuladores"],
-    ["/escenarios", "Escenarios"],
-    ["/reportes",   "Reportes"],
-    ["/datos",      "Datos Abiertos"],
-    ["/api/docs",   "API"],
-  ];
-
-  const projectLinks = isEn ? [
+    ["/escenarios",  "Scenarios"],
     ["/metodologia", "Methodology"],
-    ["/sobre-nosotros", "About Us"],
-    ["/institucional", "For Institutions"],
-    ["/feed.xml", "RSS Feed"],
   ] : [
+    ["/columnas",    "Columnas"],
+    ["/reportes",    "Reportes"],
+    ["/datos",       "Datos Abiertos"],
+    ["/api/docs",    "API"],
+    ["/simuladores", "Simuladores"],
+    ["/escenarios",  "Escenarios"],
     ["/metodologia", "Metodología"],
-    ["/sobre-nosotros", "Sobre Nosotros"],
-    ["/institucional", "Para Instituciones"],
-    ["/feed.xml", "Feed RSS"],
   ];
 
-  const sources = isEn ? [
-    "BCRP — Monetary series",
-    "INEI — GDP, CPI, Poverty",
-    "MIDAGRI — Agricultural prices",
-    "Plaza Vea · Metro · Wong",
-    "11 RSS feeds · 6 sources",
+  const institucionalLinks = isEn ? [
+    ["/sobre-nosotros", "About Qhawarina"],
+    ["/prensa",         "Press"],
+    ["/institucional",  "For Institutions"],
+    ["/feed.xml",       "RSS Feed"],
   ] : [
-    "BCRP — Series monetarias",
-    "INEI — PBI, IPC, Pobreza",
-    "MIDAGRI — Precios agrícolas",
-    "Plaza Vea · Metro · Wong",
-    "11 feeds RSS · 6 fuentes",
+    ["/sobre-nosotros", "Sobre Qhawarina"],
+    ["/prensa",         "Prensa"],
+    ["/institucional",  "Para Instituciones"],
+    ["/feed.xml",       "Feed RSS"],
   ];
 
   const linkStyle = { color: "#8D99AE" };
@@ -77,104 +65,29 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
 
-          {/* Brand */}
+          {/* Col 1: Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2 mb-3">
-              <Image
-                src="/logo-q-64.png"
-                alt="Q"
-                width={32}
-                height={32}
-                className="flex-shrink-0"
-              />
-              <span
-                className="text-xl font-bold tracking-wide"
-                style={{ color: "#C65D3E", fontFamily: "var(--font-outfit, sans-serif)" }}
-              >
+              <Image src="/logo-q-64.png" alt="Q" width={32} height={32} className="flex-shrink-0" />
+              <span className="text-xl font-bold tracking-wide"
+                style={{ color: "#C65D3E", fontFamily: "var(--font-outfit, sans-serif)" }}>
                 QHAWARINA
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-3" style={{ color: "#8D99AE" }}>
               {isEn
-                ? "Economic nowcasting for Peru. Daily predictions of GDP, inflation and poverty."
-                : "Nowcasting económico para Perú. Predicciones diarias de PBI, inflación y pobreza."}
+                ? "High-frequency economic data for Peru. Daily indicators of GDP, inflation, poverty and political risk."
+                : "Datos económicos de alta frecuencia para el Perú. Indicadores diarios de PBI, inflación, pobreza y riesgo político."}
             </p>
-            <p className="text-xs" style={{ color: "#4a5068" }}>
+            <p className="text-xs mb-4" style={{ color: "#4a5068" }}>
               {isEn ? "Data under CC BY 4.0 license" : "Datos bajo licencia CC BY 4.0"}
             </p>
-          </div>
-
-          {/* Statistics */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
-              {isEn ? "Statistics" : "Estadísticas"}
-            </h3>
-            <ul className="space-y-2">
-              {statsLinks.map(([href, label]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm transition-colors hover:text-[#C65D3E]"
-                    style={linkStyle}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Tools + Project */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
-              {isEn ? "Tools" : "Herramientas"}
-            </h3>
-            <ul className="space-y-2">
-              {toolLinks.map(([href, label]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm transition-colors hover:text-[#C65D3E]"
-                    style={linkStyle}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3 mt-5" style={{ color: "#FAF8F4" }}>
-              {isEn ? "Project" : "Proyecto"}
-            </h3>
-            <ul className="space-y-2">
-              {projectLinks.map(([href, label]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm transition-colors hover:text-[#C65D3E]"
-                    style={linkStyle}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Sources */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
-              {isEn ? "Sources" : "Fuentes"}
-            </h3>
-            <ul className="space-y-2">
-              {sources.map(s => (
-                <li key={s} className="text-sm" style={linkStyle}>{s}</li>
-              ))}
-            </ul>
+            {/* Social */}
             <a
               href="https://github.com/cesarchavezp29/qhawarina"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm mt-4 transition-colors hover:text-[#C65D3E]"
+              className="inline-flex items-center gap-1.5 text-sm transition-colors hover:text-[#C65D3E]"
               style={linkStyle}
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -183,12 +96,68 @@ export default function Footer() {
               GitHub
             </a>
           </div>
+
+          {/* Col 2: Investigación */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
+              {isEn ? "Research" : "Investigación"}
+            </h3>
+            <ul className="space-y-2">
+              {investigacionLinks.map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm transition-colors hover:text-[#C65D3E]" style={linkStyle}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Publicaciones */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
+              {isEn ? "Publications" : "Publicaciones"}
+            </h3>
+            <ul className="space-y-2">
+              {publicacionesLinks.map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm transition-colors hover:text-[#C65D3E]" style={linkStyle}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Institucional */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#FAF8F4" }}>
+              {isEn ? "About" : "Institucional"}
+            </h3>
+            <ul className="space-y-2">
+              {institucionalLinks.map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm transition-colors hover:text-[#C65D3E]" style={linkStyle}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 pt-4" style={{ borderTop: "1px solid #3d4258" }}>
+              <a
+                href="mailto:cchavezp@qhawarina.pe"
+                className="text-sm transition-colors hover:text-[#C65D3E]"
+                style={linkStyle}
+              >
+                cchavezp@qhawarina.pe
+              </a>
+            </div>
+          </div>
+
         </div>
 
-        <div
-          className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2"
-          style={{ borderTop: "1px solid #3d4258" }}
-        >
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2"
+          style={{ borderTop: "1px solid #3d4258" }}>
           <p className="text-sm" style={{ color: "#4a5068" }}>
             © {currentYear} Qhawarina — {isEn ? "Open data, transparent methodology" : "Datos abiertos, metodología transparente"}
           </p>

@@ -77,8 +77,8 @@ export default function SobreNosotrosPage() {
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
               {isEn
-                ? 'Qhawarina is an independent research center dedicated to producing high-frequency economic data for Peru. Combining web scraping, econometric models and natural language processing, Qhawarina produces daily indicators of inflation, political risk, GDP growth and monetary poverty — updated more frequently than official sources and freely accessible.'
-                : 'Qhawarina es un centro de investigación independiente dedicado a la producción de datos económicos de alta frecuencia para el Perú. Combinando web scraping, modelos econométricos y procesamiento de lenguaje natural, Qhawarina produce indicadores diarios de inflación, riesgo político, crecimiento del PBI y pobreza monetaria — actualizados con mayor frecuencia que las fuentes oficiales y accesibles de forma gratuita.'}
+                ? 'Qhawarina is a research center in high-frequency economic data for Peru. Combining web scraping, econometric models and natural language processing, Qhawarina produces daily indicators of inflation, political risk, GDP growth and monetary poverty — updated more frequently than official sources and freely accessible.'
+                : 'Qhawarina es un centro de investigación en datos económicos de alta frecuencia para el Perú. Combinando web scraping, modelos econométricos y procesamiento de lenguaje natural, Qhawarina produce indicadores diarios de inflación, riesgo político, crecimiento del PBI y pobreza monetaria — actualizados con mayor frecuencia que las fuentes oficiales y accesibles de forma gratuita.'}
             </p>
             <p>
               {isEn

@@ -1,5 +1,13 @@
 [
   {
+    "slug": "qhawarina-centro-investigacion-peru",
+    "title": "Qhawarina: datos económicos de alta frecuencia para el Perú",
+    "date": "2026-03-07",
+    "author": "Carlos César Chávez Padilla",
+    "excerpt": "Hoy presentamos Qhawarina, un centro de investigación dedicado a producir indicadores económicos diarios para el Perú. Precios de supermercados, nowcast de PBI e inflación, riesgo político y pobreza — actualizados cada mañana.",
+    "tags": ["qhawarina", "lanzamiento", "metodología"]
+  },
+  {
     "slug": "inflacion-alimentos-febrero-2026",
     "title": "¿Por qué subió el precio de los alimentos en febrero?",
     "date": "2026-03-07",
