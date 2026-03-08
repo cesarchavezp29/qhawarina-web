@@ -324,9 +324,9 @@ export default function PBIPage() {
                     />
                     <Tooltip
                       contentStyle={tooltipContentStyle}
-                      formatter={(v: number, name: string) => [
-                        `${v > 0 ? '+' : ''}${typeof v === 'number' ? v.toFixed(2) : v} ${name === (isEn ? 'Total YoY' : 'Total i.a.') ? '%' : 'pp'}`,
-                        name,
+                      formatter={(v: number | undefined, name: string | undefined) => [
+                        `${(v ?? 0) > 0 ? '+' : ''}${typeof v === 'number' ? v.toFixed(2) : '—'} ${name === (isEn ? 'Total YoY' : 'Total i.a.') ? '%' : 'pp'}`,
+                        name ?? '',
                       ]}
                     />
                     <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
@@ -384,7 +384,7 @@ export default function PBIPage() {
                     />
                     <Tooltip
                       contentStyle={tooltipContentStyle}
-                      formatter={(v: number, name: string) => [`${v?.toFixed(1) ?? '—'}%`, name]}
+                      formatter={(v: number | undefined, name: string | undefined) => [`${v?.toFixed(1) ?? '—'}%`, name ?? '']}
                     />
                     <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
                     {SECTOR_ORDER.map(key => (
