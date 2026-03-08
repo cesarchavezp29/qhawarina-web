@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-07"
+    "updated": "2026-03-08"
   },
   "categories": {
     "arroz_cereales": {
@@ -769,53 +769,53 @@
     },
     {
       "date": "2026-03-07",
-      "index_all": 99.427,
-      "index_all_unweighted": 99.5767,
-      "index_food": 99.4814,
-      "index_nonfood": 99.8893,
-      "var_all": -0.0757,
-      "var_food": -0.1408,
-      "cum_pct": -0.573,
+      "index_all": 99.4205,
+      "index_all_unweighted": 99.5637,
+      "index_food": 99.4684,
+      "index_nonfood": 99.8764,
+      "var_all": -0.0822,
+      "var_food": -0.1539,
+      "cum_pct": -0.5795,
       "yoy_inflation": null,
       "mom_inflation": null,
       "interpolated": false,
-      "n_matched": 33029,
-      "index_arroz_cereales": 99.3885,
-      "index_pan_harinas": 99.3336,
-      "index_carnes": 99.4845,
+      "n_matched": 33015,
+      "index_arroz_cereales": 99.4211,
+      "index_pan_harinas": 99.3282,
+      "index_carnes": 99.4774,
       "index_pescados_mariscos": 100.3532,
-      "index_lacteos": 99.4999,
-      "index_frutas": 100.0309,
+      "index_lacteos": 99.5115,
+      "index_frutas": 99.8773,
       "index_verduras": 98.962,
       "index_aceites_grasas": 98.9712,
-      "index_azucar_dulces": 100.146,
-      "index_bebidas": 99.4017,
+      "index_azucar_dulces": 100.1067,
+      "index_bebidas": 99.4203,
       "index_limpieza": 99.1206,
       "index_cuidado_personal": 98.9009,
-      "index_other": 100.7117
+      "index_other": 100.6898
     }
   ],
   "latest": {
     "date": "2026-03-07",
-    "index_all": 99.427,
-    "index_food": 99.4814,
-    "cum_pct": -0.573,
-    "var_all": -0.0757,
+    "index_all": 99.4205,
+    "index_food": 99.4684,
+    "cum_pct": -0.5795,
+    "var_all": -0.0822,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 33029,
+    "n_products_today": 33015,
     "top_movers": [
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.33
+        "var": -0.49
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.21
+        "var": -0.22
       },
       {
         "category": "pan_harinas",
@@ -857,22 +857,22 @@
       }
     ],
     "stores_coverage": {
-      "metro": 12558,
-      "plazavea": 10572,
-      "wong": 14962
+      "metro": 12570,
+      "plazavea": 13062,
+      "wong": 14987
     },
     "categories_coverage": {
-      "aceites_grasas": 655,
-      "arroz_cereales": 1303,
-      "azucar_dulces": 945,
-      "bebidas": 955,
-      "carnes": 14442,
-      "cuidado_personal": 1118,
-      "frutas": 1920,
-      "lacteos": 2553,
-      "limpieza": 2991,
-      "pan_harinas": 6496,
-      "pescados_mariscos": 227,
+      "aceites_grasas": 682,
+      "arroz_cereales": 1326,
+      "azucar_dulces": 1133,
+      "bebidas": 965,
+      "carnes": 14574,
+      "cuidado_personal": 2792,
+      "frutas": 1980,
+      "lacteos": 2733,
+      "limpieza": 3082,
+      "pan_harinas": 6634,
+      "pescados_mariscos": 228,
       "verduras": 315
     }
   }

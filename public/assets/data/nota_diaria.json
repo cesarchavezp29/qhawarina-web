@@ -1,25 +1,40 @@
 {
-  "date": "2026-03-07",
-  "headline_es": "PBI 2025-Q4: +2.2% — precios de supermercados bajan 0.3% en lo que va de marzo",
-  "headline_en": "GDP 2025-Q4: +2.2% — supermarket prices down 0.3% month-to-date in March",
-  "body_es": "El nowcast Qhawarina proyecta un crecimiento de +2.2% interanual para el cuarto trimestre de 2025. En el frente de precios, el índice diario de supermercados (Plaza Vea, Metro, Wong) acumula una caída de 0.3% en lo que va de marzo, impulsada por bajas en cuidado personal (-1.2%) y aceites y grasas (-0.4%). La proyección de inflación mensual para marzo se sitúa en +0.17% (promedio móvil 3M).",
-  "body_en": "The Qhawarina nowcast projects +2.2% year-on-year growth for Q4 2025. On the price front, the daily supermarket index (Plaza Vea, Metro, Wong) is down 0.3% month-to-date in March, driven by declines in personal care (-1.2%) and oils & fats (-0.4%). The monthly inflation nowcast for March stands at +0.17% (3M moving average).",
+  "date": "2026-03-08",
+  "headline_es": "Precios supermercado -0.58% MTD · Nowcast PBI +2.20%",
+  "headline_en": "Supermarket prices -0.58% MTD · GDP nowcast +2.20%",
+  "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
+  "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
-      "icon": "📈",
-      "text_es": "PBI Q4-2025: +2.2% a/a — nowcast DFM (35+ indicadores)",
-      "text_en": "GDP Q4-2025: +2.2% y/y — DFM nowcast (35+ indicators)"
+      "icon": "🛒",
+      "text_es": "Precios de supermercado bajó 0.58% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.58% month-to-date."
     },
     {
-      "icon": "🛒",
-      "text_es": "Precios supermercados: -0.3% acumulado marzo (cuidado personal -1.2%, aceites -0.4%)",
-      "text_en": "Supermarket prices: -0.3% MTD March (personal care -1.2%, oils -0.4%)"
+      "icon": "📉",
+      "text_es": "Frutas: -0.5% en el mes.",
+      "text_en": "Fruits: -0.5% this month."
+    },
+    {
+      "icon": "📉",
+      "text_es": "Carnes: -0.2% en el mes.",
+      "text_en": "Meat: -0.2% this month."
     },
     {
       "icon": "📊",
-      "text_es": "Inflación marzo: +0.17% nowcast (media móvil 3M) — datos al 06 Mar 2026",
-      "text_en": "March inflation: +0.17% nowcast (3M moving avg) — data through Mar 06, 2026"
+      "text_es": "Nowcast PBI 2025-Q4: +2.20% (variación anual estimada).",
+      "text_en": "GDP nowcast 2025-Q4: +2.20% (estimated year-on-year)."
+    },
+    {
+      "icon": "💹",
+      "text_es": "Nowcast inflación mensual: +0.17% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +0.17% (estimated monthly CPI)."
+    },
+    {
+      "icon": "🏛️",
+      "text_es": "Riesgo político: PRR 234 — nivel crítico.",
+      "text_en": "Political risk: PRR 234 — critical level."
     }
   ],
-  "updated_at": "2026-03-07T08:00:00"
+  "updated_at": "2026-03-08T03:21:36.181140+00:00"
 }
