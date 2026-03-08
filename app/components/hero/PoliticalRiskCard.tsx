@@ -224,7 +224,6 @@ export default function PoliticalRiskCard({
               <div className="flex justify-between mt-1" style={{ position: 'relative' }}>
                 <span className="text-xs" style={{ color: "#8D99AE" }}>0</span>
                 <span className="text-xs absolute" style={{ color: "#8D99AE", left: '33%', transform: 'translateX(-50%)' }}>100 (avg)</span>
-                <span className="text-xs absolute" style={{ color: "#8D99AE", left: '67%', transform: 'translateX(-50%)' }}>200</span>
                 <span className="text-xs" style={{ color: "#8D99AE" }}>300</span>
               </div>
             </div>
