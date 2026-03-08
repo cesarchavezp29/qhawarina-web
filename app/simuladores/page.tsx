@@ -43,7 +43,7 @@ const ELASTICITIES = {
   commodity_gdp: 0.110,   // VAR bivariate, Qhawarina
   commodity_cpi: 0.008,   // VAR 5-var OLS, Qhawarina
   fx_gdp:       -0.12,    // BCRP benchmark
-  fx_cpi:        0.105,   // VAR bivariate, Qhawarina
+  fx_cpi:        0.243,   // BVAR Minnesota prior (Qhawarina) — controls for commodity↔FX correlation
   rate_gdp:     -0.35,    // BCRP DSGE benchmark
   rate_cpi:     -0.15,    // BCRP benchmark
   china_gdp:    -1.50,    // World Bank / IMF (trade channel)
