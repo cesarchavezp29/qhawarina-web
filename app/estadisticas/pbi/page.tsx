@@ -281,7 +281,7 @@ export default function PBIPage() {
                   <YAxis type="category" dataKey="sector" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} width={85} />
                   <Tooltip
                     contentStyle={tooltipContentStyle}
-                    formatter={(v: number) => [`${v > 0 ? '+' : ''}${v.toFixed(2)} pp`, isEn ? 'Contribution' : 'Contribución']}
+                    formatter={(v: number | undefined) => [v != null ? `${v > 0 ? '+' : ''}${v.toFixed(2)} pp` : '—', isEn ? 'Contribution' : 'Contribución']}
                   />
                   <ReferenceLine x={0} stroke={CHART_DEFAULTS.axisStroke} />
                   <Bar dataKey="value" radius={[0, 3, 3, 0]}>
