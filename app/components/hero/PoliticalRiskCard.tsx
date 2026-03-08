@@ -24,13 +24,13 @@ const LEVEL_CONFIG: Record<string, { color: string; label_es: string; label_en: 
 // Continuous gradient bar, PRR scale 0-300 (capped at 300 for display)
 const PRR_MAX = 300;
 const GAUGE_GRADIENT = [
-  "#F0ECE6 0%",
-  "#E0C9B0 20%",
-  "#D4A574 35%",
-  "#C65D3E 55%",
-  "#A63C2A 75%",
-  "#9B2226 90%",
-  "#6B1518 100%",
+  "#8D99AE 0%",    // MINIMO (gray-blue)
+  "#2A9D8F 17%",   // BAJO (teal) — PRR 50
+  "#E0A458 27%",   // MODERADO start (amber) — PRR 80
+  "#E0A458 40%",   // MODERADO end — PRR 120
+  "#C65D3E 53%",   // ELEVADO — PRR 160
+  "#9B2226 67%",   // ALTO — PRR 200
+  "#6B0000 100%",  // CRITICO — PRR 300
 ].join(", ");
 
 function zoneColor(prr: number): string {
