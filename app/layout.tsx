@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   themeColor: "#C65D3E",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Qhawarina" },
   openGraph: {
-    title: "Qhawarina - Economic Nowcasting for Peru",
-    description: "Daily GDP, inflation, and poverty predictions for Peru",
+    title: "Qhawarina — Datos económicos de alta frecuencia para el Perú",
+    description: "Precios diarios, riesgo político, nowcast de PBI y pobreza para el Perú. Datos abiertos, actualización diaria.",
     url: "https://qhawarina.pe",
     siteName: "Qhawarina",
     locale: "es_PE",
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qhawarina - Economic Nowcasting for Peru",
-    description: "Daily GDP, inflation, and poverty predictions for Peru",
+    title: "Qhawarina — Datos económicos de alta frecuencia para el Perú",
+    description: "Precios diarios, riesgo político, nowcast de PBI y pobreza para el Perú. Datos abiertos, actualización diaria.",
     images: ["/opengraph-image"],
   },
 };
