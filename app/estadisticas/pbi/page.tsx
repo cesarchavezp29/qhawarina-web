@@ -159,6 +159,50 @@ export default function PBIPage() {
         </div>
         <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName={T.dataName} />
 
+        {/* Track Record Chart — hero */}
+        {trackRecord.length >= 2 && (
+          <div className="mt-6 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Track Record: Nowcast vs INEI Official' : 'Desempeño: Nowcast vs INEI Oficial'}
+              </h3>
+              <div className="flex items-center gap-3">
+                {rmse && (
+                  <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                    RMSE: {rmse.toFixed(2)} pp
+                  </span>
+                )}
+                <ChartShareButton
+                  url="https://qhawarina.pe/estadisticas/pbi"
+                  shareText={isEn
+                    ? `📊 Peru GDP Nowcast: +${data.nowcast.value?.toFixed(1) ?? '?'}% YoY (${data.nowcast.target_period}) — Qhawarina`
+                    : `📊 Nowcast PBI Perú: +${data.nowcast.value?.toFixed(1) ?? '?'}% interanual (${data.nowcast.target_period}) — Qhawarina`}
+                />
+              </div>
+            </div>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={trackRecord} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis dataKey="quarter" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v) => `${v}%`}
+                  label={{ value: isEn ? 'Growth (% YoY)' : 'Crecimiento (% i.a.)', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number | undefined) => [`${v?.toFixed(2) ?? '—'}%`]}
+                />
+                <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
+                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+                <Bar dataKey={isEn ? 'Nowcast' : 'Nowcast'} fill={CHART_COLORS.teal} radius={[3, 3, 0, 0]} />
+                <Bar dataKey={isEn ? 'INEI Official' : 'INEI Oficial'} fill={CHART_COLORS.ink3} radius={[3, 3, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link href="/estadisticas/pbi/graficos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
@@ -202,50 +246,6 @@ export default function PBIPage() {
             📖 {T.methodology}
           </a>
         </div>
-
-        {/* Track Record Chart */}
-        {trackRecord.length >= 2 && (
-          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Track Record: Nowcast vs INEI Official' : 'Desempeño: Nowcast vs INEI Oficial'}
-              </h3>
-              <div className="flex items-center gap-3">
-                {rmse && (
-                  <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
-                    RMSE: {rmse.toFixed(2)} pp
-                  </span>
-                )}
-                <ChartShareButton
-                  url="https://qhawarina.pe/estadisticas/pbi"
-                  shareText={isEn
-                    ? `📊 Peru GDP Nowcast: +${data.nowcast.value?.toFixed(1) ?? '?'}% YoY (${data.nowcast.target_period}) — Qhawarina`
-                    : `📊 Nowcast PBI Perú: +${data.nowcast.value?.toFixed(1) ?? '?'}% interanual (${data.nowcast.target_period}) — Qhawarina`}
-                />
-              </div>
-            </div>
-            <ResponsiveContainer width="100%" height={320}>
-              <BarChart data={trackRecord} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
-                <XAxis dataKey="quarter" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                <YAxis
-                  tick={axisTickStyle}
-                  stroke={CHART_DEFAULTS.axisStroke}
-                  tickFormatter={(v) => `${v}%`}
-                  label={{ value: isEn ? 'Growth (% YoY)' : 'Crecimiento (% i.a.)', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
-                />
-                <Tooltip
-                  contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined) => [`${v?.toFixed(2) ?? '—'}%`]}
-                />
-                <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
-                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
-                <Bar dataKey={isEn ? 'Nowcast' : 'Nowcast'} fill={CHART_COLORS.teal} radius={[3, 3, 0, 0]} />
-                <Bar dataKey={isEn ? 'INEI Official' : 'INEI Oficial'} fill={CHART_COLORS.ink3} radius={[3, 3, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        )}
 
         {contrib && latestContribs.length > 0 && (
           <>

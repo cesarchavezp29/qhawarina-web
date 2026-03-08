@@ -8,6 +8,13 @@ import EmbedWidget from "../../components/EmbedWidget";
 import ShareButton from "../../components/ShareButton";
 import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, ReferenceLine,
+} from 'recharts';
+import {
+  CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
+} from '../../lib/chartTheme';
 
 interface InflationData {
   metadata: { generated_at: string };
@@ -69,6 +76,14 @@ export default function InflacionPage() {
 
   const valStr = `${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(3)}%`;
 
+  const recentMonths = (data.recent_months ?? [])
+    .slice(-12)
+    .map(m => ({
+      month: m.month.slice(0, 7),
+      [isEn ? 'Nowcast' : 'Nowcast']: m.nowcast,
+      [isEn ? 'INEI Official' : 'INEI Oficial']: m.official,
+    }));
+
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,6 +105,39 @@ export default function InflacionPage() {
           <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
         </div>
         <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName={T.dataName} />
+
+        {/* Hero Chart — Nowcast vs INEI official, recent months */}
+        {recentMonths.length >= 2 && (
+          <div className="mt-6 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <h3 className="text-base font-semibold mb-4" style={{ color: CHART_COLORS.ink }}>
+              {isEn ? 'Nowcast vs INEI Official — recent months (% monthly)' : 'Nowcast vs INEI Oficial — últimos meses (% mensual)'}
+            </h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={recentMonths} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis dataKey="month" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v) => `${v?.toFixed(2)}%`}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number | undefined) => [`${v?.toFixed(3) ?? '—'}%`]}
+                />
+                <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
+                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+                <Bar dataKey={isEn ? 'Nowcast' : 'Nowcast'} fill={CHART_COLORS.teal} radius={[3, 3, 0, 0]} />
+                <Bar dataKey={isEn ? 'INEI Official' : 'INEI Oficial'} fill={CHART_COLORS.ink3} radius={[3, 3, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+            <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+              {isEn
+                ? 'DFM nowcast (3M MA target) vs INEI official monthly CPI. RMSE ≈ 0.32 pp. Source: INEI / Qhawarina.'
+                : 'Nowcast DFM (objetivo MA3M) vs IPC mensual oficial INEI. RMSE ≈ 0.32 pp. Fuente: INEI / Qhawarina.'}
+            </p>
+          </div>
+        )}
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link href="/estadisticas/inflacion/graficos">

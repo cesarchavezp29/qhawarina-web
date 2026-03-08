@@ -484,23 +484,7 @@ export default function IntervencionesBCRPPage() {
           </div>
         </div>
 
-        {/* KPI Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          {[
-            { label: isEn ? "FX PEN/USD" : "TC PEN/USD", val: latest.fx?.toFixed(4), unit: isEn ? "interbank selling" : "venta interbancaria", color: "text-emerald-700" },
-            { label: isEn ? "BCRP Reference Rate" : "Tasa referencia BCRP", val: latest.reference_rate ? `${latest.reference_rate.toFixed(2)}%` : "—", unit: isEn ? "monetary policy" : "política monetaria", color: "text-blue-800" },
-            { label: isEn ? "Spot Intervention" : "Intervención spot", val: latest.spot_net_purchases !== null ? `${latest.spot_net_purchases > 0 ? "+" : ""}${latest.spot_net_purchases.toFixed(0)} M` : "—", unit: isEn ? "last day (USD)" : "último día (USD)", color: latest.spot_net_purchases !== null && latest.spot_net_purchases >= 0 ? "text-blue-700" : "text-red-600" },
-            { label: isEn ? "10Y Sovereign Bond (S/)" : "Bono soberano 10a S/", val: latest.bond_sol_10y ? `${latest.bond_sol_10y.toFixed(2)}%` : "—", unit: isEn ? "annual yield" : "rendimiento anual", color: "text-red-700" },
-          ].map((kpi) => (
-            <div key={kpi.label} className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-              <p className="text-xs text-gray-500 mb-1">{kpi.label}</p>
-              <p className={`text-2xl font-bold ${kpi.color}`}>{kpi.val ?? "—"}</p>
-              <p className="text-xs text-gray-400">{kpi.unit}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Main interactive chart ─────────────────────────────────────────── */}
+        {/* ── Hero chart — main interactive ───────────────────────────────── */}
         <div className="bg-white rounded-xl shadow-md p-6 mb-6">
 
           {/* Controls row */}
@@ -605,6 +589,22 @@ export default function IntervencionesBCRPPage() {
                   : "Datos diarios (2 años) o mensuales acumulados (desde ene 2020). Barras: Mill. USD · Líneas: escala derecha.")}
             {" "}Fuente: BCRP.
           </p>
+        </div>
+
+        {/* KPI Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+          {[
+            { label: isEn ? "FX PEN/USD" : "TC PEN/USD", val: latest.fx?.toFixed(4), unit: isEn ? "interbank selling" : "venta interbancaria", color: "text-emerald-700" },
+            { label: isEn ? "BCRP Reference Rate" : "Tasa referencia BCRP", val: latest.reference_rate ? `${latest.reference_rate.toFixed(2)}%` : "—", unit: isEn ? "monetary policy" : "política monetaria", color: "text-blue-800" },
+            { label: isEn ? "Spot Intervention" : "Intervención spot", val: latest.spot_net_purchases !== null ? `${latest.spot_net_purchases > 0 ? "+" : ""}${latest.spot_net_purchases.toFixed(0)} M` : "—", unit: isEn ? "last day (USD)" : "último día (USD)", color: latest.spot_net_purchases !== null && latest.spot_net_purchases >= 0 ? "text-blue-700" : "text-red-600" },
+            { label: isEn ? "10Y Sovereign Bond (S/)" : "Bono soberano 10a S/", val: latest.bond_sol_10y ? `${latest.bond_sol_10y.toFixed(2)}%` : "—", unit: isEn ? "annual yield" : "rendimiento anual", color: "text-red-700" },
+          ].map((kpi) => (
+            <div key={kpi.label} className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+              <p className="text-xs text-gray-500 mb-1">{kpi.label}</p>
+              <p className={`text-2xl font-bold ${kpi.color}`}>{kpi.val ?? "—"}</p>
+              <p className="text-xs text-gray-400">{kpi.unit}</p>
+            </div>
+          ))}
         </div>
 
         {/* Monthly summary */}

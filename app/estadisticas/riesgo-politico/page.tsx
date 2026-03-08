@@ -138,47 +138,7 @@ export default function RiesgoPoliticoPage() {
           <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
         </div>
 
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {[
-            { label: T.articlesTotal, value: data.current.articles_total.toString() },
-            { label: T.articlesPolitical, value: data.current.articles_political.toString() },
-            { label: T.articlesEconomic, value: data.current.articles_economic.toString() },
-            { label: T.rssFeeds, value: data.metadata.rss_feeds.toString() },
-          ].map(({ label, value }) => (
-            <div key={label} className="bg-white rounded-lg border border-gray-200 p-4">
-              <p className="text-xs text-gray-500">{label}</p>
-              <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link href="/estadisticas/riesgo-politico/metodologia">
-            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="text-4xl">📖</div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">{T.cardMethodology}</h2>
-                  <p className="text-sm text-gray-600 mt-1">{T.cardMethodologyDesc}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/datos">
-            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="text-4xl">📥</div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">{T.cardDownload}</h2>
-                  <p className="text-sm text-gray-600 mt-1">{T.cardDownloadDesc(data.metadata.coverage_days)}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* Daily PRR Chart — last 90 days */}
+        {/* Daily PRR Chart — hero, last 90 days */}
         {dailyTrend.length >= 2 && (
           <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
             <div className="flex items-center justify-between mb-4">
@@ -219,6 +179,46 @@ export default function RiesgoPoliticoPage() {
             </p>
           </div>
         )}
+
+        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {[
+            { label: T.articlesTotal, value: data.current.articles_total.toString() },
+            { label: T.articlesPolitical, value: data.current.articles_political.toString() },
+            { label: T.articlesEconomic, value: data.current.articles_economic.toString() },
+            { label: T.rssFeeds, value: data.metadata.rss_feeds.toString() },
+          ].map(({ label, value }) => (
+            <div key={label} className="bg-white rounded-lg border border-gray-200 p-4">
+              <p className="text-xs text-gray-500">{label}</p>
+              <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link href="/estadisticas/riesgo-politico/metodologia">
+            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
+              <div className="flex items-center gap-4">
+                <div className="text-4xl">📖</div>
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">{T.cardMethodology}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{T.cardMethodologyDesc}</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/datos">
+            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
+              <div className="flex items-center gap-4">
+                <div className="text-4xl">📥</div>
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">{T.cardDownload}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{T.cardDownloadDesc(data.metadata.coverage_days)}</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
 
         {/* Monthly Average Trend Chart */}
         {monthlyTrend.length >= 2 && (

@@ -112,6 +112,60 @@ export default function PobrezaPage() {
         </div>
         <DataFreshnessWarning generatedAt={data.metadata.generated_at} dataName={T.dataName} />
 
+        {/* Department Rankings Chart — hero */}
+        {deptRanking.length > 0 && (
+          <div className="mt-6 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <div className="flex items-start justify-between mb-1">
+              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
+                {isEn
+                  ? 'Poverty by Department — 2025 Projection'
+                  : 'Pobreza por Departamento — Proyección 2025'}
+              </h3>
+              <ChartShareButton
+                url="https://qhawarina.pe/estadisticas/pobreza"
+                shareText={(() => {
+                  const top = data.departments.slice().sort((a, b) => b.poverty_rate_2025_nowcast - a.poverty_rate_2025_nowcast)[0];
+                  return isEn
+                    ? `📊 Peru Poverty by Dept (2025 nowcast): ${top ? `${top.name} ${top.poverty_rate_2025_nowcast.toFixed(1)}%` : ''} — Qhawarina`
+                    : `📊 Pobreza por departamento Perú (nowcast 2025): ${top ? `${top.name} ${top.poverty_rate_2025_nowcast.toFixed(1)}%` : ''} — Qhawarina`;
+                })()}
+              />
+            </div>
+            <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
+              {isEn ? 'Sorted by 2024 official rate (INEI). Amber = 2025 nowcast.' : 'Ordenado por tasa oficial 2024 (INEI). Ámbar = nowcast 2025.'}
+            </p>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart
+                layout="vertical"
+                data={deptRanking}
+                margin={{ top: 4, right: 40, left: 90, bottom: 4 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} horizontal={false} />
+                <XAxis
+                  type="number"
+                  domain={[0, 50]}
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={v => `${v}%`}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  tick={{ fontSize: 9, fontFamily: CHART_DEFAULTS.axisFontFamily, fill: CHART_DEFAULTS.axisStroke }}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  width={85}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: number | undefined, name: string | undefined) => [`${v?.toFixed(1) ?? '—'}%`, name ?? '']}
+                />
+                <Bar dataKey="2024" fill={CHART_COLORS.ink3} radius={[0, 3, 3, 0]} />
+                <Bar dataKey={isEn ? '2025 Nowcast' : 'Nowcast 2025'} fill={CHART_COLORS.amber} radius={[0, 3, 3, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link href="/estadisticas/pobreza/graficos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
@@ -155,60 +209,6 @@ export default function PobrezaPage() {
             📖 {T.methodology}
           </a>
         </div>
-
-        {/* Department Rankings Chart */}
-        {deptRanking.length > 0 && (
-          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="flex items-start justify-between mb-1">
-              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-                {isEn
-                  ? 'Poverty by Department — 2025 Projection'
-                  : 'Pobreza por Departamento — Proyección 2025'}
-              </h3>
-              <ChartShareButton
-                url="https://qhawarina.pe/estadisticas/pobreza"
-                shareText={(() => {
-                  const top = data.departments.slice().sort((a, b) => b.poverty_rate_2025_nowcast - a.poverty_rate_2025_nowcast)[0];
-                  return isEn
-                    ? `📊 Peru Poverty by Dept (2025 nowcast): ${top ? `${top.name} ${top.poverty_rate_2025_nowcast.toFixed(1)}%` : ''} — Qhawarina`
-                    : `📊 Pobreza por departamento Perú (nowcast 2025): ${top ? `${top.name} ${top.poverty_rate_2025_nowcast.toFixed(1)}%` : ''} — Qhawarina`;
-                })()}
-              />
-            </div>
-            <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
-              {isEn ? 'Sorted by 2024 official rate (INEI). Amber = 2025 nowcast.' : 'Ordenado por tasa oficial 2024 (INEI). Ámbar = nowcast 2025.'}
-            </p>
-            <ResponsiveContainer width="100%" height={620}>
-              <BarChart
-                layout="vertical"
-                data={deptRanking}
-                margin={{ top: 4, right: 40, left: 90, bottom: 4 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} horizontal={false} />
-                <XAxis
-                  type="number"
-                  domain={[0, 50]}
-                  tick={axisTickStyle}
-                  stroke={CHART_DEFAULTS.axisStroke}
-                  tickFormatter={v => `${v}%`}
-                />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  tick={axisTickStyle}
-                  stroke={CHART_DEFAULTS.axisStroke}
-                  width={85}
-                />
-                <Tooltip
-                  contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined, name: string | undefined) => [`${v?.toFixed(1) ?? '—'}%`, name ?? '']}
-                />
-                <Bar dataKey="2024" fill={CHART_COLORS.ink3} radius={[0, 3, 3, 0]} />
-                <Bar dataKey={isEn ? '2025 Nowcast' : 'Nowcast 2025'} fill={CHART_COLORS.amber} radius={[0, 3, 3, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        )}
       </div>
     </div>
   );

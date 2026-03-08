@@ -299,6 +299,73 @@ export default function PreciosDiariosPage() {
           </div>
         </div>
 
+        {/* Data coverage notice */}
+        {n < 30 && (
+          <div className="bg-amber-50 border border-amber-200 rounded-lg px-5 py-3 mb-6 flex items-center gap-3">
+            <span className="text-amber-600">⚠️</span>
+            <p className="text-sm text-amber-800">
+              {isEn
+                ? <><strong>{n} days of data</strong> available. The series becomes statistically robust after 30 days. The scraper accumulates data automatically every day.</>
+                : <><strong>{n} días de datos</strong> disponibles. La serie se vuelve estadísticamente robusta a partir de 30 días. El scraper acumula datos cada día automáticamente.</>}
+            </p>
+          </div>
+        )}
+
+        {/* Hero Chart — main price index */}
+        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div className="flex gap-2">
+              {(["index", "daily_change", "cumulative"] as ViewMode[]).map((mode) => (
+                <button
+                  key={mode}
+                  onClick={() => setViewMode(mode)}
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    viewMode === mode ? "bg-blue-800 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {viewModeLabels[mode]}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => setShowCategories(!showCategories)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                showCategories ? "bg-purple-100 text-purple-800" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {showCategories
+                ? (isEn ? 'Hide categories' : 'Ocultar categorías')
+                : (isEn ? 'Show by category' : 'Ver por categoría')}
+            </button>
+          </div>
+
+          <Plot
+            data={[...mainTraces, ...catTraces]}
+            layout={layout}
+            config={{
+              responsive: true,
+              displayModeBar: true,
+              displaylogo: false,
+              modeBarButtonsToRemove: ["select2d", "lasso2d"],
+              toImageButtonOptions: {
+                format: "png",
+                filename: "qhawarina_precios_diarios",
+                height: 700,
+                width: 1400,
+                scale: 2,
+              },
+            }}
+            style={{ width: "100%", height: "100%" }}
+            useResizeHandler
+          />
+
+          <p className="text-xs text-gray-500 mt-3">
+            {isEn
+              ? <>Source: Qhawarina / Plaza Vea / Metro / Wong — Bilateral chain-linked Jevons index, base {data.metadata.base_date} = 100. Filter: 0.5 &lt; ratio &lt; 2.0.</>
+              : <>Fuente: Qhawarina / Plaza Vea / Metro / Wong — Índice Jevons bilateral chain-linked, base {data.metadata.base_date} = 100. Filtro: 0.5 &lt; ratio &lt; 2.0.</>}
+          </p>
+        </div>
+
         {/* KPI Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
@@ -382,73 +449,6 @@ export default function PreciosDiariosPage() {
             </p>
           </div>
         )}
-
-        {/* Data coverage notice */}
-        {n < 30 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-lg px-5 py-3 mb-6 flex items-center gap-3">
-            <span className="text-amber-600">⚠️</span>
-            <p className="text-sm text-amber-800">
-              {isEn
-                ? <><strong>{n} days of data</strong> available. The series becomes statistically robust after 30 days. The scraper accumulates data automatically every day.</>
-                : <><strong>{n} días de datos</strong> disponibles. La serie se vuelve estadísticamente robusta a partir de 30 días. El scraper acumula datos cada día automáticamente.</>}
-            </p>
-          </div>
-        )}
-
-        {/* Chart */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-            <div className="flex gap-2">
-              {(["index", "daily_change", "cumulative"] as ViewMode[]).map((mode) => (
-                <button
-                  key={mode}
-                  onClick={() => setViewMode(mode)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                    viewMode === mode ? "bg-blue-800 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  {viewModeLabels[mode]}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={() => setShowCategories(!showCategories)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                showCategories ? "bg-purple-100 text-purple-800" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              {showCategories
-                ? (isEn ? 'Hide categories' : 'Ocultar categorías')
-                : (isEn ? 'Show by category' : 'Ver por categoría')}
-            </button>
-          </div>
-
-          <Plot
-            data={[...mainTraces, ...catTraces]}
-            layout={layout}
-            config={{
-              responsive: true,
-              displayModeBar: true,
-              displaylogo: false,
-              modeBarButtonsToRemove: ["select2d", "lasso2d"],
-              toImageButtonOptions: {
-                format: "png",
-                filename: "qhawarina_precios_diarios",
-                height: 700,
-                width: 1400,
-                scale: 2,
-              },
-            }}
-            style={{ width: "100%", height: "100%" }}
-            useResizeHandler
-          />
-
-          <p className="text-xs text-gray-500 mt-3">
-            {isEn
-              ? <>Source: Qhawarina / Plaza Vea / Metro / Wong — Bilateral chain-linked Jevons index, base {data.metadata.base_date} = 100. Filter: 0.5 &lt; ratio &lt; 2.0.</>
-              : <>Fuente: Qhawarina / Plaza Vea / Metro / Wong — Índice Jevons bilateral chain-linked, base {data.metadata.base_date} = 100. Filtro: 0.5 &lt; ratio &lt; 2.0.</>}
-          </p>
-        </div>
 
         {/* Category breakdown */}
         {data.categories && (
