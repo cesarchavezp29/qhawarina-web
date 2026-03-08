@@ -23,6 +23,44 @@ interface PoliticalData {
   monthly_series?: Array<{ month: string; political_avg: number }>;
 }
 
+const PRR_MAX = 300;
+const GAUGE_GRADIENT = [
+  '#F0ECE6 0%', '#E0C9B0 20%', '#D4A574 35%',
+  '#C65D3E 55%', '#A63C2A 75%', '#9B2226 90%', '#6B1518 100%',
+].join(', ');
+
+function zoneColor(prr: number): string {
+  if (prr < 50)  return '#8D99AE';
+  if (prr < 80)  return '#2A9D8F';
+  if (prr < 120) return '#E0A458';
+  if (prr < 160) return '#C65D3E';
+  if (prr < 200) return '#9B2226';
+  return '#6B1518';
+}
+
+function RiskBar({ score }: { score: number }) {
+  const pct = Math.max(0, Math.min(PRR_MAX, score)) / PRR_MAX * 100;
+  const dotColor = zoneColor(score);
+  return (
+    <div className="mt-4 mb-1">
+      <div
+        className="relative h-3 rounded-full overflow-visible"
+        style={{ background: `linear-gradient(90deg, ${GAUGE_GRADIENT})` }}
+      >
+        <div
+          className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-white shadow-md"
+          style={{ left: `calc(${pct}% - 8px)`, background: dotColor }}
+        />
+      </div>
+      <div className="flex justify-between mt-1.5 relative">
+        <span className="text-xs text-gray-400">0</span>
+        <span className="text-xs text-gray-400 absolute" style={{ left: '33%', transform: 'translateX(-50%)' }}>100 (avg)</span>
+        <span className="text-xs text-gray-400">300</span>
+      </div>
+    </div>
+  );
+}
+
 const LEVEL_STYLES: Record<string, { bg: string; text: string; border: string }> = {
   MINIMO:   { bg: 'bg-gray-50',   text: 'text-gray-600',   border: 'border-gray-300'  },
   BAJO:     { bg: 'bg-green-50',  text: 'text-green-700',  border: 'border-green-300' },
@@ -124,14 +162,17 @@ export default function RiesgoPoliticoPage() {
           </div>
         </div>
 
-        <div className={`mt-4 inline-flex items-center gap-4 px-5 py-3 rounded-xl border-2 ${styles.border} ${styles.bg}`}>
-          <div>
-            <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{T.currentLevel}</p>
-            <p className={`text-3xl font-bold ${styles.text}`}>{Math.round(data.current.score)} <span className="text-base font-normal text-gray-400">PRR</span></p>
+        <div className={`mt-4 px-5 py-4 rounded-xl border-2 ${styles.border} ${styles.bg}`}>
+          <div className="flex items-center gap-4 mb-1">
+            <div>
+              <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{T.currentLevel}</p>
+              <p className={`text-3xl font-bold ${styles.text}`}>{Math.round(data.current.score)} <span className="text-base font-normal text-gray-400">PRR</span></p>
+            </div>
+            <div className={`px-3 py-1 rounded-full text-sm font-semibold ${styles.bg} ${styles.text} border ${styles.border}`}>
+              {level}
+            </div>
           </div>
-          <div className={`px-3 py-1 rounded-full text-sm font-semibold ${styles.bg} ${styles.text} border ${styles.border}`}>
-            {level}
-          </div>
+          <RiskBar score={data.current.score} />
         </div>
 
         <div className="mt-3">
