@@ -313,24 +313,6 @@ export default function RiesgoPoliticoPage() {
     daily: d.prr   ?? d.score_raw ?? d.score,
   }));
 
-  // Top 3 raw spikes > 300 for crisis annotations
-  const topSpikes = [...(data.daily_series ?? [])]
-    .map((d) => ({ date: d.date, prr: d.prr ?? d.score_raw ?? 0 }))
-    .filter((d) => d.prr > 300)
-    .sort((a, b) => b.prr - a.prr)
-    .slice(0, 3);
-
-  const formatSpikeLabel = (date: string, prr: number) => {
-    const mult = Math.round(prr / 100);
-    try {
-      const [, m, d] = date.split('-').map(Number);
-      const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-      return `${mult}× · ${d} ${months[m - 1]}`;
-    } catch {
-      return `${mult}× · ${date.slice(5)}`;
-    }
-  };
-
   // Y-axis ticks in PRR, formatted as multipliers
   const maxPrr = Math.max(...dailyTrend.map((d) => Math.max(d.trend, d.daily)), 200);
   const yTicks = [0, 100, 200, 300, 500].filter((t) => t <= maxPrr + 150);
@@ -468,12 +450,12 @@ export default function RiesgoPoliticoPage() {
                 data={dailyTrend}
                 margin={{ top: 8, right: 16, left: 8, bottom: 8 }}
               >
-                {/* Zone background bands */}
-                <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.05} stroke="none" />
-                <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.05} stroke="none" />
+                {/* Zone background bands — subtle context, not dominant visual */}
+                <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
+                <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={200} y2={300} fill="#C65D3E" fillOpacity={0.05} stroke="none" />
-                <ReferenceArea y1={300} y2={500} fill="#9B2226" fillOpacity={0.07} stroke="none" />
-                <ReferenceArea y1={500}          fill="#5C0000" fillOpacity={0.08} stroke="none" />
+                <ReferenceArea y1={300} y2={500} fill="#9B2226" fillOpacity={0.08} stroke="none" />
+                <ReferenceArea y1={500}          fill="#6B0000" fillOpacity={0.12} stroke="none" />
 
                 <CartesianGrid
                   strokeDasharray="3 3"
@@ -523,21 +505,6 @@ export default function RiesgoPoliticoPage() {
                   }}
                 />
 
-                {/* Crisis spike annotations (top 3 raw PRR > 300) */}
-                {topSpikes.map((spike, i) => (
-                  <ReferenceLine
-                    key={i}
-                    x={spike.date}
-                    stroke="#9B2226"
-                    strokeDasharray="2 2"
-                    strokeOpacity={0.6}
-                    label={{
-                      value: formatSpikeLabel(spike.date, spike.prr),
-                      position: 'top',
-                      style: { fontSize: 8, fill: '#9B2226' },
-                    }}
-                  />
-                ))}
 
                 {/* Raw daily PRR — thin, muted */}
                 <Area

@@ -112,9 +112,9 @@ export default function PoliticalRiskCard({
   const series30 = (data.daily_series ?? []).slice(-30);
   const sparklineValues = series30.map((r) => r.prr_7d ?? r.score);  // 7d avg for sparkline
 
-  const prr7d = current.prr_7d ?? current.score ?? 0;   // 7d rolling avg (badge color)
-  const prrRaw = current.prr_raw ?? current.score ?? 0;  // raw daily PRR (big number)
-  const scoreDisplay = Math.round(prrRaw);
+  const prr7d = current.prr_7d ?? current.score ?? 0;   // 7d rolling avg — main display
+  const prrRaw = current.prr_raw ?? current.score ?? 0;  // raw daily PRR — secondary
+  const scoreDisplay = Math.round(prr7d);                 // Option A: 7d avg as main number
   const level = current.level ?? "BAJO";
   const cfg = LEVEL_CONFIG[level] ?? LEVEL_CONFIG["MODERADO"];
   const articles = current.articles_total ?? 0;
@@ -214,10 +214,10 @@ export default function PoliticalRiskCard({
                 </span>
                 <div className="flex flex-col gap-0.5">
                   <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#8D99AE" }}>
-                    PRR {isEn ? "Today" : "Hoy"}
+                    PRR {isEn ? "7d avg" : "Prom. 7d"}
                   </span>
                   <span className="text-xs" style={{ color: "#8D99AE" }}>
-                    {isEn ? "7d avg" : "Prom. 7d"}: {Math.round(prr7d)}
+                    {isEn ? "Today" : "Hoy"}: {Math.round(prrRaw)}
                   </span>
                 </div>
                 <span
