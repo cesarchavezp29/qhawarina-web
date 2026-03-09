@@ -717,7 +717,7 @@ export default function RiesgoPoliticoPage() {
         {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink2 }}>
+              <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink }}>
                 {isEn ? 'Why this level?' : '¿Por qué este nivel?'}
               </h3>
               <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
