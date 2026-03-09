@@ -29,6 +29,13 @@ interface PoliticalData {
     articles_total: number;
     articles_political: number;
     articles_economic: number;
+    justification?: string | null;
+    top_drivers?: Array<{
+      title: string;
+      source: string;
+      category: string;
+      severity: number;
+    }> | null;
   };
   daily_series?: Array<{
     date: string;
@@ -593,6 +600,51 @@ export default function RiesgoPoliticoPage() {
             </table>
           </div>
         </div>
+
+        {/* ══ SECTION 5b: HAIKU JUSTIFICATION ════════════════════════════ */}
+        {data.current.justification && (
+          <div
+            className="mb-6 rounded-lg p-5"
+            style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}
+          >
+            <div className="flex items-start justify-between mb-3">
+              <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink2 }}>
+                {isEn ? '¿Why this level?' : '¿Por qué este nivel?'}
+              </h3>
+              <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                {formatDate(data.current.date, isEn)}
+              </span>
+            </div>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: CHART_COLORS.ink1 }}>
+              "{data.current.justification}"
+            </p>
+            {data.current.top_drivers && data.current.top_drivers.length > 0 && (
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: CHART_COLORS.ink3 }}>
+                  {isEn ? 'Main signals' : 'Principales señales'}
+                </p>
+                <ul className="space-y-1.5">
+                  {data.current.top_drivers.map((d, i) => {
+                    const dotColor = d.severity >= 0.8 ? '#9B2226' : d.severity >= 0.5 ? '#C65D3E' : '#E0A458';
+                    return (
+                      <li key={i} className="flex items-start gap-2 text-xs" style={{ color: CHART_COLORS.ink2 }}>
+                        <span
+                          className="mt-0.5 flex-shrink-0 w-2 h-2 rounded-full"
+                          style={{ background: dotColor, marginTop: '4px' }}
+                        />
+                        <span className="font-mono text-xs w-8 flex-shrink-0" style={{ color: dotColor }}>
+                          {d.severity.toFixed(1)}
+                        </span>
+                        <span className="leading-tight">{d.title}</span>
+                        <span className="flex-shrink-0 ml-1" style={{ color: CHART_COLORS.ink3 }}>({d.source})</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
