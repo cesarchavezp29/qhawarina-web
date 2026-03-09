@@ -221,10 +221,10 @@ export default function RiesgoPoliticoPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined, name: string) => [
+                  formatter={((v: number | undefined, name?: string) => [
                     `${Math.round(v ?? 0)}`,
                     name === 'score' ? (isEn ? '7d avg' : 'Prom. 7d') : (isEn ? 'Daily PRR' : 'PRR diario'),
-                  ]}
+                  ]) as any}
                 />
                 <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2"
                   label={{ value: isEn ? 'avg (100)' : 'media (100)', position: 'insideTopRight', style: { fontSize: 9, fill: CHART_COLORS.ink3 } }}
