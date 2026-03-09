@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-09T09:49:14.543719",
+    "generated_at": "2026-03-09T09:56:39.569126",
     "coverage_days": 433,
     "rss_feeds": 11,
     "rss_sources": 6,
@@ -8,15 +8,15 @@
   },
   "current": {
     "date": "2026-03-09",
-    "score": 90.8,
-    "prr_7d": 90.8,
+    "score": 295.2,
+    "prr_7d": 295.2,
     "prr_raw": 363.2,
-    "level": "MODERADO",
+    "level": "CRITICO",
     "articles_total": 175,
     "articles_political": 0,
     "articles_economic": 0,
-    "driver_phrase": "Fragmentación política y debilitamiento institucional del Estado peruano.",
-    "justification": "El riesgo político moderado se sustenta en la convergencia de crisis infraestructural y fragmentación institucional: la parálisis por el ducto expone vulnerabilidades estructurales, mientras que el uso de investidura presidencial para suspender juicios y la infiltración de grupos radicales en bancadas evidencian erosión de controles. La condicionalidad legislativa sobre políticas educativas amplifica polarización. La tendencia indica escalamiento gradual sin ruptura inmediata, requiriendo monitoreo de resolución infraestructural y acciones judiciales subsecuentes.",
+    "driver_phrase": "Confrontación entre poderes y corrupción institucional.",
+    "justification": "El riesgo político alcanza nivel crítico (PRR: 363) impulsado por una convergencia de presiones estructurales: la crisis energética paraliza la economía, mientras la política se fragmenta con condicionalidades legislativas y señales de debilitamiento institucional reflejadas en la suspensión de procesos judiciales. La distribución equilibrada entre artículos políticos y económicos sugiere escalamiento, indicando que ambas dimensiones se retroalimentan sin mecanismos de contención visibles.",
     "top_drivers": [
       {
         "title": "Un solo ducto paraliza al país y expone la falta del Gasoducto Sur Peruano",
@@ -51,12 +51,69 @@
     ]
   },
   "aggregates": {
-    "7d_avg": 39.4,
-    "30d_avg": 9.2,
-    "year_max": 90.8,
+    "7d_avg": 253.4,
+    "30d_avg": 67.2,
+    "year_max": 295.2,
     "year_max_date": "2026-03-09"
   },
-  "major_events": [],
+  "major_events": [
+    {
+      "date": "2026-03-09",
+      "score": 295.2,
+      "level": "CRITICO",
+      "n_articles": 175,
+      "summary": "Conflicto entre poderes por intereses partidarios y personales.",
+      "report_url": "/political/daily-reports/2026-03-09.html"
+    },
+    {
+      "date": "2026-03-08",
+      "score": 281.6,
+      "level": "CRITICO",
+      "n_articles": 75,
+      "summary": "Conflictos entre Ejecutivo y Congreso generan inestabilidad política.",
+      "report_url": "/political/daily-reports/2026-03-08.html"
+    },
+    {
+      "date": "2026-03-07",
+      "score": 290.3,
+      "level": "CRITICO",
+      "n_articles": 65,
+      "summary": "Conflicto institucional entre poderes ejecutivo y judicial.",
+      "report_url": "/political/daily-reports/2026-03-07.html"
+    },
+    {
+      "date": "2026-03-06",
+      "score": 287.1,
+      "level": "CRITICO",
+      "n_articles": 106,
+      "summary": "Debilitamiento institucional por corrupción e inacción estatal.",
+      "report_url": "/political/daily-reports/2026-03-06.html"
+    },
+    {
+      "date": "2026-03-05",
+      "score": 235.2,
+      "level": "CRITICO",
+      "n_articles": 94,
+      "summary": "Candidatos presidenciales con expedientes por fraude documental.",
+      "report_url": "/political/daily-reports/2026-03-05.html"
+    },
+    {
+      "date": "2026-03-04",
+      "score": 211.5,
+      "level": "CRITICO",
+      "n_articles": 97,
+      "summary": "Investigación constitucional contra presidenta genera inestabilidad política.",
+      "report_url": "/political/daily-reports/2026-03-04.html"
+    },
+    {
+      "date": "2026-03-03",
+      "score": 172.8,
+      "level": "ALTO",
+      "n_articles": 76,
+      "summary": "Fragmentación política extrema debilita la gobernabilidad democrática.",
+      "report_url": "/political/daily-reports/2026-03-03.html"
+    }
+  ],
   "daily_series": [
     {
       "date": "2025-03-10",
@@ -3610,100 +3667,100 @@
     },
     {
       "date": "2026-02-28",
-      "score": 0.0,
+      "score": 38.2,
       "score_raw": 0.0,
       "prr": 0.0,
-      "prr_7d": 0.0,
+      "prr_7d": 38.2,
       "n_articles": 62,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-01",
-      "score": 0.0,
+      "score": 85.9,
       "score_raw": 0.0,
       "prr": 0.0,
-      "prr_7d": 0.0,
+      "prr_7d": 85.9,
       "n_articles": 60,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-02",
-      "score": 0.0,
+      "score": 118.4,
       "score_raw": 0.0,
       "prr": 0.0,
-      "prr_7d": 0.0,
+      "prr_7d": 118.4,
       "n_articles": 75,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-03",
-      "score": 0.0,
-      "score_raw": 0.0,
-      "prr": 0.0,
-      "prr_7d": 0.0,
+      "score": 172.8,
+      "score_raw": 267.3,
+      "prr": 267.3,
+      "prr_7d": 172.8,
       "n_articles": 76,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-04",
-      "score": 0.0,
-      "score_raw": 0.0,
-      "prr": 0.0,
-      "prr_7d": 0.0,
+      "score": 211.5,
+      "score_raw": 334.0,
+      "prr": 334.0,
+      "prr_7d": 211.5,
       "n_articles": 97,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-05",
-      "score": 0.0,
-      "score_raw": 0.0,
-      "prr": 0.0,
-      "prr_7d": 0.0,
+      "score": 235.2,
+      "score_raw": 227.5,
+      "prr": 227.5,
+      "prr_7d": 235.2,
       "n_articles": 94,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-06",
-      "score": 51.9,
-      "score_raw": 0.0,
-      "prr": 0.0,
-      "prr_7d": 51.9,
+      "score": 287.1,
+      "score_raw": 381.1,
+      "prr": 381.1,
+      "prr_7d": 287.1,
       "n_articles": 106,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-07",
-      "score": 60.5,
-      "score_raw": 0.0,
-      "prr": 0.0,
-      "prr_7d": 60.5,
+      "score": 290.3,
+      "score_raw": 270.6,
+      "prr": 270.6,
+      "prr_7d": 290.3,
       "n_articles": 65,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-08",
-      "score": 72.6,
-      "score_raw": 0.0,
-      "prr": 0.0,
-      "prr_7d": 72.6,
+      "score": 281.6,
+      "score_raw": 165.8,
+      "prr": 165.8,
+      "prr_7d": 281.6,
       "n_articles": 75,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-09",
-      "score": 90.8,
+      "score": 295.2,
       "score_raw": 363.2,
       "prr": 363.2,
-      "prr_7d": 90.8,
+      "prr_7d": 295.2,
       "n_articles": 175,
       "low_coverage": false,
       "provisional": true
@@ -4960,13 +5017,13 @@
     },
     {
       "month": "2026-02",
-      "political_avg": 0.0,
+      "political_avg": 1.4,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-03",
-      "political_avg": 30.6,
+      "political_avg": 219.8,
       "fx_level": null,
       "fx_yoy": null
     }
