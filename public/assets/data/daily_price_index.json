@@ -823,53 +823,53 @@
     },
     {
       "date": "2026-03-09",
-      "index_all": 99.4891,
-      "index_all_unweighted": 99.6674,
-      "index_food": 99.5801,
-      "index_nonfood": 99.9557,
-      "var_all": 0.0526,
-      "var_food": 0.0737,
-      "cum_pct": -0.5109,
+      "index_all": 99.4884,
+      "index_all_unweighted": 99.6664,
+      "index_food": 99.5773,
+      "index_nonfood": 99.9599,
+      "var_all": 0.0519,
+      "var_food": 0.0708,
+      "cum_pct": -0.5116,
       "yoy_inflation": null,
       "mom_inflation": null,
       "interpolated": false,
-      "n_matched": 40318,
+      "n_matched": 40365,
       "index_arroz_cereales": 99.3533,
-      "index_pan_harinas": 99.4226,
-      "index_carnes": 99.6399,
+      "index_pan_harinas": 99.4213,
+      "index_carnes": 99.6368,
       "index_pescados_mariscos": 100.5243,
-      "index_lacteos": 99.5578,
-      "index_frutas": 99.997,
+      "index_lacteos": 99.5571,
+      "index_frutas": 99.9771,
       "index_verduras": 98.9734,
-      "index_aceites_grasas": 98.7127,
-      "index_azucar_dulces": 100.3747,
+      "index_aceites_grasas": 98.7148,
+      "index_azucar_dulces": 100.3839,
       "index_bebidas": 99.4,
-      "index_limpieza": 99.181,
-      "index_cuidado_personal": 99.0435,
-      "index_other": 100.7399
+      "index_limpieza": 99.1887,
+      "index_cuidado_personal": 99.0473,
+      "index_other": 100.7418
     }
   ],
   "latest": {
     "date": "2026-03-09",
-    "index_all": 99.4891,
-    "index_food": 99.5801,
-    "cum_pct": -0.5109,
-    "var_all": 0.0526,
+    "index_all": 99.4884,
+    "index_food": 99.5773,
+    "cum_pct": -0.5116,
+    "var_all": 0.0519,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 40318,
+    "n_products_today": 40365,
     "top_movers": [
       {
         "category": "aceites_grasas",
         "label_es": "Aceites y Grasas",
         "label_en": "Oils & Fats",
-        "var": -0.29
+        "var": -0.28
       },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": 0.2
+        "var": 0.21
       },
       {
         "category": "pescados_mariscos",
@@ -905,28 +905,28 @@
       },
       {
         "name": "Cebada Instantánea Cuisine & Co 170g",
-        "store": "metro",
+        "store": "wong",
         "category": "other",
         "var": 70.89
       }
     ],
     "stores_coverage": {
       "metro": 12486,
-      "plazavea": 12965,
-      "wong": 14914
+      "plazavea": 13092,
+      "wong": 14918
     },
     "categories_coverage": {
-      "aceites_grasas": 675,
-      "arroz_cereales": 1329,
-      "azucar_dulces": 1124,
-      "bebidas": 964,
-      "carnes": 14493,
-      "cuidado_personal": 2789,
-      "frutas": 1937,
-      "lacteos": 2730,
-      "limpieza": 3070,
-      "pan_harinas": 6545,
-      "pescados_mariscos": 229,
+      "aceites_grasas": 680,
+      "arroz_cereales": 1334,
+      "azucar_dulces": 1128,
+      "bebidas": 967,
+      "carnes": 14549,
+      "cuidado_personal": 2792,
+      "frutas": 1958,
+      "lacteos": 2734,
+      "limpieza": 3074,
+      "pan_harinas": 6568,
+      "pescados_mariscos": 230,
       "verduras": 312
     }
   }
