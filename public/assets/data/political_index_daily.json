@@ -18,91 +18,27 @@
     "driver_phrase": null
   },
   "aggregates": {
-    "7d_avg": 247.1,
-    "30d_avg": 239.3,
-    "year_max": 462.7,
-    "year_max_date": "2026-02-18"
+    "7d_avg": 86.0,
+    "30d_avg": 20.1,
+    "year_max": 169.2,
+    "year_max_date": "2026-03-09"
   },
   "major_events": [
     {
-      "date": "2026-03-07",
-      "score": 274.4,
-      "level": "CRITICO",
-      "n_articles": 20,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-07.html"
-    },
-    {
-      "date": "2026-03-06",
-      "score": 273.5,
-      "level": "CRITICO",
-      "n_articles": 48,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-06.html"
-    },
-    {
-      "date": "2026-03-05",
-      "score": 265.3,
-      "level": "CRITICO",
-      "n_articles": 31,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-05.html"
-    },
-    {
-      "date": "2026-03-04",
-      "score": 245.8,
-      "level": "CRITICO",
-      "n_articles": 38,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-04.html"
-    },
-    {
-      "date": "2026-03-03",
-      "score": 241.3,
-      "level": "CRITICO",
-      "n_articles": 30,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-03.html"
-    },
-    {
-      "date": "2026-03-02",
-      "score": 212.5,
-      "level": "CRITICO",
-      "n_articles": 31,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-02.html"
-    },
-    {
-      "date": "2026-03-01",
-      "score": 216.8,
-      "level": "CRITICO",
-      "n_articles": 20,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-03-01.html"
-    },
-    {
-      "date": "2026-02-28",
-      "score": 205.2,
-      "level": "CRITICO",
-      "n_articles": 13,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-02-28.html"
-    },
-    {
-      "date": "2026-02-27",
-      "score": 179.0,
+      "date": "2026-03-09",
+      "score": 169.2,
       "level": "ALTO",
-      "n_articles": 20,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-02-27.html"
+      "n_articles": 69,
+      "summary": "Corrupción y conflictos de poder institucional desestabilizan gobierno.",
+      "report_url": "/political/daily-reports/2026-03-09.html"
     },
     {
-      "date": "2026-02-26",
-      "score": 165.6,
-      "level": "ALTO",
-      "n_articles": 32,
-      "summary": "Alta inestabilidad política registrada.",
-      "report_url": "/political/daily-reports/2026-02-26.html"
+      "date": "2026-03-08",
+      "score": 135.4,
+      "level": "ELEVADO",
+      "n_articles": 147,
+      "summary": "Corrupción e impunidad de autoridades políticas debilitan instituciones.",
+      "report_url": "/political/daily-reports/2026-03-08.html"
     }
   ],
   "daily_series": [
@@ -168,7 +104,7 @@
     },
     {
       "date": "2025-03-14",
-      "score": 204.5,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 204.5,
@@ -538,7 +474,7 @@
     },
     {
       "date": "2025-04-20",
-      "score": 58.6,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 58.6,
@@ -548,7 +484,7 @@
     },
     {
       "date": "2025-04-21",
-      "score": 28.4,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 28.4,
@@ -608,7 +544,7 @@
     },
     {
       "date": "2025-04-27",
-      "score": 42.0,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 42.0,
@@ -618,7 +554,7 @@
     },
     {
       "date": "2025-04-28",
-      "score": 39.2,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 39.2,
@@ -628,7 +564,7 @@
     },
     {
       "date": "2025-04-29",
-      "score": 7.9,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 7.9,
@@ -658,7 +594,7 @@
     },
     {
       "date": "2025-05-02",
-      "score": 133.0,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 133.0,
@@ -668,7 +604,7 @@
     },
     {
       "date": "2025-05-03",
-      "score": 133.0,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 133.0,
@@ -698,7 +634,7 @@
     },
     {
       "date": "2025-05-06",
-      "score": 142.5,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 142.5,
@@ -768,7 +704,7 @@
     },
     {
       "date": "2025-05-13",
-      "score": 57.2,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 57.2,
@@ -958,7 +894,7 @@
     },
     {
       "date": "2025-06-01",
-      "score": 15.0,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 15.0,
@@ -998,7 +934,7 @@
     },
     {
       "date": "2025-06-05",
-      "score": 14.6,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 14.6,
@@ -1018,7 +954,7 @@
     },
     {
       "date": "2025-06-07",
-      "score": 14.4,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 14.4,
@@ -1058,7 +994,7 @@
     },
     {
       "date": "2025-06-11",
-      "score": 20.4,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 20.4,
@@ -3528,7 +3464,7 @@
     },
     {
       "date": "2026-02-13",
-      "score": 178.6,
+      "score": 0.0,
       "score_raw": 0.0,
       "prr": 0.0,
       "prr_7d": 178.6,
@@ -4930,91 +4866,91 @@
   "monthly_series": [
     {
       "month": "2025-01",
-      "political_avg": 151.3,
-      "fx_level": 3.7477,
-      "fx_yoy": 0.21
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-02",
-      "political_avg": 83.2,
-      "fx_level": 3.6977,
-      "fx_yoy": -3.39
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-03",
-      "political_avg": 145.8,
-      "fx_level": 3.6526,
-      "fx_yoy": -1.54
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-04",
-      "political_avg": 75.1,
-      "fx_level": 3.6997,
-      "fx_yoy": -0.36
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-05",
-      "political_avg": 77.0,
-      "fx_level": 3.6601,
-      "fx_yoy": -1.9
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-06",
-      "political_avg": 75.9,
-      "fx_level": 3.6039,
-      "fx_yoy": -4.78
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-07",
-      "political_avg": 67.9,
-      "fx_level": 3.5562,
-      "fx_yoy": -5.53
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-08",
-      "political_avg": 83.2,
-      "fx_level": 3.5432,
-      "fx_yoy": -5.3
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-09",
-      "political_avg": 82.6,
-      "fx_level": 3.5028,
-      "fx_yoy": -7.04
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-10",
-      "political_avg": 110.4,
-      "fx_level": 3.4141,
-      "fx_yoy": -9.04
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-11",
-      "political_avg": 100.9,
-      "fx_level": 3.3729,
-      "fx_yoy": -10.74
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2025-12",
-      "political_avg": 82.7,
-      "fx_level": 3.3667,
-      "fx_yoy": -9.86
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2026-01",
-      "political_avg": 150.1,
-      "fx_level": 3.3567,
-      "fx_yoy": -10.43
+      "political_avg": 0.0,
+      "fx_level": null,
+      "fx_yoy": null
     },
     {
       "month": "2026-02",
-      "political_avg": 220.7,
+      "political_avg": 0.0,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-03",
-      "political_avg": 247.1,
+      "political_avg": 66.9,
       "fx_level": null,
       "fx_yoy": null
     }
