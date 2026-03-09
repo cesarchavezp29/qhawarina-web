@@ -6,10 +6,12 @@ interface PoliticalData {
   current: {
     date: string;
     score: number;
+    prr_raw?: number;
+    prr_7d?: number;
     level: string;
     articles_total: number;
   };
-  daily_series: Array<{ date: string; score: number }>;
+  daily_series: Array<{ date: string; score: number; prr?: number; prr_7d?: number }>;
 }
 
 const LEVEL_CONFIG: Record<string, { color: string; label_es: string; label_en: string }> = {
@@ -108,10 +110,11 @@ export default function PoliticalRiskCard({
 }) {
   const current = data.current;
   const series30 = (data.daily_series ?? []).slice(-30);
-  const scoreValues = series30.map((r) => r.score);
+  const sparklineValues = series30.map((r) => r.prr_7d ?? r.score);  // 7d avg for sparkline
 
-  const score = current.score ?? 0;
-  const scoreDisplay = Math.round(score);  // PRR value (mean=100, unbounded)
+  const prr7d = current.prr_7d ?? current.score ?? 0;   // 7d rolling avg (badge color)
+  const prrRaw = current.prr_raw ?? current.score ?? 0;  // raw daily PRR (big number)
+  const scoreDisplay = Math.round(prrRaw);
   const level = current.level ?? "BAJO";
   const cfg = LEVEL_CONFIG[level] ?? LEVEL_CONFIG["MODERADO"];
   const articles = current.articles_total ?? 0;
@@ -196,7 +199,7 @@ export default function PoliticalRiskCard({
           {/* Score (0-100) + level badge + sparkline */}
           <div className="flex items-end gap-4">
             <div className="flex-1">
-              <div className="flex items-baseline gap-3 mb-2">
+              <div className="flex items-baseline gap-3 mb-1">
                 <span
                   className="tabular-nums leading-none"
                   style={{
@@ -209,9 +212,14 @@ export default function PoliticalRiskCard({
                 >
                   {scoreDisplay}
                 </span>
-                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#8D99AE" }}>
-                  PRR
-                </span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#8D99AE" }}>
+                    PRR {isEn ? "Today" : "Hoy"}
+                  </span>
+                  <span className="text-xs" style={{ color: "#8D99AE" }}>
+                    {isEn ? "7d avg" : "Prom. 7d"}: {Math.round(prr7d)}
+                  </span>
+                </div>
                 <span
                   className="text-sm font-bold px-2 py-0.5 rounded"
                   style={{ background: cfg.color + "20", color: cfg.color }}
@@ -219,8 +227,8 @@ export default function PoliticalRiskCard({
                   {isEn ? cfg.label_en : cfg.label_es}
                 </span>
               </div>
-              {/* PRR gauge bar (mean=100, cap at 300 for display) */}
-              <RiskBar score={score} />
+              {/* PRR gauge bar (mean=100, cap at 300 for display) — color based on 7d avg */}
+              <RiskBar score={prr7d} />
               <div className="flex justify-between mt-1" style={{ position: 'relative' }}>
                 <span className="text-xs" style={{ color: "#8D99AE" }}>0</span>
                 <span className="text-xs absolute" style={{ color: "#8D99AE", left: '33%', transform: 'translateX(-50%)' }}>100 (avg)</span>
@@ -228,7 +236,7 @@ export default function PoliticalRiskCard({
               </div>
             </div>
             <div className="flex-1 h-12">
-              <Sparkline data={scoreValues} color={cfg.color} />
+              <Sparkline data={sparklineValues} color={cfg.color} />
             </div>
           </div>
 

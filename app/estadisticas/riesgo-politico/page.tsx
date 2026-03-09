@@ -18,8 +18,8 @@ import {
 
 interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
-  current: { date: string; score: number; level: string; articles_total: number; articles_political: number; articles_economic: number };
-  daily_series?: Array<{ date: string; score: number }>;
+  current: { date: string; score: number; prr_7d?: number; prr_raw?: number; level: string; articles_total: number; articles_political: number; articles_economic: number };
+  daily_series?: Array<{ date: string; score: number; score_raw?: number; prr?: number; prr_7d?: number }>;
   monthly_series?: Array<{ month: string; political_avg: number }>;
 }
 
@@ -133,8 +133,13 @@ export default function RiesgoPoliticoPage() {
   const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MODERADO'];
 
   // Daily PRR trend — full history (all available data)
+  // prr_7d = 7d rolling avg (bold line), prr = raw daily (thin line)
   const dailyTrend = (data.daily_series ?? [])
-    .map(d => ({ date: d.date, score: d.score }));
+    .map(d => ({
+      date: d.date,
+      score: d.prr_7d ?? d.score,                   // 7d avg (bold)
+      prr: d.prr ?? d.score_raw ?? d.score,          // raw daily (thin)
+    }));
 
   // Monthly average trend — all non-zero months
   const monthlyTrend = (data.monthly_series ?? [])
@@ -169,13 +174,22 @@ export default function RiesgoPoliticoPage() {
           <div className="flex items-center gap-4 mb-1">
             <div>
               <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{T.currentLevel}</p>
-              <p className={`text-3xl font-bold ${styles.text}`}>{Math.round(data.current.score)} <span className="text-base font-normal text-gray-400">PRR</span></p>
+              <p className={`text-3xl font-bold ${styles.text}`}>
+                {Math.round(data.current.prr_7d ?? data.current.score)}{' '}
+                <span className="text-base font-normal text-gray-400">PRR</span>
+              </p>
+              <p className="text-xs text-gray-400 mt-0.5">
+                {isEn ? 'Today (raw):' : 'Hoy (raw):'}{' '}
+                <span className="font-medium">{Math.round(data.current.prr_raw ?? data.current.score)}</span>
+                {' · '}
+                {isEn ? '7-day avg' : 'Prom. 7 días'}
+              </p>
             </div>
             <div className={`px-3 py-1 rounded-full text-sm font-semibold ${styles.bg} ${styles.text} border ${styles.border}`}>
               {level}
             </div>
           </div>
-          <RiskBar score={data.current.score} />
+          <RiskBar score={data.current.prr_7d ?? data.current.score} />
         </div>
 
         <div className="mt-3">
@@ -207,19 +221,28 @@ export default function RiesgoPoliticoPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined) => [`${Math.round(v ?? 0)}`, 'PRR']}
+                  formatter={(v: number | undefined, name: string) => [
+                    `${Math.round(v ?? 0)}`,
+                    name === 'score' ? (isEn ? '7d avg' : 'Prom. 7d') : (isEn ? 'Daily PRR' : 'PRR diario'),
+                  ]}
                 />
                 <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2"
                   label={{ value: isEn ? 'avg (100)' : 'media (100)', position: 'insideTopRight', style: { fontSize: 9, fill: CHART_COLORS.ink3 } }}
                 />
+                {/* Raw daily PRR — thin background line */}
+                <Area type="monotone" dataKey="prr"
+                  stroke="#C65D3E" fill="none"
+                  dot={false} strokeWidth={1} strokeOpacity={0.35} />
+                {/* 7-day rolling average — bold foreground line with fill */}
                 <Area type="monotone" dataKey="score"
                   stroke="#C65D3E" fill="#C65D3E" fillOpacity={0.12}
-                  dot={false} strokeWidth={1.5} />
+                  dot={false} strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
             <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
-              {isEn ? 'PRR = Political Risk Rating. Mean = 100 (dashed line). Source: Qhawarina AI-GPR · 11 RSS feeds.'
-                : 'PRR = Índice de Riesgo Político. Media = 100 (línea punteada). Fuente: Qhawarina AI-GPR · 11 feeds RSS.'}
+              {isEn
+                ? 'Bold line = 7-day rolling avg. Thin line = raw daily PRR. Mean = 100 (dashed). Source: Qhawarina AI-GPR · 11 RSS feeds.'
+                : 'Línea gruesa = promedio móvil 7d. Línea fina = PRR diario bruto. Media = 100 (punteada). Fuente: Qhawarina AI-GPR · 11 feeds RSS.'}
             </p>
           </div>
         )}
