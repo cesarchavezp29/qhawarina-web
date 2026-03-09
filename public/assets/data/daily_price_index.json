@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-07",
-    "n_days": 26,
+    "last_date": "2026-03-08",
+    "n_days": 27,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -793,86 +793,113 @@
       "index_limpieza": 99.1206,
       "index_cuidado_personal": 98.9009,
       "index_other": 100.6898
+    },
+    {
+      "date": "2026-03-08",
+      "index_all": 99.4368,
+      "index_all_unweighted": 99.5931,
+      "index_food": 99.5068,
+      "index_nonfood": 99.8782,
+      "var_all": 0.0164,
+      "var_food": 0.0386,
+      "cum_pct": -0.5632,
+      "yoy_inflation": null,
+      "mom_inflation": null,
+      "interpolated": false,
+      "n_matched": 40452,
+      "index_arroz_cereales": 99.3947,
+      "index_pan_harinas": 99.3632,
+      "index_carnes": 99.5315,
+      "index_pescados_mariscos": 100.3532,
+      "index_lacteos": 99.5192,
+      "index_frutas": 99.9157,
+      "index_verduras": 98.962,
+      "index_aceites_grasas": 98.9966,
+      "index_azucar_dulces": 100.1701,
+      "index_bebidas": 99.4236,
+      "index_limpieza": 99.1159,
+      "index_cuidado_personal": 98.9055,
+      "index_other": 100.6946
     }
   ],
   "latest": {
-    "date": "2026-03-07",
-    "index_all": 99.4205,
-    "index_food": 99.4684,
-    "cum_pct": -0.5795,
-    "var_all": -0.0822,
+    "date": "2026-03-08",
+    "index_all": 99.4368,
+    "index_food": 99.5068,
+    "cum_pct": -0.5632,
+    "var_all": 0.0164,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 33015,
+    "n_products_today": 40452,
     "top_movers": [
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.49
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 0.06
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.22
+        "var": 0.05
       },
       {
         "category": "pan_harinas",
         "label_es": "Pan y Harinas",
         "label_en": "Bread & Flour",
-        "var": -0.09
+        "var": 0.04
       },
       {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": -0.06
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.04
       }
     ],
     "product_movers": [
       {
-        "name": "Arándanos Extra Wong 500g",
-        "store": "wong",
-        "category": "carnes",
-        "var": 95.2
-      },
-      {
-        "name": "Mix de Lechuga Crespa Ecologic x 2 Unid",
+        "name": "Lechuga Crespa Cuisine & Co",
         "store": "metro",
         "category": "carnes",
-        "var": 56.0
+        "var": 75.0
       },
       {
-        "name": "Lechuga Roja Hidropónica de Invernade...",
-        "store": "metro",
-        "category": "frutas",
-        "var": 54.55
-      },
-      {
-        "name": "Cheesecake Horneado de Maracuyá Dulce...",
+        "name": "Biscuits Sabor Naranja il Pastificio ...",
         "store": "wong",
         "category": "pan_harinas",
-        "var": 53.98
+        "var": 66.67
+      },
+      {
+        "name": "Uvas Verdes Sin Pepa Cotton Candy Caj...",
+        "store": "metro",
+        "category": "frutas",
+        "var": 63.38
+      },
+      {
+        "name": "Piña para Jugo x kg",
+        "store": "wong",
+        "category": "frutas",
+        "var": 60.24
       }
     ],
     "stores_coverage": {
-      "metro": 12570,
-      "plazavea": 13062,
-      "wong": 14987
+      "metro": 12578,
+      "plazavea": 13050,
+      "wong": 15032
     },
     "categories_coverage": {
-      "aceites_grasas": 682,
-      "arroz_cereales": 1326,
-      "azucar_dulces": 1133,
+      "aceites_grasas": 681,
+      "arroz_cereales": 1335,
+      "azucar_dulces": 1134,
       "bebidas": 965,
-      "carnes": 14574,
-      "cuidado_personal": 2792,
-      "frutas": 1980,
-      "lacteos": 2733,
-      "limpieza": 3082,
-      "pan_harinas": 6634,
-      "pescados_mariscos": 228,
+      "carnes": 14581,
+      "cuidado_personal": 2813,
+      "frutas": 1975,
+      "lacteos": 2744,
+      "limpieza": 3087,
+      "pan_harinas": 6627,
+      "pescados_mariscos": 229,
       "verduras": 315
     }
   }

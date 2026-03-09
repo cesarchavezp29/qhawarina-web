@@ -132,15 +132,13 @@ export default function RiesgoPoliticoPage() {
   const level = data.current.level;
   const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MODERADO'];
 
-  // Daily PRR trend — last 90 days
+  // Daily PRR trend — full history (all available data)
   const dailyTrend = (data.daily_series ?? [])
-    .slice(-90)
     .map(d => ({ date: d.date, score: d.score }));
 
-  // Monthly average trend — last 6 non-zero months (for secondary chart)
+  // Monthly average trend — all non-zero months
   const monthlyTrend = (data.monthly_series ?? [])
     .filter(m => m.political_avg > 0)
-    .slice(-6)
     .map(m => ({
       month: m.month.slice(0, 7),
       score: parseFloat((m.political_avg).toFixed(1)),
@@ -189,7 +187,7 @@ export default function RiesgoPoliticoPage() {
           <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Daily Risk Score — last 90 days' : 'Índice diario de riesgo — últimos 90 días'}
+                {isEn ? 'Daily Risk Score — full history' : 'Índice diario de riesgo — historia completa'}
               </h3>
               <ChartShareButton
                 url="https://qhawarina.pe/estadisticas/riesgo-politico"
