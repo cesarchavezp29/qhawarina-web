@@ -22,69 +22,100 @@ interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
   current: {
     date: string;
-    score: number;
+    // Dual indices (new)
+    political_raw: number;
+    political_7d: number;
+    political_level: string;
+    political_multiplier: number;
+    economic_raw: number;
+    economic_7d: number;
+    economic_level: string;
+    economic_multiplier: number;
+    // Legacy (kept for backward compat)
+    score?: number;
     prr_7d?: number;
     prr_raw?: number;
-    level: string;
+    level?: string;
     articles_total: number;
-    articles_political: number;
-    articles_economic: number;
+    articles_political_relevant?: number;
+    articles_economic_relevant?: number;
+    political_justification?: string | null;
+    economic_justification?: string | null;
+    top_political_drivers?: Array<{ title: string; source: string; score: number }> | null;
+    top_economic_drivers?: Array<{ title: string; source: string; score: number }> | null;
+    // Legacy
     justification?: string | null;
-    top_drivers?: Array<{
-      title: string;
-      source: string;
-      category: string;
-      severity: number;
-    }> | null;
+    top_drivers?: Array<{ title: string; source: string; category: string; severity: number }> | null;
   };
   daily_series?: Array<{
     date: string;
-    score: number;
-    score_raw?: number;
+    political_raw?: number;
+    political_7d?: number;
+    economic_raw?: number;
+    economic_7d?: number;
+    // legacy
+    score?: number;
     prr?: number;
     prr_7d?: number;
+    score_raw?: number;
     n_articles?: number;
+    low_coverage?: boolean;
+    provisional?: boolean;
   }>;
   monthly_series?: Array<{ month: string; political_avg: number }>;
 }
 
-// ─── RISK LEVEL SYSTEM (5 levels, clean multiplier boundaries) ───────────────
-// Boundaries: 100 (1×), 200 (2×), 300 (3×), 500 (5×)
-// Replaces the old 6-level system (MÍNIMO/BAJO merged into NORMAL).
+// ─── RISK LEVEL SYSTEM (6 levels) ────────────────────────────────────────────
+// MINIMO / BAJO / MODERADO / ELEVADO / ALTO / CRITICO
+// Boundaries aligned with multiplier thresholds (mean = 100).
 
-type RiskLevel = 'NORMAL' | 'ELEVADO' | 'ALTO' | 'CRITICO' | 'EMERGENCIA';
+type RiskLevel = 'MINIMO' | 'BAJO' | 'MODERADO' | 'ELEVADO' | 'ALTO' | 'CRITICO';
 
 interface LevelCfg {
   color: string;
   label_es: string;
   label_en: string;
-  desc_es: string;
-  desc_en: string;
+  desc_pol_es: string;
+  desc_pol_en: string;
+  desc_eco_es: string;
+  desc_eco_en: string;
   range: string;
   mult: string;
 }
 
-// Colors taken directly from the Qhawarina gauge gradient:
-//   #2A9D8F (teal) → #E0A458 (amber) → #C65D3E (terracotta) → #9B2226 (maroon) → #6B0000 (dark)
 const LEVELS: Record<RiskLevel, LevelCfg> = {
-  NORMAL:     { color: '#2A9D8F', label_es: 'Normal',     label_en: 'Normal',    desc_es: 'Actividad política rutinaria',                   desc_en: 'Routine political activity',                  range: '< 100',    mult: '< 1×' },
-  ELEVADO:    { color: '#E0A458', label_es: 'Elevado',    label_en: 'Elevated',  desc_es: 'Tensiones por encima del promedio',              desc_en: 'Above-average political tensions',            range: '100–200',  mult: '1–2×' },
-  ALTO:       { color: '#C65D3E', label_es: 'Alto',       label_en: 'High',      desc_es: 'Crisis política significativa',                  desc_en: 'Significant political crisis',                range: '200–300',  mult: '2–3×' },
-  CRITICO:    { color: '#9B2226', label_es: 'Crítico',    label_en: 'Critical',  desc_es: 'Crisis grave, múltiples eventos simultáneos',    desc_en: 'Severe crisis, multiple simultaneous events', range: '300–500',  mult: '3–5×' },
-  EMERGENCIA: { color: '#6B0000', label_es: 'Emergencia', label_en: 'Emergency', desc_es: 'Crisis histórica extraordinaria',                desc_en: 'Extraordinary historical crisis',             range: '> 500',    mult: '> 5×' },
+  MINIMO:   { color: '#8D99AE', label_es: 'Mínimo',   label_en: 'Minimal',   desc_pol_es: 'Gobernanza rutinaria',          desc_pol_en: 'Routine governance',           desc_eco_es: 'Economía estable',          desc_eco_en: 'Stable economy',           range: '< 50',     mult: '< 0.5×' },
+  BAJO:     { color: '#2A9D8F', label_es: 'Bajo',     label_en: 'Low',       desc_pol_es: 'Tensiones menores',             desc_pol_en: 'Minor tensions',               desc_eco_es: 'Presiones leves',           desc_eco_en: 'Mild pressures',           range: '50–100',   mult: '0.5–1×' },
+  MODERADO: { color: '#E0A458', label_es: 'Moderado', label_en: 'Moderate',  desc_pol_es: 'Inestabilidad moderada',        desc_pol_en: 'Moderate instability',         desc_eco_es: 'Estrés moderado',           desc_eco_en: 'Moderate stress',          range: '100–150',  mult: '1–1.5×' },
+  ELEVADO:  { color: '#C65D3E', label_es: 'Elevado',  label_en: 'Elevated',  desc_pol_es: 'Crisis significativa',          desc_pol_en: 'Significant crisis',           desc_eco_es: 'Vulnerabilidad seria',      desc_eco_en: 'Serious vulnerability',    range: '150–200',  mult: '1.5–2×' },
+  ALTO:     { color: '#9B2226', label_es: 'Alto',     label_en: 'High',      desc_pol_es: 'Crisis grave',                  desc_pol_en: 'Severe crisis',                desc_eco_es: 'Crisis económica',          desc_eco_en: 'Economic crisis',          range: '200–300',  mult: '2–3×' },
+  CRITICO:  { color: '#6B0000', label_es: 'Crítico',  label_en: 'Critical',  desc_pol_es: 'Ruptura institucional',         desc_pol_en: 'Institutional breakdown',      desc_eco_es: 'Colapso sistémico',         desc_eco_en: 'Systemic collapse',        range: '> 300',    mult: '> 3×' },
 };
 
 function getRiskLevel(prr: number): RiskLevel {
-  if (prr < 100) return 'NORMAL';
+  if (prr < 50)  return 'MINIMO';
+  if (prr < 100) return 'BAJO';
+  if (prr < 150) return 'MODERADO';
   if (prr < 200) return 'ELEVADO';
   if (prr < 300) return 'ALTO';
-  if (prr < 500) return 'CRITICO';
-  return 'EMERGENCIA';
+  return 'CRITICO';
 }
 
 /** "133 PRR → 1.3×" */
 function toMult(prr: number): string {
   return (Math.round(prr / 10) / 10).toFixed(1) + '×';
+}
+
+function formatDate(dateStr: string, isEn: boolean): string {
+  try {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString(
+      isEn ? 'en-US' : 'es-PE',
+      { day: 'numeric', month: 'short', year: 'numeric' }
+    );
+  } catch {
+    return dateStr;
+  }
 }
 
 // ─── MULTIPLIER SCALE COMPONENT ──────────────────────────────────────────────
@@ -207,21 +238,26 @@ function ReadingCard({
   title,
   subtitle,
   prr,
+  level: levelOverride,
+  accentColor,
   isEn,
 }: {
   title: string;
   subtitle: string;
   prr: number;
+  level?: string;
+  accentColor?: string;
   isEn: boolean;
 }) {
-  const level = getRiskLevel(prr);
-  const cfg = LEVELS[level];
+  const level = (levelOverride as RiskLevel) ?? getRiskLevel(prr);
+  const cfg = LEVELS[level] ?? LEVELS['MODERADO'];
+  const color = accentColor ?? cfg.color;
   const mult = toMult(prr);
 
   return (
     <div
       className="rounded-xl border-2 p-5 flex flex-col"
-      style={{ borderColor: cfg.color + '44', background: cfg.color + '0A' }}
+      style={{ borderColor: color + '44', background: color + '0A' }}
     >
       <div className="flex items-start justify-between mb-3">
         <div>
@@ -230,7 +266,7 @@ function ReadingCard({
         </div>
         <span
           className="text-xs font-bold px-2.5 py-0.5 rounded-full flex-shrink-0"
-          style={{ background: cfg.color + '18', color: cfg.color }}
+          style={{ background: color + '18', color: color }}
         >
           {isEn ? cfg.label_en : cfg.label_es}
         </span>
@@ -239,13 +275,13 @@ function ReadingCard({
       {/* Big number */}
       <p
         className="text-5xl font-bold tabular-nums leading-none"
-        style={{ color: cfg.color, fontVariantNumeric: 'tabular-nums' }}
+        style={{ color: color, fontVariantNumeric: 'tabular-nums' }}
       >
         {Math.round(prr)}
       </p>
 
       {/* THE key insight */}
-      <p className="text-base font-semibold mt-1.5" style={{ color: cfg.color }}>
+      <p className="text-base font-semibold mt-1.5" style={{ color: color }}>
         {isEn ? `${mult} the average` : `${mult} el promedio`}
       </p>
 
@@ -296,8 +332,14 @@ export default function RiesgoPoliticoPage() {
   );
 
   // ── Derived values ──────────────────────────────────────────────────────────
-  const rawPrr = data.current.prr_raw ?? data.current.score;
-  const avg7d  = data.current.prr_7d  ?? data.current.score;
+  const rawPrr   = data.current.political_raw ?? data.current.prr_raw ?? data.current.score ?? 0;
+  const avg7d    = data.current.political_7d  ?? data.current.prr_7d  ?? data.current.score ?? 0;
+  const polLevel = data.current.political_level ?? data.current.level ?? 'MODERADO';
+  const polMult  = data.current.political_multiplier ?? (avg7d / 100);
+  const ecoRaw   = data.current.economic_raw ?? 0;
+  const eco7d    = data.current.economic_7d  ?? 0;
+  const ecoLevel = data.current.economic_level ?? 'MODERADO';
+  const ecoMult  = data.current.economic_multiplier ?? (eco7d / 100);
   const mult      = toMult(rawPrr);
   const multTrend = toMult(avg7d);
 
@@ -314,14 +356,23 @@ export default function RiesgoPoliticoPage() {
   })();
 
   // ── Chart data ──────────────────────────────────────────────────────────────
-  const dailyTrend = (data.daily_series ?? []).map((d) => ({
+  const chartData = (data.daily_series ?? []).map((d) => ({
     date: d.date,
-    trend: d.prr_7d ?? d.score,
-    daily: d.prr   ?? d.score_raw ?? d.score,
+    political_7d:  d.political_7d  ?? d.prr_7d  ?? d.score,
+    political_raw: d.political_raw ?? d.prr      ?? d.score_raw ?? d.score,
+    economic_7d:   d.economic_7d,
+    economic_raw:  d.economic_raw,
   }));
+  // Keep backward-compat alias used by MultiplierScale
+  const dailyTrend = chartData;
 
   // Y-axis ticks in PRR, formatted as multipliers
-  const maxPrr = Math.max(...dailyTrend.map((d) => Math.max(d.trend, d.daily)), 200);
+  const maxPrr = Math.max(
+    ...chartData.map((d) =>
+      Math.max(d.political_7d ?? 0, d.political_raw ?? 0, d.economic_7d ?? 0, d.economic_raw ?? 0)
+    ),
+    200
+  );
   const yTicks = [0, 100, 200, 300, 500].filter((t) => t <= maxPrr + 150);
   if (maxPrr > 500 && !yTicks.includes(Math.ceil(maxPrr / 100) * 100)) {
     yTicks.push(Math.ceil(maxPrr / 100) * 100);
@@ -381,18 +432,42 @@ export default function RiesgoPoliticoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 2: TWO READING CARDS ════════════════════════════════ */}
+        {/* ══ SECTION 2: FOUR READING CARDS (2×2) ═════════════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          {/* Political today */}
           <ReadingCard
-            title={isEn ? 'TODAY' : 'HOY'}
+            title={isEn ? 'POLITICAL RISK · TODAY' : 'RIESGO POLÍTICO · HOY'}
             subtitle={currentDateStr}
             prr={rawPrr}
+            level={polLevel}
+            accentColor="#C65D3E"
             isEn={isEn}
           />
+          {/* Political 7d */}
           <ReadingCard
-            title={isEn ? '7-DAY TREND' : 'TENDENCIA 7 DÍAS'}
-            subtitle={isEn ? 'Rolling average' : 'Promedio móvil'}
+            title={isEn ? 'POLITICAL RISK · 7 DAYS' : 'RIESGO POLÍTICO · 7 DÍAS'}
+            subtitle={isEn ? `${polMult.toFixed(1)}× the average` : `${polMult.toFixed(1)}× el promedio`}
             prr={avg7d}
+            level={polLevel}
+            accentColor="#C65D3E"
+            isEn={isEn}
+          />
+          {/* Economic today */}
+          <ReadingCard
+            title={isEn ? 'ECONOMIC RISK · TODAY' : 'RIESGO ECONÓMICO · HOY'}
+            subtitle={isEn ? `${ecoMult.toFixed(1)}× the average` : `${ecoMult.toFixed(1)}× el promedio`}
+            prr={ecoRaw}
+            level={ecoLevel}
+            accentColor="#2A9D8F"
+            isEn={isEn}
+          />
+          {/* Economic 7d */}
+          <ReadingCard
+            title={isEn ? 'ECONOMIC RISK · 7 DAYS' : 'RIESGO ECONÓMICO · 7 DÍAS'}
+            subtitle={isEn ? 'Rolling average' : 'Promedio móvil'}
+            prr={eco7d}
+            level={ecoLevel}
+            accentColor="#2A9D8F"
             isEn={isEn}
           />
         </div>
@@ -400,7 +475,7 @@ export default function RiesgoPoliticoPage() {
         {/* ══ SECTION 3: MULTIPLIER SCALE ═════════════════════════════════ */}
         <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
           <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-            {isEn ? 'Reference scale (0 – 10× the average)' : 'Escala de referencia (0 – 10× el promedio)'}
+            {isEn ? 'Political risk scale (0 – 10× the average)' : 'Escala de riesgo político (0 – 10× el promedio)'}
           </p>
           <MultiplierScale rawPrr={rawPrr} avg7d={avg7d} isEn={isEn} />
         </div>
@@ -415,7 +490,7 @@ export default function RiesgoPoliticoPage() {
         </div>
 
         {/* ══ SECTION 4: CHART ════════════════════════════════════════════ */}
-        {dailyTrend.length >= 2 && (
+        {chartData.length >= 2 && (
           <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
             {/* Chart header */}
             <div className="flex items-start justify-between gap-4 mb-2">
@@ -425,8 +500,8 @@ export default function RiesgoPoliticoPage() {
                 </h3>
                 <p className="text-xs text-gray-500 mt-0.5 max-w-lg">
                   {isEn
-                    ? 'Each point is one day. The bold line shows the weekly trend. Spikes above 5× (500 PRR) correspond to acute political crises.'
-                    : 'Cada punto es un día. La línea gruesa muestra la tendencia semanal. Picos superiores a 5× (500 PRR) corresponden a crisis políticas agudas.'
+                    ? 'Each point is one day. Bold lines show weekly trends. Terracotta = political risk, teal = economic risk.'
+                    : 'Cada punto es un día. Las líneas gruesas muestran tendencias semanales. Terracota = riesgo político, verde = riesgo económico.'
                   }
                 </p>
               </div>
@@ -444,17 +519,25 @@ export default function RiesgoPoliticoPage() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-500">
               <div className="flex items-center gap-1.5">
                 <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="2.5" /></svg>
-                <span>{isEn ? '7-day trend' : 'Tendencia 7d'}</span>
+                <span>{isEn ? 'Political 7d' : 'Político 7d'}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="1" strokeOpacity="0.5" /></svg>
-                <span>{isEn ? 'Daily PRR' : 'PRR diario'}</span>
+                <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="1" strokeOpacity="0.5" strokeDasharray="4 2" /></svg>
+                <span>{isEn ? 'Political daily' : 'Político diario'}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#2A9D8F" strokeWidth="2" /></svg>
+                <span>{isEn ? 'Economic 7d' : 'Económico 7d'}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#2A9D8F" strokeWidth="1" strokeOpacity="0.5" strokeDasharray="4 2" /></svg>
+                <span>{isEn ? 'Economic daily' : 'Económico diario'}</span>
               </div>
             </div>
 
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart
-                data={dailyTrend}
+                data={chartData}
                 margin={{ top: 8, right: 16, left: 8, bottom: 8 }}
               >
                 {/* Zone background bands — subtle context, not dominant visual */}
@@ -473,7 +556,7 @@ export default function RiesgoPoliticoPage() {
                   dataKey="date"
                   tick={axisTickStyle}
                   stroke={CHART_DEFAULTS.axisStroke}
-                  interval={Math.floor(dailyTrend.length / 6)}
+                  interval={Math.floor(chartData.length / 6)}
                 />
                 <YAxis
                   tick={axisTickStyle}
@@ -492,12 +575,18 @@ export default function RiesgoPoliticoPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={((v: number | undefined, name?: string) => [
-                    `${Math.round(v ?? 0)} PRR (${toMult(v ?? 0)})`,
-                    name === 'trend'
-                      ? (isEn ? '7d trend' : 'Tendencia 7d')
-                      : (isEn ? 'Daily PRR' : 'PRR diario'),
-                  ]) as any}
+                  formatter={((v: number | undefined, name?: string) => {
+                    const labels: Record<string, string> = {
+                      political_7d:  isEn ? 'Political 7d'    : 'Político 7d',
+                      political_raw: isEn ? 'Political daily'  : 'Político diario',
+                      economic_7d:   isEn ? 'Economic 7d'     : 'Económico 7d',
+                      economic_raw:  isEn ? 'Economic daily'   : 'Económico diario',
+                    };
+                    return [
+                      `${Math.round(v ?? 0)} (${toMult(v ?? 0)})`,
+                      labels[name ?? ''] ?? name,
+                    ];
+                  }) as any}
                 />
 
                 {/* avg = 100 reference */}
@@ -512,26 +601,47 @@ export default function RiesgoPoliticoPage() {
                   }}
                 />
 
-
-                {/* Raw daily PRR — thin, muted */}
+                {/* Political: Raw daily — thin, muted */}
                 <Area
                   type="monotone"
-                  dataKey="daily"
+                  dataKey="political_raw"
                   stroke="#C65D3E"
                   fill="none"
                   dot={false}
                   strokeWidth={1}
                   strokeOpacity={0.4}
+                  strokeDasharray="4 2"
                 />
-                {/* 7-day trend — bold with fill */}
+                {/* Political: 7-day trend — bold with fill */}
                 <Area
                   type="monotone"
-                  dataKey="trend"
+                  dataKey="political_7d"
                   stroke="#C65D3E"
                   fill="#C65D3E"
-                  fillOpacity={0.10}
+                  fillOpacity={0.08}
                   dot={false}
                   strokeWidth={2.5}
+                />
+                {/* Economic: Raw daily — thin, muted */}
+                <Area
+                  type="monotone"
+                  dataKey="economic_raw"
+                  stroke="#2A9D8F"
+                  fill="none"
+                  dot={false}
+                  strokeWidth={1}
+                  strokeOpacity={0.4}
+                  strokeDasharray="4 2"
+                />
+                {/* Economic: 7-day trend — bold line */}
+                <Area
+                  type="monotone"
+                  dataKey="economic_7d"
+                  stroke="#2A9D8F"
+                  fill="#2A9D8F"
+                  fillOpacity={0.06}
+                  dot={false}
+                  strokeWidth={2}
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -546,16 +656,16 @@ export default function RiesgoPoliticoPage() {
           <p className="text-sm text-gray-500 mb-4">
             {isEn
               ? <>
-                  Example: a PRR of{' '}
+                  Example: a value of{' '}
                   <strong>{Math.round(avg7d)}</strong> means that this week&apos;s
                   political activity was{' '}
-                  <strong>{multTrend} more intense</strong> than a normal day.
+                  <strong>{multTrend} more intense</strong> than a normal day (mean&nbsp;=&nbsp;100).
                 </>
               : <>
-                  Ejemplo: un PRR de{' '}
+                  Ejemplo: un valor de{' '}
                   <strong>{Math.round(avg7d)}</strong> significa que la actividad
-                  política de la semana fue{' '}
-                  <strong>{multTrend} más intensa</strong> que un día promedio.
+                  de la semana fue{' '}
+                  <strong>{multTrend} más intensa</strong> que un día promedio (media&nbsp;=&nbsp;100).
                 </>
             }
           </p>
@@ -564,24 +674,24 @@ export default function RiesgoPoliticoPage() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b-2 border-gray-100">
-                  <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-400 uppercase tracking-wide w-24">
+                  <th className="text-left py-2 pr-3 text-xs font-semibold text-gray-400 uppercase tracking-wide w-24">
                     {isEn ? 'Level' : 'Nivel'}
                   </th>
-                  <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-400 uppercase tracking-wide w-24">
-                    PRR
-                  </th>
-                  <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-400 uppercase tracking-wide w-20">
+                  <th className="text-left py-2 pr-3 text-xs font-semibold text-gray-400 uppercase tracking-wide w-20">
                     {isEn ? 'Multiplier' : 'Múltiplo'}
                   </th>
-                  <th className="text-left py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide">
-                    {isEn ? 'What it means' : 'Qué significa'}
+                  <th className="text-left py-2 pr-3 text-xs font-semibold text-gray-400 uppercase tracking-wide" style={{ color: '#C65D3E' }}>
+                    {isEn ? 'Political' : 'Político'}
+                  </th>
+                  <th className="text-left py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide" style={{ color: '#2A9D8F' }}>
+                    {isEn ? 'Economic' : 'Económico'}
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {(Object.entries(LEVELS) as [RiskLevel, LevelCfg][]).map(([key, cfg]) => (
                   <tr key={key} className="border-b border-gray-50 last:border-0">
-                    <td className="py-3 pr-4">
+                    <td className="py-3 pr-3">
                       <span
                         className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold"
                         style={{ background: cfg.color + '18', color: cfg.color }}
@@ -589,10 +699,12 @@ export default function RiesgoPoliticoPage() {
                         {isEn ? cfg.label_en : cfg.label_es}
                       </span>
                     </td>
-                    <td className="py-3 pr-4 text-gray-600 font-mono text-xs">{cfg.range}</td>
-                    <td className="py-3 pr-4 text-gray-500 text-xs font-medium">{cfg.mult}</td>
-                    <td className="py-3 text-gray-600 text-sm">
-                      {isEn ? cfg.desc_en : cfg.desc_es}
+                    <td className="py-3 pr-3 text-gray-500 text-xs font-medium">{cfg.mult}</td>
+                    <td className="py-3 pr-3 text-gray-600 text-xs">
+                      {isEn ? cfg.desc_pol_en : cfg.desc_pol_es}
+                    </td>
+                    <td className="py-3 text-gray-600 text-xs">
+                      {isEn ? cfg.desc_eco_en : cfg.desc_eco_es}
                     </td>
                   </tr>
                 ))}
@@ -601,46 +713,76 @@ export default function RiesgoPoliticoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 5b: HAIKU JUSTIFICATION ════════════════════════════ */}
-        {data.current.justification && (
-          <div
-            className="mb-6 rounded-lg p-5"
-            style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}
-          >
-            <div className="flex items-start justify-between mb-3">
+        {/* ══ SECTION 5b: DUAL JUSTIFICATION ══════════════════════════════ */}
+        {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink2 }}>
-                {isEn ? '¿Why this level?' : '¿Por qué este nivel?'}
+                {isEn ? 'Why this level?' : '¿Por qué este nivel?'}
               </h3>
               <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
                 {formatDate(data.current.date, isEn)}
               </span>
             </div>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: CHART_COLORS.ink1 }}>
-              "{data.current.justification}"
-            </p>
-            {data.current.top_drivers && data.current.top_drivers.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: CHART_COLORS.ink3 }}>
-                  {isEn ? 'Main signals' : 'Principales señales'}
+
+            {/* Political justification */}
+            {(data.current.political_justification ?? data.current.justification) && (
+              <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#C65D3E' }}>
+                    {isEn ? 'Political Risk' : 'Riesgo Político'} · {polMult.toFixed(1)}×
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
+                  &quot;{data.current.political_justification ?? data.current.justification}&quot;
                 </p>
-                <ul className="space-y-1.5">
-                  {data.current.top_drivers.map((d, i) => {
-                    const dotColor = d.severity >= 0.8 ? '#9B2226' : d.severity >= 0.5 ? '#C65D3E' : '#E0A458';
-                    return (
-                      <li key={i} className="flex items-start gap-2 text-xs" style={{ color: CHART_COLORS.ink2 }}>
-                        <span
-                          className="mt-0.5 flex-shrink-0 w-2 h-2 rounded-full"
-                          style={{ background: dotColor, marginTop: '4px' }}
-                        />
-                        <span className="font-mono text-xs w-8 flex-shrink-0" style={{ color: dotColor }}>
-                          {d.severity.toFixed(1)}
-                        </span>
-                        <span className="leading-tight">{d.title}</span>
-                        <span className="flex-shrink-0 ml-1" style={{ color: CHART_COLORS.ink3 }}>({d.source})</span>
-                      </li>
-                    );
-                  })}
-                </ul>
+                {(data.current.top_political_drivers ?? data.current.top_drivers) && (
+                  <ul className="space-y-1">
+                    {(data.current.top_political_drivers
+                      ? data.current.top_political_drivers.slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.score }))
+                      : (data.current.top_drivers ?? []).slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.severity * 100 }))
+                    ).map((d, i) => {
+                      const dotColor = d.numScore >= 70 ? '#9B2226' : d.numScore >= 40 ? '#C65D3E' : '#E0A458';
+                      return (
+                        <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
+                          <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
+                          <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{Math.round(d.numScore)}</span>
+                          <span className="truncate">{d.title}</span>
+                          <span className="flex-shrink-0" style={{ color: '#8D99AE' }}>({d.source})</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            )}
+
+            {/* Economic justification */}
+            {data.current.economic_justification && (
+              <div className="mb-6 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#2A9D8F' }}>
+                    {isEn ? 'Economic Risk' : 'Riesgo Económico'} · {ecoMult.toFixed(1)}×
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
+                  &quot;{data.current.economic_justification}&quot;
+                </p>
+                {data.current.top_economic_drivers && (
+                  <ul className="space-y-1">
+                    {data.current.top_economic_drivers.slice(0, 5).map((d, i) => {
+                      const dotColor = d.score >= 70 ? '#0e7490' : d.score >= 40 ? '#2A9D8F' : '#6ee7b7';
+                      return (
+                        <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
+                          <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
+                          <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{d.score}</span>
+                          <span className="truncate">{d.title}</span>
+                          <span className="flex-shrink-0" style={{ color: '#8D99AE' }}>({d.source})</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
               </div>
             )}
           </div>
@@ -649,10 +791,10 @@ export default function RiesgoPoliticoPage() {
         {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
           {[
-            { label: isEn ? 'Articles today'  : 'Artículos hoy',   value: data.current.articles_total     },
-            { label: isEn ? 'Political'        : 'Políticos',       value: data.current.articles_political },
-            { label: isEn ? 'Economic'         : 'Económicos',      value: data.current.articles_economic  },
-            { label: isEn ? 'RSS feeds'        : 'Feeds RSS',       value: data.metadata.rss_feeds         },
+            { label: isEn ? 'Articles today'  : 'Artículos hoy',   value: data.current.articles_total                                                                                                            },
+            { label: isEn ? 'Political'        : 'Políticos',       value: data.current.articles_political_relevant ?? (data.current as any).articles_political ?? '—' },
+            { label: isEn ? 'Economic'         : 'Económicos',      value: data.current.articles_economic_relevant  ?? (data.current as any).articles_economic  ?? '—' },
+            { label: isEn ? 'RSS feeds'        : 'Feeds RSS',       value: data.metadata.rss_feeds                                                                                                                },
           ].map(({ label, value }) => (
             <div key={label} className="bg-white rounded-lg border border-gray-200 p-4">
               <p className="text-xs text-gray-500">{label}</p>

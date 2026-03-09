@@ -5,13 +5,33 @@ import Link from "next/link";
 interface PoliticalData {
   current: {
     date: string;
-    score: number;
+    // Dual indices (new)
+    political_raw?: number;
+    political_7d?: number;
+    political_level?: string;
+    political_multiplier?: number;
+    economic_raw?: number;
+    economic_7d?: number;
+    economic_level?: string;
+    economic_multiplier?: number;
+    // Legacy (kept for backward compat)
+    score?: number;
     prr_raw?: number;
     prr_7d?: number;
-    level: string;
+    level?: string;
     articles_total: number;
   };
-  daily_series: Array<{ date: string; score: number; prr?: number; prr_7d?: number }>;
+  daily_series: Array<{
+    date: string;
+    political_raw?: number;
+    political_7d?: number;
+    economic_raw?: number;
+    economic_7d?: number;
+    // legacy
+    score?: number;
+    prr?: number;
+    prr_7d?: number;
+  }>;
 }
 
 const LEVEL_CONFIG: Record<string, { color: string; label_es: string; label_en: string }> = {
@@ -110,13 +130,17 @@ export default function PoliticalRiskCard({
 }) {
   const current = data.current;
   const series30 = (data.daily_series ?? []).slice(-30);
-  const sparklineValues = series30.map((r) => r.prr_7d ?? r.score);  // 7d avg for sparkline
+  const sparklineValues = series30.map((r) => r.political_7d ?? r.prr_7d ?? r.score ?? 0);  // political 7d avg for sparkline
 
-  const prr7d = current.prr_7d ?? current.score ?? 0;   // 7d rolling avg — main display
-  const prrRaw = current.prr_raw ?? current.score ?? 0;  // raw daily PRR — secondary
-  const scoreDisplay = Math.round(prr7d);                 // Option A: 7d avg as main number
-  const level = current.level ?? "BAJO";
-  const cfg = LEVEL_CONFIG[level] ?? LEVEL_CONFIG["MODERADO"];
+  const irp7d    = current.political_7d  ?? current.prr_7d  ?? current.score ?? 0;
+  const irpRaw   = current.political_raw ?? current.prr_raw ?? 0;
+  const ire7d    = current.economic_7d   ?? 0;
+  const ireRaw   = current.economic_raw  ?? 0;
+  const polLevel = current.political_level ?? current.level ?? "BAJO";
+  const polMult  = current.political_multiplier ?? (irp7d / 100);
+  const ecoMult  = current.economic_multiplier  ?? (ire7d / 100);
+  const scoreDisplay = Math.round(irp7d);                 // IRP 7d avg as main number
+  const cfg = LEVEL_CONFIG[polLevel] ?? LEVEL_CONFIG["MODERADO"];
   const articles = current.articles_total ?? 0;
 
   return (
@@ -196,7 +220,7 @@ export default function PoliticalRiskCard({
             </span>
           </div>
 
-          {/* Score (0-100) + level badge + sparkline */}
+          {/* Score + level badge + sparkline */}
           <div className="flex items-end gap-4">
             <div className="flex-1">
               <div className="flex items-baseline gap-3 mb-1">
@@ -214,10 +238,10 @@ export default function PoliticalRiskCard({
                 </span>
                 <div className="flex flex-col gap-0.5">
                   <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#8D99AE" }}>
-                    PRR {isEn ? "7d avg" : "Prom. 7d"}
+                    IRP 7d
                   </span>
                   <span className="text-xs" style={{ color: "#8D99AE" }}>
-                    {isEn ? "Today" : "Hoy"}: {Math.round(prrRaw)}
+                    IRE: {Math.round(ire7d)}
                   </span>
                 </div>
                 <span
@@ -227,8 +251,8 @@ export default function PoliticalRiskCard({
                   {isEn ? cfg.label_en : cfg.label_es}
                 </span>
               </div>
-              {/* PRR gauge bar (mean=100, cap at 300 for display) — color based on 7d avg */}
-              <RiskBar score={prr7d} />
+              {/* IRP gauge bar (mean=100, cap at 300 for display) — color based on 7d avg */}
+              <RiskBar score={irp7d} />
               <div className="flex justify-between mt-1" style={{ position: 'relative' }}>
                 <span className="text-xs" style={{ color: "#8D99AE" }}>0</span>
                 <span className="text-xs absolute" style={{ color: "#8D99AE", left: '33%', transform: 'translateX(-50%)' }}>100 (avg)</span>
@@ -247,8 +271,8 @@ export default function PoliticalRiskCard({
           >
             <span className="text-xs" style={{ color: "#8D99AE" }}>
               {isEn
-                ? `11 feeds · 6 sources · ${articles.toLocaleString()} articles today`
-                : `11 feeds · 6 fuentes · ${articles.toLocaleString()} artículos hoy`}
+                ? `Político: ${Math.round(irp7d)} · Económico: ${Math.round(ire7d)} · ${articles.toLocaleString()} arts.`
+                : `Político: ${Math.round(irp7d)} · Económico: ${Math.round(ire7d)} · ${articles.toLocaleString()} arts.`}
             </span>
             <span className="text-xs" style={{ color: "#8D99AE" }}>
               {formatDate(current.date, isEn)}
