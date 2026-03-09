@@ -9,250 +9,631 @@ import ShareButton from '../../components/ShareButton';
 import ChartShareButton from '../../components/ChartShareButton';
 import PageSkeleton from '../../components/PageSkeleton';
 import {
-  AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine,
-  ResponsiveContainer,
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
+  ReferenceLine, ReferenceArea, ResponsiveContainer,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
 } from '../../lib/chartTheme';
 
+// ─── DATA TYPES ──────────────────────────────────────────────────────────────
+
 interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
-  current: { date: string; score: number; prr_7d?: number; prr_raw?: number; level: string; articles_total: number; articles_political: number; articles_economic: number };
-  daily_series?: Array<{ date: string; score: number; score_raw?: number; prr?: number; prr_7d?: number }>;
+  current: {
+    date: string;
+    score: number;
+    prr_7d?: number;
+    prr_raw?: number;
+    level: string;
+    articles_total: number;
+    articles_political: number;
+    articles_economic: number;
+  };
+  daily_series?: Array<{
+    date: string;
+    score: number;
+    score_raw?: number;
+    prr?: number;
+    prr_7d?: number;
+    n_articles?: number;
+  }>;
   monthly_series?: Array<{ month: string; political_avg: number }>;
 }
 
-const PRR_MAX = 300;
-const GAUGE_GRADIENT = [
-  '#8D99AE 0%',    // MINIMO (gray-blue)
-  '#2A9D8F 17%',   // BAJO (teal) — PRR 50
-  '#E0A458 27%',   // MODERADO start (amber) — PRR 80
-  '#E0A458 40%',   // MODERADO end — PRR 120
-  '#C65D3E 53%',   // ELEVADO — PRR 160
-  '#9B2226 67%',   // ALTO — PRR 200
-  '#6B0000 100%',  // CRITICO — PRR 300
-].join(', ');
+// ─── RISK LEVEL SYSTEM (5 levels, clean multiplier boundaries) ───────────────
+// Boundaries: 100 (1×), 200 (2×), 300 (3×), 500 (5×)
+// Replaces the old 6-level system (MÍNIMO/BAJO merged into NORMAL).
 
-function zoneColor(prr: number): string {
-  if (prr < 50)  return '#8D99AE';
-  if (prr < 80)  return '#2A9D8F';
-  if (prr < 120) return '#E0A458';
-  if (prr < 160) return '#C65D3E';
-  if (prr < 200) return '#9B2226';
-  return '#6B1518';
+type RiskLevel = 'NORMAL' | 'ELEVADO' | 'ALTO' | 'CRITICO' | 'EMERGENCIA';
+
+interface LevelCfg {
+  color: string;
+  label_es: string;
+  label_en: string;
+  desc_es: string;
+  desc_en: string;
+  range: string;
+  mult: string;
 }
 
-function RiskBar({ score }: { score: number }) {
-  const pct = Math.max(0, Math.min(PRR_MAX, score)) / PRR_MAX * 100;
-  const dotColor = zoneColor(score);
+// Colors taken directly from the Qhawarina gauge gradient:
+//   #2A9D8F (teal) → #E0A458 (amber) → #C65D3E (terracotta) → #9B2226 (maroon) → #6B0000 (dark)
+const LEVELS: Record<RiskLevel, LevelCfg> = {
+  NORMAL:     { color: '#2A9D8F', label_es: 'Normal',     label_en: 'Normal',    desc_es: 'Actividad política rutinaria',                   desc_en: 'Routine political activity',                  range: '< 100',    mult: '< 1×' },
+  ELEVADO:    { color: '#E0A458', label_es: 'Elevado',    label_en: 'Elevated',  desc_es: 'Tensiones por encima del promedio',              desc_en: 'Above-average political tensions',            range: '100–200',  mult: '1–2×' },
+  ALTO:       { color: '#C65D3E', label_es: 'Alto',       label_en: 'High',      desc_es: 'Crisis política significativa',                  desc_en: 'Significant political crisis',                range: '200–300',  mult: '2–3×' },
+  CRITICO:    { color: '#9B2226', label_es: 'Crítico',    label_en: 'Critical',  desc_es: 'Crisis grave, múltiples eventos simultáneos',    desc_en: 'Severe crisis, multiple simultaneous events', range: '300–500',  mult: '3–5×' },
+  EMERGENCIA: { color: '#6B0000', label_es: 'Emergencia', label_en: 'Emergency', desc_es: 'Crisis histórica extraordinaria',                desc_en: 'Extraordinary historical crisis',             range: '> 500',    mult: '> 5×' },
+};
+
+function getRiskLevel(prr: number): RiskLevel {
+  if (prr < 100) return 'NORMAL';
+  if (prr < 200) return 'ELEVADO';
+  if (prr < 300) return 'ALTO';
+  if (prr < 500) return 'CRITICO';
+  return 'EMERGENCIA';
+}
+
+/** "133 PRR → 1.3×" */
+function toMult(prr: number): string {
+  return (Math.round(prr / 10) / 10).toFixed(1) + '×';
+}
+
+// ─── MULTIPLIER SCALE COMPONENT ──────────────────────────────────────────────
+// Linear 0–1000 (0–10×). Two dots: open = today, filled = 7d trend.
+
+function MultiplierScale({
+  rawPrr,
+  avg7d,
+  isEn,
+}: {
+  rawPrr: number;
+  avg7d: number;
+  isEn: boolean;
+}) {
+  const MAX = 1000;
+  const rawPct = Math.min((rawPrr / MAX) * 100, 98);
+  const avgPct = Math.min((avg7d / MAX) * 100, 98);
+
+  const ticks = [
+    { pct: 10,  top: '1×',  sub: isEn ? 'Normal'    : 'Normal'    },
+    { pct: 20,  top: '2×',  sub: isEn ? 'Elevated'  : 'Elevado'   },
+    { pct: 30,  top: '3×',  sub: isEn ? 'High'      : 'Alto'      },
+    { pct: 50,  top: '5×',  sub: isEn ? 'Critical'  : 'Crítico'   },
+    { pct: 100, top: '10×', sub: isEn ? 'Emergency' : 'Emergencia'},
+  ];
+
   return (
-    <div className="mt-4 mb-1">
-      <div
-        className="relative h-3 rounded-full overflow-visible"
-        style={{ background: `linear-gradient(90deg, ${GAUGE_GRADIENT})` }}
-      >
+    <div>
+      {/* Bar + ticks + dots */}
+      <div className="relative" style={{ marginBottom: '44px' }}>
+        {/* Colored segments */}
+        <div className="flex h-4 rounded-full overflow-hidden">
+          <div style={{ width: '10%', background: '#2A9D8F' }} />
+          <div style={{ width: '10%', background: '#E0A458' }} />
+          <div style={{ width: '10%', background: '#C65D3E' }} />
+          <div style={{ width: '20%', background: '#9B2226' }} />
+          <div style={{ width: '50%', background: '#5C0000' }} />
+        </div>
+
+        {/* Tick marks + labels */}
+        {ticks.map((t) => (
+          <div
+            key={t.pct}
+            className="absolute top-0 h-4"
+            style={{ left: `${t.pct}%` }}
+          >
+            {/* Tick line */}
+            <div className="w-px h-full bg-white opacity-50" />
+            {/* Label block below bar */}
+            <div
+              className="absolute top-5 text-center"
+              style={{
+                transform:
+                  t.pct >= 100
+                    ? 'translateX(-100%)'
+                    : 'translateX(-50%)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <div className="text-xs font-semibold text-gray-700">{t.top}</div>
+              <div className="text-gray-400" style={{ fontSize: '10px' }}>{t.sub}</div>
+            </div>
+          </div>
+        ))}
+
+        {/* Today — open circle (on top of bar) */}
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-white shadow-md"
-          style={{ left: `calc(${pct}% - 8px)`, background: dotColor }}
-        />
+          className="absolute"
+          style={{ left: `calc(${rawPct}% - 10px)`, top: '-3px', zIndex: 10 }}
+          title={`${isEn ? 'Today' : 'Hoy'}: PRR ${Math.round(rawPrr)}`}
+        >
+          <div
+            className="w-5 h-5 rounded-full border-2 bg-white shadow-md"
+            style={{ borderColor: '#1F2937' }}
+          />
+        </div>
+
+        {/* 7d trend — filled circle */}
+        <div
+          className="absolute"
+          style={{ left: `calc(${avgPct}% - 10px)`, top: '-3px', zIndex: 9 }}
+          title={`${isEn ? '7d trend' : 'Tendencia 7d'}: PRR ${Math.round(avg7d)}`}
+        >
+          <div
+            className="w-5 h-5 rounded-full shadow-md"
+            style={{ background: '#1F2937' }}
+          />
+        </div>
       </div>
-      <div className="flex justify-between mt-1.5 relative">
-        <span className="text-xs text-gray-400">0</span>
-        <span className="text-xs text-gray-400 absolute" style={{ left: '33%', transform: 'translateX(-50%)' }}>100 (avg)</span>
-        <span className="text-xs text-gray-400">300</span>
+
+      {/* Dot legend */}
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-gray-500">
+        <div className="flex items-center gap-2">
+          <div
+            className="w-4 h-4 rounded-full border-2 bg-white flex-shrink-0"
+            style={{ borderColor: '#1F2937' }}
+          />
+          <span>
+            {isEn ? 'Today' : 'Hoy'}: {toMult(rawPrr)} (PRR {Math.round(rawPrr)})
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div
+            className="w-4 h-4 rounded-full flex-shrink-0"
+            style={{ background: '#1F2937' }}
+          />
+          <span>
+            {isEn ? '7d trend' : 'Tendencia 7d'}: {toMult(avg7d)} (PRR {Math.round(avg7d)})
+          </span>
+        </div>
       </div>
     </div>
   );
 }
 
-const LEVEL_STYLES: Record<string, { bg: string; text: string; border: string }> = {
-  MINIMO:   { bg: 'bg-gray-50',   text: 'text-gray-600',   border: 'border-gray-300'  },
-  BAJO:     { bg: 'bg-green-50',  text: 'text-green-700',  border: 'border-green-300' },
-  MODERADO: { bg: 'bg-yellow-50', text: 'text-yellow-700', border: 'border-yellow-300' },
-  ELEVADO:  { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-300' },
-  ALTO:     { bg: 'bg-red-50',    text: 'text-red-700',    border: 'border-red-300'   },
-  CRITICO:  { bg: 'bg-red-100',   text: 'text-red-900',    border: 'border-red-600'   },
-};
+// ─── READING CARD ─────────────────────────────────────────────────────────────
+// Self-contained: own number, multiplier, badge. No ambiguity.
+
+function ReadingCard({
+  title,
+  subtitle,
+  prr,
+  isEn,
+}: {
+  title: string;
+  subtitle: string;
+  prr: number;
+  isEn: boolean;
+}) {
+  const level = getRiskLevel(prr);
+  const cfg = LEVELS[level];
+  const mult = toMult(prr);
+
+  return (
+    <div
+      className="rounded-xl border-2 p-5 flex flex-col"
+      style={{ borderColor: cfg.color + '44', background: cfg.color + '0A' }}
+    >
+      <div className="flex items-start justify-between mb-3">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-500">{title}</p>
+          <p className="text-xs text-gray-400 mt-0.5">{subtitle}</p>
+        </div>
+        <span
+          className="text-xs font-bold px-2.5 py-0.5 rounded-full flex-shrink-0"
+          style={{ background: cfg.color + '18', color: cfg.color }}
+        >
+          {isEn ? cfg.label_en : cfg.label_es}
+        </span>
+      </div>
+
+      {/* Big number */}
+      <p
+        className="text-5xl font-bold tabular-nums leading-none"
+        style={{ color: cfg.color, fontVariantNumeric: 'tabular-nums' }}
+      >
+        {Math.round(prr)}
+      </p>
+
+      {/* THE key insight */}
+      <p className="text-base font-semibold mt-1.5" style={{ color: cfg.color }}>
+        {isEn ? `${mult} the average` : `${mult} el promedio`}
+      </p>
+
+      <p className="text-xs text-gray-400 mt-2">
+        PRR · {isEn ? 'mean = 100' : 'media = 100'}
+      </p>
+    </div>
+  );
+}
+
+// ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function RiesgoPoliticoPage() {
   const locale = useLocale();
   const isEn = locale === 'en';
-
-  const T = isEn ? {
-    breadcrumb: 'Statistics',
-    title: 'Political Risk Index',
-    currentLevel: 'Current level',
-    articlesTotal: 'Articles analyzed today',
-    articlesPolitical: 'Political articles',
-    articlesEconomic: 'Economic articles',
-    rssFeeds: 'RSS feeds monitored',
-    cardMethodology: 'Methodology',
-    cardMethodologyDesc: 'Claude Haiku · 11 RSS feeds · 6 sources · components and weights',
-    cardDownload: 'Download Data',
-    cardDownloadDesc: (days: number) => `Complete daily series — ${days} days of coverage`,
-    error: 'Error loading data.',
-    retry: 'Retry',
-    shareText: (score: number, level: string) => `📊 Political Risk Peru: PRR ${Math.round(score)} (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
-  } : {
-    breadcrumb: 'Estadísticas',
-    title: 'Índice de Riesgo Político',
-    currentLevel: 'Nivel actual',
-    articlesTotal: 'Artículos analizados hoy',
-    articlesPolitical: 'Artículos políticos',
-    articlesEconomic: 'Artículos económicos',
-    rssFeeds: 'Feeds RSS monitoreados',
-    cardMethodology: 'Metodología',
-    cardMethodologyDesc: 'Claude Haiku · 11 feeds RSS · 6 fuentes · componentes y pesos',
-    cardDownload: 'Descargar Datos',
-    cardDownloadDesc: (days: number) => `Serie diaria completa — ${days} días de cobertura`,
-    error: 'Error cargando datos.',
-    retry: 'Reintentar',
-    shareText: (score: number, level: string) => `📊 Riesgo político Perú: PRR ${Math.round(score)} (${level}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`,
-  };
 
   const [data, setData] = useState<PoliticalData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`/assets/data/political_index_daily.json?v=${new Date().toISOString().slice(0, 13)}`)
-      .then(r => r.json())
-      .then(d => { setData(d); setLoading(false); })
-      .catch(() => { setError(true); setLoading(false); });
+    fetch(
+      `/assets/data/political_index_daily.json?v=${new Date()
+        .toISOString()
+        .slice(0, 13)}`
+    )
+      .then((r) => r.json())
+      .then((d) => {
+        setData(d);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return <PageSkeleton cards={2} />;
   if (error || !data) return (
     <div className="min-h-screen flex items-center justify-center">
-      <p className="text-red-500">{T.error} <button onClick={() => window.location.reload()} className="underline">{T.retry}</button></p>
+      <p className="text-red-500">
+        {isEn ? 'Error loading data.' : 'Error cargando datos.'}{' '}
+        <button onClick={() => window.location.reload()} className="underline">
+          {isEn ? 'Retry' : 'Reintentar'}
+        </button>
+      </p>
     </div>
   );
 
-  const level = data.current.level;
-  const styles = LEVEL_STYLES[level] ?? LEVEL_STYLES['MODERADO'];
+  // ── Derived values ──────────────────────────────────────────────────────────
+  const rawPrr = data.current.prr_raw ?? data.current.score;
+  const avg7d  = data.current.prr_7d  ?? data.current.score;
+  const mult      = toMult(rawPrr);
+  const multTrend = toMult(avg7d);
 
-  // Daily PRR trend — full history (all available data)
-  // prr_7d = 7d rolling avg (bold line), prr = raw daily (thin line)
-  const dailyTrend = (data.daily_series ?? [])
-    .map(d => ({
-      date: d.date,
-      score: d.prr_7d ?? d.score,                   // 7d avg (bold)
-      prr: d.prr ?? d.score_raw ?? d.score,          // raw daily (thin)
-    }));
+  const currentDateStr = (() => {
+    try {
+      const [y, m, d] = data.current.date.split('-').map(Number);
+      return new Date(y, m - 1, d).toLocaleDateString(
+        isEn ? 'en-US' : 'es-PE',
+        { day: 'numeric', month: 'long', year: 'numeric' }
+      );
+    } catch {
+      return data.current.date;
+    }
+  })();
 
-  // Monthly average trend — all non-zero months
-  const monthlyTrend = (data.monthly_series ?? [])
-    .filter(m => m.political_avg > 0)
-    .map(m => ({
-      month: m.month.slice(0, 7),
-      score: parseFloat((m.political_avg).toFixed(1)),
-    }));
+  // ── Chart data ──────────────────────────────────────────────────────────────
+  const dailyTrend = (data.daily_series ?? []).map((d) => ({
+    date: d.date,
+    trend: d.prr_7d ?? d.score,
+    daily: d.prr   ?? d.score_raw ?? d.score,
+  }));
 
-  // PRR thresholds for monthly bar colors
-  const barColor = (score: number) =>
-    score < 80 ? CHART_COLORS.teal : score < 120 ? CHART_COLORS.amber : CHART_COLORS.red;
+  // Top 3 raw spikes > 300 for crisis annotations
+  const topSpikes = [...(data.daily_series ?? [])]
+    .map((d) => ({ date: d.date, prr: d.prr ?? d.score_raw ?? 0 }))
+    .filter((d) => d.prr > 300)
+    .sort((a, b) => b.prr - a.prr)
+    .slice(0, 3);
 
+  const formatSpikeLabel = (date: string, prr: number) => {
+    const mult = Math.round(prr / 100);
+    try {
+      const [, m, d] = date.split('-').map(Number);
+      const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+      return `${mult}× · ${d} ${months[m - 1]}`;
+    } catch {
+      return `${mult}× · ${date.slice(5)}`;
+    }
+  };
+
+  // Y-axis ticks in PRR, formatted as multipliers
+  const maxPrr = Math.max(...dailyTrend.map((d) => Math.max(d.trend, d.daily)), 200);
+  const yTicks = [0, 100, 200, 300, 500].filter((t) => t <= maxPrr + 150);
+  if (maxPrr > 500 && !yTicks.includes(Math.ceil(maxPrr / 100) * 100)) {
+    yTicks.push(Math.ceil(maxPrr / 100) * 100);
+  }
+
+  // ── Render ──────────────────────────────────────────────────────────────────
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">{T.breadcrumb}</a>
+    <div className="bg-gray-50 min-h-screen py-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Breadcrumb */}
+        <nav className="text-sm text-gray-500 mb-6">
+          <a href="/estadisticas" className="hover:text-blue-700">
+            {isEn ? 'Statistics' : 'Estadísticas'}
+          </a>
           {' / '}
-          <span className="text-gray-900 font-medium">{T.title}</span>
+          <span className="text-gray-900 font-medium">
+            {isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'}
+          </span>
         </nav>
 
-        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
-          <h1 className="text-4xl font-bold text-gray-900">{T.title}</h1>
-          <div className="flex gap-2">
-            <ShareButton title={`${isEn ? 'Political Risk' : 'Riesgo Político'} — Qhawarina`} text={T.shareText(data.current.score, level)} />
-            <EmbedWidget path="/estadisticas/riesgo-politico" title={`${isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'} — Qhawarina`} height={600} />
+        {/* ══ SECTION 1: HEADER ════════════════════════════════════════════ */}
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              {isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'}
+            </h1>
+            <p className="text-gray-500 text-base max-w-xl leading-relaxed">
+              {isEn
+                ? <>
+                    Measures the intensity of political and economic news in Peru.{' '}
+                    A normal day&nbsp;=&nbsp;100.{' '}
+                    <strong className="text-gray-700">Today = {mult} the normal level.</strong>
+                  </>
+                : <>
+                    Mide la intensidad de noticias políticas y económicas en Perú.{' '}
+                    Un día normal&nbsp;=&nbsp;100.{' '}
+                    <strong className="text-gray-700">Hoy = {mult} lo normal.</strong>
+                  </>
+              }
+            </p>
+          </div>
+          <div className="flex gap-2 flex-shrink-0">
+            <ShareButton
+              title={`${isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'} — Qhawarina`}
+              text={
+                isEn
+                  ? `📊 Peru Political Risk: ${mult} the normal level today (PRR ${Math.round(rawPrr)}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`
+                  : `📊 Riesgo político Perú: ${mult} lo normal hoy (PRR ${Math.round(rawPrr)}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`
+              }
+            />
+            <EmbedWidget
+              path="/estadisticas/riesgo-politico"
+              title={`${isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'} — Qhawarina`}
+              height={600}
+            />
           </div>
         </div>
 
-        <div className={`mt-4 px-5 py-4 rounded-xl border-2 ${styles.border} ${styles.bg}`}>
-          <div className="flex items-center gap-4 mb-1">
-            <div>
-              <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{T.currentLevel}</p>
-              <p className={`text-3xl font-bold ${styles.text}`}>
-                {Math.round(data.current.prr_7d ?? data.current.score)}{' '}
-                <span className="text-base font-normal text-gray-400">PRR</span>
-              </p>
-              <p className="text-xs text-gray-400 mt-0.5">
-                {isEn ? 'Today (raw):' : 'Hoy (raw):'}{' '}
-                <span className="font-medium">{Math.round(data.current.prr_raw ?? data.current.score)}</span>
-                {' · '}
-                {isEn ? '7-day avg' : 'Prom. 7 días'}
-              </p>
-            </div>
-            <div className={`px-3 py-1 rounded-full text-sm font-semibold ${styles.bg} ${styles.text} border ${styles.border}`}>
-              {level}
-            </div>
-          </div>
-          <RiskBar score={data.current.prr_7d ?? data.current.score} />
+        {/* ══ SECTION 2: TWO READING CARDS ════════════════════════════════ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          <ReadingCard
+            title={isEn ? 'TODAY' : 'HOY'}
+            subtitle={currentDateStr}
+            prr={rawPrr}
+            isEn={isEn}
+          />
+          <ReadingCard
+            title={isEn ? '7-DAY TREND' : 'TENDENCIA 7 DÍAS'}
+            subtitle={isEn ? 'Rolling average' : 'Promedio móvil'}
+            prr={avg7d}
+            isEn={isEn}
+          />
         </div>
 
-        <div className="mt-3">
-          <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
+        {/* ══ SECTION 3: MULTIPLIER SCALE ═════════════════════════════════ */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+            {isEn ? 'Reference scale (0 – 10× the average)' : 'Escala de referencia (0 – 10× el promedio)'}
+          </p>
+          <MultiplierScale rawPrr={rawPrr} avg7d={avg7d} isEn={isEn} />
         </div>
 
-        {/* Daily PRR Chart — hero, last 90 days */}
+        <div className="mb-6">
+          <LastUpdate
+            date={new Date(data.metadata.generated_at).toLocaleDateString(
+              isEn ? 'en-US' : 'es-PE',
+              { day: 'numeric', month: 'short', year: 'numeric' }
+            )}
+          />
+        </div>
+
+        {/* ══ SECTION 4: CHART ════════════════════════════════════════════ */}
         {dailyTrend.length >= 2 && (
-          <div className="mt-10 rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Daily Risk Score — full history' : 'Índice diario de riesgo — historia completa'}
-              </h3>
+          <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+            {/* Chart header */}
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <div>
+                <h3 className="text-base font-semibold text-gray-900">
+                  {isEn ? 'Full history' : 'Historial completo'}
+                </h3>
+                <p className="text-xs text-gray-500 mt-0.5 max-w-lg">
+                  {isEn
+                    ? 'Each point is one day. The bold line shows the weekly trend. Spikes above 5× (500 PRR) correspond to acute political crises.'
+                    : 'Cada punto es un día. La línea gruesa muestra la tendencia semanal. Picos superiores a 5× (500 PRR) corresponden a crisis políticas agudas.'
+                  }
+                </p>
+              </div>
               <ChartShareButton
                 url="https://qhawarina.pe/estadisticas/riesgo-politico"
-                shareText={isEn
-                  ? `📊 Peru Political Risk: PRR ${Math.round(data.current.score)} today (${data.current.level}) — Qhawarina`
-                  : `📊 Riesgo político Perú: PRR ${Math.round(data.current.score)} hoy (${data.current.level}) — Qhawarina`}
+                shareText={
+                  isEn
+                    ? `📊 Peru Political Risk: ${mult} the normal level (PRR ${Math.round(rawPrr)}) — Qhawarina`
+                    : `📊 Riesgo político Perú: ${mult} lo normal (PRR ${Math.round(rawPrr)}) — Qhawarina`
+                }
               />
             </div>
-            <ResponsiveContainer width="100%" height={280}>
-              <AreaChart data={dailyTrend} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
-                <XAxis dataKey="date" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+
+            {/* Legend */}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-500">
+              <div className="flex items-center gap-1.5">
+                <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="2.5" /></svg>
+                <span>{isEn ? '7-day trend' : 'Tendencia 7d'}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="1" strokeOpacity="0.5" /></svg>
+                <span>{isEn ? 'Daily PRR' : 'PRR diario'}</span>
+              </div>
+            </div>
+
+            <ResponsiveContainer width="100%" height={300}>
+              <AreaChart
+                data={dailyTrend}
+                margin={{ top: 8, right: 16, left: 8, bottom: 8 }}
+              >
+                {/* Zone background bands */}
+                <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.05} stroke="none" />
+                <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.05} stroke="none" />
+                <ReferenceArea y1={200} y2={300} fill="#C65D3E" fillOpacity={0.05} stroke="none" />
+                <ReferenceArea y1={300} y2={500} fill="#9B2226" fillOpacity={0.07} stroke="none" />
+                <ReferenceArea y1={500}          fill="#5C0000" fillOpacity={0.08} stroke="none" />
+
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={CHART_DEFAULTS.gridStroke}
+                  strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+                />
+                <XAxis
+                  dataKey="date"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
                   interval={Math.floor(dailyTrend.length / 6)}
                 />
-                <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
-                  label={{ value: 'PRR', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  ticks={yTicks}
+                  tickFormatter={(v: number) =>
+                    v === 0 ? '0' : `${(v / 100).toFixed(0)}×`
+                  }
+                  label={{
+                    value: isEn ? '× avg' : '× media',
+                    angle: -90,
+                    position: 'insideLeft',
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                    offset: 8,
+                  }}
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
                   formatter={((v: number | undefined, name?: string) => [
-                    `${Math.round(v ?? 0)}`,
-                    name === 'score' ? (isEn ? '7d avg' : 'Prom. 7d') : (isEn ? 'Daily PRR' : 'PRR diario'),
+                    `${Math.round(v ?? 0)} PRR (${toMult(v ?? 0)})`,
+                    name === 'trend'
+                      ? (isEn ? '7d trend' : 'Tendencia 7d')
+                      : (isEn ? 'Daily PRR' : 'PRR diario'),
                   ]) as any}
                 />
-                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2"
-                  label={{ value: isEn ? 'avg (100)' : 'media (100)', position: 'insideTopRight', style: { fontSize: 9, fill: CHART_COLORS.ink3 } }}
+
+                {/* avg = 100 reference */}
+                <ReferenceLine
+                  y={100}
+                  stroke={CHART_COLORS.amber}
+                  strokeDasharray="4 2"
+                  label={{
+                    value: isEn ? 'avg (1×)' : 'media (1×)',
+                    position: 'insideTopRight',
+                    style: { fontSize: 9, fill: CHART_COLORS.ink3 },
+                  }}
                 />
-                {/* Raw daily PRR — thin background line */}
-                <Area type="monotone" dataKey="prr"
-                  stroke="#C65D3E" fill="none"
-                  dot={false} strokeWidth={1} strokeOpacity={0.35} />
-                {/* 7-day rolling average — bold foreground line with fill */}
-                <Area type="monotone" dataKey="score"
-                  stroke="#C65D3E" fill="#C65D3E" fillOpacity={0.12}
-                  dot={false} strokeWidth={2} />
+
+                {/* Crisis spike annotations (top 3 raw PRR > 300) */}
+                {topSpikes.map((spike, i) => (
+                  <ReferenceLine
+                    key={i}
+                    x={spike.date}
+                    stroke="#9B2226"
+                    strokeDasharray="2 2"
+                    strokeOpacity={0.6}
+                    label={{
+                      value: formatSpikeLabel(spike.date, spike.prr),
+                      position: 'top',
+                      style: { fontSize: 8, fill: '#9B2226' },
+                    }}
+                  />
+                ))}
+
+                {/* Raw daily PRR — thin, muted */}
+                <Area
+                  type="monotone"
+                  dataKey="daily"
+                  stroke="#C65D3E"
+                  fill="none"
+                  dot={false}
+                  strokeWidth={1}
+                  strokeOpacity={0.4}
+                />
+                {/* 7-day trend — bold with fill */}
+                <Area
+                  type="monotone"
+                  dataKey="trend"
+                  stroke="#C65D3E"
+                  fill="#C65D3E"
+                  fillOpacity={0.10}
+                  dot={false}
+                  strokeWidth={2.5}
+                />
               </AreaChart>
             </ResponsiveContainer>
-            <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
-              {isEn
-                ? 'Bold line = 7-day rolling avg. Thin line = raw daily PRR. Mean = 100 (dashed). Source: Qhawarina AI-GPR · 11 RSS feeds.'
-                : 'Línea gruesa = promedio móvil 7d. Línea fina = PRR diario bruto. Media = 100 (punteada). Fuente: Qhawarina AI-GPR · 11 feeds RSS.'}
-            </p>
           </div>
         )}
 
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {/* ══ SECTION 5: INTERPRETATION TABLE ════════════════════════════ */}
+        <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+          <h3 className="text-base font-semibold text-gray-900 mb-1">
+            {isEn ? 'How to interpret this index' : '¿Cómo se interpreta?'}
+          </h3>
+          <p className="text-sm text-gray-500 mb-4">
+            {isEn
+              ? <>
+                  Example: a PRR of{' '}
+                  <strong>{Math.round(avg7d)}</strong> means that this week&apos;s
+                  political activity was{' '}
+                  <strong>{multTrend} more intense</strong> than a normal day.
+                </>
+              : <>
+                  Ejemplo: un PRR de{' '}
+                  <strong>{Math.round(avg7d)}</strong> significa que la actividad
+                  política de la semana fue{' '}
+                  <strong>{multTrend} más intensa</strong> que un día promedio.
+                </>
+            }
+          </p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b-2 border-gray-100">
+                  <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-400 uppercase tracking-wide w-24">
+                    {isEn ? 'Level' : 'Nivel'}
+                  </th>
+                  <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-400 uppercase tracking-wide w-24">
+                    PRR
+                  </th>
+                  <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-400 uppercase tracking-wide w-20">
+                    {isEn ? 'Multiplier' : 'Múltiplo'}
+                  </th>
+                  <th className="text-left py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide">
+                    {isEn ? 'What it means' : 'Qué significa'}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {(Object.entries(LEVELS) as [RiskLevel, LevelCfg][]).map(([key, cfg]) => (
+                  <tr key={key} className="border-b border-gray-50 last:border-0">
+                    <td className="py-3 pr-4">
+                      <span
+                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                        style={{ background: cfg.color + '18', color: cfg.color }}
+                      >
+                        {isEn ? cfg.label_en : cfg.label_es}
+                      </span>
+                    </td>
+                    <td className="py-3 pr-4 text-gray-600 font-mono text-xs">{cfg.range}</td>
+                    <td className="py-3 pr-4 text-gray-500 text-xs font-medium">{cfg.mult}</td>
+                    <td className="py-3 text-gray-600 text-sm">
+                      {isEn ? cfg.desc_en : cfg.desc_es}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
           {[
-            { label: T.articlesTotal, value: data.current.articles_total.toString() },
-            { label: T.articlesPolitical, value: data.current.articles_political.toString() },
-            { label: T.articlesEconomic, value: data.current.articles_economic.toString() },
-            { label: T.rssFeeds, value: data.metadata.rss_feeds.toString() },
+            { label: isEn ? 'Articles today'  : 'Artículos hoy',   value: data.current.articles_total     },
+            { label: isEn ? 'Political'        : 'Políticos',       value: data.current.articles_political },
+            { label: isEn ? 'Economic'         : 'Económicos',      value: data.current.articles_economic  },
+            { label: isEn ? 'RSS feeds'        : 'Feeds RSS',       value: data.metadata.rss_feeds         },
           ].map(({ label, value }) => (
             <div key={label} className="bg-white rounded-lg border border-gray-200 p-4">
               <p className="text-xs text-gray-500">{label}</p>
@@ -260,67 +641,48 @@ export default function RiesgoPoliticoPage() {
             </div>
           ))}
         </div>
+        <p className="text-xs text-gray-400 mb-6 px-1">
+          {isEn
+            ? 'Coverage: ~110 articles/day from 6 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Ideeleradio, Infobae Peru).'
+            : 'Cobertura: ~110 artículos/día de 6 medios peruanos (La República, El Comercio, Gestión, RPP, Ideeleradio, Infobae Perú).'}
+        </p>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link href="/estadisticas/riesgo-politico/metodologia">
-            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="text-4xl">📖</div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">{T.cardMethodology}</h2>
-                  <p className="text-sm text-gray-600 mt-1">{T.cardMethodologyDesc}</p>
-                </div>
+        {/* ══ SECTION 7: LINKS ════════════════════════════════════════════ */}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Link href="/estadisticas/riesgo-politico/metodologia" className="flex-1">
+            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+              <span className="text-xl flex-shrink-0">📖</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-900 text-sm">
+                  {isEn ? 'Full methodology' : 'Metodología completa'}
+                </p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {isEn
+                    ? 'Formulas · LLM classifier · AI-GPR reference'
+                    : 'Fórmulas · clasificador LLM · referencia AI-GPR'}
+                </p>
               </div>
+              <span className="text-gray-400 text-sm flex-shrink-0">→</span>
             </div>
           </Link>
-
-          <Link href="/datos">
-            <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="text-4xl">📥</div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">{T.cardDownload}</h2>
-                  <p className="text-sm text-gray-600 mt-1">{T.cardDownloadDesc(data.metadata.coverage_days)}</p>
-                </div>
+          <Link href="/datos" className="flex-1">
+            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+              <span className="text-xl flex-shrink-0">📥</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-900 text-sm">
+                  {isEn ? 'Download data' : 'Descargar datos'}
+                </p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {isEn
+                    ? `Complete daily series — ${data.metadata.coverage_days} days`
+                    : `Serie diaria completa — ${data.metadata.coverage_days} días`}
+                </p>
               </div>
+              <span className="text-gray-400 text-sm flex-shrink-0">→</span>
             </div>
           </Link>
         </div>
 
-        {/* Monthly Average Trend Chart */}
-        {monthlyTrend.length >= 2 && (
-          <div className="mt-8 rounded-lg border p-6 relative" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Monthly Average Risk Score' : 'Promedio Mensual del Índice de Riesgo'}
-              </h3>
-            </div>
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={monthlyTrend} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
-                <XAxis dataKey="month" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
-                  label={{ value: 'PRR', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
-                />
-                <Tooltip
-                  contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined) => [`${v?.toFixed(1) ?? '—'}`, 'PRR']}
-                />
-                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2" />
-                <Bar dataKey="score" radius={[4, 4, 0, 0]}>
-                  {monthlyTrend.map((entry, i) => (
-                    <Cell key={i} fill={barColor(entry.score)} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
-              {isEn
-                ? 'Teal <80 (Bajo) · Amber 80–120 (Moderado) · Red >120 (Elevado+). Mean = 100.'
-                : 'Verde <80 (Bajo) · Ámbar 80–120 (Moderado) · Rojo >120 (Elevado+). Media = 100.'}
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );

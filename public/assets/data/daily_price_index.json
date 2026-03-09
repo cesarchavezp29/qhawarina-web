@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-07",
-    "n_days": 26,
+    "last_date": "2026-03-09",
+    "n_days": 28,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -793,87 +793,141 @@
       "index_limpieza": 99.1206,
       "index_cuidado_personal": 98.9009,
       "index_other": 100.6898
+    },
+    {
+      "date": "2026-03-08",
+      "index_all": 99.4368,
+      "index_all_unweighted": 99.5931,
+      "index_food": 99.5068,
+      "index_nonfood": 99.8782,
+      "var_all": 0.0164,
+      "var_food": 0.0386,
+      "cum_pct": -0.5632,
+      "yoy_inflation": null,
+      "mom_inflation": null,
+      "interpolated": false,
+      "n_matched": 40452,
+      "index_arroz_cereales": 99.3947,
+      "index_pan_harinas": 99.3632,
+      "index_carnes": 99.5315,
+      "index_pescados_mariscos": 100.3532,
+      "index_lacteos": 99.5192,
+      "index_frutas": 99.9157,
+      "index_verduras": 98.962,
+      "index_aceites_grasas": 98.9966,
+      "index_azucar_dulces": 100.1701,
+      "index_bebidas": 99.4236,
+      "index_limpieza": 99.1159,
+      "index_cuidado_personal": 98.9055,
+      "index_other": 100.6946
+    },
+    {
+      "date": "2026-03-09",
+      "index_all": 99.4891,
+      "index_all_unweighted": 99.6674,
+      "index_food": 99.5801,
+      "index_nonfood": 99.9557,
+      "var_all": 0.0526,
+      "var_food": 0.0737,
+      "cum_pct": -0.5109,
+      "yoy_inflation": null,
+      "mom_inflation": null,
+      "interpolated": false,
+      "n_matched": 40318,
+      "index_arroz_cereales": 99.3533,
+      "index_pan_harinas": 99.4226,
+      "index_carnes": 99.6399,
+      "index_pescados_mariscos": 100.5243,
+      "index_lacteos": 99.5578,
+      "index_frutas": 99.997,
+      "index_verduras": 98.9734,
+      "index_aceites_grasas": 98.7127,
+      "index_azucar_dulces": 100.3747,
+      "index_bebidas": 99.4,
+      "index_limpieza": 99.181,
+      "index_cuidado_personal": 99.0435,
+      "index_other": 100.7399
     }
   ],
   "latest": {
-    "date": "2026-03-07",
-    "index_all": 99.4205,
-    "index_food": 99.4684,
-    "cum_pct": -0.5795,
-    "var_all": -0.0822,
+    "date": "2026-03-09",
+    "index_all": 99.4891,
+    "index_food": 99.5801,
+    "cum_pct": -0.5109,
+    "var_all": 0.0526,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 33015,
+    "n_products_today": 40318,
     "top_movers": [
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.49
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.29
       },
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.22
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 0.2
       },
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.09
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.17
       },
       {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": -0.06
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.14
       }
     ],
     "product_movers": [
       {
-        "name": "Arándanos Extra Wong 500g",
-        "store": "wong",
-        "category": "carnes",
-        "var": 95.2
-      },
-      {
-        "name": "Mix de Lechuga Crespa Ecologic x 2 Unid",
-        "store": "metro",
-        "category": "carnes",
-        "var": 56.0
-      },
-      {
-        "name": "Lechuga Roja Hidropónica de Invernade...",
+        "name": "Manzana Pink Lady x kg",
         "store": "metro",
         "category": "frutas",
-        "var": 54.55
+        "var": 98.2
       },
       {
-        "name": "Cheesecake Horneado de Maracuyá Dulce...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 53.98
+        "name": "Papas Precocidas Clásicas Mydibel 7/7...",
+        "store": "metro",
+        "category": "frutas",
+        "var": 73.56
+      },
+      {
+        "name": "Lechón Entero Congelado Redondos x kg",
+        "store": "metro",
+        "category": "carnes",
+        "var": 71.68
+      },
+      {
+        "name": "Cebada Instantánea Cuisine & Co 170g",
+        "store": "metro",
+        "category": "other",
+        "var": 70.89
       }
     ],
     "stores_coverage": {
-      "metro": 12570,
-      "plazavea": 13062,
-      "wong": 14987
+      "metro": 12486,
+      "plazavea": 12965,
+      "wong": 14914
     },
     "categories_coverage": {
-      "aceites_grasas": 682,
-      "arroz_cereales": 1326,
-      "azucar_dulces": 1133,
-      "bebidas": 965,
-      "carnes": 14574,
-      "cuidado_personal": 2792,
-      "frutas": 1980,
-      "lacteos": 2733,
-      "limpieza": 3082,
-      "pan_harinas": 6634,
-      "pescados_mariscos": 228,
-      "verduras": 315
+      "aceites_grasas": 675,
+      "arroz_cereales": 1329,
+      "azucar_dulces": 1124,
+      "bebidas": 964,
+      "carnes": 14493,
+      "cuidado_personal": 2789,
+      "frutas": 1937,
+      "lacteos": 2730,
+      "limpieza": 3070,
+      "pan_harinas": 6545,
+      "pescados_mariscos": 229,
+      "verduras": 312
     }
   }
 }
