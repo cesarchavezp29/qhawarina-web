@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-09"
+    "updated": "2026-03-10"
   },
   "categories": {
     "arroz_cereales": {
@@ -823,111 +823,111 @@
     },
     {
       "date": "2026-03-09",
-      "index_all": 99.4884,
-      "index_all_unweighted": 99.6664,
-      "index_food": 99.5773,
-      "index_nonfood": 99.9599,
-      "var_all": 0.0519,
-      "var_food": 0.0708,
-      "cum_pct": -0.5116,
+      "index_all": 99.386,
+      "index_all_unweighted": 99.6136,
+      "index_food": 99.4959,
+      "index_nonfood": 99.9937,
+      "var_all": -0.0511,
+      "var_food": -0.011,
+      "cum_pct": -0.614,
       "yoy_inflation": null,
       "mom_inflation": null,
       "interpolated": false,
-      "n_matched": 40365,
-      "index_arroz_cereales": 99.3533,
-      "index_pan_harinas": 99.4213,
-      "index_carnes": 99.6368,
-      "index_pescados_mariscos": 100.5243,
-      "index_lacteos": 99.5571,
-      "index_frutas": 99.9771,
-      "index_verduras": 98.9734,
-      "index_aceites_grasas": 98.7148,
-      "index_azucar_dulces": 100.3839,
-      "index_bebidas": 99.4,
-      "index_limpieza": 99.1887,
-      "index_cuidado_personal": 99.0473,
-      "index_other": 100.7418
+      "n_matched": 40334,
+      "index_arroz_cereales": 99.2424,
+      "index_pan_harinas": 99.2497,
+      "index_carnes": 99.6192,
+      "index_pescados_mariscos": 99.7842,
+      "index_lacteos": 99.5214,
+      "index_frutas": 99.7364,
+      "index_verduras": 98.8103,
+      "index_aceites_grasas": 98.7269,
+      "index_azucar_dulces": 100.3179,
+      "index_bebidas": 99.2993,
+      "index_limpieza": 99.4158,
+      "index_cuidado_personal": 99.0114,
+      "index_other": 100.6784
     }
   ],
   "latest": {
     "date": "2026-03-09",
-    "index_all": 99.4884,
-    "index_food": 99.5773,
-    "cum_pct": -0.5116,
-    "var_all": 0.0519,
+    "index_all": 99.386,
+    "index_food": 99.4959,
+    "cum_pct": -0.614,
+    "var_all": -0.0511,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 40365,
+    "n_products_today": 40334,
     "top_movers": [
-      {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.28
-      },
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 0.21
-      },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": 0.17
+        "var": -0.57
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": 0.14
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": 0.3
+      },
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.27
+      },
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": -0.18
       }
     ],
     "product_movers": [
       {
-        "name": "Manzana Pink Lady x kg",
-        "store": "metro",
-        "category": "frutas",
-        "var": 98.2
+        "name": "Cápsulas Cartical-D Fitosana 100u",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       },
       {
-        "name": "Papas Precocidas Clásicas Mydibel 7/7...",
-        "store": "metro",
-        "category": "frutas",
-        "var": 73.56
+        "name": "Golden Milk Fitosana - Batido 300g",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       },
       {
-        "name": "Lechón Entero Congelado Redondos x kg",
-        "store": "metro",
-        "category": "carnes",
-        "var": 71.68
+        "name": "Cardo Mariano Fitosana - Capsulas 100u",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       },
       {
-        "name": "Cebada Instantánea Cuisine & Co 170g",
-        "store": "wong",
-        "category": "other",
-        "var": 70.89
+        "name": "Ashwagandha con Melena de Leon Fitosa...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       }
     ],
     "stores_coverage": {
-      "metro": 12486,
-      "plazavea": 13092,
-      "wong": 14918
+      "metro": 12541,
+      "plazavea": 13075,
+      "wong": 15009
     },
     "categories_coverage": {
-      "aceites_grasas": 680,
-      "arroz_cereales": 1334,
-      "azucar_dulces": 1128,
-      "bebidas": 967,
-      "carnes": 14549,
-      "cuidado_personal": 2792,
-      "frutas": 1958,
-      "lacteos": 2734,
-      "limpieza": 3074,
-      "pan_harinas": 6568,
+      "aceites_grasas": 685,
+      "arroz_cereales": 1333,
+      "azucar_dulces": 1133,
+      "bebidas": 969,
+      "carnes": 14585,
+      "cuidado_personal": 2810,
+      "frutas": 1955,
+      "lacteos": 2748,
+      "limpieza": 3102,
+      "pan_harinas": 6580,
       "pescados_mariscos": 230,
-      "verduras": 312
+      "verduras": 313
     }
   }
 }

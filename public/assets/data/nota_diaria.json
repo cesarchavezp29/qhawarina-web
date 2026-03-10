@@ -1,24 +1,24 @@
 {
-  "date": "2026-03-09",
-  "headline_es": "Precios supermercado -0.51% MTD · Nowcast PBI +2.20%",
-  "headline_en": "Supermarket prices -0.51% MTD · GDP nowcast +2.20%",
+  "date": "2026-03-10",
+  "headline_es": "Precios supermercado -0.61% MTD · Nowcast PBI +2.20%",
+  "headline_en": "Supermarket prices -0.61% MTD · GDP nowcast +2.20%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.51% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.51% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.61% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.61% month-to-date."
     },
     {
       "icon": "📉",
-      "text_es": "Aceites y Grasas: -0.3% en el mes.",
-      "text_en": "Oils & Fats: -0.3% this month."
+      "text_es": "Pescados y Mariscos: -0.6% en el mes.",
+      "text_en": "Fish & Seafood: -0.6% this month."
     },
     {
       "icon": "📈",
-      "text_es": "Azúcar y Dulces: +0.2% en el mes.",
-      "text_en": "Sugar & Sweets: +0.2% this month."
+      "text_es": "Limpieza: +0.3% en el mes.",
+      "text_en": "Cleaning: +0.3% this month."
     },
     {
       "icon": "📊",
@@ -32,9 +32,9 @@
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: PRR 411 — nivel crítico.",
-      "text_en": "Political risk: PRR 411 — critical level."
+      "text_es": "Riesgo político: PRR 88 — nivel bajo.",
+      "text_en": "Political risk: PRR 88 — low level."
     }
   ],
-  "updated_at": "2026-03-09T20:51:19.046454+00:00"
+  "updated_at": "2026-03-10T04:59:08.221761+00:00"
 }
