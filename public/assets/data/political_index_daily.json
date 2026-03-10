@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-09T21:22:53.255574",
+    "generated_at": "2026-03-09T23:17:17.310591",
     "coverage_days": 434,
     "rss_feeds": 11,
     "rss_sources": 6,
@@ -8,23 +8,23 @@
   },
   "current": {
     "date": "2026-03-10",
-    "political_raw": 232.6,
-    "political_7d": 135.3,
+    "political_raw": 221.0,
+    "political_7d": 133.1,
     "political_level": "MODERADO",
-    "political_multiplier": 1.35,
-    "economic_raw": 188.9,
-    "economic_7d": 142.7,
+    "political_multiplier": 1.33,
+    "economic_raw": 175.2,
+    "economic_7d": 139.6,
     "economic_level": "MODERADO",
-    "economic_multiplier": 1.43,
-    "score": 135.3,
-    "prr_7d": 135.3,
-    "prr_raw": 232.6,
+    "economic_multiplier": 1.4,
+    "score": 133.1,
+    "prr_7d": 133.1,
+    "prr_raw": 221.0,
     "level": "MODERADO",
     "articles_total": 89,
-    "articles_political_relevant": 40,
-    "articles_economic_relevant": 50,
-    "political_justification": "El riesgo político se eleva por la inestabilidad gubernamental: Avanza País amenaza con censura ministerial y denuncias ante organismos internacionales cuestionan la independencia judicial. Simultáneamente, investigaciones sobre interferencia policial en procesos electorales erosionan la confianza institucional, agravando la fragmentación política.",
-    "economic_justification": "La interrupción del suministro de gas natural genera presiones inflacionarias inmediatas y desabastecimiento en grifos, afectando sectores críticos. Simultáneamente, la politización de la crisis energética mediante condicionalidades parlamentarias debilita la capacidad de respuesta del Gobierno, amplificando la incertidumbre económica.",
+    "articles_political_relevant": 38,
+    "articles_economic_relevant": 48,
+    "political_justification": "El riesgo político se eleva por la confluencia de inestabilidad institucional (amenaza de censura ministerial), debilitamiento del sistema de justicia (reintegro de funcionarios investigados) y presiones económicas (crisis energética). Estos factores fragmentan el apoyo parlamentario, permitiendo que bloques opositores condicionen decisiones gubernamentales críticas.",
+    "economic_justification": "La crisis de suministro de gas natural genera presiones inflacionarias inmediatas y volatilidad política, con partidos condicionando al Gobierno. La designación de nuevo director de hidrocarburos refleja inestabilidad institucional. Tensiones geopolíticas adicionales amplían incertidumbre económica global.",
     "top_political_drivers": [
       {
         "title": "Avanza País no dará voto de confianza al Gabinete de Miralles y promoverá censura de 2 ministros",
@@ -47,8 +47,8 @@
         "score": 48
       },
       {
-        "title": "LaLiga EA Sports: Espanyol y Real Oviedo se repartieron los puntos en un 1 a 1",
-        "source": "rpp",
+        "title": "Fuerza Popular y Avanza País se aprovechan de crisis energética para condicionar al Gobierno con el voto de confianza",
+        "source": "larepublica",
         "score": 45
       }
     ],
@@ -74,12 +74,12 @@
         "score": 52
       },
       {
-        "title": "LaLiga EA Sports: Espanyol y Real Oviedo se repartieron los puntos en un 1 a 1",
+        "title": "Putin y Trump hablan por teléfono de Irán, Venezuela y Ucrania en su primera conversación en 2026",
         "source": "rpp",
         "score": 52
       }
     ],
-    "justification": "El riesgo político se eleva por la inestabilidad gubernamental: Avanza País amenaza con censura ministerial y denuncias ante organismos internacionales cuestionan la independencia judicial. Simultáneamente, investigaciones sobre interferencia policial en procesos electorales erosionan la confianza institucional, agravando la fragmentación política.",
+    "justification": "El riesgo político se eleva por la confluencia de inestabilidad institucional (amenaza de censura ministerial), debilitamiento del sistema de justicia (reintegro de funcionarios investigados) y presiones económicas (crisis energética). Estos factores fragmentan el apoyo parlamentario, permitiendo que bloques opositores condicionen decisiones gubernamentales críticas.",
     "top_drivers": [
       {
         "title": "Avanza País no dará voto de confianza al Gabinete de Miralles y promoverá censura de 2 ministros",
@@ -102,43 +102,43 @@
         "score": 48
       },
       {
-        "title": "LaLiga EA Sports: Espanyol y Real Oviedo se repartieron los puntos en un 1 a 1",
-        "source": "rpp",
+        "title": "Fuerza Popular y Avanza País se aprovechan de crisis energética para condicionar al Gobierno con el voto de confianza",
+        "source": "larepublica",
         "score": 45
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 115.9,
-    "political_30d_avg": 100.2,
-    "economic_7d_avg": 136.0,
-    "economic_30d_avg": 112.1,
+    "political_7d_avg": 115.0,
+    "political_30d_avg": 100.0,
+    "economic_7d_avg": 134.7,
+    "economic_30d_avg": 111.8,
     "year_max": 152.9,
     "year_max_date": "2025-06-22"
   },
   "major_events": [
     {
       "date": "2026-03-10",
-      "score": 135.3,
+      "score": 133.1,
       "level": "MODERADO",
       "n_articles": 89,
-      "summary": "Falta de confianza política en el nuevo gabinete ministerial.",
+      "summary": "Falta de confianza política en el gabinete ministerial.",
       "report_url": "/political/daily-reports/2026-03-10.html"
     },
     {
       "date": "2026-03-09",
-      "score": 129.8,
+      "score": 128.1,
       "level": "MODERADO",
       "n_articles": 284,
-      "summary": "Fragmentación política y demandas contradictorias del Congreso.",
+      "summary": "Fragmentación política y demandas condicionadas del voto.",
       "report_url": "/political/daily-reports/2026-03-09.html"
     },
     {
       "date": "2026-03-08",
-      "score": 123.5,
+      "score": 122.1,
       "level": "MODERADO",
       "n_articles": 83,
-      "summary": "Debilidad institucional y falta de legitimidad política.",
+      "summary": "Crisis de legitimidad institucional y confianza democrática.",
       "report_url": "/political/daily-reports/2026-03-08.html"
     },
     {
@@ -146,7 +146,7 @@
       "score": 122.5,
       "level": "MODERADO",
       "n_articles": 152,
-      "summary": "Destitución de presidente genera crisis política institucional continua.",
+      "summary": "Inestabilidad política extrema por destituiciones presidenciales recurrentes.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -154,7 +154,7 @@
       "score": 121.0,
       "level": "MODERADO",
       "n_articles": 161,
-      "summary": "Conflicto político entre Congreso y ministro genera inestabilidad.",
+      "summary": "Censura ministerial genera conflicto político institucional.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -162,7 +162,7 @@
       "score": 122.2,
       "level": "MODERADO",
       "n_articles": 146,
-      "summary": "Polarización política extrema entre candidatos presidenciales rivales.",
+      "summary": "Confrontación agresiva entre candidatos presidenciales debilita instituciones.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -170,7 +170,7 @@
       "score": 123.1,
       "level": "MODERADO",
       "n_articles": 75,
-      "summary": "Incertidumbre sobre candidaturas presidenciales y liderazgo político fragmentado.",
+      "summary": "Incertidumbre sobre candidaturas presidenciales y fugitivos políticos.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
@@ -178,7 +178,7 @@
       "score": 120.6,
       "level": "MODERADO",
       "n_articles": 43,
-      "summary": "Inestabilidad política y corrupción en obras públicas generan crisis.",
+      "summary": "Inestabilidad presidencial persistente afecta gobernanza nacional.",
       "report_url": "/political/daily-reports/2025-10-12.html"
     },
     {
@@ -186,7 +186,7 @@
       "score": 125.0,
       "level": "MODERADO",
       "n_articles": 71,
-      "summary": "Moción de censura contra ministro genera inestabilidad política.",
+      "summary": "Conflictos entre poderes ejecutivo y legislativo continúan.",
       "report_url": "/political/daily-reports/2025-09-18.html"
     },
     {
@@ -194,7 +194,7 @@
       "score": 120.8,
       "level": "MODERADO",
       "n_articles": 57,
-      "summary": "Falta de comunicación entre poderes del Estado.",
+      "summary": "Conflicto entre poderes del Estado peruano.",
       "report_url": "/political/daily-reports/2025-09-16.html"
     }
   ],
@@ -4857,8 +4857,8 @@
       "date": "2026-03-04",
       "political_raw": 97.0,
       "political_7d": 98.5,
-      "economic_raw": 139.9,
-      "economic_7d": 127.0,
+      "economic_raw": 140.0,
+      "economic_7d": 127.1,
       "score": 98.5,
       "prr": 97.0,
       "prr_7d": 98.5,
@@ -4869,12 +4869,12 @@
     {
       "date": "2026-03-05",
       "political_raw": 92.2,
-      "political_7d": 100.9,
+      "political_7d": 101.1,
       "economic_raw": 102.9,
-      "economic_7d": 128.0,
-      "score": 100.9,
+      "economic_7d": 128.1,
+      "score": 101.1,
       "prr": 92.2,
-      "prr_7d": 100.9,
+      "prr_7d": 101.1,
       "n_articles": 125,
       "low_coverage": false,
       "provisional": false
@@ -4882,12 +4882,12 @@
     {
       "date": "2026-03-06",
       "political_raw": 107.7,
-      "political_7d": 103.4,
-      "economic_raw": 160.6,
-      "economic_7d": 130.0,
-      "score": 103.4,
+      "political_7d": 103.8,
+      "economic_raw": 160.9,
+      "economic_7d": 130.2,
+      "score": 103.8,
       "prr": 107.7,
-      "prr_7d": 103.4,
+      "prr_7d": 103.8,
       "n_articles": 141,
       "low_coverage": false,
       "provisional": true
@@ -4895,51 +4895,51 @@
     {
       "date": "2026-03-07",
       "political_raw": 120.4,
-      "political_7d": 119.7,
+      "political_7d": 118.5,
       "economic_raw": 151.3,
-      "economic_7d": 139.2,
-      "score": 119.7,
+      "economic_7d": 137.4,
+      "score": 118.5,
       "prr": 120.4,
-      "prr_7d": 119.7,
+      "prr_7d": 118.5,
       "n_articles": 74,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-08",
-      "political_raw": 89.6,
-      "political_7d": 123.5,
-      "economic_raw": 107.2,
-      "economic_7d": 139.1,
-      "score": 123.5,
-      "prr": 89.6,
-      "prr_7d": 123.5,
+      "political_raw": 91.0,
+      "political_7d": 122.1,
+      "economic_raw": 107.9,
+      "economic_7d": 137.0,
+      "score": 122.1,
+      "prr": 91.0,
+      "prr_7d": 122.1,
       "n_articles": 83,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-09",
-      "political_raw": 98.4,
-      "political_7d": 129.8,
-      "economic_raw": 123.5,
-      "economic_7d": 146.3,
-      "score": 129.8,
-      "prr": 98.4,
-      "prr_7d": 129.8,
+      "political_raw": 100.1,
+      "political_7d": 128.1,
+      "economic_raw": 123.9,
+      "economic_7d": 143.8,
+      "score": 128.1,
+      "prr": 100.1,
+      "prr_7d": 128.1,
       "n_articles": 284,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-10",
-      "political_raw": 232.6,
-      "political_7d": 135.3,
-      "economic_raw": 188.9,
-      "economic_7d": 142.7,
-      "score": 135.3,
-      "prr": 232.6,
-      "prr_7d": 135.3,
+      "political_raw": 221.0,
+      "political_7d": 133.1,
+      "economic_raw": 175.2,
+      "economic_7d": 139.6,
+      "score": 133.1,
+      "prr": 221.0,
+      "prr_7d": 133.1,
       "n_articles": 89,
       "low_coverage": false,
       "provisional": true
@@ -6234,8 +6234,8 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 107.4,
-      "economic_avg": 129.1,
+      "political_avg": 106.8,
+      "economic_avg": 128.2,
       "n_articles": 1209,
       "fx_level": null,
       "fx_yoy": null
