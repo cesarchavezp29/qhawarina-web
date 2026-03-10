@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-09",
-    "n_days": 28,
+    "last_date": "2026-03-10",
+    "n_days": 29,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -847,87 +847,114 @@
       "index_limpieza": 99.4158,
       "index_cuidado_personal": 99.0114,
       "index_other": 100.6784
+    },
+    {
+      "date": "2026-03-10",
+      "index_all": 99.8701,
+      "index_all_unweighted": 100.0298,
+      "index_food": 99.9248,
+      "index_nonfood": 100.3741,
+      "var_all": 0.4871,
+      "var_food": 0.4311,
+      "cum_pct": -0.1299,
+      "yoy_inflation": null,
+      "mom_inflation": null,
+      "interpolated": false,
+      "n_matched": 37799,
+      "index_arroz_cereales": 99.8088,
+      "index_pan_harinas": 99.6803,
+      "index_carnes": 99.9393,
+      "index_pescados_mariscos": 100.1306,
+      "index_lacteos": 99.8173,
+      "index_frutas": 100.8471,
+      "index_verduras": 99.5042,
+      "index_aceites_grasas": 98.9939,
+      "index_azucar_dulces": 101.6913,
+      "index_bebidas": 99.216,
+      "index_limpieza": 99.714,
+      "index_cuidado_personal": 99.7179,
+      "index_other": 100.8918
     }
   ],
   "latest": {
-    "date": "2026-03-09",
-    "index_all": 99.386,
-    "index_food": 99.4959,
-    "cum_pct": -0.614,
-    "var_all": -0.0511,
+    "date": "2026-03-10",
+    "index_all": 99.8701,
+    "index_food": 99.9248,
+    "cum_pct": -0.1299,
+    "var_all": 0.4871,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 40334,
+    "n_products_today": 37799,
     "top_movers": [
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.57
-      },
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 0.3
-      },
-      {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.27
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 1.37
       },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.18
+        "var": 1.11
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.71
+      },
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.7
       }
     ],
     "product_movers": [
       {
-        "name": "Cápsulas Cartical-D Fitosana 100u",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 100.0
+        "name": "Chocolate de Leche Hershey's Kisses C...",
+        "store": "metro",
+        "category": "lacteos",
+        "var": 97.25
       },
       {
-        "name": "Golden Milk Fitosana - Batido 300g",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 100.0
+        "name": "Chocolate de Leche Hershey's Kisses 102g",
+        "store": "metro",
+        "category": "lacteos",
+        "var": 97.25
       },
       {
-        "name": "Cardo Mariano Fitosana - Capsulas 100u",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 100.0
+        "name": "Champiñón Picado Paccu 100g",
+        "store": "metro",
+        "category": "frutas",
+        "var": 95.0
       },
       {
-        "name": "Ashwagandha con Melena de Leon Fitosa...",
+        "name": "Galletas MARQUESITAS Sabor a Vainilla...",
         "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 100.0
+        "category": "pan_harinas",
+        "var": 79.21
       }
     ],
     "stores_coverage": {
-      "metro": 12541,
-      "plazavea": 13075,
-      "wong": 15009
+      "metro": 12466,
+      "plazavea": 12958,
+      "wong": 12410
     },
     "categories_coverage": {
-      "aceites_grasas": 685,
-      "arroz_cereales": 1333,
-      "azucar_dulces": 1133,
-      "bebidas": 969,
-      "carnes": 14585,
-      "cuidado_personal": 2810,
-      "frutas": 1955,
-      "lacteos": 2748,
-      "limpieza": 3102,
-      "pan_harinas": 6580,
-      "pescados_mariscos": 230,
-      "verduras": 313
+      "aceites_grasas": 587,
+      "arroz_cereales": 1192,
+      "azucar_dulces": 1000,
+      "bebidas": 968,
+      "carnes": 13930,
+      "cuidado_personal": 2782,
+      "frutas": 1906,
+      "lacteos": 2540,
+      "limpieza": 3082,
+      "pan_harinas": 5435,
+      "pescados_mariscos": 150,
+      "verduras": 240
     }
   }
 }
