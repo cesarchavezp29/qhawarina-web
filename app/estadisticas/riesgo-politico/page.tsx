@@ -185,7 +185,7 @@ function MultiplierScale({
         <div
           className="absolute"
           style={{ left: `calc(${rawPct}% - 10px)`, top: '-3px', zIndex: 10 }}
-          title={`${isEn ? 'Today' : 'Hoy'}: PRR ${Math.round(rawPrr)}`}
+          title={`${isEn ? 'Today' : 'Hoy'}: IRP ${Math.round(rawPrr)}`}
         >
           <div
             className="w-5 h-5 rounded-full border-2 bg-white shadow-md"
@@ -197,7 +197,7 @@ function MultiplierScale({
         <div
           className="absolute"
           style={{ left: `calc(${avgPct}% - 10px)`, top: '-3px', zIndex: 9 }}
-          title={`${isEn ? '7d trend' : 'Tendencia 7d'}: PRR ${Math.round(avg7d)}`}
+          title={`${isEn ? '7d trend' : 'Tendencia 7d'}: IRP ${Math.round(avg7d)}`}
         >
           <div
             className="w-5 h-5 rounded-full shadow-md"
@@ -214,7 +214,7 @@ function MultiplierScale({
             style={{ borderColor: '#1F2937' }}
           />
           <span>
-            {isEn ? 'Today' : 'Hoy'}: {toMult(rawPrr)} (PRR {Math.round(rawPrr)})
+            {isEn ? 'Today' : 'Hoy'}: {toMult(rawPrr)} (IRP {Math.round(rawPrr)})
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -223,7 +223,7 @@ function MultiplierScale({
             style={{ background: '#1F2937' }}
           />
           <span>
-            {isEn ? '7d trend' : 'Tendencia 7d'}: {toMult(avg7d)} (PRR {Math.round(avg7d)})
+            {isEn ? '7d trend' : 'Tendencia 7d'}: {toMult(avg7d)} (IRP {Math.round(avg7d)})
           </span>
         </div>
       </div>
@@ -241,6 +241,7 @@ function ReadingCard({
   level: levelOverride,
   accentColor,
   isEn,
+  indexLabel,
 }: {
   title: string;
   subtitle: string;
@@ -248,6 +249,7 @@ function ReadingCard({
   level?: string;
   accentColor?: string;
   isEn: boolean;
+  indexLabel?: string;
 }) {
   const level = (levelOverride as RiskLevel) ?? getRiskLevel(prr);
   const cfg = LEVELS[level] ?? LEVELS['MODERADO'];
@@ -286,7 +288,7 @@ function ReadingCard({
       </p>
 
       <p className="text-xs text-gray-400 mt-2">
-        PRR · {isEn ? 'mean = 100' : 'media = 100'}
+        {indexLabel ?? 'IRP'} · {isEn ? 'mean = 100' : 'media = 100'}
       </p>
     </div>
   );
@@ -420,8 +422,8 @@ export default function RiesgoPoliticoPage() {
               title={`${isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'} — Qhawarina`}
               text={
                 isEn
-                  ? `📊 Peru Political Risk: ${mult} the normal level today (PRR ${Math.round(rawPrr)}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`
-                  : `📊 Riesgo político Perú: ${mult} lo normal hoy (PRR ${Math.round(rawPrr)}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`
+                  ? `📊 Peru Political Risk: ${mult} the normal level today (IRP ${Math.round(rawPrr)}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`
+                  : `📊 Riesgo político Perú: ${mult} lo normal hoy (IRP ${Math.round(rawPrr)}) | Qhawarina\nhttps://qhawarina.pe/estadisticas/riesgo-politico`
               }
             />
             <EmbedWidget
@@ -442,6 +444,7 @@ export default function RiesgoPoliticoPage() {
             level={polLevel}
             accentColor="#C65D3E"
             isEn={isEn}
+            indexLabel="IRP"
           />
           {/* Political 7d */}
           <ReadingCard
@@ -451,6 +454,7 @@ export default function RiesgoPoliticoPage() {
             level={polLevel}
             accentColor="#C65D3E"
             isEn={isEn}
+            indexLabel="IRP"
           />
           {/* Economic today */}
           <ReadingCard
@@ -460,6 +464,7 @@ export default function RiesgoPoliticoPage() {
             level={ecoLevel}
             accentColor="#2A9D8F"
             isEn={isEn}
+            indexLabel="IRE"
           />
           {/* Economic 7d */}
           <ReadingCard
@@ -469,6 +474,7 @@ export default function RiesgoPoliticoPage() {
             level={ecoLevel}
             accentColor="#2A9D8F"
             isEn={isEn}
+            indexLabel="IRE"
           />
         </div>
 
@@ -509,8 +515,8 @@ export default function RiesgoPoliticoPage() {
                 url="https://qhawarina.pe/estadisticas/riesgo-politico"
                 shareText={
                   isEn
-                    ? `📊 Peru Political Risk: ${mult} the normal level (PRR ${Math.round(rawPrr)}) — Qhawarina`
-                    : `📊 Riesgo político Perú: ${mult} lo normal (PRR ${Math.round(rawPrr)}) — Qhawarina`
+                    ? `📊 Peru Political Risk: ${mult} the normal level (IRP ${Math.round(rawPrr)}) — Qhawarina`
+                    : `📊 Riesgo político Perú: ${mult} lo normal (IRP ${Math.round(rawPrr)}) — Qhawarina`
                 }
               />
             </div>
@@ -804,8 +810,8 @@ export default function RiesgoPoliticoPage() {
         </div>
         <p className="text-xs text-gray-400 mb-6 px-1">
           {isEn
-            ? 'Coverage: ~110 articles/day from 6 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Ideeleradio, Infobae Peru).'
-            : 'Cobertura: ~110 artículos/día de 6 medios peruanos (La República, El Comercio, Gestión, RPP, Ideeleradio, Infobae Perú).'}
+            ? 'Coverage: ~110 articles/day from 6 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo).'
+            : 'Cobertura: ~110 artículos/día de 6 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo).'}
         </p>
 
         {/* ══ SECTION 7: LINKS ════════════════════════════════════════════ */}

@@ -46,8 +46,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
 
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
           {isEn
-            ? 'Methodology — Political Risk Index (AI-GPR)'
-            : 'Metodología — Índice de Riesgo Político (AI-GPR)'}
+            ? 'Methodology — AI-GPR Dual Risk Indices (IRP + IRE)'
+            : 'Metodología — Índices de Riesgo Dual AI-GPR (IRP + IRE)'}
         </h1>
         <div className="mt-4">
           <DynamicLastUpdate isEn={isEn} />
@@ -60,14 +60,18 @@ export default function RiesgoPoliticoMetodologiaPage() {
               ? <>
                   <strong>Methodological basis:</strong> Constructed following{' '}
                   <strong>Iacoviello &amp; Tong (2026)</strong>, &quot;The AI-GPR Index: Measuring Geopolitical Risk
-                  using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Applied to Peru using
-                  Claude Haiku as the LLM classifier, 11 RSS feeds, and daily normalization (mean = 100).
+                  using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Applied to Peru as{' '}
+                  <strong>two independent indices</strong> — IRP (political) and IRE (economic) — using Claude Haiku
+                  as the LLM classifier, 11 RSS feeds with historical archive backfill, and per-feed normalization
+                  (mean = 100 over 2025 baseline).
                 </>
               : <>
                   <strong>Base metodológica:</strong> Construido siguiendo a{' '}
                   <strong>Iacoviello &amp; Tong (2026)</strong>, &quot;The AI-GPR Index: Measuring Geopolitical Risk
-                  using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Aplicado a Perú usando
-                  Claude Haiku como clasificador LLM, 11 feeds RSS, y normalización diaria (media = 100).
+                  using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Aplicado a Perú como{' '}
+                  <strong>dos índices independientes</strong> — IRP (político) e IRE (económico) — usando Claude Haiku
+                  como clasificador LLM, 11 feeds RSS con backfill de archivo histórico, y normalización por feed
+                  (media = 100 sobre línea base 2025).
                 </>}
           </p>
         </div>
@@ -80,25 +84,33 @@ export default function RiesgoPoliticoMetodologiaPage() {
           <p className="text-gray-700 mb-4">
             {isEn
               ? <>
-                  The <strong>Qhawarina Political Risk Index</strong> is a daily index that measures political and
-                  economic instability in Peru by aggregating severity scores assigned to individual news articles
-                  classified by a large language model. It follows the <em>AI-GPR</em> methodology of Iacoviello
-                  &amp; Tong (2026) — the first application of this approach to a Latin American country at daily
-                  frequency.
+                  Qhawarina produces <strong>two independent daily risk indices</strong>:{' '}
+                  the <strong>IRP</strong> (Índice de Riesgo Político) and the{' '}
+                  <strong>IRE</strong> (Índice de Riesgo Económico). Each index aggregates severity scores
+                  assigned by Claude Haiku to individual news articles, using a per-feed normalization
+                  approach that eliminates composition bias when new feeds are added. Both indices are
+                  calibrated to a mean of 100 over the 2025 calendar year baseline. This is the first
+                  application of the AI-GPR methodology to a Latin American country at daily frequency.
                 </>
               : <>
-                  El <strong>Índice de Riesgo Político Qhawarina</strong> es un índice diario que mide la
-                  inestabilidad política y económica en Perú agregando puntajes de severidad asignados a artículos
-                  individuales clasificados por un modelo de lenguaje. Sigue la metodología <em>AI-GPR</em> de
-                  Iacoviello &amp; Tong (2026) — primera aplicación de este enfoque a un país latinoamericano con
-                  frecuencia diaria.
+                  Qhawarina produce <strong>dos índices de riesgo diarios independientes</strong>:{' '}
+                  el <strong>IRP</strong> (Índice de Riesgo Político) y el{' '}
+                  <strong>IRE</strong> (Índice de Riesgo Económico). Cada índice agrega puntajes de
+                  severidad asignados por Claude Haiku a artículos individuales, usando una normalización
+                  por feed que elimina el sesgo de composición al agregar nuevos feeds. Ambos índices
+                  están calibrados a una media de 100 sobre la línea base del año 2025. Es la primera
+                  aplicación de la metodología AI-GPR a un país latinoamericano con frecuencia diaria.
                 </>}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="bg-blue-50 p-4 rounded-lg">
-              <div className="text-sm text-gray-600 mb-1">{isEn ? 'Composition' : 'Composición'}</div>
-              <div className="text-base font-semibold text-blue-900">60% {isEn ? 'Political' : 'Político'} + 40% {isEn ? 'Economic' : 'Económico'}</div>
-              <div className="text-xs text-gray-500 mt-1">{isEn ? 'Article-level severity' : 'Severidad a nivel de artículo'}</div>
+              <div className="text-sm text-gray-600 mb-1">{isEn ? 'Structure' : 'Estructura'}</div>
+              <div className="text-base font-semibold text-blue-900">
+                {isEn ? '2 independent indices' : '2 índices independientes'}
+              </div>
+              <div className="text-xs text-gray-500 mt-1">
+                {isEn ? 'IRP (political) + IRE (economic)' : 'IRP (político) + IRE (económico)'}
+              </div>
             </div>
             <div className="bg-green-50 p-4 rounded-lg">
               <div className="text-sm text-gray-600 mb-1">{isEn ? 'Scale' : 'Escala'}</div>
@@ -108,7 +120,9 @@ export default function RiesgoPoliticoMetodologiaPage() {
             <div className="bg-orange-50 p-4 rounded-lg">
               <div className="text-sm text-gray-600 mb-1">{isEn ? 'Frequency' : 'Frecuencia'}</div>
               <div className="text-base font-semibold text-orange-900">{isEn ? 'Daily' : 'Diaria'}</div>
-              <div className="text-xs text-gray-500 mt-1">{isEn ? '11 RSS feeds · 6 sources' : '11 feeds RSS · 6 fuentes'}</div>
+              <div className="text-xs text-gray-500 mt-1">
+                {isEn ? '11 RSS feeds · 6 sources + archive' : '11 feeds RSS · 6 fuentes + archivo'}
+              </div>
             </div>
           </div>
         </div>
@@ -116,53 +130,79 @@ export default function RiesgoPoliticoMetodologiaPage() {
         {/* Section 1: Formula */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            {isEn ? '1. The AI-GPR Formula' : '1. La Fórmula AI-GPR'}
+            {isEn ? '1. The AI-GPR Dual-Index Formula' : '1. La Fórmula AI-GPR de Índice Dual'}
           </h2>
 
           <p className="text-gray-700 mb-4">
             {isEn
-              ? 'For each day t, the index aggregates the severity scores of all classified articles:'
-              : 'Para cada día t, el índice agrega los puntajes de severidad de todos los artículos clasificados:'}
+              ? <>
+                  IRP and IRE are computed by the same four-step procedure, applied independently to
+                  political scores and economic scores respectively. The key innovation vs. a simple
+                  daily-sum approach is <strong>per-feed normalization</strong> (Step 2), which prevents
+                  index distortion when new feeds are added or when one newspaper publishes more than usual.
+                </>
+              : <>
+                  El IRP y el IRE se calculan con el mismo procedimiento de cuatro pasos, aplicado
+                  independientemente a los puntajes políticos y económicos. La innovación clave respecto
+                  a un enfoque de suma diaria simple es la <strong>normalización por feed</strong> (Paso 2),
+                  que previene la distorsión del índice cuando se agregan nuevos feeds o cuando un diario
+                  publica más de lo usual.
+                </>}
           </p>
 
-          <div className="bg-gray-900 text-green-400 p-5 rounded-lg font-mono text-sm mb-6 space-y-2">
-            <div><span className="text-gray-400"># Daily weighted sum</span></div>
-            <div>
-              daily_sum<sub>t</sub> = 0.6 × Σ s<sub>i,t</sub><span className="text-gray-400">[political/both]</span>
-              {'  '}+ 0.4 × Σ s<sub>i,t</sub><span className="text-gray-400">[economic/both]</span>
+          <div className="bg-gray-900 text-green-400 p-5 rounded-lg font-mono text-sm mb-6 space-y-3">
+            <div><span className="text-gray-400">{'# Step 1: Average score per feed-day (N_it = article count)'}</span></div>
+            <div>SWP<sub>it</sub> = (1/N<sub>it</sub>) × Σ score<sub>j</sub>
+              <span className="text-gray-400">{'  [articles j in feed i on day t]'}</span>
             </div>
-            <div className="mt-2"><span className="text-gray-400"># Normalization constant</span></div>
-            <div>S̄ = mean(daily_sum<sub>t</sub>) over all history</div>
-            <div className="mt-2"><span className="text-gray-400"># PRR index (Political Risk Reading)</span></div>
-            <div className="text-yellow-300 font-bold">PRR<sub>t</sub> = (daily_sum<sub>t</sub> / S̄) × 100</div>
+            <div className="mt-2"><span className="text-gray-400">{'# Step 2: Per-feed normalization (composition-bias correction)'}</span></div>
+            <div>Y<sub>it</sub> = SWP<sub>it</sub> / mean<sub>i,2025</sub>
+              <span className="text-gray-400">{'  [each feed\'s 2025 mean → 1.0]'}</span>
+            </div>
+            <div className="mt-2"><span className="text-gray-400">{'# Step 3: Volume-weighted mean across active feeds'}</span></div>
+            <div>Z<sub>t</sub> = Σ(N<sub>it</sub> × Y<sub>it</sub>) / Σ(N<sub>it</sub>)</div>
+            <div className="mt-2"><span className="text-gray-400">{'# Step 4: Scale to 2025 baseline (S̄ = mean(Z_t) over 2025)'}</span></div>
+            <div className="text-yellow-300 font-bold">IRP<sub>t</sub> = (Z<sub>t</sub> / S̄<sub>2025</sub>) × 100</div>
+            <div className="text-gray-400 text-xs mt-2">{'# IRE_t uses economic_score instead of political_score — same formula'}</div>
           </div>
 
-          <p className="text-gray-700 mb-3">
+          <div className="bg-blue-50 border border-blue-200 rounded p-4 mb-6 text-sm text-blue-800">
+            <strong>{isEn ? 'Why per-feed normalization?' : '¿Por qué normalización por feed?'}</strong>{' '}
             {isEn
-              ? <><strong>Key properties:</strong> By construction, mean(PRR) = 100 over the full estimation sample. A value of 150 means political news volume and severity is 50% above the historical average. The index is unbounded upward — acute crises (mass protests, presidential impeachment attempts) produce readings of 200–500+.</>
-              : <><strong>Propiedades clave:</strong> Por construcción, mean(PRR) = 100 sobre toda la muestra. Un valor de 150 significa que el volumen y severidad de noticias políticas es 50% superior al promedio histórico. El índice no tiene límite superior — crisis agudas (protestas masivas, intentos de vacancia) producen lecturas de 200–500+.</>}
-          </p>
+              ? <>
+                  If Gestión Economía publishes 50 articles in one day and Gestión Peru only 5, a simple sum
+                  would double-count Gestión&apos;s contribution. Per-feed normalization gives each feed equal
+                  weight regardless of publication volume, and prevents the index from rising mechanically
+                  when new feeds are incorporated.
+                </>
+              : <>
+                  Si Gestión Economía publica 50 artículos un día y Gestión Peru solo 5, una suma simple
+                  contaría doble la contribución de Gestión. La normalización por feed da peso igual a cada
+                  feed sin importar el volumen de publicación, y evita que el índice suba mecánicamente al
+                  incorporar nuevos feeds.
+                </>}
+          </div>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            {isEn ? '1.1 Level Thresholds' : '1.1 Umbrales de Nivel'}
+            {isEn ? '1.1 Level Thresholds (IRP and IRE)' : '1.1 Umbrales de Nivel (IRP e IRE)'}
           </h3>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Level' : 'Nivel'}</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">PRR</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Index value' : 'Valor del índice'}</th>
                   <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Interpretation' : 'Interpretación'}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {[
-                  { level: 'MÍNIMO',   color: '#8D99AE', range: '< 50',    es: 'Calma política excepcional, noticias de rutina',         en: 'Exceptional political calm, routine news only' },
-                  { level: 'BAJO',     color: '#2A9D8F', range: '50–80',   es: 'Actividad política normal, pocas notas relevantes',      en: 'Normal political activity, few relevant articles' },
-                  { level: 'MODERADO', color: '#E0A458', range: '80–120',  es: 'Entorno promedio, tensiones menores o moderadas',         en: 'Average environment, minor or moderate tensions' },
+                  { level: 'MÍNIMO',   color: '#8D99AE', range: '< 50',    es: 'Calma excepcional, noticias de rutina',                   en: 'Exceptional calm, routine news only' },
+                  { level: 'BAJO',     color: '#2A9D8F', range: '50–80',   es: 'Actividad normal, pocas notas relevantes',                 en: 'Normal activity, few relevant articles' },
+                  { level: 'MODERADO', color: '#E0A458', range: '80–120',  es: 'Entorno promedio, tensiones menores o moderadas',          en: 'Average environment, minor or moderate tensions' },
                   { level: 'ELEVADO',  color: '#C65D3E', range: '120–160', es: 'Inestabilidad por encima del promedio, vigilancia activa', en: 'Above-average instability, active monitoring' },
-                  { level: 'ALTO',     color: '#9B2226', range: '160–200', es: 'Crisis política significativa, múltiples eventos graves',  en: 'Significant political crisis, multiple serious events' },
-                  { level: 'CRÍTICO',  color: '#6B0000', range: '> 200',   es: 'Crisis aguda: vacancia, golpe, estado de emergencia',     en: 'Acute crisis: impeachment, coup, state of emergency' },
+                  { level: 'ALTO',     color: '#9B2226', range: '160–200', es: 'Crisis significativa, múltiples eventos graves',           en: 'Significant crisis, multiple serious events' },
+                  { level: 'CRÍTICO',  color: '#6B0000', range: '> 200',   es: 'Crisis aguda: vacancia, colapso institucional, emergencia', en: 'Acute crisis: impeachment, institutional collapse, emergency' },
                 ].map(r => (
                   <tr key={r.level}>
                     <td className="px-4 py-2 font-bold" style={{ color: r.color }}>{r.level}</td>
@@ -183,92 +223,117 @@ export default function RiesgoPoliticoMetodologiaPage() {
               : 'El puntaje mostrado es una media móvil centrada de 7 días para reducir el ruido día a día manteniendo la señal de tendencia. Los días con menos de 5 artículos se marcan como baja cobertura.'}
           </p>
           <div className="bg-gray-100 p-3 rounded font-mono text-sm">
-            PRR<sub>t</sub><sup>smooth</sup> = (1/7) × Σ PRR<sub>t+k</sub>, k ∈ [-3, +3]
+            IRP<sub>t</sub><sup>smooth</sup> = (1/7) × Σ IRP<sub>t+k</sub>, k ∈ [-3, +3]
           </div>
         </div>
 
         {/* Section 2: Article Classification */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            {isEn ? '2. LLM Article Classification' : '2. Clasificación de Artículos por LLM'}
+            {isEn ? '2. Dual LLM Classification' : '2. Clasificación Dual por LLM'}
           </h2>
 
           <p className="text-gray-700 mb-4">
             {isEn
               ? <>
-                  Each article is classified by <strong>Claude Haiku</strong> (Anthropic) using a structured prompt
-                  that assigns: (1) a <em>category</em> and (2) a continuous <em>severity</em> score on the [0, 1] scale.
+                  Each article is classified by <strong>Claude Haiku</strong> (Anthropic) via{' '}
+                  <strong>two independent API calls</strong>: one for the political dimension and one for
+                  the economic dimension. Each call assigns an integer score from 0 to 100.
                   Classification is performed in batches of 20 articles per API call.
                 </>
               : <>
-                  Cada artículo es clasificado por <strong>Claude Haiku</strong> (Anthropic) usando un prompt estructurado
-                  que asigna: (1) una <em>categoría</em> y (2) un puntaje de <em>severidad</em> continuo en la escala [0, 1].
+                  Cada artículo es clasificado por <strong>Claude Haiku</strong> (Anthropic) mediante{' '}
+                  <strong>dos llamadas independientes a la API</strong>: una para la dimensión política y
+                  una para la dimensión económica. Cada llamada asigna un puntaje entero de 0 a 100.
                   La clasificación se realiza en lotes de 20 artículos por llamada a la API.
                 </>}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            {isEn ? '2.1 Categories' : '2.1 Categorías'}
+            {isEn ? '2.1 Dual Score System' : '2.1 Sistema de Puntaje Dual'}
           </h3>
+
           <div className="overflow-x-auto mb-6">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Category' : 'Categoría'}</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Weight in PRR' : 'Peso en PRR'}</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Definition' : 'Definición'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Score' : 'Puntaje'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Range' : 'Rango'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'What it measures' : 'Qué mide'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Used by' : 'Usado por'}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 <tr>
-                  <td className="px-4 py-2 font-semibold text-red-700">political</td>
-                  <td className="px-4 py-2 font-mono text-gray-700">×0.6</td>
-                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Impeachments, censures, corruption, social conflicts, governance crises' : 'Vacancias, censuras, corrupción, conflictos sociales, crisis de gobernabilidad'}</td>
+                  <td className="px-4 py-2 font-semibold text-red-700">political_score</td>
+                  <td className="px-4 py-2 font-mono text-gray-700">0 – 100</td>
+                  <td className="px-4 py-2 text-gray-700">
+                    {isEn
+                      ? 'Institutional instability: impeachments, censures, corruption, governance crises, social conflicts'
+                      : 'Inestabilidad institucional: vacancias, censuras, corrupción, crisis de gobernabilidad, conflictos sociales'}
+                  </td>
+                  <td className="px-4 py-2 font-semibold text-red-600">IRP</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-semibold text-orange-700">economic</td>
-                  <td className="px-4 py-2 font-mono text-gray-700">×0.4</td>
-                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Financial crises, sectoral collapse, large state arbitrations, severe market drops' : 'Crisis financieras, colapso sectorial, arbitrajes grandes contra el Estado, caídas severas de mercado'}</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 font-semibold text-purple-700">both</td>
-                  <td className="px-4 py-2 font-mono text-gray-700">×0.6 + ×0.4</td>
-                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Events with simultaneous political AND economic impact' : 'Eventos con impacto político Y económico simultáneo'}</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 font-semibold text-gray-500">irrelevant</td>
-                  <td className="px-4 py-2 font-mono text-gray-400">×0</td>
-                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Routine news, international events without Peru impact, sports, lifestyle' : 'Noticias rutinarias, eventos internacionales sin impacto Perú, deportes, farándula'}</td>
+                  <td className="px-4 py-2 font-semibold text-orange-700">economic_score</td>
+                  <td className="px-4 py-2 font-mono text-gray-700">0 – 100</td>
+                  <td className="px-4 py-2 text-gray-700">
+                    {isEn
+                      ? 'Economic disruption: financial crises, sectoral collapse, price shocks, large fiscal risks'
+                      : 'Disrupción económica: crisis financieras, colapso sectorial, shocks de precios, grandes riesgos fiscales'}
+                  </td>
+                  <td className="px-4 py-2 font-semibold text-orange-600">IRE</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
+          <div className="bg-amber-50 border border-amber-200 rounded p-4 mb-6 text-sm text-amber-900">
+            <strong>{isEn ? 'Dominant dimension rule:' : 'Regla de dimensión dominante:'}</strong>{' '}
+            {isEn
+              ? <>
+                  When a political action <em>uses</em> an economic crisis as context or leverage (e.g.,
+                  &quot;Opposition party conditions government using the energy crisis&quot;), the political
+                  score should dominate. The article describes a political maneuver, not an economic event.
+                  Conversely, a Moody&apos;s report on gas supply disruptions affecting inflation is primarily
+                  economic, not political. Each article is classified on <em>what actually happens</em>, not
+                  what topic is mentioned.
+                </>
+              : <>
+                  Cuando una acción política <em>usa</em> una crisis económica como contexto o palanca (e.g.,
+                  &quot;Partido opositor condiciona al gobierno usando la crisis energética&quot;), el puntaje
+                  político debe dominar. El artículo describe una maniobra política, no un evento económico.
+                  Por el contrario, un reporte de Moody&apos;s sobre interrupciones en el suministro de gas
+                  que afectan la inflación es primordialmente económico, no político. Cada artículo se
+                  clasifica por <em>lo que realmente ocurre</em>, no por qué tema menciona.
+                </>}
+          </div>
+
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            {isEn ? '2.2 Severity Scale (0.0 – 1.0)' : '2.2 Escala de Severidad (0.0 – 1.0)'}
+            {isEn ? '2.2 Severity Scale (0 – 100 integers)' : '2.2 Escala de Severidad (enteros 0 – 100)'}
           </h3>
           <p className="text-gray-700 mb-4">
             {isEn
-              ? 'The LLM assigns a continuous severity to each non-irrelevant article. Legacy data (collected before the float-scale update) uses the mapping: integer 1 → 0.2, 2 → 0.5, 3 → 0.9.'
-              : 'El LLM asigna una severidad continua a cada artículo no irrelevante. Los datos históricos (recolectados antes de la actualización a escala flotante) usan el mapeo: entero 1 → 0.2, 2 → 0.5, 3 → 0.9.'}
+              ? 'The LLM assigns an integer from 0 to 100 on each dimension independently. The scale is calibrated so that 0 = no relevance and values above 60 represent major, high-impact events.'
+              : 'El LLM asigna un entero de 0 a 100 en cada dimensión de forma independiente. La escala está calibrada de modo que 0 = sin relevancia y valores sobre 60 representan eventos importantes de alto impacto.'}
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase">{isEn ? 'Severity' : 'Severidad'}</th>
+                  <th className="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase">{isEn ? 'Score' : 'Puntaje'}</th>
                   <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Level' : 'Nivel'}</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Description' : 'Descripción'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Example (political)' : 'Ejemplo (político)'}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {[
-                  { s: '0.0', lv: isEn ? 'No risk' : 'Sin riesgo',            en: 'Factual report with no instability signal',                         es: 'Reporte factual sin señal de inestabilidad' },
-                  { s: '0.2', lv: isEn ? 'Minor' : 'Menor',                   en: 'Minor tensions, routine legislative activity, small protests',       es: 'Tensiones menores, actividad legislativa rutinaria, protestas pequeñas' },
-                  { s: '0.5', lv: isEn ? 'Significant' : 'Significativo',     en: 'Escalating disputes, interpelaciones, active fiscal investigations', es: 'Disputas escalando, interpelaciones, investigaciones fiscales activas' },
-                  { s: '0.7', lv: isEn ? 'Major' : 'Mayor',                   en: 'Major crisis, impeachment motions, cabinet reshuffles under fire',   es: 'Crisis mayor, mociones de vacancia, cambios de gabinete bajo presión' },
-                  { s: '0.9', lv: isEn ? 'Severe' : 'Grave',                  en: 'Severe institutional crisis, constitutional breakdown, mass violence', es: 'Crisis institucional grave, quiebre constitucional, violencia masiva' },
-                  { s: '1.0', lv: isEn ? 'Critical' : 'Crítico',              en: 'Imminent regime change, state of emergency, widespread violence',    es: 'Cambio de régimen inminente, estado de emergencia, violencia generalizada' },
+                  { s: '0',    lv: isEn ? 'No relevance' : 'Sin relevancia',       en: 'Sports, lifestyle, foreign news without Peru impact',           es: 'Deportes, farándula, noticias extranjeras sin impacto Perú' },
+                  { s: '1–20', lv: isEn ? 'Minor' : 'Menor',                       en: 'Routine legislative sessions, minor party statements',          es: 'Sesiones legislativas rutinarias, declaraciones menores de partidos' },
+                  { s: '21–40',lv: isEn ? 'Moderate' : 'Moderado',                 en: 'Congressional investigations, escalating political disputes',    es: 'Investigaciones parlamentarias, disputas políticas escalando' },
+                  { s: '41–60',lv: isEn ? 'Significant' : 'Significativo',         en: 'Censure motions, cabinet reshuffles under political fire',       es: 'Mociones de interpelación, cambios de gabinete bajo presión' },
+                  { s: '61–80',lv: isEn ? 'Major' : 'Mayor',                       en: 'Impeachment attempts, constitutional crises, mass protests',     es: 'Intentos de vacancia, crisis constitucionales, protestas masivas' },
+                  { s: '81–100',lv: isEn ? 'Critical' : 'Crítico',                 en: 'State of emergency, imminent regime change, widespread violence', es: 'Estado de emergencia, cambio de régimen inminente, violencia masiva' },
                 ].map(r => (
                   <tr key={r.s}>
                     <td className="px-4 py-2 text-center font-mono font-bold text-gray-900">{r.s}</td>
@@ -279,39 +344,64 @@ export default function RiesgoPoliticoMetodologiaPage() {
               </tbody>
             </table>
           </div>
+
+          <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
+            {isEn ? '2.3 Top-Driver Filtering' : '2.3 Filtro de Principales Impulsores'}
+          </h3>
+          <p className="text-gray-700 text-sm">
+            {isEn
+              ? <>
+                  To avoid cross-contamination between the two driver lists, articles shown as{' '}
+                  <strong>top political drivers</strong> are restricted to those where{' '}
+                  <code className="bg-gray-100 px-1 rounded">political_score ≥ economic_score</code>, and{' '}
+                  <strong>top economic drivers</strong> are restricted to those where{' '}
+                  <code className="bg-gray-100 px-1 rounded">economic_score &gt; political_score</code>.
+                  This ensures each article appears in only the list that reflects its dominant dimension.
+                </>
+              : <>
+                  Para evitar contaminación cruzada entre las dos listas de impulsores, los artículos
+                  mostrados como <strong>principales impulsores políticos</strong> se restringen a aquellos
+                  donde <code className="bg-gray-100 px-1 rounded">political_score ≥ economic_score</code>,
+                  y los <strong>principales impulsores económicos</strong> a aquellos donde{' '}
+                  <code className="bg-gray-100 px-1 rounded">economic_score &gt; political_score</code>.
+                  Esto garantiza que cada artículo aparece solo en la lista que refleja su dimensión dominante.
+                </>}
+          </p>
         </div>
 
         {/* Section 3: Data Sources */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            {isEn ? '3. Data Sources (RSS Feeds)' : '3. Fuentes de Datos (RSS Feeds)'}
+            {isEn ? '3. Data Sources (RSS Feeds + Archive)' : '3. Fuentes de Datos (RSS Feeds + Archivo)'}
           </h2>
           <p className="text-gray-700 mb-4">
             {isEn
-              ? 'Articles are collected in real time from 11 RSS feeds across 6 Peruvian news sources, covering national politics, economics, and regional events.'
-              : 'Los artículos se recolectan en tiempo real de 11 feeds RSS de 6 fuentes de noticias peruanas, cubriendo política nacional, economía y eventos regionales.'}
+              ? 'Articles are collected daily from 11 RSS feeds across 6 Peruvian news sources, covering national politics, economics, and regional events. Historical coverage is extended via the Arc Publishing archive API for three sources.'
+              : 'Los artículos se recolectan diariamente de 11 feeds RSS de 6 fuentes de noticias peruanas, cubriendo política nacional, economía y eventos regionales. La cobertura histórica se extiende vía la API de archivo Arc Publishing para tres fuentes.'}
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Source' : 'Fuente'}</th>
-                  <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">{isEn ? 'Articles/Day' : 'Artículos/Día'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'RSS Feeds' : 'Feeds RSS'}</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Archive' : 'Archivo'}</th>
                   <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{isEn ? 'Coverage' : 'Cobertura'}</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {[
-                  { src: 'La República',  n: '~35', cov: isEn ? 'National politics, social conflicts' : 'Política nacional, conflictos sociales' },
-                  { src: 'El Comercio',   n: '~25', cov: isEn ? 'Politics, economy, Lima' : 'Política, economía, Lima' },
-                  { src: 'Gestión',       n: '~20', cov: isEn ? 'Economy, business, markets' : 'Economía, empresa, mercados' },
-                  { src: 'RPP Noticias',  n: '~15', cov: isEn ? 'Breaking news, regional events' : 'Noticias de última hora, regiones' },
-                  { src: 'Ideeleradio',   n: '~5',  cov: isEn ? 'Human rights, political analysis' : 'Derechos humanos, análisis político' },
-                  { src: 'Infobae Perú',  n: '~10', cov: isEn ? 'National and political news' : 'Noticias nacionales y políticas' },
+                  { src: 'El Comercio',  feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '✓', cov: isEn ? 'Politics, economy, Lima' : 'Política, economía, Lima' },
+                  { src: 'Gestión',      feeds: isEn ? 'Peru, Economy' : 'Peru, Economía',             arc: '✓', cov: isEn ? 'Economy, business, markets' : 'Economía, empresa, mercados' },
+                  { src: 'La República', feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '–', cov: isEn ? 'National politics, social conflicts' : 'Política nacional, conflictos sociales' },
+                  { src: 'Andina',       feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '–', cov: isEn ? 'Official agency, government news' : 'Agencia oficial, noticias del gobierno' },
+                  { src: 'RPP Noticias', feeds: isEn ? 'General' : 'General',                          arc: '–', cov: isEn ? 'Breaking news, regional events' : 'Noticias de última hora, regiones' },
+                  { src: 'Correo',       feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '✓', cov: isEn ? 'National politics, opinion' : 'Política nacional, opinión' },
                 ].map(r => (
                   <tr key={r.src}>
                     <td className="px-4 py-2 font-medium text-gray-900">{r.src}</td>
-                    <td className="px-4 py-2 text-right text-gray-600">{r.n}</td>
+                    <td className="px-4 py-2 text-gray-600">{r.feeds}</td>
+                    <td className="px-4 py-2 text-center font-medium" style={{ color: r.arc === '✓' ? '#2A9D8F' : '#9CA3AF' }}>{r.arc}</td>
                     <td className="px-4 py-2 text-gray-600">{r.cov}</td>
                   </tr>
                 ))}
@@ -320,8 +410,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
           </div>
           <p className="text-sm text-gray-500 mt-3">
             {isEn
-              ? 'Total: ~110 articles/day on average. Articles are collected 3× daily (6:00, 13:00, 20:00 Lima time). Coverage begins January 2025.'
-              : 'Total: ~110 artículos/día en promedio. Los artículos se recolectan 3× al día (6:00, 13:00, 20:00 hora Lima). Cobertura desde enero 2025.'}
+              ? 'Total: 11 RSS feeds across 6 sources. Articles collected daily. RSS coverage begins January 2025; archive backfill extends coverage for El Comercio, Gestión, and Correo.'
+              : 'Total: 11 feeds RSS en 6 fuentes. Artículos recolectados diariamente. La cobertura RSS comienza en enero 2025; el backfill de archivo extiende la cobertura para El Comercio, Gestión y Correo.'}
           </p>
         </div>
 
@@ -332,10 +422,10 @@ export default function RiesgoPoliticoMetodologiaPage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { label: isEn ? 'Total articles' : 'Artículos totales', val: '25,000+' },
-              { label: isEn ? 'Political/economic' : 'Político/económico', val: '~20%' },
-              { label: isEn ? 'Median PRR' : 'PRR mediana', val: '~74' },
-              { label: isEn ? 'Max PRR observed' : 'PRR máximo observado', val: '726' },
+              { label: isEn ? 'Total articles' : 'Artículos totales',                val: '25,000+' },
+              { label: isEn ? 'Corrected misclassifications' : 'Correcciones aplicadas', val: '415+' },
+              { label: isEn ? 'IRP 2025 mean (baseline)' : 'Media IRP 2025 (línea base)', val: '100' },
+              { label: isEn ? 'Max IRP observed' : 'IRP máximo observado',            val: '300+' },
             ].map(s => (
               <div key={s.label} className="bg-gray-50 rounded-lg p-4 text-center">
                 <div className="text-2xl font-bold text-gray-900">{s.val}</div>
@@ -345,8 +435,21 @@ export default function RiesgoPoliticoMetodologiaPage() {
           </div>
           <p className="text-gray-700 text-sm">
             {isEn
-              ? 'The PRR distribution is right-skewed: the median (~74) is below the mean (100) because most days are calm, but political crises create outlier readings. The 75th percentile is approximately 133, meaning only one quarter of days exceed ELEVADO level.'
-              : 'La distribución del PRR es sesgada a la derecha: la mediana (~74) está por debajo de la media (100) porque la mayoría de días son tranquilos, pero las crisis políticas crean lecturas extremas. El percentil 75 es aproximadamente 133, lo que significa que solo un cuarto de los días supera el nivel ELEVADO.'}
+              ? <>
+                  The IRP and IRE distributions are right-skewed: most days show moderate activity (index 50–120),
+                  but political or economic crises create outlier readings. The 2025 calendar year serves as the
+                  normalization baseline (mean = 100). Over 415 articles have been retroactively corrected for
+                  clear misclassifications (routine FX reports, foreign politics, sports, celebrity news) to
+                  maintain index integrity.
+                </>
+              : <>
+                  Las distribuciones del IRP e IRE son sesgadas a la derecha: la mayoría de días muestran
+                  actividad moderada (índice 50–120), pero las crisis políticas o económicas crean lecturas
+                  extremas. El año calendario 2025 sirve como línea base de normalización (media = 100).
+                  Más de 415 artículos han sido corregidos retroactivamente por clasificaciones claramente
+                  erróneas (reportes cambiarios rutinarios, política extranjera, deportes, farándula) para
+                  mantener la integridad del índice.
+                </>}
           </p>
         </div>
 
@@ -376,14 +479,20 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   {
                     f:  isEn ? 'Unit of analysis' : 'Unidad de análisis',
                     bb: isEn ? 'Article (binary)' : 'Artículo (binario)',
-                    it: isEn ? 'Article (severity 0–1)' : 'Artículo (severidad 0–1)',
-                    qw: isEn ? 'Article (severity 0–1)' : 'Artículo (severidad 0–1)',
+                    it: isEn ? 'Article (severity 0–100)' : 'Artículo (severidad 0–100)',
+                    qw: isEn ? 'Article (dual score 0–100)' : 'Artículo (puntaje dual 0–100)',
+                  },
+                  {
+                    f:  isEn ? 'Index structure' : 'Estructura del índice',
+                    bb: isEn ? 'Single composite' : 'Compuesto único',
+                    it: isEn ? 'Single index' : 'Índice único',
+                    qw: isEn ? 'Dual: IRP + IRE (independent)' : 'Dual: IRP + IRE (independientes)',
                   },
                   {
                     f:  isEn ? 'Normalization' : 'Normalización',
                     bb: 'Mean = 100',
                     it: 'Mean = 100',
-                    qw: 'Mean = 100',
+                    qw: isEn ? 'Per-feed mean (2025 baseline)' : 'Media por feed (línea base 2025)',
                   },
                   {
                     f:  isEn ? 'Frequency' : 'Frecuencia',
@@ -415,28 +524,28 @@ export default function RiesgoPoliticoMetodologiaPage() {
           <h3 className="text-lg font-semibold text-yellow-900 mb-3">⚠️ {isEn ? 'Limitations' : 'Limitaciones'}</h3>
           <ul className="list-disc pl-6 space-y-2 text-yellow-800 text-sm">
             <li>
-              <strong>{isEn ? 'Coverage start date:' : 'Fecha de inicio de cobertura:'}</strong>{' '}
+              <strong>{isEn ? 'Short baseline period:' : 'Período de línea base corto:'}</strong>{' '}
               {isEn
-                ? 'RSS feeds were collected from January 2025. The normalization constant S̄ reflects only this period. As the archive grows, S̄ will be recalculated and historical PRR values may shift slightly.'
-                : 'Los feeds RSS se recolectan desde enero 2025. La constante de normalización S̄ refleja solo este período. A medida que crece el archivo, S̄ se recalculará y los valores históricos de PRR pueden variar levemente.'}
+                ? 'The normalization baseline (S̄) is computed from 2025 calendar year data only. It does not cover prior crisis episodes (Castillo impeachment 2022, COVID 2020). As the archive grows, thresholds will become better calibrated.'
+                : 'La línea base de normalización (S̄) se calcula solo con datos del año calendario 2025. No cubre episodios de crisis anteriores (vacancia Castillo 2022, COVID 2020). A medida que crezca el archivo, los umbrales serán mejor calibrados.'}
             </li>
             <li>
-              <strong>{isEn ? 'Article volume bias:' : 'Sesgo por volumen de artículos:'}</strong>{' '}
+              <strong>{isEn ? 'Lima-centric media:' : 'Medios centrados en Lima:'}</strong>{' '}
               {isEn
-                ? 'As more feeds are added over time, the daily article count grows, which can mechanically inflate recent PRR values relative to the normalization period.'
-                : 'A medida que se agregan más feeds, el conteo diario de artículos crece, lo que puede inflar mecánicamente los valores recientes de PRR respecto al período de normalización.'}
-            </li>
-            <li>
-              <strong>{isEn ? 'Media bias:' : 'Sesgo de medios:'}</strong>{' '}
-              {isEn
-                ? 'Feeds concentrate on Lima-based media. Regional protests may be under-represented if they do not receive national coverage.'
-                : 'Los feeds se concentran en medios limeños. Protestas regionales pueden estar subrepresentadas si no reciben cobertura nacional.'}
+                ? 'All six sources are Lima-based national newspapers. Regional protests or economic shocks may be under-represented if they do not receive national coverage.'
+                : 'Las seis fuentes son diarios nacionales con sede en Lima. Protestas regionales o shocks económicos locales pueden estar subrepresentados si no reciben cobertura nacional.'}
             </li>
             <li>
               <strong>{isEn ? 'LLM classification errors:' : 'Errores de clasificación LLM:'}</strong>{' '}
               {isEn
-                ? 'Claude Haiku may occasionally misclassify articles or assign incorrect severity scores. Batch processing (20 articles per call) introduces minor context-switching effects.'
-                : 'Claude Haiku puede ocasionalmente clasificar incorrectamente artículos o asignar severidades erróneas. El procesamiento en lote (20 artículos por llamada) introduce efectos menores de cambio de contexto.'}
+                ? 'Claude Haiku may occasionally misclassify articles or assign incorrect severity scores. Over 415 retroactive corrections have been applied for systematic patterns (routine FX reports, foreign politics, sports), but residual errors remain.'
+                : 'Claude Haiku puede ocasionalmente clasificar incorrectamente artículos o asignar severidades erróneas. Se han aplicado más de 415 correcciones retroactivas para patrones sistemáticos (reportes cambiarios rutinarios, política extranjera, deportes), pero pueden quedar errores residuales.'}
+            </li>
+            <li>
+              <strong>{isEn ? 'Archive depth varies by source:' : 'Profundidad de archivo varía por fuente:'}</strong>{' '}
+              {isEn
+                ? 'RSS coverage begins January 2025 uniformly. Archive backfill via Arc Publishing covers El Comercio and Correo from January 2025, but Gestión only from September 2025 onward (API limitation).'
+                : 'La cobertura RSS comienza uniformemente en enero 2025. El backfill de archivo vía Arc Publishing cubre El Comercio y Correo desde enero 2025, pero Gestión solo desde septiembre 2025 (limitación de la API).'}
             </li>
           </ul>
         </div>
@@ -446,28 +555,28 @@ export default function RiesgoPoliticoMetodologiaPage() {
           <h3 className="text-lg font-semibold text-blue-900 mb-3">🔮 {isEn ? 'Future Improvements' : 'Mejoras Futuras'}</h3>
           <ul className="list-disc pl-6 space-y-2 text-blue-800 text-sm">
             <li>
-              <strong>{isEn ? 'Float severity scale:' : 'Escala de severidad flotante:'}</strong>{' '}
+              <strong>{isEn ? 'Longer archive backfill:' : 'Backfill de archivo más largo:'}</strong>{' '}
               {isEn
-                ? 'Migrate to continuous [0,1] severity classification for new articles to eliminate the legacy integer-to-float mapping.'
-                : 'Migrar a clasificación de severidad continua [0,1] para nuevos artículos y eliminar el mapeo entero-flotante heredado.'}
+                ? 'Extend historical coverage to 2022 (Castillo impeachment) via news archive APIs to improve baseline calibration and enable historical benchmarking against known crisis episodes.'
+                : 'Extender la cobertura histórica a 2022 (vacancia Castillo) vía APIs de archivo de noticias para mejorar la calibración de la línea base y permitir benchmarking histórico contra episodios de crisis conocidos.'}
             </li>
             <li>
-              <strong>{isEn ? 'Volume-adjusted normalization:' : 'Normalización ajustada por volumen:'}</strong>{' '}
+              <strong>{isEn ? 'Regional sources:' : 'Fuentes regionales:'}</strong>{' '}
               {isEn
-                ? 'Normalize daily_sum by the number of articles collected that day to remove the mechanical effect of feed expansion.'
-                : 'Normalizar daily_sum por el número de artículos recolectados ese día para eliminar el efecto mecánico de la expansión de feeds.'}
-            </li>
-            <li>
-              <strong>{isEn ? 'Longer history via news API:' : 'Historia más larga vía API de noticias:'}</strong>{' '}
-              {isEn
-                ? 'Backfill the archive to 2022 (Castillo impeachment period) using a news archive API to improve S̄ calibration and historical benchmarking.'
-                : 'Rellenar el archivo hasta 2022 (período de vacancia Castillo) usando una API de archivo de noticias para mejorar la calibración de S̄ y el benchmarking histórico.'}
+                ? 'Add RSS feeds from regional newspapers (La República Arequipa, El Correo Cusco, etc.) to better capture regional conflicts and economic shocks outside Lima.'
+                : 'Agregar feeds RSS de diarios regionales (La República Arequipa, El Correo Cusco, etc.) para capturar mejor conflictos regionales y shocks económicos fuera de Lima.'}
             </li>
             <li>
               <strong>{isEn ? 'Forecasting integration:' : 'Integración en forecasting:'}</strong>{' '}
               {isEn
-                ? 'Include PRR lags as predictors in the GDP and investment nowcasting models.'
-                : 'Incluir rezagos del PRR como predictores en los modelos de nowcasting de PBI e inversión.'}
+                ? 'Include IRP and IRE lags as predictors in the GDP nowcasting and investment models, to capture the real economic costs of political uncertainty.'
+                : 'Incluir rezagos del IRP e IRE como predictores en los modelos de nowcasting de PBI e inversión, para capturar los costos reales de la incertidumbre política en la economía.'}
+            </li>
+            <li>
+              <strong>{isEn ? 'Validation against external indices:' : 'Validación contra índices externos:'}</strong>{' '}
+              {isEn
+                ? 'Cross-validate IRP against V-DEM political instability scores and country risk ratings (EMBI Peru) to assess construct validity.'
+                : 'Validar cruzadamente el IRP contra puntajes de inestabilidad política de V-DEM y calificaciones de riesgo país (EMBI Peru) para evaluar la validez de constructo.'}
             </li>
           </ul>
         </div>
@@ -483,16 +592,16 @@ export default function RiesgoPoliticoMetodologiaPage() {
               &quot;The AI-GPR Index: Measuring Geopolitical Risk using Artificial Intelligence.&quot;{' '}
               <em>Federal Reserve Board Working Paper.</em>{' '}
               {isEn
-                ? '— Primary methodological reference for the AI-GPR formula applied in this index.'
-                : '— Referencia metodológica principal para la fórmula AI-GPR aplicada en este índice.'}
+                ? '— Primary methodological reference: per-feed normalization, LLM severity scoring, and volume-weighted aggregation.'
+                : '— Referencia metodológica principal: normalización por feed, severidad por LLM, y agregación ponderada por volumen.'}
             </p>
             <p>
               <strong>Baker, S. R., Bloom, N., &amp; Davis, S. J. (2016).</strong>{' '}
               &quot;Measuring economic policy uncertainty.&quot;{' '}
               <em>The Quarterly Journal of Economics</em>, 131(4), 1593–1636.{' '}
               {isEn
-                ? '— Foundational EPU framework; informs the 60/40 political/economic weighting.'
-                : '— Marco EPU fundacional; informa la ponderación 60/40 político/económico.'}
+                ? '— Foundational EPU framework: news-based uncertainty index with mean = 100 normalization.'
+                : '— Marco EPU fundacional: índice de incertidumbre basado en noticias con normalización media = 100.'}
             </p>
             <p>
               <strong>Caldara, D., &amp; Iacoviello, M. (2022).</strong>{' '}
@@ -507,8 +616,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
               &quot;Text as data.&quot;{' '}
               <em>Journal of Economic Literature</em>, 57(3), 535–574.{' '}
               {isEn
-                ? '— Survey of NLP methods in economics; conceptual framework for article-level classification.'
-                : '— Survey de métodos NLP en economía; marco conceptual para clasificación a nivel de artículo.'}
+                ? '— Survey of NLP methods in economics; conceptual framework for article-level severity classification.'
+                : '— Survey de métodos NLP en economía; marco conceptual para clasificación de severidad a nivel de artículo.'}
             </p>
           </div>
         </div>
@@ -529,6 +638,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
           <p className="text-xs text-gray-500">
             {isEn ? 'Key files:' : 'Archivos clave:'}{' '}
             <code className="bg-gray-100 px-2 py-1 rounded">src/nlp/classifier.py</code>,{' '}
+            <code className="bg-gray-100 px-2 py-1 rounded">scripts/build_daily_index.py</code>,{' '}
             <code className="bg-gray-100 px-2 py-1 rounded">scripts/export_web_data.py</code>
           </p>
         </div>
