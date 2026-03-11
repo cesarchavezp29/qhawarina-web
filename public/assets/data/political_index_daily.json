@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-11T06:49:48.980498",
+    "generated_at": "2026-03-11T06:54:57.513125",
     "coverage_days": 435,
     "rss_feeds": 11,
     "rss_sources": 6,
@@ -8,28 +8,33 @@
   },
   "current": {
     "date": "2026-03-11",
-    "political_raw": 134.0,
-    "political_7d": 94.8,
+    "political_raw": 139.8,
+    "political_7d": 96.1,
     "political_level": "MODERADO",
-    "political_multiplier": 0.95,
-    "economic_raw": 173.0,
-    "economic_7d": 132.6,
+    "political_multiplier": 0.96,
+    "economic_raw": 161.6,
+    "economic_7d": 130.8,
     "economic_level": "ELEVADO",
-    "economic_multiplier": 1.33,
-    "score": 94.8,
-    "prr_7d": 94.8,
-    "prr_raw": 134.0,
+    "economic_multiplier": 1.31,
+    "score": 96.1,
+    "prr_7d": 96.1,
+    "prr_raw": 139.8,
     "level": "MODERADO",
     "articles_total": 118,
     "articles_political_relevant": 74,
-    "articles_economic_relevant": 73,
-    "political_justification": "El riesgo político elevado (134) refleja la convergencia de tres factores críticos: debate electoral intenso con candidatos polarizados, debilidad institucional evidenciada en la falta de respaldo político regional, y presiones judiciales sobre figuras políticas clave como Cerrón que generan incertidumbre institucional.",
-    "economic_justification": "El riesgo económico elevado (173) refleja tensiones entre señales positivas de crecimiento crediticio y vulnerabilidades estructurales. Aunque el BCP proyecta expansión hipotecaria, persisten obstáculos críticos: parálisis de infraestructura por restricciones presupuestarias, incertidumbre política sobre medidas anticriminalidad y discontinuidad en servicios públicos esenciales.",
+    "articles_economic_relevant": 72,
+    "political_justification": "El riesgo político elevado (140) refleja incertidumbre electoral con candidatos débiles en regiones clave, negociaciones frágiles de confianza parlamentaria y crisis de gobernanza simultáneas. La emergencia energética agrava la inestabilidad institucional mientras se preparan elecciones 2026 sin consensos políticos claros.",
+    "economic_justification": "El riesgo económico elevado (162) refleja tensiones entre señales positivas de crecimiento crediticio e inversión pública, contrastadas con vulnerabilidades estructurales como proyectos paralizados y presupuestarios. La volatilidad en commodities y la dependencia de reactivación estatal generan incertidumbre sobre la sostenibilidad del crecimiento.",
     "top_political_drivers": [
       {
         "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
         "source": "elcomercio",
         "score": 65
+      },
+      {
+        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
+        "source": "rpp",
+        "score": 62
       },
       {
         "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
@@ -45,11 +50,6 @@
         "title": "Emergencia energética podría finalizar el domingo según Denisse Miralles",
         "source": "correo",
         "score": 55
-      },
-      {
-        "title": "Vladimir Cerrón: ¿Cuál sería el ánimo en el TC frente a pedido para anular su orden de captura y cómo llegó a programarse tan rápido el caso?",
-        "source": "elcomercio",
-        "score": 50
       }
     ],
     "top_economic_drivers": [
@@ -74,17 +74,22 @@
         "score": 55
       },
       {
-        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
-        "source": "rpp",
-        "score": 50
+        "title": "El precio del petróleo cae 15% e impulsa subida de las principales bolsas de Asia y Europa",
+        "source": "elcomercio",
+        "score": 48
       }
     ],
-    "justification": "El riesgo político elevado (134) refleja la convergencia de tres factores críticos: debate electoral intenso con candidatos polarizados, debilidad institucional evidenciada en la falta de respaldo político regional, y presiones judiciales sobre figuras políticas clave como Cerrón que generan incertidumbre institucional.",
+    "justification": "El riesgo político elevado (140) refleja incertidumbre electoral con candidatos débiles en regiones clave, negociaciones frágiles de confianza parlamentaria y crisis de gobernanza simultáneas. La emergencia energética agrava la inestabilidad institucional mientras se preparan elecciones 2026 sin consensos políticos claros.",
     "top_drivers": [
       {
         "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
         "source": "elcomercio",
         "score": 65
+      },
+      {
+        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
+        "source": "rpp",
+        "score": 62
       },
       {
         "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
@@ -100,37 +105,32 @@
         "title": "Emergencia energética podría finalizar el domingo según Denisse Miralles",
         "source": "correo",
         "score": 55
-      },
-      {
-        "title": "Vladimir Cerrón: ¿Cuál sería el ánimo en el TC frente a pedido para anular su orden de captura y cómo llegó a programarse tan rápido el caso?",
-        "source": "elcomercio",
-        "score": 50
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 100.6,
-    "political_30d_avg": 97.9,
-    "economic_7d_avg": 132.8,
-    "economic_30d_avg": 112.2,
+    "political_7d_avg": 101.2,
+    "political_30d_avg": 98.0,
+    "economic_7d_avg": 132.2,
+    "economic_30d_avg": 112.1,
     "year_max": 151.7,
     "year_max_date": "2025-06-22"
   },
   "major_events": [
     {
       "date": "2026-02-19",
-      "score": 124.2,
+      "score": 124.1,
       "level": "ELEVADO",
       "n_articles": 152,
-      "summary": "Destitución presidencial genera sucesión frecuente de gobernantes.",
+      "summary": "Cambios presidenciales frecuentes y destituiciones políticas sucesivas.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
       "date": "2026-02-18",
-      "score": 122.8,
+      "score": 122.7,
       "level": "ELEVADO",
       "n_articles": 161,
-      "summary": "Conflicto político entre Congreso y ministro genera inestabilidad.",
+      "summary": "Conflicto entre el Congreso y ministros del gobierno.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -138,7 +138,7 @@
       "score": 122.5,
       "level": "ELEVADO",
       "n_articles": 146,
-      "summary": "Confrontación electoral violenta entre candidatos presidenciales.",
+      "summary": "Polarización extrema entre candidatos presidenciales en contienda electoral.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -146,7 +146,7 @@
       "score": 123.6,
       "level": "ELEVADO",
       "n_articles": 75,
-      "summary": "Incertidumbre sobre candidaturas presidenciales y liderazgos políticos.",
+      "summary": "Incertidumbre sobre candidaturas presidenciales y fuga de líderes políticos.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
@@ -154,7 +154,7 @@
       "score": 122.2,
       "level": "ELEVADO",
       "n_articles": 43,
-      "summary": "Inestabilidad política por cambios frecuentes presidenciales.",
+      "summary": "Inestabilidad política y corrupción en obras públicas generan crisis.",
       "report_url": "/political/daily-reports/2025-10-12.html"
     },
     {
@@ -162,7 +162,7 @@
       "score": 125.2,
       "level": "ELEVADO",
       "n_articles": 71,
-      "summary": "Cuestionamiento a la estabilidad ministerial mediante moción de censura.",
+      "summary": "Moción de censura contra ministro genera inestabilidad gubernamental.",
       "report_url": "/political/daily-reports/2025-09-18.html"
     },
     {
@@ -170,7 +170,7 @@
       "score": 120.2,
       "level": "ELEVADO",
       "n_articles": 66,
-      "summary": "Perú enfrenta crisis de corrupción y lavado de activos.",
+      "summary": "Debilidad institucional en acuerdos y control financiero.",
       "report_url": "/political/daily-reports/2025-09-17.html"
     },
     {
@@ -178,7 +178,7 @@
       "score": 121.2,
       "level": "ELEVADO",
       "n_articles": 57,
-      "summary": "Debilitamiento de comunicación entre autoridades ejecutivas y legislativas.",
+      "summary": "Falta de comunicación entre autoridades gubernamentales peruanas.",
       "report_url": "/political/daily-reports/2025-09-16.html"
     },
     {
@@ -186,7 +186,7 @@
       "score": 125.7,
       "level": "ELEVADO",
       "n_articles": 42,
-      "summary": "Corrupción judicial y presunta influencia política en el Tribunal Constitucional.",
+      "summary": "Corrupción en el Tribunal Constitucional afecta institucionalidad peruana.",
       "report_url": "/political/daily-reports/2025-09-15.html"
     },
     {
@@ -194,7 +194,7 @@
       "score": 128.2,
       "level": "ELEVADO",
       "n_articles": 18,
-      "summary": "Enfrentamiento entre poder judicial y autoridades políticas.",
+      "summary": "Inestabilidad judicial y conflictos políticos permanentes debilitan gobernanza.",
       "report_url": "/political/daily-reports/2025-09-14.html"
     }
   ],
@@ -5571,12 +5571,12 @@
     {
       "date": "2026-02-18",
       "political_raw": 124.8,
-      "political_7d": 122.8,
+      "political_7d": 122.7,
       "economic_raw": 129.9,
       "economic_7d": 116.0,
-      "score": 122.8,
+      "score": 122.7,
       "prr": 124.8,
-      "prr_7d": 122.8,
+      "prr_7d": 122.7,
       "n_articles": 161,
       "low_coverage": false,
       "provisional": false
@@ -5584,12 +5584,12 @@
     {
       "date": "2026-02-19",
       "political_raw": 121.6,
-      "political_7d": 124.2,
+      "political_7d": 124.1,
       "economic_raw": 147.3,
       "economic_7d": 115.6,
-      "score": 124.2,
+      "score": 124.1,
       "prr": 121.6,
-      "prr_7d": 124.2,
+      "prr_7d": 124.1,
       "n_articles": 152,
       "low_coverage": false,
       "provisional": false
@@ -5609,12 +5609,12 @@
     },
     {
       "date": "2026-02-21",
-      "political_raw": 118.6,
+      "political_raw": 118.5,
       "political_7d": 104.7,
-      "economic_raw": 109.0,
+      "economic_raw": 109.1,
       "economic_7d": 115.6,
       "score": 104.7,
-      "prr": 118.6,
+      "prr": 118.5,
       "prr_7d": 104.7,
       "n_articles": 80,
       "low_coverage": false,
@@ -5649,12 +5649,12 @@
     {
       "date": "2026-02-24",
       "political_raw": 58.1,
-      "political_7d": 87.0,
+      "political_7d": 86.9,
       "economic_raw": 103.6,
       "economic_7d": 103.0,
-      "score": 87.0,
+      "score": 86.9,
       "prr": 58.1,
-      "prr_7d": 87.0,
+      "prr_7d": 86.9,
       "n_articles": 102,
       "low_coverage": false,
       "provisional": false
@@ -5754,7 +5754,7 @@
       "date": "2026-03-04",
       "political_raw": 97.2,
       "political_7d": 101.5,
-      "economic_raw": 135.7,
+      "economic_raw": 135.8,
       "economic_7d": 126.1,
       "score": 101.5,
       "prr": 97.2,
@@ -5766,12 +5766,12 @@
     {
       "date": "2026-03-05",
       "political_raw": 98.4,
-      "political_7d": 103.4,
+      "political_7d": 103.3,
       "economic_raw": 105.8,
-      "economic_7d": 126.8,
-      "score": 103.4,
+      "economic_7d": 126.9,
+      "score": 103.3,
       "prr": 98.4,
-      "prr_7d": 103.4,
+      "prr_7d": 103.3,
       "n_articles": 125,
       "low_coverage": false,
       "provisional": false
@@ -5779,12 +5779,12 @@
     {
       "date": "2026-03-06",
       "political_raw": 108.1,
-      "political_7d": 102.0,
-      "economic_raw": 155.2,
-      "economic_7d": 129.7,
-      "score": 102.0,
+      "political_7d": 101.9,
+      "economic_raw": 155.4,
+      "economic_7d": 130.1,
+      "score": 101.9,
       "prr": 108.1,
-      "prr_7d": 102.0,
+      "prr_7d": 101.9,
       "n_articles": 142,
       "low_coverage": false,
       "provisional": false
@@ -5792,64 +5792,64 @@
     {
       "date": "2026-03-07",
       "political_raw": 130.3,
-      "political_7d": 97.1,
+      "political_7d": 97.0,
       "economic_raw": 152.4,
-      "economic_7d": 129.5,
-      "score": 97.1,
+      "economic_7d": 130.1,
+      "score": 97.0,
       "prr": 130.3,
-      "prr_7d": 97.1,
+      "prr_7d": 97.0,
       "n_articles": 74,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-08",
-      "political_raw": 87.0,
-      "political_7d": 102.3,
-      "economic_raw": 109.3,
-      "economic_7d": 134.8,
-      "score": 102.3,
-      "prr": 87.0,
-      "prr_7d": 102.3,
+      "political_raw": 86.9,
+      "political_7d": 103.1,
+      "economic_raw": 109.7,
+      "economic_7d": 133.8,
+      "score": 103.1,
+      "prr": 86.9,
+      "prr_7d": 103.1,
       "n_articles": 83,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-09",
-      "political_raw": 74.7,
-      "political_7d": 103.0,
-      "economic_raw": 129.9,
-      "economic_7d": 139.6,
-      "score": 103.0,
-      "prr": 74.7,
-      "prr_7d": 103.0,
+      "political_raw": 74.4,
+      "political_7d": 103.8,
+      "economic_raw": 131.9,
+      "economic_7d": 138.5,
+      "score": 103.8,
+      "prr": 74.4,
+      "prr_7d": 103.8,
       "n_articles": 284,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-10",
-      "political_raw": 83.7,
-      "political_7d": 101.9,
-      "economic_raw": 118.0,
-      "economic_7d": 136.5,
-      "score": 101.9,
-      "prr": 83.7,
-      "prr_7d": 101.9,
+      "political_raw": 83.3,
+      "political_7d": 103.0,
+      "economic_raw": 120.1,
+      "economic_7d": 135.1,
+      "score": 103.0,
+      "prr": 83.3,
+      "prr_7d": 103.0,
       "n_articles": 142,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-11",
-      "political_raw": 134.0,
-      "political_7d": 94.8,
-      "economic_raw": 173.0,
-      "economic_7d": 132.6,
-      "score": 94.8,
-      "prr": 134.0,
-      "prr_7d": 94.8,
+      "political_raw": 139.8,
+      "political_7d": 96.1,
+      "economic_raw": 161.6,
+      "economic_7d": 130.8,
+      "score": 96.1,
+      "prr": 139.8,
+      "prr_7d": 96.1,
       "n_articles": 118,
       "low_coverage": false,
       "provisional": true
@@ -7148,8 +7148,8 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 97.7,
-      "economic_avg": 126.7,
+      "political_avg": 98.0,
+      "economic_avg": 126.3,
       "n_articles": 1381,
       "fx_level": null,
       "fx_yoy": null
