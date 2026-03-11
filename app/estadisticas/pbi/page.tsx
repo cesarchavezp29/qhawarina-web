@@ -20,7 +20,7 @@ import {
 
 interface GDPData {
   metadata: { generated_at: string; model?: string };
-  recent_quarters: Array<{ quarter: string; official: number | null; nowcast: number | null; error?: number | null }>;
+  recent_quarters: Array<{ quarter: string; official: number | null; nowcast: number | null; error?: number | null; is_forecast?: boolean }>;
   nowcast: { target_period: string; value: number };
   backtest_metrics?: { rmse: number; mae: number; r2: number };
 }
@@ -110,14 +110,15 @@ export default function PBIPage() {
 
   const valStr = `${data.nowcast.value > 0 ? '+' : ''}${data.nowcast.value.toFixed(2)}%`;
 
-  // Track Record — last 8 quarters with both official & nowcast values
+  // Track Record — last 8 confirmed quarters + current forecast quarter
   const trackRecord = (data.recent_quarters ?? [])
-    .filter(q => q.official !== null && q.nowcast !== null)
-    .slice(-8)
+    .filter(q => q.nowcast !== null)
+    .slice(-9)
     .map(q => ({
       quarter: q.quarter,
-      [isEn ? 'Nowcast' : 'Nowcast']: q.nowcast,
+      Nowcast: q.nowcast,
       [isEn ? 'INEI Official' : 'INEI Oficial']: q.official,
+      isForecast: q.is_forecast ?? false,
     }));
   const rmse = data.backtest_metrics?.rmse;
 
@@ -196,10 +197,21 @@ export default function PBIPage() {
                 />
                 <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
                 <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
-                <Bar dataKey={isEn ? 'Nowcast' : 'Nowcast'} fill={CHART_COLORS.teal} radius={[3, 3, 0, 0]} />
+                <Bar dataKey="Nowcast" radius={[3, 3, 0, 0]}>
+                  {trackRecord.map((entry, i) => (
+                    <Cell key={i} fill={entry.isForecast ? `${CHART_COLORS.teal}88` : CHART_COLORS.teal} strokeDasharray={entry.isForecast ? '4 2' : undefined} />
+                  ))}
+                </Bar>
                 <Bar dataKey={isEn ? 'INEI Official' : 'INEI Oficial'} fill={CHART_COLORS.ink3} radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
+            {trackRecord.some(q => q.isForecast) && (
+              <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+                {isEn
+                  ? `* Faded bar = live nowcast (no INEI official yet). RMSE ±${rmse?.toFixed(2) ?? '1.41'} pp based on backtest 2007–2025.`
+                  : `* Barra tenue = nowcast en curso (sin dato INEI aún). RMSE ±${rmse?.toFixed(2) ?? '1.41'} pp según backtesting 2007–2025.`}
+              </p>
+            )}
           </div>
         )}
 

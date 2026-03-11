@@ -1,7 +1,7 @@
 {
   "date": "2026-03-10",
-  "headline_es": "Precios supermercado -0.48% MTD · Nowcast PBI +2.20%",
-  "headline_en": "Supermarket prices -0.48% MTD · GDP nowcast +2.20%",
+  "headline_es": "Precios supermercado -0.48% MTD · Nowcast PBI +2.24%",
+  "headline_en": "Supermarket prices -0.48% MTD · GDP nowcast +2.24%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
@@ -22,8 +22,8 @@
     },
     {
       "icon": "📊",
-      "text_es": "Nowcast PBI 2025-Q4: +2.20% (variación anual estimada).",
-      "text_en": "GDP nowcast 2025-Q4: +2.20% (estimated year-on-year)."
+      "text_es": "Nowcast PBI 2026-Q1: +2.24% (variación anual estimada).",
+      "text_en": "GDP nowcast 2026-Q1: +2.24% (estimated year-on-year)."
     },
     {
       "icon": "💹",
@@ -36,5 +36,5 @@
       "text_en": "Political risk: IRP 95 — moderate level."
     }
   ],
-  "updated_at": "2026-03-11T02:40:48.331291+00:00"
+  "updated_at": "2026-03-11T03:11:51.845232+00:00"
 }
