@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-10T22:14:03.149582",
+    "generated_at": "2026-03-10T22:40:17.073684",
     "coverage_days": 435,
     "rss_feeds": 11,
     "rss_sources": 6,
@@ -10,30 +10,25 @@
     "date": "2026-03-11",
     "political_raw": 133.2,
     "political_7d": 94.8,
-    "political_level": "BAJO",
+    "political_level": "MODERADO",
     "political_multiplier": 0.95,
     "economic_raw": 174.9,
     "economic_7d": 132.7,
-    "economic_level": "MODERADO",
+    "economic_level": "ELEVADO",
     "economic_multiplier": 1.33,
     "score": 94.8,
     "prr_7d": 94.8,
     "prr_raw": 133.2,
-    "level": "BAJO",
+    "level": "MODERADO",
     "articles_total": 118,
     "articles_political_relevant": 74,
     "articles_economic_relevant": 74,
-    "political_justification": "El índice elevado refleja convergencia de factores críticos: debate electoral de candidatos presidenciales (2026), procedimientos electorales en marcha, crisis energética en resolución y litigios de alto perfil involucrando figuras políticas clave. Estos elementos generan incertidumbre institucional y mediática simultánea.",
-    "economic_justification": "El riesgo económico elevado (175) refleja volatilidad cambiaria, incertidumbre política con candidatos sin respaldo regional, y vulnerabilidades en infraestructura crítica. Aunque hay señales positivas en crédito hipotecario, la falta de presupuesto en proyectos viales y la debilidad institucional generan presión sobre la estabilidad económica.",
+    "political_justification": "El índice elevado refleja convergencia de factores críticos: debate electoral intenso (candidatos principales), preparativos electorales 2026, crisis energética que presiona al gobierno, y conflictos judiciales de alto perfil involucrando figuras políticas clave. Esta acumulación de eventos políticos y tensiones institucionales genera volatilidad.",
+    "economic_justification": "El riesgo económico elevado refleja incertidumbre política (candidato sin respaldo) que contrasta con señales positivas de crédito hipotecario. Sin embargo, preocupan los riesgos de infraestructura (Vía Expresa) y la dependencia de reactivación de obras paralizadas para sostener crecimiento.",
     "top_political_drivers": [
       {
         "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "¡Triunfo colchonero! Atlético de Madrid ganó 5-2 a Tottenham en la ida de octavos de la Champions League",
-        "source": "rpp",
         "score": 65
       },
       {
@@ -50,19 +45,14 @@
         "title": "Vladimir Cerrón: ¿Cuál sería el ánimo en el TC frente a pedido para anular su orden de captura y cómo llegó a programarse tan rápido el caso?",
         "source": "elcomercio",
         "score": 50
+      },
+      {
+        "title": "Poder Judicial declara reo contumaz a candidata a diputada de Fuerza Popular en Ucayali",
+        "source": "larepublica",
+        "score": 50
       }
     ],
     "top_economic_drivers": [
-      {
-        "title": "Precio del dólar en Perú: a cuánto cerró el tipo de cambio el martes 10 de marzo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Simposio XVI: Thibaut Larrat analizará cómo promover el talento en minería",
-        "source": "elcomercio",
-        "score": 62
-      },
       {
         "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
         "source": "correo",
@@ -77,18 +67,23 @@
         "title": "Contraloría advierte riesgo en continuidad de la Vía Expresa Santa Rosa por falta de presupuesto",
         "source": "larepublica",
         "score": 55
+      },
+      {
+        "title": "Gobierno anuncia que colegios de Lima y Callao retornarán a clases presenciales este miércoles",
+        "source": "rpp",
+        "score": 55
+      },
+      {
+        "title": "Gobierno anuncia impulso para reactivar obras paralizadas en todo el país",
+        "source": "correo",
+        "score": 55
       }
     ],
-    "justification": "El índice elevado refleja convergencia de factores críticos: debate electoral de candidatos presidenciales (2026), procedimientos electorales en marcha, crisis energética en resolución y litigios de alto perfil involucrando figuras políticas clave. Estos elementos generan incertidumbre institucional y mediática simultánea.",
+    "justification": "El índice elevado refleja convergencia de factores críticos: debate electoral intenso (candidatos principales), preparativos electorales 2026, crisis energética que presiona al gobierno, y conflictos judiciales de alto perfil involucrando figuras políticas clave. Esta acumulación de eventos políticos y tensiones institucionales genera volatilidad.",
     "top_drivers": [
       {
         "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "¡Triunfo colchonero! Atlético de Madrid ganó 5-2 a Tottenham en la ida de octavos de la Champions League",
-        "source": "rpp",
         "score": 65
       },
       {
@@ -104,6 +99,11 @@
       {
         "title": "Vladimir Cerrón: ¿Cuál sería el ánimo en el TC frente a pedido para anular su orden de captura y cómo llegó a programarse tan rápido el caso?",
         "source": "elcomercio",
+        "score": 50
+      },
+      {
+        "title": "Poder Judicial declara reo contumaz a candidata a diputada de Fuerza Popular en Ucayali",
+        "source": "larepublica",
         "score": 50
       }
     ]
@@ -120,81 +120,81 @@
     {
       "date": "2026-02-19",
       "score": 124.2,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 152,
-      "summary": "Sucesión presidencial frecuente genera inestabilidad política.",
+      "summary": "Destituición presidencial genera sucesión política inestable.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
       "date": "2026-02-18",
       "score": 122.8,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 161,
-      "summary": "Conflicto entre el Congreso y ministro censurado Jerí.",
+      "summary": "Conflicto entre el Congreso y ministro José Jerí.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
       "date": "2026-02-17",
       "score": 122.5,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 146,
-      "summary": "Confrontación política extrema entre candidatos presidenciales principales.",
+      "summary": "Confrontación agresiva entre candidatos presidenciales principales.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
       "date": "2025-10-13",
       "score": 123.6,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 75,
-      "summary": "Incertidumbre sobre candidaturas presidenciales en proceso electoral.",
+      "summary": "Incertidumbre sobre candidatos presidenciales y conflictos políticos internos.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
       "date": "2025-10-12",
       "score": 122.2,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 43,
-      "summary": "Inestabilidad presidencial recurrente genera gobernanza débil e impredecible.",
+      "summary": "Sucesión presidencial inestable y corrupción en obras públicas.",
       "report_url": "/political/daily-reports/2025-10-12.html"
     },
     {
       "date": "2025-09-18",
       "score": 125.2,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 71,
-      "summary": "La moción de censura contra el ministro genera inestabilidad.",
+      "summary": "Moción de censura contra ministro genera inestabilidad gubernamental.",
       "report_url": "/political/daily-reports/2025-09-18.html"
     },
     {
       "date": "2025-09-17",
       "score": 120.2,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 66,
-      "summary": "Perú enfrenta lavado de activos en niveles históricos récord.",
+      "summary": "Falta de acuerdos entre gobiernos locales y ministerios.",
       "report_url": "/political/daily-reports/2025-09-17.html"
     },
     {
       "date": "2025-09-16",
       "score": 121.2,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 57,
-      "summary": "Fragmentación política y conflicto entre poderes del Estado.",
+      "summary": "Falta de comunicación entre poderes del Estado peruano.",
       "report_url": "/political/daily-reports/2025-09-16.html"
     },
     {
       "date": "2025-09-15",
       "score": 125.7,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 42,
-      "summary": "Corrupción en el Tribunal Constitucional y favoritismo en decisiones judiciales.",
+      "summary": "Corrupción en el Tribunal Constitucional compromete legitimidad institucional.",
       "report_url": "/political/daily-reports/2025-09-15.html"
     },
     {
       "date": "2025-09-14",
       "score": 128.2,
-      "level": "MODERADO",
+      "level": "ELEVADO",
       "n_articles": 18,
-      "summary": "Inestabilidad política por investigaciones de exfuncionarios del gobierno.",
+      "summary": "Conflictos políticos y crisis institucional debilitan gobernanza peruana.",
       "report_url": "/political/daily-reports/2025-09-14.html"
     }
   ],
