@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-10",
-    "n_days": 29,
+    "last_date": "2026-03-09",
+    "n_days": 28,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-10"
+    "updated": "2026-03-11"
   },
   "categories": {
     "arroz_cereales": {
@@ -847,113 +847,86 @@
       "index_limpieza": 99.4158,
       "index_cuidado_personal": 99.0114,
       "index_other": 100.6784
-    },
-    {
-      "date": "2026-03-10",
-      "index_all": 99.5183,
-      "index_all_unweighted": 99.7653,
-      "index_food": 99.6938,
-      "index_nonfood": 100.0058,
-      "var_all": 0.1331,
-      "var_food": 0.1989,
-      "cum_pct": -0.4817,
-      "yoy_inflation": null,
-      "mom_inflation": null,
-      "interpolated": false,
-      "n_matched": 40377,
-      "index_arroz_cereales": 99.5374,
-      "index_pan_harinas": 99.3653,
-      "index_carnes": 99.8215,
-      "index_pescados_mariscos": 99.5802,
-      "index_lacteos": 99.5008,
-      "index_frutas": 100.337,
-      "index_verduras": 98.8039,
-      "index_aceites_grasas": 98.5571,
-      "index_azucar_dulces": 101.3553,
-      "index_bebidas": 99.1307,
-      "index_limpieza": 99.4678,
-      "index_cuidado_personal": 99.0006,
-      "index_other": 100.676
     }
   ],
   "latest": {
-    "date": "2026-03-10",
-    "index_all": 99.5183,
-    "index_food": 99.6938,
-    "cum_pct": -0.4817,
-    "var_all": 0.1331,
+    "date": "2026-03-09",
+    "index_all": 99.386,
+    "index_food": 99.4959,
+    "cum_pct": -0.614,
+    "var_all": -0.0511,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 40377,
+    "n_products_today": 40334,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 1.03
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.57
+      },
+      {
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": 0.3
+      },
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.27
       },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": 0.6
-      },
-      {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": 0.3
-      },
-      {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.2
+        "var": -0.18
       }
     ],
     "product_movers": [
       {
-        "name": "Chocolate de Leche Hershey's Kisses C...",
-        "store": "metro",
-        "category": "lacteos",
-        "var": 97.25
+        "name": "Cápsulas Cartical-D Fitosana 100u",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       },
       {
-        "name": "Chocolate de Leche Hershey's Kisses 102g",
-        "store": "metro",
-        "category": "lacteos",
-        "var": 97.25
+        "name": "Golden Milk Fitosana - Batido 300g",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       },
       {
-        "name": "Chocolate de Leche Hershey's Kisses 102g",
-        "store": "wong",
-        "category": "lacteos",
-        "var": 97.25
+        "name": "Cardo Mariano Fitosana - Capsulas 100u",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       },
       {
-        "name": "Chocolate de Leche Hershey's Kisses C...",
-        "store": "wong",
-        "category": "lacteos",
-        "var": 97.25
+        "name": "Ashwagandha con Melena de Leon Fitosa...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 100.0
       }
     ],
     "stores_coverage": {
-      "metro": 12534,
-      "plazavea": 13188,
-      "wong": 14972
+      "metro": 12541,
+      "plazavea": 13075,
+      "wong": 15009
     },
     "categories_coverage": {
-      "aceites_grasas": 689,
-      "arroz_cereales": 1336,
-      "azucar_dulces": 1125,
-      "bebidas": 971,
-      "carnes": 14615,
-      "cuidado_personal": 2840,
-      "frutas": 1974,
-      "lacteos": 2739,
-      "limpieza": 3106,
-      "pan_harinas": 6587,
-      "pescados_mariscos": 222,
+      "aceites_grasas": 685,
+      "arroz_cereales": 1333,
+      "azucar_dulces": 1133,
+      "bebidas": 969,
+      "carnes": 14585,
+      "cuidado_personal": 2810,
+      "frutas": 1955,
+      "lacteos": 2748,
+      "limpieza": 3102,
+      "pan_harinas": 6580,
+      "pescados_mariscos": 230,
       "verduras": 313
     }
   }
