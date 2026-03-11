@@ -16,178 +16,519 @@
     "2026": 0.9573
   },
   "wage_distribution": {
-    "total_wage_workers": 7469122,
-    "formal_workers": 3167343,
-    "informal_workers": 4301779,
-    "informality_rate": 57.6,
-    "at_or_below_min": 1723916,
-    "pct_at_or_below_min": 23.1,
-    "median_formal": 2800.0,
-    "median_informal": 1516.5,
-    "kaitz_index": 0.366,
+    "total_wage_workers": 7485528,
+    "formal_workers": 3178208,
+    "informal_workers": 4307319,
+    "asalariado_informality_rate": 57.5,
+    "at_or_below_min": 2876218,
+    "pct_at_or_below_min": 38.4,
+    "median_formal": 1473.2,
+    "median_informal": 1039.9,
+    "kaitz_index": 0.696,
     "percentiles": {
-      "p10": 498.3,
-      "p25": 1083.2,
-      "p50": 2050.0,
-      "p75": 3400.0,
-      "p90": 7020.0
+      "p10": 420.0,
+      "p25": 820.0,
+      "p50": 1200.0,
+      "p75": 1715.0,
+      "p90": 2500.0
     },
     "distribution_brackets": [
       {
         "label": "<= RMV (S/1025)",
-        "share_pct": 23.08
+        "share_pct": 38.42
       },
       {
         "label": "RMV .. RMV+10%",
-        "share_pct": 3.79
+        "share_pct": 7.23
       },
       {
         "label": "RMV+10% .. RMV+25%",
-        "share_pct": 3.22
+        "share_pct": 8.42
       },
       {
         "label": "RMV+25% .. RMV+50%",
-        "share_pct": 7.55
+        "share_pct": 15.41
       },
       {
         "label": "RMV+50% .. 2xRMV",
-        "share_pct": 15.22
+        "share_pct": 14.9
       },
       {
         "label": "> 2xRMV",
-        "share_pct": 47.13
+        "share_pct": 15.61
       }
     ]
+  },
+  "did_elasticity": {
+    "events": [
+      {
+        "event": "2017: S/850→S/930 (simple DiD, no COVID)",
+        "status": "not_identified",
+        "n_industries": 12,
+        "n_industries_robust": 10,
+        "old_min": 850,
+        "new_min": 930,
+        "pct_increase": 9.4,
+        "mean_bite": 0.0962,
+        "corr_bite_dlnE": 0.457,
+        "employment_elasticity": 15.827,
+        "bootstrap_se": 9.247,
+        "ci95_low": 3.477,
+        "ci95_high": 33.327,
+        "corr_bite_dlnE_robust": 0.606,
+        "employment_elasticity_robust": 20.471,
+        "bootstrap_se_robust": 12.121,
+        "ci95_low_robust": -0.038,
+        "ci95_high_robust": 40.769,
+        "sector_detail": [
+          {
+            "sector": "A_agricultura",
+            "bite": 0.10056454814714756,
+            "E_before_M": 0.28600001335144043,
+            "E_after_M": 0.26600000262260437,
+            "trend": 0.0,
+            "dlnE_post": -0.07257366180419922,
+            "dlnE_adj": -0.07257366180419922,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -7.260000228881836,
+            "dlnE_adj_pct": -7.260000228881836
+          },
+          {
+            "sector": "C_mineria",
+            "bite": 0.02113352389375914,
+            "E_before_M": 0.09799999743700027,
+            "E_after_M": 0.0949999988079071,
+            "trend": 0.0,
+            "dlnE_post": -0.032372474670410156,
+            "dlnE_adj": -0.032372474670410156,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -3.240000009536743,
+            "dlnE_adj_pct": -3.240000009536743
+          },
+          {
+            "sector": "D_manufactura",
+            "bite": 0.10233668470992978,
+            "E_before_M": 0.3970000147819519,
+            "E_after_M": 0.4320000112056732,
+            "trend": 0.0,
+            "dlnE_post": 0.0861043930053711,
+            "dlnE_adj": 0.0861043930053711,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": 8.609999656677246,
+            "dlnE_adj_pct": 8.609999656677246
+          },
+          {
+            "sector": "F_construccion",
+            "bite": 0.05909633261055234,
+            "E_before_M": 0.3009999990463257,
+            "E_after_M": 0.2750000059604645,
+            "trend": 0.0,
+            "dlnE_post": -0.09069156646728516,
+            "dlnE_adj": -0.09069156646728516,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -9.069999694824219,
+            "dlnE_adj_pct": -9.069999694824219
+          },
+          {
+            "sector": "G_comercio",
+            "bite": 0.13869020308479027,
+            "E_before_M": 0.4189999997615814,
+            "E_after_M": 0.4359999895095825,
+            "trend": 0.0,
+            "dlnE_post": 0.04099273681640625,
+            "dlnE_adj": 0.04099273681640625,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": 4.099999904632568,
+            "dlnE_adj_pct": 4.099999904632568
+          },
+          {
+            "sector": "H_hoteles_rest",
+            "bite": 0.08646317010667572,
+            "E_before_M": 0.12800000607967377,
+            "E_after_M": 0.14100000262260437,
+            "trend": 0.0,
+            "dlnE_post": 0.1004648208618164,
+            "dlnE_adj": 0.1004648208618164,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": 10.050000190734863,
+            "dlnE_adj_pct": 10.050000190734863
+          },
+          {
+            "sector": "I_transporte",
+            "bite": 0.09306049971922566,
+            "E_before_M": 0.20000000298023224,
+            "E_after_M": 0.18700000643730164,
+            "trend": 0.0,
+            "dlnE_post": -0.06773853302001953,
+            "dlnE_adj": -0.06773853302001953,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -6.769999980926514,
+            "dlnE_adj_pct": -6.769999980926514
+          },
+          {
+            "sector": "J_finanzas",
+            "bite": 0.04653060615300676,
+            "E_before_M": 0.1120000034570694,
+            "E_after_M": 0.09700000286102295,
+            "trend": 0.0,
+            "dlnE_post": -0.1475210189819336,
+            "dlnE_adj": -0.1475210189819336,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -14.75,
+            "dlnE_adj_pct": -14.75
+          },
+          {
+            "sector": "K_inmobiliaria",
+            "bite": 0.10460771784961148,
+            "E_before_M": 0.32600000500679016,
+            "E_after_M": 0.3449999988079071,
+            "trend": 0.0,
+            "dlnE_post": 0.055487632751464844,
+            "dlnE_adj": 0.055487632751464844,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": 5.550000190734863,
+            "dlnE_adj_pct": 5.550000190734863
+          },
+          {
+            "sector": "M_educacion",
+            "bite": 0.10270543101819209,
+            "E_before_M": 0.16099999845027924,
+            "E_after_M": 0.14800000190734863,
+            "trend": 0.0,
+            "dlnE_post": -0.08063983917236328,
+            "dlnE_adj": -0.08063983917236328,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -8.0600004196167,
+            "dlnE_adj_pct": -8.0600004196167
+          },
+          {
+            "sector": "N_salud",
+            "bite": 0.09563084569421287,
+            "E_before_M": 0.06199999898672104,
+            "E_after_M": 0.057999998331069946,
+            "trend": 0.0,
+            "dlnE_post": -0.055451393127441406,
+            "dlnE_adj": -0.055451393127441406,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": -5.550000190734863,
+            "dlnE_adj_pct": -5.550000190734863
+          },
+          {
+            "sector": "O_servicios",
+            "bite": 0.10016816463509445,
+            "E_before_M": 0.19300000369548798,
+            "E_after_M": 0.20200000703334808,
+            "trend": 0.0,
+            "dlnE_post": 0.04530048370361328,
+            "dlnE_adj": 0.04530048370361328,
+            "trend_pct": 0.0,
+            "dlnE_post_pct": 4.53000020980835,
+            "dlnE_adj_pct": 4.53000020980835
+          }
+        ]
+      },
+      {
+        "event": "2022: S/930→S/1025 (pre-trend DiD, trend=2017→2019)",
+        "status": "not_identified",
+        "n_industries": 12,
+        "n_industries_robust": 10,
+        "old_min": 930,
+        "new_min": 1025,
+        "pct_increase": 10.2,
+        "mean_bite": 0.1561,
+        "corr_bite_dlnE": -0.097,
+        "employment_elasticity": 4.074,
+        "bootstrap_se": 6.661,
+        "ci95_low": -15.493,
+        "ci95_high": 11.298,
+        "corr_bite_dlnE_robust": -0.069,
+        "employment_elasticity_robust": 1.84,
+        "bootstrap_se_robust": 7.942,
+        "ci95_low_robust": -24.934,
+        "ci95_high_robust": 6.497,
+        "sector_detail": [
+          {
+            "sector": "A_agricultura",
+            "bite": 0.05862613751410061,
+            "E_before_M": 0.40400001406669617,
+            "E_after_M": 0.3930000066757202,
+            "trend": 0.08837556838989258,
+            "dlnE_post": -0.02702808380126953,
+            "dlnE_adj": -0.11540365219116211,
+            "trend_pct": 8.84000015258789,
+            "dlnE_post_pct": -2.700000047683716,
+            "dlnE_adj_pct": -11.539999961853027
+          },
+          {
+            "sector": "C_mineria",
+            "bite": 0.06933630546076679,
+            "E_before_M": 0.07699999958276749,
+            "E_after_M": 0.10300000011920929,
+            "trend": -0.019408702850341797,
+            "dlnE_post": 0.2929096221923828,
+            "dlnE_adj": 0.3123183250427246,
+            "trend_pct": -1.940000057220459,
+            "dlnE_post_pct": 29.290000915527344,
+            "dlnE_adj_pct": 31.229999542236328
+          },
+          {
+            "sector": "D_manufactura",
+            "bite": 0.16092286657790517,
+            "E_before_M": 0.4410000145435333,
+            "E_after_M": 0.4300000071525574,
+            "trend": 0.0013341903686523438,
+            "dlnE_post": -0.026426315307617188,
+            "dlnE_adj": -0.02776050567626953,
+            "trend_pct": 0.12999999523162842,
+            "dlnE_post_pct": -2.640000104904175,
+            "dlnE_adj_pct": -2.7799999713897705
+          },
+          {
+            "sector": "F_construccion",
+            "bite": 0.04780582957013472,
+            "E_before_M": 0.3100000023841858,
+            "E_after_M": 0.3160000145435333,
+            "trend": 0.03872823715209961,
+            "dlnE_post": 0.021108627319335938,
+            "dlnE_adj": -0.017619609832763672,
+            "trend_pct": 3.869999885559082,
+            "dlnE_post_pct": 2.109999895095825,
+            "dlnE_adj_pct": -1.7599999904632568
+          },
+          {
+            "sector": "G_comercio",
+            "bite": 0.23940228104400962,
+            "E_before_M": 0.40400001406669617,
+            "E_after_M": 0.4659999907016754,
+            "trend": 0.05741548538208008,
+            "dlnE_post": 0.14232444763183594,
+            "dlnE_adj": 0.08490896224975586,
+            "trend_pct": 5.739999771118164,
+            "dlnE_post_pct": 14.229999542236328,
+            "dlnE_adj_pct": 8.489999771118164
+          },
+          {
+            "sector": "H_hoteles_rest",
+            "bite": 0.2752490029626076,
+            "E_before_M": 0.14300000667572021,
+            "E_after_M": 0.16200000047683716,
+            "trend": 0.07528305053710938,
+            "dlnE_post": 0.12605667114257812,
+            "dlnE_adj": 0.05077362060546875,
+            "trend_pct": 7.53000020980835,
+            "dlnE_post_pct": 12.609999656677246,
+            "dlnE_adj_pct": 5.079999923706055
+          },
+          {
+            "sector": "I_transporte",
+            "bite": 0.16969431875819768,
+            "E_before_M": 0.164000004529953,
+            "E_after_M": 0.1940000057220459,
+            "trend": 0.01898956298828125,
+            "dlnE_post": 0.17002391815185547,
+            "dlnE_adj": 0.15103435516357422,
+            "trend_pct": 1.899999976158142,
+            "dlnE_post_pct": 17.0,
+            "dlnE_adj_pct": 15.100000381469727
+          },
+          {
+            "sector": "J_finanzas",
+            "bite": 0.14067409589679553,
+            "E_before_M": 0.08900000154972076,
+            "E_after_M": 0.10999999940395355,
+            "trend": -0.0026159286499023438,
+            "dlnE_post": 0.20193195343017578,
+            "dlnE_adj": 0.20454788208007812,
+            "trend_pct": -0.25999999046325684,
+            "dlnE_post_pct": 20.190000534057617,
+            "dlnE_adj_pct": 20.450000762939453
+          },
+          {
+            "sector": "K_inmobiliaria",
+            "bite": 0.21508563861607496,
+            "E_before_M": 0.3449999988079071,
+            "E_after_M": 0.3490000069141388,
+            "trend": 0.0601496696472168,
+            "dlnE_post": 0.010540962219238281,
+            "dlnE_adj": -0.049608707427978516,
+            "trend_pct": 6.010000228881836,
+            "dlnE_post_pct": 1.0499999523162842,
+            "dlnE_adj_pct": -4.960000038146973
+          },
+          {
+            "sector": "M_educacion",
+            "bite": 0.16614259063280756,
+            "E_before_M": 0.10199999809265137,
+            "E_after_M": 0.1120000034570694,
+            "trend": 0.04323244094848633,
+            "dlnE_post": 0.09598159790039062,
+            "dlnE_adj": 0.0527491569519043,
+            "trend_pct": 4.320000171661377,
+            "dlnE_post_pct": 9.600000381469727,
+            "dlnE_adj_pct": 5.269999980926514
+          },
+          {
+            "sector": "N_salud",
+            "bite": 0.20129407276019393,
+            "E_before_M": 0.0729999989271164,
+            "E_after_M": 0.07500000298023224,
+            "trend": 0.1667933464050293,
+            "dlnE_post": 0.03572559356689453,
+            "dlnE_adj": -0.13106775283813477,
+            "trend_pct": 16.68000030517578,
+            "dlnE_post_pct": 3.569999933242798,
+            "dlnE_adj_pct": -13.109999656677246
+          },
+          {
+            "sector": "O_servicios",
+            "bite": 0.16525764503459664,
+            "E_before_M": 0.1459999978542328,
+            "E_after_M": 0.18199999630451202,
+            "trend": -0.0043201446533203125,
+            "dlnE_post": 0.21659278869628906,
+            "dlnE_adj": 0.22091293334960938,
+            "trend_pct": -0.4300000071525574,
+            "dlnE_post_pct": 21.65999984741211,
+            "dlnE_adj_pct": 22.09000015258789
+          }
+        ]
+      }
+    ],
+    "pooled_elasticity": -0.1,
+    "pooled_se": null,
+    "n_valid_events": 0,
+    "method": "Industry-bite DiD (Neumark-Wascher 1992). 2017 event: simple 2016→2017 DiD (no COVID). 2022 event: pre-trend-adjusted DiD (trend=2017→2019 annual rate). Unit=CIIU sector (~12 sectors). Treatment=bite_j (fraction formal workers at nominal wage in [old_min,new_min)). Weighted OLS + bootstrap SE (500 resamples). Both events not identified: macro confounders dominate sector-level noise at N=12. Literature fallback: Céspedes & Sánchez (2014) ε=-0.10.",
+    "source": "Qhawarina — ENAHO Módulo 500 (2016, 2017, 2019, 2021, 2022)"
   },
   "scenarios": [
     {
       "pct_increase": 2.4,
-      "formal_affected": 28901,
-      "formal_sub_min_non_compliant": 367728,
-      "formal_displaced": 70,
-      "formal_net_benefited": 28830,
-      "informal_lighthouse_benefited": 1442304,
+      "formal_affected": 219529,
+      "formal_sub_min_non_compliant": 618254,
+      "formal_displaced": 535,
+      "formal_net_benefited": 218993,
+      "informal_lighthouse_benefited": 2198746,
       "informal_wage_increase_soles": 10.0,
-      "monthly_cost_employers_soles": 299111,
+      "monthly_cost_employers_soles": 4921655,
       "by_domain": {
-        "Costa urbana": 9346,
-        "Sierra urbana": 5147,
-        "Selva urbana": 489,
-        "Lima Metropolitana": 1423,
-        "Costa rural": 3756,
-        "Sierra rural": 1773,
-        "Selva rural": 5524,
-        "Lima Provincias": 1442
+        "Costa urbana": 36528,
+        "Sierra urbana": 12935,
+        "Selva urbana": 3592,
+        "Lima Metropolitana": 4422,
+        "Costa rural": 14223,
+        "Sierra rural": 13015,
+        "Selva rural": 16086,
+        "Lima Provincias": 118727
       },
       "new_min_nominal": 1050,
       "new_min_real": 1050.0
     },
     {
       "pct_increase": 7.3,
-      "formal_affected": 56348,
-      "formal_sub_min_non_compliant": 367728,
-      "formal_displaced": 412,
-      "formal_net_benefited": 55935,
-      "informal_lighthouse_benefited": 1545924,
+      "formal_affected": 307811,
+      "formal_sub_min_non_compliant": 618254,
+      "formal_displaced": 2252,
+      "formal_net_benefited": 305559,
+      "informal_lighthouse_benefited": 2370159,
       "informal_wage_increase_soles": 30.0,
-      "monthly_cost_employers_soles": 2313829,
+      "monthly_cost_employers_soles": 19105431,
       "by_domain": {
-        "Costa urbana": 16903,
-        "Sierra urbana": 7754,
-        "Selva urbana": 1991,
-        "Lima Metropolitana": 2475,
-        "Costa rural": 4451,
-        "Sierra rural": 4760,
-        "Selva rural": 8302,
-        "Lima Provincias": 9712
+        "Costa urbana": 53185,
+        "Sierra urbana": 24535,
+        "Selva urbana": 5414,
+        "Lima Metropolitana": 6052,
+        "Costa rural": 16163,
+        "Sierra rural": 18633,
+        "Selva rural": 23460,
+        "Lima Provincias": 160369
       },
       "new_min_nominal": 1100,
       "new_min_real": 1100.0
     },
     {
       "pct_increase": 12.2,
-      "formal_affected": 66323,
-      "formal_sub_min_non_compliant": 367728,
-      "formal_displaced": 809,
-      "formal_net_benefited": 65514,
-      "informal_lighthouse_benefited": 1579414,
+      "formal_affected": 373695,
+      "formal_sub_min_non_compliant": 618254,
+      "formal_displaced": 4557,
+      "formal_net_benefited": 369138,
+      "informal_lighthouse_benefited": 2457590,
       "informal_wage_increase_soles": 50.0,
-      "monthly_cost_employers_soles": 5514202,
+      "monthly_cost_employers_soles": 36868635,
       "by_domain": {
-        "Costa urbana": 19335,
-        "Sierra urbana": 9342,
-        "Selva urbana": 1991,
-        "Lima Metropolitana": 3063,
-        "Costa rural": 5946,
-        "Sierra rural": 5538,
-        "Selva rural": 8987,
-        "Lima Provincias": 12121
+        "Costa urbana": 66048,
+        "Sierra urbana": 30682,
+        "Selva urbana": 6259,
+        "Lima Metropolitana": 7583,
+        "Costa rural": 17286,
+        "Sierra rural": 21761,
+        "Selva rural": 26939,
+        "Lima Provincias": 197139
       },
       "new_min_nominal": 1150,
       "new_min_real": 1150.0
     },
     {
       "pct_increase": 17.1,
-      "formal_affected": 81995,
-      "formal_sub_min_non_compliant": 367728,
-      "formal_displaced": 1400,
-      "formal_net_benefited": 80595,
-      "informal_lighthouse_benefited": 1631032,
+      "formal_affected": 433538,
+      "formal_sub_min_non_compliant": 618254,
+      "formal_displaced": 7402,
+      "formal_net_benefited": 426136,
+      "informal_lighthouse_benefited": 2543853,
       "informal_wage_increase_soles": 70.0,
-      "monthly_cost_employers_soles": 9176452,
+      "monthly_cost_employers_soles": 57718953,
       "by_domain": {
-        "Costa urbana": 23170,
-        "Sierra urbana": 11809,
-        "Selva urbana": 2023,
-        "Lima Metropolitana": 3063,
-        "Costa rural": 6180,
-        "Sierra rural": 5538,
-        "Selva rural": 9855,
-        "Lima Provincias": 20356
+        "Costa urbana": 75000,
+        "Sierra urbana": 36522,
+        "Selva urbana": 6469,
+        "Lima Metropolitana": 8720,
+        "Costa rural": 17983,
+        "Sierra rural": 27117,
+        "Selva rural": 28871,
+        "Lima Provincias": 232856
       },
       "new_min_nominal": 1200,
       "new_min_real": 1200.0
     },
     {
       "pct_increase": 26.8,
-      "formal_affected": 174719,
-      "formal_sub_min_non_compliant": 367728,
-      "formal_displaced": 4688,
-      "formal_net_benefited": 170031,
-      "informal_lighthouse_benefited": 1957987,
+      "formal_affected": 707425,
+      "formal_sub_min_non_compliant": 618254,
+      "formal_displaced": 18980,
+      "formal_net_benefited": 688445,
+      "informal_lighthouse_benefited": 2978547,
       "informal_wage_increase_soles": 110.0,
-      "monthly_cost_employers_soles": 20677380,
+      "monthly_cost_employers_soles": 120178867,
       "by_domain": {
-        "Costa urbana": 42168,
-        "Sierra urbana": 25812,
-        "Selva urbana": 5134,
-        "Lima Metropolitana": 5643,
-        "Costa rural": 14353,
-        "Sierra rural": 11232,
-        "Selva rural": 24312,
-        "Lima Provincias": 46064
+        "Costa urbana": 132490,
+        "Sierra urbana": 62983,
+        "Selva urbana": 12566,
+        "Lima Metropolitana": 12555,
+        "Costa rural": 29190,
+        "Sierra rural": 48831,
+        "Selva rural": 58702,
+        "Lima Provincias": 350107
       },
       "new_min_nominal": 1300,
       "new_min_real": 1300.0
     },
     {
       "pct_increase": 46.3,
-      "formal_affected": 230252,
-      "formal_sub_min_non_compliant": 367728,
-      "formal_displaced": 10670,
-      "formal_net_benefited": 219582,
-      "informal_lighthouse_benefited": 2106196,
+      "formal_affected": 987842,
+      "formal_sub_min_non_compliant": 618254,
+      "formal_displaced": 45778,
+      "formal_net_benefited": 942064,
+      "informal_lighthouse_benefited": 3235274,
       "informal_wage_increase_soles": 190.0,
-      "monthly_cost_employers_soles": 60464193,
+      "monthly_cost_employers_soles": 297075710,
       "by_domain": {
-        "Costa urbana": 52357,
-        "Sierra urbana": 35571,
-        "Selva urbana": 6514,
-        "Lima Metropolitana": 6987,
-        "Costa rural": 16244,
-        "Sierra rural": 15461,
-        "Selva rural": 29027,
-        "Lima Provincias": 68092
+        "Costa urbana": 191243,
+        "Sierra urbana": 85037,
+        "Selva urbana": 15761,
+        "Lima Metropolitana": 18317,
+        "Costa rural": 37095,
+        "Sierra rural": 75314,
+        "Selva rural": 77737,
+        "Lima Provincias": 487339
       },
       "new_min_nominal": 1500,
       "new_min_real": 1500.0
@@ -195,44 +536,60 @@
   ],
   "kaitz_series": [
     {
+      "year": 2016,
+      "min_wage_nominal": 850,
+      "min_wage_real": 1097.5,
+      "median_formal_real": 1566.5,
+      "deflator": 1.2912,
+      "kaitz_index": 0.701
+    },
+    {
+      "year": 2017,
+      "min_wage_nominal": 930,
+      "min_wage_real": 1168.1,
+      "median_formal_real": 1587.6,
+      "deflator": 1.256,
+      "kaitz_index": 0.736
+    },
+    {
       "year": 2019,
       "min_wage_nominal": 930,
       "min_wage_real": 1128.8,
-      "median_formal_real": 3034.4,
+      "median_formal_real": 1577.9,
       "deflator": 1.2137,
-      "kaitz_index": 0.372
+      "kaitz_index": 0.715
     },
     {
       "year": 2020,
       "min_wage_nominal": 930,
       "min_wage_real": 1108.5,
-      "median_formal_real": 2860.7,
+      "median_formal_real": 1430.4,
       "deflator": 1.192,
-      "kaitz_index": 0.388
+      "kaitz_index": 0.775
     },
     {
       "year": 2021,
       "min_wage_nominal": 930,
       "min_wage_real": 1066.1,
-      "median_formal_real": 2705.4,
+      "median_formal_real": 1375.6,
       "deflator": 1.1464,
-      "kaitz_index": 0.394
+      "kaitz_index": 0.775
     },
     {
       "year": 2022,
       "min_wage_nominal": 1025,
       "min_wage_real": 1089.2,
-      "median_formal_real": 2705.5,
+      "median_formal_real": 1440.9,
       "deflator": 1.0626,
-      "kaitz_index": 0.403
+      "kaitz_index": 0.756
     },
     {
       "year": 2023,
       "min_wage_nominal": 1025,
       "min_wage_real": 1025.0,
-      "median_formal_real": 2800.0,
+      "median_formal_real": 1473.2,
       "deflator": 1.0,
-      "kaitz_index": 0.366
+      "kaitz_index": 0.696
     }
   ],
   "literature": [
@@ -284,20 +641,56 @@
   ],
   "methodology": {
     "employment_elasticity": -0.1,
-    "employment_elasticity_source": "Céspedes & Sánchez (2014), BCRP DT 2014-014",
+    "employment_elasticity_source": "Céspedes & Sánchez (2014), BCRP DT 2014-014 [fallback]",
     "lighthouse_elasticity": 0.4,
     "lighthouse_source": "Boeri, Garibaldi & Ribeiro (2011)",
     "formality_definition": "P517 in [1,2] (written contract) OR P558A1==1 (pension)",
-    "wage_variable": "P524A1 deflated to 2023 soles via CPI Lima (PN01271PM)",
+    "informality_note": "asalariado_informality_rate is the share of WAGE WORKERS (dependientes) without formal contract or pension. Peru's TOTAL labor informality (all workers incl. independientes) is ~76% (INEI). These are conceptually different.",
+    "wage_variable": "P524A1 × P523-periodicity, deflated to 2023 soles via CPI Lima (PN01271PM)",
+    "period_multipliers": {
+      "P523=1_diario": 26.0,
+      "P523=2_semanal": 4.333,
+      "P523=3_quincenal": 2.0,
+      "P523=4_mensual": 1.0
+    },
     "weight": "FAC500A (expansion factor)",
     "survey": "ENAHO Modulo 500 (Empleo e Ingresos)",
     "years_used": [
+      "2016",
+      "2017",
       "2019",
       "2020",
       "2021",
       "2022",
       "2023"
     ],
-    "cpi_base": "BCRP PN01271PM, annual average, base 2023=1.00"
+    "cpi_base": "BCRP PN01271PM, annual average, base 2023=1.00",
+    "panel_did_results": {
+      "event": "2021→2022, S/930→S/1,025 (+10.2%)",
+      "design": "DiD en panel ENAHO 5 años, banda estrecha (1.0x–1.2x MW)",
+      "n_pairs": 1000,
+      "n_cohorts": 2,
+      "n_clusters_conglome": 408,
+      "se_type": "cluster-robust (conglome)",
+      "outcomes": {
+        "d_employed":          {"beta": 0.001,  "se": 0.078, "p": 0.988, "interpretation": "sin efecto detectable; potencia limitada por N"},
+        "d_formal":            {"beta": 0.163,  "se": 0.109, "p": 0.134, "interpretation": "efecto positivo (+16.3pp), canal de cumplimiento"},
+        "d_log_wage_stayers":  {"beta": -0.002, "se": 0.139, "p": 0.988, "interpretation": "sin pass-through salarial detectable"}
+      },
+      "placebo_2016_2017": "todos los outcomes p>0.30 — identificación válida",
+      "event_a_2015_2016": {
+        "n_pairs": 2039, "n_cohorts": 4,
+        "d_employed": {"beta": 0.064, "p": 0.372},
+        "d_formal":   {"beta": 0.125, "p": 0.277}
+      }
+    },
+    "panel_did_note": "Nuestras estimaciones usan el panel anual de la ENAHO a nivel nacional (n≈1,000 pares tratamiento-control, 2 cohortes, SE cluster por conglomerado). El resultado de referencia de Céspedes & Sánchez (2014, ε=-0.10) fue estimado con la EPE mensual para Lima Metropolitana, con menor atrición y mayor frecuencia. Diferencias clave: (1) muestra — Lima vs. nacional; (2) frecuencia — mensual EPE vs. anual ENAHO; (3) ventana temporal — 2010-2013 vs. 2021-2022. Resultados ENAHO panel 2021→2022: Empleo β=+0.001 (p=0.99, sin efecto detectable); Formalidad β=+0.163pp (p=0.13, canal de cumplimiento); Salarios stayers β=-0.002 (p=0.99). Placebo 2016→2017: todos p>0.30 (identificación válida). El simulador utiliza ε=-0.10 de la literatura como valor de referencia. Nota sobre fuente EPE: la EPE (Lima mensual) fue reemplazada por la EPEN (nacional) en 2022; datos históricos EPE no disponibles vía descarga pública STATA (404); EPEN-2024 y EPEN-2025 disponibles en iinei.inei.gob.pe.",
+    "epe_epen_availability": {
+      "epe_years": "2001–2021, Lima Metropolitana, mensual/trimestral rotante",
+      "epen_years": "2022–presente, cobertura nacional, trimestral rotante",
+      "stata_available": ["EPEN-2024 (code=955)", "EPEN-2025 (code=979)"],
+      "stata_unavailable": "EPE 2001-2022 y EPEN-2022/2023 retornan 404 en URL pública INEI",
+      "alternative_source": "datosabiertos.gob.pe — CSV/ZIP (sin formato STATA)"
+    }
   }
 }
