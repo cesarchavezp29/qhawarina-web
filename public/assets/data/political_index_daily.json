@@ -1,118 +1,118 @@
 {
   "metadata": {
-    "generated_at": "2026-03-12T00:32:19.638714",
-    "coverage_days": 436,
+    "generated_at": "2026-03-12T02:09:39.126042",
+    "coverage_days": 435,
     "rss_feeds": 11,
     "rss_sources": 6,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-03-12",
-    "political_raw": 91.3,
-    "political_7d": 95.3,
+    "date": "2026-03-11",
+    "political_raw": 126.0,
+    "political_7d": 94.4,
     "political_level": "MODERADO",
-    "political_multiplier": 0.95,
-    "economic_raw": 91.9,
-    "economic_7d": 121.4,
-    "economic_level": "ELEVADO",
-    "economic_multiplier": 1.21,
-    "score": 95.3,
-    "prr_7d": 95.3,
-    "prr_raw": 91.3,
+    "political_multiplier": 0.94,
+    "economic_raw": 137.0,
+    "economic_7d": 119.5,
+    "economic_level": "MODERADO",
+    "economic_multiplier": 1.2,
+    "score": 94.4,
+    "prr_7d": 94.4,
+    "prr_raw": 126.0,
     "level": "MODERADO",
-    "articles_total": 116,
-    "articles_political_relevant": 59,
-    "articles_economic_relevant": 39,
-    "political_justification": "El riesgo político elevado (91) refleja tensiones institucionales críticas: cuestionamientos sobre privatizaciones estatales, decisiones constitucionales pendientes sobre amnistía, y debilitamiento de la independencia del Ministerio Público. Simultáneamente, la presencia de observadores electorales internacionales anticipa incertidumbre en los comicios 2026.",
-    "economic_justification": "El riesgo económico moderado (92) refleja tensiones entre oportunidades y vulnerabilidades. Mientras la inversión en tecnología (5G, robotización) y empleo muestran optimismo, la crisis energética crítica y la volatilidad de combustibles generan incertidumbre sobre la sostenibilidad del crecimiento económico nacional.",
+    "articles_total": 171,
+    "articles_political_relevant": 100,
+    "articles_economic_relevant": 96,
+    "political_justification": "El riesgo político elevado (126) refleja inestabilidad institucional: corrupción en organismos públicos, volatilidad electoral con candidatos sin respaldo regional, y dependencia de confianzas parlamentarias frágiles. La incertidumbre sobre medidas contra criminalidad y factores externos (volatilidad cambiaria) intensifican la vulnerabilidad política.",
+    "economic_justification": "El riesgo económico elevado refleja tensiones entre señales positivas (crecimiento crediticio hipotecario) e incertidumbres estructurales (obras paralizadas, discontinuidad de proyectos de infraestructura). La reapertura educativa y volatilidad de combustibles añaden presiones inflacionarias y de gasto público.",
     "top_political_drivers": [
       {
-        "title": "Denisse Miralles niega que se privatice Petroperú: \"Nunca estuvo en el plan privatizarlo, nunca fue una solución\"",
+        "title": "Nilver Huarac: Poder Judicial dicta 9 años prisión contra productor musical por corrupción en el GORE Callao",
         "source": "larepublica",
+        "score": 70
+      },
+      {
+        "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
+        "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Tribunal Constitucional deja al voto demanda de inconstitucional contra Ley de Amnistía del Congreso",
-        "source": "larepublica",
+        "title": "Dólar: Por anuncio de pronto fin de guerra en Irán  hizo perder 600 puntos básicos",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
+        "source": "rpp",
         "score": 62
       },
       {
-        "title": "Federico Salazar y Katia Condos: cómo se conocieron, su historia de amor, boda y anuncio de ruptura",
-        "source": "rpp",
+        "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
+        "source": "correo",
         "score": 58
-      },
-      {
-        "title": "Misión de observadores de la OEA se reúne con jefes de ONPE y JNE para evaluar desarrollo de las elecciones 2026",
-        "source": "larepublica",
-        "score": 55
-      },
-      {
-        "title": "Rafael Vela: ANC del Ministerio Público lo suspende por 9 meses por declaraciones en el caso Alejandro Toledo",
-        "source": "larepublica",
-        "score": 50
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "CEO de Integratel Perú sobre 5G: “Queremos formar una red con valor agregado”",
+        "title": "BCP: “Esperamos crecer cerca de 10% a 12% en el segmento de créditos hipotecarios este año”",
         "source": "elcomercio",
         "score": 55
       },
       {
-        "title": "Osinergmin: aplicativo mostrará precios de combustibles solo en grifos con stock",
+        "title": "Contraloría advierte riesgo en continuidad de la Vía Expresa Santa Rosa por falta de presupuesto",
+        "source": "larepublica",
+        "score": 55
+      },
+      {
+        "title": "Gobierno anuncia que colegios de Lima y Callao retornarán a clases presenciales este miércoles",
+        "source": "rpp",
+        "score": 55
+      },
+      {
+        "title": "Gobierno anuncia impulso para reactivar obras paralizadas en todo el país",
+        "source": "correo",
+        "score": 55
+      },
+      {
+        "title": "Combustibles: denuncia ante Osinergmin si precios de Facilito no coinciden con locales",
         "source": "andina",
-        "score": 48
-      },
-      {
-        "title": "Felipe Cantuarias: “Nuestra crisis energética está llegando a un punto en el que pone en riesgo el crecimiento económico del país”",
-        "source": "elcomercio",
-        "score": 45
-      },
-      {
-        "title": "Expectativas de contratación en Perú suben a 37% para segundo trimestre de 2026",
-        "source": "andina",
-        "score": 42
-      },
-      {
-        "title": "De perros robot en minas a humanoides en aulas: la apuesta de Glexco Robotics para quintuplicar sus ventas",
-        "source": "elcomercio",
-        "score": 40
+        "score": 55
       }
     ],
-    "justification": "El riesgo político elevado (91) refleja tensiones institucionales críticas: cuestionamientos sobre privatizaciones estatales, decisiones constitucionales pendientes sobre amnistía, y debilitamiento de la independencia del Ministerio Público. Simultáneamente, la presencia de observadores electorales internacionales anticipa incertidumbre en los comicios 2026.",
+    "justification": "El riesgo político elevado (126) refleja inestabilidad institucional: corrupción en organismos públicos, volatilidad electoral con candidatos sin respaldo regional, y dependencia de confianzas parlamentarias frágiles. La incertidumbre sobre medidas contra criminalidad y factores externos (volatilidad cambiaria) intensifican la vulnerabilidad política.",
     "top_drivers": [
       {
-        "title": "Denisse Miralles niega que se privatice Petroperú: \"Nunca estuvo en el plan privatizarlo, nunca fue una solución\"",
+        "title": "Nilver Huarac: Poder Judicial dicta 9 años prisión contra productor musical por corrupción en el GORE Callao",
         "source": "larepublica",
+        "score": 70
+      },
+      {
+        "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
+        "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Tribunal Constitucional deja al voto demanda de inconstitucional contra Ley de Amnistía del Congreso",
-        "source": "larepublica",
+        "title": "Dólar: Por anuncio de pronto fin de guerra en Irán  hizo perder 600 puntos básicos",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
+        "source": "rpp",
         "score": 62
       },
       {
-        "title": "Federico Salazar y Katia Condos: cómo se conocieron, su historia de amor, boda y anuncio de ruptura",
-        "source": "rpp",
+        "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
+        "source": "correo",
         "score": 58
-      },
-      {
-        "title": "Misión de observadores de la OEA se reúne con jefes de ONPE y JNE para evaluar desarrollo de las elecciones 2026",
-        "source": "larepublica",
-        "score": 55
-      },
-      {
-        "title": "Rafael Vela: ANC del Ministerio Público lo suspende por 9 meses por declaraciones en el caso Alejandro Toledo",
-        "source": "larepublica",
-        "score": 50
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 99.5,
-    "political_30d_avg": 98.4,
-    "economic_7d_avg": 127.7,
-    "economic_30d_avg": 112.8,
+    "political_7d_avg": 100.8,
+    "political_30d_avg": 97.9,
+    "economic_7d_avg": 128.7,
+    "economic_30d_avg": 111.8,
     "year_max": 151.7,
     "year_max_date": "2025-06-22"
   },
@@ -122,7 +122,7 @@
       "score": 124.0,
       "level": "ELEVADO",
       "n_articles": 152,
-      "summary": "Sucesión presidencial acelerada por destituiciones congresales frecuentes.",
+      "summary": "Sucesión presidencial acelerada por destituiciones recurrentes del Congreso.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -130,7 +130,7 @@
       "score": 122.5,
       "level": "ELEVADO",
       "n_articles": 161,
-      "summary": "Conflicto entre el Congreso y ministro José Jerí genera inestabilidad.",
+      "summary": "Censura de ministro genera conflictos políticos internos graves.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -138,7 +138,7 @@
       "score": 122.2,
       "level": "ELEVADO",
       "n_articles": 146,
-      "summary": "Polarización y confrontación entre candidatos presidenciales principales.",
+      "summary": "Confrontación violenta entre candidatos presidenciales principales.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -146,7 +146,7 @@
       "score": 123.6,
       "level": "ELEVADO",
       "n_articles": 75,
-      "summary": "Incertidumbre sobre candidaturas presidenciales y conflictos dentro gobierno.",
+      "summary": "Incertidumbre sobre candidatura presidencial de López Aliaga.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
@@ -154,7 +154,7 @@
       "score": 122.2,
       "level": "ELEVADO",
       "n_articles": 43,
-      "summary": "Inestabilidad política crónica por cambios presidenciales frecuentes.",
+      "summary": "Inestabilidad presidencial crónica genera crisis política continua.",
       "report_url": "/political/daily-reports/2025-10-12.html"
     },
     {
@@ -162,7 +162,7 @@
       "score": 125.2,
       "level": "ELEVADO",
       "n_articles": 71,
-      "summary": "Moción de censura contra ministro genera inestabilidad gubernamental.",
+      "summary": "Moción de censura contra ministro genera inestabilidad política.",
       "report_url": "/political/daily-reports/2025-09-18.html"
     },
     {
@@ -170,7 +170,7 @@
       "score": 120.2,
       "level": "ELEVADO",
       "n_articles": 66,
-      "summary": "La falta de acuerdos entre gobiernos locales y nacionales.",
+      "summary": "Perú enfrenta crisis de lavado de activos sin precedentes históricos.",
       "report_url": "/political/daily-reports/2025-09-17.html"
     },
     {
@@ -178,7 +178,7 @@
       "score": 121.2,
       "level": "ELEVADO",
       "n_articles": 57,
-      "summary": "Falta de comunicación entre autoridades del gobierno peruano.",
+      "summary": "Falta de comunicación entre poderes del Estado peruano.",
       "report_url": "/political/daily-reports/2025-09-16.html"
     },
     {
@@ -186,7 +186,7 @@
       "score": 125.7,
       "level": "ELEVADO",
       "n_articles": 42,
-      "summary": "Corrupción en el Tribunal Constitucional socava legitimidad institucional.",
+      "summary": "Corrupción en el Tribunal Constitucional debilita instituciones democráticas.",
       "report_url": "/political/daily-reports/2025-09-15.html"
     },
     {
@@ -194,7 +194,7 @@
       "score": 128.2,
       "level": "ELEVADO",
       "n_articles": 18,
-      "summary": "Crisis institucional y debilidad del sistema judicial peruano.",
+      "summary": "Inestabilidad institucional por conflictos políticos y corrupción gubernamental.",
       "report_url": "/political/daily-reports/2025-09-14.html"
     }
   ],
@@ -5853,19 +5853,6 @@
       "n_articles": 171,
       "low_coverage": false,
       "provisional": true
-    },
-    {
-      "date": "2026-03-12",
-      "political_raw": 91.3,
-      "political_7d": 95.3,
-      "economic_raw": 91.9,
-      "economic_7d": 121.4,
-      "score": 95.3,
-      "prr": 91.3,
-      "prr_7d": 95.3,
-      "n_articles": 116,
-      "low_coverage": false,
-      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -7165,9 +7152,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 97.6,
-      "economic_avg": 124.1,
-      "n_articles": 1550,
+      "political_avg": 97.8,
+      "economic_avg": 124.3,
+      "n_articles": 1434,
       "fx_level": null,
       "fx_yoy": null
     }
