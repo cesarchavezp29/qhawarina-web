@@ -11,7 +11,8 @@ import {
   CHART_COLORS, tooltipContentStyle,
 } from './lib/chartTheme';
 import PriceIndexCard from "./components/hero/PriceIndexCard";
-import PoliticalRiskCard from "./components/hero/PoliticalRiskCard";
+import IrpCard from "./components/hero/IrpCard";
+import IreCard from "./components/hero/IreCard";
 
 function parseLocalDate(dateStr: string): Date {
   const [y, m, d] = dateStr.split('-').map(Number);
@@ -110,7 +111,7 @@ export default function HomePage() {
 
   const polSeries = (data?.political?.daily_series ?? [])
     .slice(-90)
-    .map((r: any) => ({ date: r.date, value: r.score }));
+    .map((r: any) => ({ date: r.date, value: r.political_7d ?? r.score ?? 0 }));
 
   const gdpTrack = (data?.gdp?.quarterly_series ?? [])
     .filter((r: any) => r.official != null || r.nowcast != null)
@@ -214,11 +215,21 @@ export default function HomePage() {
         )}
 
         {/* ── Hero Cards ──────────────────────────────────────────── */}
-        <section className="mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {data?.prices    && <PriceIndexCard   data={data.prices}   isEn={isEn} />}
-            {data?.political && <PoliticalRiskCard data={data.political} isEn={isEn} />}
+        <section className="mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {data?.prices    && <PriceIndexCard data={data.prices}   isEn={isEn} />}
+            {data?.political && <IrpCard        data={data.political} isEn={isEn} />}
+            {data?.political && <IreCard        data={data.political} isEn={isEn} />}
           </div>
+        </section>
+
+        {/* ── Update schedule note ─────────────────────────────────── */}
+        <section className="mb-6">
+          <p className="text-xs text-center" style={{ color: "#8D99AE" }}>
+            {isEn
+              ? "Índices actualizados todos los días a las 9:00 PM hora peruana (PET)"
+              : "Índices actualizados todos los días a las 9:00 PM hora peruana (PET)"}
+          </p>
         </section>
 
         {/* ── Secondary Strip ─────────────────────────────────────── */}
@@ -359,7 +370,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   {isEn ? 'Update frequency: ' : 'Frecuencia: '}
-                  <span style={{ color: '#2D3142' }}>{isEn ? 'Daily at 08:00 PET' : 'Diaria a las 08:00 PET'}</span>
+                  <span style={{ color: '#2D3142' }}>{isEn ? 'Daily at 21:00 PET' : 'Diaria a las 21:00 PET'}</span>
                 </div>
                 <div>
                   {isEn ? 'License: ' : 'Licencia: '}
