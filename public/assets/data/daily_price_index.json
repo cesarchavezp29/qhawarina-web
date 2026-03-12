@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-10",
-    "n_days": 29,
+    "last_date": "2026-03-11",
+    "n_days": 30,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-11"
+    "updated": "2026-03-12"
   },
   "categories": {
     "arroz_cereales": {
@@ -874,87 +874,114 @@
       "index_limpieza": 99.4678,
       "index_cuidado_personal": 99.0006,
       "index_other": 100.676
+    },
+    {
+      "date": "2026-03-11",
+      "index_all": 99.3335,
+      "index_all_unweighted": 99.6472,
+      "index_food": 99.5357,
+      "index_nonfood": 100.0082,
+      "var_all": -0.1857,
+      "var_food": -0.1586,
+      "cum_pct": -0.6665,
+      "yoy_inflation": null,
+      "mom_inflation": null,
+      "interpolated": false,
+      "n_matched": 39942,
+      "index_arroz_cereales": 99.3504,
+      "index_pan_harinas": 99.0698,
+      "index_carnes": 99.7721,
+      "index_pescados_mariscos": 98.7394,
+      "index_lacteos": 99.4953,
+      "index_frutas": 99.5304,
+      "index_verduras": 98.684,
+      "index_aceites_grasas": 98.428,
+      "index_azucar_dulces": 101.4312,
+      "index_bebidas": 99.0405,
+      "index_limpieza": 99.4661,
+      "index_cuidado_personal": 98.9531,
+      "index_other": 100.7155
     }
   ],
   "latest": {
-    "date": "2026-03-10",
-    "index_all": 99.5183,
-    "index_food": 99.6938,
-    "cum_pct": -0.4817,
-    "var_all": 0.1331,
+    "date": "2026-03-11",
+    "index_all": 99.3335,
+    "index_food": 99.5357,
+    "cum_pct": -0.6665,
+    "var_all": -0.1857,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 40377,
+    "n_products_today": 39942,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 1.03
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.84
       },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": 0.6
+        "var": -0.8
+      },
+      {
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": -0.3
       },
       {
         "category": "arroz_cereales",
         "label_es": "Arroz y Cereales",
         "label_en": "Rice & Cereals",
-        "var": 0.3
-      },
-      {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.2
+        "var": -0.19
       }
     ],
     "product_movers": [
       {
-        "name": "Chocolate de Leche Hershey's Kisses C...",
-        "store": "metro",
-        "category": "lacteos",
-        "var": 97.25
+        "name": "Infusiones WAWASANA Plena Caja 20un",
+        "store": "plazavea",
+        "category": "other",
+        "var": 98.33
       },
       {
-        "name": "Chocolate de Leche Hershey's Kisses 102g",
-        "store": "metro",
-        "category": "lacteos",
-        "var": 97.25
-      },
-      {
-        "name": "Chocolate de Leche Hershey's Kisses 102g",
+        "name": "Turrón de Chocolate Dulce Pasión 12 P...",
         "store": "wong",
-        "category": "lacteos",
-        "var": 97.25
+        "category": "pan_harinas",
+        "var": 82.0
       },
       {
-        "name": "Chocolate de Leche Hershey's Kisses C...",
+        "name": "Turrón de Chocolate 8 Porciones",
         "store": "wong",
-        "category": "lacteos",
-        "var": 97.25
+        "category": "pan_harinas",
+        "var": 81.23
+      },
+      {
+        "name": "Torta Carrot Cake Dulce Pasión 10 Por...",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 80.23
       }
     ],
     "stores_coverage": {
-      "metro": 12534,
-      "plazavea": 13188,
-      "wong": 14972
+      "metro": 12459,
+      "plazavea": 12962,
+      "wong": 14941
     },
     "categories_coverage": {
-      "aceites_grasas": 689,
-      "arroz_cereales": 1336,
-      "azucar_dulces": 1125,
-      "bebidas": 971,
-      "carnes": 14615,
-      "cuidado_personal": 2840,
-      "frutas": 1974,
-      "lacteos": 2739,
-      "limpieza": 3106,
-      "pan_harinas": 6587,
-      "pescados_mariscos": 222,
-      "verduras": 313
+      "aceites_grasas": 688,
+      "arroz_cereales": 1326,
+      "azucar_dulces": 1063,
+      "bebidas": 978,
+      "carnes": 14499,
+      "cuidado_personal": 2826,
+      "frutas": 1946,
+      "lacteos": 2712,
+      "limpieza": 3080,
+      "pan_harinas": 6558,
+      "pescados_mariscos": 224,
+      "verduras": 308
     }
   }
 }
