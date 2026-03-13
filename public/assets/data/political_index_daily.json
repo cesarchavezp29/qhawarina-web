@@ -1,118 +1,118 @@
 {
   "metadata": {
-    "generated_at": "2026-03-12T21:43:10.223650",
-    "coverage_days": 435,
+    "generated_at": "2026-03-12T23:13:09.614111",
+    "coverage_days": 437,
     "rss_feeds": 11,
     "rss_sources": 6,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-03-11",
-    "political_raw": 109.6,
-    "political_7d": 85.3,
+    "date": "2026-03-13",
+    "political_raw": 76.0,
+    "political_7d": 87.5,
     "political_level": "MODERADO",
-    "political_multiplier": 0.85,
-    "economic_raw": 119.5,
-    "economic_7d": 105.6,
+    "political_multiplier": 0.88,
+    "economic_raw": 97.7,
+    "economic_7d": 103.9,
     "economic_level": "MODERADO",
-    "economic_multiplier": 1.06,
-    "score": 85.3,
-    "prr_7d": 85.3,
-    "prr_raw": 109.6,
+    "economic_multiplier": 1.04,
+    "score": 87.5,
+    "prr_7d": 87.5,
+    "prr_raw": 76.0,
     "level": "MODERADO",
-    "articles_total": 192,
-    "articles_political_relevant": 111,
-    "articles_economic_relevant": 120,
-    "political_justification": "El riesgo político elevado (110) refleja inestabilidad institucional: corrupción en organismos públicos, debilidad del gabinete ministerial con condicionalidades parlamentarias, volatilidad económica por eventos internacionales, y fragmentación política en candidaturas presidenciales sin respaldo territorial consolidado.",
-    "economic_justification": "El riesgo económico elevado (120) refleja tensiones entre oportunidades de crecimiento y obstáculos estructurales. Mientras el potencial de expansión del 4%+ y créditos hipotecarios genera optimismo, las presiones fiscales (subsidios aéreos, infraestructura deficitaria) y volatilidad externa (Bitcoin) generan incertidumbre sobre la sostenibilidad.",
+    "articles_total": 113,
+    "articles_political_relevant": 54,
+    "articles_economic_relevant": 47,
+    "political_justification": "El riesgo político moderado-alto (76) refleja tensiones en temas sensibles: divisiones partidarias sobre educación sexual, incertidumbre sobre combustibles, recuperación institucional del BCRP y vulnerabilidad del gabinete ante el Congreso. Estos factores generan volatilidad política sin alcanzar crisis sistémica.",
+    "economic_justification": "El riesgo económico se mantiene en nivel promedio debido a la estabilidad de la tasa de interés del BCRP y la disponibilidad de combustibles que evita presiones inflacionarias inmediatas. Sin embargo, la volatilidad del tipo de cambio y la incertidumbre política generan cautela en los mercados.",
     "top_political_drivers": [
       {
-        "title": "Nilver Huarac: Poder Judicial dicta 9 años prisión contra productor musical por corrupción en el GORE Callao",
-        "source": "larepublica",
-        "score": 70
-      },
-      {
-        "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
+        "title": "Leyla Huerta y Roxana Rocha exponen en Versus las visiones del Partido Morado y Renovación Popular sobre la educación sexual y la familia",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Dólar: Por anuncio de pronto fin de guerra en Irán  hizo perder 600 puntos básicos",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
-        "source": "rpp",
         "score": 62
       },
       {
-        "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
+        "title": "Minem asegura que hay stock: Alza de precios de combustibles no tiene fundamento",
         "source": "correo",
-        "score": 58
+        "score": 50
+      },
+      {
+        "title": "BCRP recupera autonomía: Congreso rectifica ley que obligaba a rediseñar monedas y billetes",
+        "source": "larepublica",
+        "score": 48
+      },
+      {
+        "title": "Congreso: ¿Cuál es el ánimo de las bancadas frente al voto de confianza al Gabinete Miralles?",
+        "source": "elcomercio",
+        "score": 45
+      },
+      {
+        "title": "Elecciones CAL 2026, segunda vuelta: fecha, hora y dónde votar por Delia Espinoza o Humberto Abanto",
+        "source": "larepublica",
+        "score": 45
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Perú podría crecer más de 4% y liderar en la región, pero este factor se lo impide",
-        "source": "gestion",
-        "score": 70
-      },
-      {
-        "title": "Congreso: buscan subsidiar pasajes aéreos hacia Iquitos y otras localidades",
+        "title": "Denisse Miralles dice que hay combustible suficiente: No debería haber alza de precios",
         "source": "gestion",
         "score": 65
       },
       {
-        "title": "Bitcoin rebota hasta US$ 71,000 y Wall Street redobla su apuesta",
-        "source": "gestion",
+        "title": "Precio del dólar: divisa cierra este jueves 12 de marzo en S/3,4485",
+        "source": "elcomercio",
         "score": 60
       },
       {
-        "title": "BCP: “Esperamos crecer cerca de 10% a 12% en el segmento de créditos hipotecarios este año”",
-        "source": "elcomercio",
-        "score": 55
+        "title": "Delia Espinoza: Congreso rechaza inhabilitarla por 10 años, pero Jorge Montoya presenta reconsideración de votación",
+        "source": "larepublica",
+        "score": 60
       },
       {
-        "title": "Contraloría advierte riesgo en continuidad de la Vía Expresa Santa Rosa por falta de presupuesto",
-        "source": "larepublica",
+        "title": "BCRP mantiene tasa en 4.25% por sexto mes consecutivo",
+        "source": "gestion",
+        "score": 58
+      },
+      {
+        "title": "Hay autonomía del suministro de gasolina y diésel para dos semanas, dice Minem",
+        "source": "gestion",
         "score": 55
       }
     ],
-    "justification": "El riesgo político elevado (110) refleja inestabilidad institucional: corrupción en organismos públicos, debilidad del gabinete ministerial con condicionalidades parlamentarias, volatilidad económica por eventos internacionales, y fragmentación política en candidaturas presidenciales sin respaldo territorial consolidado.",
+    "justification": "El riesgo político moderado-alto (76) refleja tensiones en temas sensibles: divisiones partidarias sobre educación sexual, incertidumbre sobre combustibles, recuperación institucional del BCRP y vulnerabilidad del gabinete ante el Congreso. Estos factores generan volatilidad política sin alcanzar crisis sistémica.",
     "top_drivers": [
       {
-        "title": "Nilver Huarac: Poder Judicial dicta 9 años prisión contra productor musical por corrupción en el GORE Callao",
-        "source": "larepublica",
-        "score": 70
-      },
-      {
-        "title": "Candidatos Úrsula Silva y Brayan Valentín debaten sus propuestas en “Versus” de El Comercio",
+        "title": "Leyla Huerta y Roxana Rocha exponen en Versus las visiones del Partido Morado y Renovación Popular sobre la educación sexual y la familia",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Dólar: Por anuncio de pronto fin de guerra en Irán  hizo perder 600 puntos básicos",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "José Luna Gálvez: Podemos daría el voto de confianza si gabinete Miralles anuncia medidas concretas contra la criminalidad",
-        "source": "rpp",
         "score": 62
       },
       {
-        "title": "Candidato presidencial Carlos Espá sin respaldo en Arequipa",
+        "title": "Minem asegura que hay stock: Alza de precios de combustibles no tiene fundamento",
         "source": "correo",
-        "score": 58
+        "score": 50
+      },
+      {
+        "title": "BCRP recupera autonomía: Congreso rectifica ley que obligaba a rediseñar monedas y billetes",
+        "source": "larepublica",
+        "score": 48
+      },
+      {
+        "title": "Congreso: ¿Cuál es el ánimo de las bancadas frente al voto de confianza al Gabinete Miralles?",
+        "source": "elcomercio",
+        "score": 45
+      },
+      {
+        "title": "Elecciones CAL 2026, segunda vuelta: fecha, hora y dónde votar por Delia Espinoza o Humberto Abanto",
+        "source": "larepublica",
+        "score": 45
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 95.3,
-    "political_30d_avg": 95.5,
-    "economic_7d_avg": 117.7,
-    "economic_30d_avg": 106.2,
+    "political_7d_avg": 91.0,
+    "political_30d_avg": 96.0,
+    "economic_7d_avg": 112.7,
+    "economic_30d_avg": 107.2,
     "year_max": 150.2,
     "year_max_date": "2025-06-22"
   },
@@ -122,7 +122,7 @@
       "score": 123.3,
       "level": "ELEVADO",
       "n_articles": 152,
-      "summary": "Destitución presidencial genera rotación constante de gobiernos.",
+      "summary": "Sucesión presidencial constante por destituiciones congresales.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -130,7 +130,7 @@
       "score": 122.1,
       "level": "ELEVADO",
       "n_articles": 161,
-      "summary": "Conflicto entre el Congreso y ministro censurado Jerí.",
+      "summary": "Conflicto político entre gobierno y congreso por censura.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -138,7 +138,7 @@
       "score": 122.1,
       "level": "ELEVADO",
       "n_articles": 147,
-      "summary": "Confrontación destructiva entre candidatos presidenciales debilita instituciones.",
+      "summary": "Confrontación verbal entre candidatos presidenciales debilita instituciones democráticas.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -146,7 +146,7 @@
       "score": 121.4,
       "level": "ELEVADO",
       "n_articles": 75,
-      "summary": "Incertidumbre sobre candidaturas presidenciales y liderazgo político.",
+      "summary": "Incertidumbre sobre candidaturas presidenciales para elecciones próximas.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
@@ -154,7 +154,7 @@
       "score": 122.7,
       "level": "ELEVADO",
       "n_articles": 71,
-      "summary": "Moción de censura contra ministro genera inestabilidad gubernamental.",
+      "summary": "Inestabilidad política por mociones de censura contra ministros.",
       "report_url": "/political/daily-reports/2025-09-18.html"
     },
     {
@@ -162,7 +162,7 @@
       "score": 123.0,
       "level": "ELEVADO",
       "n_articles": 42,
-      "summary": "Corrupción y presunta interferencia política en el Tribunal Constitucional.",
+      "summary": "Corrupción y conflictos en el Tribunal Constitucional peruano.",
       "report_url": "/political/daily-reports/2025-09-15.html"
     },
     {
@@ -170,7 +170,7 @@
       "score": 125.7,
       "level": "ELEVADO",
       "n_articles": 18,
-      "summary": "Inestabilidad institucional por conflictos políticos y judicales persistentes.",
+      "summary": "Conflictos judiciales y debilidad institucional del Estado peruano.",
       "report_url": "/political/daily-reports/2025-09-14.html"
     },
     {
@@ -178,7 +178,7 @@
       "score": 120.9,
       "level": "ELEVADO",
       "n_articles": 26,
-      "summary": "Retiran inyectables del mercado por partículas peligrosas.",
+      "summary": "Contaminación de medicamentos inyectables afecta salud pública.",
       "report_url": "/political/daily-reports/2025-09-13.html"
     },
     {
@@ -186,7 +186,7 @@
       "score": 120.8,
       "level": "ELEVADO",
       "n_articles": 35,
-      "summary": "Conflicto entre poderes ejecutivo y legislativo debilita gobernanza.",
+      "summary": "Conflicto entre poderes del Estado genera crisis institucional permanente.",
       "report_url": "/political/daily-reports/2025-09-12.html"
     },
     {
@@ -194,7 +194,7 @@
       "score": 122.7,
       "level": "ELEVADO",
       "n_articles": 37,
-      "summary": "Persecución judicial selectiva de exfuncionarios del poder.",
+      "summary": "Persecución judicial a figuras políticas y judiciales prominentes.",
       "report_url": "/political/daily-reports/2025-09-10.html"
     }
   ],
@@ -5853,6 +5853,32 @@
       "n_articles": 192,
       "low_coverage": false,
       "provisional": true
+    },
+    {
+      "date": "2026-03-12",
+      "political_raw": 80.5,
+      "political_7d": 84.7,
+      "economic_raw": 95.2,
+      "economic_7d": 106.0,
+      "score": 84.7,
+      "prr": 80.5,
+      "prr_7d": 84.7,
+      "n_articles": 221,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-03-13",
+      "political_raw": 76.0,
+      "political_7d": 87.5,
+      "economic_raw": 97.7,
+      "economic_7d": 103.9,
+      "score": 87.5,
+      "prr": 76.0,
+      "prr_7d": 87.5,
+      "n_articles": 113,
+      "low_coverage": false,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -7156,9 +7182,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 93.8,
-      "economic_avg": 115.3,
-      "n_articles": 1455,
+      "political_avg": 92.6,
+      "economic_avg": 113.7,
+      "n_articles": 1789,
       "fx_level": null,
       "fx_yoy": null
     }
