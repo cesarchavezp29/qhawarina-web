@@ -35,31 +35,33 @@ interface PoliticalData {
 }
 
 const LEVEL_CONFIG: Record<string, { color: string; label_es: string; label_en: string }> = {
-  MINIMO:   { color: "#8D99AE", label_es: "Mínimo",   label_en: "Minimal"  },
-  BAJO:     { color: "#2A9D8F", label_es: "Bajo",     label_en: "Low"      },
-  MODERADO: { color: "#E0A458", label_es: "Moderado", label_en: "Moderate" },
-  ELEVADO:  { color: "#C65D3E", label_es: "Elevado",  label_en: "Elevated" },
-  ALTO:     { color: "#9B2226", label_es: "Alto",     label_en: "High"     },
-  CRITICO:  { color: "#6B0000", label_es: "Crítico",  label_en: "Critical" },
+  MINIMO:   { color: "#8D99AE", label_es: "Mínimo",  label_en: "Minimal"  },
+  BAJO:     { color: "#2A9D8F", label_es: "Bajo",    label_en: "Low"      },
+  NORMAL:   { color: "#E9C46A", label_es: "Normal",  label_en: "Normal"   },
+  ELEVADO:  { color: "#C65D3E", label_es: "Elevado", label_en: "Elevated" },
+  ALTO:     { color: "#9B2226", label_es: "Alto",    label_en: "High"     },
+  CRITICO:  { color: "#6B0000", label_es: "Crítico", label_en: "Critical" },
+  // legacy key — keep so old cached data doesn't break
+  MODERADO: { color: "#E9C46A", label_es: "Normal",  label_en: "Normal"   },
 };
 
 // Continuous gradient bar, PRR scale 0-300 (capped at 300 for display)
 const PRR_MAX = 300;
 const GAUGE_GRADIENT = [
-  "#8D99AE 0%",    // MINIMO (gray-blue)
-  "#2A9D8F 17%",   // BAJO (teal) — PRR 50
-  "#E0A458 27%",   // MODERADO start (amber) — PRR 80
-  "#E0A458 40%",   // MODERADO end — PRR 120
-  "#C65D3E 53%",   // ELEVADO — PRR 160
-  "#9B2226 67%",   // ALTO — PRR 200
-  "#6B0000 100%",  // CRITICO — PRR 300
+  "#8D99AE 0%",    // MINIMO  — PRR < 50
+  "#2A9D8F 17%",   // BAJO    — PRR 50-90
+  "#E9C46A 30%",   // NORMAL  — PRR 90-110
+  "#E9C46A 37%",   // NORMAL  end
+  "#C65D3E 50%",   // ELEVADO — PRR 110-150
+  "#9B2226 67%",   // ALTO    — PRR 150-200
+  "#6B0000 100%",  // CRITICO — PRR > 200
 ].join(", ");
 
 function zoneColor(prr: number): string {
   if (prr < 50)  return "#8D99AE";
-  if (prr < 80)  return "#2A9D8F";
-  if (prr < 120) return "#E0A458";
-  if (prr < 160) return "#C65D3E";
+  if (prr < 90)  return "#2A9D8F";
+  if (prr < 110) return "#E9C46A";
+  if (prr < 150) return "#C65D3E";
   if (prr < 200) return "#9B2226";
   return "#6B1518";
 }
@@ -140,7 +142,7 @@ export default function PoliticalRiskCard({
   const polMult  = current.political_multiplier ?? (irp7d / 100);
   const ecoMult  = current.economic_multiplier  ?? (ire7d / 100);
   const scoreDisplay = Math.round(irp7d);                 // IRP 7d avg as main number
-  const cfg = LEVEL_CONFIG[polLevel] ?? LEVEL_CONFIG["MODERADO"];
+  const cfg = LEVEL_CONFIG[polLevel] ?? LEVEL_CONFIG["NORMAL"];
   const articles = current.articles_total ?? 0;
 
   return (

@@ -197,12 +197,12 @@ export default function RiesgoPoliticoMetodologiaPage() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {[
-                  { level: 'MÍNIMO',   color: '#8D99AE', range: '< 50',    es: 'Calma excepcional, noticias de rutina',                   en: 'Exceptional calm, routine news only' },
-                  { level: 'BAJO',     color: '#2A9D8F', range: '50–80',   es: 'Actividad normal, pocas notas relevantes',                 en: 'Normal activity, few relevant articles' },
-                  { level: 'MODERADO', color: '#E0A458', range: '80–120',  es: 'Entorno promedio, tensiones menores o moderadas',          en: 'Average environment, minor or moderate tensions' },
-                  { level: 'ELEVADO',  color: '#C65D3E', range: '120–160', es: 'Inestabilidad por encima del promedio, vigilancia activa', en: 'Above-average instability, active monitoring' },
-                  { level: 'ALTO',     color: '#9B2226', range: '160–200', es: 'Crisis significativa, múltiples eventos graves',           en: 'Significant crisis, multiple serious events' },
-                  { level: 'CRÍTICO',  color: '#6B0000', range: '> 200',   es: 'Crisis aguda: vacancia, colapso institucional, emergencia', en: 'Acute crisis: impeachment, institutional collapse, emergency' },
+                  { level: 'MÍNIMO',  color: '#8D99AE', range: '< 50',    es: 'Calma excepcional, noticias de rutina',                          en: 'Exceptional calm, routine news only' },
+                  { level: 'BAJO',    color: '#2A9D8F', range: '50–90',   es: 'Por debajo del promedio, pocas notas relevantes',                 en: 'Below average, few relevant articles' },
+                  { level: 'NORMAL',  color: '#E9C46A', range: '90–110',  es: 'Entorno normal, cerca de la media histórica',                     en: 'Normal environment, near historical mean' },
+                  { level: 'ELEVADO', color: '#C65D3E', range: '110–150', es: 'Inestabilidad por encima del promedio, vigilancia activa',         en: 'Above-average instability, active monitoring' },
+                  { level: 'ALTO',    color: '#9B2226', range: '150–200', es: 'Crisis significativa, múltiples eventos graves',                   en: 'Significant crisis, multiple serious events' },
+                  { level: 'CRÍTICO', color: '#6B0000', range: '> 200',   es: 'Crisis aguda: vacancia, colapso institucional, emergencia',        en: 'Acute crisis: impeachment, institutional collapse, emergency' },
                 ].map(r => (
                   <tr key={r.level}>
                     <td className="px-4 py-2 font-bold" style={{ color: r.color }}>{r.level}</td>
