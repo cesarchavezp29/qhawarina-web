@@ -331,11 +331,50 @@ export default function RiesgoEconomicoPage() {
       });
   }, []);
 
-  // ── Draggable label state ─────────────────────────────────────────────────────
+  // ── Draggable label state (all positions in px relative to chartContainerRef) ──
+  const [dotPositions, setDotPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [dragging, setDragging] = useState<string | null>(null);
   const dragOffset = useRef<{ dx: number; dy: number }>({ dx: 0, dy: 0 });
   const chartContainerRef = useRef<HTMLDivElement>(null);
+
+  // After chart renders, read dot pixel positions from DOM, set initial label positions
+  useEffect(() => {
+    if (!data) return;
+    const timer = setTimeout(() => {
+      const container = chartContainerRef.current;
+      if (!container) return;
+      const svg = container.querySelector('svg');
+      if (!svg) return;
+      const circles = Array.from(svg.querySelectorAll('circle.recharts-reference-dot-dot'));
+      const containerRect = container.getBoundingClientRect();
+      const svgRect = svg.getBoundingClientRect();
+      const offX = svgRect.left - containerRect.left;
+      const offY = svgRect.top - containerRect.top;
+      const peaks = (data.peak_events ?? []).filter((e: any) => e.dimension === 'economic' && e.label);
+      const dots: Record<string, { x: number; y: number }> = {};
+      circles.forEach((el, i) => {
+        if (i < peaks.length) {
+          dots[peaks[i].date] = {
+            x: parseFloat(el.getAttribute('cx') ?? '0') + offX,
+            y: parseFloat(el.getAttribute('cy') ?? '0') + offY,
+          };
+        }
+      });
+      setDotPositions(dots);
+      setLabelPositions(prev => {
+        const next = { ...prev };
+        peaks.forEach((_: any, i: number) => {
+          const date = peaks[i].date;
+          if (!next[date] && dots[date]) {
+            next[date] = { x: dots[date].x, y: Math.max(4, dots[date].y - 48 - (i % 3) * 24) };
+          }
+        });
+        return next;
+      });
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [data]);
 
   useEffect(() => {
     if (!dragging) return;
@@ -732,21 +771,31 @@ export default function RiesgoEconomicoPage() {
               </AreaChart>
             </ResponsiveContainer>
 
-            {/* HTML draggable labels — positioned absolutely over chart */}
-            {ecoPeaks.map((peak, i) => {
-              const dateIndex = chartData.findIndex((d: any) => d.date === peak.date);
-              const defaultX = chartData.length > 1
-                ? 8 + (dateIndex / (chartData.length - 1)) * 84
-                : 50 + i * 10;
-              const defaultY = 4 + (i % 3) * 22;
-              const pos = labelPositions[peak.date] ?? { x: defaultX, y: defaultY };
+            {/* SVG overlay — dashed lines from label to dot (pointer-events: none) */}
+            <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5 }}>
+              {ecoPeaks.map((peak) => {
+                const lp = labelPositions[peak.date];
+                const dp = dotPositions[peak.date];
+                if (!lp || !dp) return null;
+                return (
+                  <line key={peak.date}
+                    x1={lp.x} y1={lp.y + 11} x2={dp.x} y2={dp.y}
+                    stroke="#2A9D8F" strokeWidth={0.8} strokeDasharray="3,2" strokeOpacity={0.6} />
+                );
+              })}
+            </svg>
+
+            {/* HTML draggable labels — all positions in px relative to container */}
+            {ecoPeaks.map((peak) => {
+              const pos = labelPositions[peak.date];
+              if (!pos) return null; // hidden until dotPositions effect runs
               const active = dragging === peak.date;
               return (
                 <div
                   key={peak.date}
                   style={{
                     position: 'absolute',
-                    left: `${pos.x}%`,
+                    left: `${pos.x}px`,
                     top: `${pos.y}px`,
                     transform: 'translateX(-50%)',
                     cursor: active ? 'grabbing' : 'grab',
