@@ -107,7 +107,7 @@ function getRiskLevel(prr: number): RiskLevel {
 }
 
 function toMult(prr: number): string {
-  return (Math.round(prr / 10) / 10).toFixed(1) + '×';
+  return (prr / 100).toFixed(1) + '×';
 }
 
 function formatDate(dateStr: string, isEn: boolean): string {
@@ -797,6 +797,46 @@ export default function RiesgoPoliticoPage() {
             </div>
           </div>
         )}
+
+        {/* ══ SECTION 5c: INTERPRETATION TABLE ════════════════════════════ */}
+        <div className="mb-6">
+          <h3 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.ink }}>
+            {isEn ? 'How to read the index' : 'Cómo interpretar el índice'}
+          </h3>
+          <p className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
+            {isEn
+              ? <>Example: a value of <strong>150</strong> indicates activity <strong>1.5× the average</strong> (50% above normal). A value of <strong>45</strong> indicates activity <strong>0.5× the average</strong> (half of normal). Mean&nbsp;=&nbsp;100.</>
+              : <>Ejemplo: un valor de <strong>150</strong> indica actividad <strong>1.5× el promedio</strong> (50% por encima de lo normal). Un valor de <strong>45</strong> indica actividad <strong>0.5× el promedio</strong> (la mitad de lo normal). Media&nbsp;=&nbsp;100.</>
+            }
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs" style={{ borderCollapse: 'collapse' }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid #E8E4DC' }}>
+                  {[isEn ? 'Level' : 'Nivel', isEn ? 'Multiplier' : 'Múltiplo', isEn ? 'Interpretation' : 'Significado'].map((h) => (
+                    <th key={h} className="text-left py-1.5 pr-4 font-semibold" style={{ color: CHART_COLORS.ink3 }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {([
+                  ['< 50',    '< 0.5×', '#8D99AE', isEn ? 'Minimum'  : 'Mínimo',  isEn ? 'Routine governance, no notable tension'        : 'Gobernanza rutinaria, sin tensión notable'],
+                  ['50–90',   '0.5–0.9×','#2A9D8F', isEn ? 'Low'      : 'Bajo',    isEn ? 'Minor tensions below historical norm'          : 'Tensiones menores, por debajo de la norma histórica'],
+                  ['90–110',  '0.9–1.1×','#2D3142', isEn ? 'Normal'   : 'Normal',  isEn ? 'Historical normal level'                       : 'Nivel histórico normal'],
+                  ['110–150', '1.1–1.5×','#E0A458', isEn ? 'Elevated' : 'Elevado', isEn ? 'Significant crisis, above-average activity'     : 'Crisis significativa, actividad por encima del promedio'],
+                  ['150–200', '1.5–2×',  '#C65D3E', isEn ? 'High'     : 'Alto',    isEn ? 'Severe crisis, intense political disruption'    : 'Crisis grave, perturbación política intensa'],
+                  ['> 200',   '> 2×',    '#9B2226', isEn ? 'Critical' : 'Crítico', isEn ? 'Institutional breakdown, extreme political risk': 'Ruptura institucional, riesgo político extremo'],
+                ] as [string, string, string, string, string][]).map(([range, mult, color, level, desc]) => (
+                  <tr key={range} style={{ borderBottom: '1px solid #F0EDE8' }}>
+                    <td className="py-1.5 pr-4 font-semibold" style={{ color }}>{level}</td>
+                    <td className="py-1.5 pr-4 font-mono" style={{ color: CHART_COLORS.ink }}>{mult}</td>
+                    <td className="py-1.5" style={{ color: CHART_COLORS.ink3 }}>{desc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
 
         {/* ══ SECTION 5b: DUAL JUSTIFICATION ══════════════════════════════ */}
         {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (

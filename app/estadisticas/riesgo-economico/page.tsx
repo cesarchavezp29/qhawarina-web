@@ -105,7 +105,7 @@ function getRiskLevel(ire: number): RiskLevel {
 }
 
 function toMult(v: number): string {
-  return (Math.round(v / 10) / 10).toFixed(1) + '×';
+  return (v / 100).toFixed(1) + '×';
 }
 
 function formatDate(dateStr: string, isEn: boolean): string {
@@ -829,12 +829,12 @@ export default function RiesgoEconomicoPage() {
           <p className="text-sm text-gray-500 mb-4">
             {isEn
               ? <>
-                  Example: a value of <strong>{Math.round(eco7d)}</strong> means that this week&apos;s
-                  economic activity was <strong>{mult7d} more intense</strong> than a normal day (mean&nbsp;=&nbsp;100).
+                  Example: a value of <strong>150</strong> indicates activity <strong>1.5× the average</strong> (50% above normal).
+                  A value of <strong>45</strong> indicates activity <strong>0.5× the average</strong> (half of normal). Mean&nbsp;=&nbsp;100.
                 </>
               : <>
-                  Ejemplo: un valor de <strong>{Math.round(eco7d)}</strong> significa que la actividad
-                  económica de la semana fue <strong>{mult7d} más intensa</strong> que un día promedio (media&nbsp;=&nbsp;100).
+                  Ejemplo: un valor de <strong>150</strong> indica actividad <strong>1.5× el promedio</strong> (50% por encima de lo normal).
+                  Un valor de <strong>45</strong> indica actividad <strong>0.5× el promedio</strong> (la mitad de lo normal). Media&nbsp;=&nbsp;100.
                 </>
             }
           </p>
