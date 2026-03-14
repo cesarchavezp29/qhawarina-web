@@ -358,6 +358,37 @@ export default function RiesgoEconomicoPage() {
       });
   }, []);
 
+  // ── Memos (must be before early returns to satisfy Rules of Hooks) ───────────
+  const sectorData = useMemo(() => {
+    if (!data) return [];
+    const drivers = data.current.top_economic_drivers ?? [];
+    const counts: Record<string, number> = {};
+    for (const s of SECTOR_PATTERNS) counts[s.key] = 0;
+    let unclassified = 0;
+    for (const driver of drivers) {
+      let matched = false;
+      for (const s of SECTOR_PATTERNS) {
+        if (s.pattern.test(driver.title)) {
+          counts[s.key] = (counts[s.key] ?? 0) + 1;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) unclassified++;
+    }
+    const result = SECTOR_PATTERNS
+      .map((s) => ({
+        sector: isEn ? s.label_en : s.label_es,
+        count: counts[s.key] ?? 0,
+        color: s.color,
+      }))
+      .filter((s) => s.count > 0);
+    if (unclassified > 0) {
+      result.push({ sector: isEn ? 'Other' : 'Otros', count: unclassified, color: '#8D99AE' });
+    }
+    return result;
+  }, [data, isEn]);
+
   if (loading) return <PageSkeleton cards={2} />;
   if (error || !data) return (
     <div className="min-h-screen flex items-center justify-center">
@@ -434,36 +465,7 @@ export default function RiesgoEconomicoPage() {
       color: ireBarColor(m.economic_avg as number),
     }));
 
-  // ── B2: Sector breakdown ─────────────────────────────────────────────────────
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const sectorData = useMemo(() => {
-    const drivers = data.current.top_economic_drivers ?? [];
-    const counts: Record<string, number> = {};
-    for (const s of SECTOR_PATTERNS) counts[s.key] = 0;
-    let unclassified = 0;
-    for (const driver of drivers) {
-      let matched = false;
-      for (const s of SECTOR_PATTERNS) {
-        if (s.pattern.test(driver.title)) {
-          counts[s.key] = (counts[s.key] ?? 0) + 1;
-          matched = true;
-          break;
-        }
-      }
-      if (!matched) unclassified++;
-    }
-    const result = SECTOR_PATTERNS
-      .map((s) => ({
-        sector: isEn ? s.label_en : s.label_es,
-        count: counts[s.key] ?? 0,
-        color: s.color,
-      }))
-      .filter((s) => s.count > 0);
-    if (unclassified > 0) {
-      result.push({ sector: isEn ? 'Other' : 'Otros', count: unclassified, color: '#8D99AE' });
-    }
-    return result;
-  }, [data, isEn]);
+  // sectorData computed before early returns above
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (

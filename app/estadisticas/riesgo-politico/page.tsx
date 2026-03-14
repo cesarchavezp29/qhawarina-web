@@ -337,6 +337,66 @@ export default function RiesgoPoliticoPage() {
       });
   }, []);
 
+  // ── Memos (must be before early returns to satisfy Rules of Hooks) ───────────
+  const irpFxData = useMemo(() => {
+    if (!data) return [];
+    const fxByDate: Record<string, number> = {};
+    for (const f of data.daily_fx_series ?? []) fxByDate[f.date] = f.fx;
+    return (data.daily_series ?? [])
+      .filter((d) => d.political_7d != null && fxByDate[d.date] != null)
+      .map((d, i, arr) => ({
+        x: d.political_7d as number,
+        y: fxByDate[d.date],
+        t: i / arr.length,
+      }));
+  }, [data]);
+
+  const irpFxReg = useMemo(() => {
+    if (irpFxData.length < 2) return null;
+    const n = irpFxData.length;
+    const mx = irpFxData.reduce((s, d) => s + d.x, 0) / n;
+    const my = irpFxData.reduce((s, d) => s + d.y, 0) / n;
+    const sxy = irpFxData.reduce((s, d) => s + (d.x - mx) * (d.y - my), 0);
+    const sxx = irpFxData.reduce((s, d) => s + (d.x - mx) ** 2, 0);
+    const syy = irpFxData.reduce((s, d) => s + (d.y - my) ** 2, 0);
+    if (sxx === 0 || syy === 0) return null;
+    const slope = sxy / sxx;
+    const intercept = my - slope * mx;
+    const minX = Math.min(...irpFxData.map((d) => d.x));
+    const maxX = Math.max(...irpFxData.map((d) => d.x));
+    const r = sxy / Math.sqrt(sxx * syy);
+    return { slope, intercept, minX, maxX, r };
+  }, [irpFxData]);
+
+  const monthlyScatterDataMemo = useMemo(() => {
+    if (!data) return [];
+    return (data.monthly_series ?? [])
+      .filter((m) => m.political_avg != null && m.fx_yoy != null)
+      .map((m) => ({
+        x: m.political_avg,
+        y: m.fx_yoy as number,
+        month: m.month,
+        color: quarterColor(m.month),
+      }));
+  }, [data]);
+
+  const monthlyScatterReg = useMemo(() => {
+    if (monthlyScatterDataMemo.length < 2) return null;
+    const n = monthlyScatterDataMemo.length;
+    const mx = monthlyScatterDataMemo.reduce((s, d) => s + d.x, 0) / n;
+    const my = monthlyScatterDataMemo.reduce((s, d) => s + d.y, 0) / n;
+    const sxy = monthlyScatterDataMemo.reduce((s, d) => s + (d.x - mx) * (d.y - my), 0);
+    const sxx = monthlyScatterDataMemo.reduce((s, d) => s + (d.x - mx) ** 2, 0);
+    const syy = monthlyScatterDataMemo.reduce((s, d) => s + (d.y - my) ** 2, 0);
+    if (sxx === 0 || syy === 0) return null;
+    const slope = sxy / sxx;
+    const intercept = my - slope * mx;
+    const minX = Math.min(...monthlyScatterDataMemo.map((d) => d.x));
+    const maxX = Math.max(...monthlyScatterDataMemo.map((d) => d.x));
+    const r = sxy / Math.sqrt(sxx * syy);
+    return { slope, intercept, minX, maxX, r };
+  }, [monthlyScatterDataMemo]);
+
   if (loading) return <PageSkeleton cards={2} />;
   if (error || !data) return (
     <div className="min-h-screen flex items-center justify-center">
@@ -397,38 +457,6 @@ export default function RiesgoPoliticoPage() {
     yTicks.push(Math.ceil(maxPrr / 100) * 100);
   }
 
-  // ── A1: IRP vs Tipo de Cambio scatter ───────────────────────────────────────
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const irpFxData = useMemo(() => {
-    const fxByDate: Record<string, number> = {};
-    for (const f of data.daily_fx_series ?? []) fxByDate[f.date] = f.fx;
-    return (data.daily_series ?? [])
-      .filter((d) => d.political_7d != null && fxByDate[d.date] != null)
-      .map((d, i, arr) => ({
-        x: d.political_7d as number,
-        y: fxByDate[d.date],
-        t: i / arr.length,
-      }));
-  }, [data]);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const irpFxReg = useMemo(() => {
-    if (irpFxData.length < 2) return null;
-    const n = irpFxData.length;
-    const mx = irpFxData.reduce((s, d) => s + d.x, 0) / n;
-    const my = irpFxData.reduce((s, d) => s + d.y, 0) / n;
-    const sxy = irpFxData.reduce((s, d) => s + (d.x - mx) * (d.y - my), 0);
-    const sxx = irpFxData.reduce((s, d) => s + (d.x - mx) ** 2, 0);
-    const syy = irpFxData.reduce((s, d) => s + (d.y - my) ** 2, 0);
-    if (sxx === 0 || syy === 0) return null;
-    const slope = sxy / sxx;
-    const intercept = my - slope * mx;
-    const minX = Math.min(...irpFxData.map((d) => d.x));
-    const maxX = Math.max(...irpFxData.map((d) => d.x));
-    const r = sxy / Math.sqrt(sxx * syy);
-    return { slope, intercept, minX, maxX, r };
-  }, [irpFxData]);
-
   // ── A2: Distribución mensual del IRP ────────────────────────────────────────
   const monthlyBarData = (data.monthly_series ?? []).map((m) => ({
     month: m.month,
@@ -437,33 +465,8 @@ export default function RiesgoPoliticoPage() {
     color: irpBarColor(m.political_avg),
   }));
 
-  // ── A3: IRP mensual vs Depreciación del sol ──────────────────────────────────
-  const monthlyScatterData = (data.monthly_series ?? [])
-    .filter((m) => m.political_avg != null && m.fx_yoy != null)
-    .map((m) => ({
-      x: m.political_avg,
-      y: m.fx_yoy as number,
-      month: m.month,
-      color: quarterColor(m.month),
-    }));
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const monthlyScatterReg = useMemo(() => {
-    if (monthlyScatterData.length < 2) return null;
-    const n = monthlyScatterData.length;
-    const mx = monthlyScatterData.reduce((s, d) => s + d.x, 0) / n;
-    const my = monthlyScatterData.reduce((s, d) => s + d.y, 0) / n;
-    const sxy = monthlyScatterData.reduce((s, d) => s + (d.x - mx) * (d.y - my), 0);
-    const sxx = monthlyScatterData.reduce((s, d) => s + (d.x - mx) ** 2, 0);
-    const syy = monthlyScatterData.reduce((s, d) => s + (d.y - my) ** 2, 0);
-    if (sxx === 0 || syy === 0) return null;
-    const slope = sxy / sxx;
-    const intercept = my - slope * mx;
-    const minX = Math.min(...monthlyScatterData.map((d) => d.x));
-    const maxX = Math.max(...monthlyScatterData.map((d) => d.x));
-    const r = sxy / Math.sqrt(sxx * syy);
-    return { slope, intercept, minX, maxX, r };
-  }, [monthlyScatterData]);
+  // monthlyScatterData and all useMemo hooks are computed before early returns above
+  const monthlyScatterData = monthlyScatterDataMemo;
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
