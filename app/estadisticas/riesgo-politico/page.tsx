@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import LastUpdate from '../../components/stats/LastUpdate';
@@ -298,6 +298,45 @@ function ReadingCard({
 }
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
+
+// ── Custom peak label: multi-line box above reference line ───────────────────
+function PeakLabel({ viewBox, label, color }: {
+  viewBox?: { x?: number; y?: number; width?: number; height?: number };
+  label: string;
+  color: string;
+}) {
+  const { x = 0, y = 0 } = viewBox ?? {};
+  const words = label.split(' ');
+  // Split into lines of max 1 word each for shortest lines, or 2 if label is long
+  const lines = words.length <= 2
+    ? words                                    // "Vacancia Boluarte" → 2 lines
+    : [words[0], words.slice(1).join(' ')];    // 3+ words → first / rest
+  const lh = 11;
+  const pad = 3;
+  const boxH = lines.length * lh + pad * 2;
+  const maxChars = Math.max(...lines.map(l => l.length));
+  const boxW = maxChars * 5.5 + pad * 2;
+  const bx = x - boxW / 2;
+  const by = y - boxH - 6;
+  return (
+    <g>
+      <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
+            fill="white" stroke={color} strokeWidth={0.8} opacity={0.92} />
+      {lines.map((line, i) => (
+        <text key={i}
+              x={x}
+              y={by + pad + (i + 1) * lh - 1}
+              textAnchor="middle"
+              fill={color}
+              fontSize={8}
+              fontWeight={600}
+              fontFamily="system-ui, sans-serif">
+          {line}
+        </text>
+      ))}
+    </g>
+  );
+}
 
 export default function RiesgoPoliticoPage() {
   const locale = useLocale();
@@ -614,15 +653,10 @@ export default function RiesgoPoliticoPage() {
                   <ReferenceLine
                     key={peak.date}
                     x={peak.date}
-                    stroke="#666"
+                    stroke="#C65D3E"
                     strokeDasharray="3 3"
-                    label={{
-                      value: peak.label,
-                      angle: -45,
-                      position: 'top',
-                      offset: 10,
-                      style: { fontSize: 11, fill: '#C65D3E', fontWeight: 600 },
-                    }}
+                    strokeOpacity={0.5}
+                    label={<PeakLabel label={peak.label} color="#C65D3E" />}
                   />
                 ))}
 

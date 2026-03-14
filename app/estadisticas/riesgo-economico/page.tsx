@@ -275,6 +275,44 @@ function computeRegression(points: Array<{ x: number; y: number }>) {
   return { slope, intercept, minX, maxX };
 }
 
+// ── Custom peak label: multi-line box above reference line ───────────────────
+function PeakLabel({ viewBox, label, color }: {
+  viewBox?: { x?: number; y?: number; width?: number; height?: number };
+  label: string;
+  color: string;
+}) {
+  const { x = 0, y = 0 } = viewBox ?? {};
+  const words = label.split(' ');
+  const lines = words.length <= 2
+    ? words
+    : [words[0], words.slice(1).join(' ')];
+  const lh = 11;
+  const pad = 3;
+  const boxH = lines.length * lh + pad * 2;
+  const maxChars = Math.max(...lines.map(l => l.length));
+  const boxW = maxChars * 5.5 + pad * 2;
+  const bx = x - boxW / 2;
+  const by = y - boxH - 6;
+  return (
+    <g>
+      <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
+            fill="white" stroke={color} strokeWidth={0.8} opacity={0.92} />
+      {lines.map((line, i) => (
+        <text key={i}
+              x={x}
+              y={by + pad + (i + 1) * lh - 1}
+              textAnchor="middle"
+              fill={color}
+              fontSize={8}
+              fontWeight={600}
+              fontFamily="system-ui, sans-serif">
+          {line}
+        </text>
+      ))}
+    </g>
+  );
+}
+
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function RiesgoEconomicoPage() {
@@ -597,15 +635,10 @@ export default function RiesgoEconomicoPage() {
                   <ReferenceLine
                     key={peak.date}
                     x={peak.date}
-                    stroke="#666"
+                    stroke="#2A9D8F"
                     strokeDasharray="3 3"
-                    label={{
-                      value: peak.label,
-                      angle: -45,
-                      position: 'top',
-                      offset: 10,
-                      style: { fontSize: 11, fill: '#2A9D8F', fontWeight: 600 },
-                    }}
+                    strokeOpacity={0.5}
+                    label={<PeakLabel label={peak.label} color="#2A9D8F" />}
                   />
                 ))}
 
