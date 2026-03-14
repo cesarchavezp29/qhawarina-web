@@ -839,7 +839,9 @@ export default function RiesgoPoliticoPage() {
                       <g transform={`translate(${x},${y})`}>
                         <text x={0} y={0} dy={4} textAnchor="end"
                               transform="rotate(-40)"
-                              style={axisTickStyle.style}>
+                              fontSize={axisTickStyle.fontSize}
+                              fontFamily={axisTickStyle.fontFamily}
+                              fill={axisTickStyle.fill}>
                           {payload.value}
                         </text>
                       </g>

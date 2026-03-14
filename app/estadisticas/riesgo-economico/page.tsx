@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import LastUpdate from '../../components/stats/LastUpdate';
@@ -12,6 +12,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ReferenceLine, ReferenceArea, ResponsiveContainer,
   ScatterChart, Scatter, LineChart, Line,
+  BarChart, Bar, Cell,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -61,7 +62,13 @@ interface PoliticalData {
   }>;
   daily_fx_series?: Array<{ date: string; fx: number }>;
   peak_events?: Array<{ date: string; dimension: string; value: number; label: string }>;
-  monthly_series?: Array<{ month: string; political_avg: number }>;
+  monthly_series?: Array<{
+    month: string;
+    political_avg: number;
+    economic_avg?: number;
+    fx_level?: number;
+    fx_yoy?: number;
+  }>;
 }
 
 // ─── RISK LEVEL SYSTEM ───────────────────────────────────────────────────────
@@ -113,6 +120,54 @@ function formatDate(dateStr: string, isEn: boolean): string {
   }
 }
 
+/** "2025-01" => "Ene 25" / "Jan 25" */
+function fmtMonth(monthStr: string, isEn: boolean): string {
+  try {
+    const [y, m] = monthStr.split('-').map(Number);
+    const dt = new Date(y, m - 1, 1);
+    const mon = dt.toLocaleDateString(isEn ? 'en-US' : 'es-PE', { month: 'short' });
+    const yr = String(y).slice(2);
+    return mon.charAt(0).toUpperCase() + mon.slice(1, 3) + ' ' + yr;
+  } catch {
+    return monthStr;
+  }
+}
+
+function ireBarColor(val: number): string {
+  if (val < 90)  return '#2A9D8F';
+  if (val < 110) return '#E9C46A';
+  if (val < 150) return '#C65D3E';
+  return '#9B2226';
+}
+
+// ─── PEAK LABEL COMPONENT ────────────────────────────────────────────────────
+
+function PeakLabel({ viewBox, label, color }: {
+  viewBox?: { x?: number; y?: number; width?: number; height?: number };
+  label: string; color: string;
+}) {
+  const { x = 0, y = 0 } = viewBox ?? {};
+  const words = label.split(' ');
+  const lines = words.length <= 2 ? words : [words[0], words.slice(1).join(' ')];
+  const lh = 11; const pad = 3;
+  const boxH = lines.length * lh + pad * 2;
+  const maxChars = Math.max(...lines.map(l => l.length));
+  const boxW = maxChars * 5.5 + pad * 2;
+  const bx = x - boxW / 2;
+  const by = Math.max(4, y - boxH - 6);
+  return (
+    <g>
+      <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
+            fill="white" stroke={color} strokeWidth={0.8} opacity={0.92} />
+      {lines.map((line, i) => (
+        <text key={i} x={x} y={by + pad + (i + 1) * lh - 1}
+              textAnchor="middle" fill={color} fontSize={8} fontWeight={600}
+              fontFamily="system-ui, sans-serif">{line}</text>
+      ))}
+    </g>
+  );
+}
+
 // ─── MULTIPLIER SCALE COMPONENT ──────────────────────────────────────────────
 
 function MultiplierScale({
@@ -148,18 +203,11 @@ function MultiplierScale({
         </div>
 
         {ticks.map((t) => (
-          <div
-            key={t.pct}
-            className="absolute top-0 h-4"
-            style={{ left: `${t.pct}%` }}
-          >
+          <div key={t.pct} className="absolute top-0 h-4" style={{ left: `${t.pct}%` }}>
             <div className="w-px h-full bg-white opacity-50" />
             <div
               className="absolute top-5 text-center"
-              style={{
-                transform: t.pct >= 100 ? 'translateX(-100%)' : 'translateX(-50%)',
-                whiteSpace: 'nowrap',
-              }}
+              style={{ transform: t.pct >= 100 ? 'translateX(-100%)' : 'translateX(-50%)', whiteSpace: 'nowrap' }}
             >
               <div className="text-xs font-semibold text-gray-700">{t.top}</div>
               <div className="text-gray-400" style={{ fontSize: '10px' }}>{t.sub}</div>
@@ -275,43 +323,15 @@ function computeRegression(points: Array<{ x: number; y: number }>) {
   return { slope, intercept, minX, maxX };
 }
 
-// ── Custom peak label: multi-line box above reference line ───────────────────
-function PeakLabel({ viewBox, label, color }: {
-  viewBox?: { x?: number; y?: number; width?: number; height?: number };
-  label: string;
-  color: string;
-}) {
-  const { x = 0, y = 0 } = viewBox ?? {};
-  const words = label.split(' ');
-  const lines = words.length <= 2
-    ? words
-    : [words[0], words.slice(1).join(' ')];
-  const lh = 11;
-  const pad = 3;
-  const boxH = lines.length * lh + pad * 2;
-  const maxChars = Math.max(...lines.map(l => l.length));
-  const boxW = maxChars * 5.5 + pad * 2;
-  const bx = x - boxW / 2;
-  const by = Math.max(4, y - boxH - 6);
-  return (
-    <g>
-      <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
-            fill="white" stroke={color} strokeWidth={0.8} opacity={0.92} />
-      {lines.map((line, i) => (
-        <text key={i}
-              x={x}
-              y={by + pad + (i + 1) * lh - 1}
-              textAnchor="middle"
-              fill={color}
-              fontSize={8}
-              fontWeight={600}
-              fontFamily="system-ui, sans-serif">
-          {line}
-        </text>
-      ))}
-    </g>
-  );
-}
+// ─── SECTOR KEYWORD PATTERNS ──────────────────────────────────────────────────
+
+const SECTOR_PATTERNS: Array<{ key: string; label_es: string; label_en: string; color: string; pattern: RegExp }> = [
+  { key: 'energia',  label_es: 'Energía',      label_en: 'Energy',  color: '#E9C46A', pattern: /gas|gnv|petróleo|electricidad|combustible|camisea/i },
+  { key: 'mineria',  label_es: 'Minería',       label_en: 'Mining',  color: '#9B2226', pattern: /min[eé]r|pataz|cobre|oro|zinc/i },
+  { key: 'comercio', label_es: 'Comercio Ext.', label_en: 'Trade',   color: '#2A9D8F', pattern: /arancel|exporta|importa|comercio exterior|trump/i },
+  { key: 'fiscal',   label_es: 'Fiscal',        label_en: 'Fiscal',  color: '#C65D3E', pattern: /presupuest|deuda|petroper|bono|fiscal/i },
+  { key: 'laboral',  label_es: 'Laboral',        label_en: 'Labour',  color: '#8D99AE', pattern: /huelga|paro|empleo|desempleo|trabajo/i },
+];
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
@@ -383,7 +403,6 @@ export default function RiesgoEconomicoPage() {
   );
   const yTicks = [0, 100, 200, 300, 500].filter((t) => t <= maxIre + 150);
 
-  // ── Peak events for economic dimension ──────────────────────────────────────
   const ecoPeaks = (data.peak_events ?? []).filter(
     (e) => e.dimension === 'economic' && e.label
   );
@@ -400,10 +419,51 @@ export default function RiesgoEconomicoPage() {
       ire: d.economic_7d as number,
       fx:  fxMap.get(d.date) as number,
       date: d.date,
-      recency: i / arr.length, // 0 = oldest, 1 = newest
+      recency: i / arr.length,
     }));
 
   const regression = computeRegression(scatterRaw.map((p) => ({ x: p.ire, y: p.fx })));
+
+  // ── B1: Distribución mensual del IRE ────────────────────────────────────────
+  const monthlyBarData = (data.monthly_series ?? [])
+    .filter((m) => m.economic_avg != null)
+    .map((m) => ({
+      month: m.month,
+      label: fmtMonth(m.month, isEn),
+      value: m.economic_avg as number,
+      color: ireBarColor(m.economic_avg as number),
+    }));
+
+  // ── B2: Sector breakdown ─────────────────────────────────────────────────────
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const sectorData = useMemo(() => {
+    const drivers = data.current.top_economic_drivers ?? [];
+    const counts: Record<string, number> = {};
+    for (const s of SECTOR_PATTERNS) counts[s.key] = 0;
+    let unclassified = 0;
+    for (const driver of drivers) {
+      let matched = false;
+      for (const s of SECTOR_PATTERNS) {
+        if (s.pattern.test(driver.title)) {
+          counts[s.key] = (counts[s.key] ?? 0) + 1;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) unclassified++;
+    }
+    const result = SECTOR_PATTERNS
+      .map((s) => ({
+        sector: isEn ? s.label_en : s.label_es,
+        count: counts[s.key] ?? 0,
+        color: s.color,
+      }))
+      .filter((s) => s.count > 0);
+    if (unclassified > 0) {
+      result.push({ sector: isEn ? 'Other' : 'Otros', count: unclassified, color: '#8D99AE' });
+    }
+    return result;
+  }, [data, isEn]);
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
@@ -860,6 +920,140 @@ export default function RiesgoEconomicoPage() {
             )}
           </div>
         )}
+
+        {/* ══ SECTION B1: DISTRIBUCIÓN MENSUAL DEL IRE ════════════════════ */}
+        {monthlyBarData.length >= 2 && (
+          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+            <h3 className="text-base font-semibold text-gray-900 mb-1">
+              {isEn ? 'Monthly IRE distribution' : 'Distribución mensual del IRE'}
+            </h3>
+            <p className="text-xs text-gray-500 mb-4">
+              {isEn ? 'Monthly average IRE. Color = risk level.' : 'Promedio mensual del IRE. Color = nivel de riesgo.'}
+            </p>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={monthlyBarData} margin={{ top: 4, right: 16, left: 8, bottom: 44 }}>
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={CHART_DEFAULTS.gridStroke}
+                  strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+                  vertical={false}
+                />
+                <XAxis
+                  dataKey="label"
+                  tick={(props: any) => {
+                    const { x, y, payload } = props;
+                    return (
+                      <g transform={`translate(${x},${y})`}>
+                        <text x={0} y={0} dy={4} textAnchor="end"
+                              transform="rotate(-40)"
+                              fontSize={axisTickStyle.fontSize}
+                              fontFamily={axisTickStyle.fontFamily}
+                              fill={axisTickStyle.fill}>
+                          {payload.value}
+                        </text>
+                      </g>
+                    );
+                  }}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  interval={0}
+                  height={52}
+                />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v: number) => String(Math.round(v))}
+                  label={{
+                    value: 'IRE',
+                    angle: -90,
+                    position: 'insideLeft',
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                    offset: 8,
+                  }}
+                />
+                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2" />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any) => [Math.round(v), isEn ? 'IRE monthly avg' : 'IRE promedio mensual']}
+                />
+                <Bar dataKey="value" radius={[3, 3, 0, 0]}>
+                  {monthlyBarData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-400">
+              <span><span style={{ color: '#2A9D8F' }}>■</span> {isEn ? '< 90 (Low)' : '< 90 (Bajo)'}</span>
+              <span><span style={{ color: '#E9C46A' }}>■</span> 90–110 (Normal)</span>
+              <span><span style={{ color: '#C65D3E' }}>■</span> {isEn ? '110–150 (Elevated)' : '110–150 (Elevado)'}</span>
+              <span><span style={{ color: '#9B2226' }}>■</span> {isEn ? '> 150 (High)' : '> 150 (Alto)'}</span>
+            </div>
+          </div>
+        )}
+
+        {/* ══ SECTION B2: PRINCIPALES SECTORES DE RIESGO ECONÓMICO ════════ */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+          <h3 className="text-base font-semibold text-gray-900 mb-1">
+            {isEn ? 'Main economic risk sectors' : 'Principales sectores de riesgo económico'}
+          </h3>
+          <p className="text-xs text-gray-500 mb-4">
+            {isEn
+              ? "Drivers classified by sector keyword from today's top economic news."
+              : 'Titulares clasificados por sector según palabras clave de los principales drivers económicos de hoy.'
+            }
+          </p>
+          {sectorData.length === 0 ? (
+            <p className="text-xs text-gray-400 italic">
+              {isEn
+                ? 'Sector breakdown will be available on next pipeline run with sufficient top_economic_drivers data.'
+                : 'El desglose por sector estará disponible en la próxima ejecución del pipeline con datos de top_economic_drivers suficientes.'
+              }
+            </p>
+          ) : (
+            <ResponsiveContainer width="100%" height={Math.max(160, sectorData.length * 40)}>
+              <BarChart
+                data={sectorData}
+                layout="vertical"
+                margin={{ top: 4, right: 24, left: 8, bottom: 4 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={CHART_DEFAULTS.gridStroke}
+                  strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+                  horizontal={false}
+                />
+                <XAxis
+                  type="number"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  allowDecimals={false}
+                  label={{
+                    value: isEn ? 'Drivers count' : 'N.° de drivers',
+                    position: 'insideBottom',
+                    offset: -4,
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                  }}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="sector"
+                  tick={{ ...axisTickStyle, textAnchor: 'end' }}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  width={90}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any) => [v, isEn ? 'Drivers' : 'Drivers']}
+                />
+                <Bar dataKey="count" radius={[0, 3, 3, 0]}>
+                  {sectorData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </div>
 
         {/* ══ SECTION 7: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
