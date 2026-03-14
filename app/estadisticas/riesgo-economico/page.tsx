@@ -292,7 +292,7 @@ function PeakLabel({ viewBox, label, color }: {
   const maxChars = Math.max(...lines.map(l => l.length));
   const boxW = maxChars * 5.5 + pad * 2;
   const bx = x - boxW / 2;
-  const by = y - boxH - 6;
+  const by = Math.max(4, y - boxH - 6);
   return (
     <g>
       <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
@@ -573,7 +573,7 @@ export default function RiesgoEconomicoPage() {
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart
                 data={chartData}
-                margin={{ top: 8, right: 16, left: 8, bottom: 8 }}
+                margin={{ top: 70, right: 16, left: 8, bottom: 8 }}
               >
                 <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.03} stroke="none" />

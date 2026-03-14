@@ -11,6 +11,8 @@ import PageSkeleton from '../../components/PageSkeleton';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ReferenceLine, ReferenceArea, ResponsiveContainer,
+  ScatterChart, Scatter, ZAxis, BarChart, Bar, Cell,
+  LineChart, Line,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -22,7 +24,6 @@ interface PoliticalData {
   metadata: { generated_at: string; coverage_days: number; rss_feeds: number };
   current: {
     date: string;
-    // Dual indices (new)
     political_raw: number;
     political_7d: number;
     political_level: string;
@@ -31,7 +32,6 @@ interface PoliticalData {
     economic_7d: number;
     economic_level: string;
     economic_multiplier: number;
-    // Legacy (kept for backward compat)
     score?: number;
     prr_7d?: number;
     prr_raw?: number;
@@ -43,7 +43,6 @@ interface PoliticalData {
     economic_justification?: string | null;
     top_political_drivers?: Array<{ title: string; source: string; score: number }> | null;
     top_economic_drivers?: Array<{ title: string; source: string; score: number }> | null;
-    // Legacy
     justification?: string | null;
     top_drivers?: Array<{ title: string; source: string; category: string; severity: number }> | null;
   };
@@ -53,7 +52,6 @@ interface PoliticalData {
     political_7d?: number;
     economic_raw?: number;
     economic_7d?: number;
-    // legacy
     score?: number;
     prr?: number;
     prr_7d?: number;
@@ -62,13 +60,18 @@ interface PoliticalData {
     low_coverage?: boolean;
     provisional?: boolean;
   }>;
-  monthly_series?: Array<{ month: string; political_avg: number }>;
+  daily_fx_series?: Array<{ date: string; fx: number }>;
+  monthly_series?: Array<{
+    month: string;
+    political_avg: number;
+    economic_avg?: number;
+    fx_level?: number;
+    fx_yoy?: number;
+  }>;
   peak_events?: Array<{ date: string; dimension: string; value: number; label: string }>;
 }
 
 // ─── RISK LEVEL SYSTEM (6 levels) ────────────────────────────────────────────
-// MINIMO / BAJO / NORMAL / ELEVADO / ALTO / CRITICO
-// Boundaries aligned with backend classify_level() (mean = 100).
 
 type RiskLevel = 'MINIMO' | 'BAJO' | 'NORMAL' | 'ELEVADO' | 'ALTO' | 'CRITICO' | 'MODERADO';
 
@@ -85,14 +88,13 @@ interface LevelCfg {
 }
 
 const LEVELS: Record<RiskLevel, LevelCfg> = {
-  MINIMO:   { color: '#8D99AE', label_es: 'Mínimo',  label_en: 'Minimal',  desc_pol_es: 'Gobernanza rutinaria',   desc_pol_en: 'Routine governance',      desc_eco_es: 'Economía estable',     desc_eco_en: 'Stable economy',      range: '< 50',     mult: '< 0.5×'  },
-  BAJO:     { color: '#2A9D8F', label_es: 'Bajo',    label_en: 'Low',      desc_pol_es: 'Tensiones menores',      desc_pol_en: 'Minor tensions',          desc_eco_es: 'Presiones leves',      desc_eco_en: 'Mild pressures',      range: '50–90',    mult: '0.5–0.9×'},
-  NORMAL:   { color: '#E9C46A', label_es: 'Normal',  label_en: 'Normal',   desc_pol_es: 'Nivel histórico normal', desc_pol_en: 'Near historical average', desc_eco_es: 'Economía normal',      desc_eco_en: 'Normal economy',      range: '90–110',   mult: '0.9–1.1×'},
-  ELEVADO:  { color: '#C65D3E', label_es: 'Elevado', label_en: 'Elevated', desc_pol_es: 'Crisis significativa',   desc_pol_en: 'Significant crisis',      desc_eco_es: 'Vulnerabilidad seria', desc_eco_en: 'Serious vulnerability',range: '110–150',  mult: '1.1–1.5×'},
-  ALTO:     { color: '#9B2226', label_es: 'Alto',    label_en: 'High',     desc_pol_es: 'Crisis grave',           desc_pol_en: 'Severe crisis',           desc_eco_es: 'Crisis económica',     desc_eco_en: 'Economic crisis',     range: '150–200',  mult: '1.5–2×'  },
-  CRITICO:  { color: '#6B0000', label_es: 'Crítico', label_en: 'Critical', desc_pol_es: 'Ruptura institucional',  desc_pol_en: 'Institutional breakdown', desc_eco_es: 'Colapso sistémico',    desc_eco_en: 'Systemic collapse',   range: '> 200',    mult: '> 2×'    },
-  // legacy alias — keep so old cached JSON doesn't break
-  MODERADO: { color: '#E9C46A', label_es: 'Normal',  label_en: 'Normal',   desc_pol_es: 'Nivel histórico normal', desc_pol_en: 'Near historical average', desc_eco_es: 'Economía normal',      desc_eco_en: 'Normal economy',      range: '90–110',   mult: '0.9–1.1×'},
+  MINIMO:   { color: '#8D99AE', label_es: 'Mínimo',  label_en: 'Minimal',  desc_pol_es: 'Gobernanza rutinaria',   desc_pol_en: 'Routine governance',      desc_eco_es: 'Economía estable',     desc_eco_en: 'Stable economy',      range: '< 50',    mult: '< 0.5×'  },
+  BAJO:     { color: '#2A9D8F', label_es: 'Bajo',    label_en: 'Low',      desc_pol_es: 'Tensiones menores',      desc_pol_en: 'Minor tensions',          desc_eco_es: 'Presiones leves',      desc_eco_en: 'Mild pressures',      range: '50–90',   mult: '0.5–0.9×'},
+  NORMAL:   { color: '#E9C46A', label_es: 'Normal',  label_en: 'Normal',   desc_pol_es: 'Nivel histórico normal', desc_pol_en: 'Near historical average', desc_eco_es: 'Economía normal',      desc_eco_en: 'Normal economy',      range: '90–110',  mult: '0.9–1.1×'},
+  ELEVADO:  { color: '#C65D3E', label_es: 'Elevado', label_en: 'Elevated', desc_pol_es: 'Crisis significativa',   desc_pol_en: 'Significant crisis',      desc_eco_es: 'Vulnerabilidad seria', desc_eco_en: 'Serious vulnerability',range: '110–150', mult: '1.1–1.5×'},
+  ALTO:     { color: '#9B2226', label_es: 'Alto',    label_en: 'High',     desc_pol_es: 'Crisis grave',           desc_pol_en: 'Severe crisis',           desc_eco_es: 'Crisis económica',     desc_eco_en: 'Economic crisis',     range: '150–200', mult: '1.5–2×'  },
+  CRITICO:  { color: '#6B0000', label_es: 'Crítico', label_en: 'Critical', desc_pol_es: 'Ruptura institucional',  desc_pol_en: 'Institutional breakdown', desc_eco_es: 'Colapso sistémico',    desc_eco_en: 'Systemic collapse',   range: '> 200',   mult: '> 2×'    },
+  MODERADO: { color: '#E9C46A', label_es: 'Normal',  label_en: 'Normal',   desc_pol_es: 'Nivel histórico normal', desc_pol_en: 'Near historical average', desc_eco_es: 'Economía normal',      desc_eco_en: 'Normal economy',      range: '90–110',  mult: '0.9–1.1×'},
 };
 
 function getRiskLevel(prr: number): RiskLevel {
@@ -104,7 +106,6 @@ function getRiskLevel(prr: number): RiskLevel {
   return 'CRITICO';
 }
 
-/** "133 PRR → 1.3×" */
 function toMult(prr: number): string {
   return (Math.round(prr / 10) / 10).toFixed(1) + '×';
 }
@@ -121,8 +122,35 @@ function formatDate(dateStr: string, isEn: boolean): string {
   }
 }
 
+/** "2025-01" => "Ene 25" / "Jan 25" */
+function fmtMonth(monthStr: string, isEn: boolean): string {
+  try {
+    const [y, m] = monthStr.split('-').map(Number);
+    const dt = new Date(y, m - 1, 1);
+    const mon = dt.toLocaleDateString(isEn ? 'en-US' : 'es-PE', { month: 'short' });
+    const yr = String(y).slice(2);
+    return mon.charAt(0).toUpperCase() + mon.slice(1, 3) + ' ' + yr;
+  } catch {
+    return monthStr;
+  }
+}
+
+function irpBarColor(val: number): string {
+  if (val < 90)  return '#2A9D8F';
+  if (val < 110) return '#E9C46A';
+  if (val < 150) return '#C65D3E';
+  return '#9B2226';
+}
+
+function quarterColor(monthStr: string): string {
+  const m = parseInt(monthStr.split('-')[1] ?? '1', 10);
+  if (m <= 3)  return '#2A9D8F';
+  if (m <= 6)  return '#E9C46A';
+  if (m <= 9)  return '#C65D3E';
+  return '#9B2226';
+}
+
 // ─── MULTIPLIER SCALE COMPONENT ──────────────────────────────────────────────
-// Linear 0–1000 (0–10×). Two dots: open = today, filled = 7d trend.
 
 function MultiplierScale({
   rawPrr,
@@ -147,9 +175,7 @@ function MultiplierScale({
 
   return (
     <div>
-      {/* Bar + ticks + dots */}
       <div className="relative" style={{ marginBottom: '44px' }}>
-        {/* Colored segments */}
         <div className="flex h-4 rounded-full overflow-hidden">
           <div style={{ width: '10%', background: '#2A9D8F' }} />
           <div style={{ width: '10%', background: '#E0A458' }} />
@@ -157,77 +183,41 @@ function MultiplierScale({
           <div style={{ width: '20%', background: '#9B2226' }} />
           <div style={{ width: '50%', background: '#5C0000' }} />
         </div>
-
-        {/* Tick marks + labels */}
         {ticks.map((t) => (
-          <div
-            key={t.pct}
-            className="absolute top-0 h-4"
-            style={{ left: `${t.pct}%` }}
-          >
-            {/* Tick line */}
+          <div key={t.pct} className="absolute top-0 h-4" style={{ left: `${t.pct}%` }}>
             <div className="w-px h-full bg-white opacity-50" />
-            {/* Label block below bar */}
             <div
               className="absolute top-5 text-center"
-              style={{
-                transform:
-                  t.pct >= 100
-                    ? 'translateX(-100%)'
-                    : 'translateX(-50%)',
-                whiteSpace: 'nowrap',
-              }}
+              style={{ transform: t.pct >= 100 ? 'translateX(-100%)' : 'translateX(-50%)', whiteSpace: 'nowrap' }}
             >
               <div className="text-xs font-semibold text-gray-700">{t.top}</div>
               <div className="text-gray-400" style={{ fontSize: '10px' }}>{t.sub}</div>
             </div>
           </div>
         ))}
-
-        {/* Today — open circle (on top of bar) */}
         <div
           className="absolute"
           style={{ left: `calc(${rawPct}% - 10px)`, top: '-3px', zIndex: 10 }}
           title={`${isEn ? 'Today' : 'Hoy'}: IRP ${Math.round(rawPrr)}`}
         >
-          <div
-            className="w-5 h-5 rounded-full border-2 bg-white shadow-md"
-            style={{ borderColor: '#1F2937' }}
-          />
+          <div className="w-5 h-5 rounded-full border-2 bg-white shadow-md" style={{ borderColor: '#1F2937' }} />
         </div>
-
-        {/* 7d trend — filled circle */}
         <div
           className="absolute"
           style={{ left: `calc(${avgPct}% - 10px)`, top: '-3px', zIndex: 9 }}
           title={`${isEn ? '7d trend' : 'Tendencia 7d'}: IRP ${Math.round(avg7d)}`}
         >
-          <div
-            className="w-5 h-5 rounded-full shadow-md"
-            style={{ background: '#1F2937' }}
-          />
+          <div className="w-5 h-5 rounded-full shadow-md" style={{ background: '#1F2937' }} />
         </div>
       </div>
-
-      {/* Dot legend */}
       <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-gray-500">
         <div className="flex items-center gap-2">
-          <div
-            className="w-4 h-4 rounded-full border-2 bg-white flex-shrink-0"
-            style={{ borderColor: '#1F2937' }}
-          />
-          <span>
-            {isEn ? 'Today' : 'Hoy'}: {toMult(rawPrr)} (IRP {Math.round(rawPrr)})
-          </span>
+          <div className="w-4 h-4 rounded-full border-2 bg-white flex-shrink-0" style={{ borderColor: '#1F2937' }} />
+          <span>{isEn ? 'Today' : 'Hoy'}: {toMult(rawPrr)} (IRP {Math.round(rawPrr)})</span>
         </div>
         <div className="flex items-center gap-2">
-          <div
-            className="w-4 h-4 rounded-full flex-shrink-0"
-            style={{ background: '#1F2937' }}
-          />
-          <span>
-            {isEn ? '7d trend' : 'Tendencia 7d'}: {toMult(avg7d)} (IRP {Math.round(avg7d)})
-          </span>
+          <div className="w-4 h-4 rounded-full flex-shrink-0" style={{ background: '#1F2937' }} />
+          <span>{isEn ? '7d trend' : 'Tendencia 7d'}: {toMult(avg7d)} (IRP {Math.round(avg7d)})</span>
         </div>
       </div>
     </div>
@@ -235,7 +225,6 @@ function MultiplierScale({
 }
 
 // ─── READING CARD ─────────────────────────────────────────────────────────────
-// Self-contained: own number, multiplier, badge. No ambiguity.
 
 function ReadingCard({
   title,
@@ -276,20 +265,15 @@ function ReadingCard({
           {isEn ? cfg.label_en : cfg.label_es}
         </span>
       </div>
-
-      {/* Big number */}
       <p
         className="text-5xl font-bold tabular-nums leading-none"
         style={{ color: color, fontVariantNumeric: 'tabular-nums' }}
       >
         {Math.round(prr)}
       </p>
-
-      {/* THE key insight */}
       <p className="text-base font-semibold mt-1.5" style={{ color: color }}>
         {isEn ? `${mult} the average` : `${mult} el promedio`}
       </p>
-
       <p className="text-xs text-gray-400 mt-2">
         {indexLabel ?? 'IRP'} · {isEn ? 'mean = 100' : 'media = 100'}
       </p>
@@ -297,9 +281,7 @@ function ReadingCard({
   );
 }
 
-// ─── PAGE ─────────────────────────────────────────────────────────────────────
-
-// ── Custom peak label: multi-line box above reference line ───────────────────
+// ── Custom peak label: multi-line box, clamped inside chart viewport ─────────
 function PeakLabel({ viewBox, label, color }: {
   viewBox?: { x?: number; y?: number; width?: number; height?: number };
   label: string;
@@ -307,29 +289,21 @@ function PeakLabel({ viewBox, label, color }: {
 }) {
   const { x = 0, y = 0 } = viewBox ?? {};
   const words = label.split(' ');
-  // Split into lines of max 1 word each for shortest lines, or 2 if label is long
-  const lines = words.length <= 2
-    ? words                                    // "Vacancia Boluarte" → 2 lines
-    : [words[0], words.slice(1).join(' ')];    // 3+ words → first / rest
+  const lines = words.length <= 2 ? words : [words[0], words.slice(1).join(' ')];
   const lh = 11;
   const pad = 3;
   const boxH = lines.length * lh + pad * 2;
   const maxChars = Math.max(...lines.map(l => l.length));
   const boxW = maxChars * 5.5 + pad * 2;
   const bx = x - boxW / 2;
-  const by = y - boxH - 6;
+  const by = Math.max(4, y - boxH - 6);
   return (
     <g>
       <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
             fill="white" stroke={color} strokeWidth={0.8} opacity={0.92} />
       {lines.map((line, i) => (
-        <text key={i}
-              x={x}
-              y={by + pad + (i + 1) * lh - 1}
-              textAnchor="middle"
-              fill={color}
-              fontSize={8}
-              fontWeight={600}
+        <text key={i} x={x} y={by + pad + (i + 1) * lh - 1}
+              textAnchor="middle" fill={color} fontSize={8} fontWeight={600}
               fontFamily="system-ui, sans-serif">
           {line}
         </text>
@@ -337,6 +311,8 @@ function PeakLabel({ viewBox, label, color }: {
     </g>
   );
 }
+
+// ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function RiesgoPoliticoPage() {
   const locale = useLocale();
@@ -348,9 +324,7 @@ export default function RiesgoPoliticoPage() {
 
   useEffect(() => {
     fetch(
-      `/assets/data/political_index_daily.json?v=${new Date()
-        .toISOString()
-        .slice(0, 13)}`
+      `/assets/data/political_index_daily.json?v=${new Date().toISOString().slice(0, 13)}`
     )
       .then((r) => r.json())
       .then((d) => {
@@ -410,22 +384,86 @@ export default function RiesgoPoliticoPage() {
   // Keep backward-compat alias used by MultiplierScale
   const dailyTrend = chartData;
 
-  // Political peak events
   const polPeaks = (data.peak_events ?? []).filter(
     (e) => e.dimension === 'political' && e.label
   );
 
-  // Y-axis ticks in PRR, formatted as multipliers
   const maxPrr = Math.max(
-    ...chartData.map((d) =>
-      Math.max(d.political_7d ?? 0, d.political_raw ?? 0)
-    ),
+    ...chartData.map((d) => Math.max(d.political_7d ?? 0, d.political_raw ?? 0)),
     200
   );
   const yTicks = [0, 100, 200, 300, 500].filter((t) => t <= maxPrr + 150);
   if (maxPrr > 500 && !yTicks.includes(Math.ceil(maxPrr / 100) * 100)) {
     yTicks.push(Math.ceil(maxPrr / 100) * 100);
   }
+
+  // ── A1: IRP vs Tipo de Cambio scatter ───────────────────────────────────────
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const irpFxData = useMemo(() => {
+    const fxByDate: Record<string, number> = {};
+    for (const f of data.daily_fx_series ?? []) fxByDate[f.date] = f.fx;
+    return (data.daily_series ?? [])
+      .filter((d) => d.political_7d != null && fxByDate[d.date] != null)
+      .map((d, i, arr) => ({
+        x: d.political_7d as number,
+        y: fxByDate[d.date],
+        t: i / arr.length,
+      }));
+  }, [data]);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const irpFxReg = useMemo(() => {
+    if (irpFxData.length < 2) return null;
+    const n = irpFxData.length;
+    const mx = irpFxData.reduce((s, d) => s + d.x, 0) / n;
+    const my = irpFxData.reduce((s, d) => s + d.y, 0) / n;
+    const sxy = irpFxData.reduce((s, d) => s + (d.x - mx) * (d.y - my), 0);
+    const sxx = irpFxData.reduce((s, d) => s + (d.x - mx) ** 2, 0);
+    const syy = irpFxData.reduce((s, d) => s + (d.y - my) ** 2, 0);
+    if (sxx === 0 || syy === 0) return null;
+    const slope = sxy / sxx;
+    const intercept = my - slope * mx;
+    const minX = Math.min(...irpFxData.map((d) => d.x));
+    const maxX = Math.max(...irpFxData.map((d) => d.x));
+    const r = sxy / Math.sqrt(sxx * syy);
+    return { slope, intercept, minX, maxX, r };
+  }, [irpFxData]);
+
+  // ── A2: Distribución mensual del IRP ────────────────────────────────────────
+  const monthlyBarData = (data.monthly_series ?? []).map((m) => ({
+    month: m.month,
+    label: fmtMonth(m.month, isEn),
+    value: m.political_avg,
+    color: irpBarColor(m.political_avg),
+  }));
+
+  // ── A3: IRP mensual vs Depreciación del sol ──────────────────────────────────
+  const monthlyScatterData = (data.monthly_series ?? [])
+    .filter((m) => m.political_avg != null && m.fx_yoy != null)
+    .map((m) => ({
+      x: m.political_avg,
+      y: m.fx_yoy as number,
+      month: m.month,
+      color: quarterColor(m.month),
+    }));
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const monthlyScatterReg = useMemo(() => {
+    if (monthlyScatterData.length < 2) return null;
+    const n = monthlyScatterData.length;
+    const mx = monthlyScatterData.reduce((s, d) => s + d.x, 0) / n;
+    const my = monthlyScatterData.reduce((s, d) => s + d.y, 0) / n;
+    const sxy = monthlyScatterData.reduce((s, d) => s + (d.x - mx) * (d.y - my), 0);
+    const sxx = monthlyScatterData.reduce((s, d) => s + (d.x - mx) ** 2, 0);
+    const syy = monthlyScatterData.reduce((s, d) => s + (d.y - my) ** 2, 0);
+    if (sxx === 0 || syy === 0) return null;
+    const slope = sxy / sxx;
+    const intercept = my - slope * mx;
+    const minX = Math.min(...monthlyScatterData.map((d) => d.x));
+    const maxX = Math.max(...monthlyScatterData.map((d) => d.x));
+    const r = sxy / Math.sqrt(sxx * syy);
+    return { slope, intercept, minX, maxX, r };
+  }, [monthlyScatterData]);
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
@@ -483,7 +521,6 @@ export default function RiesgoPoliticoPage() {
 
         {/* ══ SECTION 2: POLITICAL READING CARDS ══════════════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-          {/* Political today */}
           <ReadingCard
             title={isEn ? 'POLITICAL RISK · TODAY' : 'RIESGO POLÍTICO · HOY'}
             subtitle={currentDateStr}
@@ -493,7 +530,6 @@ export default function RiesgoPoliticoPage() {
             isEn={isEn}
             indexLabel="IRP"
           />
-          {/* Political 7d */}
           <ReadingCard
             title={isEn ? 'POLITICAL RISK · 7 DAYS' : 'RIESGO POLÍTICO · 7 DÍAS'}
             subtitle={isEn ? `${polMult.toFixed(1)}× the average` : `${polMult.toFixed(1)}× el promedio`}
@@ -549,7 +585,6 @@ export default function RiesgoPoliticoPage() {
         {/* ══ SECTION 4: CHART ════════════════════════════════════════════ */}
         {chartData.length >= 2 && (
           <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-            {/* Chart header */}
             <div className="flex items-start justify-between gap-4 mb-2">
               <div>
                 <h3 className="text-base font-semibold text-gray-900">
@@ -571,8 +606,6 @@ export default function RiesgoPoliticoPage() {
                 }
               />
             </div>
-
-            {/* Legend */}
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-500">
               <div className="flex items-center gap-1.5">
                 <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="2.5" /></svg>
@@ -583,19 +616,13 @@ export default function RiesgoPoliticoPage() {
                 <span>{isEn ? 'Political daily' : 'Político diario'}</span>
               </div>
             </div>
-
             <ResponsiveContainer width="100%" height={300}>
-              <AreaChart
-                data={chartData}
-                margin={{ top: 8, right: 16, left: 8, bottom: 8 }}
-              >
-                {/* Zone background bands — subtle context, not dominant visual */}
+              <AreaChart data={chartData} margin={{ top: 70, right: 16, left: 8, bottom: 8 }}>
                 <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={200} y2={300} fill="#C65D3E" fillOpacity={0.05} stroke="none" />
                 <ReferenceArea y1={300} y2={500} fill="#9B2226" fillOpacity={0.08} stroke="none" />
                 <ReferenceArea y1={500}          fill="#6B0000" fillOpacity={0.12} stroke="none" />
-
                 <CartesianGrid
                   strokeDasharray="3 3"
                   stroke={CHART_DEFAULTS.gridStroke}
@@ -611,9 +638,7 @@ export default function RiesgoPoliticoPage() {
                   tick={axisTickStyle}
                   stroke={CHART_DEFAULTS.axisStroke}
                   ticks={yTicks}
-                  tickFormatter={(v: number) =>
-                    v === 0 ? '0' : `${(v / 100).toFixed(0)}×`
-                  }
+                  tickFormatter={(v: number) => v === 0 ? '0' : `${(v / 100).toFixed(0)}×`}
                   label={{
                     value: isEn ? '× avg' : '× media',
                     angle: -90,
@@ -635,8 +660,6 @@ export default function RiesgoPoliticoPage() {
                     ];
                   }) as any}
                 />
-
-                {/* avg = 100 reference */}
                 <ReferenceLine
                   y={100}
                   stroke={CHART_COLORS.amber}
@@ -647,8 +670,6 @@ export default function RiesgoPoliticoPage() {
                     style: { fontSize: 9, fill: CHART_COLORS.ink3 },
                   }}
                 />
-
-                {/* Political peak event reference lines */}
                 {polPeaks.map((peak) => (
                   <ReferenceLine
                     key={peak.date}
@@ -659,8 +680,6 @@ export default function RiesgoPoliticoPage() {
                     label={<PeakLabel label={peak.label} color="#C65D3E" />}
                   />
                 ))}
-
-                {/* Political: Raw daily — thin, muted */}
                 <Area
                   type="monotone"
                   dataKey="political_raw"
@@ -671,7 +690,6 @@ export default function RiesgoPoliticoPage() {
                   strokeOpacity={0.4}
                   strokeDasharray="4 2"
                 />
-                {/* Political: 7-day trend — bold with fill */}
                 <Area
                   type="monotone"
                   dataKey="political_7d"
@@ -683,6 +701,285 @@ export default function RiesgoPoliticoPage() {
                 />
               </AreaChart>
             </ResponsiveContainer>
+          </div>
+        )}
+
+        {/* ══ SECTION A1: IRP vs TIPO DE CAMBIO (scatter) ═════════════════ */}
+        {irpFxData.length >= 10 && (
+          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+            <h3 className="text-base font-semibold text-gray-900 mb-1">
+              {isEn ? 'Does political instability move the dollar?' : '¿La inestabilidad política mueve el dólar?'}
+            </h3>
+            <p className="text-xs text-gray-500 mb-4">
+              {isEn
+                ? 'Each dot = 1 day. Older = gray, recent = terracotta. Line = linear trend.'
+                : 'Cada punto = 1 día. Más antiguo = gris, reciente = terracota. Línea = tendencia lineal.'
+              }
+            </p>
+            <ResponsiveContainer width="100%" height={280}>
+              <ScatterChart margin={{ top: 8, right: 16, left: 8, bottom: 24 }}>
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={CHART_DEFAULTS.gridStroke}
+                  strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+                />
+                <XAxis
+                  type="number"
+                  dataKey="x"
+                  name="IRP"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  domain={[0, 'auto']}
+                  label={{
+                    value: isEn ? 'IRP 7d smooth' : 'IRP suavizado 7d',
+                    position: 'insideBottom',
+                    offset: -12,
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                  }}
+                />
+                <YAxis
+                  type="number"
+                  dataKey="y"
+                  name={isEn ? 'FX PEN/USD' : 'TC PEN/USD'}
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  domain={['auto', 'auto']}
+                  tickFormatter={(v: number) => v.toFixed(2)}
+                  label={{
+                    value: 'PEN/USD',
+                    angle: -90,
+                    position: 'insideLeft',
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                    offset: 8,
+                  }}
+                />
+                <ZAxis range={[20, 20]} />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any, name?: string) => [
+                    name === 'IRP' ? Math.round(v) : Number(v).toFixed(4),
+                    name,
+                  ]}
+                  labelFormatter={() => ''}
+                />
+                <Scatter
+                  data={irpFxData}
+                  shape={(props: any) => {
+                    const { cx, cy, payload } = props;
+                    const t: number = payload?.t ?? 0;
+                    // Interpolate: gray (#ccc) → terracotta (#C65D3E)
+                    const r = Math.round(204 + (198 - 204) * t);
+                    const g = Math.round(204 + (93  - 204) * t);
+                    const b = Math.round(204 + (62  - 204) * t);
+                    return (
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={3}
+                        fill={`rgb(${r},${g},${b})`}
+                        fillOpacity={0.75}
+                        stroke="none"
+                      />
+                    );
+                  }}
+                />
+                {irpFxReg && (() => {
+                  const { slope, intercept, minX, maxX } = irpFxReg;
+                  const trendData = [
+                    { x: minX, y: intercept + slope * minX },
+                    { x: maxX, y: intercept + slope * maxX },
+                  ];
+                  return (
+                    <Line
+                      data={trendData}
+                      type="linear"
+                      dataKey="y"
+                      stroke="#C65D3E"
+                      strokeWidth={1.5}
+                      dot={false}
+                      isAnimationActive={false}
+                    />
+                  );
+                })()}
+              </ScatterChart>
+            </ResponsiveContainer>
+            {irpFxReg && (
+              <p className="text-xs text-gray-400 mt-2">
+                {isEn
+                  ? `Correlation: r = ${irpFxReg.r.toFixed(2)} — ${irpFxReg.r > 0 ? 'higher IRP is associated with a more expensive dollar' : 'higher IRP is associated with a cheaper dollar'}`
+                  : `Correlación: r = ${irpFxReg.r.toFixed(2)} — ${irpFxReg.r > 0 ? 'mayor IRP se asocia con dólar más caro' : 'mayor IRP se asocia con dólar más barato'}`
+                }
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* ══ SECTION A2: DISTRIBUCIÓN MENSUAL DEL IRP ════════════════════ */}
+        {monthlyBarData.length >= 2 && (
+          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+            <h3 className="text-base font-semibold text-gray-900 mb-1">
+              {isEn ? 'Monthly IRP distribution' : 'Distribución mensual del IRP'}
+            </h3>
+            <p className="text-xs text-gray-500 mb-4">
+              {isEn ? 'Monthly average IRP. Color = risk level.' : 'Promedio mensual del IRP. Color = nivel de riesgo.'}
+            </p>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={monthlyBarData} margin={{ top: 4, right: 16, left: 8, bottom: 44 }}>
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={CHART_DEFAULTS.gridStroke}
+                  strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+                  vertical={false}
+                />
+                <XAxis
+                  dataKey="label"
+                  tick={{ ...axisTickStyle, angle: -40, textAnchor: 'end' }}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  interval={0}
+                  height={52}
+                />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v: number) => String(Math.round(v))}
+                  label={{
+                    value: 'IRP',
+                    angle: -90,
+                    position: 'insideLeft',
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                    offset: 8,
+                  }}
+                />
+                <ReferenceLine y={100} stroke={CHART_COLORS.amber} strokeDasharray="4 2" />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any) => [Math.round(v), isEn ? 'IRP monthly avg' : 'IRP promedio mensual']}
+                />
+                <Bar dataKey="value" radius={[3, 3, 0, 0]}>
+                  {monthlyBarData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-400">
+              <span><span style={{ color: '#2A9D8F' }}>■</span> {isEn ? '< 90 (Low)' : '< 90 (Bajo)'}</span>
+              <span><span style={{ color: '#E9C46A' }}>■</span> 90–110 (Normal)</span>
+              <span><span style={{ color: '#C65D3E' }}>■</span> {isEn ? '110–150 (Elevated)' : '110–150 (Elevado)'}</span>
+              <span><span style={{ color: '#9B2226' }}>■</span> {isEn ? '> 150 (High)' : '> 150 (Alto)'}</span>
+            </div>
+          </div>
+        )}
+
+        {/* ══ SECTION A3: IRP MENSUAL vs DEPRECIACIÓN DEL SOL ════════════ */}
+        {monthlyScatterData.length >= 3 && (
+          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+            <h3 className="text-base font-semibold text-gray-900 mb-1">
+              {isEn ? 'Monthly IRP vs Annual sol depreciation (%)' : 'IRP mensual vs Depreciación anual del sol (%)'}
+            </h3>
+            <p className="text-xs text-gray-500 mb-4">
+              {isEn
+                ? 'Each dot = 1 month. Color = quarter. Line = linear trend.'
+                : 'Cada punto = 1 mes. Color = trimestre. Línea = tendencia lineal.'
+              }
+            </p>
+            <ResponsiveContainer width="100%" height={260}>
+              <ScatterChart margin={{ top: 8, right: 16, left: 8, bottom: 24 }}>
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={CHART_DEFAULTS.gridStroke}
+                  strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+                />
+                <XAxis
+                  type="number"
+                  dataKey="x"
+                  name="IRP"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  domain={['auto', 'auto']}
+                  label={{
+                    value: isEn ? 'IRP monthly avg' : 'IRP promedio mensual',
+                    position: 'insideBottom',
+                    offset: -12,
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                  }}
+                />
+                <YAxis
+                  type="number"
+                  dataKey="y"
+                  name={isEn ? 'FX YoY (%)' : 'TC YoY (%)'}
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v: number) => `${v.toFixed(1)}%`}
+                  label={{
+                    value: isEn ? 'FX YoY (%)' : 'Deprec. anual (%)',
+                    angle: -90,
+                    position: 'insideLeft',
+                    style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
+                    offset: 8,
+                  }}
+                />
+                <ZAxis range={[30, 30]} />
+                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="3 3" />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any, name?: string) => [
+                    name === 'IRP' ? Math.round(v) : `${Number(v).toFixed(2)}%`,
+                    name,
+                  ]}
+                  labelFormatter={() => ''}
+                />
+                <Scatter
+                  data={monthlyScatterData}
+                  shape={(props: any) => {
+                    const { cx, cy, payload } = props;
+                    return (
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={5}
+                        fill={payload?.color ?? '#C65D3E'}
+                        fillOpacity={0.8}
+                        stroke="white"
+                        strokeWidth={1}
+                      />
+                    );
+                  }}
+                />
+                {monthlyScatterReg && (() => {
+                  const { slope, intercept, minX, maxX } = monthlyScatterReg;
+                  const trendData = [
+                    { x: minX, y: intercept + slope * minX },
+                    { x: maxX, y: intercept + slope * maxX },
+                  ];
+                  return (
+                    <Line
+                      data={trendData}
+                      type="linear"
+                      dataKey="y"
+                      stroke="#9B2226"
+                      strokeWidth={1.5}
+                      dot={false}
+                      isAnimationActive={false}
+                    />
+                  );
+                })()}
+              </ScatterChart>
+            </ResponsiveContainer>
+            {monthlyScatterReg && (
+              <p className="text-xs text-gray-400 mt-2">
+                {isEn
+                  ? `Correlation: r = ${monthlyScatterReg.r.toFixed(2)} — ${monthlyScatterReg.r > 0 ? 'higher monthly IRP is associated with greater annual depreciation' : 'higher monthly IRP is associated with sol appreciation'}`
+                  : `Correlación: r = ${monthlyScatterReg.r.toFixed(2)} — ${monthlyScatterReg.r > 0 ? 'mayor IRP mensual se asocia con mayor depreciación anual' : 'mayor IRP mensual se asocia con apreciación del sol'}`
+                }
+              </p>
+            )}
+            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-gray-400">
+              <span><span style={{ color: '#2A9D8F' }}>●</span> Q1 (Ene–Mar)</span>
+              <span><span style={{ color: '#E9C46A' }}>●</span> Q2 (Abr–Jun)</span>
+              <span><span style={{ color: '#C65D3E' }}>●</span> Q3 (Jul–Sep)</span>
+              <span><span style={{ color: '#9B2226' }}>●</span> Q4 (Oct–Dic)</span>
+            </div>
           </div>
         )}
 
@@ -707,7 +1004,6 @@ export default function RiesgoPoliticoPage() {
                 </>
             }
           </p>
-
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -756,8 +1052,6 @@ export default function RiesgoPoliticoPage() {
                 {formatDate(data.current.date, isEn)}
               </span>
             </div>
-
-            {/* Political justification */}
             {(data.current.political_justification ?? data.current.justification) && (
               <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
                 <div className="flex items-center gap-2 mb-2">
@@ -788,7 +1082,6 @@ export default function RiesgoPoliticoPage() {
                 )}
               </div>
             )}
-
           </div>
         )}
 
