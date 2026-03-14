@@ -1174,64 +1174,6 @@ export default function RiesgoPoliticoPage() {
           </div>
         )}
 
-        {/* ══ SECTION 5: INTERPRETATION TABLE ════════════════════════════ */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-          <h3 className="text-base font-semibold text-gray-900 mb-1">
-            {isEn ? 'How to interpret this index' : '¿Cómo se interpreta?'}
-          </h3>
-          <p className="text-sm text-gray-500 mb-4">
-            {isEn
-              ? <>
-                  Example: a value of{' '}
-                  <strong>{Math.round(avg7d)}</strong> means that this week&apos;s
-                  political activity was{' '}
-                  <strong>{multTrend} more intense</strong> than a normal day (mean&nbsp;=&nbsp;100).
-                </>
-              : <>
-                  Ejemplo: un valor de{' '}
-                  <strong>{Math.round(avg7d)}</strong> significa que la actividad
-                  de la semana fue{' '}
-                  <strong>{multTrend} más intensa</strong> que un día promedio (media&nbsp;=&nbsp;100).
-                </>
-            }
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b-2 border-gray-100">
-                  <th className="text-left py-2 pr-3 text-xs font-semibold text-gray-400 uppercase tracking-wide w-24">
-                    {isEn ? 'Level' : 'Nivel'}
-                  </th>
-                  <th className="text-left py-2 pr-3 text-xs font-semibold text-gray-400 uppercase tracking-wide w-20">
-                    {isEn ? 'Multiplier' : 'Múltiplo'}
-                  </th>
-                  <th className="text-left py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide" style={{ color: '#C65D3E' }}>
-                    {isEn ? 'Political' : 'Político'}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {(Object.entries(LEVELS) as [RiskLevel, LevelCfg][]).filter(([key]) => key !== 'MODERADO').map(([key, cfg]) => (
-                  <tr key={key} className="border-b border-gray-50 last:border-0">
-                    <td className="py-3 pr-3">
-                      <span
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold"
-                        style={{ background: cfg.color + '18', color: cfg.color }}
-                      >
-                        {isEn ? cfg.label_en : cfg.label_es}
-                      </span>
-                    </td>
-                    <td className="py-3 pr-3 text-gray-500 text-xs font-medium">{cfg.mult}</td>
-                    <td className="py-3 text-gray-600 text-xs">
-                      {isEn ? cfg.desc_pol_en : cfg.desc_pol_es}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
           {[
@@ -1247,8 +1189,8 @@ export default function RiesgoPoliticoPage() {
         </div>
         <p className="text-xs text-gray-400 mb-6 px-1">
           {isEn
-            ? 'Coverage: ~110 articles/day from 6 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo).'
-            : 'Cobertura: ~110 artículos/día de 6 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo).'}
+            ? 'Coverage: ~110 articles/day from 16 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'
+            : 'Cobertura: ~110 artículos/día de 16 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'}
         </p>
 
         {/* ══ SECTION 7: LINKS ════════════════════════════════════════════ */}

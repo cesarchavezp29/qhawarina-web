@@ -1166,8 +1166,8 @@ export default function RiesgoEconomicoPage() {
         </div>
         <p className="text-xs text-gray-400 mb-6 px-1">
           {isEn
-            ? 'Coverage: ~110 articles/day from 6 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo).'
-            : 'Cobertura: ~110 artículos/día de 6 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo).'}
+            ? 'Coverage: ~110 articles/day from 16 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'
+            : 'Cobertura: ~110 artículos/día de 16 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'}
         </p>
 
         {/* ══ SECTION 8: LINKS ════════════════════════════════════════════ */}
