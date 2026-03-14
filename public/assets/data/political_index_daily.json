@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-14T13:37:06.241248",
+    "generated_at": "2026-03-14T14:06:16.461968",
     "coverage_days": 438,
     "rss_feeds": 11,
     "rss_sources": 6,
@@ -8,9 +8,9 @@
   },
   "current": {
     "date": "2026-03-14",
-    "political_raw": 43.1,
+    "political_raw": 42.6,
     "political_raw_level": "MINIMO",
-    "political_7d": 45.3,
+    "political_7d": 45.2,
     "political_level": "MINIMO",
     "political_multiplier": 0.45,
     "economic_raw": 119.5,
@@ -18,15 +18,15 @@
     "economic_7d": 157.7,
     "economic_level": "ALTO",
     "economic_multiplier": 1.58,
-    "score": 45.3,
-    "prr_7d": 45.3,
-    "prr_raw": 43.1,
+    "score": 45.2,
+    "prr_7d": 45.2,
+    "prr_raw": 42.6,
     "level": "MINIMO",
     "articles_total": 390,
-    "articles_political_relevant": 94,
+    "articles_political_relevant": 93,
     "articles_economic_relevant": 47,
-    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que medidas de seguridad en zonas específicas reflejan desafíos localizados. No se evidencian tensiones sistémicas que amenacen la gobernanza nacional.",
-    "economic_justification": "La economía enfrenta presiones simultáneas: déficit fiscal por nuevas leyes de gasto, vulnerabilidad energética con interrupciones de suministro, y daños infraestructurales por desastres climáticos. Estos factores generan incertidumbre sobre la estabilidad macroeconómica y la capacidad de inversión pública, situando el riesgo en niveles elevados.",
+    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que la emergencia en Pisco refleja desafíos de seguridad localizados. La agenda política carece de tensiones sistémicas críticas en este momento.",
+    "economic_justification": "La economía enfrenta presiones simultáneas: déficit fiscal por nuevas leyes de gasto, vulnerabilidad energética con interrupciones de suministro, y daños infraestructurales por desastres climáticos. Aunque hay iniciativas de diversificación energética, los riesgos de corto plazo en finanzas públicas y abastecimiento dominan el panorama.",
     "top_political_drivers": [
       {
         "title": "Elecciones en el CAL 2026: ¿Delia Espinoza o Humberto Abanto?",
@@ -39,11 +39,6 @@
         "score": 61
       },
       {
-        "title": "Alerta de lluvias intensas y tormentas eléctricas en Florida este fin de semana: pronóstico del sábado 14 al lunes 16 de marzo",
-        "source": "elcomercio",
-        "score": 35
-      },
-      {
         "title": "Casos de violencia escolar aumentaron en colegios privados y se redujeron en públicos: aulas del país promedian 50 reportes diarios",
         "source": "elcomercio",
         "score": 35
@@ -51,6 +46,11 @@
       {
         "title": "Sigue en suspenso decisión del TC sobre Vladimir Cerrón: No se realizó sesión del viernes",
         "source": "elcomercio",
+        "score": 35
+      },
+      {
+        "title": "Liga 1: Atlético Grau buscará empezar la recuperación",
+        "source": "correo",
         "score": 35
       }
     ],
@@ -81,7 +81,7 @@
         "score": 40
       }
     ],
-    "justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que medidas de seguridad en zonas específicas reflejan desafíos localizados. No se evidencian tensiones sistémicas que amenacen la gobernanza nacional.",
+    "justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que la emergencia en Pisco refleja desafíos de seguridad localizados. La agenda política carece de tensiones sistémicas críticas en este momento.",
     "top_drivers": [
       {
         "title": "Elecciones en el CAL 2026: ¿Delia Espinoza o Humberto Abanto?",
@@ -94,11 +94,6 @@
         "score": 61
       },
       {
-        "title": "Alerta de lluvias intensas y tormentas eléctricas en Florida este fin de semana: pronóstico del sábado 14 al lunes 16 de marzo",
-        "source": "elcomercio",
-        "score": 35
-      },
-      {
         "title": "Casos de violencia escolar aumentaron en colegios privados y se redujeron en públicos: aulas del país promedian 50 reportes diarios",
         "source": "elcomercio",
         "score": 35
@@ -106,6 +101,11 @@
       {
         "title": "Sigue en suspenso decisión del TC sobre Vladimir Cerrón: No se realizó sesión del viernes",
         "source": "elcomercio",
+        "score": 35
+      },
+      {
+        "title": "Liga 1: Atlético Grau buscará empezar la recuperación",
+        "source": "correo",
         "score": 35
       }
     ]
@@ -124,7 +124,7 @@
       "score": 133.7,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Pugna por poder entre bloques parlamentarios enfrentados.",
+      "summary": "Conflicto político sobre indulto de Castillo y poder presidencial.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -132,7 +132,7 @@
       "score": 141.3,
       "level": "ELEVADO",
       "n_articles": 134,
-      "summary": "Debilitamiento de institucionalidad democrática y respeto constitucional.",
+      "summary": "Debilitamiento institucional por retorno político controvertido.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -140,7 +140,7 @@
       "score": 147.2,
       "level": "ELEVADO",
       "n_articles": 171,
-      "summary": "Conflicto entre el Congreso y ministro José Jerí.",
+      "summary": "Conflicto entre ministro y congreso por censura legislativa.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -148,7 +148,7 @@
       "score": 150.4,
       "level": "ALTO",
       "n_articles": 136,
-      "summary": "Congreso debate censura presidencial en medio de presiones políticas.",
+      "summary": "Congreso debate censura del Presidente Jerí entre presiones políticas.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -156,7 +156,7 @@
       "score": 147.9,
       "level": "ELEVADO",
       "n_articles": 157,
-      "summary": "Desconfianza generalizada en liderazgo presidencial y capacidad institucional.",
+      "summary": "Falta de alternativas para reemplazar presidente potencialmente censurado.",
       "report_url": "/political/daily-reports/2026-02-16.html"
     },
     {
@@ -164,7 +164,7 @@
       "score": 138.4,
       "level": "ELEVADO",
       "n_articles": 67,
-      "summary": "Conflicto político entre facciones del Congreso peruano.",
+      "summary": "Conflictos políticos internos en el Congreso peruano.",
       "report_url": "/political/daily-reports/2026-02-15.html"
     },
     {
@@ -172,7 +172,7 @@
       "score": 124.8,
       "level": "ELEVADO",
       "n_articles": 41,
-      "summary": "Cuestionamientos a Jerí amenazan con destituirlo presidencialmente.",
+      "summary": "Crisis política por destitución inminente del Presidente Jerí.",
       "report_url": "/political/daily-reports/2026-02-14.html"
     },
     {
@@ -188,7 +188,7 @@
       "score": 132.0,
       "level": "ELEVADO",
       "n_articles": 76,
-      "summary": "No puedo proporcionar un resumen de estas noticias porque no contienen información clara sobre inestabilidad política. Las tres notas (investigación fiscal, expansión empresarial y transformación de empresas familiares",
+      "summary": "Investigación contra José Jerí sin medidas restrictivas genera incertidumbre.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
@@ -196,7 +196,7 @@
       "score": 138.5,
       "level": "ELEVADO",
       "n_articles": 51,
-      "summary": "Presidencia sin equipo ministerial genera incertidumbre institucional.",
+      "summary": "Presidencia sin gabinete ministerial consolidado genera inestabilidad.",
       "report_url": "/political/daily-reports/2025-10-12.html"
     }
   ],
@@ -333,12 +333,12 @@
     },
     {
       "date": "2025-01-11",
-      "political_raw": 70.3,
+      "political_raw": 70.4,
       "political_7d": 83.7,
       "economic_raw": 179.1,
       "economic_7d": 91.1,
       "score": 83.7,
-      "prr": 70.3,
+      "prr": 70.4,
       "prr_7d": 83.7,
       "n_articles": 8,
       "low_coverage": false,
@@ -1491,12 +1491,12 @@
     {
       "date": "2025-04-10",
       "political_raw": 180.4,
-      "political_7d": 111.1,
+      "political_7d": 111.2,
       "economic_raw": 225.5,
       "economic_7d": 182.6,
-      "score": 111.1,
+      "score": 111.2,
       "prr": 180.4,
-      "prr_7d": 111.1,
+      "prr_7d": 111.2,
       "n_articles": 23,
       "low_coverage": false,
       "provisional": false
@@ -2453,12 +2453,12 @@
     {
       "date": "2025-06-23",
       "political_raw": 171.6,
-      "political_7d": 164.9,
+      "political_7d": 165.0,
       "economic_raw": 45.4,
       "economic_7d": 64.4,
-      "score": 164.9,
+      "score": 165.0,
       "prr": 171.6,
-      "prr_7d": 164.9,
+      "prr_7d": 165.0,
       "n_articles": 45,
       "low_coverage": false,
       "provisional": false
@@ -2712,12 +2712,12 @@
     },
     {
       "date": "2025-07-13",
-      "political_raw": 144.3,
+      "political_raw": 144.4,
       "political_7d": 108.9,
       "economic_raw": 354.5,
       "economic_7d": 231.3,
       "score": 108.9,
-      "prr": 144.3,
+      "prr": 144.4,
       "prr_7d": 108.9,
       "n_articles": 30,
       "low_coverage": false,
@@ -2946,12 +2946,12 @@
     },
     {
       "date": "2025-07-31",
-      "political_raw": 114.9,
+      "political_raw": 115.0,
       "political_7d": 99.5,
       "economic_raw": 60.3,
       "economic_7d": 54.0,
       "score": 99.5,
-      "prr": 114.9,
+      "prr": 115.0,
       "prr_7d": 99.5,
       "n_articles": 37,
       "low_coverage": false,
@@ -3349,12 +3349,12 @@
     },
     {
       "date": "2025-08-31",
-      "political_raw": 110.5,
+      "political_raw": 110.6,
       "political_7d": 117.4,
       "economic_raw": 66.2,
       "economic_7d": 57.1,
       "score": 117.4,
-      "prr": 110.5,
+      "prr": 110.6,
       "prr_7d": 117.4,
       "n_articles": 26,
       "low_coverage": false,
@@ -3362,12 +3362,12 @@
     },
     {
       "date": "2025-09-01",
-      "political_raw": 115.8,
+      "political_raw": 115.9,
       "political_7d": 115.9,
       "economic_raw": 71.7,
       "economic_7d": 59.8,
       "score": 115.9,
-      "prr": 115.8,
+      "prr": 115.9,
       "prr_7d": 115.9,
       "n_articles": 57,
       "low_coverage": false,
@@ -3440,12 +3440,12 @@
     },
     {
       "date": "2025-09-07",
-      "political_raw": 180.2,
+      "political_raw": 180.3,
       "political_7d": 154.8,
       "economic_raw": 60.6,
       "economic_7d": 80.3,
       "score": 154.8,
-      "prr": 180.2,
+      "prr": 180.3,
       "prr_7d": 154.8,
       "n_articles": 28,
       "low_coverage": false,
@@ -3883,12 +3883,12 @@
     {
       "date": "2025-10-11",
       "political_raw": 107.9,
-      "political_7d": 133.6,
+      "political_7d": 133.7,
       "economic_raw": 86.1,
       "economic_7d": 74.1,
-      "score": 133.6,
+      "score": 133.7,
       "prr": 107.9,
-      "prr_7d": 133.6,
+      "prr_7d": 133.7,
       "n_articles": 33,
       "low_coverage": false,
       "provisional": false
@@ -5209,12 +5209,12 @@
     {
       "date": "2026-01-21",
       "political_raw": 135.2,
-      "political_7d": 97.9,
+      "political_7d": 97.8,
       "economic_raw": 94.3,
       "economic_7d": 80.0,
-      "score": 97.9,
+      "score": 97.8,
       "prr": 135.2,
-      "prr_7d": 97.9,
+      "prr_7d": 97.8,
       "n_articles": 127,
       "low_coverage": false,
       "provisional": false
@@ -5299,12 +5299,12 @@
     },
     {
       "date": "2026-01-28",
-      "political_raw": 63.9,
+      "political_raw": 63.8,
       "political_7d": 69.8,
       "economic_raw": 132.6,
       "economic_7d": 91.3,
       "score": 69.8,
-      "prr": 63.9,
+      "prr": 63.8,
       "prr_7d": 69.8,
       "n_articles": 109,
       "low_coverage": false,
@@ -5846,12 +5846,12 @@
     {
       "date": "2026-03-11",
       "political_raw": 52.0,
-      "political_7d": 55.4,
+      "political_7d": 55.3,
       "economic_raw": 195.9,
       "economic_7d": 162.7,
-      "score": 55.4,
+      "score": 55.3,
       "prr": 52.0,
-      "prr_7d": 55.4,
+      "prr_7d": 55.3,
       "n_articles": 252,
       "low_coverage": false,
       "provisional": true
@@ -5859,12 +5859,12 @@
     {
       "date": "2026-03-12",
       "political_raw": 49.2,
-      "political_7d": 55.1,
+      "political_7d": 55.0,
       "economic_raw": 158.9,
       "economic_7d": 165.3,
-      "score": 55.1,
+      "score": 55.0,
       "prr": 49.2,
-      "prr_7d": 55.1,
+      "prr_7d": 55.0,
       "n_articles": 550,
       "low_coverage": false,
       "provisional": true
@@ -5872,25 +5872,25 @@
     {
       "date": "2026-03-13",
       "political_raw": 36.9,
-      "political_7d": 53.1,
+      "political_7d": 53.0,
       "economic_raw": 156.5,
       "economic_7d": 158.3,
-      "score": 53.1,
+      "score": 53.0,
       "prr": 36.9,
-      "prr_7d": 53.1,
+      "prr_7d": 53.0,
       "n_articles": 992,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-14",
-      "political_raw": 43.1,
-      "political_7d": 45.3,
+      "political_raw": 42.6,
+      "political_7d": 45.2,
       "economic_raw": 119.5,
       "economic_7d": 157.7,
-      "score": 45.3,
-      "prr": 43.1,
-      "prr_7d": 45.3,
+      "score": 45.2,
+      "prr": 42.6,
+      "prr_7d": 45.2,
       "n_articles": 390,
       "low_coverage": false,
       "provisional": true

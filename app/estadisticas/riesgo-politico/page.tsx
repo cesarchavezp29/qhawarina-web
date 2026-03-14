@@ -697,7 +697,7 @@ export default function RiesgoPoliticoPage() {
                 </tr>
               </thead>
               <tbody>
-                {(Object.entries(LEVELS) as [RiskLevel, LevelCfg][]).map(([key, cfg]) => (
+                {(Object.entries(LEVELS) as [RiskLevel, LevelCfg][]).filter(([key]) => key !== 'MODERADO').map(([key, cfg]) => (
                   <tr key={key} className="border-b border-gray-50 last:border-0">
                     <td className="py-3 pr-3">
                       <span
