@@ -12,7 +12,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ReferenceLine, ReferenceArea, ResponsiveContainer,
   ScatterChart, Scatter, ZAxis, BarChart, Bar, Cell,
-  LineChart, Line, Customized, ReferenceDot,
+  LineChart, Line, ReferenceDot,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -281,90 +281,6 @@ function ReadingCard({
   );
 }
 
-// ── Draggable peak labels layer ───────────────────────────────────────────────
-function PeakLabelsLayer(props: any) {
-  const { xAxisMap, yAxisMap, peaks, color, valueKey, chartData, labelPositions, draggingId, onDragStart } = props;
-  if (!xAxisMap || !yAxisMap || !peaks?.length || !chartData?.length) return null;
-  const xAxis = Object.values(xAxisMap)[0] as any;
-  const yAxis = Object.values(yAxisMap)[0] as any;
-  if (!xAxis?.scale || !yAxis?.scale) return null;
-  const xScale = xAxis.scale;
-  const yScale = yAxis.scale;
-
-  const valueMap = new Map<string, number>();
-  for (const d of chartData) {
-    const v = d[valueKey];
-    if (v != null) valueMap.set(d.date, v as number);
-  }
-
-  const positioned = (peaks as Array<{ date: string; label: string; value: number }>)
-    .map((peak) => {
-      const px: number = xScale(peak.date);
-      const val = valueMap.get(peak.date) ?? peak.value;
-      const py: number = yScale(val);
-      if (px == null || isNaN(px) || py == null || isNaN(py)) return null;
-      return { date: peak.date, label: peak.label, px, py };
-    })
-    .filter((x): x is { date: string; label: string; px: number; py: number } => x !== null);
-
-  if (!positioned.length) return null;
-
-  // Compute staggered default positions (used before user drags)
-  const sorted = [...positioned].sort((a, b) => a.px - b.px);
-  const BOX_W = 72;
-  const levels: number[] = new Array(sorted.length).fill(0);
-  for (let i = 1; i < sorted.length; i++) {
-    for (let j = 0; j < i; j++) {
-      if (Math.abs(sorted[i].px - sorted[j].px) < BOX_W) {
-        levels[i] = Math.max(levels[i], levels[j] + 1);
-      }
-    }
-  }
-  const defaultPos: Record<string, { x: number; y: number }> = {};
-  sorted.forEach((item, i) => {
-    defaultPos[item.date] = { x: item.px, y: item.py - 44 - levels[i] * 30 };
-  });
-
-  const PAD = 3; const LH = 11;
-  const userPos = (labelPositions ?? {}) as Record<string, { x: number; y: number }>;
-
-  return (
-    <g>
-      {positioned.map((item) => {
-        const pos = userPos[item.date] ?? defaultPos[item.date];
-        if (!pos) return null;
-        const words = item.label.split(' ');
-        const lines = words.length <= 2 ? words : [words[0], words.slice(1).join(' ')];
-        const bh = lines.length * LH + PAD * 2;
-        const bw = Math.max(...lines.map(l => l.length)) * 5.5 + PAD * 2;
-        const boxX = pos.x - bw / 2;
-        const boxY = pos.y - bh / 2;
-        const active = draggingId === item.date;
-        return (
-          <g key={item.date} style={{ cursor: active ? 'grabbing' : 'grab' }}
-             onMouseDown={(e) => { e.preventDefault(); onDragStart?.(item.date, pos.x, pos.y, e); }}>
-            {/* Stem: from label bottom-center to fixed peak dot */}
-            <line x1={pos.x} y1={boxY + bh} x2={item.px} y2={item.py}
-                  stroke={color} strokeWidth={0.8} strokeDasharray="3,2" strokeOpacity={0.55}
-                  style={{ pointerEvents: 'none' }} />
-            {/* Label box */}
-            <rect x={boxX} y={boxY} width={bw} height={bh} rx={2}
-                  fill="white" stroke={color} strokeWidth={active ? 1.2 : 0.8} opacity={0.95} />
-            {lines.map((line, li) => (
-              <text key={li} x={pos.x} y={boxY + PAD + (li + 1) * LH - 1}
-                    textAnchor="middle" fill={color} fontSize={8} fontWeight={600}
-                    fontFamily="system-ui, sans-serif"
-                    style={{ userSelect: 'none', pointerEvents: 'none' }}>
-                {line}
-              </text>
-            ))}
-          </g>
-        );
-      })}
-    </g>
-  );
-}
-
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function RiesgoPoliticoPage() {
@@ -399,9 +315,8 @@ export default function RiesgoPoliticoPage() {
   useEffect(() => {
     if (!dragging) return;
     const handleMove = (e: MouseEvent) => {
-      const svg = chartContainerRef.current?.querySelector('svg');
-      if (!svg) return;
-      const rect = svg.getBoundingClientRect();
+      const rect = chartContainerRef.current?.getBoundingClientRect();
+      if (!rect) return;
       setLabelPositions(prev => ({
         ...prev,
         [dragging]: {
@@ -419,12 +334,12 @@ export default function RiesgoPoliticoPage() {
     };
   }, [dragging]);
 
-  const handleLabelDragStart = (date: string, labelX: number, labelY: number, e: React.MouseEvent) => {
-    const svg = chartContainerRef.current?.querySelector('svg');
-    if (!svg) return;
-    const rect = svg.getBoundingClientRect();
-    dragOffset.current = { dx: e.clientX - rect.left - labelX, dy: e.clientY - rect.top - labelY };
-    setDragging(date);
+  const handleLabelDragStart = (id: string, posX: number, posY: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    const rect = chartContainerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    dragOffset.current = { dx: e.clientX - rect.left - posX, dy: e.clientY - rect.top - posY };
+    setDragging(id);
   };
 
   // ── Memos (must be before early returns to satisfy Rules of Hooks) ───────────
@@ -709,7 +624,7 @@ export default function RiesgoPoliticoPage() {
                 <span>{isEn ? 'Political daily' : 'Político diario'}</span>
               </div>
             </div>
-            <div ref={chartContainerRef}>
+            <div ref={chartContainerRef} style={{ position: 'relative' }}>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={chartData} margin={{ top: 40, right: 16, left: 8, bottom: 8 }}>
                 <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
@@ -791,23 +706,45 @@ export default function RiesgoPoliticoPage() {
                       r={4} fill="#C65D3E" stroke="white" strokeWidth={1.5} />
                   );
                 })}
-                {/* Draggable labels overlay */}
-                <Customized
-                  component={(p: any) => (
-                    <PeakLabelsLayer
-                      {...p}
-                      peaks={polPeaks}
-                      color="#C65D3E"
-                      valueKey="political_7d"
-                      chartData={chartData}
-                      labelPositions={labelPositions}
-                      draggingId={dragging}
-                      onDragStart={handleLabelDragStart}
-                    />
-                  )}
-                />
               </AreaChart>
             </ResponsiveContainer>
+
+            {/* HTML draggable labels — positioned absolutely over chart */}
+            {polPeaks.map((peak, i) => {
+              const dateIndex = chartData.findIndex((d: any) => d.date === peak.date);
+              const defaultX = chartData.length > 1
+                ? 8 + (dateIndex / (chartData.length - 1)) * 84
+                : 50 + i * 10;
+              const defaultY = 4 + (i % 3) * 22;
+              const pos = labelPositions[peak.date] ?? { x: defaultX, y: defaultY };
+              const active = dragging === peak.date;
+              return (
+                <div
+                  key={peak.date}
+                  style={{
+                    position: 'absolute',
+                    left: `${pos.x}%`,
+                    top: `${pos.y}px`,
+                    transform: 'translateX(-50%)',
+                    cursor: active ? 'grabbing' : 'grab',
+                    userSelect: 'none',
+                    background: 'white',
+                    border: `1px solid ${active ? '#C65D3E' : '#C65D3Eaa'}`,
+                    borderRadius: 3,
+                    padding: '2px 6px',
+                    fontSize: 9,
+                    fontWeight: 600,
+                    color: '#C65D3E',
+                    boxShadow: active ? '0 2px 8px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)',
+                    whiteSpace: 'nowrap',
+                    zIndex: 10,
+                  }}
+                  onMouseDown={(e) => handleLabelDragStart(peak.date, pos.x, pos.y, e)}
+                >
+                  {peak.label}
+                </div>
+              );
+            })}
             </div>
           </div>
         )}
