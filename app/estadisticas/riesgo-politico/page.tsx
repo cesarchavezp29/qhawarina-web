@@ -833,7 +833,18 @@ export default function RiesgoPoliticoPage() {
                 />
                 <XAxis
                   dataKey="label"
-                  tick={{ ...axisTickStyle, angle: -40, textAnchor: 'end' }}
+                  tick={(props: any) => {
+                    const { x, y, payload } = props;
+                    return (
+                      <g transform={`translate(${x},${y})`}>
+                        <text x={0} y={0} dy={4} textAnchor="end"
+                              transform="rotate(-40)"
+                              style={axisTickStyle.style}>
+                          {payload.value}
+                        </text>
+                      </g>
+                    );
+                  }}
                   stroke={CHART_DEFAULTS.axisStroke}
                   interval={0}
                   height={52}
