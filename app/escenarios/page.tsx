@@ -124,7 +124,7 @@ export default function EscenariosPage() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     loadScenario(selectedScenario);

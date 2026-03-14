@@ -775,7 +775,7 @@ export default function RiesgoEconomicoPage() {
                 />
                 <Tooltip
                   contentStyle={tooltipContentStyle}
-                  formatter={(v: any, name: string) => [
+                  formatter={(v: any, name?: string) => [
                     name === 'IRE' ? Math.round(v) : Number(v).toFixed(4),
                     name,
                   ]}
