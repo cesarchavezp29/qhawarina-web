@@ -798,6 +798,50 @@ export default function RiesgoPoliticoPage() {
           </div>
         )}
 
+        {/* ══ SECTION 5b: DUAL JUSTIFICATION ══════════════════════════════ */}
+        {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Why this level?' : '¿Por qué este nivel?'}
+              </h3>
+              <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                {formatDate(data.current.date, isEn)}
+              </span>
+            </div>
+            {(data.current.political_justification ?? data.current.justification) && (
+              <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#C65D3E' }}>
+                    {isEn ? 'Political Risk' : 'Riesgo Político'} · {polMult.toFixed(1)}×
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
+                  &quot;{data.current.political_justification ?? data.current.justification}&quot;
+                </p>
+                {(data.current.top_political_drivers ?? data.current.top_drivers) && (
+                  <ul className="space-y-1">
+                    {(data.current.top_political_drivers
+                      ? data.current.top_political_drivers.slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.score }))
+                      : (data.current.top_drivers ?? []).slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.severity * 100 }))
+                    ).map((d, i) => {
+                      const dotColor = d.numScore >= 70 ? '#9B2226' : d.numScore >= 40 ? '#C65D3E' : '#E0A458';
+                      return (
+                        <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
+                          <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
+                          <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{Math.round(d.numScore)}</span>
+                          <span className="truncate">{d.title}</span>
+                          <span className="flex-shrink-0" style={{ color: '#8D99AE' }}>({d.source})</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* ══ SECTION A1: IRP vs TIPO DE CAMBIO (scatter) ═════════════════ */}
         {irpFxData.length >= 10 && (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
@@ -1147,50 +1191,6 @@ export default function RiesgoPoliticoPage() {
             </table>
           </div>
         </div>
-
-        {/* ══ SECTION 5b: DUAL JUSTIFICATION ══════════════════════════════ */}
-        {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Why this level?' : '¿Por qué este nivel?'}
-              </h3>
-              <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
-                {formatDate(data.current.date, isEn)}
-              </span>
-            </div>
-            {(data.current.political_justification ?? data.current.justification) && (
-              <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#C65D3E' }}>
-                    {isEn ? 'Political Risk' : 'Riesgo Político'} · {polMult.toFixed(1)}×
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
-                  &quot;{data.current.political_justification ?? data.current.justification}&quot;
-                </p>
-                {(data.current.top_political_drivers ?? data.current.top_drivers) && (
-                  <ul className="space-y-1">
-                    {(data.current.top_political_drivers
-                      ? data.current.top_political_drivers.slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.score }))
-                      : (data.current.top_drivers ?? []).slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.severity * 100 }))
-                    ).map((d, i) => {
-                      const dotColor = d.numScore >= 70 ? '#9B2226' : d.numScore >= 40 ? '#C65D3E' : '#E0A458';
-                      return (
-                        <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
-                          <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
-                          <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{Math.round(d.numScore)}</span>
-                          <span className="truncate">{d.title}</span>
-                          <span className="flex-shrink-0" style={{ color: '#8D99AE' }}>({d.source})</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </div>
-            )}
-          </div>
-        )}
 
         {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
