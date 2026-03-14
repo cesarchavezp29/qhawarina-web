@@ -62,7 +62,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   <strong>Iacoviello &amp; Tong (2026)</strong>, &quot;The AI-GPR Index: Measuring Geopolitical Risk
                   using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Applied to Peru as{' '}
                   <strong>two independent indices</strong> — IRP (political) and IRE (economic) — using Claude Haiku
-                  as the LLM classifier, 11 RSS feeds with historical archive backfill, and per-feed normalization
+                  as the LLM classifier, 16 news sources with RSS feeds and historical archive backfill, and per-feed normalization
                   (mean = 100 over 2025 baseline).
                 </>
               : <>
@@ -70,7 +70,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   <strong>Iacoviello &amp; Tong (2026)</strong>, &quot;The AI-GPR Index: Measuring Geopolitical Risk
                   using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Aplicado a Perú como{' '}
                   <strong>dos índices independientes</strong> — IRP (político) e IRE (económico) — usando Claude Haiku
-                  como clasificador LLM, 11 feeds RSS con backfill de archivo histórico, y normalización por feed
+                  como clasificador LLM, 16 fuentes de noticias con feeds RSS y backfill de archivo histórico, y normalización por feed
                   (media = 100 sobre línea base 2025).
                 </>}
           </p>
@@ -121,7 +121,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
               <div className="text-sm text-gray-600 mb-1">{isEn ? 'Frequency' : 'Frecuencia'}</div>
               <div className="text-base font-semibold text-orange-900">{isEn ? 'Daily' : 'Diaria'}</div>
               <div className="text-xs text-gray-500 mt-1">
-                {isEn ? '11 RSS feeds · 6 sources + archive' : '11 feeds RSS · 6 fuentes + archivo'}
+                {isEn ? '16 sources + archive' : '16 fuentes + archivo'}
               </div>
             </div>
           </div>
@@ -376,8 +376,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
           </h2>
           <p className="text-gray-700 mb-4">
             {isEn
-              ? 'Articles are collected daily from 11 RSS feeds across 6 Peruvian news sources, covering national politics, economics, and regional events. Historical coverage is extended via the Arc Publishing archive API for three sources.'
-              : 'Los artículos se recolectan diariamente de 11 feeds RSS de 6 fuentes de noticias peruanas, cubriendo política nacional, economía y eventos regionales. La cobertura histórica se extiende vía la API de archivo Arc Publishing para tres fuentes.'}
+              ? 'Articles are collected daily from 16 Peruvian news sources via RSS feeds, covering national politics, economics, regional events, and broadcast media. Historical coverage is extended via the Arc Publishing archive API for select sources.'
+              : 'Los artículos se recolectan diariamente de 16 fuentes de noticias peruanas vía feeds RSS, cubriendo política nacional, economía, eventos regionales y medios audiovisuales. La cobertura histórica se extiende vía la API de archivo Arc Publishing para fuentes seleccionadas.'}
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 text-sm">
@@ -391,12 +391,22 @@ export default function RiesgoPoliticoMetodologiaPage() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {[
-                  { src: 'El Comercio',  feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '✓', cov: isEn ? 'Politics, economy, Lima' : 'Política, economía, Lima' },
-                  { src: 'Gestión',      feeds: isEn ? 'Peru, Economy' : 'Peru, Economía',             arc: '✓', cov: isEn ? 'Economy, business, markets' : 'Economía, empresa, mercados' },
-                  { src: 'La República', feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '–', cov: isEn ? 'National politics, social conflicts' : 'Política nacional, conflictos sociales' },
-                  { src: 'Andina',       feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '–', cov: isEn ? 'Official agency, government news' : 'Agencia oficial, noticias del gobierno' },
-                  { src: 'RPP Noticias', feeds: isEn ? 'General' : 'General',                          arc: '–', cov: isEn ? 'Breaking news, regional events' : 'Noticias de última hora, regiones' },
-                  { src: 'Correo',       feeds: isEn ? 'Politics, Economy' : 'Política, Economía',   arc: '✓', cov: isEn ? 'National politics, opinion' : 'Política nacional, opinión' },
+                  { src: 'El Comercio',  feeds: isEn ? 'Politics, Economy' : 'Política, Economía',  arc: '✓', cov: isEn ? 'Politics, economy, Lima' : 'Política, economía, Lima' },
+                  { src: 'Gestión',      feeds: isEn ? 'Peru, Economy' : 'Peru, Economía',           arc: '✓', cov: isEn ? 'Economy, business, markets' : 'Economía, empresa, mercados' },
+                  { src: 'La República', feeds: isEn ? 'Politics, Economy' : 'Política, Economía',  arc: '–', cov: isEn ? 'National politics, social conflicts' : 'Política nacional, conflictos sociales' },
+                  { src: 'Andina',       feeds: isEn ? 'Politics, Economy' : 'Política, Economía',  arc: '–', cov: isEn ? 'Official agency, government news' : 'Agencia oficial, noticias del gobierno' },
+                  { src: 'RPP Noticias', feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Breaking news, regional events' : 'Noticias de última hora, regiones' },
+                  { src: 'Correo',       feeds: isEn ? 'Politics, Economy' : 'Política, Economía',  arc: '✓', cov: isEn ? 'National politics, opinion' : 'Política nacional, opinión' },
+                  { src: 'Peru21',       feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'National news, opinion' : 'Noticias nacionales, opinión' },
+                  { src: 'Trome',        feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Popular press, social issues' : 'Prensa popular, temas sociales' },
+                  { src: 'Caretas',      feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Investigative, politics, culture' : 'Investigativo, política, cultura' },
+                  { src: 'ATV',          feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Broadcast TV news' : 'Noticias televisivas' },
+                  { src: 'Canal N',      feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'News channel, politics' : 'Canal de noticias, política' },
+                  { src: 'El Búho',      feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Digital news, analysis' : 'Noticias digitales, análisis' },
+                  { src: 'Inforegión',   feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Regional news, environment' : 'Noticias regionales, medioambiente' },
+                  { src: 'Diario UNO',   feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'National news, social issues' : 'Noticias nacionales, temas sociales' },
+                  { src: 'La Razón',     feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'National news, politics' : 'Noticias nacionales, política' },
+                  { src: 'Panamericana', feeds: isEn ? 'General' : 'General',                        arc: '–', cov: isEn ? 'Broadcast TV, breaking news' : 'Televisión, noticias de última hora' },
                 ].map(r => (
                   <tr key={r.src}>
                     <td className="px-4 py-2 font-medium text-gray-900">{r.src}</td>
@@ -410,8 +420,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
           </div>
           <p className="text-sm text-gray-500 mt-3">
             {isEn
-              ? 'Total: 11 RSS feeds across 6 sources. Articles collected daily. RSS coverage begins January 2025; archive backfill extends coverage for El Comercio, Gestión, and Correo.'
-              : 'Total: 11 feeds RSS en 6 fuentes. Artículos recolectados diariamente. La cobertura RSS comienza en enero 2025; el backfill de archivo extiende la cobertura para El Comercio, Gestión y Correo.'}
+              ? 'Total: 16 sources. Articles collected daily. RSS coverage begins January 2025; archive backfill extends coverage for El Comercio, Gestión, and Correo.'
+              : 'Total: 16 fuentes. Artículos recolectados diariamente. La cobertura RSS comienza en enero 2025; el backfill de archivo extiende la cobertura para El Comercio, Gestión y Correo.'}
           </p>
         </div>
 
@@ -532,8 +542,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
             <li>
               <strong>{isEn ? 'Lima-centric media:' : 'Medios centrados en Lima:'}</strong>{' '}
               {isEn
-                ? 'All six sources are Lima-based national newspapers. Regional protests or economic shocks may be under-represented if they do not receive national coverage.'
-                : 'Las seis fuentes son diarios nacionales con sede en Lima. Protestas regionales o shocks económicos locales pueden estar subrepresentados si no reciben cobertura nacional.'}
+                ? 'Most sources are Lima-based national outlets. Regional protests or economic shocks may be under-represented if they do not receive national coverage. Inforegión partially mitigates this.'
+                : 'La mayoría de fuentes son medios nacionales con sede en Lima. Protestas regionales o shocks económicos locales pueden estar subrepresentados si no reciben cobertura nacional. Inforegión mitiga parcialmente esto.'}
             </li>
             <li>
               <strong>{isEn ? 'LLM classification errors:' : 'Errores de clasificación LLM:'}</strong>{' '}
