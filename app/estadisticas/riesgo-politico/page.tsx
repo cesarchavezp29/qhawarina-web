@@ -66,10 +66,10 @@ interface PoliticalData {
 }
 
 // ─── RISK LEVEL SYSTEM (6 levels) ────────────────────────────────────────────
-// MINIMO / BAJO / MODERADO / ELEVADO / ALTO / CRITICO
-// Boundaries aligned with multiplier thresholds (mean = 100).
+// MINIMO / BAJO / NORMAL / ELEVADO / ALTO / CRITICO
+// Boundaries aligned with backend classify_level() (mean = 100).
 
-type RiskLevel = 'MINIMO' | 'BAJO' | 'MODERADO' | 'ELEVADO' | 'ALTO' | 'CRITICO';
+type RiskLevel = 'MINIMO' | 'BAJO' | 'NORMAL' | 'ELEVADO' | 'ALTO' | 'CRITICO' | 'MODERADO';
 
 interface LevelCfg {
   color: string;
@@ -84,20 +84,22 @@ interface LevelCfg {
 }
 
 const LEVELS: Record<RiskLevel, LevelCfg> = {
-  MINIMO:   { color: '#8D99AE', label_es: 'Mínimo',   label_en: 'Minimal',   desc_pol_es: 'Gobernanza rutinaria',          desc_pol_en: 'Routine governance',           desc_eco_es: 'Economía estable',          desc_eco_en: 'Stable economy',           range: '< 50',     mult: '< 0.5×' },
-  BAJO:     { color: '#2A9D8F', label_es: 'Bajo',     label_en: 'Low',       desc_pol_es: 'Tensiones menores',             desc_pol_en: 'Minor tensions',               desc_eco_es: 'Presiones leves',           desc_eco_en: 'Mild pressures',           range: '50–100',   mult: '0.5–1×' },
-  MODERADO: { color: '#E0A458', label_es: 'Moderado', label_en: 'Moderate',  desc_pol_es: 'Inestabilidad moderada',        desc_pol_en: 'Moderate instability',         desc_eco_es: 'Estrés moderado',           desc_eco_en: 'Moderate stress',          range: '100–150',  mult: '1–1.5×' },
-  ELEVADO:  { color: '#C65D3E', label_es: 'Elevado',  label_en: 'Elevated',  desc_pol_es: 'Crisis significativa',          desc_pol_en: 'Significant crisis',           desc_eco_es: 'Vulnerabilidad seria',      desc_eco_en: 'Serious vulnerability',    range: '150–200',  mult: '1.5–2×' },
-  ALTO:     { color: '#9B2226', label_es: 'Alto',     label_en: 'High',      desc_pol_es: 'Crisis grave',                  desc_pol_en: 'Severe crisis',                desc_eco_es: 'Crisis económica',          desc_eco_en: 'Economic crisis',          range: '200–300',  mult: '2–3×' },
-  CRITICO:  { color: '#6B0000', label_es: 'Crítico',  label_en: 'Critical',  desc_pol_es: 'Ruptura institucional',         desc_pol_en: 'Institutional breakdown',      desc_eco_es: 'Colapso sistémico',         desc_eco_en: 'Systemic collapse',        range: '> 300',    mult: '> 3×' },
+  MINIMO:   { color: '#8D99AE', label_es: 'Mínimo',  label_en: 'Minimal',  desc_pol_es: 'Gobernanza rutinaria',   desc_pol_en: 'Routine governance',      desc_eco_es: 'Economía estable',     desc_eco_en: 'Stable economy',      range: '< 50',     mult: '< 0.5×'  },
+  BAJO:     { color: '#2A9D8F', label_es: 'Bajo',    label_en: 'Low',      desc_pol_es: 'Tensiones menores',      desc_pol_en: 'Minor tensions',          desc_eco_es: 'Presiones leves',      desc_eco_en: 'Mild pressures',      range: '50–90',    mult: '0.5–0.9×'},
+  NORMAL:   { color: '#E9C46A', label_es: 'Normal',  label_en: 'Normal',   desc_pol_es: 'Nivel histórico normal', desc_pol_en: 'Near historical average', desc_eco_es: 'Economía normal',      desc_eco_en: 'Normal economy',      range: '90–110',   mult: '0.9–1.1×'},
+  ELEVADO:  { color: '#C65D3E', label_es: 'Elevado', label_en: 'Elevated', desc_pol_es: 'Crisis significativa',   desc_pol_en: 'Significant crisis',      desc_eco_es: 'Vulnerabilidad seria', desc_eco_en: 'Serious vulnerability',range: '110–150',  mult: '1.1–1.5×'},
+  ALTO:     { color: '#9B2226', label_es: 'Alto',    label_en: 'High',     desc_pol_es: 'Crisis grave',           desc_pol_en: 'Severe crisis',           desc_eco_es: 'Crisis económica',     desc_eco_en: 'Economic crisis',     range: '150–200',  mult: '1.5–2×'  },
+  CRITICO:  { color: '#6B0000', label_es: 'Crítico', label_en: 'Critical', desc_pol_es: 'Ruptura institucional',  desc_pol_en: 'Institutional breakdown', desc_eco_es: 'Colapso sistémico',    desc_eco_en: 'Systemic collapse',   range: '> 200',    mult: '> 2×'    },
+  // legacy alias — keep so old cached JSON doesn't break
+  MODERADO: { color: '#E9C46A', label_es: 'Normal',  label_en: 'Normal',   desc_pol_es: 'Nivel histórico normal', desc_pol_en: 'Near historical average', desc_eco_es: 'Economía normal',      desc_eco_en: 'Normal economy',      range: '90–110',   mult: '0.9–1.1×'},
 };
 
 function getRiskLevel(prr: number): RiskLevel {
   if (prr < 50)  return 'MINIMO';
-  if (prr < 100) return 'BAJO';
-  if (prr < 150) return 'MODERADO';
-  if (prr < 200) return 'ELEVADO';
-  if (prr < 300) return 'ALTO';
+  if (prr < 90)  return 'BAJO';
+  if (prr < 110) return 'NORMAL';
+  if (prr < 150) return 'ELEVADO';
+  if (prr < 200) return 'ALTO';
   return 'CRITICO';
 }
 
