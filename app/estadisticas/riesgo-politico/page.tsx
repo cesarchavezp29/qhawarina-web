@@ -12,7 +12,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ReferenceLine, ReferenceArea, ResponsiveContainer,
   ScatterChart, Scatter, ZAxis, BarChart, Bar, Cell,
-  LineChart, Line,
+  LineChart, Line, Customized,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -281,33 +281,74 @@ function ReadingCard({
   );
 }
 
-// ── Custom peak label: multi-line box, clamped inside chart viewport ─────────
-function PeakLabel({ viewBox, label, color }: {
-  viewBox?: { x?: number; y?: number; width?: number; height?: number };
-  label: string;
-  color: string;
-}) {
-  const { x = 0, y = 0 } = viewBox ?? {};
-  const words = label.split(' ');
-  const lines = words.length <= 2 ? words : [words[0], words.slice(1).join(' ')];
-  const lh = 11;
-  const pad = 3;
-  const boxH = lines.length * lh + pad * 2;
-  const maxChars = Math.max(...lines.map(l => l.length));
-  const boxW = maxChars * 5.5 + pad * 2;
-  const bx = x - boxW / 2;
-  const by = Math.max(4, y - boxH - 6);
+// ── Peak labels layer: positions labels above actual data points using chart scales
+function PeakLabelsLayer(props: any) {
+  const { xAxisMap, yAxisMap, peaks, color, valueKey, chartData } = props;
+  if (!xAxisMap || !yAxisMap || !peaks?.length || !chartData?.length) return null;
+  const xAxis = Object.values(xAxisMap)[0] as any;
+  const yAxis = Object.values(yAxisMap)[0] as any;
+  if (!xAxis?.scale || !yAxis?.scale) return null;
+  const xScale = xAxis.scale;
+  const yScale = yAxis.scale;
+
+  // Build date->smoothed-value map
+  const valueMap = new Map<string, number>();
+  for (const d of chartData) {
+    const v = d[valueKey];
+    if (v != null) valueMap.set(d.date, v as number);
+  }
+
+  // Compute pixel positions for each peak
+  const positioned = (peaks as Array<{ date: string; label: string; value: number }>)
+    .map((peak) => {
+      const px: number = xScale(peak.date);
+      const val = valueMap.get(peak.date) ?? peak.value;
+      const py: number = yScale(val);
+      if (px == null || isNaN(px) || py == null || isNaN(py)) return null;
+      return { label: peak.label, px, py };
+    })
+    .filter((x): x is { label: string; px: number; py: number } => x !== null);
+
+  if (!positioned.length) return null;
+
+  // Sort by x, assign stagger levels to avoid overlap
+  positioned.sort((a, b) => a.px - b.px);
+  const BOX_W = 72;
+  const levels: number[] = new Array(positioned.length).fill(0);
+  for (let i = 1; i < positioned.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (Math.abs(positioned[i].px - positioned[j].px) < BOX_W) {
+        levels[i] = Math.max(levels[i], levels[j] + 1);
+      }
+    }
+  }
+
+  const PAD = 3; const LH = 11; const BASE_LIFT = 8;
   return (
     <g>
-      <rect x={bx} y={by} width={boxW} height={boxH} rx={2}
-            fill="white" stroke={color} strokeWidth={0.8} opacity={0.92} />
-      {lines.map((line, i) => (
-        <text key={i} x={x} y={by + pad + (i + 1) * lh - 1}
-              textAnchor="middle" fill={color} fontSize={8} fontWeight={600}
-              fontFamily="system-ui, sans-serif">
-          {line}
-        </text>
-      ))}
+      {positioned.map((item, i) => {
+        const words = item.label.split(' ');
+        const lines = words.length <= 2 ? words : [words[0], words.slice(1).join(' ')];
+        const bh = lines.length * LH + PAD * 2;
+        const bw = Math.max(...lines.map(l => l.length)) * 5.5 + PAD * 2;
+        const boxY = Math.max(2, item.py - BASE_LIFT - levels[i] * (bh + 8) - bh);
+        const boxX = item.px - bw / 2;
+        return (
+          <g key={`${item.label}-${i}`}>
+            <line x1={item.px} y1={boxY + bh + 1} x2={item.px} y2={item.py}
+                  stroke={color} strokeWidth={0.8} strokeDasharray="3 2" strokeOpacity={0.6} />
+            <rect x={boxX} y={boxY} width={bw} height={bh} rx={2}
+                  fill="white" stroke={color} strokeWidth={0.8} opacity={0.93} />
+            {lines.map((line, li) => (
+              <text key={li} x={item.px} y={boxY + PAD + (li + 1) * LH - 1}
+                    textAnchor="middle" fill={color} fontSize={8} fontWeight={600}
+                    fontFamily="system-ui, sans-serif">
+                {line}
+              </text>
+            ))}
+          </g>
+        );
+      })}
     </g>
   );
 }
@@ -620,7 +661,7 @@ export default function RiesgoPoliticoPage() {
               </div>
             </div>
             <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={chartData} margin={{ top: 70, right: 16, left: 8, bottom: 8 }}>
+              <AreaChart data={chartData} margin={{ top: 40, right: 16, left: 8, bottom: 8 }}>
                 <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={200} y2={300} fill="#C65D3E" fillOpacity={0.05} stroke="none" />
@@ -673,16 +714,17 @@ export default function RiesgoPoliticoPage() {
                     style: { fontSize: 9, fill: CHART_COLORS.ink3 },
                   }}
                 />
-                {polPeaks.map((peak) => (
-                  <ReferenceLine
-                    key={peak.date}
-                    x={peak.date}
-                    stroke="#C65D3E"
-                    strokeDasharray="3 3"
-                    strokeOpacity={0.5}
-                    label={<PeakLabel label={peak.label} color="#C65D3E" />}
-                  />
-                ))}
+                <Customized
+                  component={(p: any) => (
+                    <PeakLabelsLayer
+                      {...p}
+                      peaks={polPeaks}
+                      color="#C65D3E"
+                      valueKey="political_7d"
+                      chartData={chartData}
+                    />
+                  )}
+                />
                 <Area
                   type="monotone"
                   dataKey="political_raw"
