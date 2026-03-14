@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-12",
-    "n_days": 31,
+    "last_date": "2026-03-13",
+    "n_days": 32,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -928,87 +928,114 @@
       "index_limpieza": 99.2773,
       "index_cuidado_personal": 98.7524,
       "index_other": 100.5501
+    },
+    {
+      "date": "2026-03-13",
+      "index_all": 99.1142,
+      "index_all_unweighted": 99.4024,
+      "index_food": 99.3103,
+      "index_nonfood": 99.7016,
+      "var_all": -0.2081,
+      "var_food": -0.2469,
+      "cum_pct": -0.8858,
+      "yoy_inflation": null,
+      "mom_inflation": null,
+      "interpolated": false,
+      "n_matched": 36469,
+      "index_arroz_cereales": 99.0843,
+      "index_pan_harinas": 99.0247,
+      "index_carnes": 99.3184,
+      "index_pescados_mariscos": 98.4122,
+      "index_lacteos": 99.2309,
+      "index_frutas": 100.2283,
+      "index_verduras": 98.2796,
+      "index_aceites_grasas": 98.6436,
+      "index_azucar_dulces": 101.0476,
+      "index_bebidas": 98.953,
+      "index_limpieza": 99.0971,
+      "index_cuidado_personal": 98.6168,
+      "index_other": 100.4837
     }
   ],
   "latest": {
-    "date": "2026-03-12",
-    "index_all": 99.3209,
-    "index_food": 99.5561,
-    "cum_pct": -0.6791,
-    "var_all": -0.0127,
+    "date": "2026-03-13",
+    "index_all": 99.1142,
+    "index_food": 99.3103,
+    "cum_pct": -0.8858,
+    "var_all": -0.2081,
     "yoy_inflation": null,
     "mom_inflation": null,
-    "n_products_today": 37920,
+    "n_products_today": 36469,
     "top_movers": [
+      {
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.39
+      },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": 1.03
+        "var": -0.33
       },
       {
         "category": "aceites_grasas",
         "label_es": "Aceites y Grasas",
         "label_en": "Oils & Fats",
-        "var": 0.5
+        "var": -0.28
       },
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -0.26
-      },
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
         "var": -0.23
       }
     ],
     "product_movers": [
       {
-        "name": "Lechuga de Seda Hidropónica de Invern...",
+        "name": "Tiramisú Personal",
         "store": "wong",
+        "category": "pan_harinas",
+        "var": 97.78
+      },
+      {
+        "name": "Limón Sutil x kg",
+        "store": "metro",
         "category": "frutas",
-        "var": 100.0
+        "var": 72.29
       },
       {
-        "name": "Lechuga Crespa Hidropónica de Inverna...",
+        "name": "Mix de Bocaditos Salados Wong 210g",
         "store": "wong",
-        "category": "carnes",
-        "var": 100.0
+        "category": "pan_harinas",
+        "var": 66.67
       },
       {
-        "name": "Torta Selva Negra con Durazno 20 Porc...",
-        "store": "metro",
+        "name": "Biscuits Sabor Original il Pastificio...",
+        "store": "wong",
         "category": "pan_harinas",
-        "var": 100.0
-      },
-      {
-        "name": "Torta Alemana con Cerezas 16 Porciones",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 100.0
+        "var": 66.67
       }
     ],
     "stores_coverage": {
-      "metro": 11412,
-      "plazavea": 13018,
-      "wong": 13900
+      "metro": 11101,
+      "plazavea": 12999,
+      "wong": 14945
     },
     "categories_coverage": {
-      "aceites_grasas": 699,
-      "arroz_cereales": 1106,
-      "azucar_dulces": 1001,
-      "bebidas": 965,
-      "carnes": 13953,
-      "cuidado_personal": 2827,
-      "frutas": 1943,
-      "lacteos": 2149,
-      "limpieza": 3090,
-      "pan_harinas": 6273,
-      "pescados_mariscos": 224,
-      "verduras": 308
+      "aceites_grasas": 707,
+      "arroz_cereales": 1338,
+      "azucar_dulces": 1057,
+      "bebidas": 978,
+      "carnes": 13124,
+      "cuidado_personal": 2851,
+      "frutas": 1942,
+      "lacteos": 2704,
+      "limpieza": 3085,
+      "pan_harinas": 6556,
+      "pescados_mariscos": 229,
+      "verduras": 307
     }
   }
 }
