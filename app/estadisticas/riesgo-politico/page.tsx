@@ -418,7 +418,7 @@ export default function RiesgoPoliticoPage() {
                     <strong className="text-gray-700">Today = {mult} the normal level.</strong>
                   </>
                 : <>
-                    Mide la intensidad de noticias políticas y económicas en Perú.{' '}
+                    Mide la intensidad de noticias políticas en Perú.{' '}
                     Un día normal&nbsp;=&nbsp;100.{' '}
                     <strong className="text-gray-700">Hoy = {mult} lo normal.</strong>
                   </>

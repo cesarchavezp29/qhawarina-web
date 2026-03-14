@@ -54,6 +54,7 @@ export default function Header() {
     ["/estadisticas/precios-diarios","Daily Prices (BPP)"],
     ["/estadisticas/pobreza",        "Poverty"],
     ["/estadisticas/riesgo-politico","Political Risk"],
+    ["/estadisticas/riesgo-economico","Economic Risk"],
     ["/estadisticas/intervenciones", "FX Market"],
     ["/estadisticas/pobreza/distritos", "District Poverty"],
   ] : [
@@ -62,6 +63,7 @@ export default function Header() {
     ["/estadisticas/precios-diarios","Precios Diarios (BPP)"],
     ["/estadisticas/pobreza",        "Pobreza"],
     ["/estadisticas/riesgo-politico","Riesgo Político"],
+    ["/estadisticas/riesgo-economico","Riesgo Económico"],
     ["/estadisticas/intervenciones", "Mercado Cambiario"],
     ["/estadisticas/pobreza/distritos", "Pobreza Distrital"],
   ];
