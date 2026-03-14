@@ -441,7 +441,7 @@ export default function RiesgoPoliticoPage() {
     return { slope, intercept, minX, maxX, r };
   }, [monthlyScatterDataMemo]);
 
-  if (loading) return <PageSkeleton cards={2} />;
+  if (loading) return <PageSkeleton cards={4} />;
   if (error || !data) return (
     <div className="min-h-screen flex items-center justify-center">
       <p className="text-red-500">
@@ -566,7 +566,7 @@ export default function RiesgoPoliticoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 2: POLITICAL READING CARDS ══════════════════════════ */}
+        {/* ══ SECTION 2: POLITICAL READING CARDS (2×2) ════════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           <ReadingCard
             title={isEn ? 'POLITICAL RISK · TODAY' : 'RIESGO POLÍTICO · HOY'}
@@ -586,6 +586,40 @@ export default function RiesgoPoliticoPage() {
             isEn={isEn}
             indexLabel="IRP"
           />
+          {/* Risk level card */}
+          <div
+            className="rounded-xl border-2 p-5 flex flex-col"
+            style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
+              {isEn ? 'RISK LEVEL' : 'NIVEL DE RIESGO'}
+            </p>
+            <p className="text-xs text-gray-400 mt-0.5">
+              {isEn ? 'Based on 7d trend' : 'Basado en tendencia 7d'}
+            </p>
+            <p className="text-5xl font-bold leading-none mt-3" style={{ color: LEVELS[polLevel as RiskLevel]?.color ?? '#C65D3E' }}>
+              {isEn ? (LEVELS[polLevel as RiskLevel]?.label_en ?? polLevel) : (LEVELS[polLevel as RiskLevel]?.label_es ?? polLevel)}
+            </p>
+            <p className="text-xs text-gray-400 mt-2">
+              {LEVELS[polLevel as RiskLevel]?.desc_pol_es ?? ''}
+            </p>
+          </div>
+          {/* Political multiplier card */}
+          <div
+            className="rounded-xl border-2 p-5 flex flex-col"
+            style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
+              {isEn ? 'POLITICAL MULTIPLIER' : 'MULTIPLICADOR POLÍTICO'}
+            </p>
+            <p className="text-xs text-gray-400 mt-0.5">
+              {isEn ? '7-day rolling average' : 'Promedio móvil 7 días'}
+            </p>
+            <p className="text-5xl font-bold leading-none mt-3" style={{ color: '#C65D3E' }}>
+              {polMult.toFixed(1)}×
+            </p>
+            <p className="text-xs text-gray-400 mt-2">IRP · {isEn ? 'mean = 100' : 'media = 100'}</p>
+          </div>
         </div>
 
         {/* ── Link to economic risk page ──────────────────────────────────── */}
