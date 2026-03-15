@@ -69,7 +69,7 @@ function integrateKDE(kde: KDEPoint[], lo: number, hi: number): number {
 }
 
 // SVG watermark pattern (QHAWARINA rotated 45°, opacity ~0.03)
-const WATERMARK_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.04'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
+const WATERMARK_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.02'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
 
 // Kaitz category
 function kaitzCategory(k: number): 'baja' | 'media' | 'alta' {
@@ -224,7 +224,7 @@ export default function SalarioMinimoPageV2() {
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen" style={{ background: CHART_COLORS.bg, backgroundImage: WATERMARK_BG }}>
+    <div className="min-h-screen bg-[#FAF8F4]" style={{ background: CHART_COLORS.bg, backgroundImage: WATERMARK_BG }}>
 
       {/* Breadcrumb */}
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 pt-4">
@@ -251,7 +251,7 @@ export default function SalarioMinimoPageV2() {
         </p>
         <div className="mt-6 inline-flex items-center gap-2 text-xs px-4 py-2 rounded-full border"
           style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}>
-          <span>ENAHO Panel 2020–2024 · 25 departamentos · 224,780 observaciones persona-año</span>
+          <span>ENAHO Panel 2021–2023 · 25 departamentos · 224,780 observaciones persona-año</span>
         </div>
       </div>
 
@@ -271,27 +271,18 @@ export default function SalarioMinimoPageV2() {
               No se detectan pérdidas de empleo
             </div>
             <p className="text-xs leading-relaxed mb-4" style={{ color: CHART_COLORS.ink3 }}>
-              En departamentos donde el salario mínimo era más restrictivo, el empleo no cayó después del aumento de 2022.
+              El coeficiente de empleo es positivo (+0.37), probablemente reflejando la recuperación económica
+              post-COVID y no un efecto del salario mínimo. No se observan pérdidas de empleo en
+              departamentos de alta exposición.
             </p>
-            {empMain && (
-              <div>
-                <p className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
-                  El intervalo de confianza incluye el cero — no hay evidencia estadística de destrucción de empleo.
-                </p>
-                {/* CI bar: shows CI crossing zero */}
-                <div className="relative h-2 rounded-full" style={{ background: CHART_DEFAULTS.gridStroke }}>
-                  <div className="absolute top-0 h-full w-0.5" style={{ left: '25%', background: CHART_COLORS.ink3, opacity: 0.6 }} />
-                  <div className="absolute h-full rounded-full"
-                    style={{ left: '22%', right: '5%', background: CHART_COLORS.teal, opacity: 0.35 }} />
-                  <div className="absolute w-2.5 h-2.5 rounded-full -translate-y-1/4"
-                    style={{ left: `calc(25% + ${(empMain.beta / (empMain.ci_hi - empMain.ci_lo)) * 50}% - 5px)`, background: CHART_COLORS.terra, border: '2px solid white', top: 0 }} />
-                </div>
-                <div className="flex justify-between text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
-                  <span>IC 95%: [{empMain.ci_lo.toFixed(2)}, +{empMain.ci_hi.toFixed(2)}]</span>
-                  <span style={{ color: CHART_COLORS.teal }}>p = {empMain.pval.toFixed(2)}</span>
-                </div>
-              </div>
-            )}
+            {/* Flat zero reference visual */}
+            <div className="flex items-center gap-2 mt-2">
+              <div className="flex-1 h-px" style={{ background: CHART_COLORS.ink3, opacity: 0.3 }} />
+              <span className="text-xs font-semibold px-2 py-0.5 rounded" style={{ background: CHART_COLORS.surface, color: CHART_COLORS.ink3 }}>
+                sin efecto negativo
+              </span>
+              <div className="flex-1 h-px" style={{ background: CHART_COLORS.ink3, opacity: 0.3 }} />
+            </div>
           </div>
 
           {/* Card 2: Formalization */}
@@ -498,7 +489,6 @@ export default function SalarioMinimoPageV2() {
                   <YAxis
                     tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
                     tickFormatter={v => v.toFixed(2)}
-                    label={{ value: 'Densidad (×10⁻³)', angle: -90, position: 'insideLeft', offset: 10, style: { fontSize: 9, fill: CHART_DEFAULTS.axisStroke } }}
                   />
                   <Tooltip
                     contentStyle={tooltipContentStyle}
@@ -636,6 +626,8 @@ export default function SalarioMinimoPageV2() {
                 aproximadamente{' '}
                 <strong>{fmt(Math.max(0, workersInBand))}</strong>{' '}
                 trabajadores formales de Lima Metropolitana recibirían un aumento directo (estimación EPE 2022).
+                A nivel nacional, se estima que más de 1 millón de trabajadores formales se verían afectados
+                (Lima representa ~30% del empleo formal).
                 La evidencia de 2022 muestra que no hubo pérdidas de empleo en los departamentos más expuestos.
                 Los departamentos donde el impacto sería mayor incluyen{' '}
                 <strong>{top3Depts.join(', ')}</strong>.
@@ -914,7 +906,7 @@ export default function SalarioMinimoPageV2() {
                       formatter={(v: number | undefined, name: string | undefined) => [`${((v ?? 0) * 100).toFixed(2)}pp`, name ?? ''] as [string, string]}
                     />
                     <ReferenceLine y={0} stroke={CHART_COLORS.ink3} strokeDasharray="4 2" />
-                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.teal} fillOpacity={0.18} legendType="none" name="IC superior" />
+                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.teal} fillOpacity={0.08} legendType="none" name="IC superior" />
                     <Area type="monotone" dataKey="lo" stroke="none" fill="#FAF8F4" fillOpacity={1} legendType="none" name="IC inferior" />
                     <Line type="monotone" dataKey="b" stroke={CHART_COLORS.teal} strokeWidth={2.5} dot={{ r: 5, fill: CHART_COLORS.teal }} name="β empleo" />
                   </ComposedChart>
@@ -961,7 +953,7 @@ export default function SalarioMinimoPageV2() {
               ].map((row, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="flex-1 text-xs" style={{ color: row.bold ? CHART_COLORS.ink : CHART_COLORS.ink3, fontWeight: row.bold ? 600 : 400 }}>{row.label}</div>
-                  <div className="text-sm px-4 py-1.5 rounded font-semibold" style={{ background: row.color + '20', color: row.color, minWidth: 150, textAlign: 'center', fontSize: 13 }}>{row.effect}</div>
+                  <div className="px-4 py-2 rounded font-semibold" style={{ background: row.color + '20', color: row.color, minWidth: 150, textAlign: 'center', fontSize: 14 }}>{row.effect}</div>
                 </div>
               ))}
             </div>
@@ -1053,7 +1045,7 @@ export default function SalarioMinimoPageV2() {
               <div>
                 <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Especificación</h3>
                 <p className="text-xs font-mono p-3 rounded" style={{ background: CHART_COLORS.surface, color: CHART_COLORS.ink }}>
-                  Y_idt = α_d + γ_t + β(Post_t × Kaitz_d_pre) + Edad + Edad² + Sexo + ε_idt
+                  Y<sub>idt</sub> = α<sub>d</sub> + γ<sub>t</sub> + β(Post<sub>t</sub> × Kaitz<sub>d,pre</sub>) + Edad + Edad² + Sexo + ε<sub>idt</sub>
                 </p>
                 <p className="text-xs mt-2 leading-relaxed" style={{ color: CHART_COLORS.ink3 }}>
                   Efectos fijos de departamento (α_d) y año (γ_t). Errores estándar clusterizados a nivel departamento
