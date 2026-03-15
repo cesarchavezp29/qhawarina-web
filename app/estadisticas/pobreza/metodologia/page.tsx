@@ -8,7 +8,7 @@ function DynamicLastUpdate({ src, isEn }: { src: string; isEn: boolean }) {
     const locale = isEn ? 'en-US' : 'es-PE';
     fetch(src + '?v=' + new Date().toISOString().slice(0, 10))
       .then(r => r.json()).then(d => {
-        const iso = d?.metadata?.generated_at ?? new Date().toISOString();
+        const iso = d?.metadata?.last_updated ?? new Date().toISOString();
         setDateStr(new Date(iso).toLocaleDateString(locale, { day: '2-digit', month: 'long', year: 'numeric' }));
       }).catch(() => setDateStr(new Date().toLocaleDateString(locale, { day: '2-digit', month: 'long', year: 'numeric' })));
   }, [src, isEn]);
@@ -55,8 +55,8 @@ export default function PobrezaMetodologiaPage() {
           </h2>
           <p className="text-gray-700 mb-4">
             {isEn
-              ? <>The poverty nowcast uses a <strong>departmental panel model with Gradient Boosting Regressor (GBR)</strong> that predicts year-on-year changes in poverty rates for 24 departments. The model combines departmental economic indicators (credit, employment) with nighttime light (NTL) satellite data to estimate monetary poverty 6–12 months ahead of the official annual INEI publication.</>
-              : <>El nowcast de pobreza utiliza un <strong>modelo de panel departamental con Gradient Boosting Regressor (GBR)</strong> que predice cambios año-a-año en tasas de pobreza para 24 departamentos. El modelo combina indicadores económicos departamentales (crédito, empleo) con datos satelitales de luces nocturnas (NTL) para estimar pobreza monetaria con 6-12 meses de anticipación respecto a la publicación oficial anual de INEI.</>}
+              ? <>The poverty nowcast uses a <strong>departmental panel model with Gradient Boosting Regressor (GBR)</strong> that predicts year-on-year changes in poverty rates for 24 departments. The model uses departmental economic indicators (credit, electricity, tax revenue, public spending, employment, mining, inflation) to estimate monetary poverty 6–12 months ahead of the official annual INEI publication.</>
+              : <>El nowcast de pobreza utiliza un <strong>modelo de panel departamental con Gradient Boosting Regressor (GBR)</strong> que predice cambios año-a-año en tasas de pobreza para 24 departamentos. El modelo usa indicadores económicos departamentales (crédito, electricidad, recaudación, gasto público, empleo, minería, inflación) para estimar pobreza monetaria con 6-12 meses de anticipación respecto a la publicación oficial anual de INEI.</>}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="bg-blue-50 p-4 rounded-lg">
@@ -158,8 +158,8 @@ export default function PobrezaMetodologiaPage() {
           </div>
           <p className="text-gray-700 mt-4">
             {isEn
-              ? 'GBR captures non-linearities in the relationship between credit/employment/NTL and poverty that Ridge cannot model.'
-              : 'GBR captura no-linealidades en la relación entre crédito/empleo/NTL y pobreza que Ridge no puede modelar.'}
+              ? 'GBR captures non-linearities in the relationship between credit, electricity, and employment with poverty that Ridge cannot model.'
+              : 'GBR captura no-linealidades en la relación entre crédito, electricidad y empleo con pobreza que Ridge no puede modelar.'}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
@@ -241,34 +241,35 @@ export default function PobrezaMetodologiaPage() {
                   <td className="px-4 py-2 text-gray-600">MEF/SUNAT</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Satellite' : 'Satelital'}</td>
-                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Nighttime lights (NTL) departmental sum (log)' : 'Luces nocturnas (NTL) suma departamental (log)'}</td>
-                  <td className="px-4 py-2 text-gray-600">NOAA-VIIRS</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'GDP' : 'PBI'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Monthly GDP proxy (YoY%)' : 'PBI mensual proxy (YoY%)'}</td>
+                  <td className="px-4 py-2 text-gray-600">BCRP</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 font-medium text-gray-900">{isEn ? 'Mining' : 'Minería'}</td>
+                  <td className="px-4 py-2 text-gray-700">{isEn ? 'Mining production index (YoY%)' : 'Índice producción minera (YoY%)'}</td>
+                  <td className="px-4 py-2 text-gray-600">BCRP</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            {isEn ? '2.2 Nighttime Lights (NTL) as Proxy' : '2.2 Luces Nocturnas (NTL) como Proxy'}
+            {isEn ? '2.2 Nighttime Lights (NTL) — District Disaggregation Only' : '2.2 Luces Nocturnas (NTL) — Solo para Desagregación Distrital'}
           </h3>
           <p className="text-gray-700 mb-4">
             {isEn
-              ? 'Monthly NTL is aggregated to annual and transformed with log(1+x) to stabilize variance:'
-              : 'NTL mensual se agrega a anual y se transforma con log(1+x) para estabilizar varianza:'}
+              ? <><strong>NTL is NOT a predictor in the GBR model.</strong> Both GBR and ENet assign zero weight to NTL at the departmental level. NTL satellite imagery (NOAA-VIIRS) is used exclusively for <strong>district-level spatial disaggregation</strong> via dasymetric mapping: district poverty estimates are distributed proportionally to nighttime light intensity within each department, following Jean et al. (2016).</>
+              : <><strong>NTL NO es un predictor del modelo GBR.</strong> Tanto GBR como ENet asignan peso cero a NTL a nivel departamental. La imagenería satelital NTL (NOAA-VIIRS) se usa exclusivamente para <strong>desagregación espacial a nivel distrital</strong> mediante mapeo dasimétrico: las estimaciones de pobreza distrital se distribuyen proporcionalmente a la intensidad de luces nocturnas dentro de cada departamento, siguiendo a Jean et al. (2016).</>}
           </p>
           <div className="bg-gray-100 p-4 rounded font-mono text-sm mb-4">
-            NTL_annual<sub>d,t</sub> = log(1 + mean(NTL_monthly<sub>d,t</sub>))
+            poverty_district<sub>i</sub> = poverty_dept<sub>d</sub> × (NTL_weight<sub>i</sub> / Σ NTL_weight<sub>d</sub>)
           </div>
           <p className="text-gray-700 mb-4">
-            <strong>{isEn ? 'Advantages:' : 'Ventajas:'}</strong>
+            {isEn
+              ? 'NTL weights are computed as inverse-light fractions: districts with less economic activity (lower NTL) receive higher poverty allocation. This dasymetric approach provides district-level granularity without requiring district-level survey data.'
+              : 'Los pesos NTL se calculan como fracciones inversas de luz: distritos con menor actividad económica (menor NTL) reciben mayor asignación de pobreza. Este enfoque dasimétrico provee granularidad distrital sin requerir datos de encuesta a ese nivel.'}
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700">
-            <li>{isEn ? 'Universal coverage (25 departments, no gaps)' : 'Cobertura universal (25 departamentos sin gaps)'}</li>
-            <li>{isEn ? 'Monthly frequency → enables intra-year nowcasting' : 'Frecuencia mensual → permite nowcasting intra-año'}</li>
-            <li>{isEn ? 'Negatively correlated with poverty (more light = less poverty)' : 'Correlaciona negativamente con pobreza (más luz = menos pobreza)'}</li>
-            <li>{isEn ? 'No publication lag (~15 days from end of month)' : 'Sin rezago de publicación (~15 días desde fin de mes)'}</li>
-          </ul>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
             {isEn ? '2.3 Target: Departmental Monetary Poverty (INEI)' : '2.3 Target: Pobreza Monetaria Departamental (INEI)'}
@@ -354,14 +355,14 @@ export default function PobrezaMetodologiaPage() {
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
-            {isEn ? '3.3 Current Nowcast (2024)' : '3.3 Nowcast Actual (2024)'}
+            {isEn ? '3.3 Current Nowcast (2025)' : '3.3 Nowcast Actual (2025)'}
           </h3>
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-green-900 font-medium">
-              {isEn ? 'National Poverty 2024:' : 'Pobreza Nacional 2024:'} <strong>26.8%</strong>
+              {isEn ? 'National Poverty 2025:' : 'Pobreza Nacional 2025:'} <strong>25.2%</strong>
             </p>
             <p className="text-sm text-green-800 mt-2">
-              {isEn ? '24 departments | Full panel through Nov-2024' : '24 departamentos | Panel completo a través de Nov-2024'}
+              {isEn ? '24 departments | −1.0 pp vs 2024 official (26.2%) | Mixed coverage through Dec-2025' : '24 departamentos | −1.0 pp vs oficial 2024 (26.2%) | Cobertura mixta hasta dic-2025'}
             </p>
           </div>
         </div>
@@ -382,11 +383,11 @@ export default function PobrezaMetodologiaPage() {
           </h3>
           <p className="text-gray-700 mb-4">
             {isEn
-              ? 'Disaggregates annual observations to quarterly frequency using high-frequency indicators as related series:'
-              : 'Desagrega observaciones anuales a frecuencia trimestral usando indicadores de alta frecuencia como related series:'}
+              ? <>Disaggregates annual observations to quarterly frequency using high-frequency indicators as related series (Chow &amp; Lin, 1971):</>
+              : <>Desagrega observaciones anuales a frecuencia trimestral usando indicadores de alta frecuencia como related series (Chow &amp; Lin, 1971):</>}
           </p>
           <div className="bg-gray-100 p-4 rounded font-mono text-sm mb-4">
-            pobreza_quarterly = ChowLin(pobreza_annual, related=[empleo_q, credito_q, ntl_q])
+            pobreza_quarterly = ChowLin(pobreza_annual, related=[pbi_q, credito_q, ipc_q])
           </div>
           <p className="text-gray-700 mb-4">
             <strong>{isEn ? 'Advantages:' : 'Ventajas:'}</strong>
