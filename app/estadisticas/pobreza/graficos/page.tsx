@@ -171,8 +171,8 @@ export default function PobrezaGraficosPage() {
               <Plot
                 data={[
                   {
-                    x: quarterlyData.national_quarterly.map(d => d.quarter),
-                    y: quarterlyData.national_quarterly.map(d => d.poverty_rate),
+                    x: quarterlyData.national_quarterly.filter(d => d.quarter <= '2024-Q4').map(d => d.quarter),
+                    y: quarterlyData.national_quarterly.filter(d => d.quarter <= '2024-Q4').map(d => d.poverty_rate),
                     type: 'scatter',
                     mode: 'lines',
                     name: isEn ? 'Quarterly Poverty' : 'Pobreza Trimestral',
@@ -199,10 +199,10 @@ export default function PobrezaGraficosPage() {
                 style={{ width: '100%' }}
               />
               <p className="text-sm text-gray-600 mt-4">
-                <strong>{isEn ? 'Method:' : 'Método:'}</strong>{' '}
+                <strong>{isEn ? 'Method:' : 'M\u00e9todo:'}</strong>{' '}
                 {isEn
-                  ? 'Chow-Lin temporal disaggregation using quarterly GDP and monthly CPI as indicators. Shows intra-annual variation not visible in annual data.'
-                  : 'Desagregación temporal Chow-Lin usando GDP trimestral e IPC mensual como indicadores. Muestra variación intra-anual no visible en datos anuales.'}
+                  ? 'Chow-Lin temporal disaggregation using quarterly GDP and monthly CPI as indicators. Series shown through 2024-Q4 (2025 extrapolation excluded).'
+                  : 'Desagregaci\u00f3n temporal Chow-Lin usando PBI trimestral e IPC mensual como indicadores. Serie mostrada hasta 2024-T4 (extrapolaci\u00f3n 2025 excluida).'}
               </p>
             </div>
           )}

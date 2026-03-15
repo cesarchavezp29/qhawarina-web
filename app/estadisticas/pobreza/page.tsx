@@ -676,7 +676,7 @@ export default function PobrezaPage() {
           <Link href="/estadisticas/pobreza/graficos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">chart</div>
+                <div className="text-4xl">📊</div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
                     {isEn ? 'Time Series' : 'Evoluci\u00f3n Temporal'}
@@ -692,7 +692,7 @@ export default function PobrezaPage() {
           <Link href="/estadisticas/pobreza/mapas">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">map</div>
+                <div className="text-4xl">🗺️</div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
                     {isEn ? 'Regional Map' : 'Distribuci\u00f3n Regional'}
@@ -708,7 +708,7 @@ export default function PobrezaPage() {
           <Link href="/estadisticas/pobreza/distritos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">pin</div>
+                <div className="text-4xl">📍</div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
                     {isEn ? 'District Explorer' : 'Explorador Distrital'}

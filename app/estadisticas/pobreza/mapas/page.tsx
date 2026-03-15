@@ -16,7 +16,7 @@ interface DeptPoverty {
 }
 
 interface PovertyData {
-  metadata: { target_year: number; model: string };
+  metadata: { target_year: number; model: string; vintage_month?: string; last_updated?: string };
   national: { poverty_nowcast: number };
   departments: DeptPoverty[];
 }
@@ -96,9 +96,9 @@ export default function PobrezaMapasPage() {
         <p className="text-sm text-gray-500 mb-4">
           {isEn ? 'National:' : 'Nacional:'}{' '}
           <strong className="text-red-700">{data.national.poverty_nowcast.toFixed(1)}%</strong>
-          {' · '}{isEn ? 'Source: INEI ENAHO, satellite NTL disaggregation' : 'Fuente: INEI ENAHO, desagregación NTL satélital'}
+          {' \u00b7 '}{isEn ? 'Source: INEI ENAHO, Qhawarina nowcast model' : 'Fuente: INEI ENAHO, modelo nowcast Qhawarina'}
         </p>
-        <div className="mt-2 mb-8"><LastUpdate date="18-Feb-2026" /></div>
+        <div className="mt-2 mb-8"><LastUpdate date={data.metadata.last_updated ?? data.metadata.vintage_month ?? ''} /></div>
 
         {/* Key Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -334,8 +334,8 @@ export default function PobrezaMapasPage() {
             <p>
               <strong>{isEn ? 'Model:' : 'Modelo:'}</strong>{' '}
               {isEn
-                ? `${data.metadata.model} trained on ENAHO 2012–2024 data using departmental panel indicators (credit, electricity, tax revenue, tourism, NTL). Method: annual change prediction + poverty lag as anchor.`
-                : `${data.metadata.model} entrenado sobre datos ENAHO 2012–2024 usando indicadores de panel departamental (crédito, electricidad, recaudación, turismo, NTL). Método: predicción de cambio anual + rezago de pobreza como ancla.`}
+                ? `${data.metadata.model} trained on ENAHO 2004–2024 data using departmental panel indicators (monthly GDP, tax revenue, current spending, capital spending, credit, electricity, mining, pensions, inflation). Method: annual change prediction + poverty lag as anchor.`
+                : `${data.metadata.model} entrenado sobre datos ENAHO 2004–2024 usando indicadores de panel departamental (PBI mensual, recaudaci\u00f3n, gasto corriente, gasto de capital, cr\u00e9dito, electricidad, miner\u00eda, pensiones, inflaci\u00f3n). M\u00e9todo: predicci\u00f3n de cambio anual + rezago de pobreza como ancla.`}
             </p>
             <p>
               <strong>{isEn ? 'District disaggregation:' : 'Desagregación distrital:'}</strong>{' '}
