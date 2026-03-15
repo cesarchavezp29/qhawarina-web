@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-14T21:40:32.409767",
+    "generated_at": "2026-03-14T16:09:04.675594",
     "method": "Chow-Lin temporal disaggregation",
     "indicators": [
       "GDP quarterly",
@@ -287,7 +287,7 @@
     },
     {
       "quarter": "2021-Q2",
-      "poverty_rate": 31.8
+      "poverty_rate": 1.7
     },
     {
       "quarter": "2021-Q3",
@@ -346,14 +346,16 @@
       "poverty_rate": 25.5
     },
     {
-      "quarter": "2025-Q3",
-      "poverty_rate": 24.4,
-      "is_nowcast": true
+      "quarter": "2025-Q1",
+      "poverty_rate": 24.6
     },
     {
-      "quarter": "2025-Q4",
-      "poverty_rate": 24.9,
-      "is_nowcast": true
+      "quarter": "2025-Q2",
+      "poverty_rate": 25.4
+    },
+    {
+      "quarter": "2025-Q3",
+      "poverty_rate": 24.9
     }
   ],
   "last_quarter": {
