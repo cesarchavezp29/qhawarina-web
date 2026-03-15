@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  ComposedChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   ReferenceLine, ReferenceArea, AreaChart, Area, Legend,
 } from 'recharts';
 import {
@@ -263,8 +263,8 @@ export default function SalarioMinimoPageV2() {
         <div className="grid md:grid-cols-3 gap-4 mb-12">
 
           {/* Card 1: No employment destruction */}
-          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.teal, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
-            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.teal }}>
+          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.terra, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
+            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.terra }}>
               Empleo
             </div>
             <div className="text-2xl font-bold mb-2" style={{ color: CHART_COLORS.ink }}>
@@ -273,26 +273,22 @@ export default function SalarioMinimoPageV2() {
             <p className="text-xs leading-relaxed mb-4" style={{ color: CHART_COLORS.ink3 }}>
               En departamentos donde el salario mínimo era más restrictivo, el empleo no cayó después del aumento de 2022.
             </p>
-            {/* Mini CI bar */}
             {empMain && (
               <div>
-                <div className="text-xs mb-1" style={{ color: CHART_COLORS.ink3 }}>
-                  β = {empMain.beta > 0 ? '+' : ''}{empMain.beta.toFixed(3)}{pStars(empMain.pval)} (SE {empMain.se.toFixed(3)})
-                </div>
-                <div className="relative h-2 rounded-full mt-2" style={{ background: CHART_DEFAULTS.gridStroke }}>
-                  {/* Zero marker */}
-                  <div className="absolute top-0 h-full w-px" style={{ left: '38%', background: CHART_COLORS.ink3 }} />
-                  {/* CI range */}
+                <p className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
+                  El intervalo de confianza incluye el cero — no hay evidencia estadística de destrucción de empleo.
+                </p>
+                {/* CI bar: shows CI crossing zero */}
+                <div className="relative h-2 rounded-full" style={{ background: CHART_DEFAULTS.gridStroke }}>
+                  <div className="absolute top-0 h-full w-0.5" style={{ left: '25%', background: CHART_COLORS.ink3, opacity: 0.6 }} />
                   <div className="absolute h-full rounded-full"
-                    style={{
-                      left: `${Math.max(0, 38 + empMain.ci_lo / 2 * 100)}%`,
-                      width: `${Math.min(60, (empMain.ci_hi - empMain.ci_lo) / 2 * 100)}%`,
-                      background: CHART_COLORS.teal,
-                      opacity: 0.7,
-                    }} />
+                    style={{ left: '22%', right: '5%', background: CHART_COLORS.teal, opacity: 0.35 }} />
+                  <div className="absolute w-2.5 h-2.5 rounded-full -translate-y-1/4"
+                    style={{ left: `calc(25% + ${(empMain.beta / (empMain.ci_hi - empMain.ci_lo)) * 50}% - 5px)`, background: CHART_COLORS.terra, border: '2px solid white', top: 0 }} />
                 </div>
-                <div className="text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
-                  IC 95%: [{empMain.ci_lo.toFixed(3)}, +{empMain.ci_hi.toFixed(3)}]
+                <div className="flex justify-between text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
+                  <span>IC 95%: [{empMain.ci_lo.toFixed(2)}, +{empMain.ci_hi.toFixed(2)}]</span>
+                  <span style={{ color: CHART_COLORS.teal }}>p = {empMain.pval.toFixed(2)}</span>
                 </div>
               </div>
             )}
@@ -314,16 +310,22 @@ export default function SalarioMinimoPageV2() {
                 <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.terra }}>
                   +{(formalResult.beta_2023 * 100).toFixed(1)}pp{pStars(formalResult.pval_2023)}
                 </div>
-                <div className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
-                  β₂₀₂₃ = {formalResult.beta_2023.toFixed(3)} (IC: [{formalResult.ci_lo_2023.toFixed(3)}, {formalResult.ci_hi_2023.toFixed(3)}])
+                <div className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
+                  Efecto en 2023: IC 95% [{(formalResult.ci_lo_2023 * 100).toFixed(1)}pp, {(formalResult.ci_hi_2023 * 100).toFixed(1)}pp]
+                </div>
+                <div className="relative h-2 rounded-full" style={{ background: CHART_DEFAULTS.gridStroke }}>
+                  <div className="absolute h-full rounded-full" style={{ width: `${Math.min(100, formalResult.beta_2023 * 100 * 8)}%`, background: CHART_COLORS.terra, opacity: 0.7 }} />
+                </div>
+                <div className="flex justify-between text-xs mt-0.5" style={{ color: CHART_COLORS.ink3 }}>
+                  <span>0pp</span><span style={{ color: CHART_COLORS.terra }}>+{(formalResult.beta_2023 * 100).toFixed(1)}pp</span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Card 3: Wages */}
-          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.amber, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
-            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.amber }}>
+          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.terra, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
+            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.terra }}>
               Salarios formales
             </div>
             <div className="text-2xl font-bold mb-2" style={{ color: CHART_COLORS.ink }}>
@@ -334,11 +336,17 @@ export default function SalarioMinimoPageV2() {
             </p>
             {wageResult && (
               <div>
-                <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.amber }}>
+                <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.terra }}>
                   +{(wageResult.beta_2023 * 100).toFixed(1)}%{pStars(wageResult.pval_2023)}
                 </div>
-                <div className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
-                  log-wage β₂₀₂₃ = {wageResult.beta_2023.toFixed(3)} (IC: [{wageResult.ci_lo_2023.toFixed(3)}, {wageResult.ci_hi_2023.toFixed(3)}])
+                <div className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
+                  Efecto en 2023: IC 95% [{(wageResult.ci_lo_2023 * 100).toFixed(1)}%, {(wageResult.ci_hi_2023 * 100).toFixed(1)}%]
+                </div>
+                <div className="relative h-2 rounded-full" style={{ background: CHART_DEFAULTS.gridStroke }}>
+                  <div className="absolute h-full rounded-full" style={{ width: `${Math.min(100, wageResult.beta_2023 * 100 * 4)}%`, background: CHART_COLORS.terra, opacity: 0.7 }} />
+                </div>
+                <div className="flex justify-between text-xs mt-0.5" style={{ color: CHART_COLORS.ink3 }}>
+                  <span>0%</span><span style={{ color: CHART_COLORS.terra }}>+{(wageResult.beta_2023 * 100).toFixed(1)}%</span>
                 </div>
               </div>
             )}
@@ -358,14 +366,35 @@ export default function SalarioMinimoPageV2() {
           </p>
           <div className="grid md:grid-cols-3 gap-4">
             {/* Map */}
-            <div className="md:col-span-2 border rounded-sm p-2 relative" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke, minHeight: 360 }}>
+            <div className="md:col-span-2 border rounded-sm overflow-hidden relative" style={{ background: '#dce9f0', borderColor: CHART_DEFAULTS.gridStroke, minHeight: 480 }}>
+              {/* Ocean label */}
+              <div className="absolute left-2 top-1/2 -translate-y-1/2 pointer-events-none"
+                style={{ fontSize: 9, color: '#6a9bb5', opacity: 0.5, writingMode: 'vertical-rl', transform: 'translateY(-50%) rotate(180deg)', letterSpacing: 2 }}>
+                OCÉANO PACÍFICO
+              </div>
               {kaitzData && (
                 <ComposableMap
                   projection="geoMercator"
-                  projectionConfig={{ center: [-75, -9.5], scale: 1350 }}
-                  style={{ width: '100%', height: '360px' }}
+                  projectionConfig={{ center: [-75, -9.5], scale: 1550 }}
+                  style={{ width: '100%', height: '480px' }}
                 >
                   <ZoomableGroup center={[-75, -9.5]} zoom={1}>
+                    {/* Neighbor countries — decorative, no interaction */}
+                    <Geographies geography="/assets/geo/peru_neighbors.geojson">
+                      {({ geographies }: { geographies: any[] }) =>
+                        geographies.map((geo: any) => (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            fill="#EEEEEE"
+                            stroke="#DDDDDD"
+                            strokeWidth={0.5}
+                            style={{ default: { outline: 'none' }, hover: { outline: 'none' }, pressed: { outline: 'none' } }}
+                          />
+                        ))
+                      }
+                    </Geographies>
+                    {/* Peru departments — interactive */}
                     <Geographies geography={GEO_URL}>
                       {({ geographies }: { geographies: any[] }) =>
                         geographies.map((geo: any) => {
@@ -378,11 +407,9 @@ export default function SalarioMinimoPageV2() {
                               geography={geo}
                               fill={CAT_COLORS[cat]}
                               stroke="#fff"
-                              strokeWidth={0.5}
+                              strokeWidth={0.6}
                               style={{ default: { outline: 'none' }, hover: { outline: 'none', opacity: 0.8, cursor: 'pointer' }, pressed: { outline: 'none' } }}
-                              onMouseEnter={() => {
-                                setTooltipDept(dept ?? null);
-                              }}
+                              onMouseEnter={() => setTooltipDept(dept ?? null)}
                               onMouseMove={(e: any) => setMapPos({ x: e.clientX, y: e.clientY })}
                               onMouseLeave={() => setTooltipDept(null)}
                             />
@@ -396,11 +423,11 @@ export default function SalarioMinimoPageV2() {
               {/* Map tooltip */}
               {tooltipDept && (
                 <div className="fixed z-50 pointer-events-none px-3 py-2 rounded text-xs shadow-lg"
-                  style={{ left: mapPos.x + 12, top: mapPos.y - 30, background: CHART_COLORS.ink, color: '#fff', maxWidth: 220 }}>
-                  <div className="font-semibold">{tooltipDept.dept_name}</div>
-                  <div>Exposición: {kaitzCategory(tooltipDept.kaitz_pre) === 'baja' ? 'Baja' : kaitzCategory(tooltipDept.kaitz_pre) === 'media' ? 'Media' : 'Alta'}</div>
-                  <div>SM = {(tooltipDept.kaitz_pre * 100).toFixed(0)}% del salario mediano formal</div>
-                  <div>Mediana 2021: S/ {Math.round(tooltipDept.median_formal_2021).toLocaleString('es-PE')}</div>
+                  style={{ left: mapPos.x + 14, top: mapPos.y - 40, background: CHART_COLORS.ink, color: '#fff', maxWidth: 240 }}>
+                  <div className="font-semibold mb-0.5">{tooltipDept.dept_name}</div>
+                  <div>Exposición: <strong>{kaitzCategory(tooltipDept.kaitz_pre) === 'baja' ? 'Baja' : kaitzCategory(tooltipDept.kaitz_pre) === 'media' ? 'Media' : 'Alta'}</strong></div>
+                  <div>El salario mínimo equivale al <strong>{(tooltipDept.kaitz_pre * 100).toFixed(0)}%</strong> del salario mediano formal</div>
+                  <div style={{ opacity: 0.7 }}>Mediana 2021: S/ {Math.round(tooltipDept.median_formal_2021).toLocaleString('es-PE')}</div>
                 </div>
               )}
             </div>
@@ -409,9 +436,9 @@ export default function SalarioMinimoPageV2() {
               <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
                 <div className="text-xs font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Nivel de exposición</div>
                 {[
-                  { cat: 'baja', label: 'Baja exposición', sub: 'Kaitz < 0.50 — salario mediano muy por encima del mínimo', n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'baja').length },
-                  { cat: 'media', label: 'Exposición media', sub: 'Kaitz 0.50–0.60', n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'media').length },
-                  { cat: 'alta', label: 'Alta exposición', sub: 'Kaitz > 0.60 — salario mínimo cercano al mediano', n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'alta').length },
+                  { cat: 'baja',  label: 'Baja exposición',   sub: 'El salario mediano es mucho mayor que el mínimo',      n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'baja').length },
+                  { cat: 'media', label: 'Exposición media',   sub: 'El salario mediano es moderadamente mayor',             n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'media').length },
+                  { cat: 'alta',  label: 'Alta exposición',    sub: 'El salario mínimo está cerca del mediano formal',       n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'alta').length },
                 ].map(({ cat, label, sub, n }) => (
                   <div key={cat} className="flex items-start gap-2 mb-3">
                     <div className="w-4 h-4 rounded-sm flex-shrink-0 mt-0.5" style={{ background: CAT_COLORS[cat] }} />
@@ -421,13 +448,11 @@ export default function SalarioMinimoPageV2() {
                     </div>
                   </div>
                 ))}
-                <div className="text-xs mt-2 pt-2 border-t" style={{ color: CHART_COLORS.ink3, borderColor: CHART_DEFAULTS.gridStroke }}>
-                  Kaitz = SM S/930 / mediana salarial formal 2021. Fuente: ENAHO Panel, elaboración Qhawarina.
-                </div>
               </div>
               {/* Top exposed depts */}
               <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-                <div className="text-xs font-semibold mb-2" style={{ color: CHART_COLORS.ink }}>Mayor exposición</div>
+                <div className="text-xs font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>Mayor exposición</div>
+                <div className="text-xs mb-2" style={{ color: CHART_COLORS.ink3 }}>SM como % del salario mediano</div>
                 {[...depts].sort((a, b) => b.kaitz_pre - a.kaitz_pre).slice(0, 5).map(d => (
                   <div key={d.dept_code} className="flex justify-between text-xs py-1 border-b last:border-0" style={{ borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink }}>
                     <span>{d.dept_name}</span>
@@ -436,6 +461,9 @@ export default function SalarioMinimoPageV2() {
                     </span>
                   </div>
                 ))}
+                <div className="text-xs mt-3 pt-2 border-t" style={{ color: CHART_COLORS.ink3, borderColor: CHART_DEFAULTS.gridStroke }}>
+                  Fuente: ENAHO Panel 2021, elaboración Qhawarina.
+                </div>
               </div>
             </div>
           </div>
@@ -607,7 +635,7 @@ export default function SalarioMinimoPageV2() {
                 <strong style={{ color: CHART_COLORS.terra }}>S/ {fmt(sliderMW)}</strong>,
                 aproximadamente{' '}
                 <strong>{fmt(Math.max(0, workersInBand))}</strong>{' '}
-                trabajadores formales recibirían un aumento directo.
+                trabajadores formales de Lima Metropolitana recibirían un aumento directo (estimación EPE 2022).
                 La evidencia de 2022 muestra que no hubo pérdidas de empleo en los departamentos más expuestos.
                 Los departamentos donde el impacto sería mayor incluyen{' '}
                 <strong>{top3Depts.join(', ')}</strong>.
@@ -786,7 +814,7 @@ export default function SalarioMinimoPageV2() {
           </div>
 
           {/* Component C: Key message box */}
-          <div className="p-5 rounded-sm border-l-4 mb-6" style={{ borderLeftColor: CHART_COLORS.amber, background: '#fffcf5' }}>
+          <div className="p-5 rounded-sm border-l-4 mb-6" style={{ borderLeftColor: CHART_COLORS.terra, background: '#FFF5F0' }}>
             <p className="text-sm leading-relaxed" style={{ color: CHART_COLORS.ink }}>
               Nuestros resultados muestran que el aumento de 2022 (S/930 → S/1,025){' '}
               <strong>no destruyó empleo</strong>.
@@ -836,10 +864,10 @@ export default function SalarioMinimoPageV2() {
 
             {/* Left: Formalization */}
             <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-              <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Formalización</div>
+              <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Efecto sobre formalización</div>
               {eventStudyFormal.length > 0 ? (
                 <ResponsiveContainer width="100%" height={220}>
-                  <LineChart data={eventStudyFormal} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
+                  <ComposedChart data={eventStudyFormal} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
                     <XAxis dataKey="year" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
                       label={{ value: 'Año', position: 'insideBottom', offset: -12, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }} />
@@ -851,11 +879,11 @@ export default function SalarioMinimoPageV2() {
                       formatter={(v: number | undefined, name: string | undefined) => [`${((v ?? 0) * 100).toFixed(2)}pp`, name ?? ''] as [string, string]}
                     />
                     <ReferenceLine y={0} stroke={CHART_COLORS.ink3} strokeDasharray="4 2" />
-                    {/* CI area */}
-                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.terra} fillOpacity={0.15} legendType="none" />
-                    <Area type="monotone" dataKey="lo" stroke="none" fill={CHART_COLORS.bg} fillOpacity={1} legendType="none" />
+                    {/* CI area — must use ComposedChart for Area + Line together */}
+                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.terra} fillOpacity={0.18} legendType="none" name="IC superior" />
+                    <Area type="monotone" dataKey="lo" stroke="none" fill="#FAF8F4" fillOpacity={1} legendType="none" name="IC inferior" />
                     <Line type="monotone" dataKey="b" stroke={CHART_COLORS.terra} strokeWidth={2.5} dot={{ r: 5, fill: CHART_COLORS.terra }} name="β formalización" />
-                  </LineChart>
+                  </ComposedChart>
                 </ResponsiveContainer>
               ) : (
                 <div className="h-52 animate-pulse rounded" style={{ background: CHART_COLORS.surface }} />
@@ -871,10 +899,10 @@ export default function SalarioMinimoPageV2() {
 
             {/* Right: Employment */}
             <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-              <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Empleo</div>
+              <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Efecto sobre empleo</div>
               {eventStudyEmp.length > 0 ? (
                 <ResponsiveContainer width="100%" height={220}>
-                  <LineChart data={eventStudyEmp} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
+                  <ComposedChart data={eventStudyEmp} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
                     <XAxis dataKey="year" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
                       label={{ value: 'Año', position: 'insideBottom', offset: -12, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }} />
@@ -886,10 +914,10 @@ export default function SalarioMinimoPageV2() {
                       formatter={(v: number | undefined, name: string | undefined) => [`${((v ?? 0) * 100).toFixed(2)}pp`, name ?? ''] as [string, string]}
                     />
                     <ReferenceLine y={0} stroke={CHART_COLORS.ink3} strokeDasharray="4 2" />
-                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.teal} fillOpacity={0.15} legendType="none" />
-                    <Area type="monotone" dataKey="lo" stroke="none" fill={CHART_COLORS.bg} fillOpacity={1} legendType="none" />
+                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.teal} fillOpacity={0.18} legendType="none" name="IC superior" />
+                    <Area type="monotone" dataKey="lo" stroke="none" fill="#FAF8F4" fillOpacity={1} legendType="none" name="IC inferior" />
                     <Line type="monotone" dataKey="b" stroke={CHART_COLORS.teal} strokeWidth={2.5} dot={{ r: 5, fill: CHART_COLORS.teal }} name="β empleo" />
-                  </LineChart>
+                  </ComposedChart>
                 </ResponsiveContainer>
               ) : (
                 <div className="h-52 animate-pulse rounded" style={{ background: CHART_COLORS.surface }} />
@@ -901,6 +929,9 @@ export default function SalarioMinimoPageV2() {
                   · N = {fmt(empResult.N)} · {empResult.N_depts} dptos.
                 </div>
               )}
+              <div className="mt-1 text-xs italic" style={{ color: CHART_COLORS.ink3 }}>
+                Ningún coeficiente es estadísticamente significativo al 5%.
+              </div>
             </div>
           </div>
           <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
@@ -930,7 +961,7 @@ export default function SalarioMinimoPageV2() {
               ].map((row, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="flex-1 text-xs" style={{ color: row.bold ? CHART_COLORS.ink : CHART_COLORS.ink3, fontWeight: row.bold ? 600 : 400 }}>{row.label}</div>
-                  <div className="text-xs px-3 py-1 rounded font-medium" style={{ background: row.color + '20', color: row.color, minWidth: 130, textAlign: 'center' }}>{row.effect}</div>
+                  <div className="text-sm px-4 py-1.5 rounded font-semibold" style={{ background: row.color + '20', color: row.color, minWidth: 150, textAlign: 'center', fontSize: 13 }}>{row.effect}</div>
                 </div>
               ))}
             </div>
@@ -1066,7 +1097,7 @@ export default function SalarioMinimoPageV2() {
           <div className="mt-4 pt-4 border-t text-xs leading-relaxed" style={{ borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink3 }}>
             <strong>Aviso:</strong> Los resultados del simulador son proyecciones basadas en la evidencia del aumento de 2022.
             No constituyen predicciones del efecto de futuros aumentos. Las proyecciones más allá del rango observado
-            (Kaitz &gt; 0.63) deben interpretarse con extrema cautela. Los resultados no representan posición oficial del INEI ni del BCRP.
+            (Kaitz &gt; 0.63) deben interpretarse con extrema cautela. Los resultados no representan posición oficial del INEI, del BCRP ni del gobierno del Perú.
           </div>
         </div>
 
