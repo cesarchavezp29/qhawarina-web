@@ -10,7 +10,7 @@ import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
 import {
   ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, ReferenceArea, ReferenceLine, Cell,
+  ResponsiveContainer, ReferenceArea, ReferenceLine, Cell, Legend,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -463,11 +463,15 @@ export default function PobrezaPage() {
               <Line
                 type="monotone"
                 dataKey="rolling3m"
-                name={isEn ? 'Rolling 3m' : 'Promedio 3m'}
+                name={isEn ? 'Rolling 3m avg' : 'Promedio 3m'}
                 stroke={AMBER}
                 strokeWidth={2.5}
                 dot={{ r: 3, fill: AMBER }}
                 activeDot={{ r: 5 }}
+              />
+              <Legend
+                wrapperStyle={{ fontSize: 11, paddingTop: 8 }}
+                formatter={(value) => <span style={{ color: CHART_COLORS.ink3 }}>{value}</span>}
               />
             </ComposedChart>
           </ResponsiveContainer>
@@ -522,6 +526,7 @@ export default function PobrezaPage() {
                 stroke={AMBER}
                 strokeDasharray="4 2"
                 strokeWidth={1}
+                label={{ value: `Nowcast ${data.metadata.target_year}: ${nat.poverty_nowcast.toFixed(1)}%`, position: 'insideTopLeft', fontSize: 10, fill: AMBER, dy: -4 }}
               />
             </ComposedChart>
           </ResponsiveContainer>

@@ -243,8 +243,13 @@ export default function PobrezaMapasPage() {
             />
             <p className="text-xs text-gray-500 mt-3">
               {isEn
-                ? 'Green = poverty reduction · Red = increase. Compared to official INEI 2024 rates.'
-                : 'Verde = reducción de pobreza · Rojo = aumento. Comparado con tasa oficial INEI 2024.'}
+                ? 'Green = poverty reduction \u00b7 Red = increase. Compared to official INEI 2024 rates.'
+                : 'Verde = reducci\u00f3n de pobreza \u00b7 Rojo = aumento. Comparado con tasa oficial INEI 2024.'}
+            </p>
+            <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mt-3">
+              {isEn
+                ? 'Large changes (>5 pp) may reflect genuine improvements or model uncertainty. Interpret with caution.'
+                : 'Los cambios grandes (&gt;5 pp) pueden reflejar tanto mejoras reales como incertidumbre del modelo. Interpretar con cautela.'}
             </p>
           </div>
         )}
@@ -289,7 +294,7 @@ export default function PobrezaMapasPage() {
                     {isEn ? 'Change (pp)' : 'Cambio (pp)'}
                   </th>
                   <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                    {isEn ? 'Bar' : 'Barra'}
+                    {isEn ? 'Bar (max 50%)' : 'Barra (m\u00e1x 50%)'}
                   </th>
                 </tr>
               </thead>
@@ -305,7 +310,7 @@ export default function PobrezaMapasPage() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center justify-end">
-                        <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="relative w-24 bg-gray-200 rounded-full h-2">
                           <div
                             className="h-2 rounded-full"
                             style={{
@@ -315,6 +320,8 @@ export default function PobrezaMapasPage() {
                                 : '#fed976'
                             }}
                           />
+                          {/* Reference mark at 50% = full width */}
+                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-3 bg-gray-400" style={{ opacity: 0.5 }} />
                         </div>
                       </div>
                     </td>

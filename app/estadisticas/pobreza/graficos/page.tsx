@@ -138,9 +138,12 @@ export default function PobrezaGraficosPage() {
                     x: years,
                     y: nowcast,
                     type: 'scatter',
-                    mode: 'markers',
+                    mode: 'markers+text',
                     name: isEn ? `Nowcast ${data.metadata.target_year}` : `Nowcast ${data.metadata.target_year}`,
-                    marker: { color: '#dc2626', size: 10, symbol: 'diamond' }
+                    marker: { color: '#dc2626', size: 12, symbol: 'diamond' },
+                    text: nowcast.map(v => v != null ? `${v.toFixed(1)}%` : ''),
+                    textposition: 'top center',
+                    textfont: { color: '#dc2626', size: 11 }
                   }
                 ]}
                 layout={{
@@ -155,7 +158,10 @@ export default function PobrezaGraficosPage() {
                 config={{ displayModeBar: false, responsive: true }}
                 style={{ width: '100%' }}
               />
-              <p className="text-sm text-gray-600 mt-4">
+              <p className="text-xs text-gray-400 mt-2 italic">
+                {isEn ? 'Note: Y axis does not start at 0 — intended for readability.' : 'Nota: El eje Y no empieza en 0, para facilitar la lectura.'}
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
                 <strong>{isEn ? 'COVID Note:' : 'Nota COVID:'}</strong>{' '}
                 {isEn
                   ? 'Errors in 2020 (-10.4pp) and 2021 (+4.6pp) show that the model cannot predict unprecedented shocks like the pandemic.'
