@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-14T21:40:31.641642",
+    "generated_at": "2026-03-14T23:30:54.971812",
     "model": "DynamicFactorModel",
     "model_params": {
       "k_factors": 2,
@@ -1644,6 +1644,18 @@
       "official": 0.15,
       "nowcast": 0.178,
       "error": 0.028
+    },
+    {
+      "month": "2026-02",
+      "official": null,
+      "nowcast": 0.172,
+      "error": null
+    },
+    {
+      "month": "2026-03",
+      "official": null,
+      "nowcast": 0.172,
+      "error": null
     }
   ],
   "recent_months": [
@@ -1940,6 +1952,18 @@
       "official": 0.15,
       "nowcast": 0.178,
       "error": 0.028
+    },
+    {
+      "month": "2026-02",
+      "official": null,
+      "nowcast": 0.172,
+      "error": null
+    },
+    {
+      "month": "2026-03",
+      "official": null,
+      "nowcast": 0.172,
+      "error": null
     }
   ],
   "category_contributions": [
