@@ -299,8 +299,9 @@ export default function PobrezaPage() {
             </p>
             <p className="text-xs text-gray-400 mt-0.5">
               {isEn
-                ? `Based on data Jan–${fmtMonth(data.metadata.vintage_month, true)} 2025 (${data.metadata.months_available} of 12 months)`
-                : `Basado en datos Ene–${fmtMonth(data.metadata.vintage_month, false)} 2025 (${data.metadata.months_available} de 12 meses)`}
+                ? `Nowcast at close of ${fmtVintage(data.metadata.vintage_month, true)}. Coverage subject to BCRP publication lags.`
+                : (data.metadata as any).coverage_note
+                  ?? `Nowcast al cierre de ${fmtVintage(data.metadata.vintage_month, false)}. Cobertura por serie sujeta a rezagos de publicaci\u00f3n del BCRP.`}
             </p>
             <p className="text-6xl font-bold leading-none mt-4" style={{ color: AMBER }}>
               {nat.poverty_nowcast.toFixed(1)}%

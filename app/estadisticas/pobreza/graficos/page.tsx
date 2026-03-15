@@ -32,6 +32,7 @@ interface QuarterlyData {
   national_quarterly: Array<{
     quarter: string;
     poverty_rate: number;
+    is_nowcast?: boolean;
   }>;
 }
 
@@ -172,46 +173,59 @@ export default function PobrezaGraficosPage() {
           })()}
 
           {/* Quarterly Chart */}
-          {frequency === 'quarterly' && (
+          {frequency === 'quarterly' && (() => {
+            const official = quarterlyData.national_quarterly.filter(d => !d.is_nowcast);
+            const nowcast  = quarterlyData.national_quarterly.filter(d => d.is_nowcast);
+            const bridge   = official.length > 0 && nowcast.length > 0
+              ? [official[official.length - 1], ...nowcast] : nowcast;
+            return (
             <div>
               <Plot
                 data={[
                   {
-                    x: quarterlyData.national_quarterly.filter(d => d.quarter <= '2024-Q4').map(d => d.quarter),
-                    y: quarterlyData.national_quarterly.filter(d => d.quarter <= '2024-Q4').map(d => d.poverty_rate),
+                    x: official.map(d => d.quarter),
+                    y: official.map(d => d.poverty_rate),
                     type: 'scatter',
                     mode: 'lines',
-                    name: isEn ? 'Quarterly Poverty' : 'Pobreza Trimestral',
+                    name: isEn ? 'Quarterly (Chow-Lin)' : 'Trimestral (Chow-Lin)',
                     line: { color: '#059669', width: 2 },
                     fill: 'tozeroy',
-                    fillcolor: 'rgba(5, 150, 105, 0.1)'
+                    fillcolor: 'rgba(5, 150, 105, 0.08)'
+                  },
+                  {
+                    x: bridge.map(d => d.quarter),
+                    y: bridge.map(d => d.poverty_rate),
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    name: isEn ? 'Q3\u2013Q4 2025 nowcast' : 'Nowcast Q3\u2013Q4 2025',
+                    line: { color: '#D97706', width: 2, dash: 'dot' },
+                    marker: { color: '#D97706', size: 8, symbol: 'diamond' }
                   }
-                ]}
+                ] as any[]}
                 layout={{
                   height: 400,
                   margin: { l: 50, r: 30, t: 30, b: 80 },
-                  xaxis: {
-                    title: isEn ? 'Quarter' : 'Trimestre',
-                    gridcolor: '#e5e7eb',
-                    tickangle: -45,
-                    nticks: 20
-                  },
+                  xaxis: { title: isEn ? 'Quarter' : 'Trimestre', gridcolor: '#e5e7eb', tickangle: -45, nticks: 22 },
                   yaxis: { title: isEn ? 'Poverty Rate (%)' : 'Tasa de Pobreza (%)', gridcolor: '#e5e7eb' },
                   plot_bgcolor: '#ffffff',
                   paper_bgcolor: '#ffffff',
-                  showlegend: false
+                  legend: { x: 0.01, y: 0.99 }
                 }}
                 config={{ displayModeBar: false, responsive: true }}
                 style={{ width: '100%' }}
               />
-              <p className="text-sm text-gray-600 mt-4">
+              <p className="text-xs text-gray-400 mt-2 italic">
+                {isEn ? 'Note: Y axis does not start at 0 \u2014 intended for readability.' : 'Nota: El eje Y no empieza en 0, para facilitar la lectura.'}
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
                 <strong>{isEn ? 'Method:' : 'M\u00e9todo:'}</strong>{' '}
                 {isEn
-                  ? 'Chow-Lin temporal disaggregation using quarterly GDP and monthly CPI as indicators. Series shown through 2024-Q4 (2025 extrapolation excluded).'
-                  : 'Desagregaci\u00f3n temporal Chow-Lin usando PBI trimestral e IPC mensual como indicadores. Serie mostrada hasta 2024-T4 (extrapolaci\u00f3n 2025 excluida).'}
+                  ? 'Chow-Lin temporal disaggregation using quarterly GDP and monthly CPI. Amber diamonds = Q3\u2013Q4 2025 nowcast from rolling 3-month average.'
+                  : 'Desagregaci\u00f3n temporal Chow-Lin usando PBI trimestral e IPC mensual. Diamantes \u00e1mbar = nowcast Q3\u2013Q4 2025 del promedio m\u00f3vil de 3 meses.'}
               </p>
             </div>
-          )}
+          );
+          })()}
         </div>
 
         {/* Methodology Link */}

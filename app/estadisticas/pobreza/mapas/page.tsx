@@ -98,7 +98,11 @@ export default function PobrezaMapasPage() {
           <strong className="text-red-700">{data.national.poverty_nowcast.toFixed(1)}%</strong>
           {' \u00b7 '}{isEn ? 'Source: INEI ENAHO, Qhawarina nowcast model' : 'Fuente: INEI ENAHO, modelo nowcast Qhawarina'}
         </p>
-        <div className="mt-2 mb-8"><LastUpdate date={data.metadata.last_updated ?? data.metadata.vintage_month ?? ''} /></div>
+        <div className="mt-2 mb-8"><LastUpdate date={(() => {
+          const raw = data.metadata.last_updated ?? data.metadata.vintage_month ?? '';
+          try { return new Date(raw).toLocaleDateString(isEn ? 'en-GB' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' }); }
+          catch { return raw.slice(0, 10); }
+        })()} /></div>
 
         {/* Key Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -249,7 +253,7 @@ export default function PobrezaMapasPage() {
             <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mt-3">
               {isEn
                 ? 'Large changes (>5 pp) may reflect genuine improvements or model uncertainty. Interpret with caution.'
-                : 'Los cambios grandes (&gt;5 pp) pueden reflejar tanto mejoras reales como incertidumbre del modelo. Interpretar con cautela.'}
+                : 'Los cambios grandes (>5 pp) pueden reflejar tanto mejoras reales como incertidumbre del modelo. Interpretar con cautela.'}
             </p>
           </div>
         )}
