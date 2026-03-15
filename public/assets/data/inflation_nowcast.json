@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-15T02:52:12.396215",
+    "generated_at": "2026-03-15T03:21:09.316966",
     "model": "DynamicFactorModel",
     "model_params": {
       "k_factors": 2,
@@ -1630,20 +1630,20 @@
     {
       "month": "2025-11",
       "official": 0.007,
-      "nowcast": null,
-      "error": null
+      "nowcast": -0.014,
+      "error": -0.022
     },
     {
       "month": "2025-12",
       "official": 0.085,
-      "nowcast": null,
-      "error": null
+      "nowcast": 0.054,
+      "error": -0.031
     },
     {
       "month": "2026-01",
       "official": 0.15,
-      "nowcast": null,
-      "error": null
+      "nowcast": 0.09,
+      "error": -0.061
     },
     {
       "month": "2026-02",
@@ -1938,20 +1938,20 @@
     {
       "month": "2025-11",
       "official": 0.007,
-      "nowcast": null,
-      "error": null
+      "nowcast": -0.014,
+      "error": -0.022
     },
     {
       "month": "2025-12",
       "official": 0.085,
-      "nowcast": null,
-      "error": null
+      "nowcast": 0.054,
+      "error": -0.031
     },
     {
       "month": "2026-01",
       "official": 0.15,
-      "nowcast": null,
-      "error": null
+      "nowcast": 0.09,
+      "error": -0.061
     },
     {
       "month": "2026-02",

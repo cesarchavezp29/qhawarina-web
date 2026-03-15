@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-15T02:58:31.952349",
+    "generated_at": "2026-03-15T03:22:48.424941",
     "coverage_days": 438,
     "rss_feeds": 35,
     "rss_sources": 16,
@@ -8,93 +8,141 @@
   },
   "current": {
     "date": "2026-03-14",
-    "political_raw": 249.5,
-    "political_raw_level": "CRITICO",
-    "political_7d": 314.9,
-    "political_level": "CRITICO",
-    "political_multiplier": 3.15,
-    "economic_raw": 748.1,
+    "political_raw": 56.6,
+    "political_raw_level": "BAJO",
+    "political_7d": 147.8,
+    "political_level": "ELEVADO",
+    "political_multiplier": 1.48,
+    "economic_raw": 226.0,
     "economic_raw_level": "CRITICO",
-    "economic_7d": 1202.9,
+    "economic_7d": 556.7,
     "economic_level": "CRITICO",
-    "economic_multiplier": 12.03,
-    "score": 314.9,
-    "prr_7d": 314.9,
-    "prr_raw": 249.5,
-    "level": "CRITICO",
-    "articles_total": 592,
+    "economic_multiplier": 5.57,
+    "score": 147.8,
+    "prr_7d": 147.8,
+    "prr_raw": 56.6,
+    "level": "ELEVADO",
+    "articles_total": 228,
     "articles_political_relevant": 5,
     "articles_economic_relevant": 1,
-    "political_justification": null,
-    "economic_justification": null,
-    "top_political_drivers": [],
-    "top_economic_drivers": [],
-    "justification": null,
-    "top_drivers": []
+    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones moderadas sobre financiamiento opaco de campañas y fragmentación electoral. Los temas dominantes reflejan críticas a la captura política y debilidad institucional, sin indicios de crisis inmediata. La agenda se mantiene dentro de dinámicas electorales convencionales.",
+    "economic_justification": "La economía enfrenta condiciones críticas que duplican la volatilidad histórica. Los mercados operan bajo presión extrema con indicadores de estrés sistémico elevados. Se requiere intervención inmediata en políticas de estabilización para contener la propagación de riesgos hacia sectores productivos clave.",
+    "top_political_drivers": [
+      {
+        "title": "¿Por qué dicen que César Acuña estaría financiando a todos los partidos políticos y sus candidatos?",
+        "source": "inforegion",
+        "score": 30
+      },
+      {
+        "title": "Congresistas desconocidos | Candidato Nicolás Talavera dice que sin reforma electoral seguirán gobernando los mismos (VIDEO)",
+        "source": "elbuho",
+        "score": 25
+      },
+      {
+        "title": "Patricia Chirinos usa triciclo de reciclador para campaña pero es rechazada en el Callao (VIDEO)",
+        "source": "elbuho",
+        "score": 20
+      },
+      {
+        "title": "Piura: ministro de Vivienda supervisó acciones de emergencia por lluvias en Ayabaca",
+        "source": "andina",
+        "score": 5
+      }
+    ],
+    "top_economic_drivers": [
+      {
+        "title": "Murió Phil Campbell, legendario guitarrista de Motörhead, a los 64 años",
+        "source": "peru21",
+        "score": 15
+      }
+    ],
+    "justification": "El panorama político muestra estabilidad relativa con preocupaciones moderadas sobre financiamiento opaco de campañas y fragmentación electoral. Los temas dominantes reflejan críticas a la captura política y debilidad institucional, sin indicios de crisis inmediata. La agenda se mantiene dentro de dinámicas electorales convencionales.",
+    "top_drivers": [
+      {
+        "title": "¿Por qué dicen que César Acuña estaría financiando a todos los partidos políticos y sus candidatos?",
+        "source": "inforegion",
+        "score": 30
+      },
+      {
+        "title": "Congresistas desconocidos | Candidato Nicolás Talavera dice que sin reforma electoral seguirán gobernando los mismos (VIDEO)",
+        "source": "elbuho",
+        "score": 25
+      },
+      {
+        "title": "Patricia Chirinos usa triciclo de reciclador para campaña pero es rechazada en el Callao (VIDEO)",
+        "source": "elbuho",
+        "score": 20
+      },
+      {
+        "title": "Piura: ministro de Vivienda supervisó acciones de emergencia por lluvias en Ayabaca",
+        "source": "andina",
+        "score": 5
+      }
+    ]
   },
   "aggregates": {
-    "political_7d_avg": 244.2,
-    "political_30d_avg": 205.8,
-    "economic_7d_avg": 944.4,
-    "economic_30d_avg": 448.6,
+    "political_7d_avg": 158.0,
+    "political_30d_avg": 185.7,
+    "economic_7d_avg": 598.1,
+    "economic_30d_avg": 367.8,
     "year_max": 332.2,
     "year_max_date": "2026-02-18"
   },
   "major_events": [
     {
       "date": "2026-03-14",
-      "score": 314.9,
-      "level": "CRITICO",
-      "n_articles": 592,
-      "summary": "No puedo proporcionar un resumen sobre inestabilidad política en Perú basado en estas noticias, ya que ninguna de ellas trata sobre política peruana interna. Las noticias mencionadas",
+      "score": 147.8,
+      "level": "ELEVADO",
+      "n_articles": 228,
+      "summary": "No puedo proporcionar un resumen porque las noticias citadas no son específicamente sobre política peruana o inestabilidad en Perú. Las noticias mencionan temas de Colombia, NASA (internacional)",
       "report_url": "/political/daily-reports/2026-03-14.html"
     },
     {
       "date": "2026-03-13",
-      "score": 284.7,
-      "level": "CRITICO",
-      "n_articles": 992,
-      "summary": "Escasez de gas licuado amenaza cadena de suministro nacional.",
+      "score": 151.0,
+      "level": "ALTO",
+      "n_articles": 453,
+      "summary": "Crisis de abastecimiento de GLP genera tensión económica.",
       "report_url": "/political/daily-reports/2026-03-13.html"
     },
     {
       "date": "2026-03-12",
-      "score": 278.1,
-      "level": "CRITICO",
-      "n_articles": 550,
-      "summary": "Suspensión de autoridades debilita instituciones del Estado.",
+      "score": 166.7,
+      "level": "ALTO",
+      "n_articles": 303,
+      "summary": "Inestabilidad institucional por debilitamiento de autoridades clave.",
       "report_url": "/political/daily-reports/2026-03-12.html"
     },
     {
       "date": "2026-03-11",
-      "score": 254.2,
-      "level": "CRITICO",
-      "n_articles": 252,
-      "summary": "Influencia de líderes políticos sobre gabinete ministerial.",
+      "score": 158.7,
+      "level": "ALTO",
+      "n_articles": 198,
+      "summary": "Desconfianza en influencia de líderes políticos en gabinete.",
       "report_url": "/political/daily-reports/2026-03-11.html"
     },
     {
       "date": "2026-03-10",
-      "score": 229.9,
-      "level": "CRITICO",
-      "n_articles": 166,
-      "summary": "Crisis energética genera inestabilidad política y condicionamientos parlamentarios.",
+      "score": 161.9,
+      "level": "ALTO",
+      "n_articles": 165,
+      "summary": "Chantaje parlamentario mediante crisis energética y voto de confianza.",
       "report_url": "/political/daily-reports/2026-03-10.html"
     },
     {
       "date": "2026-03-09",
-      "score": 191.3,
+      "score": 165.3,
       "level": "ALTO",
       "n_articles": 276,
-      "summary": "Fragmentación política y volatilidad económica global desestabilizan país.",
+      "summary": "Volatilidad electoral y presiones políticas fragmentan el gobierno.",
       "report_url": "/political/daily-reports/2026-03-09.html"
     },
     {
       "date": "2026-03-08",
-      "score": 156.1,
+      "score": 154.4,
       "level": "ALTO",
       "n_articles": 155,
-      "summary": "Fragmentación política e ideológica debilita gobernanza electoral.",
+      "summary": "Fragmentación política sin rumbo ideológico claro.",
       "report_url": "/political/daily-reports/2026-03-08.html"
     },
     {
@@ -102,7 +150,7 @@
       "score": 152.7,
       "level": "ALTO",
       "n_articles": 68,
-      "summary": "Crisis energética por accidente en infraestructura gasífera.",
+      "summary": "Crisis de gas afecta economía y educación peruana.",
       "report_url": "/political/daily-reports/2026-03-07.html"
     },
     {
@@ -110,7 +158,7 @@
       "score": 152.2,
       "level": "ALTO",
       "n_articles": 137,
-      "summary": "Debilitamiento institucional por corrupción e inacción estatal.",
+      "summary": "Debilitamiento de instituciones anticorrupción y control electoral.",
       "report_url": "/political/daily-reports/2026-03-06.html"
     },
     {
@@ -118,7 +166,7 @@
       "score": 136.6,
       "level": "ELEVADO",
       "n_articles": 134,
-      "summary": "Conflictos de poder y corrupción institucional sin resolución.",
+      "summary": "Conflictos internos debilitan la estabilidad gubernamental peruana.",
       "report_url": "/political/daily-reports/2026-03-05.html"
     }
   ],
@@ -182,6 +230,12 @@
       "dimension": "economic",
       "value": 651.1,
       "label": "Crisis Energética Perú"
+    },
+    {
+      "date": "2026-03-12",
+      "dimension": "political",
+      "value": 166.7,
+      "label": "Justicia Politizada"
     }
   ],
   "daily_series": [
@@ -5780,7 +5834,7 @@
       "political_raw": 79.1,
       "political_7d": 152.7,
       "economic_raw": 475.1,
-      "economic_7d": 624.8,
+      "economic_7d": 623.2,
       "score": 152.7,
       "prr": 79.1,
       "prr_7d": 152.7,
@@ -5791,12 +5845,12 @@
     {
       "date": "2026-03-08",
       "political_raw": 111.0,
-      "political_7d": 156.1,
+      "political_7d": 154.4,
       "economic_raw": 404.5,
-      "economic_7d": 654.2,
-      "score": 156.1,
+      "economic_7d": 631.2,
+      "score": 154.4,
       "prr": 111.0,
-      "prr_7d": 156.1,
+      "prr_7d": 154.4,
       "n_articles": 155,
       "low_coverage": false,
       "provisional": false
@@ -5804,78 +5858,78 @@
     {
       "date": "2026-03-09",
       "political_raw": 245.1,
-      "political_7d": 191.3,
+      "political_7d": 165.3,
       "economic_raw": 964.4,
-      "economic_7d": 777.2,
-      "score": 191.3,
+      "economic_7d": 642.0,
+      "score": 165.3,
       "prr": 245.1,
-      "prr_7d": 191.3,
+      "prr_7d": 165.3,
       "n_articles": 276,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-10",
-      "political_raw": 163.9,
-      "political_7d": 229.9,
-      "economic_raw": 497.2,
-      "economic_7d": 914.9,
-      "score": 229.9,
-      "prr": 163.9,
-      "prr_7d": 229.9,
-      "n_articles": 166,
+      "political_raw": 163.7,
+      "political_7d": 161.9,
+      "economic_raw": 485.7,
+      "economic_7d": 618.6,
+      "score": 161.9,
+      "prr": 163.7,
+      "prr_7d": 161.9,
+      "n_articles": 165,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-11",
-      "political_raw": 166.3,
-      "political_7d": 254.2,
-      "economic_raw": 845.4,
-      "economic_7d": 954.0,
-      "score": 254.2,
-      "prr": 166.3,
-      "prr_7d": 254.2,
-      "n_articles": 252,
+      "political_raw": 154.8,
+      "political_7d": 158.7,
+      "economic_raw": 695.5,
+      "economic_7d": 583.1,
+      "score": 158.7,
+      "prr": 154.8,
+      "prr_7d": 158.7,
+      "n_articles": 198,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-12",
-      "political_raw": 409.4,
-      "political_7d": 278.1,
-      "economic_raw": 1447.8,
-      "economic_7d": 1045.5,
-      "score": 278.1,
-      "prr": 409.4,
-      "prr_7d": 278.1,
-      "n_articles": 550,
+      "political_raw": 239.2,
+      "political_7d": 166.7,
+      "economic_raw": 662.3,
+      "economic_7d": 612.8,
+      "score": 166.7,
+      "prr": 239.2,
+      "prr_7d": 166.7,
+      "n_articles": 303,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-13",
-      "political_raw": 434.4,
-      "political_7d": 284.7,
-      "economic_raw": 1770.2,
-      "economic_7d": 1061.8,
-      "score": 284.7,
-      "prr": 434.4,
-      "prr_7d": 284.7,
-      "n_articles": 992,
+      "political_raw": 140.6,
+      "political_7d": 151.0,
+      "economic_raw": 643.0,
+      "economic_7d": 542.5,
+      "score": 151.0,
+      "prr": 140.6,
+      "prr_7d": 151.0,
+      "n_articles": 453,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-14",
-      "political_raw": 249.5,
-      "political_7d": 314.9,
-      "economic_raw": 748.1,
-      "economic_7d": 1202.9,
-      "score": 314.9,
-      "prr": 249.5,
-      "prr_7d": 314.9,
-      "n_articles": 592,
+      "political_raw": 56.6,
+      "political_7d": 147.8,
+      "economic_raw": 226.0,
+      "economic_7d": 556.7,
+      "score": 147.8,
+      "prr": 56.6,
+      "prr_7d": 147.8,
+      "n_articles": 228,
       "low_coverage": false,
       "provisional": true
     }
@@ -7185,9 +7239,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 190.9,
-      "economic_avg": 734.4,
-      "n_articles": 3739,
+      "political_avg": 147.8,
+      "economic_avg": 561.1,
+      "n_articles": 2534,
       "fx_level": null,
       "fx_yoy": null
     }
