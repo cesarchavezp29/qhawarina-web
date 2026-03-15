@@ -63,6 +63,14 @@ function pStars(p: number): string {
 
 function fmt(n: number): string { return Math.round(n).toLocaleString('es-PE'); }
 
+function integrateKDE(kde: KDEPoint[], lo: number, hi: number): number {
+  const step = 25;
+  return kde.filter(p => p.wage >= lo && p.wage < hi).reduce((s, p) => s + p.density * step, 0);
+}
+
+// SVG watermark pattern (QHAWARINA rotated 45°, opacity ~0.03)
+const WATERMARK_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.04'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
+
 // Kaitz category
 function kaitzCategory(k: number): 'baja' | 'media' | 'alta' {
   if (k < 0.50) return 'baja';
@@ -144,12 +152,16 @@ export default function SalarioMinimoPageV2() {
 
   const redDepts = useMemo(() => deptsWithSlider.filter(d => d.riskZone === 'rojo').length, [deptsWithSlider]);
 
-  // Workers in band: use share_below_new_mw as proxy for exposure at slider MW
+  // Workers in band: KDE integral [MW_1025, sliderMW] scaled by EPE reference count
+  // Reference: 324,722 Lima formal workers in [1025→1130] (mw_complete_evidence, simulator_scenario_1130)
   const workersInBand = useMemo(() => {
-    if (!depts.length) return 0;
-    const ratio = Math.max(0, Math.min(1, (sliderMW - MW_1025) / (1500 - MW_1025)));
-    return Math.round(NATIONAL_FORMAL_WORKERS * 0.072 * ratio * (sliderMW / MW_1130));
-  }, [sliderMW, depts]);
+    if (!wageDist) return 0;
+    const REF_WORKERS = 324_722;
+    const refBand = integrateKDE(wageDist.kde_formal, MW_1025, MW_1130);
+    if (refBand <= 0 || sliderMW <= MW_1025) return 0;
+    const curBand = integrateKDE(wageDist.kde_formal, MW_1025, sliderMW);
+    return Math.round(REF_WORKERS * curBand / refBand);
+  }, [sliderMW, wageDist]);
 
   const top3Depts = useMemo(() => {
     return [...deptsWithSlider].sort((a, b) => b.newKaitz - a.newKaitz).slice(0, 3).map(d => d.dept_name);
@@ -212,7 +224,7 @@ export default function SalarioMinimoPageV2() {
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen" style={{ background: CHART_COLORS.bg }}>
+    <div className="min-h-screen" style={{ background: CHART_COLORS.bg, backgroundImage: WATERMARK_BG }}>
 
       {/* Breadcrumb */}
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 pt-4">
@@ -499,36 +511,93 @@ export default function SalarioMinimoPageV2() {
           </p>
 
           {/* Slider */}
-          <div className="p-5 rounded-sm border mb-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium" style={{ color: CHART_COLORS.ink3 }}>Salario mínimo propuesto</span>
-              <div className="flex items-center gap-3">
-                {sliderMW === MW_1130 && (
-                  <span className="text-xs px-2 py-0.5 rounded-full font-medium"
-                    style={{ background: '#fdf3f0', color: CHART_COLORS.terra, border: `1px solid ${CHART_COLORS.terra}` }}>
-                    Vigente 2025
+          {(() => {
+            const SL_MIN = MW_1025, SL_MAX = 1500;
+            const pct = ((sliderMW - SL_MIN) / (SL_MAX - SL_MIN)) * 100;
+            const ticks = [
+              { val: MW_1025, label: 'S/1,025' },
+              { val: MW_1130, label: 'S/1,130\n(vigente)' },
+              { val: 1200,    label: 'S/1,200' },
+              { val: 1300,    label: 'S/1,300' },
+              { val: 1500,    label: 'S/1,500' },
+            ];
+            return (
+              <div className="p-5 rounded-sm border mb-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-medium" style={{ color: CHART_COLORS.ink3 }}>Salario mínimo propuesto</span>
+                  <div className="flex items-center gap-3">
+                    {sliderMW === MW_1130 && (
+                      <span className="text-xs px-2 py-0.5 rounded-full font-medium"
+                        style={{ background: '#fdf3f0', color: CHART_COLORS.terra, border: `1px solid ${CHART_COLORS.terra}` }}>
+                        Vigente 2025
+                      </span>
+                    )}
+                    <span className="text-3xl font-bold" style={{ color: CHART_COLORS.terra }}>
+                      S/ {fmt(sliderMW)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Custom slider track */}
+                <div className="relative mt-8 mb-2">
+                  {/* Value bubble above thumb */}
+                  <div className="absolute -top-7 text-xs font-bold px-2 py-0.5 rounded whitespace-nowrap pointer-events-none"
+                    style={{
+                      left: `clamp(24px, calc(${pct}% - 20px), calc(100% - 44px))`,
+                      background: CHART_COLORS.terra, color: '#fff', transform: 'translateY(0)',
+                    }}>
+                    S/{fmt(sliderMW)}
+                    <span className="absolute left-1/2 -translate-x-1/2 top-full" style={{ borderLeft: '5px solid transparent', borderRight: '5px solid transparent', borderTop: `5px solid ${CHART_COLORS.terra}`, display: 'block', width: 0, height: 0 }} />
+                  </div>
+
+                  {/* Track background */}
+                  <div className="relative h-2.5 rounded-full overflow-hidden" style={{ background: CHART_DEFAULTS.gridStroke }}>
+                    {/* Filled portion */}
+                    <div className="absolute h-full rounded-full transition-none"
+                      style={{ width: `${pct}%`, background: CHART_COLORS.terra }} />
+                  </div>
+
+                  {/* Thumb (positioned over track) */}
+                  <div className="absolute top-1/2 pointer-events-none"
+                    style={{ left: `calc(${pct}% - 12px)`, transform: 'translateY(-50%) translateY(1px)', width: 24, height: 24, borderRadius: '50%', background: CHART_COLORS.terra, border: '3px solid white', boxShadow: '0 2px 8px rgba(198,93,62,0.4)' }} />
+
+                  {/* Invisible native input on top for interaction */}
+                  <input
+                    type="range" min={SL_MIN} max={SL_MAX} step={25}
+                    value={sliderMW}
+                    onChange={e => setSliderMW(Number(e.target.value))}
+                    className="absolute inset-0 w-full opacity-0 cursor-pointer"
+                    style={{ height: '100%' }}
+                  />
+                </div>
+
+                {/* Tick marks */}
+                <div className="relative mt-3" style={{ height: 32 }}>
+                  {ticks.map(({ val, label }) => {
+                    const tp = ((val - SL_MIN) / (SL_MAX - SL_MIN)) * 100;
+                    return (
+                      <div key={val} className="absolute flex flex-col items-center"
+                        style={{ left: `${tp}%`, transform: 'translateX(-50%)' }}>
+                        <div className="w-px h-2" style={{ background: CHART_COLORS.ink3, opacity: 0.4 }} />
+                        <div className="text-center leading-tight mt-0.5 whitespace-pre-line"
+                          style={{ fontSize: 9, color: val === sliderMW ? CHART_COLORS.terra : CHART_COLORS.ink3, fontWeight: val === sliderMW ? 700 : 400 }}>
+                          {label}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="flex justify-between text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
+                  <span>+0% vs S/1,025</span>
+                  <span className="font-medium" style={{ color: CHART_COLORS.ink }}>
+                    +{(((sliderMW / MW_1025) - 1) * 100).toFixed(1)}% vs S/1,025
                   </span>
-                )}
-                <span className="text-3xl font-bold" style={{ color: CHART_COLORS.terra }}>
-                  S/ {fmt(sliderMW)}
-                </span>
+                  <span>+{(((SL_MAX / MW_1025) - 1) * 100).toFixed(1)}%</span>
+                </div>
               </div>
-            </div>
-            <input
-              type="range" min={MW_1025} max={1500} step={25}
-              value={sliderMW}
-              onChange={e => setSliderMW(Number(e.target.value))}
-              className="w-full h-2 rounded-full appearance-none cursor-pointer"
-              style={{ accentColor: CHART_COLORS.terra }}
-            />
-            <div className="flex justify-between text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
-              <span>S/ {fmt(MW_1025)} (2022)</span>
-              <span className="font-medium" style={{ color: CHART_COLORS.ink }}>
-                +{(((sliderMW / MW_1025) - 1) * 100).toFixed(1)}% vs S/1,025
-              </span>
-              <span>S/ 1,500</span>
-            </div>
-          </div>
+            );
+          })()}
 
           {/* Dynamic paragraph */}
           {depts.length > 0 && (
@@ -980,9 +1049,9 @@ export default function SalarioMinimoPageV2() {
                   style={{ borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }} download>
                   Kaitz por departamento (JSON)
                 </a>
-                <Link href="/simuladores/salario-minimo-epe" className="flex items-center gap-1 px-3 py-1.5 border rounded"
+                <Link href="/simuladores" className="flex items-center gap-1 px-3 py-1.5 border rounded"
                   style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}>
-                  Simulador EPE Lima (v1)
+                  Todos los simuladores
                 </Link>
               </div>
             </div>
