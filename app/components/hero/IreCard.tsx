@@ -118,7 +118,7 @@ export default function IreCard({
   const articles = current.articles_total ?? 0;
 
   return (
-    <Link href="/estadisticas/riesgo-politico" className="block group">
+    <Link href="/estadisticas/riesgo-economico" className="block group">
       <div
         className="flex flex-col gap-4 transition-shadow group-hover:shadow-md"
         style={{
