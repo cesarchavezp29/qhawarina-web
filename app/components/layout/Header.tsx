@@ -83,15 +83,17 @@ export default function Header() {
   ];
 
   const dataItems = isEn ? [
-    ["/datos",      "Open Data"],
-    ["/api/docs",   "API"],
-    ["/simuladores","Simulators"],
-    ["/escenarios", "Scenarios"],
+    ["/datos",                        "Open Data"],
+    ["/api/docs",                     "API"],
+    ["/simuladores",                  "Simulators"],
+    ["/simuladores/salario-minimo",   "Min. Wage Simulator"],
+    ["/escenarios",                   "Scenarios"],
   ] : [
-    ["/datos",      "Datos Abiertos"],
-    ["/api/docs",   "API"],
-    ["/simuladores","Simuladores"],
-    ["/escenarios", "Escenarios"],
+    ["/datos",                        "Datos Abiertos"],
+    ["/api/docs",                     "API"],
+    ["/simuladores",                  "Simuladores"],
+    ["/simuladores/salario-minimo",   "Simulador Salario Mínimo"],
+    ["/escenarios",                   "Escenarios"],
   ];
 
   const aboutItems = isEn ? [

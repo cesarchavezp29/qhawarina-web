@@ -118,6 +118,31 @@ export default function SimuladoresPage() {
           </p>
         </div>
 
+        {/* Salario Mínimo featured card */}
+        <a
+          href="/simuladores/salario-minimo"
+          className="flex items-start gap-4 p-5 mb-6 border rounded-sm transition-colors hover:border-[#C65D3E] group"
+          style={{ background: '#fff', borderColor: '#E8E4DF' }}
+        >
+          <span className="text-2xl mt-0.5">💼</span>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-sm font-semibold" style={{ color: '#2D3142' }}>
+                {isEn ? 'Minimum Wage Simulator' : 'Simulador de Salario Mínimo'}
+              </span>
+              <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: '#f0faf8', color: '#2A9D8F', border: '1px solid #2A9D8F' }}>
+                {isEn ? 'New' : 'Nuevo'}
+              </span>
+            </div>
+            <p className="text-xs" style={{ color: '#8D99AE' }}>
+              {isEn
+                ? '9 natural experiments (Lima Metro, 2003–2022). DiD panel, Lee bounds, lighthouse effect. Slide to see impact of any proposed MW.'
+                : '9 experimentos naturales (Lima Metro, 2003–2022). Panel DiD, cotas de Lee, efecto faro. Desliza para ver el impacto de cualquier SM propuesto.'}
+            </p>
+          </div>
+          <span className="text-sm font-medium group-hover:translate-x-1 transition-transform" style={{ color: '#C65D3E' }}>→</span>
+        </a>
+
         {/* Tab nav */}
         <div className="flex border-b border-gray-300 mb-8">
           {TABS.map(({ key, label }) => (
