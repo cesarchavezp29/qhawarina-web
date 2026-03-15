@@ -250,7 +250,7 @@ export default function DistritosPage() {
                           <div className="w-16 bg-gray-100 rounded-full h-1.5 hidden sm:block">
                             <div
                               className="h-1.5 rounded-full bg-blue-500"
-                              style={{ width: `${Math.min(pct * 2, 100)}%` }}
+                              style={{ width: `${Math.min(pct, 100)}%` }}
                             />
                           </div>
                           <span className="font-medium text-gray-900 tabular-nums">{pct.toFixed(1)}%</span>

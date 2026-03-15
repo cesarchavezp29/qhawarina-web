@@ -8,18 +8,19 @@ import { useLocale } from 'next-intl';
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface PovertyData {
-  metadata: { target_year: number; generated_at: string };
+  metadata: { target_year: number; last_updated: string };
+  national: { poverty_nowcast: number };
   departments: Array<{
-    code: string;
-    name: string;
-    poverty_rate_2024: number;
-    poverty_rate_2025_nowcast: number;
+    dept_code: string;
+    department: string;
+    poverty_2024_official: number;
+    poverty_nowcast: number;
     change_pp: number;
   }>;
-  historical_series?: Array<{
+  historical_annual?: Array<{
     year: number;
-    official: number | null;
-    nowcast: number | null;
+    official: number;
+    nowcast: null;
   }>;
 }
 
@@ -60,7 +61,7 @@ export default function PobrezaGraficosPage() {
     );
   }
 
-  const nationalAvg = data.departments.reduce((sum, d) => sum + d.poverty_rate_2025_nowcast, 0) / data.departments.length;
+  const nationalAvg = data.national.poverty_nowcast;
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -82,7 +83,7 @@ export default function PobrezaGraficosPage() {
             : `Nowcast anual — ${data.metadata.target_year}: ${nationalAvg.toFixed(1)}%`}
         </p>
         <div className="mt-4">
-          <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
+          <LastUpdate date={new Date(data.metadata.last_updated).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
         </div>
 
         {/* TIMELINE CHART with Annual/Quarterly Toggle */}
@@ -116,13 +117,17 @@ export default function PobrezaGraficosPage() {
           </div>
 
           {/* Annual Chart */}
-          {frequency === 'annual' && data.historical_series && data.historical_series.length > 0 && (
+          {frequency === 'annual' && data.historical_annual && data.historical_annual.length > 0 && (() => {
+            const years = [...data.historical_annual.map(h => h.year), data.metadata.target_year];
+            const official = [...data.historical_annual.map(h => h.official), null];
+            const nowcast = [...data.historical_annual.map(() => null), data.national.poverty_nowcast];
+            return (
             <div>
               <Plot
                 data={[
                   {
-                    x: data.historical_series.map(d => d.year),
-                    y: data.historical_series.map(d => d.official),
+                    x: years,
+                    y: official,
                     type: 'scatter',
                     mode: 'lines+markers',
                     name: isEn ? 'Official (INEI)' : 'Oficial (INEI)',
@@ -130,13 +135,12 @@ export default function PobrezaGraficosPage() {
                     marker: { size: 6 }
                   },
                   {
-                    x: data.historical_series.map(d => d.year),
-                    y: data.historical_series.map(d => d.nowcast),
+                    x: years,
+                    y: nowcast,
                     type: 'scatter',
-                    mode: 'lines+markers',
-                    name: isEn ? 'Nowcast (Panel)' : 'Nowcast (Panel)',
-                    line: { color: '#dc2626', width: 2, dash: 'dot' },
-                    marker: { size: 6 }
+                    mode: 'markers',
+                    name: isEn ? `Nowcast ${data.metadata.target_year}` : `Nowcast ${data.metadata.target_year}`,
+                    marker: { color: '#dc2626', size: 10, symbol: 'diamond' }
                   }
                 ]}
                 layout={{
@@ -158,7 +162,8 @@ export default function PobrezaGraficosPage() {
                   : 'Los errores en 2020 (-10.4pp) y 2021 (+4.6pp) muestran que el modelo no puede predecir choques sin precedentes como la pandemia.'}
               </p>
             </div>
-          )}
+          );
+          })()}
 
           {/* Quarterly Chart */}
           {frequency === 'quarterly' && (
