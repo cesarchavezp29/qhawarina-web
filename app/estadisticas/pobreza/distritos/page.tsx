@@ -30,7 +30,7 @@ function parseCSV(text: string): District[] {
     headers.forEach((h, i) => { obj[h.trim()] = (vals[i] ?? '').trim(); });
     return {
       district_ubigeo: obj.district_ubigeo,
-      department_code: obj.department_code,
+      department_code: String(parseInt(obj.department_code, 10)).padStart(2, '0'),
       year: parseInt(obj.year),
       ntl_weight: parseFloat(obj.ntl_weight),
       ntl_sum: parseFloat(obj.ntl_sum),
