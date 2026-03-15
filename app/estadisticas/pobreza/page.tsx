@@ -10,7 +10,7 @@ import DataFreshnessWarning from "../../components/DataFreshnessWarning";
 import PageSkeleton from "../../components/PageSkeleton";
 import {
   ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, ReferenceArea, ReferenceLine, Cell, Legend,
+  ResponsiveContainer, ReferenceArea, ReferenceLine, Cell,
 } from 'recharts';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
@@ -69,7 +69,6 @@ interface PovertyData {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const AMBER       = '#D97706';
-const AMBER_LIGHT = '#FDE68A';
 const AMBER_MID   = '#E0A458';
 
 const PRESSURE_COLORS: Record<string, string> = {
@@ -81,29 +80,33 @@ const PRESSURE_COLORS: Record<string, string> = {
 };
 
 const PRESSURE_ICONS: Record<string, string> = {
-  mejora_significativa:  '↓↓',
-  mejora_moderada:       '↓',
-  estable:               '→',
-  deterioro_moderado:    '↑',
-  deterioro_significativo: '↑↑',
+  mejora_significativa:  'vv',
+  mejora_moderada:       'v',
+  estable:               '-',
+  deterioro_moderado:    '^',
+  deterioro_significativo: '^^',
 };
 
 const MO_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 const MO_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 function fmtMonth(m: string, isEn: boolean) {
-  const idx = parseInt(m.split('-')[1], 10) - 1;
+  const parts = m.split('-');
+  const idx = parts.length >= 2 ? parseInt(parts[1], 10) - 1 : -1;
+  if (idx < 0 || idx > 11) return '';
   return isEn ? MO_EN[idx] : MO_ES[idx];
 }
 
 function fmtVintage(vm: string, isEn: boolean) {
-  // "2025-09" → "septiembre 2025" / "September 2025"
-  const [yr, mo] = vm.split('-');
+  const parts = vm.split('-');
+  if (parts.length < 2) return vm;
+  const [yr, mo] = parts;
   const months_es = ['enero','febrero','marzo','abril','mayo','junio',
                      'julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const months_en = ['January','February','March','April','May','June',
                      'July','August','September','October','November','December'];
   const idx = parseInt(mo, 10) - 1;
+  if (idx < 0 || idx > 11) return vm;
   return isEn ? `${months_en[idx]} ${yr}` : `${months_es[idx]} ${yr}`;
 }
 
@@ -126,21 +129,33 @@ export default function PobrezaPage() {
   const locale = useLocale();
   const isEn = locale === 'en';
 
-  const [data, setData]       = useState<PovertyData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState(false);
-  const [sortKey, setSortKey] = useState<SortKey>('poverty_nowcast');
-  const [sortAsc, setSortAsc] = useState(false);
+  const [data, setData]         = useState<PovertyData | null>(null);
+  const [loading, setLoading]   = useState(true);
+  const [error, setError]       = useState(false);
+  const [sortKey, setSortKey]   = useState<SortKey>('poverty_nowcast');
+  const [sortAsc, setSortAsc]   = useState(false);
   const [methOpen, setMethOpen] = useState(false);
 
   useEffect(() => {
     fetch(`/assets/data/poverty_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`)
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then(d => { setData(d); setLoading(false); })
       .catch(() => { setError(true); setLoading(false); });
   }, []);
 
   // ── All useMemo hooks BEFORE early returns ────────────────────────────────
+
+  // UX-1: Tighter monthly band — use std(monthly − rolling3m) * 1.96
+  const monthlyBandSE = useMemo(() => {
+    if (!data || data.monthly_series.length < 2) return 2;
+    const devs = data.monthly_series.map(m => m.national_monthly - m.national_rolling3m);
+    const mean = devs.reduce((s, d) => s + d, 0) / devs.length;
+    const variance = devs.reduce((s, d) => s + (d - mean) ** 2, 0) / devs.length;
+    return Math.sqrt(variance) * 1.96;
+  }, [data]);
 
   const monthlyChartData = useMemo(() => {
     if (!data) return [];
@@ -148,10 +163,11 @@ export default function PobrezaPage() {
       label:     fmtMonth(m.month, isEn),
       rolling3m: m.national_rolling3m,
       monthly:   m.national_monthly,
-      lower:     data.national.lower_ci,
-      upper:     data.national.upper_ci,
+      // Tighter band (UX-1): rolling3m ± 1.96*SE(monthly-rolling3m)
+      lower:     parseFloat((m.national_rolling3m - monthlyBandSE).toFixed(2)),
+      upper:     parseFloat((m.national_rolling3m + monthlyBandSE).toFixed(2)),
     }));
-  }, [data, isEn]);
+  }, [data, isEn, monthlyBandSE]);
 
   const historicalChartData = useMemo(() => {
     if (!data) return [];
@@ -172,13 +188,14 @@ export default function PobrezaPage() {
 
   const sortedDepts = useMemo(() => {
     if (!data) return [];
-    const sorted = [...data.departments].sort((a, b) => {
+    return [...data.departments].sort((a, b) => {
       const va = a[sortKey] as string | number;
       const vb = b[sortKey] as string | number;
-      if (typeof va === 'string') return sortAsc ? va.localeCompare(vb as string) : (vb as string).localeCompare(va);
+      if (typeof va === 'string') {
+        return sortAsc ? va.localeCompare(vb as string) : (vb as string).localeCompare(va);
+      }
       return sortAsc ? (va as number) - (vb as number) : (vb as number) - (va as number);
     });
-    return sorted;
   }, [data, sortKey, sortAsc]);
 
   const extremeDepts = useMemo(() => {
@@ -201,24 +218,39 @@ export default function PobrezaPage() {
     </div>
   );
 
-  const nat       = data.national;
-  const latest    = data.monthly_series[data.monthly_series.length - 1];
+  // ── Derived values (safe — data is guaranteed non-null here) ──────────────
+  const nat        = data.national;
+  const latest     = data.monthly_series[data.monthly_series.length - 1];
   const vintageStr = fmtVintage(data.metadata.vintage_month, isEn);
   const changeDir  = nat.change_pp < 0 ? 'down' : nat.change_pp > 0 ? 'up' : 'flat';
   const changeColor = changeDir === 'down' ? '#16a34a' : changeDir === 'up' ? '#ef4444' : '#9ca3af';
 
-  function handleSort(key: SortKey) {
+  // UX-1: uncertainty of CHANGE = half-width of annual CI (simpler, interpretable)
+  const changeUncertainty = ((nat.upper_ci - nat.lower_ci) / 2).toFixed(1);
+
+  // Sort handlers (plain functions, not nested components)
+  const handleSort = (key: SortKey) => {
     if (sortKey === key) setSortAsc(a => !a);
     else { setSortKey(key); setSortAsc(key === 'department'); }
-  }
+  };
 
-  function SortIcon({ k }: { k: SortKey }) {
-    if (sortKey !== k) return <span className="text-gray-300 ml-1">↕</span>;
-    return <span className="ml-1" style={{ color: AMBER }}>{sortAsc ? '↑' : '↓'}</span>;
-  }
+  const sortIndicator = (k: SortKey) => {
+    if (sortKey !== k) return ' ↕';
+    return sortAsc ? ' ↑' : ' ↓';
+  };
 
-  const lastUpdated = new Date(data.metadata.last_updated)
-    .toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' });
+  const lastUpdated = (() => {
+    try {
+      return new Date(data.metadata.last_updated)
+        .toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch {
+      return data.metadata.last_updated.slice(0, 10);
+    }
+  })();
+
+  const pressureKey = latest?.pressure_label ?? 'estable';
+  const pressureColor = PRESSURE_COLORS[pressureKey] ?? '#9ca3af';
+  const pressureIcon  = PRESSURE_ICONS[pressureKey] ?? '-';
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
@@ -244,7 +276,7 @@ export default function PobrezaPage() {
               title={`${isEn ? 'Poverty' : 'Pobreza'} — Qhawarina`}
               text={isEn
                 ? `Poverty nowcast Peru 2025: ${nat.poverty_nowcast.toFixed(1)}% national (${nat.change_pp > 0 ? '+' : ''}${nat.change_pp.toFixed(1)}pp vs 2024) | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza`
-                : `Nowcast pobreza Perú 2025: ${nat.poverty_nowcast.toFixed(1)}% nacional (${nat.change_pp > 0 ? '+' : ''}${nat.change_pp.toFixed(1)}pp vs 2024) | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza`}
+                : `Nowcast pobreza Peru 2025: ${nat.poverty_nowcast.toFixed(1)}% nacional (${nat.change_pp > 0 ? '+' : ''}${nat.change_pp.toFixed(1)}pp vs 2024) | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza`}
             />
             <EmbedWidget
               path="/estadisticas/pobreza"
@@ -273,44 +305,71 @@ export default function PobrezaPage() {
             <p className="text-6xl font-bold leading-none mt-4" style={{ color: AMBER }}>
               {nat.poverty_nowcast.toFixed(1)}%
             </p>
+            {/* UX-1: Show change with uncertainty, not raw CI */}
             <p className="text-2xl font-semibold mt-2" style={{ color: changeColor }}>
               {nat.change_pp > 0 ? '+' : ''}{nat.change_pp.toFixed(1)} pp vs 2024
             </p>
-            <p className="text-xs text-gray-400 mt-2">
-              IC 95%: [{nat.lower_ci.toFixed(1)}% – {nat.upper_ci.toFixed(1)}%]
+            <p className="text-sm text-gray-500 mt-1">
+              {isEn ? `Uncertainty: \u00b1${changeUncertainty} pp` : `Incertidumbre: \u00b1${changeUncertainty} pp`}
             </p>
             <p className="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-100">
               {isEn
-                ? `Model: GBR + persistence (α=${data.metadata.blend_alpha}). Monthly update.`
-                : `Modelo: GBR + persistencia (α=${data.metadata.blend_alpha}). Actualización mensual.`}
+                ? `Model: GBR + persistence (\u03b1=${data.metadata.blend_alpha}). Monthly update.`
+                : `Modelo: GBR + persistencia (\u03b1=${data.metadata.blend_alpha}). Actualizaci\u00f3n mensual.`}
             </p>
           </div>
 
-          {/* Right: Pressure */}
+          {/* Right: Pressure — UX-4 footnote added */}
           <div className="rounded-xl border-2 p-6 flex flex-col bg-white"
-               style={{ borderColor: `${PRESSURE_COLORS[latest?.pressure_label ?? 'estable']}44` }}>
+               style={{ borderColor: `${pressureColor}44` }}>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
               {isEn ? 'RECENT CONDITIONS' : 'CONDICIONES RECIENTES'}
             </p>
             <p className="text-xs text-gray-400 mt-0.5">
-              {isEn ? `Last signal: ${fmtMonth(latest?.month ?? '', true)} 2025` : `Última señal: ${fmtMonth(latest?.month ?? '', false)} 2025`}
+              {isEn
+                ? `Last signal: ${fmtMonth(latest?.month ?? '', true)} 2025`
+                : `\u00daltima se\u00f1al: ${fmtMonth(latest?.month ?? '', false)} 2025`}
             </p>
-            <p className="text-5xl font-bold leading-none mt-4"
-               style={{ color: PRESSURE_COLORS[latest?.pressure_label ?? 'estable'] }}>
-              {PRESSURE_ICONS[latest?.pressure_label ?? 'estable']}
+            <p className="text-5xl font-bold leading-none mt-4 font-mono" style={{ color: pressureColor }}>
+              {pressureIcon}
             </p>
-            <p className="text-2xl font-semibold mt-2"
-               style={{ color: PRESSURE_COLORS[latest?.pressure_label ?? 'estable'] }}>
-              {pressureLabelText(latest?.pressure_label ?? 'estable', isEn)}
+            <p className="text-2xl font-semibold mt-2" style={{ color: pressureColor }}>
+              {pressureLabelText(pressureKey, isEn)}
             </p>
             <p className="text-xs text-gray-400 mt-2">
-              {isEn ? 'Pressure score' : 'Índice de presión'}: {latest?.pressure_score >= 0 ? '+' : ''}{latest?.pressure_score.toFixed(3)}
+              {isEn ? 'Pressure score' : '\u00cdndice de presi\u00f3n'}:{' '}
+              {latest?.pressure_score != null
+                ? `${latest.pressure_score >= 0 ? '+' : ''}${latest.pressure_score.toFixed(3)}`
+                : '—'}
             </p>
+            {/* UX-4: Pressure tracker explanation */}
             <p className="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-100">
-              {isEn ? 'Weighted index: GDP, public spending, capex.' : 'Índice ponderado: PBI, gasto público, capex.'}
+              {isEn
+                ? 'Weighted index of monthly economic activity — mainly monthly GDP and public spending. Does not measure poverty directly.'
+                : 'El \u00edndice de presi\u00f3n resume se\u00f1ales de actividad econ\u00f3mica mensual, principalmente PBI mensual y gasto p\u00fablico. No mide pobreza directamente.'}
             </p>
           </div>
         </div>
+
+        {/* UX-3: Revision path — small card if entries exist */}
+        {data.revision_path.length > 0 && (
+          <div className="mt-4 rounded-lg border p-4 bg-white" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
+            <p className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-2">
+              {isEn ? 'FORECAST REVISION PATH — 2025' : 'EVOLUCI\u00d3N DEL NOWCAST 2025'}
+            </p>
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              {data.revision_path.map((r, i) => (
+                <span key={r.vintage} className="flex items-center gap-1.5">
+                  <span className="text-xs text-gray-500">{r.vintage}:</span>
+                  <span className="font-semibold" style={{ color: AMBER }}>{r.national_nowcast.toFixed(1)}%</span>
+                  {i < data.revision_path.length - 1 && (
+                    <span className="text-gray-300 text-xs">--&gt;</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── R6: Highlight cards ──────────────────────────────────────────── */}
         {extremeDepts && (
@@ -344,13 +403,19 @@ export default function PobrezaPage() {
 
         {/* ── Section 2: Monthly rolling 3m chart ─────────────────────────── */}
         <div className="mt-8 rounded-lg border p-6 bg-white" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
+          {/* UX-2: Explanatory text */}
+          <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+            {isEn
+              ? 'Early-release estimate of monetary poverty based on monthly departmental economic indicators, ahead of official INEI publication.'
+              : 'Estimaci\u00f3n temprana de la pobreza monetaria basada en indicadores econ\u00f3micos mensuales departamentales, antes de la publicaci\u00f3n oficial del INEI.'}
+          </p>
           <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-            {isEn ? 'Poverty nowcast — rolling quarterly average' : 'Pobreza nowcast — promedio móvil trimestral'}
+            {isEn ? 'Poverty nowcast \u2014 rolling quarterly average' : 'Pobreza nowcast \u2014 promedio m\u00f3vil trimestral'}
           </h3>
           <p className="text-xs mt-0.5 mb-4" style={{ color: CHART_COLORS.ink3 }}>
             {isEn
-              ? 'Thick line = 3-month rolling avg. Dashed = monthly estimate. Band = 95% CI from annual model.'
-              : 'Línea gruesa = promedio móvil 3 meses. Punteada = estimación mensual. Banda = IC 95% del nowcast anual.'}
+              ? 'Thick line = 3-month rolling avg. Dashed = monthly estimate. Band = +/-1.96 SE around rolling average.'
+              : 'L\u00ednea gruesa = promedio m\u00f3vil 3 meses. Punteada = estimaci\u00f3n mensual. Banda = +/-1.96 SE alrededor del promedio m\u00f3vil.'}
           </p>
           <ResponsiveContainer width="100%" height={260}>
             <ComposedChart data={monthlyChartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
@@ -360,16 +425,19 @@ export default function PobrezaPage() {
                 domain={['auto', 'auto']}
                 tick={axisTickStyle}
                 stroke={CHART_DEFAULTS.axisStroke}
-                tickFormatter={v => `${v}%`}
+                tickFormatter={(v: number) => `${v}%`}
               />
               <Tooltip
                 contentStyle={tooltipContentStyle}
-                formatter={(v: any, name?: string) => [`${v != null ? Number(v).toFixed(1) : '—'}%`, name ?? '']}
+                formatter={(v: any, name?: string) => [
+                  `${v != null ? Number(v).toFixed(1) : '\u2014'}%`,
+                  name ?? '',
+                ]}
               />
-              {/* CI band — constant across months (R1) */}
+              {/* UX-1: Tighter CI band — rolling3m ± 1.96*SE(monthly-rolling3m) */}
               <ReferenceArea
-                y1={nat.lower_ci}
-                y2={nat.upper_ci}
+                y1={monthlyChartData[0]?.lower ?? nat.lower_ci}
+                y2={monthlyChartData[0]?.upper ?? nat.upper_ci}
                 fill={AMBER}
                 fillOpacity={0.08}
               />
@@ -408,12 +476,12 @@ export default function PobrezaPage() {
         {/* ── Section 3: Historical annual chart ──────────────────────────── */}
         <div className="mt-6 rounded-lg border p-6 bg-white" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
           <h3 className="text-lg font-semibold" style={{ color: CHART_COLORS.ink }}>
-            {isEn ? 'Historical poverty trend' : 'Evolución histórica de la pobreza monetaria'}
+            {isEn ? 'Historical poverty trend' : 'Evoluci\u00f3n hist\u00f3rica de la pobreza monetaria'}
           </h3>
           <p className="text-xs mt-0.5 mb-4" style={{ color: CHART_COLORS.ink3 }}>
             {isEn
               ? 'Bars = INEI official (2004-2024). Amber bar = Qhawarina 2025 nowcast.'
-              : 'Barras = cifra oficial INEI (2004-2024). Barra ámbar = nowcast Qhawarina 2025.'}
+              : 'Barras = cifra oficial INEI (2004-2024). Barra \u00e1mbar = nowcast Qhawarina 2025.'}
           </p>
           <ResponsiveContainer width="100%" height={220}>
             <ComposedChart data={historicalChartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
@@ -427,14 +495,15 @@ export default function PobrezaPage() {
               <YAxis
                 tick={axisTickStyle}
                 stroke={CHART_DEFAULTS.axisStroke}
-                tickFormatter={v => `${v}%`}
+                tickFormatter={(v: number) => `${v}%`}
                 domain={[0, 65]}
               />
               <Tooltip
                 contentStyle={tooltipContentStyle}
-                formatter={(v: any, name?: string) =>
-                  [`${v != null ? Number(v).toFixed(1) : '—'}%`, name ?? '']
-                }
+                formatter={(v: any, name?: string) => [
+                  `${v != null ? Number(v).toFixed(1) : '\u2014'}%`,
+                  name ?? '',
+                ]}
               />
               {/* Official bars 2004-2024 */}
               <Bar dataKey="official" name={isEn ? 'Official (INEI)' : 'Oficial (INEI)'} radius={[2, 2, 0, 0]}>
@@ -443,12 +512,11 @@ export default function PobrezaPage() {
                 ))}
               </Bar>
               {/* Nowcast 2025 bar */}
-              <Bar dataKey="nowcast" name={isEn ? 'Nowcast 2025' : 'Nowcast 2025'} radius={[2, 2, 0, 0]}>
+              <Bar dataKey="nowcast" name="Nowcast 2025" radius={[2, 2, 0, 0]}>
                 {historicalChartData.map((entry, i) => (
                   <Cell key={i} fill={entry.is_nowcast ? AMBER : 'transparent'} />
                 ))}
               </Bar>
-              {/* CI reference area for 2025 column */}
               <ReferenceLine
                 x={data.metadata.target_year}
                 stroke={AMBER}
@@ -457,10 +525,11 @@ export default function PobrezaPage() {
               />
             </ComposedChart>
           </ResponsiveContainer>
+          {/* UX-1: Show CI in chart caption, not hero card */}
           <p className="text-xs text-center mt-2" style={{ color: CHART_COLORS.ink3 }}>
             {isEn
-              ? `Nowcast IC 95%: [${nat.lower_ci.toFixed(1)}% – ${nat.upper_ci.toFixed(1)}%]`
-              : `Nowcast IC 95%: [${nat.lower_ci.toFixed(1)}% – ${nat.upper_ci.toFixed(1)}%]`}
+              ? `2025 nowcast IC 95%: [${nat.lower_ci.toFixed(1)}% \u2013 ${nat.upper_ci.toFixed(1)}%] | Backtest MAE: ${data.backtest.mae.toFixed(1)} pp`
+              : `Nowcast 2025 IC 95%: [${nat.lower_ci.toFixed(1)}% \u2013 ${nat.upper_ci.toFixed(1)}%] | MAE hist\u00f3rico: ${data.backtest.mae.toFixed(1)} pp`}
           </p>
         </div>
 
@@ -477,42 +546,46 @@ export default function PobrezaPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-xs uppercase tracking-wide text-gray-500 border-b" style={{ borderColor: CHART_DEFAULTS.gridStroke, background: '#FAFAFA' }}>
+                <tr className="text-xs uppercase tracking-wide text-gray-500 border-b"
+                    style={{ borderColor: CHART_DEFAULTS.gridStroke, background: '#FAFAFA' }}>
                   {([
-                    ['department',         isEn ? 'Department'  : 'Departamento'],
-                    ['poverty_2024_official', isEn ? '2024 Official' : 'Oficial 2024'],
-                    ['poverty_nowcast',    isEn ? 'Nowcast 2025' : 'Nowcast 2025'],
-                    ['change_pp',          isEn ? 'Change'      : 'Cambio'],
+                    ['department',            isEn ? 'Department'      : 'Departamento'],
+                    ['poverty_2024_official',  isEn ? '2024 Official'   : 'Oficial 2024'],
+                    ['poverty_nowcast',        'Nowcast 2025'],
+                    ['change_pp',              isEn ? 'Change'          : 'Cambio'],
                   ] as [SortKey, string][]).map(([k, label]) => (
                     <th key={k}
                         className="px-4 py-3 text-left cursor-pointer hover:text-gray-800 select-none"
                         onClick={() => handleSort(k)}>
-                      {label}<SortIcon k={k} />
+                      {label}
+                      <span className="ml-1" style={{ color: sortKey === k ? AMBER : '#d1d5db' }}>
+                        {sortIndicator(k)}
+                      </span>
                     </th>
                   ))}
                   <th className="px-4 py-3 text-left">
-                    {isEn ? 'Pressure' : 'Presión'}
+                    {isEn ? 'Pressure' : 'Presi\u00f3n'}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {sortedDepts.map((d, i) => (
-                  <tr key={d.dept_code}
+                {sortedDepts.map((dept, i) => (
+                  <tr key={dept.dept_code}
                       className={`border-b ${i % 2 === 0 ? '' : 'bg-gray-50'}`}
                       style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
-                    <td className="px-4 py-2.5 font-medium text-gray-900">{d.department}</td>
-                    <td className="px-4 py-2.5 text-gray-600">{d.poverty_2024_official.toFixed(1)}%</td>
+                    <td className="px-4 py-2.5 font-medium text-gray-900">{dept.department}</td>
+                    <td className="px-4 py-2.5 text-gray-600">{dept.poverty_2024_official.toFixed(1)}%</td>
                     <td className="px-4 py-2.5 font-semibold" style={{ color: AMBER }}>
-                      {d.poverty_nowcast.toFixed(1)}%
+                      {dept.poverty_nowcast.toFixed(1)}%
                     </td>
                     <td className="px-4 py-2.5 font-semibold"
-                        style={{ color: d.change_pp < 0 ? '#16a34a' : d.change_pp > 0 ? '#ef4444' : '#9ca3af' }}>
-                      {d.change_pp > 0 ? '+' : ''}{d.change_pp.toFixed(1)} pp
+                        style={{ color: dept.change_pp < 0 ? '#16a34a' : dept.change_pp > 0 ? '#ef4444' : '#9ca3af' }}>
+                      {dept.change_pp > 0 ? '+' : ''}{dept.change_pp.toFixed(1)} pp
                     </td>
                     <td className="px-4 py-2.5">
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium text-white"
-                            style={{ background: PRESSURE_COLORS[d.pressure_label] ?? '#9ca3af' }}>
-                        {PRESSURE_ICONS[d.pressure_label]} {pressureLabelText(d.pressure_label, isEn)}
+                            style={{ background: PRESSURE_COLORS[dept.pressure_label] ?? '#9ca3af' }}>
+                        {pressureLabelText(dept.pressure_label, isEn)}
                       </span>
                     </td>
                   </tr>
@@ -529,9 +602,9 @@ export default function PobrezaPage() {
             onClick={() => setMethOpen(o => !o)}
           >
             <span className="font-semibold text-gray-800">
-              {isEn ? 'Methodology' : 'Metodología'}
+              {isEn ? 'Methodology' : 'Metodolog\u00eda'}
             </span>
-            <span className="text-gray-400 text-lg">{methOpen ? '−' : '+'}</span>
+            <span className="text-gray-400 text-lg">{methOpen ? '-' : '+'}</span>
           </button>
           {methOpen && (
             <div className="px-5 pb-5 border-t text-sm text-gray-700 space-y-3" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
@@ -541,10 +614,10 @@ export default function PobrezaPage() {
                     {isEn ? 'MODEL' : 'MODELO'}
                   </p>
                   <ul className="space-y-0.5 text-xs text-gray-600">
-                    <li>Gradient Boosting Regressor + persistencia (α={data.metadata.blend_alpha})</li>
-                    <li>{isEn ? 'Training: departmental panel 2004–2024' : 'Entrenamiento: panel departamental 2004–2024'}</li>
-                    <li>{isEn ? 'Validation: rolling-origin temporal' : 'Validación: rolling-origin temporal'}</li>
-                    <li>MAE = {data.backtest.mae.toFixed(1)} pp &nbsp;|&nbsp; Dir. = {(data.backtest.directional_accuracy * 100).toFixed(0)}%</li>
+                    <li>Gradient Boosting Regressor + persistencia (&alpha;={data.metadata.blend_alpha})</li>
+                    <li>{isEn ? 'Training: departmental panel 2004\u20132024' : 'Entrenamiento: panel departamental 2004\u20132024'}</li>
+                    <li>{isEn ? 'Validation: rolling-origin temporal' : 'Validaci\u00f3n: rolling-origin temporal'}</li>
+                    <li>MAE = {data.backtest.mae.toFixed(1)} pp | Dir. = {(data.backtest.directional_accuracy * 100).toFixed(0)}%</li>
                     <li>{isEn ? 'Current vintage: data through' : 'Vintage actual: datos hasta'} {vintageStr}</li>
                   </ul>
                 </div>
@@ -553,12 +626,12 @@ export default function PobrezaPage() {
                     {isEn ? 'VARIABLES' : 'VARIABLES'}
                   </p>
                   <ul className="space-y-0.5 text-xs text-gray-600">
-                    <li>{isEn ? 'Electricity consumption' : 'Consumo eléctrico'}</li>
-                    <li>{isEn ? 'Credit outstanding' : 'Crédito'}</li>
-                    <li>{isEn ? 'Government capex & spending' : 'Capex y gasto público'}</li>
-                    <li>{isEn ? 'Mining production' : 'Producción minera'}</li>
-                    <li>{isEn ? 'Tax revenue (SUNAT)' : 'Recaudación tributaria'}</li>
-                    <li>{isEn ? 'Inflation (CPI)' : 'Inflación (IPC)'}</li>
+                    <li>{isEn ? 'Electricity consumption' : 'Consumo el\u00e9ctrico'}</li>
+                    <li>{isEn ? 'Credit outstanding' : 'Cr\u00e9dito'}</li>
+                    <li>{isEn ? 'Government capex & spending' : 'Capex y gasto p\u00fablico'}</li>
+                    <li>{isEn ? 'Mining production' : 'Producci\u00f3n minera'}</li>
+                    <li>{isEn ? 'Tax revenue (SUNAT)' : 'Recaudaci\u00f3n tributaria'}</li>
+                    <li>{isEn ? 'Inflation (CPI)' : 'Inflaci\u00f3n (IPC)'}</li>
                     <li>{isEn ? 'Monthly GDP index (BCRP)' : 'PBI mensual (BCRP)'}</li>
                   </ul>
                 </div>
@@ -567,25 +640,17 @@ export default function PobrezaPage() {
               <div className="mt-2 p-3 rounded-lg text-xs text-gray-600" style={{ background: '#FEF3C7' }}>
                 <strong>{isEn ? 'Disclaimer: ' : 'Aviso: '}</strong>
                 {isEn
-                  ? 'The nowcast poverty rate is an estimate based on monthly departmental economic indicators, not a direct poverty measurement. The official figure comes from INEI\'s ENAHO, published annually. The rolling quarterly average smooths the monthly series to reduce noise.'
-                  : 'La tasa de pobreza nowcast es una estimación basada en indicadores económicos mensuales departamentales, no una medición directa. La cifra oficial proviene de la ENAHO del INEI, publicada anualmente. El promedio móvil trimestral suaviza la serie mensual para reducir ruido.'}
+                  ? "The nowcast poverty rate is an estimate based on monthly departmental economic indicators, not a direct poverty measurement. The official figure comes from INEI's ENAHO, published annually."
+                  : 'La tasa de pobreza nowcast es una estimaci\u00f3n basada en indicadores econ\u00f3micos mensuales departamentales, no una medici\u00f3n directa. La cifra oficial proviene de la ENAHO del INEI, publicada anualmente.'}
               </div>
 
-              {/* R5: Revision path */}
-              {data.revision_path.length > 0 && (
-                <div className="mt-2">
-                  <p className="font-semibold text-xs uppercase tracking-wide text-gray-500 mb-1">
-                    {isEn ? 'FORECAST REVISION PATH — 2025' : 'REVISIÓN DEL NOWCAST 2025'}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {data.revision_path.map(r => (
-                      <div key={r.vintage} className="text-xs px-2 py-1 rounded border" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
-                        <span className="text-gray-500">{r.vintage}:</span>{' '}
-                        <span className="font-medium" style={{ color: AMBER }}>{r.national_nowcast.toFixed(1)}%</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {/* R5: Revision path in methodology if not shown above */}
+              {data.revision_path.length === 0 && (
+                <p className="text-xs text-gray-400 italic">
+                  {isEn
+                    ? 'Forecast revision path will appear here as monthly vintages accumulate.'
+                    : 'El historial de revisiones del nowcast aparecer\u00e1 aqu\u00ed a medida que se acumulen los vintages mensuales.'}
+                </p>
               )}
             </div>
           )}
@@ -593,12 +658,12 @@ export default function PobrezaPage() {
 
         {/* ── Section 6: Footer stats ──────────────────────────────────────── */}
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[
+          {([
             [isEn ? 'Monthly series' : 'Series mensuales', '10'],
             [isEn ? 'Departments'    : 'Departamentos',    '24'],
             [isEn ? 'Vintage'        : 'Vintage',          vintageStr],
             [isEn ? 'Model'          : 'Modelo',           'GBR + persistencia'],
-          ].map(([label, val]) => (
+          ] as [string, string][]).map(([label, val]) => (
             <div key={label} className="rounded-lg border p-4 bg-white text-center" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
               <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
               <p className="text-sm font-semibold text-gray-800 mt-1">{val}</p>
@@ -611,13 +676,13 @@ export default function PobrezaPage() {
           <Link href="/estadisticas/pobreza/graficos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">📊</div>
+                <div className="text-4xl">chart</div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
-                    {isEn ? 'Time Series' : 'Evolución Temporal'}
+                    {isEn ? 'Time Series' : 'Evoluci\u00f3n Temporal'}
                   </h2>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEn ? 'Annual poverty historical series' : 'Serie histórica anual de pobreza'}
+                    {isEn ? 'Annual poverty historical series' : 'Serie hist\u00f3rica anual de pobreza'}
                   </p>
                 </div>
               </div>
@@ -627,13 +692,13 @@ export default function PobrezaPage() {
           <Link href="/estadisticas/pobreza/mapas">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">🗺️</div>
+                <div className="text-4xl">map</div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
-                    {isEn ? 'Regional Map' : 'Distribución Regional'}
+                    {isEn ? 'Regional Map' : 'Distribuci\u00f3n Regional'}
                   </h2>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEn ? 'Departmental prediction by region' : 'Predicción departamental por región'}
+                    {isEn ? 'Departmental prediction by region' : 'Predicci\u00f3n departamental por regi\u00f3n'}
                   </p>
                 </div>
               </div>
@@ -643,7 +708,7 @@ export default function PobrezaPage() {
           <Link href="/estadisticas/pobreza/distritos">
             <div className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-400 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">🏘️</div>
+                <div className="text-4xl">pin</div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
                     {isEn ? 'District Explorer' : 'Explorador Distrital'}
@@ -659,7 +724,7 @@ export default function PobrezaPage() {
 
         <div className="mt-6 text-center">
           <a href="/estadisticas/pobreza/metodologia" className="text-amber-700 hover:text-amber-900 font-medium">
-            📖 {isEn ? 'View full methodology →' : 'Ver metodología completa →'}
+            {isEn ? 'View full methodology ->' : 'Ver metodolog\u00eda completa ->'}
           </a>
         </div>
 
