@@ -332,6 +332,8 @@ export default function RiesgoEconomicoPage() {
   }, []);
 
   // ── Draggable label state (all positions in px relative to chartContainerRef) ──
+  const [viewMode, setViewMode] = useState<'daily' | 'monthly'>('daily');
+
   const [dotPositions, setDotPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [dragging, setDragging] = useState<string | null>(null);
@@ -504,8 +506,9 @@ export default function RiesgoEconomicoPage() {
   const regression = computeRegression(scatterRaw.map((p) => ({ x: p.ire, y: p.fx })));
 
   // ── B1: Distribución mensual del IRE ────────────────────────────────────────
+  const currentYearMonth = new Date().toISOString().slice(0, 7);
   const monthlyBarData = (data.monthly_series ?? [])
-    .filter((m) => m.economic_avg != null)
+    .filter((m) => m.economic_avg != null && m.month < currentYearMonth)  // exclude current month
     .map((m) => ({
       month: m.month,
       label: fmtMonth(m.month, isEn),
@@ -530,6 +533,30 @@ export default function RiesgoEconomicoPage() {
             {isEn ? 'Economic Risk Index' : 'Índice de Riesgo Económico'}
           </span>
         </nav>
+
+        {/* ── View toggle: Daily / Monthly ─────────────────────── */}
+        <div className="flex gap-1 mb-6 bg-gray-100 rounded-lg p-1 w-fit">
+          <button
+            onClick={() => setViewMode('daily')}
+            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              viewMode === 'daily'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {isEn ? 'Daily' : 'Diario'}
+          </button>
+          <button
+            onClick={() => setViewMode('monthly')}
+            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              viewMode === 'monthly'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {isEn ? 'Monthly' : 'Mensual'}
+          </button>
+        </div>
 
         {/* ══ SECTION 1: HEADER ════════════════════════════════════════════ */}
         <div className="flex items-start justify-between flex-wrap gap-4 mb-8">
@@ -626,6 +653,8 @@ export default function RiesgoEconomicoPage() {
             <p className="text-xs text-gray-400 mt-2">IRE · {isEn ? 'mean = 100' : 'media = 100'}</p>
           </div>
         </div>
+
+        {viewMode === 'daily' && (<>
 
         {/* ══ SECTION 3: MULTIPLIER SCALE ═════════════════════════════════ */}
         <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
@@ -1016,7 +1045,11 @@ export default function RiesgoEconomicoPage() {
           </div>
         )}
 
+        </>)}
+
         {/* ══ SECTION B1: DISTRIBUCIÓN MENSUAL DEL IRE ════════════════════ */}
+        {viewMode === 'monthly' && (<>
+
         {monthlyBarData.length >= 2 && (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
@@ -1083,6 +1116,36 @@ export default function RiesgoEconomicoPage() {
               <span><span style={{ color: '#C65D3E' }}>■</span> {isEn ? '110–150 (Elevated)' : '110–150 (Elevado)'}</span>
               <span><span style={{ color: '#9B2226' }}>■</span> {isEn ? '> 150 (High)' : '> 150 (Alto)'}</span>
             </div>
+            {/* Monthly peak events */}
+            {(() => {
+              const peakMap: Record<string, string> = {};
+              for (const e of data.peak_events ?? []) {
+                if (e.dimension === 'economic' && e.label) {
+                  peakMap[e.date.slice(0, 7)] = e.label;
+                }
+              }
+              const entries = monthlyBarData
+                .filter(m => peakMap[m.month])
+                .map(m => ({ month: m.label, event: peakMap[m.month], value: m.value, color: m.color }))
+                .reverse();
+              if (entries.length === 0) return null;
+              return (
+                <div className="mt-4 border-t border-gray-100 pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
+                    {isEn ? 'Peak events' : 'Eventos pico'}
+                  </p>
+                  <div className="space-y-1">
+                    {entries.map((e, i) => (
+                      <div key={i} className="flex items-center gap-3 text-xs">
+                        <span className="text-gray-400 w-16 flex-shrink-0">{e.month}</span>
+                        <span className="font-mono w-8 flex-shrink-0 text-right" style={{ color: e.color }}>{Math.round(e.value)}</span>
+                        <span className="text-gray-600">{e.event}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         )}
 
@@ -1150,6 +1213,8 @@ export default function RiesgoEconomicoPage() {
           )}
         </div>
 
+        </>)}
+
         {/* ══ SECTION 7: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
           {[
@@ -1172,6 +1237,7 @@ export default function RiesgoEconomicoPage() {
 
         {/* ══ SECTION 8: LINKS ════════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row gap-3">
+          {viewMode === 'daily' && (
           <Link href="/estadisticas/riesgo-politico" className="flex-1">
             <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">🏛️</span>
@@ -1186,6 +1252,7 @@ export default function RiesgoEconomicoPage() {
               <span className="text-gray-400 text-sm flex-shrink-0">→</span>
             </div>
           </Link>
+          )}
           <Link href="/estadisticas/riesgo-politico/metodologia" className="flex-1">
             <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">📖</span>

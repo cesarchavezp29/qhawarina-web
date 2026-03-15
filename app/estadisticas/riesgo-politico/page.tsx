@@ -307,6 +307,8 @@ export default function RiesgoPoliticoPage() {
   }, []);
 
   // ── Draggable label state (all positions in px relative to chartContainerRef) ──
+  const [viewMode, setViewMode] = useState<'daily' | 'monthly'>('daily');
+
   const [dotPositions, setDotPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [dragging, setDragging] = useState<string | null>(null);
@@ -414,8 +416,9 @@ export default function RiesgoPoliticoPage() {
 
   const monthlyScatterDataMemo = useMemo(() => {
     if (!data) return [];
+    const currentYM = new Date().toISOString().slice(0, 7);
     return (data.monthly_series ?? [])
-      .filter((m) => m.political_avg != null && m.fx_yoy != null)
+      .filter((m) => m.political_avg != null && m.fx_yoy != null && m.month < currentYM)
       .map((m) => ({
         x: m.political_avg,
         y: m.fx_yoy as number,
@@ -502,12 +505,15 @@ export default function RiesgoPoliticoPage() {
   }
 
   // ── A2: Distribución mensual del IRP ────────────────────────────────────────
-  const monthlyBarData = (data.monthly_series ?? []).map((m) => ({
-    month: m.month,
-    label: fmtMonth(m.month, isEn),
-    value: m.political_avg,
-    color: irpBarColor(m.political_avg),
-  }));
+  const currentYearMonth = new Date().toISOString().slice(0, 7); // "2026-03"
+  const monthlyBarData = (data.monthly_series ?? [])
+    .filter((m) => m.month < currentYearMonth)  // exclude incomplete current month
+    .map((m) => ({
+      month: m.month,
+      label: fmtMonth(m.month, isEn),
+      value: m.political_avg,
+      color: irpBarColor(m.political_avg),
+    }));
 
   // monthlyScatterData and all useMemo hooks are computed before early returns above
   const monthlyScatterData = monthlyScatterDataMemo;
@@ -527,6 +533,30 @@ export default function RiesgoPoliticoPage() {
             {isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'}
           </span>
         </nav>
+
+        {/* ── View toggle: Daily / Monthly ─────────────────────── */}
+        <div className="flex gap-1 mb-6 bg-gray-100 rounded-lg p-1 w-fit">
+          <button
+            onClick={() => setViewMode('daily')}
+            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              viewMode === 'daily'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {isEn ? 'Daily' : 'Diario'}
+          </button>
+          <button
+            onClick={() => setViewMode('monthly')}
+            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              viewMode === 'monthly'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {isEn ? 'Monthly' : 'Mensual'}
+          </button>
+        </div>
 
         {/* ══ SECTION 1: HEADER ════════════════════════════════════════════ */}
         <div className="flex items-start justify-between flex-wrap gap-4 mb-8">
@@ -621,6 +651,8 @@ export default function RiesgoPoliticoPage() {
             <p className="text-xs text-gray-400 mt-2">IRP · {isEn ? 'mean = 100' : 'media = 100'}</p>
           </div>
         </div>
+
+        {viewMode === 'daily' && (<>
 
         {/* ── Link to economic risk page ──────────────────────────────────── */}
         <div className="mb-5">
@@ -1026,7 +1058,11 @@ export default function RiesgoPoliticoPage() {
           </div>
         )}
 
+        </>)}
+
         {/* ══ SECTION A2: DISTRIBUCIÓN MENSUAL DEL IRP ════════════════════ */}
+        {viewMode === 'monthly' && (<>
+
         {monthlyBarData.length >= 2 && (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
@@ -1093,6 +1129,36 @@ export default function RiesgoPoliticoPage() {
               <span><span style={{ color: '#C65D3E' }}>■</span> {isEn ? '110–150 (Elevated)' : '110–150 (Elevado)'}</span>
               <span><span style={{ color: '#9B2226' }}>■</span> {isEn ? '> 150 (High)' : '> 150 (Alto)'}</span>
             </div>
+            {/* Monthly peak events */}
+            {(() => {
+              const peakMap: Record<string, string> = {};
+              for (const e of data.peak_events ?? []) {
+                if (e.dimension === 'political' && e.label) {
+                  peakMap[e.date.slice(0, 7)] = e.label;
+                }
+              }
+              const entries = monthlyBarData
+                .filter(m => peakMap[m.month])
+                .map(m => ({ month: m.label, event: peakMap[m.month], value: m.value, color: m.color }))
+                .reverse();
+              if (entries.length === 0) return null;
+              return (
+                <div className="mt-4 border-t border-gray-100 pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
+                    {isEn ? 'Peak events' : 'Eventos pico'}
+                  </p>
+                  <div className="space-y-1">
+                    {entries.map((e, i) => (
+                      <div key={i} className="flex items-center gap-3 text-xs">
+                        <span className="text-gray-400 w-16 flex-shrink-0">{e.month}</span>
+                        <span className="font-mono w-8 flex-shrink-0 text-right" style={{ color: e.color }}>{Math.round(e.value)}</span>
+                        <span className="text-gray-600">{e.event}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         )}
 
@@ -1207,6 +1273,8 @@ export default function RiesgoPoliticoPage() {
             </div>
           </div>
         )}
+
+        </>)}
 
         {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
