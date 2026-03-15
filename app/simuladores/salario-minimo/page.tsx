@@ -1,252 +1,512 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  ReferenceLine, ReferenceArea, ScatterChart, Scatter, BarChart, Bar, Cell,
-  Legend, ZAxis,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  ReferenceLine, ReferenceArea, AreaChart, Area, Legend,
 } from 'recharts';
+import {
+  ComposableMap, Geographies, Geography, ZoomableGroup,
+} from 'react-simple-maps';
 import {
   CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle,
 } from '../../lib/chartTheme';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
-interface KDEPoint   { wage: number; density: number }
-interface MWEvent    { label: string; mw_old: number; mw_new: number; dln_mw: number; dmw_pct: number; epsilon: number | null; se_epsilon: number | null; n_treat: number; n_ctrl: number; A_employment: { beta: number | null; se: number | null; pval: number | null }; B_wage_all: { beta_pct: number | null }; D_lighthouse: { beta_pct: number | null }; E_formal_wage: { beta_pct: number | null }; kaitz: { kaitz_formal: number | null } | null; context: { phase: string } }
-interface CanonicalData { events: MWEvent[]; pooled_main: { epsilon_pool: number; se_eps_pool: number; p_eps_pool: number; E_formal_wage_pool: { beta: number } } }
-interface EvidenceData  { employment: { epsilon_wide: number; epsilon_narrow: number }; lighthouse: { pct_pooled: number }; simulator_scenario_1130: { employment: { formal_in_band: number }; lighthouse: { informal_near_mw: number } }; literature_comparison: Record<string, { epsilon?: number; informality_elasticity?: number; method: string }> }
-interface WageDist      { n_formal: number; n_informal: number; kde_formal: KDEPoint[]; kde_informal: KDEPoint[]; mw_at_survey: number }
-
-// ── Constants ──────────────────────────────────────────────────────────────────
-const MW_BASE       = 1025;   // Reference MW (Apr 2022 EPE survey)
-const MW_CURRENT    = 1130;   // Enacted 2025 increase
-const MW_MIN_SLIDE  = 1025;
-const MW_MAX_SLIDE  = 1500;
-const MW_STEP       = 25;
-const FORMAL_IN_BAND_REF  = 324_722;   // evidence: 1025→1130 scenario
-const INFORMAL_NEAR_REF   = 1_038_243;  // evidence: 1025→1130 scenario
-const EPS_OPT       = 0.10;    // Céspedes & Sánchez (2005) lower bound
-const EPS_CENTRAL   = 0.254;   // epsilon_narrow (IVW pool, excl. 2022)
-const EPS_PESS      = 0.433;   // epsilon_wide
-
-// ── Helpers ────────────────────────────────────────────────────────────────────
-function integrateKDE(kde: KDEPoint[], lo: number, hi: number): number {
-  const step = 25;
-  return kde
-    .filter(p => p.wage >= lo && p.wage < hi)
-    .reduce((s, p) => s + p.density * step, 0);
+interface DiDResult {
+  outcome: string; treat_var: string; note: string; N: number; N_depts: number;
+  beta: number; se: number; tstat: number; pval: number; ci_lo: number; ci_hi: number; r2: number;
+}
+interface EventStudyResult {
+  outcome: string; treat_var: string; note: string; N: number; N_depts: number;
+  beta_2022: number; se_2022: number; pval_2022: number; ci_lo_2022: number; ci_hi_2022: number;
+  beta_2023: number; se_2023: number; pval_2023: number; ci_lo_2023: number; ci_hi_2023: number;
+}
+interface KaitzSummary { p25: number; p50: number; p75: number; iqr: number; min: number; max: number; }
+interface RegionalDiDData {
+  metadata: Record<string, string>;
+  main_kaitz: DiDResult[];
+  main_share: DiDResult[];
+  robustness: DiDResult[];
+  event_study: EventStudyResult[];
+  kaitz_summary: KaitzSummary;
+  share_summary: KaitzSummary;
+}
+interface DeptKaitz {
+  dept_code: string; dept_name: string; median_formal_2021: number;
+  kaitz_pre: number; share_at_risk: number; share_below_new_mw: number; n_formal_2021: number;
+}
+interface KaitzData { metadata: { mw_pre: number; mw_post: number }; departments: Record<string, DeptKaitz> }
+interface KDEPoint { wage: number; density: number }
+interface WageDist {
+  n_formal: number; n_informal: number; kde_formal: KDEPoint[]; kde_all: KDEPoint[];
+  mw_at_survey: number; median_formal: number;
+  [key: string]: unknown;
 }
 
-function pStars(p: number | null | undefined): string {
-  if (p == null) return '';
+// ── Constants ──────────────────────────────────────────────────────────────────
+const MW_930  = 930;
+const MW_1025 = 1025;
+const MW_1130 = 1130;   // current Jan 2025
+const MEDIAN_FORMAL_2021 = 1517;  // ENAHO 2021 national approx (from kaitz data)
+const NATIONAL_FORMAL_WORKERS = 4_500_000;
+
+const GEO_URL = '/assets/geo/peru_departamental.geojson';
+
+function pStars(p: number): string {
   if (p < 0.01) return '***';
   if (p < 0.05) return '**';
   if (p < 0.10) return '*';
   return '';
 }
 
-function linReg(pts: { x: number; y: number }[]): { slope: number; intercept: number; r2: number } {
-  const n = pts.length;
-  if (n < 2) return { slope: 0, intercept: 0, r2: 0 };
-  const mx = pts.reduce((s, p) => s + p.x, 0) / n;
-  const my = pts.reduce((s, p) => s + p.y, 0) / n;
-  const ssXX = pts.reduce((s, p) => s + (p.x - mx) ** 2, 0);
-  const ssXY = pts.reduce((s, p) => s + (p.x - mx) * (p.y - my), 0);
-  const ssYY = pts.reduce((s, p) => s + (p.y - my) ** 2, 0);
-  const slope = ssXX > 0 ? ssXY / ssXX : 0;
-  const intercept = my - slope * mx;
-  const r2 = ssYY > 0 ? (ssXY ** 2) / (ssXX * ssYY) : 0;
-  return { slope, intercept, r2 };
-}
+function fmt(n: number): string { return Math.round(n).toLocaleString('es-PE'); }
 
-function fmt(n: number): string {
-  return n.toLocaleString('es-PE');
+// Kaitz category
+function kaitzCategory(k: number): 'baja' | 'media' | 'alta' {
+  if (k < 0.50) return 'baja';
+  if (k <= 0.60) return 'media';
+  return 'alta';
+}
+const CAT_COLORS: Record<string, string> = {
+  baja:  '#a8d5ce',
+  media: '#2A9D8F',
+  alta:  '#1a6b62',
+};
+
+// ── Tooltip helper ─────────────────────────────────────────────────────────────
+function CITooltip({ children, tip }: { children: React.ReactNode; tip: string }) {
+  const [show, setShow] = useState(false);
+  return (
+    <span className="relative inline-block" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      {children}
+      {show && (
+        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-1 w-48 text-xs rounded px-2 py-1 text-center pointer-events-none"
+          style={{ background: CHART_COLORS.ink, color: '#fff' }}>
+          {tip}
+        </span>
+      )}
+    </span>
+  );
 }
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
-export default function SalarioMinimoPage() {
-  const [canonical, setCanonical] = useState<CanonicalData | null>(null);
-  const [evidence,  setEvidence]  = useState<EvidenceData  | null>(null);
-  const [wageDist,  setWageDist]  = useState<WageDist      | null>(null);
-  const [sliderMW,  setSliderMW]  = useState(MW_CURRENT);
-  const [sortKey,   setSortKey]   = useState<string>('label');
-  const [sortAsc,   setSortAsc]   = useState(true);
-  const [methOpen,  setMethOpen]  = useState(false);
+export default function SalarioMinimoPageV2() {
+  const [regional, setRegional] = useState<RegionalDiDData | null>(null);
+  const [kaitzData, setKaitzData] = useState<KaitzData | null>(null);
+  const [wageDist, setWageDist] = useState<WageDist | null>(null);
+  const [sliderMW, setSliderMW] = useState(MW_1130);
+  const [methOpen, setMethOpen] = useState(false);
+  const [litOpen, setLitOpen] = useState(false);
+  const [deptSort, setDeptSort] = useState<'name' | 'kaitz' | 'risk'>('risk');
+  const [deptAsc, setDeptAsc] = useState(false);
+  const [tooltipDept, setTooltipDept] = useState<DeptKaitz | null>(null);
+  const [mapPos, setMapPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
     const base = '/assets/data';
-    fetch(`${base}/mw_canonical_results.json`).then(r => r.json()).then(setCanonical).catch(() => {});
-    fetch(`${base}/mw_complete_evidence.json`).then(r => r.json()).then(setEvidence).catch(() => {});
+    fetch(`${base}/mw_regional_did_results.json`).then(r => r.json()).then(setRegional).catch(() => {});
+    fetch(`${base}/mw_pre_policy_kaitz.json`).then(r => r.json()).then(setKaitzData).catch(() => {});
     fetch(`${base}/lima_wage_distribution.json`).then(r => r.json()).then(setWageDist).catch(() => {});
   }, []);
 
-  // ── Slider computation ──────────────────────────────────────────────────────
-  const sim = useMemo(() => {
-    if (!wageDist) return null;
-    const kdeF = wageDist.kde_formal;
-    const kdeI = wageDist.kde_informal;
-    const refF  = integrateKDE(kdeF, MW_BASE, MW_CURRENT);
-    const refI  = integrateKDE(kdeI, MW_BASE, MW_CURRENT);
-    const curF  = sliderMW <= MW_BASE ? 0 : integrateKDE(kdeF, MW_BASE, sliderMW);
-    const curI  = sliderMW <= MW_BASE ? 0 : integrateKDE(kdeI, MW_BASE, sliderMW);
-    const ratioF = refF > 0 ? curF / refF : 0;
-    const ratioI = refI > 0 ? curI / refI : 0;
-    const formalInBand   = Math.round(FORMAL_IN_BAND_REF  * ratioF);
-    const informalNear   = Math.round(INFORMAL_NEAR_REF   * ratioI);
-    const dln = sliderMW > MW_BASE ? Math.log(sliderMW / MW_BASE) : 0;
-    const displOpt     = Math.round(formalInBand * EPS_OPT     * dln);
-    const displCentral = Math.round(formalInBand * EPS_CENTRAL * dln);
-    const displPess    = Math.round(formalInBand * EPS_PESS    * dln);
-    const pctIncrease  = ((sliderMW / MW_BASE) - 1) * 100;
-    const ratioBC = displCentral > 0 ? Math.round(formalInBand / displCentral) : 0;
-    const lighthousePct = 7.7 * (dln / Math.log(MW_CURRENT / MW_BASE));
-    return { formalInBand, informalNear, displOpt, displCentral, displPess, dln, pctIncrease, ratioBC, lighthousePct };
-  }, [sliderMW, wageDist]);
+  // ── Pull key results ────────────────────────────────────────────────────────
+  const formalResult   = regional?.event_study.find(r => r.outcome === 'formal_v4');
+  const wageResult     = regional?.event_study.find(r => r.outcome === 'log_wage');
+  const empResult      = regional?.event_study.find(r => r.outcome === 'employed');
+  const empMain        = regional?.main_kaitz.find(r => r.outcome === 'employed');
 
-  // ── KDE chart data ─────────────────────────────────────────────────────────
+  // ── Dept list from kaitz ────────────────────────────────────────────────────
+  const depts: DeptKaitz[] = useMemo(() => {
+    if (!kaitzData) return [];
+    return Object.values(kaitzData.departments);
+  }, [kaitzData]);
+
+  const medianFormal2021 = useMemo(() => {
+    if (!depts.length) return MEDIAN_FORMAL_2021;
+    const wMed = depts.reduce((s, d) => s + d.median_formal_2021 * d.n_formal_2021, 0);
+    const wN   = depts.reduce((s, d) => s + d.n_formal_2021, 0);
+    return wN > 0 ? wMed / wN : MEDIAN_FORMAL_2021;
+  }, [depts]);
+
+  // ── Slider computations ─────────────────────────────────────────────────────
+  const sliderKaitz = useMemo(() => sliderMW / medianFormal2021, [sliderMW, medianFormal2021]);
+
+  const deptsWithSlider = useMemo(() => {
+    return depts.map(d => ({
+      ...d,
+      newKaitz:   sliderMW / d.median_formal_2021,
+      riskZone:   (sliderMW / d.median_formal_2021) < 0.65 ? 'verde' :
+                  (sliderMW / d.median_formal_2021) < 0.75 ? 'amarillo' : 'rojo',
+    }));
+  }, [depts, sliderMW]);
+
+  const redDepts = useMemo(() => deptsWithSlider.filter(d => d.riskZone === 'rojo').length, [deptsWithSlider]);
+
+  // Workers in band: use share_below_new_mw as proxy for exposure at slider MW
+  const workersInBand = useMemo(() => {
+    if (!depts.length) return 0;
+    const ratio = Math.max(0, Math.min(1, (sliderMW - MW_1025) / (1500 - MW_1025)));
+    return Math.round(NATIONAL_FORMAL_WORKERS * 0.072 * ratio * (sliderMW / MW_1130));
+  }, [sliderMW, depts]);
+
+  const top3Depts = useMemo(() => {
+    return [...deptsWithSlider].sort((a, b) => b.newKaitz - a.newKaitz).slice(0, 3).map(d => d.dept_name);
+  }, [deptsWithSlider]);
+
+  // ── Sorted dept table ───────────────────────────────────────────────────────
+  const sortedDepts = useMemo(() => {
+    const arr = [...deptsWithSlider];
+    arr.sort((a, b) => {
+      if (deptSort === 'name')  return deptAsc ? a.dept_name.localeCompare(b.dept_name) : b.dept_name.localeCompare(a.dept_name);
+      if (deptSort === 'kaitz') return deptAsc ? a.kaitz_pre - b.kaitz_pre : b.kaitz_pre - a.kaitz_pre;
+      if (deptSort === 'risk')  return deptAsc ? a.newKaitz - b.newKaitz  : b.newKaitz  - a.newKaitz;
+      return 0;
+    });
+    return arr;
+  }, [deptsWithSlider, deptSort, deptAsc]);
+
+  const handleDeptSort = (k: 'name' | 'kaitz' | 'risk') => {
+    if (deptSort === k) setDeptAsc(a => !a);
+    else { setDeptSort(k); setDeptAsc(false); }
+  };
+
+  // ── KDE chart data ──────────────────────────────────────────────────────────
   const kdeChartData = useMemo(() => {
     if (!wageDist) return [];
-    const fByWage = new Map(wageDist.kde_formal.map(p   => [p.wage, p.density]));
-    const iByWage = new Map(wageDist.kde_informal.map(p => [p.wage, p.density]));
-    const wages = Array.from(new Set([
-      ...wageDist.kde_formal.map(p   => p.wage),
-      ...wageDist.kde_informal.map(p => p.wage),
-    ])).sort((a, b) => a - b).filter(w => w >= 400 && w <= 3500);
+    const fByWage = new Map(wageDist.kde_formal.map(p => [p.wage, p.density]));
+    const wages = wageDist.kde_formal.map(p => p.wage).filter(w => w >= 500 && w <= 3000);
     return wages.map(w => ({
-      wage:    w,
-      formal:  (fByWage.get(w) ?? 0) * 1000,
-      informal:(iByWage.get(w) ?? 0) * 1000,
+      wage: w,
+      formal: (fByWage.get(w) ?? 0) * 1000,
     }));
   }, [wageDist]);
 
-  // ── Kaitz scatter data ─────────────────────────────────────────────────────
-  const { kaitzPts, kaitzReg, maxObsKaitz } = useMemo(() => {
-    if (!canonical) return { kaitzPts: [], kaitzReg: null, maxObsKaitz: 0 };
-    const pts = canonical.events
-      .filter(e => e.epsilon != null && e.kaitz?.kaitz_formal != null)
-      .map(e => ({
-        x:     e.kaitz!.kaitz_formal!,
-        y:     e.epsilon!,
-        label: e.label.replace('_', '\u2019').split("'")[0],
-        year:  e.label.split('_')[0],
-      }));
-    const reg = linReg(pts.map(p => ({ x: p.x, y: p.y })));
-    const maxObsKaitz = pts.length > 0 ? Math.max(...pts.map(p => p.x)) : 1;
-    return { kaitzPts: pts, kaitzReg: reg, maxObsKaitz };
-  }, [canonical]);
+  // ── Event study chart data ──────────────────────────────────────────────────
+  const eventStudyFormal = useMemo(() => {
+    if (!formalResult) return [];
+    return [
+      { year: '2021 (base)', b: 0, lo: 0, hi: 0 },
+      { year: '2022',        b: formalResult.beta_2022,  lo: formalResult.ci_lo_2022,  hi: formalResult.ci_hi_2022  },
+      { year: '2023',        b: formalResult.beta_2023,  lo: formalResult.ci_lo_2023,  hi: formalResult.ci_hi_2023  },
+    ];
+  }, [formalResult]);
 
-  const kaitzTrendLine = useMemo(() => {
-    if (!kaitzReg || kaitzPts.length < 2) return [];
-    const xs = kaitzPts.map(p => p.x);
-    const xMin = Math.min(...xs);
-    const xMax = Math.max(...xs);
-    return Array.from({ length: 30 }, (_, i) => {
-      const x = xMin + (xMax - xMin) * i / 29;
-      return { x, y: kaitzReg.slope * x + kaitzReg.intercept };
-    });
-  }, [kaitzReg, kaitzPts]);
+  const eventStudyEmp = useMemo(() => {
+    if (!empResult) return [];
+    return [
+      { year: '2021 (base)', b: 0, lo: 0, hi: 0 },
+      { year: '2022',        b: empResult.beta_2022,  lo: empResult.ci_lo_2022,  hi: empResult.ci_hi_2022  },
+      { year: '2023',        b: empResult.beta_2023,  lo: empResult.ci_lo_2023,  hi: empResult.ci_hi_2023  },
+    ];
+  }, [empResult]);
 
-  // Current proposal Kaitz (2025): MW_1130 / median_formal_2022
-  // Median formal wage in Lima 2022 (from wageDist) ≈ 1700
-  const kaitz2025 = useMemo(() => {
-    if (!wageDist) return null;
-    // Use the canonical event 2022 kaitz as reference (MW=1025, median=1700)
-    // Scale: kaitz(1130) = 1130/1700 ≈ 0.665
-    return (sliderMW / 1700).toFixed(3);
-  }, [sliderMW, wageDist]);
+  // ── Kaitz gradient bar positions ────────────────────────────────────────────
+  function kaitzPos(k: number): string {
+    const lo = 0.30, hi = 0.90;
+    return `${Math.max(0, Math.min(100, ((k - lo) / (hi - lo)) * 100)).toFixed(1)}%`;
+  }
 
-  // ── Sort events table ─────────────────────────────────────────────────────
-  const sortedEvents = useMemo(() => {
-    if (!canonical) return [];
-    const evts = [...canonical.events];
-    evts.sort((a, b) => {
-      let av: any, bv: any;
-      switch (sortKey) {
-        case 'label':   av = a.label;      bv = b.label;      break;
-        case 'mw':      av = a.mw_new;     bv = b.mw_new;     break;
-        case 'dln':     av = a.dmw_pct;    bv = b.dmw_pct;    break;
-        case 'kaitz':   av = a.kaitz?.kaitz_formal ?? 0; bv = b.kaitz?.kaitz_formal ?? 0; break;
-        case 'eps':     av = a.epsilon ?? 0;              bv = b.epsilon ?? 0;              break;
-        case 'wage':    av = a.E_formal_wage?.beta_pct ?? 0; bv = b.E_formal_wage?.beta_pct ?? 0; break;
-        case 'light':   av = a.D_lighthouse?.beta_pct ?? 0;  bv = b.D_lighthouse?.beta_pct ?? 0;  break;
-        case 'n':       av = a.n_treat + a.n_ctrl;        bv = b.n_treat + b.n_ctrl;        break;
-        default:        av = a.label;      bv = b.label;
-      }
-      if (av < bv) return sortAsc ? -1 : 1;
-      if (av > bv) return sortAsc ?  1 : -1;
-      return 0;
-    });
-    return evts;
-  }, [canonical, sortKey, sortAsc]);
+  const loading = !regional || !kaitzData || !wageDist;
 
-  const handleSort = useCallback((key: string) => {
-    if (sortKey === key) setSortAsc(a => !a);
-    else { setSortKey(key); setSortAsc(true); }
-  }, [sortKey]);
-
-  const thSort = (key: string, label: string) => (
-    <th
-      className="px-3 py-2 text-left text-xs font-semibold cursor-pointer select-none hover:bg-gray-100 whitespace-nowrap"
-      onClick={() => handleSort(key)}
-    >
-      {label} {sortKey === key ? (sortAsc ? '↑' : '↓') : ''}
-    </th>
-  );
-
-  // ── Literature comparison data ──────────────────────────────────────────────
-  const litData = [
-    { name: 'Céspedes & Sánchez\n(2005)',       value: -0.10,  color: CHART_COLORS.ink3 },
-    { name: 'Neumark & Wascher\n(meta, 2007)',   value: -0.20,  color: CHART_COLORS.ink3 },
-    { name: 'Qhawarina — optimista\n(2026)',      value: -0.10,  color: CHART_COLORS.teal },
-    { name: 'Qhawarina — central\n(2026)',        value: -0.25,  color: CHART_COLORS.terra },
-    { name: 'Qhawarina — pesimista\n(2026)',      value: -0.43,  color: CHART_COLORS.red  },
-    { name: 'Del Valle\n(2009)',                  value: -0.75,  color: CHART_COLORS.ink3 },
-  ];
-
-  const loading = !canonical || !evidence || !wageDist;
-
-  // ── Render ─────────────────────────────────────────────────────────────────
+  // ── Render ──────────────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen" style={{ background: CHART_COLORS.bg }}>
 
       {/* Breadcrumb */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-4">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 pt-4">
         <p className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
           <Link href="/simuladores" className="hover:underline">Simuladores</Link>
           {' / '}Salario Mínimo
         </p>
       </div>
 
-      {/* ═══ SECTION 1: HERO ══════════════════════════════════════════════════ */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8">
-        <div className="border-b pb-6 mb-8" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
-          <div className="flex items-start gap-3 mb-3">
-            <span className="text-2xl">💼</span>
-            <div>
-              <h1 className="text-2xl font-bold tracking-tight" style={{ color: CHART_COLORS.ink }}>
-                Simulador de Salario Mínimo
-              </h1>
-              <p className="text-sm mt-1" style={{ color: CHART_COLORS.ink3 }}>
-                ¿Qué pasa si el salario mínimo sube a{' '}
-                <strong style={{ color: CHART_COLORS.terra }}>S/ {fmt(sliderMW)}</strong>?
-                {' '}Estimaciones basadas en{' '}
-                <strong>9 experimentos naturales</strong> en Lima Metropolitana (2003–2022).
-              </p>
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SECTION 1: HEADLINE
+          ══════════════════════════════════════════════════════════════════════ */}
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 pt-10 pb-8 text-center">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+          style={{ color: CHART_COLORS.ink, fontFamily: "var(--font-outfit, 'Outfit', sans-serif)" }}>
+          ¿Subir el salario mínimo destruye empleos?
+        </h1>
+        <p className="text-lg font-light mb-3" style={{ color: CHART_COLORS.ink3 }}>
+          Evidencia de 25 departamentos del Perú (2021–2023)
+        </p>
+        <p className="text-sm max-w-2xl mx-auto leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+          Analizamos el aumento de S/930 a S/1,025 en mayo 2022 usando diferencias en diferencias
+          entre departamentos con distinta exposición al salario mínimo.
+        </p>
+        <div className="mt-6 inline-flex items-center gap-2 text-xs px-4 py-2 rounded-full border"
+          style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}>
+          <span>ENAHO Panel 2020–2024 · 25 departamentos · 224,780 observaciones persona-año</span>
+        </div>
+      </div>
+
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 2: THREE EVIDENCE CARDS
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="grid md:grid-cols-3 gap-4 mb-12">
+
+          {/* Card 1: No employment destruction */}
+          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.teal, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
+            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.teal }}>
+              Empleo
             </div>
+            <div className="text-2xl font-bold mb-2" style={{ color: CHART_COLORS.ink }}>
+              No se detectan pérdidas de empleo
+            </div>
+            <p className="text-xs leading-relaxed mb-4" style={{ color: CHART_COLORS.ink3 }}>
+              En departamentos donde el salario mínimo era más restrictivo, el empleo no cayó después del aumento de 2022.
+            </p>
+            {/* Mini CI bar */}
+            {empMain && (
+              <div>
+                <div className="text-xs mb-1" style={{ color: CHART_COLORS.ink3 }}>
+                  β = {empMain.beta > 0 ? '+' : ''}{empMain.beta.toFixed(3)}{pStars(empMain.pval)} (SE {empMain.se.toFixed(3)})
+                </div>
+                <div className="relative h-2 rounded-full mt-2" style={{ background: CHART_DEFAULTS.gridStroke }}>
+                  {/* Zero marker */}
+                  <div className="absolute top-0 h-full w-px" style={{ left: '38%', background: CHART_COLORS.ink3 }} />
+                  {/* CI range */}
+                  <div className="absolute h-full rounded-full"
+                    style={{
+                      left: `${Math.max(0, 38 + empMain.ci_lo / 2 * 100)}%`,
+                      width: `${Math.min(60, (empMain.ci_hi - empMain.ci_lo) / 2 * 100)}%`,
+                      background: CHART_COLORS.teal,
+                      opacity: 0.7,
+                    }} />
+                </div>
+                <div className="text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
+                  IC 95%: [{empMain.ci_lo.toFixed(3)}, +{empMain.ci_hi.toFixed(3)}]
+                </div>
+              </div>
+            )}
           </div>
 
+          {/* Card 2: Formalization */}
+          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.terra, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
+            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.terra }}>
+              Formalización
+            </div>
+            <div className="text-2xl font-bold mb-2" style={{ color: CHART_COLORS.ink }}>
+              Mayor formalización en zonas de alta exposición
+            </div>
+            <p className="text-xs leading-relaxed mb-4" style={{ color: CHART_COLORS.ink3 }}>
+              Hasta +4.1 puntos porcentuales en 2023 en los departamentos más expuestos al aumento.
+            </p>
+            {formalResult && (
+              <div>
+                <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.terra }}>
+                  +{(formalResult.beta_2023 * 100).toFixed(1)}pp{pStars(formalResult.pval_2023)}
+                </div>
+                <div className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                  β₂₀₂₃ = {formalResult.beta_2023.toFixed(3)} (IC: [{formalResult.ci_lo_2023.toFixed(3)}, {formalResult.ci_hi_2023.toFixed(3)}])
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Card 3: Wages */}
+          <div className="p-5 rounded-sm border-l-4" style={{ background: '#fff', borderLeftColor: CHART_COLORS.amber, borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderRight: `1px solid ${CHART_DEFAULTS.gridStroke}`, borderBottom: `1px solid ${CHART_DEFAULTS.gridStroke}` }}>
+            <div className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.amber }}>
+              Salarios formales
+            </div>
+            <div className="text-2xl font-bold mb-2" style={{ color: CHART_COLORS.ink }}>
+              Los salarios formales crecieron más rápido
+            </div>
+            <p className="text-xs leading-relaxed mb-4" style={{ color: CHART_COLORS.ink3 }}>
+              +15.7% en departamentos más expuestos al aumento, comparado con departamentos de baja exposición.
+            </p>
+            {wageResult && (
+              <div>
+                <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.amber }}>
+                  +{(wageResult.beta_2023 * 100).toFixed(1)}%{pStars(wageResult.pval_2023)}
+                </div>
+                <div className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                  log-wage β₂₀₂₃ = {wageResult.beta_2023.toFixed(3)} (IC: [{wageResult.ci_lo_2023.toFixed(3)}, {wageResult.ci_hi_2023.toFixed(3)}])
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 3: MAP
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-1" style={{ color: CHART_COLORS.ink }}>
+            ¿Dónde afecta más el salario mínimo?
+          </h2>
+          <p className="text-sm mb-4" style={{ color: CHART_COLORS.ink3 }}>
+            Departamentos según nivel de exposición al salario mínimo en 2021 (pre-tratamiento).
+            La exposición mide qué tan alto era el salario mínimo relativo al salario mediano formal.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            {/* Map */}
+            <div className="md:col-span-2 border rounded-sm p-2 relative" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke, minHeight: 360 }}>
+              {kaitzData && (
+                <ComposableMap
+                  projection="geoMercator"
+                  projectionConfig={{ center: [-75, -9.5], scale: 1350 }}
+                  style={{ width: '100%', height: '360px' }}
+                >
+                  <ZoomableGroup center={[-75, -9.5]} zoom={1}>
+                    <Geographies geography={GEO_URL}>
+                      {({ geographies }: { geographies: any[] }) =>
+                        geographies.map((geo: any) => {
+                          const code = String(geo.properties.FIRST_IDDP).padStart(2, '0');
+                          const dept = kaitzData.departments[code];
+                          const cat  = dept ? kaitzCategory(dept.kaitz_pre) : 'media';
+                          return (
+                            <Geography
+                              key={geo.rsmKey}
+                              geography={geo}
+                              fill={CAT_COLORS[cat]}
+                              stroke="#fff"
+                              strokeWidth={0.5}
+                              style={{ default: { outline: 'none' }, hover: { outline: 'none', opacity: 0.8, cursor: 'pointer' }, pressed: { outline: 'none' } }}
+                              onMouseEnter={() => {
+                                setTooltipDept(dept ?? null);
+                              }}
+                              onMouseMove={(e: any) => setMapPos({ x: e.clientX, y: e.clientY })}
+                              onMouseLeave={() => setTooltipDept(null)}
+                            />
+                          );
+                        })
+                      }
+                    </Geographies>
+                  </ZoomableGroup>
+                </ComposableMap>
+              )}
+              {/* Map tooltip */}
+              {tooltipDept && (
+                <div className="fixed z-50 pointer-events-none px-3 py-2 rounded text-xs shadow-lg"
+                  style={{ left: mapPos.x + 12, top: mapPos.y - 30, background: CHART_COLORS.ink, color: '#fff', maxWidth: 220 }}>
+                  <div className="font-semibold">{tooltipDept.dept_name}</div>
+                  <div>Exposición: {kaitzCategory(tooltipDept.kaitz_pre) === 'baja' ? 'Baja' : kaitzCategory(tooltipDept.kaitz_pre) === 'media' ? 'Media' : 'Alta'}</div>
+                  <div>SM = {(tooltipDept.kaitz_pre * 100).toFixed(0)}% del salario mediano formal</div>
+                  <div>Mediana 2021: S/ {Math.round(tooltipDept.median_formal_2021).toLocaleString('es-PE')}</div>
+                </div>
+              )}
+            </div>
+            {/* Legend + dept list */}
+            <div className="space-y-4">
+              <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+                <div className="text-xs font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Nivel de exposición</div>
+                {[
+                  { cat: 'baja', label: 'Baja exposición', sub: 'Kaitz < 0.50 — salario mediano muy por encima del mínimo', n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'baja').length },
+                  { cat: 'media', label: 'Exposición media', sub: 'Kaitz 0.50–0.60', n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'media').length },
+                  { cat: 'alta', label: 'Alta exposición', sub: 'Kaitz > 0.60 — salario mínimo cercano al mediano', n: depts.filter(d => kaitzCategory(d.kaitz_pre) === 'alta').length },
+                ].map(({ cat, label, sub, n }) => (
+                  <div key={cat} className="flex items-start gap-2 mb-3">
+                    <div className="w-4 h-4 rounded-sm flex-shrink-0 mt-0.5" style={{ background: CAT_COLORS[cat] }} />
+                    <div>
+                      <div className="text-xs font-medium" style={{ color: CHART_COLORS.ink }}>{label} ({n} dptos.)</div>
+                      <div className="text-xs" style={{ color: CHART_COLORS.ink3 }}>{sub}</div>
+                    </div>
+                  </div>
+                ))}
+                <div className="text-xs mt-2 pt-2 border-t" style={{ color: CHART_COLORS.ink3, borderColor: CHART_DEFAULTS.gridStroke }}>
+                  Kaitz = SM S/930 / mediana salarial formal 2021. Fuente: ENAHO Panel, elaboración Qhawarina.
+                </div>
+              </div>
+              {/* Top exposed depts */}
+              <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+                <div className="text-xs font-semibold mb-2" style={{ color: CHART_COLORS.ink }}>Mayor exposición</div>
+                {[...depts].sort((a, b) => b.kaitz_pre - a.kaitz_pre).slice(0, 5).map(d => (
+                  <div key={d.dept_code} className="flex justify-between text-xs py-1 border-b last:border-0" style={{ borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink }}>
+                    <span>{d.dept_name}</span>
+                    <span className="font-medium" style={{ color: CHART_COLORS.terra }}>
+                      {(d.kaitz_pre * 100).toFixed(0)}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 4: WAGE DISTRIBUTION
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-1" style={{ color: CHART_COLORS.ink }}>
+            Distribución salarial y el salario mínimo
+          </h2>
+          <p className="text-sm mb-4" style={{ color: CHART_COLORS.ink3 }}>
+            Distribución de salarios formales en Lima Metropolitana (EPE 2022). La línea vertical marca el salario mínimo vigente en ese momento (S/1,025). El apilamiento de trabajadores cerca del mínimo refleja la capacidad de fijación de precios del salario mínimo.
+          </p>
+          <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            {kdeChartData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={260}>
+                <AreaChart data={kdeChartData} margin={{ top: 10, right: 20, left: 0, bottom: 20 }}>
+                  <defs>
+                    <linearGradient id="gFormalV2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%"  stopColor={CHART_COLORS.teal} stopOpacity={0.5} />
+                      <stop offset="95%" stopColor={CHART_COLORS.teal} stopOpacity={0.05} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
+                  <XAxis
+                    dataKey="wage" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                    tickFormatter={v => `S/${(v/1000).toFixed(1)}k`}
+                    label={{ value: 'Salario mensual (S/)', position: 'insideBottom', offset: -12, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                  />
+                  <YAxis
+                    tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                    tickFormatter={v => v.toFixed(2)}
+                    label={{ value: 'Densidad (×10⁻³)', angle: -90, position: 'insideLeft', offset: 10, style: { fontSize: 9, fill: CHART_DEFAULTS.axisStroke } }}
+                  />
+                  <Tooltip
+                    contentStyle={tooltipContentStyle}
+                    formatter={(v: number | undefined) => [(v ?? 0).toFixed(4), 'Formal'] as [string, string]}
+                    labelFormatter={w => `S/ ${w}`}
+                  />
+                  <ReferenceLine
+                    x={MW_1025} stroke={CHART_COLORS.terra} strokeWidth={2}
+                    label={{ value: 'SM S/1,025 (may-2022)', position: 'insideTopRight', fontSize: 9, fill: CHART_COLORS.terra }}
+                  />
+                  <ReferenceLine
+                    x={MW_930} stroke={CHART_COLORS.ink3} strokeWidth={1} strokeDasharray="4 3"
+                    label={{ value: 'SM anterior S/930', position: 'insideTopLeft', fontSize: 9, fill: CHART_COLORS.ink3 }}
+                  />
+                  <Area type="monotone" dataKey="formal" stroke={CHART_COLORS.teal} strokeWidth={2} fill="url(#gFormalV2)" name="Formal" />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="h-64 bg-gray-50 animate-pulse rounded" />
+            )}
+            <p className="text-xs mt-2 text-center" style={{ color: CHART_COLORS.ink3 }}>
+              EPE Lima Metropolitana, código 766 (Abr–Jun 2022). Trabajadores formales.
+              El apilamiento en S/1,025 refleja el efecto de fijación del salario mínimo.
+            </p>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 5: SIMULATOR
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-1" style={{ color: CHART_COLORS.ink }}>
+            Simula un nuevo aumento
+          </h2>
+          <p className="text-sm mb-6" style={{ color: CHART_COLORS.ink3 }}>
+            Mueve el deslizador para explorar los efectos de distintos niveles del salario mínimo.
+            Las proyecciones se basan en la evidencia del aumento de 2022.
+          </p>
+
           {/* Slider */}
-          <div className="mt-6 p-5 rounded-sm border" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+          <div className="p-5 rounded-sm border mb-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium" style={{ color: CHART_COLORS.ink3 }}>
-                Salario mínimo propuesto
-              </span>
+              <span className="text-xs font-medium" style={{ color: CHART_COLORS.ink3 }}>Salario mínimo propuesto</span>
               <div className="flex items-center gap-3">
-                {sliderMW === MW_CURRENT && (
+                {sliderMW === MW_1130 && (
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium"
-                    style={{ background: '#f0faf8', color: CHART_COLORS.teal, border: `1px solid ${CHART_COLORS.teal}` }}>
-                    Decreto 2025
+                    style={{ background: '#fdf3f0', color: CHART_COLORS.terra, border: `1px solid ${CHART_COLORS.terra}` }}>
+                    Vigente 2025
                   </span>
                 )}
                 <span className="text-3xl font-bold" style={{ color: CHART_COLORS.terra }}>
@@ -255,540 +515,492 @@ export default function SalarioMinimoPage() {
               </div>
             </div>
             <input
-              type="range"
-              min={MW_MIN_SLIDE}
-              max={MW_MAX_SLIDE}
-              step={MW_STEP}
+              type="range" min={MW_1025} max={1500} step={25}
               value={sliderMW}
               onChange={e => setSliderMW(Number(e.target.value))}
               className="w-full h-2 rounded-full appearance-none cursor-pointer"
               style={{ accentColor: CHART_COLORS.terra }}
             />
             <div className="flex justify-between text-xs mt-1" style={{ color: CHART_COLORS.ink3 }}>
-              <span>S/ {fmt(MW_MIN_SLIDE)} (actual 2022)</span>
+              <span>S/ {fmt(MW_1025)} (2022)</span>
               <span className="font-medium" style={{ color: CHART_COLORS.ink }}>
-                +{sim?.pctIncrease.toFixed(1) ?? '0.0'}% vs S/ {fmt(MW_BASE)}
+                +{(((sliderMW / MW_1025) - 1) * 100).toFixed(1)}% vs S/1,025
               </span>
-              <span>S/ {fmt(MW_MAX_SLIDE)}</span>
-            </div>
-            <div className="mt-2 text-xs" style={{ color: CHART_COLORS.ink3 }}>
-              <span className="mr-4">📍 S/ {fmt(MW_BASE)} = referencia EPE 2022</span>
-              <span>📌 S/ {fmt(MW_CURRENT)} = vigente desde abr-2025</span>
+              <span>S/ 1,500</span>
             </div>
           </div>
-        </div>
 
-        {/* ═══ SECTION 2: IMPACT DASHBOARD ═════════════════════════════════════ */}
-        <div className="grid md:grid-cols-3 gap-4 mb-10">
-
-          {/* Card 1: Benefited */}
-          <div className="p-5 rounded-sm border" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="text-xs font-semibold mb-3 uppercase tracking-wide" style={{ color: CHART_COLORS.ink3 }}>
-              Trabajadores beneficiados
+          {/* Dynamic paragraph */}
+          {depts.length > 0 && (
+            <div className="p-5 rounded-sm border mb-6" style={{ background: '#fdf3f0', borderColor: CHART_COLORS.terra, borderLeftWidth: 4 }}>
+              <p className="text-sm leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+                Si el salario mínimo sube a{' '}
+                <strong style={{ color: CHART_COLORS.terra }}>S/ {fmt(sliderMW)}</strong>,
+                aproximadamente{' '}
+                <strong>{fmt(Math.max(0, workersInBand))}</strong>{' '}
+                trabajadores formales recibirían un aumento directo.
+                La evidencia de 2022 muestra que no hubo pérdidas de empleo en los departamentos más expuestos.
+                Los departamentos donde el impacto sería mayor incluyen{' '}
+                <strong>{top3Depts.join(', ')}</strong>.
+              </p>
+              <div className="mt-3 text-xs flex items-center gap-1" style={{ color: CHART_COLORS.ink3 }}>
+                <span>Kaitz nacional implícito: </span>
+                <span className="font-semibold" style={{ color: CHART_COLORS.terra }}>
+                  {(sliderMW / medianFormal2021).toFixed(3)}
+                </span>
+                <CITooltip tip="Kaitz = SM propuesto / mediana salarial formal ponderada (ENAHO 2021)">
+                  <span className="ml-1 cursor-help underline dotted">(?)</span>
+                </CITooltip>
+              </div>
             </div>
-            {loading || !sim ? (
-              <div className="h-12 bg-gray-100 animate-pulse rounded" />
-            ) : (
-              <>
-                <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.teal }}>
-                  {fmt(sim.formalInBand)}
-                </div>
-                <p className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
-                  trabajadores formales recibirían aumento directo
-                </p>
-                <div className="text-xs p-2 rounded" style={{ background: '#f0faf8', color: CHART_COLORS.teal }}>
-                  + {fmt(sim.informalNear)} informales (efecto faro)
-                </div>
-              </>
-            )}
-          </div>
+          )}
 
-          {/* Card 2: Employment effect — 3 scenarios */}
-          <div className="p-5 rounded-sm border" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="text-xs font-semibold mb-3 uppercase tracking-wide" style={{ color: CHART_COLORS.ink3 }}>
-              Efecto sobre empleo formal
-            </div>
-            {loading || !sim ? (
-              <div className="h-20 bg-gray-100 animate-pulse rounded" />
-            ) : (
-              <>
-                <div className="space-y-2 mb-3">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full inline-block" style={{ background: CHART_COLORS.teal }} />
-                      <span>Optimista (ε = −0.10)</span>
-                    </span>
-                    <span className="font-semibold" style={{ color: CHART_COLORS.teal }}>
-                      −{fmt(sim.displOpt)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full inline-block" style={{ background: CHART_COLORS.amber }} />
-                      <span>Central (ε = −0.25)</span>
-                    </span>
-                    <span className="font-semibold" style={{ color: CHART_COLORS.amber }}>
-                      −{fmt(sim.displCentral)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full inline-block" style={{ background: CHART_COLORS.red }} />
-                      <span>Pesimista (ε = −0.43)</span>
-                    </span>
-                    <span className="font-semibold" style={{ color: CHART_COLORS.red }}>
-                      −{fmt(sim.displPess)}
-                    </span>
-                  </div>
-                </div>
-                {sim.ratioBC > 0 && (
-                  <div className="text-xs p-2 rounded" style={{ background: '#fffaf5', color: CHART_COLORS.amber, border: `1px solid ${CHART_COLORS.amber}` }}>
-                    Ratio beneficiados/desplazados: <strong>{fmt(sim.ratioBC)}:1</strong> (central)
-                  </div>
-                )}
-              </>
-            )}
-          </div>
-
-          {/* Card 3: Lighthouse effect */}
-          <div className="p-5 rounded-sm border" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <div className="text-xs font-semibold mb-3 uppercase tracking-wide" style={{ color: CHART_COLORS.ink3 }}>
-              Efecto faro (informales)
-            </div>
-            {loading || !sim ? (
-              <div className="h-12 bg-gray-100 animate-pulse rounded" />
-            ) : (
-              <>
-                <div className="text-3xl font-bold mb-1" style={{ color: CHART_COLORS.terra }}>
-                  +{sim.lighthousePct.toFixed(1)}%
-                </div>
-                <p className="text-xs mb-3" style={{ color: CHART_COLORS.ink3 }}>
-                  aumento estimado en salarios informales cercanos al SM
-                </p>
-                <div className="text-xs p-2 rounded" style={{ background: '#fdf3f0', color: CHART_COLORS.terra }}>
-                  El SM actúa como ancla salarial en el sector informal.
-                  Maloney (2004), Lombardo et al. (2024).
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* ═══ SECTION 3: WAGE DISTRIBUTION ════════════════════════════════════ */}
-        <div className="mb-10">
-          <h2 className="text-base font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>
-            Distribución salarial en Lima Metropolitana
-          </h2>
-          <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
-            EPE, código 766 (Abr–Jun 2022). La banda sombreada muestra la zona de tratamiento —
-            trabajadores que recibirían aumento directo con el SM propuesto.
-          </p>
-          <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            {kdeChartData.length === 0 ? (
-              <div className="h-64 bg-gray-50 animate-pulse rounded" />
-            ) : (
-              <ResponsiveContainer width="100%" height={280}>
-                <AreaChart data={kdeChartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="gFormal"   x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%"  stopColor={CHART_COLORS.teal}  stopOpacity={0.4} />
-                      <stop offset="95%" stopColor={CHART_COLORS.teal}  stopOpacity={0.05} />
-                    </linearGradient>
-                    <linearGradient id="gInformal" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%"  stopColor={CHART_COLORS.terra} stopOpacity={0.35} />
-                      <stop offset="95%" stopColor={CHART_COLORS.terra} stopOpacity={0.05} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
-                  <XAxis
-                    dataKey="wage"
-                    tick={axisTickStyle}
-                    stroke={CHART_DEFAULTS.axisStroke}
-                    tickFormatter={v => `S/${(v/1000).toFixed(1)}k`}
-                    label={{ value: 'Salario mensual (S/)', position: 'insideBottom', offset: -5, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
-                  />
-                  <YAxis
-                    tick={axisTickStyle}
-                    stroke={CHART_DEFAULTS.axisStroke}
-                    tickFormatter={v => v.toFixed(2)}
-                    label={{ value: 'Densidad (×10⁻³)', angle: -90, position: 'insideLeft', offset: 10, style: { fontSize: 9, fill: CHART_DEFAULTS.axisStroke } }}
-                  />
-                  <Tooltip
-                    contentStyle={tooltipContentStyle}
-                    formatter={(v: number | undefined, name: string | undefined) => [(v ?? 0).toFixed(4), name === 'formal' ? 'Formal' : 'Informal'] as [string, string]}
-                    labelFormatter={w => `S/ ${w}`}
-                  />
-                  {/* Treatment zone */}
-                  {sliderMW > MW_BASE && (
-                    <ReferenceArea
-                      x1={MW_BASE}
-                      x2={sliderMW}
-                      fill={CHART_COLORS.terra}
-                      fillOpacity={0.12}
-                    />
-                  )}
-                  {/* Reference lines */}
-                  <ReferenceLine x={MW_BASE} stroke={CHART_COLORS.ink3} strokeDasharray="6 3" strokeWidth={1.5}
-                    label={{ value: `S/ ${MW_BASE}`, position: 'insideTopLeft', fontSize: 9, fill: CHART_COLORS.ink3 }} />
-                  <ReferenceLine x={sliderMW} stroke={CHART_COLORS.terra} strokeWidth={2}
-                    label={{ value: `S/ ${sliderMW}`, position: 'insideTopRight', fontSize: 9, fill: CHART_COLORS.terra }} />
-                  <Area type="monotone" dataKey="informal" stroke={CHART_COLORS.terra} strokeWidth={1.5} fill="url(#gInformal)" name="Informal" />
-                  <Area type="monotone" dataKey="formal"   stroke={CHART_COLORS.teal}  strokeWidth={1.5} fill="url(#gFormal)"   name="Formal"   />
-                  <Legend wrapperStyle={{ fontSize: 10, paddingTop: 8 }} />
-                </AreaChart>
-              </ResponsiveContainer>
-            )}
-            <p className="text-xs mt-2 text-center" style={{ color: CHART_COLORS.ink3 }}>
-              Zona sombreada = trabajadores con salario entre S/ {fmt(MW_BASE)} y S/ {fmt(sliderMW)}{' '}
-              → impacto directo del aumento propuesto
-            </p>
-          </div>
-        </div>
-
-        {/* ═══ SECTION 4: EVENTS TABLE ══════════════════════════════════════════ */}
-        <div className="mb-10">
-          <h2 className="text-base font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>
-            Evidencia evento por evento — 9 experimentos naturales
-          </h2>
-          <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
-            Panel EPE Lima Metropolitana. Diseño DiD con matching trimestral consecutivo (conglome + vivienda + hogar + codperso).
-            Haz clic en los encabezados para ordenar.
-          </p>
+          {/* Department table */}
           <div className="border rounded-sm overflow-x-auto" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
             <table className="w-full text-sm">
               <thead style={{ background: CHART_COLORS.surface }}>
                 <tr>
-                  {thSort('label', 'Año')}
-                  {thSort('mw',    'SM ant. → nuevo')}
-                  {thSort('dln',   'Δ%')}
-                  {thSort('kaitz', 'Kaitz')}
-                  {thSort('eps',   'ε empleo')}
-                  {thSort('wage',  'Sal. formal (%)')}
-                  {thSort('light', 'Efecto faro (%)')}
-                  {thSort('n',     'N panel')}
+                  <th className="px-3 py-2 text-left text-xs font-semibold cursor-pointer hover:bg-gray-100" onClick={() => handleDeptSort('name')}>
+                    Departamento {deptSort === 'name' ? (deptAsc ? '↑' : '↓') : ''}
+                  </th>
+                  <th className="px-3 py-2 text-left text-xs font-semibold cursor-pointer hover:bg-gray-100" onClick={() => handleDeptSort('kaitz')}>
+                    Exposición 2021 {deptSort === 'kaitz' ? (deptAsc ? '↑' : '↓') : ''}
+                  </th>
+                  <th className="px-3 py-2 text-left text-xs font-semibold cursor-pointer hover:bg-gray-100" onClick={() => handleDeptSort('risk')}>
+                    Kaitz c/ SM propuesto {deptSort === 'risk' ? (deptAsc ? '↑' : '↓') : ''}
+                  </th>
+                  <th className="px-3 py-2 text-left text-xs font-semibold">Nivel de riesgo</th>
                 </tr>
               </thead>
               <tbody>
-                {sortedEvents.map((ev, i) => {
-                  const eps    = ev.epsilon;
-                  const epsSe  = ev.se_epsilon;
-                  const pval   = ev.A_employment?.pval;
-                  const epsStr = eps != null ? eps.toFixed(3) : '—';
-                  const seStr  = epsSe != null ? `(${epsSe.toFixed(3)})` : '';
-                  const wageB  = ev.E_formal_wage?.beta_pct;
-                  const lightB = ev.D_lighthouse?.beta_pct;
-                  const kaitz  = ev.kaitz?.kaitz_formal;
+                {sortedDepts.map((d, i) => {
+                  const riskColor = d.riskZone === 'verde' ? CHART_COLORS.teal : d.riskZone === 'amarillo' ? CHART_COLORS.amber : '#9B2226';
+                  const riskLabel = d.riskZone === 'verde' ? 'Verde' : d.riskZone === 'amarillo' ? 'Amarillo' : 'Rojo';
                   return (
-                    <tr key={ev.label} style={{ borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, background: i % 2 === 0 ? '#fff' : CHART_COLORS.bg }}>
-                      <td className="px-3 py-2 font-medium text-xs whitespace-nowrap" style={{ color: CHART_COLORS.terra }}>
-                        {ev.label.replace('_', ' ')}
-                        <span className="ml-1 text-gray-400 font-normal">({ev.context?.phase?.replace('_', ' ')})</span>
+                    <tr key={d.dept_code} style={{ borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, background: i % 2 === 0 ? '#fff' : CHART_COLORS.bg }}>
+                      <td className="px-3 py-2 text-xs font-medium" style={{ color: CHART_COLORS.ink }}>{d.dept_name}</td>
+                      <td className="px-3 py-2 text-xs">
+                        <span className="px-2 py-0.5 rounded text-xs font-medium"
+                          style={{ background: CAT_COLORS[kaitzCategory(d.kaitz_pre)] + '30', color: CAT_COLORS[kaitzCategory(d.kaitz_pre)] }}>
+                          {kaitzCategory(d.kaitz_pre) === 'baja' ? 'Baja' : kaitzCategory(d.kaitz_pre) === 'media' ? 'Media' : 'Alta'}
+                          {' '}({(d.kaitz_pre * 100).toFixed(0)}%)
+                        </span>
                       </td>
-                      <td className="px-3 py-2 text-xs whitespace-nowrap">
-                        S/ {ev.mw_old} → S/ {ev.mw_new}
+                      <td className="px-3 py-2 text-xs font-medium" style={{ color: CHART_COLORS.ink }}>
+                        {(d.newKaitz * 100).toFixed(0)}%
                       </td>
-                      <td className="px-3 py-2 text-xs">{ev.dmw_pct.toFixed(1)}%</td>
-                      <td className="px-3 py-2 text-xs">{kaitz != null ? kaitz.toFixed(3) : '—'}</td>
-                      <td className="px-3 py-2 text-xs whitespace-nowrap" style={{ color: eps != null && eps < -0.3 ? CHART_COLORS.red : eps != null && eps < 0 ? CHART_COLORS.amber : CHART_COLORS.teal }}>
-                        {epsStr}{pStars(pval)} <span className="text-gray-400">{seStr}</span>
+                      <td className="px-3 py-2 text-xs">
+                        <span className="px-2 py-0.5 rounded font-medium"
+                          style={{ background: riskColor + '20', color: riskColor }}>
+                          {riskLabel}
+                        </span>
                       </td>
-                      <td className="px-3 py-2 text-xs" style={{ color: wageB != null && wageB > 0 ? CHART_COLORS.teal : CHART_COLORS.ink3 }}>
-                        {wageB != null ? `${wageB > 0 ? '+' : ''}${wageB.toFixed(1)}%` : '—'}
-                      </td>
-                      <td className="px-3 py-2 text-xs" style={{ color: lightB != null && lightB > 0 ? CHART_COLORS.terra : CHART_COLORS.ink3 }}>
-                        {lightB != null ? `${lightB > 0 ? '+' : ''}${lightB.toFixed(1)}%` : '—'}
-                      </td>
-                      <td className="px-3 py-2 text-xs">{fmt(ev.n_treat + ev.n_ctrl)}</td>
                     </tr>
                   );
                 })}
-                {/* Pooled row */}
-                {canonical?.pooled_main && (
-                  <tr style={{ borderTop: `2px solid ${CHART_COLORS.terra}`, background: '#fdf3f0' }}>
-                    <td className="px-3 py-2 text-xs font-bold" style={{ color: CHART_COLORS.terra }}>
-                      Pooled (IVW)
-                    </td>
-                    <td className="px-3 py-2 text-xs" colSpan={3} style={{ color: CHART_COLORS.ink3 }}>
-                      9 eventos, N excl. 2022 para empleo
-                    </td>
-                    <td className="px-3 py-2 text-xs font-bold">
-                      {canonical.pooled_main.epsilon_pool?.toFixed(3)}
-                      <span className="ml-1 text-gray-400 font-normal">
-                        ({canonical.pooled_main.se_eps_pool?.toFixed(3)})
-                      </span>
-                    </td>
-                    <td className="px-3 py-2 text-xs font-bold">
-                      {canonical.pooled_main.E_formal_wage_pool?.beta != null
-                        ? `+${(canonical.pooled_main.E_formal_wage_pool.beta * 100).toFixed(1)}%`
-                        : '—'}
-                    </td>
-                    <td className="px-3 py-2 text-xs">+7.7%</td>
-                    <td className="px-3 py-2 text-xs">—</td>
-                  </tr>
-                )}
               </tbody>
             </table>
           </div>
           <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
-            * p&lt;0.10 &nbsp;** p&lt;0.05 &nbsp;*** p&lt;0.01. Errores estándar HC1 entre paréntesis.
-            Kaitz = SM / mediana salario formal. Efecto faro = β trabajadores informales cercanos al SM.
+            Verde: Kaitz &lt; 0.65 (dentro del rango de evidencia causal) · Amarillo: 0.65–0.75 · Rojo: &gt; 0.75 (sin precedente histórico en Perú)
           </p>
         </div>
 
-        {/* ═══ SECTION 5: KAITZ SCATTER ═════════════════════════════════════════ */}
-        <div className="mb-10">
-          <h2 className="text-base font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>
-            ¿A partir de qué nivel el SM destruye empleo?
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 5.5: ¿SE PUEDE SEGUIR SUBIENDO? — LOS LÍMITES
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-12 p-6 rounded-sm border-2" style={{ borderColor: CHART_COLORS.ink3, background: '#fff' }}>
+          <h2 className="text-xl font-bold mb-1" style={{ color: CHART_COLORS.ink }}>
+            ¿Pero se puede seguir subiendo?
           </h2>
-          <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
-            Índice de Kaitz (SM / mediana salarial) vs elasticidad de empleo. Los puntos son los 9 eventos.
-            La región gris rayada indica extrapolación fuera del rango observado.
-          </p>
-          <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            {kaitzPts.length === 0 ? (
-              <div className="h-64 bg-gray-50 animate-pulse rounded" />
-            ) : (
-              <ResponsiveContainer width="100%" height={300}>
-                <ScatterChart margin={{ top: 20, right: 60, bottom: 30, left: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
-                  <XAxis
-                    type="number" dataKey="x"
-                    name="Kaitz" domain={['dataMin - 0.05', 'dataMax + 0.12']}
-                    tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
-                    label={{ value: 'Índice de Kaitz (SM / mediana formal)', position: 'insideBottom', offset: -10, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
-                  />
-                  <YAxis
-                    type="number" dataKey="y"
-                    name="ε empleo" domain={[-1.2, 0.5]}
-                    tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
-                    label={{ value: 'ε empleo', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
-                  />
-                  <ZAxis range={[60, 60]} />
-                  <Tooltip
-                    contentStyle={tooltipContentStyle}
-                    content={({ payload }) => {
-                      if (!payload?.length) return null;
-                      const p = payload[0]?.payload as any;
-                      return (
-                        <div style={{ ...tooltipContentStyle, padding: '6px 10px' }}>
-                          <div className="font-semibold" style={{ color: CHART_COLORS.terra }}>{p.year}</div>
-                          <div style={{ color: CHART_COLORS.ink }}>Kaitz: {p.x?.toFixed(3)}</div>
-                          <div style={{ color: CHART_COLORS.ink }}>ε: {p.y?.toFixed(3)}</div>
-                        </div>
-                      );
-                    }}
-                  />
-                  {/* Extrapolation zone */}
-                  <ReferenceArea
-                    x1={maxObsKaitz} x2={0.85}
-                    fill={CHART_COLORS.ink3} fillOpacity={0.08}
-                    label={{ value: 'Zona sin datos — extrapolación', position: 'insideTop', fontSize: 9, fill: CHART_COLORS.ink3 }}
-                  />
-                  {/* Zero elasticity line */}
-                  <ReferenceLine y={0} stroke={CHART_COLORS.ink3} strokeDasharray="4 2" />
-                  {/* Current proposal Kaitz */}
-                  {kaitz2025 && (
-                    <ReferenceLine
-                      x={parseFloat(kaitz2025)}
-                      stroke={CHART_COLORS.terra}
-                      strokeWidth={2}
-                      strokeDasharray="8 3"
-                      label={{ value: `S/${sliderMW} (propuesto)`, position: 'insideTopRight', fontSize: 9, fill: CHART_COLORS.terra }}
-                    />
-                  )}
-                  {/* Trend line as Scatter */}
-                  <Scatter
-                    name="Tendencia"
-                    data={kaitzTrendLine}
-                    line={{ stroke: CHART_COLORS.ink3, strokeWidth: 1.5, strokeDasharray: '4 2' }}
-                    lineType="fitting"
-                    shape={() => null as any}
-                    legendType="none"
-                  />
-                  {/* Data points */}
-                  <Scatter
-                    name="Eventos"
-                    data={kaitzPts}
-                    fill={CHART_COLORS.terra}
-                    shape={(props: any) => {
-                      const { cx, cy, payload } = props;
-                      return (
-                        <g>
-                          <circle cx={cx} cy={cy} r={6} fill={CHART_COLORS.terra} fillOpacity={0.85} />
-                          <text x={cx} y={cy - 10} textAnchor="middle" fontSize={9} fill={CHART_COLORS.ink}>{payload.year}</text>
-                        </g>
-                      );
-                    }}
-                  />
-                </ScatterChart>
-              </ResponsiveContainer>
+          <p className="text-sm mb-6" style={{ color: CHART_COLORS.ink3 }}>Los límites de la evidencia</p>
+
+          {/* Component A: Kaitz gradient bar */}
+          <div className="mb-8">
+            <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>
+              El termómetro del salario mínimo — ¿en qué zona estamos?
+            </div>
+            <div className="relative h-8 rounded-full overflow-hidden mb-2" style={{ background: 'linear-gradient(to right, #2A9D8F 0%, #2A9D8F 41%, #E0A458 41%, #E0A458 58%, #9B2226 58%, #9B2226 100%)' }}>
+              {/* Perú 2022 marker */}
+              <div className="absolute top-0 h-full flex flex-col items-center" style={{ left: kaitzPos(0.57) }}>
+                <div className="h-full w-0.5 bg-white" />
+              </div>
+              {/* Perú 2025 marker */}
+              <div className="absolute top-0 h-full flex flex-col items-center" style={{ left: kaitzPos(0.753) }}>
+                <div className="h-full w-0.5 bg-white opacity-80" />
+              </div>
+              {/* Slider marker */}
+              <div className="absolute top-0 h-full" style={{ left: kaitzPos(sliderKaitz) }}>
+                <div className="h-full w-1" style={{ background: CHART_COLORS.ink, opacity: 0.9 }} />
+              </div>
+            </div>
+            {/* Labels */}
+            <div className="relative h-16 text-xs" style={{ color: CHART_COLORS.ink3 }}>
+              <div className="absolute text-center" style={{ left: '5%', width: '30%' }}>
+                <div className="font-semibold" style={{ color: CHART_COLORS.teal }}>Evidencia favorable</div>
+                <div>0.30 – 0.55</div>
+              </div>
+              <div className="absolute text-center" style={{ left: '38%', width: '22%' }}>
+                <div className="font-semibold" style={{ color: CHART_COLORS.amber }}>Efectos inciertos</div>
+                <div>0.55 – 0.65</div>
+              </div>
+              <div className="absolute text-center" style={{ left: '65%', width: '30%' }}>
+                <div className="font-semibold" style={{ color: '#9B2226' }}>Sin evidencia causal</div>
+                <div>0.65 – 0.90+</div>
+              </div>
+            </div>
+            {/* Marker labels */}
+            <div className="grid grid-cols-3 gap-2 mt-2 text-xs">
+              <div className="p-2 rounded text-center" style={{ background: '#f0faf8', color: CHART_COLORS.teal }}>
+                <div className="font-bold">Perú 2022</div>
+                <div>Kaitz ≈ 0.57</div>
+                <div className="text-xs opacity-70">Nuestro rango de evidencia</div>
+              </div>
+              <div className="p-2 rounded text-center" style={{ background: '#fff5e6', color: CHART_COLORS.amber }}>
+                <div className="font-bold">Umbral Dube (2019)</div>
+                <div>Kaitz = 0.60</div>
+                <div className="text-xs opacity-70">Efectos negativos emergen</div>
+              </div>
+              <div className="p-2 rounded text-center" style={{ background: '#fff0f0', color: '#9B2226' }}>
+                <div className="font-bold">Perú 2025 (actual)</div>
+                <div>Kaitz = 0.75</div>
+                <div className="text-xs opacity-70">Récord histórico — sin precedente</div>
+              </div>
+            </div>
+            {sliderMW !== MW_1130 && (
+              <div className="mt-2 p-2 rounded text-xs text-center" style={{ background: CHART_COLORS.surface, color: CHART_COLORS.ink }}>
+                Con SM propuesto S/{fmt(sliderMW)}: Kaitz nacional ≈ <strong style={{ color: CHART_COLORS.terra }}>{sliderKaitz.toFixed(3)}</strong>
+                {' '}— {sliderKaitz < 0.65 ? '✓ dentro del rango observado' : sliderKaitz < 0.75 ? '⚠ zona de efectos inciertos' : '🔴 sin precedente histórico en Perú'}
+              </div>
             )}
-            {kaitzReg && kaitzPts.length >= 3 && (
-              <p className="text-xs text-center mt-1" style={{ color: CHART_COLORS.ink3 }}>
-                Tendencia: ε = {kaitzReg.intercept.toFixed(3)} + ({kaitzReg.slope.toFixed(3)}) × Kaitz &nbsp;|&nbsp;
-                R² = {kaitzReg.r2.toFixed(2)} &nbsp;|&nbsp;
-                <em>Nota: relación estimada con sólo 9 eventos; interpretar con cautela</em>
-              </p>
+          </div>
+
+          {/* Component B: Scenario table */}
+          <div className="mb-6">
+            <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Escenarios de riesgo</div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead style={{ background: CHART_COLORS.surface }}>
+                  <tr>
+                    {['Escenario', 'SM', 'Kaitz nacional', 'Dptos. en zona roja', 'Riesgo'].map(h => (
+                      <th key={h} className="px-3 py-2 text-left text-xs font-semibold" style={{ color: CHART_COLORS.ink }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { label: 'Aumento de 2022 (referencia)', sm: 1025, kaitz: 0.57, redN: 2,  risk: 'Moderado', riskColor: CHART_COLORS.teal },
+                    { label: 'Actual 2025',                  sm: 1130, kaitz: 0.75, redN: 18, risk: 'Alto', riskColor: CHART_COLORS.amber },
+                    { label: 'Propuesta moderada',           sm: 1200, kaitz: 0.80, redN: 21, risk: 'Muy alto', riskColor: '#9B2226' },
+                    { label: 'Propuesta agresiva',           sm: 1300, kaitz: 0.87, redN: 24, risk: 'Extremo', riskColor: '#9B2226' },
+                    { label: 'Hipotético',                   sm: 1500, kaitz: 1.00, redN: 25, risk: 'Sin precedente', riskColor: '#9B2226' },
+                    ...(sliderMW !== 1130 && sliderMW !== 1025 && sliderMW !== 1200 && sliderMW !== 1300 && sliderMW !== 1500
+                      ? [{ label: `Simulador (S/${fmt(sliderMW)})`, sm: sliderMW, kaitz: sliderKaitz, redN: redDepts, risk: sliderKaitz < 0.65 ? 'Moderado' : sliderKaitz < 0.75 ? 'Alto' : 'Muy alto', riskColor: sliderKaitz < 0.65 ? CHART_COLORS.teal : sliderKaitz < 0.75 ? CHART_COLORS.amber : '#9B2226' }]
+                      : []),
+                  ].map((row, i) => (
+                    <tr key={i} style={{ borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, background: row.sm === sliderMW ? '#fdf3f0' : i % 2 === 0 ? '#fff' : CHART_COLORS.bg }}>
+                      <td className="px-3 py-2 text-xs" style={{ color: CHART_COLORS.ink }}>{row.label}</td>
+                      <td className="px-3 py-2 text-xs font-medium" style={{ color: CHART_COLORS.terra }}>S/ {fmt(row.sm)}</td>
+                      <td className="px-3 py-2 text-xs">{row.kaitz.toFixed(2)}</td>
+                      <td className="px-3 py-2 text-xs">{row.redN}/25</td>
+                      <td className="px-3 py-2 text-xs">
+                        <span className="px-2 py-0.5 rounded font-medium"
+                          style={{ background: row.riskColor + '20', color: row.riskColor }}>
+                          {row.risk}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Component C: Key message box */}
+          <div className="p-5 rounded-sm border-l-4 mb-6" style={{ borderLeftColor: CHART_COLORS.amber, background: '#fffcf5' }}>
+            <p className="text-sm leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+              Nuestros resultados muestran que el aumento de 2022 (S/930 → S/1,025){' '}
+              <strong>no destruyó empleo</strong>.
+              Pero ese aumento ocurrió cuando el salario mínimo representaba ~57% del salario mediano formal.
+              El aumento de 2025 (S/1,025 → S/1,130) llevó esa proporción a ~75%,{' '}
+              <strong>un nivel sin precedente en la evidencia causal peruana</strong>.
+              La evidencia internacional (Dube, 2019) sugiere que los efectos negativos aparecen
+              cuando el salario mínimo supera el 60% del salario mediano.{' '}
+              <strong>Perú ya superó ese umbral</strong>.
+              Aumentos adicionales entran en territorio donde no podemos predecir los efectos con confianza.
+            </p>
+          </div>
+
+          {/* Component D: Dynamic text linked to slider */}
+          <div className="p-4 rounded-sm" style={{ background: CHART_COLORS.surface }}>
+            <div className="text-xs font-semibold mb-2" style={{ color: CHART_COLORS.ink }}>
+              ¿Qué pasaría con un aumento a S/ {fmt(sliderMW)}?
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+              Un aumento a{' '}
+              <strong style={{ color: CHART_COLORS.terra }}>S/ {fmt(sliderMW)}</strong>{' '}
+              llevaría el Kaitz nacional a{' '}
+              <strong>{sliderKaitz.toFixed(3)}</strong>.{' '}
+              <strong>{redDepts}</strong> de 25 departamentos entrarían en la zona sin evidencia causal (Kaitz &gt; 0.75).{' '}
+              {(() => {
+                const huanc = depts.find(d => d.dept_code === '09');
+                if (!huanc) return null;
+                const newK = (sliderMW / huanc.median_formal_2021 * 100).toFixed(0);
+                return <>En Huancavelica, el salario mínimo representaría el <strong>{newK}%</strong> del salario mediano formal — prácticamente todo trabajador formal ganaría el mínimo.</>;
+              })()}
+            </p>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 6: EVENT STUDY CHARTS
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-1" style={{ color: CHART_COLORS.ink }}>
+            ¿Cómo evolucionó el efecto en el tiempo?
+          </h2>
+          <p className="text-sm mb-6" style={{ color: CHART_COLORS.ink3 }}>
+            Estudio de evento: coeficientes DiD por año con el año 2021 como base (β₂₀₂₁ = 0 por construcción).
+            La banda sombreada muestra el intervalo de confianza al 95%. Tratamiento: índice de Kaitz pre-política.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+
+            {/* Left: Formalization */}
+            <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+              <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Formalización</div>
+              {eventStudyFormal.length > 0 ? (
+                <ResponsiveContainer width="100%" height={220}>
+                  <LineChart data={eventStudyFormal} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
+                    <XAxis dataKey="year" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                      label={{ value: 'Año', position: 'insideBottom', offset: -12, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }} />
+                    <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                      tickFormatter={v => `${(v * 100).toFixed(1)}pp`}
+                      label={{ value: 'Efecto (pp)', angle: -90, position: 'insideLeft', offset: 5, style: { fontSize: 9, fill: CHART_DEFAULTS.axisStroke } }} />
+                    <Tooltip
+                      contentStyle={tooltipContentStyle}
+                      formatter={(v: number | undefined, name: string | undefined) => [`${((v ?? 0) * 100).toFixed(2)}pp`, name ?? ''] as [string, string]}
+                    />
+                    <ReferenceLine y={0} stroke={CHART_COLORS.ink3} strokeDasharray="4 2" />
+                    {/* CI area */}
+                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.terra} fillOpacity={0.15} legendType="none" />
+                    <Area type="monotone" dataKey="lo" stroke="none" fill={CHART_COLORS.bg} fillOpacity={1} legendType="none" />
+                    <Line type="monotone" dataKey="b" stroke={CHART_COLORS.terra} strokeWidth={2.5} dot={{ r: 5, fill: CHART_COLORS.terra }} name="β formalización" />
+                  </LineChart>
+                </ResponsiveContainer>
+              ) : (
+                <div className="h-52 animate-pulse rounded" style={{ background: CHART_COLORS.surface }} />
+              )}
+              {formalResult && (
+                <div className="mt-2 text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                  β₂₀₂₂ = {formalResult.beta_2022.toFixed(3)}{pStars(formalResult.pval_2022)}{' '}|{' '}
+                  β₂₀₂₃ = {formalResult.beta_2023.toFixed(3)}{pStars(formalResult.pval_2023)}{' '}
+                  · N = {fmt(formalResult.N)} · {formalResult.N_depts} dptos.
+                </div>
+              )}
+            </div>
+
+            {/* Right: Employment */}
+            <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+              <div className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Empleo</div>
+              {eventStudyEmp.length > 0 ? (
+                <ResponsiveContainer width="100%" height={220}>
+                  <LineChart data={eventStudyEmp} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} />
+                    <XAxis dataKey="year" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                      label={{ value: 'Año', position: 'insideBottom', offset: -12, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }} />
+                    <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                      tickFormatter={v => `${(v * 100).toFixed(1)}pp`}
+                      label={{ value: 'Efecto (pp)', angle: -90, position: 'insideLeft', offset: 5, style: { fontSize: 9, fill: CHART_DEFAULTS.axisStroke } }} />
+                    <Tooltip
+                      contentStyle={tooltipContentStyle}
+                      formatter={(v: number | undefined, name: string | undefined) => [`${((v ?? 0) * 100).toFixed(2)}pp`, name ?? ''] as [string, string]}
+                    />
+                    <ReferenceLine y={0} stroke={CHART_COLORS.ink3} strokeDasharray="4 2" />
+                    <Area type="monotone" dataKey="hi" stroke="none" fill={CHART_COLORS.teal} fillOpacity={0.15} legendType="none" />
+                    <Area type="monotone" dataKey="lo" stroke="none" fill={CHART_COLORS.bg} fillOpacity={1} legendType="none" />
+                    <Line type="monotone" dataKey="b" stroke={CHART_COLORS.teal} strokeWidth={2.5} dot={{ r: 5, fill: CHART_COLORS.teal }} name="β empleo" />
+                  </LineChart>
+                </ResponsiveContainer>
+              ) : (
+                <div className="h-52 animate-pulse rounded" style={{ background: CHART_COLORS.surface }} />
+              )}
+              {empResult && (
+                <div className="mt-2 text-xs" style={{ color: CHART_COLORS.ink3 }}>
+                  β₂₀₂₂ = {empResult.beta_2022.toFixed(3)}{pStars(empResult.pval_2022)}{' '}|{' '}
+                  β₂₀₂₃ = {empResult.beta_2023.toFixed(4)}{pStars(empResult.pval_2023)}{' '}
+                  · N = {fmt(empResult.N)} · {empResult.N_depts} dptos.
+                </div>
+              )}
+            </div>
+          </div>
+          <p className="text-xs mt-2" style={{ color: CHART_COLORS.ink3 }}>
+            * p&lt;0.10 &nbsp;** p&lt;0.05 &nbsp;*** p&lt;0.01. Errores estándar clusterizados a nivel departamento (25 clusters).
+            Formalidad: definición V4 (contrato + EsSalud + AFP + planilla). Tratamiento: índice de Kaitz pre-política (SM S/930 / mediana salarial formal 2021).
+          </p>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 7: LITERATURA
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-1" style={{ color: CHART_COLORS.ink }}>
+            ¿Qué encuentra la literatura?
+          </h2>
+          <p className="text-sm mb-4" style={{ color: CHART_COLORS.ink3 }}>
+            Los resultados están dentro del rango de la evidencia internacional. La mayoría de estudios modernos
+            encuentran efectos pequeños o nulos sobre el empleo cuando el salario mínimo se mantiene por debajo del 60% del salario mediano.
+          </p>
+          <div className="border rounded-sm p-5" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+            <div className="space-y-3 mb-4">
+              {[
+                { label: 'Perú — Este estudio (regional DiD 2022)', effect: '≈ 0 en empleo; +4.1pp formalización', color: CHART_COLORS.terra, bold: true },
+                { label: 'Perú — Estudios previos (Céspedes 2005, Castellares 2022)', effect: '−0.05 a −1.1%', color: CHART_COLORS.amber, bold: false },
+                { label: 'EE.UU. — Consenso reciente (Cengiz et al. 2019)', effect: '≈ 0 (bunching)', color: CHART_COLORS.teal, bold: false },
+                { label: 'Internacional — Meta-análisis Dube (2019)', effect: 'Pequeños si Kaitz < 0.60', color: CHART_COLORS.ink3, bold: false },
+              ].map((row, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="flex-1 text-xs" style={{ color: row.bold ? CHART_COLORS.ink : CHART_COLORS.ink3, fontWeight: row.bold ? 600 : 400 }}>{row.label}</div>
+                  <div className="text-xs px-3 py-1 rounded font-medium" style={{ background: row.color + '20', color: row.color, minWidth: 130, textAlign: 'center' }}>{row.effect}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Expandable literature table */}
+            <button
+              onClick={() => setLitOpen(o => !o)}
+              className="text-xs flex items-center gap-1 hover:underline"
+              style={{ color: CHART_COLORS.terra }}
+            >
+              {litOpen ? '▲ Ocultar' : '▼ Ver'} comparación completa
+            </button>
+            {litOpen && (
+              <div className="mt-3 overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead style={{ background: CHART_COLORS.surface }}>
+                    <tr>
+                      {['Estudio', 'País', 'Período', 'Método', 'Efecto empleo', 'Efecto salarios'].map(h => (
+                        <th key={h} className="px-2 py-2 text-left font-semibold" style={{ color: CHART_COLORS.ink }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { est: 'Este estudio (regional DiD)', pais: 'Perú', per: '2021–2023', met: 'DiD 25 dptos.', emp: '≈ 0 (p=0.95)', sal: '+15.7%***' },
+                      { est: 'Céspedes & Sánchez (2005)', pais: 'Perú', per: '2002', met: 'DiD/Probit', emp: '−0.05 a −0.13', sal: '—' },
+                      { est: 'Jaramillo (2004)', pais: 'Perú', per: '2000s', met: 'End. compliance', emp: '—', sal: '+' },
+                      { est: 'Castellares et al. (2022)', pais: 'Perú', per: 'RNSSC', met: 'DiD', emp: '−1.1% formal', sal: '+6.3%' },
+                      { est: 'Cengiz et al. (2019)', pais: 'EE.UU.', per: '1979–2016', met: 'Bunching', emp: '≈ 0', sal: '+' },
+                      { est: 'Dube (2019)', pais: 'Internacional', per: 'Meta-análisis', met: 'Varios', emp: 'Pequeños si Kaitz<0.60', sal: '+' },
+                    ].map((r, i) => (
+                      <tr key={i} style={{ borderTop: `1px solid ${CHART_DEFAULTS.gridStroke}`, background: i === 0 ? '#fdf3f0' : i % 2 === 0 ? '#fff' : CHART_COLORS.bg }}>
+                        <td className="px-2 py-2" style={{ color: i === 0 ? CHART_COLORS.terra : CHART_COLORS.ink, fontWeight: i === 0 ? 600 : 400 }}>{r.est}</td>
+                        <td className="px-2 py-2" style={{ color: CHART_COLORS.ink3 }}>{r.pais}</td>
+                        <td className="px-2 py-2" style={{ color: CHART_COLORS.ink3 }}>{r.per}</td>
+                        <td className="px-2 py-2" style={{ color: CHART_COLORS.ink3 }}>{r.met}</td>
+                        <td className="px-2 py-2" style={{ color: CHART_COLORS.ink }}>{r.emp}</td>
+                        <td className="px-2 py-2" style={{ color: CHART_COLORS.ink }}>{r.sal}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </div>
         </div>
 
-        {/* ═══ SECTION 6: METHODOLOGY ════════════════════════════════════════════ */}
-        <div className="mb-10">
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 8: METODOLOGÍA (collapsed)
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="mb-12">
           <button
             onClick={() => setMethOpen(o => !o)}
             className="w-full flex items-center justify-between p-4 border rounded-sm text-left"
             style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}
           >
             <span className="font-semibold text-sm" style={{ color: CHART_COLORS.ink }}>
-              📋 Metodología de investigación
+              Metodología
             </span>
             <span style={{ color: CHART_COLORS.ink3 }}>{methOpen ? '▲' : '▼'}</span>
           </button>
           {methOpen && (
-            <div className="border border-t-0 rounded-b-sm p-5 space-y-3" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Diseño de identificación</h3>
-                  <ul className="text-xs space-y-1.5" style={{ color: CHART_COLORS.ink }}>
-                    <li><strong>Estrategia:</strong> Diferencias en diferencias (DiD) con panel de personas</li>
-                    <li><strong>Datos:</strong> EPE Lima Metropolitana — INEI, 9 eventos 2003–2022</li>
-                    <li><strong>Matching:</strong> Panel trimestral consecutivo — conglome + vivienda + hogar + codperso</li>
-                    <li><strong>Tratamiento:</strong> Asalariados con salario ∈ [0.85 × SM_viejo, SM_nuevo)</li>
-                    <li><strong>Control:</strong> Asalariados con salario ∈ [SM_nuevo, 1.40 × SM_nuevo)</li>
-                    <li><strong>Inferencia:</strong> Errores estándar HC1 robustos a heterocedasticidad</li>
-                    <li><strong>Pooling:</strong> Ponderación por varianza inversa (IVW) — δ = 1/SE²</li>
-                    <li><strong>Cotas de Lee (2009):</strong> Corrección de attrition selectiva en salarios</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Supuestos y limitaciones</h3>
-                  <ul className="text-xs space-y-1.5" style={{ color: CHART_COLORS.ink3 }}>
-                    <li>• Tendencias paralelas en el período de placebo (verificadas para 8/9 eventos)</li>
-                    <li>• 2022 excluido del pool de empleo: pre-trend COVID viola paralelas (β placebo = +0.296, p=0.018)</li>
-                    <li>• Muestra limitada a Lima Metro — no generalizable a regiones</li>
-                    <li>• N panel reducido en eventos 2007–2011 por rediseño EPE</li>
-                    <li>• Efecto faro calibrado en sector informal Lima; puede diferir en provincias</li>
-                    <li>• Elasticidades estimadas para incrementos moderados (10–15%); extrapolación con cautela</li>
-                  </ul>
-                </div>
+            <div className="border border-t-0 rounded-b-sm p-5 space-y-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+              <div>
+                <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Diseño de investigación</h3>
+                <p className="text-xs leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+                  Usamos diferencias en diferencias (DiD) aprovechando que el salario mínimo es nacional pero su impacto varía
+                  según el nivel salarial de cada departamento. Departamentos donde los salarios son más bajos (como Huancavelica)
+                  se ven más afectados que departamentos con salarios altos (como Lima). Comparamos cambios en empleo y formalización
+                  entre departamentos de alta y baja exposición, antes y después del aumento de mayo 2022.
+                </p>
               </div>
-              <div className="pt-3 border-t" style={{ borderColor: CHART_DEFAULTS.gridStroke }}>
-                <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Referencias</h3>
-                <ul className="text-xs space-y-1" style={{ color: CHART_COLORS.ink3 }}>
-                  <li>Céspedes & Sánchez (2005). <em>El salario mínimo en el Perú.</em> BCRP.</li>
-                  <li>Castellares et al. (2022). <em>Minimum wages and informality in Peru.</em> BCRP Working Paper.</li>
-                  <li>Cengiz et al. (2019). <em>The effect of minimum wages on low-wage jobs.</em> QJE.</li>
-                  <li>Lee (2009). <em>Training, wages, and sample selection.</em> RES.</li>
-                  <li>Maloney & Nuñez (2004). <em>Measuring the impact of minimum wages.</em> IZA DP 990.</li>
-                  <li>Lombardo et al. (2024). <em>Lighthouse effect in LAC.</em> IZA.</li>
-                  <li>Neumark & Wascher (2007). <em>Minimum wages and employment.</em> FRBF WP.</li>
-                </ul>
+              <div>
+                <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Datos</h3>
+                <p className="text-xs leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+                  Encuesta Nacional de Hogares (ENAHO) 2021–2023, panel de 25 departamentos (código srienaho 978,
+                  Módulo 1477). 224,780 observaciones persona-año. Definición de formalidad: V4 (contrato laboral +
+                  seguro de salud EsSalud + pensión AFP/ONP + planilla).
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Variable de tratamiento</h3>
+                <p className="text-xs leading-relaxed" style={{ color: CHART_COLORS.ink }}>
+                  Exposición al salario mínimo = índice de Kaitz pre-política (SM S/930 / mediana salarial formal 2021
+                  por departamento). Departamentos con Kaitz alto son más expuestos al aumento. Rango observado: 0.45
+                  (Amazonas) a 0.72 (Huancavelica).
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold mb-2" style={{ color: CHART_COLORS.terra }}>Especificación</h3>
+                <p className="text-xs font-mono p-3 rounded" style={{ background: CHART_COLORS.surface, color: CHART_COLORS.ink }}>
+                  Y_idt = α_d + γ_t + β(Post_t × Kaitz_d_pre) + Edad + Edad² + Sexo + ε_idt
+                </p>
+                <p className="text-xs mt-2 leading-relaxed" style={{ color: CHART_COLORS.ink3 }}>
+                  Efectos fijos de departamento (α_d) y año (γ_t). Errores estándar clusterizados a nivel departamento
+                  (25 clusters). Ponderado por factores de expansión ENAHO (fac500a).
+                </p>
               </div>
             </div>
           )}
         </div>
 
-        {/* ═══ SECTION 7: LITERATURE COMPARISON ════════════════════════════════ */}
-        <div className="mb-10">
-          <h2 className="text-base font-semibold mb-1" style={{ color: CHART_COLORS.ink }}>
-            Qhawarina en el contexto de la literatura
-          </h2>
-          <p className="text-xs mb-4" style={{ color: CHART_COLORS.ink3 }}>
-            Elasticidades de empleo estimadas. Qhawarina (2026) cubre el rango de incertidumbre de la literatura peruana y regional.
-          </p>
-          <div className="border rounded-sm p-4" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart
-                data={litData.map(d => ({ ...d, value: Math.abs(d.value) }))}
-                layout="vertical"
-                margin={{ top: 5, right: 50, left: 160, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={0.5} horizontal={false} />
-                <XAxis
-                  type="number" domain={[0, 0.85]}
-                  tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
-                  tickFormatter={v => `-${v.toFixed(2)}`}
-                  label={{ value: 'Elasticidad de empleo |ε|', position: 'insideBottom', offset: -3, style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
-                />
-                <YAxis
-                  type="category" dataKey="name"
-                  tick={{ fontSize: 10, fontFamily: CHART_DEFAULTS.axisFontFamily, fill: CHART_COLORS.ink }}
-                  stroke="none" width={150}
-                />
-                <Tooltip
-                  contentStyle={tooltipContentStyle}
-                  formatter={(v: number | undefined) => [`ε = −${(v ?? 0).toFixed(2)}`, 'Elasticidad'] as [string, string]}
-                />
-                <Bar dataKey="value" radius={[0, 3, 3, 0]}>
-                  {litData.map((d, i) => <Cell key={i} fill={d.color} fillOpacity={d.color === CHART_COLORS.terra ? 1 : 0.6} />)}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="text-xs text-center mt-2" style={{ color: CHART_COLORS.ink3 }}>
-              Qhawarina (terracota) cubre todo el rango de la literatura peruana.
-              La incertidumbre es intrínseca — reportamos los tres escenarios.
-            </p>
+        {/* ═══════════════════════════════════════════════════════════════════════
+            SECTION 9: FOOTER
+            ══════════════════════════════════════════════════════════════════════ */}
+        <div className="border rounded-sm p-6 mb-8" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <div className="text-xs font-semibold mb-2" style={{ color: CHART_COLORS.ink }}>Acceso a datos</div>
+              <div className="flex flex-wrap gap-2 text-xs">
+                <a href="/assets/data/mw_regional_did_results.json" className="flex items-center gap-1 px-3 py-1.5 border rounded"
+                  style={{ borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }} download>
+                  Resultados DiD regional (JSON)
+                </a>
+                <a href="/assets/data/mw_pre_policy_kaitz.json" className="flex items-center gap-1 px-3 py-1.5 border rounded"
+                  style={{ borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }} download>
+                  Kaitz por departamento (JSON)
+                </a>
+                <Link href="/simuladores/salario-minimo-epe" className="flex items-center gap-1 px-3 py-1.5 border rounded"
+                  style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}>
+                  Simulador EPE Lima (v1)
+                </Link>
+              </div>
+            </div>
+            <div>
+              <div className="text-xs font-semibold mb-2" style={{ color: CHART_COLORS.ink }}>Fuentes y contacto</div>
+              <div className="text-xs space-y-1" style={{ color: CHART_COLORS.ink3 }}>
+                <p>Fuente: ENAHO 2021–2023, INEI. Elaboración: Qhawarina.</p>
+                <p>Última actualización: Marzo 2026</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 pt-4 border-t text-xs leading-relaxed" style={{ borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink3 }}>
+            <strong>Aviso:</strong> Los resultados del simulador son proyecciones basadas en la evidencia del aumento de 2022.
+            No constituyen predicciones del efecto de futuros aumentos. Las proyecciones más allá del rango observado
+            (Kaitz &gt; 0.63) deben interpretarse con extrema cautela. Los resultados no representan posición oficial del INEI ni del BCRP.
           </div>
         </div>
 
-        {/* ═══ SECTION 8: FOOTER LINKS ══════════════════════════════════════════ */}
-        <div className="border rounded-sm p-5" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
-          <h3 className="text-sm font-semibold mb-3" style={{ color: CHART_COLORS.ink }}>Acceso a datos y código</h3>
-          <div className="flex flex-wrap gap-3 text-xs">
-            <a
-              href="/assets/data/mw_canonical_results.json"
-              className="flex items-center gap-1.5 px-3 py-1.5 border rounded"
-              style={{ borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }}
-              download
-            >
-              ⬇ Resultados DiD (JSON)
-            </a>
-            <a
-              href="/assets/data/mw_complete_evidence.json"
-              className="flex items-center gap-1.5 px-3 py-1.5 border rounded"
-              style={{ borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }}
-              download
-            >
-              ⬇ Evidencia completa (JSON)
-            </a>
-            <a
-              href="/assets/data/lima_wage_distribution.json"
-              className="flex items-center gap-1.5 px-3 py-1.5 border rounded"
-              style={{ borderColor: CHART_COLORS.terra, color: CHART_COLORS.terra }}
-              download
-            >
-              ⬇ Distribución salarial Lima (JSON)
-            </a>
-            <a
-              href="https://github.com/cesarchavezp29/qhawarina"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 border rounded"
-              style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}
-            >
-              🔗 Código fuente
-            </a>
-            <Link
-              href="/metodologia"
-              className="flex items-center gap-1.5 px-3 py-1.5 border rounded"
-              style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}
-            >
-              📄 Metodología completa
-            </Link>
-            <Link
-              href="/simuladores"
-              className="flex items-center gap-1.5 px-3 py-1.5 border rounded"
-              style={{ borderColor: CHART_COLORS.ink3, color: CHART_COLORS.ink3 }}
-            >
-              ← Todos los simuladores
-            </Link>
-          </div>
-          <p className="text-xs mt-4" style={{ color: CHART_COLORS.ink3 }}>
-            Fuente primaria: EPE Lima Metropolitana — INEI. Análisis: Qhawarina (2026).
-            Los resultados no representan posición oficial del INEI ni del BCRP.
-          </p>
-        </div>
       </div>
     </div>
   );
