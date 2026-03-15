@@ -1,7 +1,7 @@
 {
   "date": "2026-03-15",
-  "headline_es": "Precios supermercado -0.83% MTD · Nowcast PBI +2.20%",
-  "headline_en": "Supermarket prices -0.83% MTD · GDP nowcast +2.20%",
+  "headline_es": "Precios supermercado -0.83% MTD · Nowcast PBI +2.84%",
+  "headline_en": "Supermarket prices -0.83% MTD · GDP nowcast +2.84%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
@@ -22,19 +22,19 @@
     },
     {
       "icon": "📊",
-      "text_es": "Nowcast PBI 2025-Q4: +2.20% (variación anual estimada).",
-      "text_en": "GDP nowcast 2025-Q4: +2.20% (estimated year-on-year)."
+      "text_es": "Nowcast PBI 2026-Q1: +2.84% (variación anual estimada).",
+      "text_en": "GDP nowcast 2026-Q1: +2.84% (estimated year-on-year)."
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +0.17% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +0.17% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +0.18% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +0.18% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 37 — nivel mínimo.",
-      "text_en": "Political risk: IRP 37 — minimal level."
+      "text_es": "Riesgo político: IRP 315 — nivel crítico.",
+      "text_en": "Political risk: IRP 315 — critical level."
     }
   ],
-  "updated_at": "2026-03-15T06:14:15.248558+00:00"
+  "updated_at": "2026-03-15T06:59:04.514326+00:00"
 }
