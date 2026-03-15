@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-14T23:31:28.080162",
+    "generated_at": "2026-03-14T23:48:40.480819",
     "coverage_days": 438,
     "rss_feeds": 35,
     "rss_sources": 16,
@@ -24,9 +24,9 @@
     "level": "MINIMO",
     "articles_total": 592,
     "articles_political_relevant": 137,
-    "articles_economic_relevant": 64,
-    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que medidas de emergencia en seguridad reflejan desafíos localizados. La agenda política carece de tensiones sistémicas críticas en el corto plazo.",
-    "economic_justification": "La economía mantiene estabilidad relativa, aunque enfrenta presiones moderadas por gasto fiscal expansivo y vulnerabilidades infraestructurales. Los desastres climáticos en Amazonas y la necesidad de reforzar energía generan costos adicionales. El reinicio de actividades escolares apoya recuperación económica, conteniendo riesgos en niveles manejables.",
+    "articles_economic_relevant": 63,
+    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que medidas de emergencia en seguridad reflejan desafíos localizados. La ausencia de crisis sistémica mantiene el entorno controlado.",
+    "economic_justification": "La economía mantiene estabilidad relativa, aunque enfrenta presiones moderadas por gasto fiscal expansivo y vulnerabilidades en infraestructura energética y de transporte. Los desastres naturales en Amazonas generan costos adicionales, mientras que iniciativas en energía nuclear representan oportunidades de largo plazo para diversificar la matriz energética.",
     "top_political_drivers": [
       {
         "title": "Elecciones en el CAL 2026: ¿Delia Espinoza o Humberto Abanto?",
@@ -76,12 +76,12 @@
         "score": 45
       },
       {
-        "title": "Expresidente brasileño Jair Bolsonaro está estable, aunque sufre una grave disfunción renal",
-        "source": "larepublica",
-        "score": 42
+        "title": "Aprueban ley que impulsa uso de reactores nucleares pequeños para generar electricidad",
+        "source": "andina",
+        "score": 40
       }
     ],
-    "justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que medidas de emergencia en seguridad reflejan desafíos localizados. La agenda política carece de tensiones sistémicas críticas en el corto plazo.",
+    "justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Las elecciones regionales y decisiones judiciales pendientes generan incertidumbre moderada, mientras que medidas de emergencia en seguridad reflejan desafíos localizados. La ausencia de crisis sistémica mantiene el entorno controlado.",
     "top_drivers": [
       {
         "title": "Elecciones en el CAL 2026: ¿Delia Espinoza o Humberto Abanto?",
@@ -124,7 +124,7 @@
       "score": 134.4,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Fragmentación política impide estabilidad institucional del Estado.",
+      "summary": "Disputa de poder entre bloques parlamentarios y el Ejecutivo.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -132,7 +132,7 @@
       "score": 141.6,
       "level": "ELEVADO",
       "n_articles": 134,
-      "summary": "Debilitamiento institucional y fragmentación política extrema.",
+      "summary": "Retorno de Perú Libre genera debilitamiento institucional democrático.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -140,7 +140,7 @@
       "score": 147.5,
       "level": "ELEVADO",
       "n_articles": 171,
-      "summary": "Conflicto entre el Congreso y ministro censurado por comportamiento inapropiado.",
+      "summary": "Conflicto entre ministro y congreso sobre gestión gubernamental.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -148,7 +148,7 @@
       "score": 150.8,
       "level": "ALTO",
       "n_articles": 136,
-      "summary": "Congreso debate censura presidencial mientras presionan sucesión.",
+      "summary": "Congreso debate censura presidencial en medio presiones políticas.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -156,7 +156,7 @@
       "score": 148.2,
       "level": "ELEVADO",
       "n_articles": 157,
-      "summary": "Presidente Jerí enfrenta censura por sospechas de corrupción.",
+      "summary": "Desconfianza masiva en liderazgo presidencial y debilidad institucional.",
       "report_url": "/political/daily-reports/2026-02-16.html"
     },
     {
@@ -164,7 +164,7 @@
       "score": 139.0,
       "level": "ELEVADO",
       "n_articles": 67,
-      "summary": "Conflicto político en la dirección del Congreso Peruano.",
+      "summary": "Cancelación de vuelos y conflictos políticos internos congresionales.",
       "report_url": "/political/daily-reports/2026-02-15.html"
     },
     {
@@ -172,7 +172,7 @@
       "score": 125.2,
       "level": "ELEVADO",
       "n_articles": 41,
-      "summary": "Crisis política por destitucion inminente del presidente Jerí.",
+      "summary": "Crisis política por posible destitución del presidente Jerí.",
       "report_url": "/political/daily-reports/2026-02-14.html"
     },
     {
@@ -180,7 +180,7 @@
       "score": 122.7,
       "level": "ELEVADO",
       "n_articles": 91,
-      "summary": "Conflicto de poder entre ejecutivo y congreso peruano.",
+      "summary": "Conflicto de poderes entre ejecutivo y congreso peruano.",
       "report_url": "/political/daily-reports/2025-10-14.html"
     },
     {
@@ -188,7 +188,7 @@
       "score": 132.5,
       "level": "ELEVADO",
       "n_articles": 76,
-      "summary": "No hay factor de inestabilidad política identificable en estas noticias.",
+      "summary": "Investigación sin medidas restrictivas genera impunidad política.",
       "report_url": "/political/daily-reports/2025-10-13.html"
     },
     {
@@ -196,7 +196,7 @@
       "score": 139.0,
       "level": "ELEVADO",
       "n_articles": 51,
-      "summary": "Inestabilidad presidencial y falta de gobernanza administrativa.",
+      "summary": "Inestabilidad presidencial y falta de designación ministerial rápida.",
       "report_url": "/political/daily-reports/2025-10-12.html"
     }
   ],
