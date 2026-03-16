@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  ReferenceLine, Cell,
+  ReferenceLine, ReferenceArea, Cell,
 } from 'recharts';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
@@ -105,9 +105,9 @@ function kaitzCategory(k: number): 'baja' | 'media' | 'alta' {
   return 'alta';
 }
 const CAT_LABEL: Record<string,string> = {
-  baja:  'Baja exposición',
-  media: 'Exposición media',
-  alta:  'Alta exposición',
+  baja:  'Salario mediano muy por encima del mínimo',
+  media: 'Salario mediano moderadamente mayor',
+  alta:  'Salario mínimo cercano al mediano',
 };
 const CAT_COLOR: Record<string,string> = {
   alta:  '#C65D3E',
@@ -121,15 +121,28 @@ const fmt = (n: number) => Math.round(n).toLocaleString('es-PE');
 // SECTION 3 CHART — Bunching BarChart
 // ─────────────────────────────────────────────────────────────────────────────
 function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
-  const chartData = ev.bins.map(b => ({
-    bc: b.bc,
-    neg: b.delta < 0 ? b.delta : null,
-    pos: b.delta >= 0 ? b.delta : null,
-  }));
+  const affectedLow  = Math.round(0.85 * ev.mw_old);
+  const affectedHigh = ev.mw_new;
+  const excessHigh   = ev.mw_new + 200;
+
+  // Crop to [500, 1500]; mark each bin as "in-focus" (full opacity) or "noise" (faded)
+  const chartData = ev.bins
+    .filter(b => b.bc >= 500 && b.bc <= 1500)
+    .map(b => {
+      const inFocus = b.bc >= affectedLow - 50 && b.bc <= excessHigh;
+      return {
+        bc:      b.bc,
+        neg:     b.delta < 0 ? b.delta : null,
+        pos:     b.delta >= 0 ? b.delta : null,
+        inFocus,
+      };
+    });
+
+  const xTicks = [500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500];
 
   return (
     <div className="space-y-3">
-      {/* Annotation bar */}
+      {/* Legend */}
       <div className="flex gap-6 text-xs flex-wrap">
         <span className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-sm inline-block flex-shrink-0" style={{ background: TERRACOTTA, opacity: 0.85 }} />
@@ -144,16 +157,22 @@ function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
           Nuevo salario mínimo
         </span>
       </div>
+
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={chartData} margin={{ top: 16, right: 16, bottom: 24, left: 8 }} barCategoryGap="1%">
+        <BarChart data={chartData} margin={{ top: 24, right: 16, bottom: 28, left: 8 }} barCategoryGap="1%">
+          {/* Shaded affected zone */}
+          <ReferenceArea x1={affectedLow} x2={affectedHigh} fill={TERRACOTTA} fillOpacity={0.06} />
+
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
           <XAxis
             dataKey="bc"
-            tickFormatter={v => `S/${v}`}
+            type="number"
+            domain={[500, 1500]}
+            ticks={xTicks}
+            tickFormatter={v => `S/${v.toLocaleString('es-PE')}`}
             tick={{ fontSize: 10, fill: '#6b7280' }}
-            interval={3}
             tickLine={false}
-            label={{ value: 'Salario mensual (S/)', position: 'insideBottom', offset: -12, fontSize: 11, fill: '#9ca3af' }}
+            label={{ value: 'Salario mensual (S/)', position: 'insideBottom', offset: -14, fontSize: 11, fill: '#9ca3af' }}
           />
           <YAxis
             tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`}
@@ -161,7 +180,6 @@ function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
             tickLine={false}
             axisLine={false}
             width={48}
-            label={{ value: 'Cambio en participación', angle: -90, position: 'insideLeft', offset: 12, fontSize: 10, fill: '#9ca3af' }}
           />
           <Tooltip
             formatter={(val: unknown) => {
@@ -171,20 +189,28 @@ function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
             labelFormatter={(v: unknown) => `Rango S/${v}–${Number(v)+25}`}
             contentStyle={{ fontSize: 12, borderRadius: 6, border: '1px solid #e5e7eb' }}
           />
+          <ReferenceLine y={0} stroke="#d1d5db" strokeWidth={1} />
           <ReferenceLine x={ev.mw_new} stroke={TERRACOTTA} strokeWidth={2} strokeDasharray="4 2"
-            label={{ value: `S/${ev.mw_new} (nuevo mínimo)`, position: 'top', fill: TERRACOTTA, fontSize: 11, fontWeight: 700 }}
+            label={{ value: `S/${ev.mw_new}`, position: 'top', fill: TERRACOTTA, fontSize: 12, fontWeight: 700 }}
           />
           <ReferenceLine x={ev.mw_old} stroke="#d1d5db" strokeWidth={1.5} strokeDasharray="3 2"
-            label={{ value: `S/${ev.mw_old} (mínimo anterior)`, position: 'insideTopLeft', fill: '#9ca3af', fontSize: 10 }}
+            label={{ value: `S/${ev.mw_old}`, position: 'insideTopLeft', fill: '#9ca3af', fontSize: 10 }}
           />
-          <ReferenceLine y={0} stroke="#d1d5db" strokeWidth={1} />
-          <Bar dataKey="neg" name="Empleos desaparecidos" fill={TERRACOTTA} opacity={0.85} radius={[2,2,0,0]} />
-          <Bar dataKey="pos" name="Empleos reaparecidos" fill={TEAL} opacity={0.85} radius={[2,2,0,0]} />
+          <Bar dataKey="neg" name="Empleos desaparecidos" radius={[2,2,0,0]} isAnimationActive={false}>
+            {chartData.map(b => (
+              <Cell key={b.bc} fill={TERRACOTTA} fillOpacity={b.inFocus ? 0.85 : 0.25} />
+            ))}
+          </Bar>
+          <Bar dataKey="pos" name="Empleos reaparecidos" radius={[2,2,0,0]} isAnimationActive={false}>
+            {chartData.map(b => (
+              <Cell key={b.bc} fill={TEAL} fillOpacity={b.inFocus ? 0.85 : 0.25} />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
       <p className="text-xs text-gray-400 text-center">
-        Zona directamente afectada: S/{Math.round(0.85*ev.mw_old)}–S/{ev.mw_new} &nbsp;·&nbsp;
-        Excedente esperado: S/{ev.mw_new}–S/{ev.mw_new + 200}
+        Zona sombreada: rango directamente afectado por el aumento (S/{affectedLow}–S/{affectedHigh}) ·
+        Barras más transparentes fuera del foco
       </p>
     </div>
   );
@@ -197,6 +223,7 @@ export default function MWSalarioPage() {
   const [activeEvent, setActiveEvent] = useState(1);   // default: Event B (cleanest)
   const [proposedMW, setProposedMW] = useState(MW_CURRENT);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [hoveredDept, setHoveredDept] = useState<{ name: string; kaitz: number; cat: string } | null>(null);
 
   const ev = EVENTS[activeEvent];
   const affected = useMemo(() => workersAffected(proposedMW), [proposedMW]);
@@ -291,7 +318,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1 */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-4">
-            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Hallazgo 1</h2>
+            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Salarios</h2>
             <div className="space-y-1">
               <div className="text-7xl font-black leading-none" style={{ color: TERRACOTTA }}>83%</div>
               <p className="text-base font-semibold text-gray-800">
@@ -299,12 +326,17 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
               </p>
             </div>
             {/* Mini bunching chart */}
-            <div className="h-32 -mx-2">
+            <div className="h-40 -mx-2">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={BINS_B} margin={{ top: 2, right: 4, bottom: 2, left: 4 }} barCategoryGap="1%">
+                <BarChart
+                  data={BINS_B.filter(b => b.bc >= 600 && b.bc <= 1300)}
+                  margin={{ top: 2, right: 4, bottom: 2, left: 4 }}
+                  barCategoryGap="1%"
+                >
                   <ReferenceLine x={930} stroke={TERRACOTTA} strokeWidth={2} />
+                  <ReferenceLine y={0} stroke="#e5e7eb" strokeWidth={1} />
                   <Bar dataKey="delta" isAnimationActive={false}>
-                    {BINS_B.map((b) => (
+                    {BINS_B.filter(b => b.bc >= 600 && b.bc <= 1300).map((b) => (
                       <Cell key={b.bc} fill={b.delta < 0 ? TERRACOTTA : TEAL} fillOpacity={0.8} />
                     ))}
                   </Bar>
@@ -324,7 +356,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
 
           {/* Card 2 */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-4">
-            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Hallazgo 2</h2>
+            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Empleo</h2>
             <div className="space-y-1">
               <div className="text-5xl font-black leading-none" style={{ color: TEAL }}>Sin destrucción</div>
               <p className="text-base font-semibold text-gray-800">
@@ -425,52 +457,63 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            <div className="md:col-span-2">
-              <ComposableMap
-                projection="geoMercator"
-                projectionConfig={{ scale: 1600, center: [-75.5, -9.5] }}
-                style={{ width: '100%', height: 420 }}
-              >
-                <Geographies geography={GEO_URL}>
-                  {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
-                    geographies.map(geo => {
-                      const code = String(geo.properties.FIRST_IDDP || '').padStart(2, '0');
-                      const dept = DEPTS_KAITZ.find(d => d.code === code);
-                      const cat  = dept ? kaitzCategory(dept.kaitz) : 'baja';
-                      return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          fill={CAT_COLOR[cat]}
-                          fillOpacity={0.75}
-                          stroke="#fff"
-                          strokeWidth={0.8}
-                          style={{
-                            default: { outline: 'none' },
-                            hover:   { outline: 'none', fillOpacity: 1 },
-                            pressed: { outline: 'none' },
-                          }}
-                        />
-                      );
-                    })
-                  }
-                </Geographies>
-              </ComposableMap>
+            <div className="md:col-span-2 relative">
+              {/* Hover tooltip */}
+              {hoveredDept && (
+                <div className="absolute top-2 left-2 z-10 bg-white rounded-lg shadow-md border border-gray-100 px-3 py-2 text-xs pointer-events-none">
+                  <div className="font-semibold text-gray-800">{hoveredDept.name}</div>
+                  <div className="text-gray-500">
+                    Exposición: <span className="font-medium" style={{ color: CAT_COLOR[hoveredDept.cat] }}>
+                      {hoveredDept.cat === 'alta' ? 'Alta' : hoveredDept.cat === 'media' ? 'Media' : 'Baja'}
+                    </span>
+                  </div>
+                  <div className="text-gray-500">
+                    SM representa el {Math.round(hoveredDept.kaitz * 100)}% del salario mediano formal
+                  </div>
+                </div>
+              )}
+              <div style={{ background: '#E8F4F8', borderRadius: 12, overflow: 'hidden' }}>
+                <ComposableMap
+                  projection="geoMercator"
+                  projectionConfig={{ scale: 1700, center: [-75.0, -9.5] }}
+                  style={{ width: '100%', height: 460 }}
+                >
+                  <Geographies geography={GEO_URL}>
+                    {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
+                      geographies.map(geo => {
+                        const code = String(geo.properties.FIRST_IDDP || '').padStart(2, '0');
+                        const dept = DEPTS_KAITZ.find(d => d.code === code);
+                        const cat  = dept ? kaitzCategory(dept.kaitz) : 'baja';
+                        return (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            fill={CAT_COLOR[cat]}
+                            fillOpacity={0.80}
+                            stroke="#fff"
+                            strokeWidth={0.8}
+                            style={{
+                              default: { outline: 'none' },
+                              hover:   { outline: 'none', fillOpacity: 1, cursor: 'pointer' },
+                              pressed: { outline: 'none' },
+                            }}
+                            onMouseEnter={() => dept && setHoveredDept({ name: dept.name, kaitz: dept.kaitz, cat })}
+                            onMouseLeave={() => setHoveredDept(null)}
+                          />
+                        );
+                      })
+                    }
+                  </Geographies>
+                </ComposableMap>
+              </div>
             </div>
             <div className="space-y-4">
               {/* Legend */}
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {(['alta','media','baja'] as const).map(cat => (
                   <div key={cat} className="flex items-start gap-2">
                     <div className="w-4 h-4 rounded flex-shrink-0 mt-0.5" style={{ background: CAT_COLOR[cat] }} />
-                    <div>
-                      <div className="text-xs font-semibold text-gray-700">{CAT_LABEL[cat]}</div>
-                      <div className="text-xs text-gray-400">
-                        {cat === 'alta' && 'SM > 62% del salario mediano formal'}
-                        {cat === 'media' && 'SM: 50–62% del mediano'}
-                        {cat === 'baja' && 'SM < 50% del mediano'}
-                      </div>
-                    </div>
+                    <div className="text-xs text-gray-700">{CAT_LABEL[cat]}</div>
                   </div>
                 ))}
               </div>
@@ -535,15 +578,26 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
 
           {/* Dynamic paragraph */}
           <div className="bg-orange-50 rounded-xl p-5 space-y-3 border border-orange-100">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              Si el salario mínimo sube a <strong>S/{fmt(proposedMW)}</strong>:
-            </p>
+            {proposedMW === MW_CURRENT ? (
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Con el aumento vigente a <strong>S/1,130</strong>:
+              </p>
+            ) : (
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Si el salario mínimo sube a <strong>S/{fmt(proposedMW)}</strong>:
+              </p>
+            )}
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex gap-2">
                 <span style={{ color: TEAL }}>•</span>
-                Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
-                Metropolitana recibirían un aumento directo
-                {affected === 0 ? ' (todos están por encima de S/1,025 en esta estimación)' : ''}.
+                {proposedMW === MW_CURRENT ? (
+                  <>Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
+                  Metropolitana ya recibieron un aumento directo. Mueva el deslizador para
+                  simular aumentos futuros.</>
+                ) : (
+                  <>Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
+                  Metropolitana recibirían un aumento directo.</>
+                )}
               </li>
               <li className="flex gap-2">
                 <span style={{ color: TEAL }}>•</span>
@@ -553,7 +607,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
               {topD.length > 0 && (
                 <li className="flex gap-2">
                   <span style={{ color: TEAL }}>•</span>
-                  Los departamentos donde el impacto sería mayor:{' '}
+                  Los departamentos donde el impacto {proposedMW === MW_CURRENT ? 'fue' : 'sería'} mayor:{' '}
                   <strong>{topD.join(', ')}</strong>.
                 </li>
               )}
@@ -647,7 +701,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
           </div>
 
           {/* Key message */}
-          <div className="rounded-xl p-4 border-l-4 text-sm text-gray-600 leading-relaxed bg-orange-50 border-orange-300">
+          <div className="rounded-xl p-4 border-l-4 text-sm text-gray-600 leading-relaxed bg-orange-50" style={{ borderColor: TERRACOTTA }}>
             Nuestros resultados cubren aumentos donde el salario mínimo representaba entre el 54% y el 62%
             del salario mediano formal. En ese rango, no encontramos destrucción de empleo y sí redistribución
             salarial efectiva. El aumento de 2025 llevó la proporción a ~75% — un nivel sin precedente en nuestra
