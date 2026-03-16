@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  ReferenceLine, ReferenceArea, Cell,
+  ReferenceLine, ReferenceArea, Cell, AreaChart, Area,
 } from 'recharts';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
@@ -12,7 +12,7 @@ const TERRACOTTA = '#C65D3E';
 const TEAL       = '#2A9D8F';
 const BG         = '#FAF8F4';
 const GEO_URL    = '/assets/geo/peru_departamental.geojson';
-const WATERMARK  = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.02'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
+const WATERMARK  = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.04'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
 
 // ── Bunching bin data (formal-dep, delta_adj ×100, pp) ────────────────────────
 const BINS_A = [{"bc":488,"delta":0.017},{"bc":512,"delta":-0.07},{"bc":538,"delta":-0.017},{"bc":562,"delta":0.066},{"bc":588,"delta":0.021},{"bc":612,"delta":-0.051},{"bc":638,"delta":0.005},{"bc":662,"delta":0.143},{"bc":688,"delta":-0.026},{"bc":712,"delta":0.015},{"bc":738,"delta":-0.051},{"bc":762,"delta":-4.641},{"bc":788,"delta":-0.13},{"bc":812,"delta":-1.727},{"bc":838,"delta":-0.204},{"bc":862,"delta":4.24},{"bc":888,"delta":-0.005},{"bc":912,"delta":-1.063},{"bc":938,"delta":0.131},{"bc":962,"delta":0.19},{"bc":988,"delta":0.134},{"bc":1012,"delta":0.026},{"bc":1038,"delta":-0.067},{"bc":1062,"delta":-0.124},{"bc":1088,"delta":-0.022},{"bc":1112,"delta":0.061},{"bc":1138,"delta":-0.2},{"bc":1162,"delta":0.022},{"bc":1188,"delta":-0.01},{"bc":1212,"delta":-0.728},{"bc":1238,"delta":-0.036},{"bc":1262,"delta":-0.12},{"bc":1288,"delta":0.095},{"bc":1312,"delta":-0.994},{"bc":1338,"delta":-0.021},{"bc":1362,"delta":-0.202},{"bc":1388,"delta":-0.292},{"bc":1412,"delta":-0.103},{"bc":1438,"delta":0.059},{"bc":1462,"delta":-0.021},{"bc":1488,"delta":-0.051},{"bc":1512,"delta":0.69},{"bc":1538,"delta":0.154},{"bc":1562,"delta":0.104},{"bc":1588,"delta":0.039},{"bc":1612,"delta":0.297},{"bc":1638,"delta":-0.114},{"bc":1662,"delta":-0.016},{"bc":1688,"delta":0.091},{"bc":1712,"delta":0.972},{"bc":1738,"delta":-0.018},{"bc":1762,"delta":0.195},{"bc":1788,"delta":0.15},{"bc":1812,"delta":-0.714},{"bc":1838,"delta":-0.026},{"bc":1862,"delta":0.131},{"bc":1888,"delta":-0.033},{"bc":1912,"delta":0.416},{"bc":1938,"delta":-0.141},{"bc":1962,"delta":0.031},{"bc":1988,"delta":0.142},{"bc":2012,"delta":0.852}];
@@ -83,17 +83,17 @@ function pctAtOrBelow(wage: number): number {
   }
   return 100;
 }
-function workersAffected(proposedMW: number): number {
+function workersAffected(sliderValue: number): number {
   const shareBase     = pctAtOrBelow(MW_SLIDER_BASE) / 100;
-  const shareProposed = pctAtOrBelow(proposedMW) / 100;
+  const shareProposed = pctAtOrBelow(sliderValue) / 100;
   return Math.max(0, (shareProposed - shareBase) * LIMA_FORMAL_POP);
 }
-function sliderKaitz(proposedMW: number): number {
-  return (proposedMW / 850) * 0.567;   // anchored to 2018 reference
+function sliderKaitz(sliderValue: number): number {
+  return (sliderValue / 850) * 0.567;   // anchored to 2018 reference
 }
-function topDepts(proposedMW: number, n = 3): string[] {
+function topDepts(sliderValue: number, n = 3): string[] {
   return DEPTS_KAITZ
-    .filter(d => d.median < proposedMW * 1.3)
+    .filter(d => d.median < sliderValue * 1.3)
     .sort((a, b) => b.kaitz - a.kaitz)
     .slice(0, n)
     .map(d => d.name);
@@ -116,6 +116,30 @@ const CAT_COLOR: Record<string,string> = {
 };
 
 const fmt = (n: number) => Math.round(n).toLocaleString('es-PE');
+
+// ── KDE-based wage distribution data ──────────────────────────────────────────
+// Affected worker counts from EPE Lima (n=2737 formal workers in sample)
+// Scale factor to approximate Lima formal workforce (~2.5M / 2737 ≈ 913)
+const SCALE = 913;
+const MW_VIGENTE = 1130;
+const MW_PREV = 1025;
+
+function getAffectedWorkers(distData: any, sliderValue: number): number {
+  if (!distData) return 0;
+  // Use precomputed treat counts from mw_* keys when available
+  const keys = [930, 1025, 1130, 1200, 1300, 1500];
+  const key = `mw_${sliderValue}`;
+  if (distData[key]) {
+    return Math.round(distData[key].treat.formal * SCALE);
+  }
+  // For other values, interpolate between nearest keys
+  const lower = keys.filter(k => k <= sliderValue).pop() || 1130;
+  const upper = keys.find(k => k > sliderValue) || 1500;
+  const lowerCount = distData[`mw_${lower}`]?.treat?.formal || 0;
+  const upperCount = distData[`mw_${upper}`]?.treat?.formal || 0;
+  const t = upper === lower ? 0 : (sliderValue - lower) / (upper - lower);
+  return Math.round((lowerCount + t * (upperCount - lowerCount)) * SCALE);
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 3 CHART — Bunching BarChart
@@ -221,14 +245,22 @@ function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
 // ─────────────────────────────────────────────────────────────────────────────
 export default function MWSalarioPage() {
   const [activeEvent, setActiveEvent] = useState(1);   // default: Event B (cleanest)
-  const [proposedMW, setProposedMW] = useState(MW_CURRENT);
+  const [sliderValue, setSliderValue] = useState(MW_CURRENT);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const [hoveredDept, setHoveredDept] = useState<{ name: string; kaitz: number; cat: string } | null>(null);
+  const [distData, setDistData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/assets/data/lima_wage_distribution.json')
+      .then(r => r.json())
+      .then(setDistData)
+      .catch(() => {});
+  }, []);
 
   const ev = EVENTS[activeEvent];
-  const affected = useMemo(() => workersAffected(proposedMW), [proposedMW]);
-  const sliderK  = useMemo(() => sliderKaitz(proposedMW), [proposedMW]);
-  const topD     = useMemo(() => topDepts(proposedMW), [proposedMW]);
+  const affected = useMemo(() => workersAffected(sliderValue), [sliderValue]);
+  const sliderK  = useMemo(() => sliderKaitz(sliderValue), [sliderValue]);
+  const topD     = useMemo(() => topDepts(sliderValue), [sliderValue]);
 
   // Kaitz thermometer position
   const thermPos = (k: number) => Math.min(Math.max((k - 0.30) / (0.95 - 0.30) * 100, 0), 100);
@@ -293,7 +325,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
   ];
 
   return (
-    <div style={{ background: BG, backgroundImage: WATERMARK, minHeight: '100vh' }}>
+    <div style={{ backgroundColor: BG, backgroundImage: WATERMARK, minHeight: '100vh' }}>
       <main className="max-w-5xl mx-auto px-4 py-16 space-y-20">
 
         {/* ── SECTION 1: HEADLINE ─────────────────────────────────────────────── */}
@@ -380,6 +412,114 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
             </p>
           </div>
         </section>
+
+        {/* ── Interactive Wage Distribution ── */}
+        {distData && (
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-6">
+            <div className="flex justify-between items-baseline mb-3">
+              <div>
+                <h3 className="text-base font-semibold text-gray-800">
+                  Distribución salarial · Lima Metropolitana
+                </h3>
+                <p className="text-xs text-gray-500">
+                  Trabajadores formales dependientes · EPE 2022
+                </p>
+              </div>
+              {sliderValue > MW_PREV && (
+                <div className="text-right">
+                  <div className="text-lg font-black" style={{ color: TERRACOTTA }}>
+                    {getAffectedWorkers(distData, sliderValue).toLocaleString()}
+                  </div>
+                  <div className="text-xs text-gray-500">trabajadores afectados</div>
+                </div>
+              )}
+            </div>
+
+            <ResponsiveContainer width="100%" height={300}>
+              <AreaChart data={(distData.kde_formal as {wage:number,density:number}[]).filter(d => d.wage >= 400 && d.wage <= 3000)}
+                margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+                <XAxis
+                  dataKey="wage"
+                  tickFormatter={(v) => `S/${v.toLocaleString()}`}
+                  ticks={[500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000]}
+                  tick={{ fontSize: 10 }}
+                />
+                <YAxis hide />
+                <Tooltip
+                  formatter={(val: number) => [val.toFixed(5), 'Densidad']}
+                  labelFormatter={(v) => `S/${Number(v).toLocaleString()}`}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="density"
+                  stroke={TEAL}
+                  strokeWidth={2}
+                  fill={TEAL}
+                  fillOpacity={0.15}
+                />
+                {/* Gray zone: below MW_PREV */}
+                <ReferenceArea x1={400} x2={MW_PREV} fill="#999" fillOpacity={0.08} />
+                {/* Affected zone: between MW_PREV and sliderValue */}
+                {sliderValue > MW_PREV && (
+                  <ReferenceArea
+                    x1={MW_PREV}
+                    x2={sliderValue}
+                    fill={TERRACOTTA}
+                    fillOpacity={0.20}
+                  />
+                )}
+                {/* MW Prev line */}
+                <ReferenceLine
+                  x={MW_PREV}
+                  stroke="#bbb"
+                  strokeDasharray="4 4"
+                  label={{ value: `SM 2022: S/${MW_PREV}`, position: 'insideTopRight', fill: '#aaa', fontSize: 10 }}
+                />
+                {/* MW Vigente S/1,130 — always visible */}
+                <ReferenceLine
+                  x={MW_VIGENTE}
+                  stroke="#666"
+                  strokeDasharray="3 3"
+                  label={{ value: 'Vigente 2025: S/1,130', position: 'insideTopLeft', fill: '#666', fontSize: 10 }}
+                />
+                {/* Proposed MW line — only when above vigente */}
+                {sliderValue > MW_VIGENTE && (
+                  <ReferenceLine
+                    x={sliderValue}
+                    stroke={TERRACOTTA}
+                    strokeWidth={3}
+                    label={{ value: `Propuesto: S/${sliderValue.toLocaleString()}`, position: 'top', fill: TERRACOTTA, fontSize: 12, fontWeight: 700 }}
+                  />
+                )}
+              </AreaChart>
+            </ResponsiveContainer>
+
+            {/* Slider directly below chart */}
+            <div className="mt-4 px-2">
+              <input
+                type="range"
+                min={1130}
+                max={1500}
+                step={10}
+                value={sliderValue < 1130 ? 1130 : sliderValue}
+                onChange={(e) => setSliderValue(Number(e.target.value))}
+                className="w-full accent-[#C65D3E]"
+              />
+              <div className="flex justify-between text-xs text-gray-400 mt-1">
+                <span>S/1,130 (vigente)</span>
+                <span>S/1,500</span>
+              </div>
+            </div>
+
+            <p className="text-xs text-gray-400 mt-2">
+              {sliderValue <= MW_VIGENTE
+                ? `Este nivel ya está vigente desde enero 2025. ${getAffectedWorkers(distData, sliderValue).toLocaleString()} trabajadores formales recibieron un aumento directo.`
+                : `Si el salario mínimo sube a S/${sliderValue.toLocaleString()}, aproximadamente ${getAffectedWorkers(distData, sliderValue).toLocaleString()} trabajadores formales en Lima recibirían un aumento directo.`
+              }
+              {' '}Estimación basada en EPE Lima 2022, extrapolada a la fuerza laboral formal actual.
+            </p>
+          </div>
+        )}
 
         {/* ── SECTION 3: INTERACTIVE BUNCHING CHART ────────────────────────────── */}
         <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
@@ -534,7 +674,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 </div>
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Datos pre-2022 (ENAHO 2021). Formalidad: ocupinf == 2.
+                Datos pre-2022 (ENAHO 2021). Trabajadores formales dependientes.
                 Mediana departamental de salario mensual en ocupación principal.
               </p>
             </div>
@@ -549,27 +689,27 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
           <div className="space-y-3">
             <div className="flex justify-between text-sm text-gray-500">
               <span>S/1,025 (pre-2025)</span>
-              <span className="font-bold text-lg" style={{ color: TERRACOTTA }}>S/{fmt(proposedMW)}</span>
+              <span className="font-bold text-lg" style={{ color: TERRACOTTA }}>S/{fmt(sliderValue)}</span>
               <span>S/1,500</span>
             </div>
             <div className="relative">
               <input
                 type="range"
                 min={1025} max={1500} step={25}
-                value={proposedMW}
-                onChange={e => setProposedMW(Number(e.target.value))}
+                value={sliderValue < 1025 ? 1025 : sliderValue}
+                onChange={e => setSliderValue(Number(e.target.value))}
                 className="w-full h-2 rounded-full appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, ${TERRACOTTA} ${((proposedMW-1025)/(1500-1025))*100}%, #e5e7eb ${((proposedMW-1025)/(1500-1025))*100}%)`,
+                  background: `linear-gradient(to right, ${TERRACOTTA} ${((Math.max(sliderValue,1025)-1025)/(1500-1025))*100}%, #e5e7eb ${((Math.max(sliderValue,1025)-1025)/(1500-1025))*100}%)`,
                   accentColor: TERRACOTTA,
                 }}
               />
             </div>
             <div className="flex justify-between text-xs text-gray-400">
               {[1025,1130,1200,1300,1500].map(v => (
-                <button key={v} onClick={() => setProposedMW(v)}
-                  className={`px-2 py-0.5 rounded transition-colors ${proposedMW===v ? 'text-white rounded-full' : 'hover:text-gray-600'}`}
-                  style={proposedMW===v ? { background: TERRACOTTA } : {}}>
+                <button key={v} onClick={() => setSliderValue(v)}
+                  className={`px-2 py-0.5 rounded transition-colors ${sliderValue===v ? 'text-white rounded-full' : 'hover:text-gray-600'}`}
+                  style={sliderValue===v ? { background: TERRACOTTA } : {}}>
                   {v===1130 ? 'S/1,130 (vigente)' : `S/${v.toLocaleString('es-PE')}`}
                 </button>
               ))}
@@ -578,19 +718,19 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
 
           {/* Dynamic paragraph */}
           <div className="bg-orange-50 rounded-xl p-5 space-y-3 border border-orange-100">
-            {proposedMW === MW_CURRENT ? (
+            {sliderValue <= MW_VIGENTE ? (
               <p className="text-sm text-gray-700 leading-relaxed">
                 Con el aumento vigente a <strong>S/1,130</strong>:
               </p>
             ) : (
               <p className="text-sm text-gray-700 leading-relaxed">
-                Si el salario mínimo sube a <strong>S/{fmt(proposedMW)}</strong>:
+                Si el salario mínimo sube a <strong>S/{fmt(sliderValue)}</strong>:
               </p>
             )}
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex gap-2">
                 <span style={{ color: TEAL }}>•</span>
-                {proposedMW === MW_CURRENT ? (
+                {sliderValue <= MW_VIGENTE ? (
                   <>Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
                   Metropolitana ya recibieron un aumento directo. Mueva el deslizador para
                   simular aumentos futuros.</>
@@ -607,7 +747,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
               {topD.length > 0 && (
                 <li className="flex gap-2">
                   <span style={{ color: TEAL }}>•</span>
-                  Los departamentos donde el impacto {proposedMW === MW_CURRENT ? 'fue' : 'sería'} mayor:{' '}
+                  Los departamentos donde el impacto {sliderValue <= MW_VIGENTE ? 'fue' : 'sería'} mayor:{' '}
                   <strong>{topD.join(', ')}</strong>.
                 </li>
               )}
@@ -649,7 +789,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 { label: 'Perú 2018 (57%)', k: 0.57 },
                 { label: 'Perú 2022 (62%)', k: 0.62 },
                 { label: 'Perú 2025 (75%)', k: 0.75 },
-                ...(proposedMW !== MW_CURRENT ? [{ label: `S/${fmt(proposedMW)} (${Math.round(sliderK*100)}%)`, k: sliderK }] : []),
+                ...(sliderValue !== MW_CURRENT ? [{ label: `S/${fmt(sliderValue)} (${Math.round(sliderK*100)}%)`, k: sliderK }] : []),
               ].map(m => (
                 <div key={m.label}
                   className="absolute top-0 bottom-0 flex flex-col items-center"
