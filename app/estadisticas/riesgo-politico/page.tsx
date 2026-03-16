@@ -275,11 +275,15 @@ function ReadingCard({
         {isEn ? `${mult} the average` : `${mult} el promedio`}
       </p>
       <p className="text-xs text-gray-400 mt-2">
-        {indexLabel ?? 'IRP'} · {isEn ? 'mean = 100' : 'media = 100'}
+        {indexLabel ?? 'IRP'}
       </p>
     </div>
   );
 }
+
+// ─── WATERMARK ────────────────────────────────────────────────────────────────
+
+const WATERMARK_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.06'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
@@ -290,6 +294,7 @@ export default function RiesgoPoliticoPage() {
   const [data, setData] = useState<PoliticalData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [monthlyPeaks, setMonthlyPeaks] = useState<Record<string, { irp: number; ire: number; irp_event: string; ire_event: string }>>({});
 
   useEffect(() => {
     fetch(
@@ -304,6 +309,16 @@ export default function RiesgoPoliticoPage() {
         setError(true);
         setLoading(false);
       });
+    fetch('/assets/data/risk_index_monthly_peaks.json')
+      .then(r => r.json())
+      .then((peaks: any) => {
+        const map: Record<string, any> = {};
+        for (const m of peaks.months ?? []) {
+          map[m.month] = { irp: m.irp_7d_peak, ire: m.ire_7d_peak, irp_event: m.irp_event, ire_event: m.ire_event };
+        }
+        setMonthlyPeaks(map);
+      })
+      .catch(() => {});
   }, []);
 
   // ── Draggable label state (all positions in px relative to chartContainerRef) ──
@@ -508,19 +523,24 @@ export default function RiesgoPoliticoPage() {
   const currentYearMonth = new Date().toISOString().slice(0, 7); // "2026-03"
   const monthlyBarData = (data.monthly_series ?? [])
     .filter((m) => m.month < currentYearMonth)  // exclude incomplete current month
-    .map((m) => ({
-      month: m.month,
-      label: fmtMonth(m.month, isEn),
-      value: m.political_avg,
-      color: irpBarColor(m.political_avg),
-    }));
+    .map((m) => {
+      const peakVal = monthlyPeaks[m.month]?.irp;
+      const value = peakVal ?? m.political_avg;
+      return {
+        month: m.month,
+        label: fmtMonth(m.month, isEn),
+        value,
+        avg: m.political_avg,
+        color: irpBarColor(value),
+      };
+    });
 
   // monthlyScatterData and all useMemo hooks are computed before early returns above
   const monthlyScatterData = monthlyScatterDataMemo;
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
-    <div className="bg-gray-50 min-h-screen py-10">
+    <div className="min-h-screen py-10" style={{ backgroundColor: '#FAF8F4', backgroundImage: WATERMARK_BG }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
@@ -596,8 +616,9 @@ export default function RiesgoPoliticoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 2: POLITICAL READING CARDS (2×2) ════════════════════ */}
+        {/* ══ SECTION 2: POLITICAL READING CARDS (2 cards) ════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          {/* Card 1: Today */}
           <ReadingCard
             title={isEn ? 'POLITICAL RISK · TODAY' : 'RIESGO POLÍTICO · HOY'}
             subtitle={currentDateStr}
@@ -607,49 +628,16 @@ export default function RiesgoPoliticoPage() {
             isEn={isEn}
             indexLabel="IRP"
           />
+          {/* Card 2: 7-day trend */}
           <ReadingCard
-            title={isEn ? 'POLITICAL RISK · 7 DAYS' : 'RIESGO POLÍTICO · 7 DÍAS'}
-            subtitle={isEn ? `${polMult.toFixed(1)}× the average` : `${polMult.toFixed(1)}× el promedio`}
+            title={isEn ? '7-DAY TREND' : 'TENDENCIA 7 DÍAS'}
+            subtitle={isEn ? `${polMult.toFixed(1)}× the historical average` : `${polMult.toFixed(1)}× el promedio histórico`}
             prr={avg7d}
             level={polLevel}
             accentColor="#C65D3E"
             isEn={isEn}
             indexLabel="IRP"
           />
-          {/* Risk level card */}
-          <div
-            className="rounded-xl border-2 p-5 flex flex-col"
-            style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}
-          >
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
-              {isEn ? 'RISK LEVEL' : 'NIVEL DE RIESGO'}
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              {isEn ? 'Based on 7d trend' : 'Basado en tendencia 7d'}
-            </p>
-            <p className="text-5xl font-bold leading-none mt-3" style={{ color: LEVELS[polLevel as RiskLevel]?.color ?? '#C65D3E' }}>
-              {isEn ? (LEVELS[polLevel as RiskLevel]?.label_en ?? polLevel) : (LEVELS[polLevel as RiskLevel]?.label_es ?? polLevel)}
-            </p>
-            <p className="text-xs text-gray-400 mt-2">
-              {LEVELS[polLevel as RiskLevel]?.desc_pol_es ?? ''}
-            </p>
-          </div>
-          {/* Political multiplier card */}
-          <div
-            className="rounded-xl border-2 p-5 flex flex-col"
-            style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}
-          >
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
-              {isEn ? 'POLITICAL MULTIPLIER' : 'MULTIPLICADOR POLÍTICO'}
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              {isEn ? '7-day rolling average' : 'Promedio móvil 7 días'}
-            </p>
-            <p className="text-5xl font-bold leading-none mt-3" style={{ color: '#C65D3E' }}>
-              {polMult.toFixed(1)}×
-            </p>
-            <p className="text-xs text-gray-400 mt-2">IRP · {isEn ? 'mean = 100' : 'media = 100'}</p>
-          </div>
         </div>
 
         {viewMode === 'daily' && (<>
@@ -657,7 +645,7 @@ export default function RiesgoPoliticoPage() {
         {/* ── Link to economic risk page ──────────────────────────────────── */}
         <div className="mb-5">
           <Link href="/estadisticas/riesgo-economico">
-            <div className="bg-white rounded-lg border border-gray-200 p-4 hover:border-teal-400 hover:shadow-sm transition-all flex items-center justify-between">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-4 hover:border-teal-400 hover:shadow-sm transition-all flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className="text-base flex-shrink-0">📈</span>
                 <div>
@@ -679,7 +667,7 @@ export default function RiesgoPoliticoPage() {
         </div>
 
         {/* ══ SECTION 3: MULTIPLIER SCALE ═════════════════════════════════ */}
-        <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+        <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
           <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
             {isEn ? 'Political risk scale (0 – 10× the average)' : 'Escala de riesgo político (0 – 10× el promedio)'}
           </p>
@@ -697,11 +685,11 @@ export default function RiesgoPoliticoPage() {
 
         {/* ══ SECTION 4: CHART ════════════════════════════════════════════ */}
         {chartData.length >= 2 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-6 mb-6">
             <div className="flex items-start justify-between gap-4 mb-2">
               <div>
                 <h3 className="text-base font-semibold text-gray-900">
-                  {isEn ? 'Full history' : 'Historial completo'}
+                  {isEn ? 'IRP history (Jan 2025 – present)' : 'Historial IRP (ene. 2025 – presente)'}
                 </h3>
                 <p className="text-xs text-gray-500 mt-0.5 max-w-lg">
                   {isEn
@@ -754,7 +742,7 @@ export default function RiesgoPoliticoPage() {
                   ticks={yTicks}
                   tickFormatter={(v: number) => v === 0 ? '0' : `${(v / 100).toFixed(0)}×`}
                   label={{
-                    value: isEn ? '× avg' : '× media',
+                    value: '× prom.',
                     angle: -90,
                     position: 'insideLeft',
                     style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
@@ -791,7 +779,7 @@ export default function RiesgoPoliticoPage() {
                   fill="none"
                   dot={false}
                   strokeWidth={1}
-                  strokeOpacity={0.4}
+                  strokeOpacity={0.5}
                   strokeDasharray="4 2"
                 />
                 <Area
@@ -816,30 +804,48 @@ export default function RiesgoPoliticoPage() {
 
             {/* SVG overlay — dashed lines from label to dot (pointer-events: none) */}
             <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5 }}>
-              {polPeaks.map((peak) => {
+              {polPeaks.map((peak, idx) => {
                 const lp = labelPositions[peak.date];
                 const dp = dotPositions[peak.date];
                 if (!lp || !dp) return null;
+                let staggerY = idx % 2 === 0 ? 20 : -30;
+                if (idx > 0) {
+                  const prevDate = new Date(polPeaks[idx-1].date).getTime();
+                  const thisDate = new Date(peak.date).getTime();
+                  if (Math.abs(thisDate - prevDate) < 45 * 24 * 60 * 60 * 1000) {
+                    staggerY += idx % 2 === 0 ? 15 : -15;
+                  }
+                }
                 return (
                   <line key={peak.date}
-                    x1={lp.x} y1={lp.y + 11} x2={dp.x} y2={dp.y}
+                    x1={lp.x} y1={lp.y + staggerY + 11} x2={dp.x} y2={dp.y}
                     stroke="#C65D3E" strokeWidth={0.8} strokeDasharray="3,2" strokeOpacity={0.6} />
                 );
               })}
             </svg>
 
             {/* HTML draggable labels — all positions in px relative to container */}
-            {polPeaks.map((peak) => {
+            {polPeaks.map((peak, idx) => {
               const pos = labelPositions[peak.date];
-              if (!pos) return null; // hidden until dotPositions effect runs
+              if (!pos) return null;
+              let staggerY = idx % 2 === 0 ? 20 : -30;
+              if (idx > 0) {
+                const prevDate = new Date(polPeaks[idx-1].date).getTime();
+                const thisDate = new Date(peak.date).getTime();
+                if (Math.abs(thisDate - prevDate) < 45 * 24 * 60 * 60 * 1000) {
+                  staggerY += idx % 2 === 0 ? 15 : -15;
+                }
+              }
               const active = dragging === peak.date;
+              const labelText = peak.label;
+              const isLong = labelText.length > 25;
               return (
                 <div
                   key={peak.date}
                   style={{
                     position: 'absolute',
                     left: `${pos.x}px`,
-                    top: `${pos.y}px`,
+                    top: `${pos.y + staggerY}px`,
                     transform: 'translateX(-50%)',
                     cursor: active ? 'grabbing' : 'grab',
                     userSelect: 'none',
@@ -847,16 +853,16 @@ export default function RiesgoPoliticoPage() {
                     border: `1px solid ${active ? '#C65D3E' : '#C65D3Eaa'}`,
                     borderRadius: 3,
                     padding: '2px 6px',
-                    fontSize: 9,
+                    fontSize: isLong ? 8 : 9,
                     fontWeight: 600,
                     color: '#C65D3E',
                     boxShadow: active ? '0 2px 8px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)',
                     whiteSpace: 'nowrap',
                     zIndex: 10,
                   }}
-                  onMouseDown={(e) => handleLabelDragStart(peak.date, pos.x, pos.y, e)}
+                  onMouseDown={(e) => handleLabelDragStart(peak.date, pos.x, pos.y + staggerY, e)}
                 >
-                  {peak.label}
+                  {labelText}
                 </div>
               );
             })}
@@ -923,25 +929,30 @@ export default function RiesgoPoliticoPage() {
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
-                  &quot;{data.current.political_justification ?? data.current.justification}&quot;
+                  {data.current.political_justification ?? data.current.justification}
                 </p>
                 {(data.current.top_political_drivers ?? data.current.top_drivers) && (
-                  <ul className="space-y-1">
-                    {(data.current.top_political_drivers
-                      ? data.current.top_political_drivers.slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.score }))
-                      : (data.current.top_drivers ?? []).slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.severity * 100 }))
-                    ).map((d, i) => {
-                      const dotColor = d.numScore >= 70 ? '#9B2226' : d.numScore >= 40 ? '#C65D3E' : '#E0A458';
-                      return (
-                        <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
-                          <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
-                          <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{Math.round(d.numScore)}</span>
-                          <span className="truncate">{d.title}</span>
-                          <span className="flex-shrink-0" style={{ color: '#8D99AE' }}>({d.source})</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <>
+                    <p className="text-xs text-gray-400 mb-1">
+                      {isEn ? 'Score: political intensity (0–100)' : 'Puntuación: intensidad política del artículo (0–100)'}
+                    </p>
+                    <ul className="space-y-1">
+                      {(data.current.top_political_drivers
+                        ? data.current.top_political_drivers.slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.score }))
+                        : (data.current.top_drivers ?? []).slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.severity * 100 }))
+                      ).map((d, i) => {
+                        const dotColor = d.numScore >= 70 ? '#9B2226' : d.numScore >= 40 ? '#C65D3E' : '#E0A458';
+                        return (
+                          <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
+                            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
+                            <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{Math.round(d.numScore)}</span>
+                            <span className="truncate">{d.title}</span>
+                            <span className="flex-shrink-0" style={{ color: '#8D99AE', fontSize: '11px' }}>({d.source})</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
                 )}
               </div>
             )}
@@ -950,7 +961,7 @@ export default function RiesgoPoliticoPage() {
 
         {/* ══ SECTION A1: IRP vs TIPO DE CAMBIO (scatter) ═════════════════ */}
         {irpFxData.length >= 10 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
               {isEn ? 'Does political instability move the dollar?' : '¿La inestabilidad política mueve el dólar?'}
             </h3>
@@ -1055,6 +1066,19 @@ export default function RiesgoPoliticoPage() {
                 }
               </p>
             )}
+            {irpFxReg && (
+              <p className="text-xs text-gray-400 mt-1">
+                {isEn
+                  ? `R² = ${(irpFxReg.r ** 2).toFixed(2)} — correlation is positive but modest. Many other factors affect the exchange rate.`
+                  : `R² = ${(irpFxReg.r ** 2).toFixed(2)} — la correlación es positiva pero modesta. Muchos otros factores afectan el tipo de cambio.`
+                }
+              </p>
+            )}
+            <p className="text-xs text-gray-400 mt-1">
+              {isEn
+                ? 'See monthly view for a stronger correlation (r ≈ 0.46).'
+                : 'Ver vista mensual para una correlación más fuerte (r ≈ 0.46).'}
+            </p>
           </div>
         )}
 
@@ -1063,13 +1087,57 @@ export default function RiesgoPoliticoPage() {
         {/* ══ SECTION A2: DISTRIBUCIÓN MENSUAL DEL IRP ════════════════════ */}
         {viewMode === 'monthly' && (<>
 
+        {/* Monthly hero cards */}
+        {(() => {
+          const currentYM = new Date().toISOString().slice(0, 7);
+          const completedMonths = (data.monthly_series ?? []).filter(m => m.month < currentYM);
+          const currentMonthData = (data.monthly_series ?? []).find(m => m.month === currentYM);
+          const lastCompleted = completedMonths[completedMonths.length - 1];
+          const prevCompleted = completedMonths[completedMonths.length - 2];
+
+          const lastVal = lastCompleted?.political_avg ?? 0;
+          const prevVal = prevCompleted?.political_avg ?? 0;
+          const currentVal = currentMonthData?.political_avg ?? 0;
+          const changePct = prevVal > 0 ? ((lastVal - prevVal) / prevVal * 100).toFixed(1) : null;
+          const currentMonthLabel = currentYM ? fmtMonth(currentYM, isEn) : '';
+          const lastMonthLabel = lastCompleted ? fmtMonth(lastCompleted.month, isEn) : '';
+
+          return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  {currentMonthLabel} {isEn ? '(partial)' : '(parcial)'}
+                </p>
+                <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#C65D3E' }}>
+                  {Math.round(currentVal)}
+                </p>
+                <p className="text-xs text-gray-400 mt-2">IRP · {isEn ? 'month-to-date average' : 'promedio hasta hoy'}</p>
+              </div>
+              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  {lastMonthLabel}
+                </p>
+                <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#C65D3E' }}>
+                  {Math.round(lastVal)}
+                </p>
+                {changePct !== null && (
+                  <p className="text-xs mt-2" style={{ color: Number(changePct) > 0 ? '#C65D3E' : '#2A9D8F' }}>
+                    {Number(changePct) > 0 ? '▲' : '▼'} {Math.abs(Number(changePct))}% {isEn ? 'vs prior month' : 'vs mes anterior'}
+                  </p>
+                )}
+                <p className="text-xs text-gray-400 mt-1">IRP · {isEn ? 'monthly average' : 'promedio mensual'}</p>
+              </div>
+            </div>
+          );
+        })()}
+
         {monthlyBarData.length >= 2 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
-              {isEn ? 'Monthly IRP distribution' : 'Distribución mensual del IRP'}
+              {isEn ? 'Monthly IRP — peak value (7d)' : 'IRP mensual — valor pico (7 días)'}
             </h3>
             <p className="text-xs text-gray-500 mb-4">
-              {isEn ? 'Monthly average IRP. Color = risk level.' : 'Promedio mensual del IRP. Color = nivel de riesgo.'}
+              {isEn ? 'Peak 7-day smoothed IRP per month. Color = risk level.' : 'Pico mensual del IRP suavizado 7 días. Color = nivel de riesgo.'}
             </p>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={monthlyBarData} margin={{ top: 4, right: 16, left: 8, bottom: 44 }}>
@@ -1129,6 +1197,11 @@ export default function RiesgoPoliticoPage() {
               <span><span style={{ color: '#C65D3E' }}>■</span> {isEn ? '110–150 (Elevated)' : '110–150 (Elevado)'}</span>
               <span><span style={{ color: '#9B2226' }}>■</span> {isEn ? '> 150 (High)' : '> 150 (Alto)'}</span>
             </div>
+            <p className="text-xs text-gray-400 mt-2 italic">
+              {isEn
+                ? 'Bars show monthly peak (7d smoothed). Political crises are sharp events — monthly averages flatten them; peaks capture the true intensity.'
+                : 'Las barras muestran el pico mensual suavizado 7 días. Las crisis políticas son eventos agudos — los promedios los aplanan; los picos capturan la intensidad real.'}
+            </p>
             {/* Monthly peak events */}
             {(() => {
               const peakMap: Record<string, string> = {};
@@ -1145,7 +1218,7 @@ export default function RiesgoPoliticoPage() {
               return (
                 <div className="mt-4 border-t border-gray-100 pt-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
-                    {isEn ? 'Peak events' : 'Eventos pico'}
+                    {isEn ? 'Peak events (most recent first)' : 'Eventos pico (más reciente primero)'}
                   </p>
                   <div className="space-y-1">
                     {entries.map((e, i) => (
@@ -1164,7 +1237,7 @@ export default function RiesgoPoliticoPage() {
 
         {/* ══ SECTION A3: IRP MENSUAL vs DEPRECIACIÓN DEL SOL ════════════ */}
         {monthlyScatterData.length >= 3 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
               {isEn ? 'Monthly IRP vs Annual sol depreciation (%)' : 'IRP mensual vs Depreciación anual del sol (%)'}
             </h3>
@@ -1265,6 +1338,16 @@ export default function RiesgoPoliticoPage() {
                 }
               </p>
             )}
+            <p className="text-xs text-gray-400 mt-1">
+              {isEn
+                ? 'Monthly correlation is stronger than daily — political crises sustained over a month tend to move the sol more.'
+                : 'La correlación mensual es más clara que la diaria — las crisis sostenidas durante un mes tienden a mover más el sol.'}
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              {isEn
+                ? 'Negative values = sol depreciated vs the dollar. Higher IRP months tend to coincide with greater depreciation.'
+                : 'Valores negativos = el sol se depreció frente al dólar. Los meses con IRP más alto tienden a coincidir con mayor depreciación.'}
+            </p>
             <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-gray-400">
               <span><span style={{ color: '#2A9D8F' }}>●</span> Q1 (Ene–Mar)</span>
               <span><span style={{ color: '#E9C46A' }}>●</span> Q2 (Abr–Jun)</span>
@@ -1279,11 +1362,11 @@ export default function RiesgoPoliticoPage() {
         {/* ══ SECTION 6: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
           {[
-            { label: isEn ? 'Articles today' : 'Artículos hoy',  value: data.current.articles_total },
-            { label: isEn ? 'Political'      : 'Políticos',       value: data.current.articles_political_relevant ?? (data.current as any).articles_political ?? '—' },
-            { label: isEn ? 'RSS feeds'      : 'Feeds RSS',       value: data.metadata.rss_feeds },
+            { label: isEn ? 'Articles analyzed today' : 'Artículos analizados hoy', value: data.current.articles_total },
+            { label: isEn ? 'Politically relevant' : 'Políticamente relevantes', value: data.current.articles_political_relevant ?? '—' },
+            { label: isEn ? 'Media outlets monitored' : 'Medios monitoreados', value: 16 },
           ].map(({ label, value }) => (
-            <div key={label} className="bg-white rounded-lg border border-gray-200 p-4">
+            <div key={label} className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-4">
               <p className="text-xs text-gray-500">{label}</p>
               <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
             </div>
@@ -1296,9 +1379,9 @@ export default function RiesgoPoliticoPage() {
         </p>
 
         {/* ══ SECTION 7: LINKS ════════════════════════════════════════════ */}
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
           <Link href="/estadisticas/riesgo-politico/metodologia" className="flex-1">
-            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">📖</span>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -1314,7 +1397,7 @@ export default function RiesgoPoliticoPage() {
             </div>
           </Link>
           <Link href="/datos" className="flex-1">
-            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">📥</span>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -1329,9 +1412,24 @@ export default function RiesgoPoliticoPage() {
               <span className="text-gray-400 text-sm flex-shrink-0">→</span>
             </div>
           </Link>
+          <Link href="/estadisticas/riesgo-economico" className="flex-1">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-teal-400 hover:shadow-sm transition-all flex items-center gap-4">
+              <span className="text-xl flex-shrink-0">📈</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-900 text-sm">
+                  {isEn ? 'Economic Risk Index (IRE)' : 'Índice de Riesgo Económico (IRE)'}
+                </p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {isEn ? `Today: ${toMult(ecoRaw)} · 7d: ${toMult(eco7d)}` : `Hoy: ${toMult(ecoRaw)} · 7d: ${toMult(eco7d)}`}
+                </p>
+              </div>
+              <span className="text-gray-400 text-sm flex-shrink-0">→</span>
+            </div>
+          </Link>
         </div>
 
       </div>
+
     </div>
   );
 }

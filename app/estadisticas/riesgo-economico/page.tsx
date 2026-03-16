@@ -273,7 +273,7 @@ function ReadingCard({
       </p>
 
       <p className="text-xs text-gray-400 mt-2">
-        {indexLabel ?? 'IRE'} · {isEn ? 'mean = 100' : 'media = 100'}
+        {indexLabel ?? 'IRE'}
       </p>
     </div>
   );
@@ -306,6 +306,10 @@ const SECTOR_PATTERNS: Array<{ key: string; label_es: string; label_en: string; 
   { key: 'laboral',  label_es: 'Laboral',        label_en: 'Labour',  color: '#8D99AE', pattern: /huelga|paro|empleo|desempleo|trabajo/i },
 ];
 
+// ─── WATERMARK ────────────────────────────────────────────────────────────────
+
+const WATERMARK_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.06'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
+
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function RiesgoEconomicoPage() {
@@ -315,6 +319,7 @@ export default function RiesgoEconomicoPage() {
   const [data, setData] = useState<PoliticalData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [monthlyPeaks, setMonthlyPeaks] = useState<Record<string, { irp: number; ire: number; irp_event: string; ire_event: string }>>({});
 
   useEffect(() => {
     fetch(
@@ -329,6 +334,16 @@ export default function RiesgoEconomicoPage() {
         setError(true);
         setLoading(false);
       });
+    fetch('/assets/data/risk_index_monthly_peaks.json')
+      .then(r => r.json())
+      .then((peaks: any) => {
+        const map: Record<string, any> = {};
+        for (const m of peaks.months ?? []) {
+          map[m.month] = { irp: m.irp_7d_peak, ire: m.ire_7d_peak, irp_event: m.irp_event, ire_event: m.ire_event };
+        }
+        setMonthlyPeaks(map);
+      })
+      .catch(() => {});
   }, []);
 
   // ── Draggable label state (all positions in px relative to chartContainerRef) ──
@@ -509,18 +524,23 @@ export default function RiesgoEconomicoPage() {
   const currentYearMonth = new Date().toISOString().slice(0, 7);
   const monthlyBarData = (data.monthly_series ?? [])
     .filter((m) => m.economic_avg != null && m.month < currentYearMonth)  // exclude current month
-    .map((m) => ({
-      month: m.month,
-      label: fmtMonth(m.month, isEn),
-      value: m.economic_avg as number,
-      color: ireBarColor(m.economic_avg as number),
-    }));
+    .map((m) => {
+      const peakVal = monthlyPeaks[m.month]?.ire;
+      const value = peakVal ?? (m.economic_avg as number);
+      return {
+        month: m.month,
+        label: fmtMonth(m.month, isEn),
+        value,
+        avg: m.economic_avg as number,
+        color: ireBarColor(value),
+      };
+    });
 
   // sectorData computed before early returns above
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
-    <div className="bg-gray-50 min-h-screen py-10">
+    <div className="min-h-screen py-10" style={{ backgroundColor: '#FAF8F4', backgroundImage: WATERMARK_BG }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
@@ -596,9 +616,9 @@ export default function RiesgoEconomicoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 2: FOUR READING CARDS (2×2) ═════════════════════════ */}
+        {/* ══ SECTION 2: ECONOMIC READING CARDS (2 cards) ═════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-          {/* Economic today */}
+          {/* Card 1: Today */}
           <ReadingCard
             title={isEn ? 'ECONOMIC RISK · TODAY' : 'RIESGO ECONÓMICO · HOY'}
             subtitle={currentDateStr}
@@ -608,56 +628,22 @@ export default function RiesgoEconomicoPage() {
             isEn={isEn}
             indexLabel="IRE"
           />
-          {/* Economic 7d */}
+          {/* Card 2: 7-day trend */}
           <ReadingCard
-            title={isEn ? 'ECONOMIC RISK · 7 DAYS' : 'RIESGO ECONÓMICO · 7 DÍAS'}
-            subtitle={isEn ? `${ecoMult.toFixed(1)}× the average` : `${ecoMult.toFixed(1)}× el promedio`}
+            title={isEn ? '7-DAY TREND' : 'TENDENCIA 7 DÍAS'}
+            subtitle={isEn ? `${ecoMult.toFixed(1)}× the historical average` : `${ecoMult.toFixed(1)}× el promedio histórico`}
             ire={eco7d}
             level={ecoLevel}
             accentColor="#2A9D8F"
             isEn={isEn}
             indexLabel="IRE"
           />
-          {/* IRE level card */}
-          <div
-            className="rounded-xl border-2 p-5 flex flex-col"
-            style={{ borderColor: '#2A9D8F44', background: '#2A9D8F0A' }}
-          >
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
-              {isEn ? 'RISK LEVEL' : 'NIVEL DE RIESGO'}
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              {isEn ? 'Based on 7d trend' : 'Basado en tendencia 7d'}
-            </p>
-            <p className="text-5xl font-bold leading-none mt-3" style={{ color: LEVELS[ecoLevel as RiskLevel]?.color ?? '#2A9D8F' }}>
-              {isEn ? (LEVELS[ecoLevel as RiskLevel]?.label_en ?? ecoLevel) : (LEVELS[ecoLevel as RiskLevel]?.label_es ?? ecoLevel)}
-            </p>
-            <p className="text-xs text-gray-400 mt-2">
-              {LEVELS[ecoLevel as RiskLevel]?.desc_eco_es ?? ''}
-            </p>
-          </div>
-          {/* IRE multiplier card */}
-          <div
-            className="rounded-xl border-2 p-5 flex flex-col"
-            style={{ borderColor: '#2A9D8F44', background: '#2A9D8F0A' }}
-          >
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
-              {isEn ? 'ECONOMIC MULTIPLIER' : 'MULTIPLICADOR ECONÓMICO'}
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              {isEn ? '7-day rolling average' : 'Promedio móvil 7 días'}
-            </p>
-            <p className="text-5xl font-bold leading-none mt-3" style={{ color: '#2A9D8F' }}>
-              {ecoMult.toFixed(1)}×
-            </p>
-            <p className="text-xs text-gray-400 mt-2">IRE · {isEn ? 'mean = 100' : 'media = 100'}</p>
-          </div>
         </div>
 
         {viewMode === 'daily' && (<>
 
         {/* ══ SECTION 3: MULTIPLIER SCALE ═════════════════════════════════ */}
-        <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+        <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
           <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
             {isEn ? 'Economic risk scale (0 – 10× the average)' : 'Escala de riesgo económico (0 – 10× el promedio)'}
           </p>
@@ -675,11 +661,11 @@ export default function RiesgoEconomicoPage() {
 
         {/* ══ SECTION 4: CHART ════════════════════════════════════════════ */}
         {chartData.length >= 2 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-6 mb-6">
             <div className="flex items-start justify-between gap-4 mb-2">
               <div>
                 <h3 className="text-base font-semibold text-gray-900">
-                  {isEn ? 'Full history' : 'Historial completo'}
+                  {isEn ? 'IRE history (Jan 2025 – present)' : 'Historial IRE (ene. 2025 – presente)'}
                 </h3>
                 <p className="text-xs text-gray-500 mt-0.5 max-w-lg">
                   {isEn
@@ -738,7 +724,7 @@ export default function RiesgoEconomicoPage() {
                   ticks={yTicks}
                   tickFormatter={(v: number) => v === 0 ? '0' : `${(v / 100).toFixed(0)}×`}
                   label={{
-                    value: isEn ? '× avg' : '× media',
+                    value: '× prom.',
                     angle: -90,
                     position: 'insideLeft',
                     style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke },
@@ -777,7 +763,7 @@ export default function RiesgoEconomicoPage() {
                   fill="none"
                   dot={false}
                   strokeWidth={1}
-                  strokeOpacity={0.4}
+                  strokeOpacity={0.5}
                   strokeDasharray="4 2"
                 />
                 <Area
@@ -802,30 +788,48 @@ export default function RiesgoEconomicoPage() {
 
             {/* SVG overlay — dashed lines from label to dot (pointer-events: none) */}
             <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5 }}>
-              {ecoPeaks.map((peak) => {
+              {ecoPeaks.map((peak, idx) => {
                 const lp = labelPositions[peak.date];
                 const dp = dotPositions[peak.date];
                 if (!lp || !dp) return null;
+                let staggerY = idx % 2 === 0 ? 20 : -30;
+                if (idx > 0) {
+                  const prevDate = new Date(ecoPeaks[idx-1].date).getTime();
+                  const thisDate = new Date(peak.date).getTime();
+                  if (Math.abs(thisDate - prevDate) < 45 * 24 * 60 * 60 * 1000) {
+                    staggerY += idx % 2 === 0 ? 15 : -15;
+                  }
+                }
                 return (
                   <line key={peak.date}
-                    x1={lp.x} y1={lp.y + 11} x2={dp.x} y2={dp.y}
+                    x1={lp.x} y1={lp.y + staggerY + 11} x2={dp.x} y2={dp.y}
                     stroke="#2A9D8F" strokeWidth={0.8} strokeDasharray="3,2" strokeOpacity={0.6} />
                 );
               })}
             </svg>
 
             {/* HTML draggable labels — all positions in px relative to container */}
-            {ecoPeaks.map((peak) => {
+            {ecoPeaks.map((peak, idx) => {
               const pos = labelPositions[peak.date];
-              if (!pos) return null; // hidden until dotPositions effect runs
+              if (!pos) return null;
+              let staggerY = idx % 2 === 0 ? 20 : -30;
+              if (idx > 0) {
+                const prevDate = new Date(ecoPeaks[idx-1].date).getTime();
+                const thisDate = new Date(peak.date).getTime();
+                if (Math.abs(thisDate - prevDate) < 45 * 24 * 60 * 60 * 1000) {
+                  staggerY += idx % 2 === 0 ? 15 : -15;
+                }
+              }
               const active = dragging === peak.date;
+              const labelText = peak.label;
+              const isLong = labelText.length > 25;
               return (
                 <div
                   key={peak.date}
                   style={{
                     position: 'absolute',
                     left: `${pos.x}px`,
-                    top: `${pos.y}px`,
+                    top: `${pos.y + staggerY}px`,
                     transform: 'translateX(-50%)',
                     cursor: active ? 'grabbing' : 'grab',
                     userSelect: 'none',
@@ -833,16 +837,16 @@ export default function RiesgoEconomicoPage() {
                     border: `1px solid ${active ? '#2A9D8F' : '#2A9D8Faa'}`,
                     borderRadius: 3,
                     padding: '2px 6px',
-                    fontSize: 9,
+                    fontSize: isLong ? 8 : 9,
                     fontWeight: 600,
                     color: '#2A9D8F',
                     boxShadow: active ? '0 2px 8px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)',
                     whiteSpace: 'nowrap',
                     zIndex: 10,
                   }}
-                  onMouseDown={(e) => handleLabelDragStart(peak.date, pos.x, pos.y, e)}
+                  onMouseDown={(e) => handleLabelDragStart(peak.date, pos.x, pos.y + staggerY, e)}
                 >
-                  {peak.label}
+                  {labelText}
                 </div>
               );
             })}
@@ -851,7 +855,7 @@ export default function RiesgoEconomicoPage() {
         )}
 
         {/* ══ SECTION 5: INTERPRETATION TABLE ════════════════════════════ */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+        <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-6 mb-6">
           <h3 className="text-base font-semibold text-gray-900 mb-1">
             {isEn ? 'How to interpret this index' : '¿Cómo se interpreta?'}
           </h3>
@@ -906,7 +910,7 @@ export default function RiesgoEconomicoPage() {
         </div>
 
         {/* ══ SECTION 5b: ECONOMIC JUSTIFICATION ══════════════════════════ */}
-        {data.current.economic_justification && (
+        {(data.current.economic_justification || data.current.justification) && (
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink }}>
@@ -916,30 +920,44 @@ export default function RiesgoEconomicoPage() {
                 {formatDate(data.current.date, isEn)}
               </span>
             </div>
-
             <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#2A9D8F' }}>
                   {isEn ? 'Economic Risk' : 'Riesgo Económico'} · {ecoMult.toFixed(1)}×
                 </span>
               </div>
-              <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
-                &quot;{data.current.economic_justification}&quot;
-              </p>
-              {data.current.top_economic_drivers && (
-                <ul className="space-y-1">
-                  {data.current.top_economic_drivers.slice(0, 5).map((d, i) => {
-                    const dotColor = d.score >= 70 ? '#0e7490' : d.score >= 40 ? '#2A9D8F' : '#6ee7b7';
-                    return (
-                      <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
-                        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
-                        <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{d.score}</span>
-                        <span className="truncate">{d.title}</span>
-                        <span className="flex-shrink-0" style={{ color: '#8D99AE' }}>({d.source})</span>
-                      </li>
-                    );
-                  })}
-                </ul>
+              {(data.current.articles_economic_relevant ?? 999) <= 1 ? (
+                <p className="text-sm leading-relaxed" style={{ color: '#2D3142' }}>
+                  {isEn
+                    ? 'Low economic news activity today. No significant macroeconomic impact detected. Underlying fundamentals remain stable.'
+                    : 'Jornada de baja actividad económica en medios. No se detectaron noticias con impacto significativo en indicadores económicos estructurales. Los fundamentales macroeconómicos se mantienen estables.'}
+                </p>
+              ) : (
+                <>
+                  <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
+                    {data.current.economic_justification ?? data.current.justification}
+                  </p>
+                  {data.current.top_economic_drivers && data.current.top_economic_drivers.length >= 2 && (
+                    <>
+                      <p className="text-xs text-gray-400 mb-1">
+                        {isEn ? 'Score: economic intensity (0–100)' : 'Puntuación: intensidad económica del artículo (0–100)'}
+                      </p>
+                      <ul className="space-y-1">
+                        {data.current.top_economic_drivers.slice(0, 5).map((d, i) => {
+                          const dotColor = d.score >= 70 ? '#9B2226' : d.score >= 40 ? '#2A9D8F' : '#E0A458';
+                          return (
+                            <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
+                              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
+                              <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{d.score}</span>
+                              <span className="truncate">{d.title}</span>
+                              <span className="flex-shrink-0" style={{ color: '#8D99AE', fontSize: '11px' }}>({d.source})</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -947,7 +965,7 @@ export default function RiesgoEconomicoPage() {
 
         {/* ══ SECTION 6: IRE vs TIPO DE CAMBIO SCATTER ════════════════════ */}
         {scatterRaw.length >= 10 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-6 mb-6">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
               {isEn ? 'IRE vs Exchange Rate (USD/PEN)' : 'IRE vs Tipo de Cambio (USD/PEN)'}
             </h3>
@@ -1042,6 +1060,12 @@ export default function RiesgoEconomicoPage() {
                 }
               </p>
             )}
+            <p className="text-xs text-gray-400 mt-2">
+              {isEn
+                ? `R² = ${((() => { const n = scatterRaw.length; const mx = scatterRaw.reduce((s,d)=>s+d.ire,0)/n; const my = scatterRaw.reduce((s,d)=>s+d.fx,0)/n; const sxy = scatterRaw.reduce((s,d)=>s+(d.ire-mx)*(d.fx-my),0); const sxx = scatterRaw.reduce((s,d)=>s+(d.ire-mx)**2,0); const syy = scatterRaw.reduce((s,d)=>s+(d.fx-my)**2,0); return sxx>0&&syy>0?(sxy/Math.sqrt(sxx*syy))**2:0; })()).toFixed(2)} — In daily view, correlation between economic risk and exchange rate is near zero. See monthly view for a clearer relationship.`
+                : `R² = ${((() => { const n = scatterRaw.length; const mx = scatterRaw.reduce((s,d)=>s+d.ire,0)/n; const my = scatterRaw.reduce((s,d)=>s+d.fx,0)/n; const sxy = scatterRaw.reduce((s,d)=>s+(d.ire-mx)*(d.fx-my),0); const sxx = scatterRaw.reduce((s,d)=>s+(d.ire-mx)**2,0); const syy = scatterRaw.reduce((s,d)=>s+(d.fx-my)**2,0); return sxx>0&&syy>0?(sxy/Math.sqrt(sxx*syy))**2:0; })()).toFixed(2)} — En la vista diaria, la correlación entre riesgo económico y tipo de cambio es prácticamente nula. Ver vista mensual para una relación más clara.`
+              }
+            </p>
           </div>
         )}
 
@@ -1050,13 +1074,57 @@ export default function RiesgoEconomicoPage() {
         {/* ══ SECTION B1: DISTRIBUCIÓN MENSUAL DEL IRE ════════════════════ */}
         {viewMode === 'monthly' && (<>
 
+        {/* Monthly hero cards */}
+        {(() => {
+          const currentYM = new Date().toISOString().slice(0, 7);
+          const completedMonths = (data.monthly_series ?? []).filter(m => m.month < currentYM);
+          const currentMonthData = (data.monthly_series ?? []).find(m => m.month === currentYM);
+          const lastCompleted = completedMonths[completedMonths.length - 1];
+          const prevCompleted = completedMonths[completedMonths.length - 2];
+
+          const lastVal = lastCompleted?.economic_avg ?? 0;
+          const prevVal = prevCompleted?.economic_avg ?? 0;
+          const currentVal = currentMonthData?.economic_avg ?? 0;
+          const changePct = prevVal > 0 ? ((lastVal - prevVal) / prevVal * 100).toFixed(1) : null;
+          const currentMonthLabel = currentYM ? fmtMonth(currentYM, isEn) : '';
+          const lastMonthLabel = lastCompleted ? fmtMonth(lastCompleted.month, isEn) : '';
+
+          return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#2A9D8F44', background: '#2A9D8F0A' }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  {currentMonthLabel} {isEn ? '(partial)' : '(parcial)'}
+                </p>
+                <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#2A9D8F' }}>
+                  {Math.round(currentVal)}
+                </p>
+                <p className="text-xs text-gray-400 mt-2">IRE · {isEn ? 'month-to-date average' : 'promedio hasta hoy'}</p>
+              </div>
+              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#2A9D8F44', background: '#2A9D8F0A' }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  {lastMonthLabel}
+                </p>
+                <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#2A9D8F' }}>
+                  {Math.round(lastVal)}
+                </p>
+                {changePct !== null && (
+                  <p className="text-xs mt-2" style={{ color: Number(changePct) > 0 ? '#C65D3E' : '#2A9D8F' }}>
+                    {Number(changePct) > 0 ? '▲' : '▼'} {Math.abs(Number(changePct))}% {isEn ? 'vs prior month' : 'vs mes anterior'}
+                  </p>
+                )}
+                <p className="text-xs text-gray-400 mt-1">IRE · {isEn ? 'monthly average' : 'promedio mensual'}</p>
+              </div>
+            </div>
+          );
+        })()}
+
         {monthlyBarData.length >= 2 && (
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-1">
-              {isEn ? 'Monthly IRE distribution' : 'Distribución mensual del IRE'}
+              {isEn ? 'Monthly IRE — peak value (7d)' : 'IRE mensual — valor pico (7 días)'}
             </h3>
             <p className="text-xs text-gray-500 mb-4">
-              {isEn ? 'Monthly average IRE. Color = risk level.' : 'Promedio mensual del IRE. Color = nivel de riesgo.'}
+              {isEn ? 'Peak 7-day smoothed IRE per month. Color = risk level.' : 'Pico mensual del IRE suavizado 7 días. Color = nivel de riesgo.'}
             </p>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={monthlyBarData} margin={{ top: 4, right: 16, left: 8, bottom: 44 }}>
@@ -1116,6 +1184,11 @@ export default function RiesgoEconomicoPage() {
               <span><span style={{ color: '#C65D3E' }}>■</span> {isEn ? '110–150 (Elevated)' : '110–150 (Elevado)'}</span>
               <span><span style={{ color: '#9B2226' }}>■</span> {isEn ? '> 150 (High)' : '> 150 (Alto)'}</span>
             </div>
+            <p className="text-xs text-gray-400 mt-2 italic">
+              {isEn
+                ? 'Bars show monthly peak (7d smoothed). Political crises are sharp events — monthly averages flatten them; peaks capture the true intensity.'
+                : 'Las barras muestran el pico mensual suavizado 7 días. Las crisis políticas son eventos agudos — los promedios los aplanan; los picos capturan la intensidad real.'}
+            </p>
             {/* Monthly peak events */}
             {(() => {
               const peakMap: Record<string, string> = {};
@@ -1132,7 +1205,7 @@ export default function RiesgoEconomicoPage() {
               return (
                 <div className="mt-4 border-t border-gray-100 pt-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
-                    {isEn ? 'Peak events' : 'Eventos pico'}
+                    {isEn ? 'Peak events (most recent first)' : 'Eventos pico (más reciente primero)'}
                   </p>
                   <div className="space-y-1">
                     {entries.map((e, i) => (
@@ -1150,7 +1223,7 @@ export default function RiesgoEconomicoPage() {
         )}
 
         {/* ══ SECTION B2: PRINCIPALES SECTORES DE RIESGO ECONÓMICO ════════ */}
-        <div className="bg-white rounded-xl border border-gray-200 p-5 mb-5">
+        <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
           <h3 className="text-base font-semibold text-gray-900 mb-1">
             {isEn ? 'Main economic risk sectors' : 'Principales sectores de riesgo económico'}
           </h3>
@@ -1218,12 +1291,12 @@ export default function RiesgoEconomicoPage() {
         {/* ══ SECTION 7: DATA BOXES ═══════════════════════════════════════ */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
           {[
-            { label: isEn ? 'Articles today'  : 'Artículos hoy',  value: data.current.articles_total },
-            { label: isEn ? 'Economic'         : 'Económicos',     value: data.current.articles_economic_relevant ?? '—' },
-            { label: isEn ? 'Coverage days'   : 'Días cobertura', value: data.metadata.coverage_days },
-            { label: isEn ? 'RSS feeds'        : 'Feeds RSS',      value: data.metadata.rss_feeds },
+            { label: isEn ? 'Articles analyzed today' : 'Artículos analizados hoy', value: data.current.articles_total },
+            { label: isEn ? 'Economically relevant' : 'Económicamente relevantes', value: (() => { const n = data.current.articles_economic_relevant; if (n == null) return '—'; if (n <= 2) return isEn ? `${n} (low-activity day)` : `${n} (baja actividad)`; return n; })() },
+            { label: isEn ? 'Coverage days' : 'Días cobertura', value: data.metadata.coverage_days },
+            { label: isEn ? 'Media outlets monitored' : 'Medios monitoreados', value: 16 },
           ].map(({ label, value }) => (
-            <div key={label} className="bg-white rounded-lg border border-gray-200 p-4">
+            <div key={label} className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-4">
               <p className="text-xs text-gray-500">{label}</p>
               <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
             </div>
@@ -1239,7 +1312,7 @@ export default function RiesgoEconomicoPage() {
         <div className="flex flex-col sm:flex-row gap-3">
           {viewMode === 'daily' && (
           <Link href="/estadisticas/riesgo-politico" className="flex-1">
-            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">🏛️</span>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -1254,7 +1327,7 @@ export default function RiesgoEconomicoPage() {
           </Link>
           )}
           <Link href="/estadisticas/riesgo-politico/metodologia" className="flex-1">
-            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">📖</span>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -1268,7 +1341,7 @@ export default function RiesgoEconomicoPage() {
             </div>
           </Link>
           <Link href="/datos" className="flex-1">
-            <div className="bg-white rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-blue-400 hover:shadow-sm transition-all flex items-center gap-4">
               <span className="text-xl flex-shrink-0">📥</span>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-gray-900 text-sm">
@@ -1286,6 +1359,7 @@ export default function RiesgoEconomicoPage() {
         </div>
 
       </div>
+
     </div>
   );
 }
