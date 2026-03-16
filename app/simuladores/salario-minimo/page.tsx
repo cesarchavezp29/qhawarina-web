@@ -446,7 +446,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 />
                 <YAxis hide />
                 <Tooltip
-                  formatter={(val: number) => [val.toFixed(5), 'Densidad']}
+                  formatter={(val: number | undefined) => [(val ?? 0).toFixed(5), 'Densidad']}
                   labelFormatter={(v) => `S/${Number(v).toLocaleString()}`}
                 />
                 <Area
@@ -578,7 +578,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
             </table>
           </div>
           <p className="text-xs text-gray-500">
-            "¿Cuántos regresan?" indica cuántos de los empleos que desaparecieron por debajo del nuevo
+            &ldquo;¿Cuántos regresan?&rdquo; indica cuántos de los empleos que desaparecieron por debajo del nuevo
             mínimo volvieron a aparecer por encima de él. Un valor de 100 de cada 100 sería redistribución perfecta.
           </p>
           <div className="bg-gray-50 rounded-xl p-4 border-l-4 text-xs text-gray-500 leading-relaxed" style={{ borderColor: '#9ca3af' }}>
