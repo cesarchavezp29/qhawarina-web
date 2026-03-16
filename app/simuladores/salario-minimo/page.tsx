@@ -34,7 +34,7 @@ const DEPTS_KAITZ = [
   { code:'15', name:'Lima',           kaitz:0.613, median:1516, share:0.251 },
   { code:'07', name:'Callao',         kaitz:0.628, median:1481, share:0.277 },
   { code:'20', name:'Piura',          kaitz:0.646, median:1440, share:0.192 },
-  { code:'23', name:'Tumbes',         kaitz:0.632, median:1471, share:0.260 },
+  { code:'24', name:'Tumbes',         kaitz:0.632, median:1471, share:0.260 },
   { code:'14', name:'Lambayeque',     kaitz:0.631, median:1474, share:0.215 },
   { code:'13', name:'La Libertad',    kaitz:0.622, median:1494, share:0.205 },
   { code:'09', name:'Huancavelica',   kaitz:0.718, median:1295, share:0.247 },
@@ -42,7 +42,7 @@ const DEPTS_KAITZ = [
   { code:'22', name:'San Martin',     kaitz:0.602, median:1544, share:0.168 },
   { code:'21', name:'Puno',           kaitz:0.602, median:1546, share:0.131 },
   { code:'19', name:'Pasco',          kaitz:0.600, median:1550, share:0.141 },
-  { code:'23b','name':'Tacna',        kaitz:0.597, median:1558, share:0.220 },
+  { code:'23', name:'Tacna',          kaitz:0.597, median:1558, share:0.220 },
   { code:'08', name:'Cusco',          kaitz:0.595, median:1562, share:0.155 },
   { code:'05', name:'Ayacucho',       kaitz:0.593, median:1568, share:0.112 },
   { code:'02', name:'Ancash',         kaitz:0.591, median:1575, share:0.154 },
@@ -66,6 +66,7 @@ const LIMA_PERC: Record<string,number> = {
 };
 const LIMA_FORMAL_POP = 1_700_000;   // Lima Metro formal workers (expansion)
 const MW_CURRENT      = 1130;         // Vigente 2025
+const MW_SLIDER_BASE  = 1025;         // Pre-2025 MW — baseline for simulator
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 function pctAtOrBelow(wage: number): number {
@@ -83,9 +84,9 @@ function pctAtOrBelow(wage: number): number {
   return 100;
 }
 function workersAffected(proposedMW: number): number {
-  const shareCurrent  = pctAtOrBelow(MW_CURRENT) / 100;
+  const shareBase     = pctAtOrBelow(MW_SLIDER_BASE) / 100;
   const shareProposed = pctAtOrBelow(proposedMW) / 100;
-  return Math.max(0, (shareProposed - shareCurrent) * LIMA_FORMAL_POP);
+  return Math.max(0, (shareProposed - shareBase) * LIMA_FORMAL_POP);
 }
 function sliderKaitz(proposedMW: number): number {
   return (proposedMW / 850) * 0.567;   // anchored to 2018 reference
@@ -124,13 +125,27 @@ function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
     bc: b.bc,
     neg: b.delta < 0 ? b.delta : null,
     pos: b.delta >= 0 ? b.delta : null,
-    label: `S/${b.bc}`,
   }));
 
   return (
-    <div>
-      <ResponsiveContainer width="100%" height={280}>
-        <BarChart data={chartData} margin={{ top: 8, right: 8, bottom: 8, left: 8 }} barCategoryGap="2%">
+    <div className="space-y-3">
+      {/* Annotation bar */}
+      <div className="flex gap-6 text-xs flex-wrap">
+        <span className="flex items-center gap-1.5">
+          <span className="w-3 h-3 rounded-sm inline-block flex-shrink-0" style={{ background: TERRACOTTA, opacity: 0.85 }} />
+          Empleos desaparecidos bajo el nuevo mínimo
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-3 h-3 rounded-sm inline-block flex-shrink-0" style={{ background: TEAL, opacity: 0.85 }} />
+          Empleos que reaparecen por encima
+        </span>
+        <span className="flex items-center gap-1.5 text-gray-400">
+          <span className="inline-block w-4 border-t-2 border-dashed flex-shrink-0" style={{ borderColor: TERRACOTTA }} />
+          Nuevo salario mínimo
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart data={chartData} margin={{ top: 16, right: 16, bottom: 24, left: 8 }} barCategoryGap="1%">
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
           <XAxis
             dataKey="bc"
@@ -138,35 +153,38 @@ function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
             tick={{ fontSize: 10, fill: '#6b7280' }}
             interval={3}
             tickLine={false}
+            label={{ value: 'Salario mensual (S/)', position: 'insideBottom', offset: -12, fontSize: 11, fill: '#9ca3af' }}
           />
           <YAxis
-            tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)}pp`}
+            tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`}
             tick={{ fontSize: 10, fill: '#6b7280' }}
             tickLine={false}
             axisLine={false}
-            width={52}
+            width={48}
+            label={{ value: 'Cambio en participación', angle: -90, position: 'insideLeft', offset: 12, fontSize: 10, fill: '#9ca3af' }}
           />
           <Tooltip
             formatter={(val: unknown) => {
               const v = typeof val === 'number' ? val : 0;
-              return [`${v > 0 ? '+' : ''}${v.toFixed(3)}pp`, 'Cambio en participación'] as [string, string];
+              return [`${v > 0 ? '+' : ''}${v.toFixed(2)}%`, 'Cambio en participación'] as [string, string];
             }}
-            labelFormatter={(v: unknown) => `Bin S/${v}–${Number(v)+25}`}
+            labelFormatter={(v: unknown) => `Rango S/${v}–${Number(v)+25}`}
             contentStyle={{ fontSize: 12, borderRadius: 6, border: '1px solid #e5e7eb' }}
           />
           <ReferenceLine x={ev.mw_new} stroke={TERRACOTTA} strokeWidth={2} strokeDasharray="4 2"
-            label={{ value: `Nuevo SM S/${ev.mw_new}`, position: 'top', fill: TERRACOTTA, fontSize: 11, fontWeight: 600 }}
+            label={{ value: `S/${ev.mw_new} (nuevo mínimo)`, position: 'top', fill: TERRACOTTA, fontSize: 11, fontWeight: 700 }}
           />
-          <ReferenceLine x={ev.mw_old} stroke="#9ca3af" strokeWidth={1} strokeDasharray="3 2"
-            label={{ value: `S/${ev.mw_old}`, position: 'insideTopRight', fill: '#9ca3af', fontSize: 10 }}
+          <ReferenceLine x={ev.mw_old} stroke="#d1d5db" strokeWidth={1.5} strokeDasharray="3 2"
+            label={{ value: `S/${ev.mw_old} (mínimo anterior)`, position: 'insideTopLeft', fill: '#9ca3af', fontSize: 10 }}
           />
-          <Bar dataKey="neg" name="Empleos desaparecidos" fill={TERRACOTTA} opacity={0.85} radius={[1,1,0,0]} />
-          <Bar dataKey="pos" name="Empleos reaparecidos" fill={TEAL} opacity={0.85} radius={[1,1,0,0]} />
+          <ReferenceLine y={0} stroke="#d1d5db" strokeWidth={1} />
+          <Bar dataKey="neg" name="Empleos desaparecidos" fill={TERRACOTTA} opacity={0.85} radius={[2,2,0,0]} />
+          <Bar dataKey="pos" name="Empleos reaparecidos" fill={TEAL} opacity={0.85} radius={[2,2,0,0]} />
         </BarChart>
       </ResponsiveContainer>
-      <p className="text-xs text-gray-400 text-center mt-1">
-        Zona afectada: S/{Math.round(0.85*ev.mw_old)}–S/{ev.mw_new} &nbsp;|&nbsp;
-        Exceso: S/{ev.mw_new}–S/{ev.mw_new + 250}
+      <p className="text-xs text-gray-400 text-center">
+        Zona directamente afectada: S/{Math.round(0.85*ev.mw_old)}–S/{ev.mw_new} &nbsp;·&nbsp;
+        Excedente esperado: S/{ev.mw_new}–S/{ev.mw_new + 200}
       </p>
     </div>
   );
@@ -249,11 +267,11 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
 
   return (
     <div style={{ background: BG, backgroundImage: WATERMARK, minHeight: '100vh' }}>
-      <main className="max-w-5xl mx-auto px-4 py-12 space-y-16">
+      <main className="max-w-5xl mx-auto px-4 py-16 space-y-20">
 
         {/* ── SECTION 1: HEADLINE ─────────────────────────────────────────────── */}
         <section className="text-center space-y-4">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
             ¿Qué pasa cuando sube el salario mínimo?
           </h1>
           <p className="text-lg text-gray-600 font-medium">
@@ -272,20 +290,18 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
         {/* ── SECTION 2: TWO HEADLINE CARDS ───────────────────────────────────── */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1 */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold" style={{ color: TEAL }}>↑</span>
-              <h2 className="text-lg font-bold text-gray-900">Los salarios suben</h2>
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-4">
+            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Hallazgo 1</h2>
+            <div className="space-y-1">
+              <div className="text-7xl font-black leading-none" style={{ color: TERRACOTTA }}>83%</div>
+              <p className="text-base font-semibold text-gray-800">
+                de los empleos reaparece por encima del nuevo piso
+              </p>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Cuando el salario mínimo subió de S/850 a S/930, los trabajadores que ganaban menos del
-              nuevo mínimo recibieron aumentos. El <strong>83%</strong> de los empleos formales que
-              desaparecieron por debajo del nuevo piso reaparecieron por encima.
-            </p>
             {/* Mini bunching chart */}
-            <div className="h-36 -mx-2">
+            <div className="h-32 -mx-2">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={BINS_B} margin={{ top: 4, right: 4, bottom: 4, left: 4 }} barCategoryGap="1%">
+                <BarChart data={BINS_B} margin={{ top: 2, right: 4, bottom: 2, left: 4 }} barCategoryGap="1%">
                   <ReferenceLine x={930} stroke={TERRACOTTA} strokeWidth={2} />
                   <Bar dataKey="delta" isAnimationActive={false}>
                     {BINS_B.map((b) => (
@@ -295,39 +311,48 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-xs text-gray-400 leading-relaxed">
-              Ratio de redistribución: 0.83 (formales), 0.99 (informales dependientes). Rojo = empleos
-              desaparecidos bajo S/930; teal = empleos reaparecidos por encima. Verificado con test placebo.
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Cuando el salario mínimo subió de S/850 a S/930, los trabajadores que
+              ganaban menos del nuevo mínimo recibieron aumentos. En promedio, 83 de
+              cada 100 empleos desplazados reaparecieron por encima del nuevo piso.
+            </p>
+            <p className="text-xs text-gray-400">
+              Rojo: empleos desaparecidos bajo S/930 · Verde: empleos reaparecidos por encima ·
+              Verificado con prueba de falsificación en umbrales ficticios.
             </p>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-gray-400">→</span>
-              <h2 className="text-lg font-bold text-gray-900">El empleo agregado no cae</h2>
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-4">
+            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Hallazgo 2</h2>
+            <div className="space-y-1">
+              <div className="text-5xl font-black leading-none" style={{ color: TEAL }}>Sin destrucción</div>
+              <p className="text-base font-semibold text-gray-800">
+                de empleo en ninguno de los tres aumentos
+              </p>
             </div>
-            <div className="flex items-center justify-center py-4">
-              <div className="text-center">
-                <div className="text-6xl font-black text-gray-200">≈0</div>
-                <div className="text-sm text-gray-500 mt-1">efecto en empleo</div>
+            <div className="h-32 flex items-center justify-center">
+              <div className="text-center space-y-2">
+                <div className="text-5xl font-black text-gray-100">→→→</div>
+                <div className="text-sm text-gray-400">2016 · 2018 · 2022</div>
               </div>
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
-              En ninguno de los tres aumentos se observa destrucción de empleo a nivel departamental.
-              El empleo total creció entre 1% y 6% en los períodos posteriores a cada aumento.
+              En los tres aumentos analizados no se observa destrucción de empleo
+              a nivel departamental. El empleo total creció entre 1% y 6% en los
+              períodos posteriores a cada aumento.
             </p>
             <p className="text-xs text-gray-400">
-              DiD trimestral: β = +0.002 (no significativo).
-              Consistente en ENAHO trimestral y EPEN departamentos.
+              Comparación entre departamentos más y menos expuestos al aumento:
+              sin efecto estadístico significativo. Resultado consistente en ENAHO y EPEN.
             </p>
           </div>
         </section>
 
         {/* ── SECTION 3: INTERACTIVE BUNCHING CHART ────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
+        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900">
               ¿A dónde van los empleos por debajo del nuevo mínimo?
             </h2>
             <p className="text-sm text-gray-500 mt-1">
@@ -361,19 +386,19 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
               <thead>
                 <tr className="text-left text-xs text-gray-400 uppercase tracking-wide">
                   <th className="py-2 pr-4 font-medium">Evento</th>
-                  <th className="py-2 pr-4 font-medium text-right">Masa perdida</th>
-                  <th className="py-2 pr-4 font-medium text-right">Masa ganada</th>
-                  <th className="py-2 pr-4 font-medium text-right">Ratio</th>
-                  <th className="py-2 font-medium text-right">Empleo</th>
+                  <th className="py-2 pr-4 font-medium text-right">Empleos desaparecen</th>
+                  <th className="py-2 pr-4 font-medium text-right">Empleos reaparecen</th>
+                  <th className="py-2 pr-4 font-medium text-right">¿Cuántos regresan?</th>
+                  <th className="py-2 font-medium text-right">Empleo total</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {EVENTS.map(e => (
                   <tr key={e.id} className={e.id === ev.id ? 'bg-orange-50' : ''}>
                     <td className="py-2 pr-4 font-medium text-gray-700">{e.label}</td>
-                    <td className="py-2 pr-4 text-right" style={{ color: TERRACOTTA }}>−{e.missing_pp.toFixed(1)}pp</td>
-                    <td className="py-2 pr-4 text-right" style={{ color: TEAL }}>+{e.excess_pp.toFixed(1)}pp</td>
-                    <td className="py-2 pr-4 text-right font-bold text-gray-800">{e.ratio.toFixed(3)}</td>
+                    <td className="py-2 pr-4 text-right" style={{ color: TERRACOTTA }}>−{e.missing_pp.toFixed(1)}%</td>
+                    <td className="py-2 pr-4 text-right" style={{ color: TEAL }}>+{e.excess_pp.toFixed(1)}%</td>
+                    <td className="py-2 pr-4 text-right font-bold text-gray-800">{Math.round(e.ratio * 100)} de cada 100</td>
                     <td className="py-2 text-right text-gray-500">+{e.emp_chg.toFixed(1)}%</td>
                   </tr>
                 ))}
@@ -381,8 +406,8 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
             </table>
           </div>
           <p className="text-xs text-gray-500">
-            Ratio ≈ 1.0 indica que todos los empleos desplazados reaparecen por encima del nuevo mínimo.
-            Ratio &lt; 1.0 indica que algunos empleos no reaparecen en el sector formal.
+            "¿Cuántos regresan?" indica cuántos de los empleos que desaparecieron por debajo del nuevo
+            mínimo volvieron a aparecer por encima de él. Un valor de 100 de cada 100 sería redistribución perfecta.
           </p>
           <div className="bg-gray-50 rounded-xl p-4 border-l-4 text-xs text-gray-500 leading-relaxed" style={{ borderColor: '#9ca3af' }}>
             <strong>Test de falsificación:</strong> el mismo método aplicado a umbrales ficticios (S/1,200, S/1,500)
@@ -392,9 +417,9 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
         </section>
 
         {/* ── SECTION 4: MAP ────────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">¿Dónde afecta más?</h2>
+            <h2 className="text-2xl font-bold text-gray-900">¿Dónde afecta más?</h2>
             <p className="text-sm text-gray-500 mt-1">
               Exposición departamental al aumento de 2022 · SM/salario mediano formal (pre-2022)
             </p>
@@ -409,7 +434,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 <Geographies geography={GEO_URL}>
                   {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
                     geographies.map(geo => {
-                      const code = String(geo.properties.IDDPTO || geo.properties.codigo || '').padStart(2, '0');
+                      const code = String(geo.properties.FIRST_IDDP || '').padStart(2, '0');
                       const dept = DEPTS_KAITZ.find(d => d.code === code);
                       const cat  = dept ? kaitzCategory(dept.kaitz) : 'baja';
                       return (
@@ -474,8 +499,8 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
         </section>
 
         {/* ── SECTION 5: SIMULATOR SLIDER ──────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
-          <h2 className="text-xl font-bold text-gray-900">Simula un nuevo aumento</h2>
+        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
+          <h2 className="text-2xl font-bold text-gray-900">Simula un nuevo aumento</h2>
 
           {/* Slider */}
           <div className="space-y-3">
@@ -518,7 +543,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 <span style={{ color: TEAL }}>•</span>
                 Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
                 Metropolitana recibirían un aumento directo
-                {affected === 0 ? ' (ya están por encima del mínimo vigente)' : ''}.
+                {affected === 0 ? ' (todos están por encima de S/1,025 en esta estimación)' : ''}.
               </li>
               <li className="flex gap-2">
                 <span style={{ color: TEAL }}>•</span>
@@ -535,14 +560,14 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
             </ul>
             <div className="pt-2 border-t border-orange-200 flex gap-6 text-xs text-gray-500">
               <div>
-                <span className="block font-semibold text-gray-700">Kaitz nacional implícito</span>
-                <span>{(sliderK).toFixed(2)}</span>
-                <span className="ml-1 text-gray-400">(SM / mediana formal nacional)</span>
+                <span className="block font-semibold text-gray-700">SM como % del salario mediano</span>
+                <span>{Math.round(sliderK * 100)}%</span>
+                <span className="ml-1 text-gray-400">(estimado a nivel nacional)</span>
               </div>
               <div>
-                <span className="block font-semibold text-gray-700">Rango estudiado</span>
-                <span>0.54–0.62</span>
-                <span className="ml-1 text-gray-400">(2016–2022)</span>
+                <span className="block font-semibold text-gray-700">Rango con evidencia</span>
+                <span>54%–62%</span>
+                <span className="ml-1 text-gray-400">(aumentos 2016–2022)</span>
               </div>
             </div>
           </div>
@@ -553,8 +578,8 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
         </section>
 
         {/* ── SECTION 6: LIMITS ─────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
-          <h2 className="text-xl font-bold text-gray-900">Los límites de la evidencia</h2>
+        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
+          <h2 className="text-2xl font-bold text-gray-900">Los límites de la evidencia</h2>
           <p className="text-sm text-gray-500">
             ¿Se puede seguir subiendo el salario mínimo? La evidencia tiene fronteras claras.
           </p>
@@ -562,15 +587,15 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
           {/* Thermometer */}
           <div className="space-y-3">
             <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
-              Índice de Kaitz (SM / salario mediano formal nacional)
+              Salario mínimo como porcentaje del salario mediano formal
             </div>
             <div className="relative h-8 rounded-full overflow-hidden"
               style={{ background: 'linear-gradient(to right, #16a34a 0%, #84cc16 35%, #f59e0b 55%, #ef4444 75%, #7f1d1d 100%)' }}>
               {[
-                { label: 'Perú 2018', k: 0.57 },
-                { label: 'Perú 2022', k: 0.62 },
-                { label: 'Perú 2025', k: 0.75 },
-                ...(proposedMW !== MW_CURRENT ? [{ label: `S/${fmt(proposedMW)}`, k: sliderK }] : []),
+                { label: 'Perú 2018 (57%)', k: 0.57 },
+                { label: 'Perú 2022 (62%)', k: 0.62 },
+                { label: 'Perú 2025 (75%)', k: 0.75 },
+                ...(proposedMW !== MW_CURRENT ? [{ label: `S/${fmt(proposedMW)} (${Math.round(sliderK*100)}%)`, k: sliderK }] : []),
               ].map(m => (
                 <div key={m.label}
                   className="absolute top-0 bottom-0 flex flex-col items-center"
@@ -584,9 +609,9 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
               ))}
             </div>
             <div className="flex justify-between text-xs text-gray-400 mt-7">
-              <span>0.30</span>
-              <span className="font-medium text-amber-600">Umbral Dube (2019): 0.60</span>
-              <span>0.95</span>
+              <span>30%</span>
+              <span className="font-medium text-amber-600">Umbral de referencia internacional: 60%</span>
+              <span>95%</span>
             </div>
           </div>
 
@@ -597,8 +622,8 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 <tr className="text-left text-xs text-gray-400 uppercase tracking-wide border-b border-gray-100">
                   <th className="py-2 pr-3 font-medium">Escenario</th>
                   <th className="py-2 pr-3 font-medium text-right">SM</th>
-                  <th className="py-2 pr-3 font-medium text-right">Kaitz</th>
-                  <th className="py-2 pr-3 font-medium text-right">Dptos zona roja</th>
+                  <th className="py-2 pr-3 font-medium text-right">SM vs mediana</th>
+                  <th className="py-2 pr-3 font-medium text-right">Dptos en zona límite</th>
                   <th className="py-2 font-medium">Riesgo</th>
                 </tr>
               </thead>
@@ -607,7 +632,7 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                   <tr key={s.label} className={s.sm === MW_CURRENT ? 'bg-amber-50' : ''}>
                     <td className="py-2 pr-3 text-gray-700 font-medium">{s.label}</td>
                     <td className="py-2 pr-3 text-right text-gray-600 font-mono">S/{s.sm.toLocaleString('es-PE')}</td>
-                    <td className="py-2 pr-3 text-right text-gray-600 font-mono">{s.kaitz.toFixed(2)}</td>
+                    <td className="py-2 pr-3 text-right text-gray-600 font-mono">{Math.round(s.kaitz*100)}%</td>
                     <td className="py-2 pr-3 text-right text-gray-500">{s.red_depts}/25</td>
                     <td className="py-2">
                       <span className="text-xs font-semibold px-2 py-0.5 rounded-full"
@@ -631,8 +656,8 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
         </section>
 
         {/* ── SECTION 7: SECONDARY FINDINGS ────────────────────────────────────── */}
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">Otros hallazgos</h2>
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold text-gray-900">Otros hallazgos</h2>
           <p className="text-sm text-gray-500">Resultados que requieren más investigación antes de ser titulares.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Compression */}
@@ -642,15 +667,15 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 <h3 className="font-bold text-gray-800 text-sm">Compresión salarial</h3>
               </div>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Los trabajadores que ganan justo por encima del mínimo ven un crecimiento salarial más
-                lento (−3.0pp) que los que ganan mucho más. Este patrón es estadísticamente significativo
-                (p &lt; 0.001) y aparece en los tres eventos.
+                Los trabajadores que ganan justo por encima del mínimo ven un crecimiento
+                salarial más lento — unos 3 puntos porcentuales menos — que los que ganan
+                significativamente más. El patrón aparece en los tres eventos.
               </p>
               <div className="bg-gray-50 rounded-lg p-3 border-l-2 border-gray-200">
                 <p className="text-xs text-gray-500 leading-relaxed">
-                  <strong>Caveat:</strong> Este efecto no se intensifica en departamentos donde el SM es
-                  más restrictivo (Kaitz β = +0.05, p = 0.79), lo que sugiere que es un fenómeno nacional
-                  de dinámica salarial, no un efecto causal directo del aumento.
+                  <strong>Nota:</strong> Este efecto no se intensifica en los departamentos donde el
+                  salario mínimo pesa más sobre el salario mediano, lo que sugiere que es un fenómeno
+                  nacional de dinámica salarial, no un efecto causal directo del aumento.
                 </p>
               </div>
             </div>
@@ -662,13 +687,15 @@ Compresión salarial: significativa en promedio (t = −6.2, p < 0.001) pero no 
                 <h3 className="font-bold text-gray-800 text-sm">Formalización regional</h3>
               </div>
               <p className="text-sm text-gray-600 leading-relaxed">
-                En el análisis trimestral, los departamentos más expuestos al aumento muestran un leve
-                incremento en formalización (+1.5pp, p &lt; 0.01).
+                En el análisis trimestral, los departamentos más expuestos al aumento muestran
+                un leve incremento en la proporción de trabajadores formales (+1.5 puntos
+                porcentuales en promedio).
               </p>
               <div className="bg-gray-50 rounded-lg p-3 border-l-2 border-gray-200">
                 <p className="text-xs text-gray-500 leading-relaxed">
-                  <strong>Caveat:</strong> Este resultado aparece en solo una especificación (DiD trimestral
-                  con Kaitz). No se confirma en los métodos anuales ni en el análisis de bunching por sector.
+                  <strong>Nota:</strong> Este resultado aparece en solo uno de los seis métodos
+                  de análisis utilizados. No se confirma en los datos anuales ni en el análisis
+                  de redistribución salarial por sector.
                 </p>
               </div>
             </div>
