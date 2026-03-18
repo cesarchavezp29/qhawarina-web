@@ -1,0 +1,83 @@
+{
+  "A": {
+    "event_name": "S/750\u2192S/850",
+    "year_pre": 2015,
+    "year_post": 2017,
+    "mw_old": 750,
+    "mw_new": 850,
+    "zone_lo": 637,
+    "zone_hi": 850,
+    "pre": {
+      "formal_dep_w": 307081.96695542336,
+      "informal_dep_w": 506048.21876621246,
+      "selfemp_w": 498631.9558532238,
+      "total_w": 1311762.1415748596,
+      "formal_dep_pct": 23.409881808812578,
+      "informal_dep_pct": 38.57774231528494,
+      "selfemp_pct": 38.012375875902485
+    },
+    "post": {
+      "formal_dep_w": 88540.76412892342,
+      "informal_dep_w": 317729.4575021267,
+      "selfemp_w": 539724.0363510847,
+      "total_w": 945994.2579821348,
+      "formal_dep_pct": 9.359545618996295,
+      "informal_dep_pct": 33.586827279466114,
+      "selfemp_pct": 57.05362710153759
+    }
+  },
+  "B": {
+    "event_name": "S/850\u2192S/930",
+    "year_pre": 2017,
+    "year_post": 2019,
+    "mw_old": 850,
+    "mw_new": 930,
+    "zone_lo": 722,
+    "zone_hi": 930,
+    "pre": {
+      "formal_dep_w": 362298.26970005035,
+      "informal_dep_w": 556406.1648182869,
+      "selfemp_w": 504963.21095716953,
+      "total_w": 1423667.6454755068,
+      "formal_dep_pct": 25.448233711811458,
+      "informal_dep_pct": 39.082588312418,
+      "selfemp_pct": 35.46917797577054
+    },
+    "post": {
+      "formal_dep_w": 107060.73709869385,
+      "informal_dep_w": 318351.4280409813,
+      "selfemp_w": 531223.3373281956,
+      "total_w": 956635.5024678707,
+      "formal_dep_pct": 11.191382383625216,
+      "informal_dep_pct": 33.27823682266835,
+      "selfemp_pct": 55.530380793706435
+    }
+  },
+  "C": {
+    "event_name": "S/930\u2192S/1025",
+    "year_pre": 2021,
+    "year_post": 2023,
+    "mw_old": 930,
+    "mw_new": 1025,
+    "zone_lo": 790,
+    "zone_hi": 1025,
+    "pre": {
+      "formal_dep_w": 514432.99519103765,
+      "informal_dep_w": 690563.3457887173,
+      "selfemp_w": 597083.4460557401,
+      "total_w": 1802079.787035495,
+      "formal_dep_pct": 28.54662700796971,
+      "informal_dep_pct": 38.32035355797016,
+      "selfemp_pct": 33.13301943406014
+    },
+    "post": {
+      "formal_dep_w": 149127.36677265167,
+      "informal_dep_w": 481461.88354194164,
+      "selfemp_w": 578111.0012457371,
+      "total_w": 1208700.2515603304,
+      "formal_dep_pct": 12.337828719745923,
+      "informal_dep_pct": 39.833025840808325,
+      "selfemp_pct": 47.82914543944575
+    }
+  }
+}

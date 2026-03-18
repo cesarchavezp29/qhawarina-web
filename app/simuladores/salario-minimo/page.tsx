@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   ReferenceLine, ReferenceArea, Cell, AreaChart, Area,
@@ -12,976 +12,966 @@ const TERRACOTTA = '#C65D3E';
 const TEAL       = '#2A9D8F';
 const BG         = '#FAF8F4';
 const GEO_URL    = '/assets/geo/peru_departamental.geojson';
-const WATERMARK  = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.04'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
 
-// ── Bunching bin data (formal-dep, delta_adj ×100, pp) ────────────────────────
-// Source: mw_complete_margins.json › bunching_revised.[A/B/C].formal_dep.bin_data
-const BINS_A = [{"bc":488,"delta":0.017},{"bc":512,"delta":-0.07},{"bc":538,"delta":-0.017},{"bc":562,"delta":0.066},{"bc":588,"delta":0.021},{"bc":612,"delta":-0.051},{"bc":638,"delta":0.005},{"bc":662,"delta":0.143},{"bc":688,"delta":-0.026},{"bc":712,"delta":0.015},{"bc":738,"delta":-0.051},{"bc":762,"delta":-4.641},{"bc":788,"delta":-0.13},{"bc":812,"delta":-1.727},{"bc":838,"delta":-0.204},{"bc":862,"delta":4.24},{"bc":888,"delta":-0.005},{"bc":912,"delta":-1.063},{"bc":938,"delta":0.131},{"bc":962,"delta":0.19},{"bc":988,"delta":0.134},{"bc":1012,"delta":0.026},{"bc":1038,"delta":-0.067},{"bc":1062,"delta":-0.124},{"bc":1088,"delta":-0.022},{"bc":1112,"delta":0.061},{"bc":1138,"delta":-0.2},{"bc":1162,"delta":0.022},{"bc":1188,"delta":-0.01},{"bc":1212,"delta":-0.728},{"bc":1238,"delta":-0.036},{"bc":1262,"delta":-0.12},{"bc":1288,"delta":0.095},{"bc":1312,"delta":-0.994},{"bc":1338,"delta":-0.021},{"bc":1362,"delta":-0.202},{"bc":1388,"delta":-0.292},{"bc":1412,"delta":-0.103},{"bc":1438,"delta":0.059},{"bc":1462,"delta":-0.021},{"bc":1488,"delta":-0.051},{"bc":1512,"delta":0.69},{"bc":1538,"delta":0.154},{"bc":1562,"delta":0.104},{"bc":1588,"delta":0.039},{"bc":1612,"delta":0.297},{"bc":1638,"delta":-0.114},{"bc":1662,"delta":-0.016},{"bc":1688,"delta":0.091},{"bc":1712,"delta":0.972},{"bc":1738,"delta":-0.018},{"bc":1762,"delta":0.195},{"bc":1788,"delta":0.15},{"bc":1812,"delta":-0.714},{"bc":1838,"delta":-0.026},{"bc":1862,"delta":0.131},{"bc":1888,"delta":-0.033},{"bc":1912,"delta":0.416},{"bc":1938,"delta":-0.141},{"bc":1962,"delta":0.031},{"bc":1988,"delta":0.142},{"bc":2012,"delta":0.852}];
-const BINS_B = [{"bc":488,"delta":0.095},{"bc":512,"delta":-0.187},{"bc":538,"delta":0.035},{"bc":562,"delta":-0.081},{"bc":588,"delta":0.006},{"bc":612,"delta":0.22},{"bc":638,"delta":-0.038},{"bc":662,"delta":0.023},{"bc":688,"delta":0.057},{"bc":712,"delta":0.113},{"bc":738,"delta":0.046},{"bc":762,"delta":-0.197},{"bc":788,"delta":0.129},{"bc":812,"delta":-0.158},{"bc":838,"delta":-0.071},{"bc":862,"delta":-6.516},{"bc":888,"delta":-0.062},{"bc":912,"delta":-1.028},{"bc":938,"delta":5.064},{"bc":962,"delta":1.277},{"bc":988,"delta":-0.168},{"bc":1012,"delta":-0.823},{"bc":1038,"delta":-0.035},{"bc":1062,"delta":0.199},{"bc":1088,"delta":0.025},{"bc":1112,"delta":0.027},{"bc":1138,"delta":0.063},{"bc":1162,"delta":-0.08},{"bc":1188,"delta":-0.111},{"bc":1212,"delta":-0.624},{"bc":1238,"delta":0.042},{"bc":1262,"delta":-0.229},{"bc":1288,"delta":-0.173},{"bc":1312,"delta":-0.572},{"bc":1338,"delta":-0.003},{"bc":1362,"delta":0.014},{"bc":1388,"delta":0.042},{"bc":1412,"delta":-0.373},{"bc":1438,"delta":0.042},{"bc":1462,"delta":-0.02},{"bc":1488,"delta":0.001},{"bc":1512,"delta":-1.423},{"bc":1538,"delta":-0.203},{"bc":1562,"delta":-0.206},{"bc":1588,"delta":0.025},{"bc":1612,"delta":-0.515},{"bc":1638,"delta":-0.013},{"bc":1662,"delta":-0.137},{"bc":1688,"delta":-0.118},{"bc":1712,"delta":-0.849},{"bc":1738,"delta":-0.064},{"bc":1762,"delta":-0.168},{"bc":1788,"delta":-0.175},{"bc":1812,"delta":0.271},{"bc":1838,"delta":-0.045},{"bc":1862,"delta":0.037},{"bc":1888,"delta":-0.007},{"bc":1912,"delta":-0.122},{"bc":1938,"delta":-0.045},{"bc":1962,"delta":-0.038},{"bc":1988,"delta":0.026},{"bc":2012,"delta":1.166}];
-const BINS_C = [{"bc":488,"delta":-0.186},{"bc":512,"delta":0.226},{"bc":538,"delta":0.063},{"bc":562,"delta":-0.095},{"bc":588,"delta":-0.024},{"bc":612,"delta":-0.056},{"bc":638,"delta":-0.072},{"bc":662,"delta":0.247},{"bc":688,"delta":-0.055},{"bc":712,"delta":0.047},{"bc":738,"delta":0.077},{"bc":762,"delta":0.011},{"bc":788,"delta":0.148},{"bc":812,"delta":0.147},{"bc":838,"delta":-0.055},{"bc":862,"delta":-0.095},{"bc":888,"delta":-0.009},{"bc":912,"delta":-0.231},{"bc":938,"delta":-8.477},{"bc":962,"delta":-2.045},{"bc":988,"delta":-0.144},{"bc":1012,"delta":-1.964},{"bc":1038,"delta":6.916},{"bc":1062,"delta":1.197},{"bc":1088,"delta":0.067},{"bc":1112,"delta":-1.201},{"bc":1138,"delta":0.615},{"bc":1162,"delta":0.878},{"bc":1188,"delta":0.195},{"bc":1212,"delta":-2.137},{"bc":1238,"delta":0.245},{"bc":1262,"delta":0.687},{"bc":1288,"delta":-0.012},{"bc":1312,"delta":-0.63},{"bc":1338,"delta":0.477},{"bc":1362,"delta":0.44},{"bc":1388,"delta":0.111},{"bc":1412,"delta":-0.503},{"bc":1438,"delta":0.059},{"bc":1462,"delta":0.315},{"bc":1488,"delta":0.055},{"bc":1512,"delta":-0.919},{"bc":1538,"delta":0.175},{"bc":1562,"delta":0.056},{"bc":1588,"delta":0.085},{"bc":1612,"delta":0.127},{"bc":1638,"delta":0.143},{"bc":1662,"delta":0.197},{"bc":1688,"delta":0.247},{"bc":1712,"delta":0.119},{"bc":1738,"delta":0.144},{"bc":1762,"delta":-0.095},{"bc":1788,"delta":0.118},{"bc":1812,"delta":0.303},{"bc":1838,"delta":0.13},{"bc":1862,"delta":0.194},{"bc":1888,"delta":0.141},{"bc":1912,"delta":0.11},{"bc":1938,"delta":0.016},{"bc":1962,"delta":0.142},{"bc":1988,"delta":0.168},{"bc":2012,"delta":0.432}];
+// ── Bunching bin data (formal-dep, delta_adj pp) ───────────────────────────────
+const BINS_A = [{"bc":638,"delta":0.005},{"bc":662,"delta":0.143},{"bc":688,"delta":-0.026},{"bc":712,"delta":0.015},{"bc":738,"delta":-0.051},{"bc":762,"delta":-4.641},{"bc":788,"delta":-0.13},{"bc":812,"delta":-1.727},{"bc":838,"delta":-0.204},{"bc":862,"delta":4.24},{"bc":888,"delta":-0.005},{"bc":912,"delta":-1.063},{"bc":938,"delta":0.131},{"bc":962,"delta":0.19},{"bc":988,"delta":0.134},{"bc":1012,"delta":0.026},{"bc":1038,"delta":-0.067},{"bc":1062,"delta":-0.124},{"bc":1088,"delta":-0.022},{"bc":1112,"delta":0.061},{"bc":1138,"delta":-0.2},{"bc":1162,"delta":0.022},{"bc":1188,"delta":-0.01},{"bc":1212,"delta":-0.728},{"bc":1238,"delta":-0.036},{"bc":1262,"delta":-0.12},{"bc":1288,"delta":0.095},{"bc":1312,"delta":-0.994},{"bc":1338,"delta":-0.021},{"bc":1362,"delta":-0.202},{"bc":1388,"delta":-0.292},{"bc":1412,"delta":-0.103},{"bc":1438,"delta":0.059},{"bc":1462,"delta":-0.021},{"bc":1488,"delta":-0.051}];
+const BINS_B = [{"bc":738,"delta":0.046},{"bc":762,"delta":-0.197},{"bc":788,"delta":0.129},{"bc":812,"delta":-0.158},{"bc":838,"delta":-0.071},{"bc":862,"delta":-6.516},{"bc":888,"delta":-0.062},{"bc":912,"delta":-1.028},{"bc":938,"delta":5.064},{"bc":962,"delta":1.277},{"bc":988,"delta":-0.168},{"bc":1012,"delta":-0.823},{"bc":1038,"delta":-0.035},{"bc":1062,"delta":0.199},{"bc":1088,"delta":0.025},{"bc":1112,"delta":0.027},{"bc":1138,"delta":0.063},{"bc":1162,"delta":-0.08},{"bc":1188,"delta":-0.111},{"bc":1212,"delta":-0.624},{"bc":1238,"delta":0.042},{"bc":1262,"delta":-0.229},{"bc":1288,"delta":-0.173},{"bc":1312,"delta":-0.572},{"bc":1338,"delta":-0.003},{"bc":1362,"delta":0.014},{"bc":1388,"delta":0.042},{"bc":1412,"delta":-0.373},{"bc":1438,"delta":0.042},{"bc":1462,"delta":-0.02},{"bc":1488,"delta":0.001}];
+const BINS_C = [{"bc":838,"delta":-0.055},{"bc":862,"delta":-0.095},{"bc":888,"delta":-0.009},{"bc":912,"delta":-0.231},{"bc":938,"delta":-8.477},{"bc":962,"delta":-2.045},{"bc":988,"delta":-0.144},{"bc":1012,"delta":-1.964},{"bc":1038,"delta":6.916},{"bc":1062,"delta":1.197},{"bc":1088,"delta":0.067},{"bc":1112,"delta":-1.201},{"bc":1138,"delta":0.615},{"bc":1162,"delta":0.878},{"bc":1188,"delta":0.195},{"bc":1212,"delta":-2.137},{"bc":1238,"delta":0.245},{"bc":1262,"delta":0.687},{"bc":1288,"delta":-0.012},{"bc":1312,"delta":-0.63},{"bc":1338,"delta":0.477},{"bc":1362,"delta":0.44},{"bc":1388,"delta":0.111},{"bc":1412,"delta":-0.503},{"bc":1438,"delta":0.059},{"bc":1462,"delta":0.315},{"bc":1488,"delta":0.055}];
 
-// ── Event metadata — source: mw_falsification_audit.json › part1_bunching.standard
-// Bootstrap CIs: mw_power_analysis.json › bootstrap_cis
+// ── Event metadata ─────────────────────────────────────────────────────────────
 const EVENTS = [
-  { id: 'A', label: '2016 (S/750→850)', mw_old: 750, mw_new: 850, pre_year: 2015, post_year: 2017,
-    ratio: 0.696, missing_pp: 6.78, excess_pp: 4.72,
-    ci_lo: 0.567, ci_hi: 0.896, rejects_r1: true, bins: BINS_A },
-  { id: 'B', label: '2018 (S/850→930)', mw_old: 850, mw_new: 930, pre_year: 2017, post_year: 2019,
-    ratio: 0.829, missing_pp: 8.03, excess_pp: 6.66,
-    ci_lo: 0.716, ci_hi: 1.016, rejects_r1: false, bins: BINS_B },
-  { id: 'C', label: '2022 (S/930→1,025)', mw_old: 930, mw_new: 1025, pre_year: 2021, post_year: 2023,
-    ratio: 0.830, missing_pp: 13.02, excess_pp: 10.80,
-    ci_lo: 0.716, ci_hi: 0.960, rejects_r1: true, bins: BINS_C },
+  { id: 'A', label: '2016', sublabel: 'S/750 → S/850', mw_old: 750, mw_new: 850,
+    pre_year: 2015, post_year: 2017, ratio: 0.696, missing_pp: 6.78, excess_pp: 4.72,
+    ci_lo: 0.567, ci_hi: 0.896,
+    selfemp_pre: 38.0, selfemp_post: 57.1,
+    formal_pre: 23.4, formal_post: 9.4,
+    informal_pre: 38.6, informal_post: 33.6,
+    selfemp_delta_pp: 19.1, selfemp_abs_chg: '+8.7%',
+    bins: BINS_A },
+  { id: 'B', label: '2018', sublabel: 'S/850 → S/930', mw_old: 850, mw_new: 930,
+    pre_year: 2017, post_year: 2019, ratio: 0.829, missing_pp: 8.03, excess_pp: 6.66,
+    ci_lo: 0.716, ci_hi: 1.016,
+    selfemp_pre: 35.5, selfemp_post: 55.5,
+    formal_pre: 25.4, formal_post: 11.2,
+    informal_pre: 39.1, informal_post: 33.3,
+    selfemp_delta_pp: 20.0, selfemp_abs_chg: '+5.1%',
+    bins: BINS_B },
+  { id: 'C', label: '2022', sublabel: 'S/930 → S/1,025', mw_old: 930, mw_new: 1025,
+    pre_year: 2021, post_year: 2023, ratio: 0.830, missing_pp: 13.02, excess_pp: 10.80,
+    ci_lo: 0.716, ci_hi: 0.960,
+    selfemp_pre: 33.1, selfemp_post: 47.8,
+    formal_pre: 28.5, formal_post: 12.3,
+    informal_pre: 38.3, informal_post: 39.8,
+    selfemp_delta_pp: 14.7, selfemp_abs_chg: '−3.5%',
+    bins: BINS_C },
 ];
 
-// ── Department Kaitz — 2015 values (pre-Event A)
-// Source: mw_data_audit_complete.json › dept_kaitz['2015']
-// Ica (11) is HIGHEST (0.933): agro-export workers with low monthly wages despite full-time hours.
-// Huancavelica (09) = 0.500 because ~85% of its formal workers are public-sector employees.
-const DEPTS_KAITZ = [
-  { code:'11', name:'Ica',            kaitz: 0.933 },
-  { code:'20', name:'Piura',          kaitz: 0.649 },
-  { code:'14', name:'Lambayeque',     kaitz: 0.625 },
-  { code:'07', name:'Callao',         kaitz: 0.625 },
-  { code:'02', name:'Ancash',         kaitz: 0.577 },
-  { code:'13', name:'La Libertad',    kaitz: 0.577 },
-  { code:'25', name:'Ucayali',        kaitz: 0.556 },
-  { code:'04', name:'Arequipa',       kaitz: 0.536 },
-  { code:'15', name:'Lima',           kaitz: 0.536 },
-  { code:'12', name:'Junín',          kaitz: 0.534 },
-  { code:'24', name:'Tumbes',         kaitz: 0.529 },
-  { code:'01', name:'Amazonas',       kaitz: 0.515 },
-  { code:'22', name:'San Martín',     kaitz: 0.506 },
-  { code:'05', name:'Ayacucho',       kaitz: 0.500 },
-  { code:'06', name:'Cajamarca',      kaitz: 0.500 },
-  { code:'08', name:'Cusco',          kaitz: 0.500 },
-  { code:'09', name:'Huancavelica',   kaitz: 0.500 },
-  { code:'16', name:'Loreto',         kaitz: 0.500 },
-  { code:'17', name:'Madre de Dios',  kaitz: 0.500 },
-  { code:'19', name:'Pasco',          kaitz: 0.500 },
-  { code:'03', name:'Apurímac',       kaitz: 0.479 },
-  { code:'23', name:'Tacna',          kaitz: 0.470 },
-  { code:'10', name:'Huánuco',        kaitz: 0.469 },
-  { code:'21', name:'Puno',           kaitz: 0.458 },
-  { code:'18', name:'Moquegua',       kaitz: 0.440 },
+// ── Department Kaitz (2015, pre-Event A) ──────────────────────────────────────
+// Ica highest (0.933) = agro-export workers with short payroll months despite full-time hours
+// Huancavelica high stat but 85% public sector → actual private MW exposure low
+const DEPTS_KAITZ: { code: string; name: string; kaitz: number; note?: string }[] = [
+  { code:'11', name:'Ica',            kaitz: 0.933, note: 'Sector agro-exportador: salarios bajos mensuales pese a jornada completa' },
+  { code:'20', name:'Piura',          kaitz: 0.680 },
+  { code:'24', name:'Tumbes',         kaitz: 0.670 },
+  { code:'14', name:'Lambayeque',     kaitz: 0.631 },
+  { code:'07', name:'Callao',         kaitz: 0.628 },
+  { code:'13', name:'La Libertad',    kaitz: 0.622 },
+  { code:'15', name:'Lima',           kaitz: 0.613 },
+  { code:'22', name:'San Martín',     kaitz: 0.602 },
+  { code:'21', name:'Puno',           kaitz: 0.601 },
+  { code:'19', name:'Pasco',          kaitz: 0.600 },
+  { code:'23', name:'Tacna',          kaitz: 0.597 },
+  { code:'08', name:'Cusco',          kaitz: 0.595 },
+  { code:'05', name:'Ayacucho',       kaitz: 0.593 },
+  { code:'02', name:'Ancash',         kaitz: 0.591 },
+  { code:'25', name:'Ucayali',        kaitz: 0.581 },
+  { code:'12', name:'Junín',          kaitz: 0.568 },
+  { code:'04', name:'Arequipa',       kaitz: 0.542 },
+  { code:'10', name:'Huánuco',        kaitz: 0.539 },
+  { code:'16', name:'Loreto',         kaitz: 0.511 },
+  { code:'03', name:'Apurímac',       kaitz: 0.494 },
+  { code:'06', name:'Cajamarca',      kaitz: 0.452 },
+  { code:'01', name:'Amazonas',       kaitz: 0.451 },
+  { code:'17', name:'Madre de Dios',  kaitz: 0.462 },
+  { code:'18', name:'Moquegua',       kaitz: 0.468 },
+  { code:'09', name:'Huancavelica',   kaitz: 0.500, note: '85% de trabajadores formales son sector público — índice real de exposición privada es menor' },
 ];
 
-// ── Lima formal wage percentiles (EPE 2022, n=2,737 survey obs ≈ 1.7M workers) ─
-const LIMA_PERC: Record<string,number> = {
-  p1:158.3, p5:480, p10:800, p15:930, p20:1016, p25:1100,
-  p30:1200, p40:1500, p50:1700, p60:2000, p70:2500, p75:2800,
-  p80:3000, p85:3712, p90:4519, p95:6000, p99:11256,
-};
+const kaitzMap: Record<string, typeof DEPTS_KAITZ[0]> = {};
+DEPTS_KAITZ.forEach(d => { kaitzMap[d.code] = d; });
+
+// ── Simulator data ─────────────────────────────────────────────────────────────
 const LIMA_FORMAL_POP = 1_700_000;
 const MW_CURRENT      = 1130;
-const MW_SLIDER_BASE  = 1025;
+const MW_2022         = 1025;
 
-// ── Helpers ────────────────────────────────────────────────────────────────────
+const LIMA_PERC: [number, number][] = [
+  [0,0],[158,1],[480,5],[800,10],[930,15],[1016,20],[1100,25],
+  [1200,30],[1500,40],[1700,50],[2000,60],[2500,70],[2800,75],
+  [3000,80],[3712,85],[4519,90],[6000,95],[11256,99],[999999,100],
+];
+
 function pctAtOrBelow(wage: number): number {
-  const pts = [
-    [0,0],[158.3,1],[480,5],[800,10],[930,15],[1016,20],[1100,25],
-    [1200,30],[1500,40],[1700,50],[2000,60],[2500,70],[2800,75],
-    [3000,80],[3712,85],[4519,90],[6000,95],[11256,99],[999999,100],
-  ];
-  for (let i = 1; i < pts.length; i++) {
-    if (wage <= pts[i][0]) {
-      const frac = (wage - pts[i-1][0]) / (pts[i][0] - pts[i-1][0]);
-      return pts[i-1][1] + frac * (pts[i][1] - pts[i-1][1]);
+  for (let i = 1; i < LIMA_PERC.length; i++) {
+    if (wage <= LIMA_PERC[i][0]) {
+      const frac = (wage - LIMA_PERC[i-1][0]) / (LIMA_PERC[i][0] - LIMA_PERC[i-1][0]);
+      return LIMA_PERC[i-1][1] + frac * (LIMA_PERC[i][1] - LIMA_PERC[i-1][1]);
     }
   }
   return 100;
 }
-function workersAffected(sliderValue: number): number {
-  const shareBase     = pctAtOrBelow(MW_SLIDER_BASE) / 100;
-  const shareProposed = pctAtOrBelow(sliderValue) / 100;
-  return Math.max(0, (shareProposed - shareBase) * LIMA_FORMAL_POP);
+function workersAffected(v: number) {
+  return Math.max(0, (pctAtOrBelow(v) - pctAtOrBelow(MW_2022)) / 100 * LIMA_FORMAL_POP);
 }
-function sliderKaitz(sliderValue: number): number {
-  // Anchored: 930/1673 = 0.556 for 2018; 1025/1800 = 0.569 for 2022
-  // Use 2023 national median ~S/1,863 as denominator
-  return sliderValue / 1863;
+function sliderKaitz(v: number) { return v / 1863; }
+function kaitzRisk(k: number): { label: string; color: string; bg: string } {
+  if (k < 0.57) return { label: 'Rango estudiado', color: '#16a34a', bg: '#f0fdf4' };
+  if (k < 0.62) return { label: 'Fuera del rango', color: '#d97706', bg: '#fffbeb' };
+  if (k < 0.70) return { label: 'Sin evidencia directa', color: '#dc2626', bg: '#fef2f2' };
+  return { label: 'Territorio desconocido', color: '#7f1d1d', bg: '#fef2f2' };
 }
-function topDepts(sliderValue: number, n = 3): string[] {
-  return DEPTS_KAITZ
-    .filter(d => d.kaitz > 0.55)
-    .sort((a, b) => b.kaitz - a.kaitz)
-    .slice(0, n)
-    .map(d => d.name);
+function deptsAbove(k: number) {
+  return DEPTS_KAITZ.filter(d => d.kaitz * (k / 0.57) > 0.60).length;
 }
 
-function kaitzCategory(k: number): 'baja' | 'media' | 'alta' {
-  if (k < 0.50) return 'baja';
-  if (k <= 0.62) return 'media';
-  return 'alta';
-}
-const CAT_LABEL: Record<string,string> = {
-  baja:  'Salario mediano muy por encima del mínimo (Kaitz < 0.50)',
-  media: 'Salario mediano moderadamente mayor (Kaitz 0.50–0.62)',
-  alta:  'Salario mínimo cercano al mediano (Kaitz > 0.62)',
+const KAITZ_COLOR = (k: number): string => {
+  // green → yellow → red gradient
+  if (k <= 0.45) return '#4ade80';
+  if (k <= 0.55) return '#86efac';
+  if (k <= 0.60) return '#fbbf24';
+  if (k <= 0.65) return '#f97316';
+  if (k <= 0.70) return '#ef4444';
+  return '#b91c1c';
 };
-const CAT_COLOR: Record<string,string> = {
-  alta:  '#C65D3E',
-  media: '#E59959',
-  baja:  '#2A9D8F',
-};
+
+const SCENARIOS = [
+  { label: '2016', sm: 850,  kaitz: 0.567 },
+  { label: '2018', sm: 930,  kaitz: 0.556 },
+  { label: '2022', sm: 1025, kaitz: 0.569 },
+  { label: 'Actual 2025', sm: 1130, kaitz: 0.607 },
+  { label: 'S/1,200', sm: 1200, kaitz: 0.644 },
+  { label: 'S/1,300', sm: 1300, kaitz: 0.698 },
+];
 
 const fmt = (n: number) => Math.round(n).toLocaleString('es-PE');
 
-// ── KDE-based wage distribution data ──────────────────────────────────────────
-const SCALE = 913;
-const MW_VIGENTE = 1130;
-const MW_PREV = 1025;
-
-function getAffectedWorkers(distData: any, sliderValue: number): number {
-  if (!distData) return 0;
-  const keys = [930, 1025, 1130, 1200, 1300, 1500];
-  const key = `mw_${sliderValue}`;
-  if (distData[key]) {
-    return Math.round(distData[key].treat.formal * SCALE);
-  }
-  const lower = keys.filter(k => k <= sliderValue).pop() || 1130;
-  const upper = keys.find(k => k > sliderValue) || 1500;
-  const lowerCount = distData[`mw_${lower}`]?.treat?.formal || 0;
-  const upperCount = distData[`mw_${upper}`]?.treat?.formal || 0;
-  const t = upper === lower ? 0 : (sliderValue - lower) / (upper - lower);
-  return Math.round((lowerCount + t * (upperCount - lowerCount)) * SCALE);
+// ── Animated number hook ───────────────────────────────────────────────────────
+function useAnimatedNumber(target: number, duration = 400) {
+  const [display, setDisplay] = useState(target);
+  const prev = useRef(target);
+  useEffect(() => {
+    const start = prev.current;
+    const diff = target - start;
+    if (diff === 0) return;
+    const t0 = performance.now();
+    let raf: number;
+    const step = (now: number) => {
+      const p = Math.min((now - t0) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      setDisplay(Math.round(start + diff * ease));
+      if (p < 1) raf = requestAnimationFrame(step);
+      else prev.current = target;
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration]);
+  return display;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// BUNCHING CHART COMPONENT
-// ─────────────────────────────────────────────────────────────────────────────
+// ── BunchingChart component ────────────────────────────────────────────────────
 function BunchingChart({ ev }: { ev: typeof EVENTS[0] }) {
-  const affectedLow  = Math.round(0.85 * ev.mw_old);
-  const affectedHigh = ev.mw_new;
-  const excessHigh   = ev.mw_new + 200;
-
-  const chartData = ev.bins
-    .filter(b => b.bc >= 500 && b.bc <= 1500)
-    .map(b => {
-      const inFocus = b.bc >= affectedLow - 50 && b.bc <= excessHigh;
-      return {
-        bc:      b.bc,
-        neg:     b.delta < 0 ? b.delta : null,
-        pos:     b.delta >= 0 ? b.delta : null,
-        inFocus,
-      };
-    });
-
-  const xTicks = [500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500];
-
+  const affLo = Math.round(0.85 * ev.mw_old);
+  const exHi  = ev.mw_new + 200;
+  const data = ev.bins.map(b => ({
+    bc: b.bc,
+    neg: b.delta < 0 ? b.delta : 0,
+    pos: b.delta >= 0 ? b.delta : 0,
+    inZone: b.bc >= affLo && b.bc < exHi,
+  }));
   return (
-    <div className="space-y-3">
-      <div className="flex gap-6 text-xs flex-wrap">
-        <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-sm inline-block flex-shrink-0" style={{ background: TERRACOTTA, opacity: 0.85 }} />
-          Empleos desaparecidos bajo el nuevo mínimo
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-sm inline-block flex-shrink-0" style={{ background: TEAL, opacity: 0.85 }} />
-          Empleos que reaparecen por encima
-        </span>
-        <span className="flex items-center gap-1.5 text-gray-400">
-          <span className="inline-block w-4 border-t-2 border-dashed flex-shrink-0" style={{ borderColor: TERRACOTTA }} />
-          Nuevo salario mínimo
-        </span>
-      </div>
-
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={chartData} margin={{ top: 24, right: 16, bottom: 28, left: 8 }} barCategoryGap="1%">
-          <ReferenceArea x1={affectedLow} x2={affectedHigh} fill={TERRACOTTA} fillOpacity={0.06} />
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-          <XAxis
-            dataKey="bc"
-            type="number"
-            domain={[500, 1500]}
-            ticks={xTicks}
-            tickFormatter={v => `S/${v.toLocaleString('es-PE')}`}
-            tick={{ fontSize: 10, fill: '#6b7280' }}
-            tickLine={false}
-            label={{ value: 'Salario mensual (S/)', position: 'insideBottom', offset: -14, fontSize: 11, fill: '#9ca3af' }}
-          />
-          <YAxis
-            tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`}
-            tick={{ fontSize: 10, fill: '#6b7280' }}
-            tickLine={false}
-            axisLine={false}
-            width={48}
-          />
-          <Tooltip
-            formatter={(val: unknown) => {
-              const v = typeof val === 'number' ? val : 0;
-              return [`${v > 0 ? '+' : ''}${v.toFixed(2)}%`, 'Cambio en participación'] as [string, string];
-            }}
-            labelFormatter={(v: unknown) => `Rango S/${v}–${Number(v)+25}`}
-            contentStyle={{ fontSize: 12, borderRadius: 6, border: '1px solid #e5e7eb' }}
-          />
-          <ReferenceLine y={0} stroke="#d1d5db" strokeWidth={1} />
-          <ReferenceLine x={ev.mw_new} stroke={TERRACOTTA} strokeWidth={2} strokeDasharray="4 2"
-            label={{ value: `S/${ev.mw_new}`, position: 'top', fill: TERRACOTTA, fontSize: 12, fontWeight: 700 }}
-          />
-          <ReferenceLine x={ev.mw_old} stroke="#d1d5db" strokeWidth={1.5} strokeDasharray="3 2"
-            label={{ value: `S/${ev.mw_old}`, position: 'insideTopLeft', fill: '#9ca3af', fontSize: 10 }}
-          />
-          <Bar dataKey="neg" name="Empleos desaparecidos" radius={[2,2,0,0]} isAnimationActive={false}>
-            {chartData.map(b => (
-              <Cell key={b.bc} fill={TERRACOTTA} fillOpacity={b.inFocus ? 0.85 : 0.25} />
-            ))}
-          </Bar>
-          <Bar dataKey="pos" name="Empleos reaparecidos" radius={[2,2,0,0]} isAnimationActive={false}>
-            {chartData.map(b => (
-              <Cell key={b.bc} fill={TEAL} fillOpacity={b.inFocus ? 0.85 : 0.25} />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-      <p className="text-xs text-gray-400 text-center">
-        Zona sombreada: rango directamente afectado por el aumento (S/{affectedLow}–S/{affectedHigh}) ·
-        Barras más transparentes fuera del foco
-      </p>
-    </div>
+    <ResponsiveContainer width="100%" height={320}>
+      <BarChart data={data} margin={{ top: 16, right: 8, bottom: 24, left: 8 }} barCategoryGap="2%">
+        <ReferenceArea x1={affLo} x2={ev.mw_new} fill={TERRACOTTA} fillOpacity={0.06} />
+        <ReferenceArea x1={ev.mw_new} x2={exHi} fill={TEAL} fillOpacity={0.05} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+        <XAxis dataKey="bc" type="number" domain={[affLo - 100, ev.mw_new + 300]}
+          tickFormatter={v => `S/${v}`} tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false}
+          label={{ value: 'Salario mensual (S/.)', position: 'insideBottom', offset: -12, fontSize: 10, fill: '#9ca3af' }} />
+        <YAxis tickFormatter={v => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`}
+          tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} width={44} />
+        <Tooltip
+          formatter={(val: unknown) => {
+            const v = typeof val === 'number' ? val : 0;
+            return [`${v > 0 ? '+' : ''}${v.toFixed(2)} pp`, v < 0 ? 'Desaparecen' : 'Reaparecen'] as [string, string];
+          }}
+          labelFormatter={(v: unknown) => `S/${v}–${Number(v) + 25}`}
+          contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb', background: 'white' }}
+        />
+        <ReferenceLine y={0} stroke="#d1d5db" />
+        <ReferenceLine x={ev.mw_new} stroke={TERRACOTTA} strokeWidth={2.5} strokeDasharray="4 2"
+          label={{ value: `S/${ev.mw_new}`, position: 'top', fill: TERRACOTTA, fontSize: 13, fontWeight: 700 }} />
+        <Bar dataKey="neg" radius={[2,2,0,0]} isAnimationActive={false}>
+          {data.map(b => <Cell key={b.bc} fill={TERRACOTTA} fillOpacity={b.inZone ? 0.85 : 0.2} />)}
+        </Bar>
+        <Bar dataKey="pos" radius={[2,2,0,0]} isAnimationActive={false}>
+          {data.map(b => <Cell key={b.bc} fill={TEAL} fillOpacity={b.inZone ? 0.85 : 0.2} />)}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MAIN PAGE
-// ─────────────────────────────────────────────────────────────────────────────
+// ── Main Page ──────────────────────────────────────────────────────────────────
 export default function MWSalarioPage() {
   const [activeEvent, setActiveEvent] = useState(1);
   const [sliderValue, setSliderValue] = useState(MW_CURRENT);
+  const [hoveredDept, setHoveredDept] = useState<typeof DEPTS_KAITZ[0] | null>(null);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
-  const [hoveredDept, setHoveredDept] = useState<{ name: string; kaitz: number; cat: string; note?: string } | null>(null);
-  const [distData, setDistData] = useState<any>(null);
-
-  useEffect(() => {
-    fetch('/assets/data/lima_wage_distribution.json')
-      .then(r => r.json())
-      .then(setDistData)
-      .catch(() => {});
-  }, []);
+  const [heroYear, setHeroYear] = useState(0);
 
   const ev = EVENTS[activeEvent];
   const affected = useMemo(() => workersAffected(sliderValue), [sliderValue]);
   const sliderK  = useMemo(() => sliderKaitz(sliderValue), [sliderValue]);
-  const topD     = useMemo(() => topDepts(sliderValue), [sliderValue]);
+  const risk     = useMemo(() => kaitzRisk(sliderK), [sliderK]);
+  const animAffected = useAnimatedNumber(Math.round(affected));
+  const animKaitz    = useAnimatedNumber(Math.round(sliderK * 100));
+  const animDepts    = useAnimatedNumber(deptsAbove(sliderK));
+
+  // Hero counter cycling
+  const HERO_YEARS = [
+    { year: 2015, n: '10,195', label: 'trabajadores, pre-Evento A' },
+    { year: 2017, n: '10,895', label: 'trabajadores, post-Evento A' },
+    { year: 2019, n: '11,090', label: 'trabajadores, pre-Evento B' },
+    { year: 2021, n: '9,175',  label: 'trabajadores, pre-Evento C (COVID)' },
+    { year: 2023, n: '9,838',  label: 'trabajadores, post-Evento C' },
+  ];
+  useEffect(() => {
+    const id = setInterval(() => setHeroYear(h => (h + 1) % HERO_YEARS.length), 1800);
+    return () => clearInterval(id);
+  }, []);
+
+  // Self-employment stacked bar data
+  const selfEmpData = [
+    { name: `Antes\n(${ev.pre_year})`, formal: ev.formal_pre, informal: ev.informal_pre, selfemp: ev.selfemp_pre },
+    { name: `Después\n(${ev.post_year})`, formal: ev.formal_post, informal: ev.informal_post, selfemp: ev.selfemp_post },
+  ];
 
   const thermPos = (k: number) => Math.min(Math.max((k - 0.30) / (0.95 - 0.30) * 100, 0), 100);
 
-  // Source: Table 1 + mw_data_audit_complete.json
-  // Kaitz = MW / national median formal wage
-  // 2016: 850/1500=0.567; 2018: 930/1673=0.556; 2022: 1025/1800=0.569; 2025: 1130/1863≈0.607
-  const SCENARIOS = [
-    { label: '2016 (referencia)', sm: 850,  kaitz: 0.567, risk: 'Rango estudiado', riskColor: '#16a34a' },
-    { label: '2018',              sm: 930,  kaitz: 0.556, risk: 'Rango estudiado', riskColor: '#16a34a' },
-    { label: '2022',              sm: 1025, kaitz: 0.569, risk: 'Rango estudiado', riskColor: '#16a34a' },
-    { label: 'Actual 2025',       sm: 1130, kaitz: 0.607, risk: 'Fuera del rango', riskColor: '#d97706' },
-    { label: 'Propuesta S/1,200', sm: 1200, kaitz: 0.644, risk: 'Sin evidencia',   riskColor: '#dc2626' },
-    { label: 'Propuesta S/1,300', sm: 1300, kaitz: 0.698, risk: 'Sin evidencia',   riskColor: '#7f1d1d' },
-  ];
-
-  const ACCORDION_SECTIONS = [
-    {
-      id: 'metodo',
-      title: '9A. Método principal',
-      content: `Usamos un estimador distribucional pre-post inspirado en Cengiz et al. (2019), adaptado para un salario mínimo nacional sin jurisdicciones de control. Comparamos la distribución de salarios formales antes y después de cada aumento, corrigiendo por la tendencia general de salarios en la cola superior (> 2×SM).
-
-A diferencia del método original, que compara estados con y sin aumentos (posible en EE.UU. donde cada estado fija su propio mínimo), en Perú todos los departamentos reciben el mismo aumento simultáneamente. El precedente metodológico más cercano para un SM nacional único es Harasztosi & Lindner (2016, Hungría).
-
-Resultado: missing mass (empleos que desaparecen bajo el nuevo piso) y excess mass (empleos que reaparecen arriba). La razón excess/missing = ratio de redistribución. Verificado con test de falsificación en umbrales ficticios.`,
-    },
-    {
-      id: 'empleo',
-      title: '9B. ¿Por qué no podemos medir el efecto sobre el empleo?',
-      content: `Intentamos tres métodos regresionales:
-
-1. Diferencia en diferencias (DiD) usando variación departamental en exposición al SM — falla porque las tendencias de empleo previas al aumento difieren entre departamentos (test de pre-tendencias: p=0.007 para 2018, p=0.017 para 2022). El supuesto de tendencias paralelas no se cumple.
-
-2. Variables instrumentales usando el índice de Kaitz departamental como instrumento — falla porque la primera etapa es muy débil (estadístico F=1.5/2.6/0.1 en los tres eventos; umbral mínimo: F>10). La variación del Kaitz entre departamentos refleja diferencias estructurales (agricultura vs. sector público) con dinámicas propias, no diferencial de exposición al SM.
-
-3. Panel longitudinal de hogares (ENAHO Panel 978) — falla porque el 76% de los trabajadores no son re-entrevistados a los dos años, con desgaste diferencial por grupo de tratamiento.
-
-La razón estructural: Perú tiene un salario mínimo nacional único. Sin variación sub-nacional válida, no existe grupo de comparación creíble para efectos sobre el empleo.`,
-    },
-    {
-      id: 'datos',
-      title: '9C. Datos',
-      content: `ENAHO 2015–2023, Módulo 500 (Empleo e Ingresos), INEI.
-Muestra: trabajadores formales dependientes (ocu500=1, p507∈{3,4,6}, ocupinf=2) con salario mensual entre S/1 y S/6,000.
-Variable salarial: p524a1 (ingreso mensual, ocupación principal). Peso: fac500a.
-N = 8,946–11,488 por año (ver Tabla 1 del documento técnico).
-
-EPE Lima Metropolitana 2016–2022: panel trimestral, ~2,600 trabajadores formales dependientes por trimestre.
-Formalidad EPE: p222==1 (afiliación a EsSalud) — definición más estrecha que ENAHO.`,
-    },
-    {
-      id: 'verificaciones',
-      title: '9D. Verificaciones y robustez',
-      content: `Test de falsificación: aplicando el mismo estimador a umbrales ficticios S/1,100→1,200 y S/1,400→1,500 en la población del Evento B se obtienen ratios de 0.114 y 0.013, frente a 0.829 en el umbral real (S/930). El patrón de bunching es específico al salario mínimo (7× más pequeño en umbrales ficticios).
-
-Intervalos de confianza bootstrap (1,000 repeticiones):
-- 2016: [0.567, 0.896] — rechaza R=1
-- 2018: [0.716, 1.016] — NO rechaza R=1 (incluye redistribución perfecta)
-- 2022: [0.716, 0.960] — rechaza R=1
-
-Replicación independiente: EPE Lima (datos trimestrales, definición de formalidad diferente) produce ratios 0.73–1.03, consistentes con ENAHO 0.70–0.83. Los tres ratios ENAHO caen dentro de los intervalos bootstrap de EPE Lima.
-
-Estabilidad del estimador: resultados robustos con anchos de bin de S/25, S/50 y S/100.`,
-    },
-  ];
-
   return (
-    <div style={{ backgroundColor: BG, backgroundImage: WATERMARK, minHeight: '100vh' }}>
-      <main className="max-w-5xl mx-auto px-4 py-16 space-y-20">
+    <div style={{ backgroundColor: BG, minHeight: '100vh', fontFamily: "'Inter', sans-serif" }}>
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
 
-        {/* ── SECTION 1: HEADLINE ─────────────────────────────────────────────── */}
-        <section className="text-center space-y-4">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-            ¿Qué pasa cuando sube el salario mínimo?
-          </h1>
-          <p className="text-lg text-gray-600 font-medium">
-            Evidencia de tres aumentos en Perú (2016, 2018, 2022)
-          </p>
-          <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Analizamos los aumentos de S/750→S/850 (2016), S/850→S/930 (2018) y S/930→S/1,025 (2022)
-            usando la distribución nacional de salarios formales.
-          </p>
-          <div className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 text-xs text-gray-500 font-medium">
-            <span className="w-2 h-2 rounded-full bg-teal-500 flex-shrink-0" />
-            ENAHO 2015–2023 · EPE Lima · 10,000+ trabajadores formales por año
+        {/* ══ S1: HERO ══════════════════════════════════════════════════════════ */}
+        <section className="text-center space-y-6 pt-4">
+          <div className="inline-block bg-white border border-gray-200 rounded-full px-4 py-1.5 text-xs font-medium text-gray-500 tracking-wide">
+            Análisis distribucional · ENAHO 2015–2023 · Banco de datos INEI
           </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
+            ¿Qué pasa cuando sube<br className="hidden sm:block" /> el salario mínimo?
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-500 font-light max-w-2xl mx-auto">
+            Tres aumentos. La distribución salarial, antes y después.
+          </p>
+          {/* Animated counter */}
+          <div className="inline-flex flex-col items-center gap-1 bg-white rounded-2xl px-8 py-5 border border-gray-100 shadow-sm min-w-[260px]">
+            <div
+              className="text-5xl font-black tabular-nums transition-all duration-500"
+              style={{ color: TEAL }}
+              key={heroYear}
+            >
+              {HERO_YEARS[heroYear].n}
+            </div>
+            <div className="text-sm text-gray-500">{HERO_YEARS[heroYear].label}</div>
+            <div className="flex gap-1 mt-2">
+              {HERO_YEARS.map((_, i) => (
+                <div key={i} className="w-1.5 h-1.5 rounded-full transition-colors"
+                  style={{ background: i === heroYear ? TEAL : '#d1d5db' }} />
+              ))}
+            </div>
+          </div>
+          <p className="text-sm text-gray-400 max-w-xl mx-auto leading-relaxed">
+            Trabajadores formales dependientes con salario mensual S/1–S/6,000 · Módulo 500 ENAHO
+          </p>
         </section>
 
-        {/* ── SECTION 2: TWO HEADLINE CARDS ───────────────────────────────────── */}
+        {/* ══ S2: THE FINDING ═══════════════════════════════════════════════════ */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1: Redistribution */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-4">
-            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Salarios</h2>
-            <div className="space-y-1">
-              <div className="text-7xl font-black leading-none" style={{ color: TERRACOTTA }}>70–83%</div>
-              <p className="text-base font-semibold text-gray-800">
-                de los empleos formales desplazados por debajo del nuevo mínimo reaparecen por encima del nuevo piso salarial.
-              </p>
-            </div>
-            <div className="h-40 -mx-2">
+          {/* Left: redistribution */}
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 space-y-4">
+            <div className="text-xs font-semibold tracking-widest uppercase text-gray-400">Redistribución salarial</div>
+            <div className="text-7xl font-black leading-none" style={{ color: TERRACOTTA }}>70–83%</div>
+            <p className="text-base font-medium text-gray-700 leading-snug">
+              de los empleos formales desplazados reaparecen por encima del nuevo piso salarial
+            </p>
+            <div className="h-20 -mx-2">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={BINS_B.filter(b => b.bc >= 600 && b.bc <= 1300)}
-                  margin={{ top: 2, right: 4, bottom: 2, left: 4 }}
-                  barCategoryGap="1%"
-                >
-                  <ReferenceLine x={930} stroke={TERRACOTTA} strokeWidth={2} />
-                  <ReferenceLine y={0} stroke="#e5e7eb" strokeWidth={1} />
-                  <Bar dataKey="delta" isAnimationActive={false}>
-                    {BINS_B.filter(b => b.bc >= 600 && b.bc <= 1300).map((b) => (
-                      <Cell key={b.bc} fill={b.delta < 0 ? TERRACOTTA : TEAL} fillOpacity={0.8} />
-                    ))}
+                <BarChart data={[{ ev:'2016', r: 0.696 },{ ev:'2018', r: 0.829 },{ ev:'2022', r: 0.830 }]}
+                  margin={{ top: 4, right: 4, bottom: 4, left: 4 }} barCategoryGap="25%">
+                  <XAxis dataKey="ev" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
+                  <Tooltip formatter={(v: unknown) => [`${(Number(v)*100).toFixed(1)}%`, 'Ratio']}
+                    contentStyle={{ fontSize: 11, borderRadius: 6 }} />
+                  <Bar dataKey="r" fill={TERRACOTTA} fillOpacity={0.8} radius={[4,4,0,0]}>
+                    {[0,1,2].map(i => <Cell key={i} fill={TERRACOTTA} fillOpacity={0.6 + i * 0.15} />)}
                   </Bar>
+                  <ReferenceLine y={1} stroke="#e5e7eb" strokeDasharray="3 2" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Promedio de tres aumentos. Verificado con test de falsificación en umbrales ficticios
-              (ratios 7× menores que en el umbral real).
-            </p>
-            <p className="text-xs text-gray-400">
-              Rojo: empleos desaparecidos bajo S/930 · Verde: empleos reaparecidos por encima ·
-              Gráfico muestra el evento de 2018.
+            <p className="text-xs text-gray-400 leading-relaxed">
+              Verificado con test de falsificación: ratios 7× menores en umbrales ficticios
             </p>
           </div>
 
-          {/* Card 2: Employment — HONEST */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-4">
-            <h2 className="text-base font-semibold text-gray-500 uppercase tracking-wide">Empleo</h2>
-            <div className="space-y-1">
-              <div className="text-5xl font-black leading-none" style={{ color: TEAL }}>No identificado</div>
-              <p className="text-base font-semibold text-gray-800">
-                El efecto sobre el empleo no pudo medirse con los datos disponibles.
-              </p>
-            </div>
-            <div className="bg-amber-50 rounded-xl p-4 border-l-4 border-amber-300 text-xs text-gray-600 leading-relaxed space-y-2">
-              <p>Con un salario mínimo nacional único y 24 departamentos, los datos no tienen suficiente variación geográfica para medir el efecto causal sobre el empleo.</p>
-              <p><strong>No es lo mismo que "sin efecto"</strong> — significa que no podemos medirlo. Los ratios de redistribución (0.70–0.83) son consistentes tanto con desplazamiento moderado (hasta el 28% de los trabajadores afectados) como con redistribución perfecta.</p>
-            </div>
-            <p className="text-xs text-gray-400">
-              Todos los métodos regresionales fallan: test de pre-tendencias (DiD p&lt;0.02),
-              instrumento débil (IV F&lt;3), deserción de panel (76%). Solo el análisis distribucional
-              produce resultados confiables.
+          {/* Right: self-employment */}
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 space-y-4">
+            <div className="text-xs font-semibold tracking-widest uppercase text-gray-400">Autoempleo informal</div>
+            <div className="text-7xl font-black leading-none" style={{ color: TEAL }}>+15–21pp</div>
+            <p className="text-base font-medium text-gray-700 leading-snug">
+              aumento en autoempleo en la zona salarial afectada — los trabajadores no desaparecen, cambian de modalidad
             </p>
-          </div>
-        </section>
-
-        {/* ── Interactive Wage Distribution ── */}
-        {distData && (
-          <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-6">
-            <div className="flex justify-between items-baseline mb-3">
-              <div>
-                <h3 className="text-base font-semibold text-gray-800">
-                  Distribución salarial · Lima Metropolitana
-                </h3>
-                <p className="text-xs text-gray-500">
-                  Trabajadores formales dependientes · EPE 2022
-                </p>
-              </div>
-              {sliderValue > MW_PREV && (
-                <div className="text-right">
-                  <div className="text-lg font-black" style={{ color: TERRACOTTA }}>
-                    {getAffectedWorkers(distData, sliderValue).toLocaleString()}
-                  </div>
-                  <div className="text-xs text-gray-500">trabajadores afectados</div>
-                </div>
-              )}
-            </div>
-
-            <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={(distData.kde_formal as {wage:number,density:number}[]).filter(d => d.wage >= 400 && d.wage <= 3000)}
-                margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
-                <XAxis
-                  dataKey="wage"
-                  tickFormatter={(v) => `S/${v.toLocaleString()}`}
-                  ticks={[500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000]}
-                  tick={{ fontSize: 10 }}
-                />
-                <YAxis hide />
-                <Tooltip
-                  formatter={(val: number | undefined) => [(val ?? 0).toFixed(5), 'Densidad']}
-                  labelFormatter={(v) => `S/${Number(v).toLocaleString()}`}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="density"
-                  stroke={TEAL}
-                  strokeWidth={2}
-                  fill={TEAL}
-                  fillOpacity={0.15}
-                />
-                <ReferenceArea x1={400} x2={MW_PREV} fill="#999" fillOpacity={0.08} />
-                {sliderValue > MW_PREV && (
-                  <ReferenceArea
-                    x1={MW_PREV}
-                    x2={sliderValue}
-                    fill={TERRACOTTA}
-                    fillOpacity={0.20}
-                  />
-                )}
-                <ReferenceLine
-                  x={MW_PREV}
-                  stroke="#bbb"
-                  strokeDasharray="4 4"
-                  label={{ value: `SM 2022: S/${MW_PREV}`, position: 'insideTopRight', fill: '#aaa', fontSize: 10 }}
-                />
-                <ReferenceLine
-                  x={MW_VIGENTE}
-                  stroke="#666"
-                  strokeDasharray="3 3"
-                  label={{ value: 'Vigente 2025: S/1,130', position: 'insideTopLeft', fill: '#666', fontSize: 10 }}
-                />
-                {sliderValue > MW_VIGENTE && (
-                  <ReferenceLine
-                    x={sliderValue}
-                    stroke={TERRACOTTA}
-                    strokeWidth={3}
-                    label={{ value: `Propuesto: S/${sliderValue.toLocaleString()}`, position: 'top', fill: TERRACOTTA, fontSize: 12, fontWeight: 700 }}
-                  />
-                )}
-              </AreaChart>
-            </ResponsiveContainer>
-
-            <div className="mt-4 px-2">
-              <input
-                type="range"
-                min={1130}
-                max={1500}
-                step={10}
-                value={sliderValue < 1130 ? 1130 : sliderValue}
-                onChange={(e) => setSliderValue(Number(e.target.value))}
-                className="w-full accent-[#C65D3E]"
-              />
-              <div className="flex justify-between text-xs text-gray-400 mt-1">
-                <span>S/1,130 (vigente)</span>
-                <span>S/1,500</span>
-              </div>
-            </div>
-
-            <p className="text-xs text-gray-400 mt-2">
-              {sliderValue <= MW_VIGENTE
-                ? `Con el aumento vigente a S/1,130, aproximadamente ${getAffectedWorkers(distData, sliderValue).toLocaleString()} trabajadores formales de Lima Metropolitana ya recibieron un aumento directo.`
-                : `Si el salario mínimo sube a S/${sliderValue.toLocaleString()}, aproximadamente ${getAffectedWorkers(distData, sliderValue).toLocaleString()} trabajadores formales en Lima recibirían un aumento directo.`
-              }
-              {' '}Estimación basada en EPE Lima 2022, extrapolada a la fuerza laboral formal actual.
-            </p>
-          </div>
-        )}
-
-        {/* ── SECTION 4: BUNCHING EVIDENCE ─────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">
-              ¿A dónde van los empleos por debajo del nuevo mínimo?
-            </h2>
-            <p className="text-sm text-gray-500 mt-1">
-              Redistribución salarial antes y después de cada aumento · Trabajadores formales dependientes
-            </p>
-          </div>
-
-          <div className="flex gap-2 flex-wrap">
-            {EVENTS.map((e, i) => (
-              <button
-                key={e.id}
-                onClick={() => setActiveEvent(i)}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
-                  activeEvent === i
-                    ? 'border-transparent text-white'
-                    : 'border-gray-200 text-gray-600 bg-white hover:border-gray-300'
-                }`}
-                style={activeEvent === i ? { background: TERRACOTTA } : {}}
-              >
-                {e.label}
-              </button>
-            ))}
-          </div>
-
-          <BunchingChart ev={ev} />
-
-          {/* Summary table — no employment column */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left text-xs text-gray-400 uppercase tracking-wide">
-                  <th className="py-2 pr-4 font-medium">Evento</th>
-                  <th className="py-2 pr-4 font-medium text-right">Empleos desaparecen</th>
-                  <th className="py-2 pr-4 font-medium text-right">Empleos reaparecen</th>
-                  <th className="py-2 pr-4 font-medium text-right">¿Cuántos regresan?</th>
-                  <th className="py-2 font-medium text-right">IC 95%</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {EVENTS.map(e => (
-                  <tr key={e.id} className={e.id === ev.id ? 'bg-orange-50' : ''}>
-                    <td className="py-2 pr-4 font-medium text-gray-700">{e.label}</td>
-                    <td className="py-2 pr-4 text-right" style={{ color: TERRACOTTA }}>−{e.missing_pp.toFixed(1)}%</td>
-                    <td className="py-2 pr-4 text-right" style={{ color: TEAL }}>+{e.excess_pp.toFixed(1)}%</td>
-                    <td className="py-2 pr-4 text-right font-bold text-gray-800">{Math.round(e.ratio * 100)} de cada 100</td>
-                    <td className="py-2 text-right text-gray-500 font-mono text-xs">
-                      [{Math.round(e.ci_lo*100)}, {Math.round(e.ci_hi*100)}]
-                      {!e.rejects_r1 && <span className="ml-1 text-amber-600">*</span>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="space-y-2 text-xs text-gray-500 leading-relaxed">
-            <p>
-              &ldquo;¿Cuántos regresan?&rdquo; indica cuántos de los empleos que desaparecieron por debajo del nuevo
-              mínimo volvieron a aparecer por encima de él. Un valor de 100 de cada 100 sería redistribución perfecta.
-              IC 95% = intervalo de confianza bootstrap (1,000 repeticiones). * El IC del evento 2018 incluye 100,
-              por lo que no se puede descartar redistribución perfecta a ese nivel de confianza.
-            </p>
-            <div className="bg-gray-50 rounded-xl p-4 border-l-4" style={{ borderColor: '#9ca3af' }}>
-              <strong>Test de falsificación:</strong> el mismo método aplicado a umbrales ficticios (S/1,100→S/1,200
-              y S/1,400→S/1,500) produce redistribución 7 veces menor que en el umbral real, confirmando que el
-              patrón es específico al salario mínimo.
-            </div>
-          </div>
-        </section>
-
-        {/* ── SECTION 5: MAP ────────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-6">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">¿Dónde afecta más?</h2>
-            <p className="text-sm text-gray-500 mt-1">
-              Índice de Kaitz departamental · 2015 (SM/salario mediano formal) · ENAHO Módulo 500
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            <div className="md:col-span-2 relative">
-              {hoveredDept && (
-                <div className="absolute top-2 left-2 z-10 bg-white rounded-lg shadow-md border border-gray-100 px-3 py-2 text-xs pointer-events-none">
-                  <div className="font-semibold text-gray-800">{hoveredDept.name}</div>
-                  <div className="text-gray-500">
-                    Exposición: <span className="font-medium" style={{ color: CAT_COLOR[hoveredDept.cat] }}>
-                      {hoveredDept.cat === 'alta' ? 'Alta' : hoveredDept.cat === 'media' ? 'Media' : 'Baja'}
-                    </span>
-                  </div>
-                  <div className="text-gray-500">
-                    Kaitz 2015: {hoveredDept.kaitz.toFixed(2)} (SM = {Math.round(hoveredDept.kaitz * 100)}% del mediano)
-                  </div>
-                  {hoveredDept.note && (
-                    <div className="text-gray-400 mt-1 italic">{hoveredDept.note}</div>
-                  )}
-                </div>
-              )}
-              <div style={{ background: '#E8F4F8', borderRadius: 12, overflow: 'hidden' }}>
-                <ComposableMap
-                  projection="geoMercator"
-                  projectionConfig={{ scale: 1700, center: [-75.0, -9.5] }}
-                  style={{ width: '100%', height: 460 }}
+            <div className="h-20 -mx-2">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={[
+                    { ev:'2016', pre: 38.0, post: 57.1 },
+                    { ev:'2018', pre: 35.5, post: 55.5 },
+                    { ev:'2022', pre: 33.1, post: 47.8 },
+                  ]}
+                  margin={{ top: 4, right: 4, bottom: 4, left: 4 }} barCategoryGap="20%"
                 >
-                  <Geographies geography={GEO_URL}>
-                    {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
-                      geographies.map(geo => {
-                        const code = String(geo.properties.FIRST_IDDP || '').padStart(2, '0');
-                        const dept = DEPTS_KAITZ.find(d => d.code === code);
-                        const cat  = dept ? kaitzCategory(dept.kaitz) : 'baja';
-                        const notes: Record<string,string> = {
-                          '11': 'Trabajadores agro-exportadores con salarios mensuales bajos',
-                          '09': '~85% del sector formal son empleados públicos',
-                        };
-                        return (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            fill={CAT_COLOR[cat]}
-                            fillOpacity={0.80}
-                            stroke="#fff"
-                            strokeWidth={0.8}
-                            style={{
-                              default: { outline: 'none' },
-                              hover:   { outline: 'none', fillOpacity: 1, cursor: 'pointer' },
-                              pressed: { outline: 'none' },
-                            }}
-                            onMouseEnter={() => dept && setHoveredDept({ name: dept.name, kaitz: dept.kaitz, cat, note: notes[code] })}
-                            onMouseLeave={() => setHoveredDept(null)}
-                          />
-                        );
-                      })
-                    }
-                  </Geographies>
-                </ComposableMap>
-              </div>
+                  <XAxis dataKey="ev" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
+                  <Tooltip formatter={(v: unknown) => [`${v}%`, '']}
+                    contentStyle={{ fontSize: 11, borderRadius: 6 }} />
+                  <Bar dataKey="pre" name="Antes" fill="#e5e7eb" radius={[4,4,0,0]} />
+                  <Bar dataKey="post" name="Después" fill={TEAL} fillOpacity={0.85} radius={[4,4,0,0]} />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
-            <div className="space-y-4">
-              <div className="space-y-3">
-                {(['alta','media','baja'] as const).map(cat => (
-                  <div key={cat} className="flex items-start gap-2">
-                    <div className="w-4 h-4 rounded flex-shrink-0 mt-0.5" style={{ background: CAT_COLOR[cat] }} />
-                    <div className="text-xs text-gray-700">{CAT_LABEL[cat]}</div>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">
-                  5 departamentos más expuestos (2015)
-                </div>
-                <div className="space-y-1">
-                  {[...DEPTS_KAITZ].sort((a,b) => b.kaitz - a.kaitz).slice(0,5).map(d => (
-                    <div key={d.code} className="flex justify-between text-xs">
-                      <span className="text-gray-700">{d.name}</span>
-                      <span className="font-mono text-gray-500">
-                        {Math.round(d.kaitz*100)}%
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                  <strong>Ica</strong>: Kaitz 0.93 por trabajadores agro-exportadores formales con salarios mensuales bajos a pesar de jornada completa.
-                  <br />
-                  <strong>Huancavelica</strong>: Kaitz 0.50 porque ~85% de sus trabajadores formales son empleados públicos con salarios por encima del mínimo.
-                </p>
-              </div>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                ENAHO 2015, Módulo 500. Trabajadores formales dependientes.
-                Kaitz = SM/mediana departamental de salario mensual formal.
-              </p>
-            </div>
+            <p className="text-xs text-gray-400 leading-relaxed">
+              Gris: participación autoempleados antes del aumento · Verde: después · Zona afectada [0.85×SM_ant, SM_nuevo)
+            </p>
           </div>
         </section>
 
-        {/* ── SECTION 6: SIMULATOR SLIDER ──────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
-          <h2 className="text-2xl font-bold text-gray-900">Simula un nuevo aumento</h2>
-
-          <div className="space-y-3">
-            <div className="flex justify-between text-sm text-gray-500">
-              <span>S/1,025 (pre-2025)</span>
-              <span className="font-bold text-lg" style={{ color: TERRACOTTA }}>S/{fmt(sliderValue)}</span>
-              <span>S/1,500</span>
+        {/* ══ S3: INTERACTIVE WAGE DISTRIBUTION ════════════════════════════════ */}
+        <section className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">Distribución salarial por evento</h2>
+              <p className="text-sm text-gray-500 mt-0.5">Trabajadores formales dependientes · ENAHO · Bins de S/25</p>
             </div>
-            <div className="relative">
-              <input
-                type="range"
-                min={1025} max={1500} step={25}
-                value={sliderValue < 1025 ? 1025 : sliderValue}
-                onChange={e => setSliderValue(Number(e.target.value))}
-                className="w-full h-2 rounded-full appearance-none cursor-pointer"
-                style={{
-                  background: `linear-gradient(to right, ${TERRACOTTA} ${((Math.max(sliderValue,1025)-1025)/(1500-1025))*100}%, #e5e7eb ${((Math.max(sliderValue,1025)-1025)/(1500-1025))*100}%)`,
-                  accentColor: TERRACOTTA,
-                }}
-              />
-            </div>
-            <div className="flex justify-between text-xs text-gray-400">
-              {[1025,1130,1200,1300,1500].map(v => (
-                <button key={v} onClick={() => setSliderValue(v)}
-                  className={`px-2 py-0.5 rounded transition-colors ${sliderValue===v ? 'text-white rounded-full' : 'hover:text-gray-600'}`}
-                  style={sliderValue===v ? { background: TERRACOTTA } : {}}>
-                  {v===1130 ? 'S/1,130 (vigente)' : `S/${v.toLocaleString('es-PE')}`}
+            <div className="flex gap-2">
+              {EVENTS.map((e, i) => (
+                <button key={e.id} onClick={() => setActiveEvent(i)}
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
+                  style={{
+                    background: activeEvent === i ? TERRACOTTA : 'transparent',
+                    color: activeEvent === i ? 'white' : '#6b7280',
+                    border: `2px solid ${activeEvent === i ? TERRACOTTA : '#e5e7eb'}`,
+                  }}>
+                  {e.label}
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="bg-orange-50 rounded-xl p-5 space-y-3 border border-orange-100">
-            {sliderValue <= MW_VIGENTE ? (
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Con el aumento vigente a <strong>S/1,130</strong>:
-              </p>
-            ) : (
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Si el salario mínimo sube a <strong>S/{fmt(sliderValue)}</strong>:
-              </p>
-            )}
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li className="flex gap-2">
-                <span style={{ color: TEAL }}>•</span>
-                {sliderValue <= MW_VIGENTE ? (
-                  <>Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
-                  Metropolitana ya recibieron un aumento directo. Mueva el deslizador para
-                  simular aumentos futuros.</>
-                ) : (
-                  <>Aproximadamente <strong>{fmt(affected)}</strong> trabajadores formales de Lima
-                  Metropolitana recibirían un aumento directo.</>
-                )}
-              </li>
-              <li className="flex gap-2">
-                <span style={{ color: TEAL }}>•</span>
-                Los aumentos estudiados (2016–2022) tuvieron un Kaitz nacional de 52%–57%. Este nivel
-                ({Math.round(sliderK * 100)}%) {sliderK <= 0.57 ? 'está dentro' : 'supera'} ese rango.
-                El efecto sobre el empleo total no pudo identificarse con los datos disponibles.
-              </li>
-              {topD.length > 0 && (
-                <li className="flex gap-2">
-                  <span style={{ color: TEAL }}>•</span>
-                  Los departamentos donde el impacto {sliderValue <= MW_VIGENTE ? 'fue' : 'sería'} mayor:{' '}
-                  <strong>{topD.join(', ')}</strong>.
-                </li>
-              )}
-            </ul>
-            <div className="pt-2 border-t border-orange-200 flex gap-6 text-xs text-gray-500">
-              <div>
-                <span className="block font-semibold text-gray-700">SM como % del salario mediano</span>
-                <span>{Math.round(sliderK * 100)}%</span>
-                <span className="ml-1 text-gray-400">(estimado nacional, base mediana 2023 S/1,863)</span>
-              </div>
-              <div>
-                <span className="block font-semibold text-gray-700">Rango con evidencia</span>
-                <span>52%–57%</span>
-                <span className="ml-1 text-gray-400">(aumentos 2016–2022)</span>
-              </div>
+          {/* Legend */}
+          <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm" style={{ background: TERRACOTTA, opacity: 0.85 }} />
+              Empleos que desaparecen bajo S/{ev.mw_new}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm" style={{ background: TEAL, opacity: 0.85 }} />
+              Empleos que reaparecen por encima
+            </span>
+            <span className="flex items-center gap-1.5 text-gray-400">
+              <span className="inline-block w-6 border-t-2 border-dashed" style={{ borderColor: TERRACOTTA }} />
+              Nuevo SM: S/{ev.mw_new}
+            </span>
+          </div>
+
+          <BunchingChart ev={ev} />
+
+          {/* Stats row */}
+          <div className="grid grid-cols-3 gap-4 pt-2 border-t border-gray-100">
+            <div className="text-center">
+              <div className="text-2xl font-black" style={{ color: TERRACOTTA }}>−{ev.missing_pp.toFixed(1)}pp</div>
+              <div className="text-xs text-gray-500 mt-0.5">Desaparecen</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-black" style={{ color: TEAL }}>+{ev.excess_pp.toFixed(1)}pp</div>
+              <div className="text-xs text-gray-500 mt-0.5">Reaparecen</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-black text-gray-800">{Math.round(ev.ratio * 100)}/100</div>
+              <div className="text-xs text-gray-500 mt-0.5">Regresan al mercado formal</div>
             </div>
           </div>
           <p className="text-xs text-gray-400">
-            Estimación basada en la distribución salarial formal de Lima Metropolitana (EPE 2022, ~1.7 M trabajadores formales).
-            La cifra nacional sería significativamente mayor. Proyección válida solo dentro del rango de Kaitz históricamente observado.
+            IC bootstrap 95%: [{ev.ci_lo.toFixed(3)}, {ev.ci_hi.toFixed(3)}] · {ev.ci_hi >= 1 ? 'No rechaza R=1' : 'Rechaza R=1'} ·
+            Zona sombreada roja: masa desaparecida · Zona azul: ventana de exceso
           </p>
         </section>
 
-        {/* ── SECTION 7: LIMITS ─────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
-          <h2 className="text-2xl font-bold text-gray-900">Los límites de la evidencia</h2>
-          <p className="text-sm text-gray-500">
-            ¿Se puede seguir subiendo el salario mínimo? La evidencia tiene fronteras claras.
-          </p>
-
-          {/* Thermometer */}
-          <div className="space-y-3">
-            <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
-              Salario mínimo como porcentaje del salario mediano formal
-            </div>
-            <div className="relative h-8 rounded-full overflow-hidden"
-              style={{ background: 'linear-gradient(to right, #16a34a 0%, #84cc16 35%, #f59e0b 55%, #ef4444 75%, #7f1d1d 100%)' }}>
-              {[
-                { label: '2016 (57%)', k: 0.567 },
-                { label: '2018 (56%)', k: 0.556 },
-                { label: '2022 (57%)', k: 0.569 },
-                { label: '2025 (~61%)', k: 0.607 },
-                ...(sliderValue !== MW_CURRENT && sliderValue > 1025 ? [{ label: `S/${fmt(sliderValue)} (${Math.round(sliderK*100)}%)`, k: sliderK }] : []),
-              ].map(m => (
-                <div key={m.label}
-                  className="absolute top-0 bottom-0 flex flex-col items-center"
-                  style={{ left: `${thermPos(m.k)}%`, transform: 'translateX(-50%)' }}>
-                  <div className="w-0.5 h-full bg-white opacity-80" />
-                  <div className="absolute -bottom-5 whitespace-nowrap text-xs font-medium text-gray-600"
-                    style={{ fontSize: 10 }}>
-                    {m.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-between text-xs text-gray-400 mt-7">
-              <span>30%</span>
-              <span className="font-medium text-amber-600">Umbral de referencia internacional: 60%</span>
-              <span>95%</span>
-            </div>
-          </div>
-
-          {/* Scenario table — corrected Kaitz values */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left text-xs text-gray-400 uppercase tracking-wide border-b border-gray-100">
-                  <th className="py-2 pr-3 font-medium">Escenario</th>
-                  <th className="py-2 pr-3 font-medium text-right">SM</th>
-                  <th className="py-2 pr-3 font-medium text-right">SM vs mediana</th>
-                  <th className="py-2 font-medium">Situación</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {SCENARIOS.map(s => (
-                  <tr key={s.label} className={s.sm === MW_CURRENT ? 'bg-amber-50' : ''}>
-                    <td className="py-2 pr-3 text-gray-700 font-medium">{s.label}</td>
-                    <td className="py-2 pr-3 text-right text-gray-600 font-mono">S/{s.sm.toLocaleString('es-PE')}</td>
-                    <td className="py-2 pr-3 text-right text-gray-600 font-mono">{Math.round(s.kaitz*100)}%</td>
-                    <td className="py-2">
-                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full"
-                        style={{ color: s.riskColor, background: s.riskColor + '18' }}>
-                        {s.risk}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Key message */}
-          <div className="rounded-xl p-4 border-l-4 text-sm text-gray-600 leading-relaxed bg-orange-50" style={{ borderColor: TERRACOTTA }}>
-            Nuestros resultados cubren aumentos donde el salario mínimo representaba entre el 52% y el 57%
-            del salario mediano formal. En ese rango, observamos redistribución salarial efectiva: 70–83% de
-            los empleos afectados reaparecen por encima del nuevo piso. No pudimos medir el efecto neto sobre
-            el empleo total debido a la falta de un grupo de control válido. Aumentos que lleven la proporción
-            por encima del 60% entran en territorio donde la evidencia internacional sugiere mayor riesgo.
-          </div>
-        </section>
-
-        {/* ── SECTION 8: HALLAZGOS SECUNDARIOS ─────────────────────────────────── */}
+        {/* ══ S4: BUNCHING EVIDENCE TABLE ══════════════════════════════════════ */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">Otros hallazgos</h2>
-          <p className="text-sm text-gray-500">Resultados complementarios del análisis distribucional.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Compression */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#9ca3af' }} />
-                <h3 className="font-bold text-gray-800 text-sm">Compresión salarial</h3>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Los trabajadores que ganan justo por encima del mínimo ven un crecimiento salarial más
-                lento que los que ganan mucho más. Entre el 41% y el 92% de esta compresión es mecánica —
-                trabajadores que subieron desde debajo del mínimo al nuevo piso y ahora están en la zona
-                de compresión. El resto refleja una compresión genuina de la distribución salarial.
-              </p>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-2 border-gray-200">
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  <strong>Con controles individuales</strong> (edad, sexo, educación, sector), el coeficiente
-                  de compresión es −0.045 (p&lt;0.001), confirmando que no es puramente composicional.
-                </p>
-              </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">La evidencia completa</h2>
+            <p className="text-sm text-gray-500 mt-1">Tres eventos · Masa desaparecida y reaparecida · Señal distribucional verificada</p>
+          </div>
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-100">
+                    <th className="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Evento</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Desaparecen</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Reaparecen</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Regresan</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">IC 95%</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Autoempleo ↑</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {EVENTS.map((e, i) => (
+                    <tr key={e.id}
+                      className="border-b border-gray-50 cursor-pointer transition-colors hover:bg-gray-50"
+                      style={{ background: activeEvent === i ? '#fef7f5' : undefined }}
+                      onClick={() => setActiveEvent(i)}
+                    >
+                      <td className="px-5 py-4">
+                        <div className="font-bold text-gray-900">{e.label}</div>
+                        <div className="text-xs text-gray-400">{e.sublabel}</div>
+                      </td>
+                      <td className="px-4 py-4 text-right font-mono" style={{ color: TERRACOTTA }}>−{e.missing_pp.toFixed(1)}pp</td>
+                      <td className="px-4 py-4 text-right font-mono" style={{ color: TEAL }}>+{e.excess_pp.toFixed(1)}pp</td>
+                      <td className="px-4 py-4 text-right">
+                        <span className="font-black text-gray-900">{Math.round(e.ratio * 100)}</span>
+                        <span className="text-gray-400">/100</span>
+                      </td>
+                      <td className="px-4 py-4 text-right text-xs text-gray-500 font-mono">
+                        [{e.ci_lo.toFixed(2)}, {e.ci_hi.toFixed(2)}]
+                      </td>
+                      <td className="px-4 py-4 text-right">
+                        <span className="font-bold" style={{ color: TEAL }}>+{e.selfemp_delta_pp.toFixed(0)}pp</span>
+                        <div className="text-xs text-gray-400">{e.selfemp_abs_chg} absoluto</div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-
-            {/* Who's affected */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#9ca3af' }} />
-                <h3 className="font-bold text-gray-800 text-sm">¿A quién afecta más?</h3>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                El salario mínimo afecta principalmente al sector privado formal (ratio 0.83) más que al
-                sector público (0.75). Por sector económico, manufactura y comercio absorben mejor los
-                aumentos. No hay diferencias importantes por edad ni sexo dentro del empleo formal.
-              </p>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-2 border-gray-200">
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  <strong>Etnicicidad y empleo formal:</strong> No hay diferencias salariales entre
-                  trabajadores indígenas y no indígenas dentro del sector formal (ambos mediana S/1,400).
-                  La brecha étnica opera por acceso al empleo formal: solo el 5.7% de los trabajadores
-                  indígenas tienen empleo formal, frente al 20.7% de los hispanohablantes.
-                </p>
-              </div>
-            </div>
+          </div>
+          <div className="bg-gray-50 rounded-xl px-5 py-3 text-xs text-gray-500 space-y-1 border border-gray-100">
+            <p><strong>Test de falsificación:</strong> Aplicando el mismo estimador a umbrales ficticios produce ratios 0.114 y 0.013 — 7× menores que en el umbral real.</p>
+            <p><strong>Replicación EPE Lima:</strong> Dataset independiente, ventanas de 6 meses, produce ratios 0.73–1.03 — consistentes con ENAHO 0.70–0.83.</p>
           </div>
         </section>
 
-        {/* ── SECTION 9: METHODOLOGY ACCORDION ─────────────────────────────────── */}
-        <section className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <button
-            className="w-full text-left px-6 py-4 flex justify-between items-center"
-            onClick={() => setOpenAccordion(openAccordion === 'main' ? null : 'main')}
-          >
-            <h2 className="text-lg font-bold text-gray-900">Metodología</h2>
-            <span className="text-gray-400 text-xl">{openAccordion === 'main' ? '−' : '+'}</span>
-          </button>
-
-          {openAccordion === 'main' && (
-            <div className="border-t border-gray-100 divide-y divide-gray-50">
-              {ACCORDION_SECTIONS.map(sec => (
-                <div key={sec.id}>
-                  <button
-                    className="w-full text-left px-6 py-3 flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition-colors"
-                    onClick={() => setOpenAccordion(openAccordion === sec.id ? 'main' : sec.id)}
-                  >
-                    <span className="text-sm font-semibold text-gray-700">{sec.title}</span>
-                    <span className="text-gray-400">{openAccordion === sec.id ? '▲' : '▼'}</span>
-                  </button>
-                  {openAccordion === sec.id && (
-                    <div className="px-6 py-4">
-                      <pre className="text-xs text-gray-600 leading-relaxed whitespace-pre-wrap font-sans">
-                        {sec.content}
-                      </pre>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* ── FOOTER ─────────────────────────────────────────────────────────────── */}
-        <section className="border-t border-gray-200 pt-8 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-3">
-              <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Acceso a datos</h3>
-              <div className="flex gap-3 flex-wrap">
-                <a
-                  href="/assets/data/mw_complete_margins.json"
-                  download
-                  className="text-xs px-3 py-2 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors"
-                >
-                  Resultados completos (JSON)
-                </a>
-                <a
-                  href="/assets/data/mw_falsification_audit.json"
-                  download
-                  className="text-xs px-3 py-2 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors"
-                >
-                  Auditoría de falsificación (JSON)
-                </a>
-                <a
-                  href="/assets/data/mw_power_analysis.json"
-                  download
-                  className="text-xs px-3 py-2 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors"
-                >
-                  Bootstrap CIs (JSON)
-                </a>
-              </div>
-            </div>
-            <div className="space-y-1">
-              <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Fuentes y contacto</h3>
-              <p className="text-xs text-gray-500">Fuente: ENAHO 2015–2023 (Módulo 500), EPE Lima. INEI.</p>
-              <p className="text-xs text-gray-500">Elaboración: Qhawarina.</p>
-              <p className="text-xs text-gray-500">Última actualización: Marzo 2026</p>
-            </div>
-          </div>
-
-          <div className="bg-gray-50 rounded-xl p-4">
-            <p className="text-xs text-gray-400 leading-relaxed">
-              Los resultados son proyecciones basadas en evidencia de tres aumentos entre 2016 y 2022.
-              No pudimos identificar el efecto neto sobre el empleo total. No constituyen predicciones
-              del efecto de futuros aumentos. Las proyecciones más allá del rango observado (Kaitz &gt; 0.57)
-              deben interpretarse con cautela. Los resultados no representan posición oficial del INEI,
-              del BCRP, ni del gobierno del Perú.
+        {/* ══ S5: ¿A DÓNDE VAN? ════════════════════════════════════════════════ */}
+        <section className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">¿A dónde van los trabajadores que desaparecen?</h2>
+            <p className="text-sm text-gray-500 mt-1 max-w-2xl">
+              Composición del empleo en la zona salarial afectada [0.85×SM<sub>ant</sub>, SM<sub>nuevo</sub>), antes y después de cada aumento
             </p>
           </div>
+
+          {/* Event selector */}
+          <div className="flex gap-2">
+            {EVENTS.map((e, i) => (
+              <button key={e.id} onClick={() => setActiveEvent(i)}
+                className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
+                style={{
+                  background: activeEvent === i ? TEAL : 'transparent',
+                  color: activeEvent === i ? 'white' : '#6b7280',
+                  border: `2px solid ${activeEvent === i ? TEAL : '#e5e7eb'}`,
+                }}>
+                {e.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Stacked bar */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+              <div className="flex gap-4 text-xs flex-wrap">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded-sm" style={{ background: TERRACOTTA }} />Formal dependiente
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded-sm" style={{ background: '#94a3b8' }} />Informal dependiente
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded-sm" style={{ background: TEAL }} />Autoempleado
+                </span>
+              </div>
+              <ResponsiveContainer width="100%" height={280}>
+                <BarChart data={selfEmpData} margin={{ top: 8, right: 16, bottom: 8, left: 8 }} barCategoryGap="40%">
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
+                  <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#374151', fontWeight: 600 }} axisLine={false} tickLine={false} />
+                  <YAxis tickFormatter={v => `${v}%`} tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} domain={[0, 100]} />
+                  <Tooltip formatter={(v: unknown) => [`${v}%`, '']}
+                    contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }} />
+                  <Bar dataKey="formal" name="Formal dep." stackId="a" fill={TERRACOTTA} fillOpacity={0.85} />
+                  <Bar dataKey="informal" name="Informal dep." stackId="a" fill="#94a3b8" fillOpacity={0.75} />
+                  <Bar dataKey="selfemp" name="Autoempleado" stackId="a" fill={TEAL} fillOpacity={0.85} radius={[4,4,0,0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            {/* Explanation */}
+            <div className="space-y-4">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-3">
+                <div className="text-3xl font-black" style={{ color: TEAL }}>
+                  +{ev.selfemp_delta_pp.toFixed(0)}pp
+                </div>
+                <p className="text-sm font-semibold text-gray-800">
+                  de autoempleo en la zona afectada ({ev.pre_year} → {ev.post_year})
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex justify-between border-b border-gray-50 pb-1">
+                    <span>Formal dependiente</span>
+                    <span>
+                      <span style={{ color: TERRACOTTA }} className="font-bold">{ev.formal_pre.toFixed(1)}%</span>
+                      {' → '}
+                      <span style={{ color: TERRACOTTA }} className="font-bold">{ev.formal_post.toFixed(1)}%</span>
+                    </span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-50 pb-1">
+                    <span>Informal dependiente</span>
+                    <span className="font-bold text-gray-500">{ev.informal_pre.toFixed(1)}% → {ev.informal_post.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between pb-1">
+                    <span>Autoempleado</span>
+                    <span>
+                      <span style={{ color: TEAL }} className="font-bold">{ev.selfemp_pre.toFixed(1)}%</span>
+                      {' → '}
+                      <span style={{ color: TEAL }} className="font-bold">{ev.selfemp_post.toFixed(1)}%</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 space-y-2">
+                <div className="font-bold text-amber-900 text-sm">El empleo total se mantiene. La MODALIDAD cambia.</div>
+                <p className="text-xs text-amber-800 leading-relaxed">
+                  El aumento en el autoempleo no implica aumento en el bienestar: los autoempleados informales
+                  pierden acceso a seguridad social. Pero tampoco implica destrucción de empleo: los trabajadores
+                  siguen generando ingresos similares.
+                </p>
+                {ev.id === 'C' && (
+                  <p className="text-xs text-amber-700 leading-relaxed border-t border-amber-200 pt-2">
+                    <strong>Evento C:</strong> El recuento absoluto de autoempleados cae (−3.5%), consistente con la
+                    re-formalización post-COVID 2021–2023 (fuerza laboral formal creció 12.5%).
+                  </p>
+                )}
+              </div>
+
+              <div className="text-xs text-gray-400 leading-relaxed">
+                Fuente: ENAHO Módulo 500. Ingresos de autoempleados: p530a (ingreso neto mensual de negocio).
+                Diseño transversal — no se pueden rastrear trabajadores individuales.
+              </div>
+            </div>
+          </div>
         </section>
+
+        {/* ══ S6: MAP ═══════════════════════════════════════════════════════════ */}
+        <section className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">¿Dónde muerde más el salario mínimo?</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Índice de Kaitz departamental (SM / mediana salarial formal) · Mayor valor = SM más cercano al salario mediano local
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            {/* Map */}
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-4 relative">
+              {hoveredDept && (
+                <div className="absolute top-4 left-4 z-10 bg-white shadow-lg rounded-xl px-4 py-3 border border-gray-100 pointer-events-none max-w-[200px]">
+                  <div className="font-bold text-gray-900 text-sm">{hoveredDept.name}</div>
+                  <div className="text-2xl font-black mt-0.5" style={{
+                    color: kaitzMap[hoveredDept.code]
+                      ? KAITZ_COLOR(kaitzMap[hoveredDept.code].kaitz)
+                      : '#6b7280'
+                  }}>
+                    {hoveredDept.kaitz.toFixed(2)}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">Índice de Kaitz (SM / mediana)</div>
+                  {hoveredDept.note && (
+                    <div className="text-xs text-amber-700 bg-amber-50 rounded px-2 py-1 mt-2">{hoveredDept.note}</div>
+                  )}
+                </div>
+              )}
+              <ComposableMap
+                projection="geoMercator"
+                projectionConfig={{ center: [-75.5, -10], scale: 1600 }}
+                style={{ width: '100%', height: 'auto' }}
+              >
+                <Geographies geography={GEO_URL}>
+                  {({ geographies }: { geographies: any[] }) =>
+                    geographies.map((geo: any) => {
+                      const code = geo.properties?.IDDPTO || geo.properties?.COD_DEPT || geo.properties?.id;
+                      const paddedCode = code ? String(code).padStart(2, '0') : null;
+                      const dept = paddedCode ? kaitzMap[paddedCode] : null;
+                      const k = dept?.kaitz ?? 0.5;
+                      const fill = dept ? KAITZ_COLOR(k) : '#e5e7eb';
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          fill={fill}
+                          stroke="white"
+                          strokeWidth={0.8}
+                          style={{
+                            default: { fill, outline: 'none', cursor: 'pointer' },
+                            hover:   { fill, opacity: 0.75, outline: 'none', cursor: 'pointer' },
+                            pressed: { fill, outline: 'none' },
+                          }}
+                          onMouseEnter={() => dept && setHoveredDept(dept)}
+                          onMouseLeave={() => setHoveredDept(null)}
+                        />
+                      );
+                    })
+                  }
+                </Geographies>
+              </ComposableMap>
+
+              {/* Color scale legend */}
+              <div className="mt-2 px-2">
+                <div className="flex justify-between text-xs text-gray-400 mb-1">
+                  <span>Kaitz bajo (SM no vinculante)</span>
+                  <span>Kaitz alto (SM vinculante)</span>
+                </div>
+                <div className="h-3 rounded-full" style={{
+                  background: 'linear-gradient(to right, #4ade80, #86efac, #fbbf24, #f97316, #ef4444, #b91c1c)'
+                }} />
+                <div className="flex justify-between text-xs text-gray-300 mt-1">
+                  <span>0.45</span><span>0.55</span><span>0.60</span><span>0.65</span><span>0.70+</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Top departments */}
+            <div className="space-y-3">
+              <div className="text-sm font-semibold text-gray-600">Departamentos más expuestos</div>
+              {[...DEPTS_KAITZ]
+                .sort((a, b) => b.kaitz - a.kaitz)
+                .slice(0, 8)
+                .map(d => (
+                  <div key={d.code} className="bg-white rounded-xl border border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center text-sm font-black text-white flex-shrink-0"
+                      style={{ background: KAITZ_COLOR(d.kaitz) }}>
+                      {(d.kaitz * 100).toFixed(0)}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-gray-800 text-sm truncate">{d.name}</div>
+                      {d.note && <div className="text-xs text-amber-600 leading-tight mt-0.5 line-clamp-1">{d.note.split(':')[0]}</div>}
+                    </div>
+                  </div>
+                ))}
+              <p className="text-xs text-gray-400 leading-relaxed pt-1">
+                Ica: trabajadores agro-exportadores con salarios mensuales bajos pese a jornada completa —
+                la agro-exportación es el sector más expuesto al SM en el Perú.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ S7: SIMULATOR ════════════════════════════════════════════════════ */}
+        <section className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">Simulador de impacto</h2>
+            <p className="text-sm text-gray-500 mt-1">¿Qué pasaría si el SM sube aún más? Basado en distribución salarial Lima 2023</p>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-8">
+            {/* Slider */}
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm text-gray-500">
+                <span>S/1,025 (2022)</span>
+                <span className="text-xl font-black text-gray-900">S/{sliderValue.toLocaleString('es-PE')}</span>
+                <span>S/1,500</span>
+              </div>
+              <input type="range" min={1025} max={1500} step={5} value={sliderValue}
+                onChange={e => setSliderValue(Number(e.target.value))}
+                className="w-full h-2 rounded-full appearance-none cursor-pointer"
+                style={{ accentColor: TERRACOTTA }} />
+              <div className="flex justify-between text-xs text-gray-300">
+                <span>SM 2022</span>
+                <span style={{ color: sliderValue >= 1130 ? TERRACOTTA : '#d1d5db', fontWeight: 600 }}>
+                  {sliderValue >= 1130 ? '▲ Vigente 2025: S/1,130' : 'Vigente 2025: S/1,130'}
+                </span>
+                <span>+46%</span>
+              </div>
+            </div>
+
+            {/* Live dashboard */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="rounded-2xl p-5 text-center space-y-1" style={{ background: risk.bg }}>
+                <div className="text-4xl font-black tabular-nums" style={{ color: TERRACOTTA }}>
+                  {fmt(animAffected)}
+                </div>
+                <div className="text-sm font-medium text-gray-600">trabajadores adicionales afectados</div>
+                <div className="text-xs text-gray-400">vs. SM 2022 · Lima Metropolitana</div>
+              </div>
+
+              <div className="rounded-2xl p-5 text-center space-y-2" style={{ background: risk.bg }}>
+                <div className="text-4xl font-black tabular-nums" style={{ color: risk.color }}>
+                  {animKaitz}%
+                </div>
+                <div className="text-sm font-medium text-gray-600">Índice de Kaitz</div>
+                {/* Circular gauge */}
+                <div className="flex justify-center">
+                  <svg width="56" height="56" viewBox="0 0 56 56">
+                    <circle cx="28" cy="28" r="22" fill="none" stroke="#f3f4f6" strokeWidth="6" />
+                    <circle cx="28" cy="28" r="22" fill="none" stroke={risk.color} strokeWidth="6"
+                      strokeDasharray={`${Math.min(sliderK / 0.95, 1) * 138} 138`}
+                      strokeDashoffset="34.5" strokeLinecap="round" transform="rotate(-90 28 28)" />
+                    <text x="28" y="32" textAnchor="middle" fontSize="11" fontWeight="800" fill={risk.color}>
+                      {(sliderK * 100).toFixed(0)}%
+                    </text>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="rounded-2xl p-5 text-center space-y-1" style={{ background: risk.bg }}>
+                <div className="text-4xl font-black tabular-nums" style={{ color: risk.color }}>
+                  {animDepts}
+                </div>
+                <div className="text-sm font-medium text-gray-600">departamentos en zona de riesgo</div>
+                <div className="text-xs font-semibold mt-1" style={{ color: risk.color }}>{risk.label}</div>
+              </div>
+            </div>
+
+            <div className="text-xs text-gray-400 leading-relaxed bg-gray-50 rounded-xl px-4 py-3">
+              Los trabajadores afectados son quienes actualmente ganan entre S/{MW_2022.toLocaleString()} y S/{sliderValue.toLocaleString()}.
+              Datos distribucionales: EPE Lima 2023. El simulador no predice el efecto causal del SM — solo mide la exposición mecánica.
+            </div>
+          </div>
+        </section>
+
+        {/* ══ S8: LIMITS / THERMOMETER ══════════════════════════════════════════ */}
+        <section className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">¿Hasta dónde llegan nuestros datos?</h2>
+            <p className="text-sm text-gray-500 mt-1">El índice de Kaitz como termómetro de riesgo</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Thermometer */}
+            <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-7 space-y-5">
+              {/* Track */}
+              <div className="relative">
+                <div className="h-8 rounded-full overflow-hidden" style={{
+                  background: 'linear-gradient(to right, #4ade80, #86efac, #fbbf24, #f97316, #ef4444, #b91c1c)',
+                }}>
+                  {/* Studied range marker */}
+                  <div className="absolute top-0 h-full bg-white/20 border-r-2 border-white"
+                    style={{ left: 0, width: `${thermPos(0.57)}%` }} />
+                </div>
+                {/* Current slider marker */}
+                <div className="absolute top-0 h-8 w-1 rounded-full bg-gray-900 shadow-lg transition-all duration-100"
+                  style={{ left: `calc(${thermPos(sliderK)}% - 2px)` }}>
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-black text-gray-900">
+                    S/{sliderValue}
+                  </div>
+                </div>
+              </div>
+
+              {/* Labels */}
+              <div className="flex justify-between text-xs text-gray-400">
+                <span>0.30</span><span>0.50</span><span>0.57</span><span>0.70</span><span>0.95</span>
+              </div>
+
+              {/* Zone labels */}
+              <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                <div className="bg-green-50 rounded-lg px-2 py-1.5 text-green-700 font-medium">Kaitz &lt; 0.57<br/>Evidencia directa</div>
+                <div className="bg-amber-50 rounded-lg px-2 py-1.5 text-amber-700 font-medium">0.57 – 0.65<br/>Sin datos propios</div>
+                <div className="bg-red-50 rounded-lg px-2 py-1.5 text-red-700 font-medium">Kaitz &gt; 0.65<br/>Territorio inexplorado</div>
+              </div>
+
+              <p className="text-xs text-gray-500 leading-relaxed">
+                El termómetro se mueve en tiempo real con el simulador. Arrastra el slider arriba para ver cómo el SM propuesto
+                se aleja de la zona de evidencia.
+              </p>
+            </div>
+
+            {/* Scenarios table */}
+            <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-100 bg-gray-50">
+                    <th className="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Escenario</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">SM</th>
+                    <th className="text-right px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Kaitz</th>
+                    <th className="text-left px-4 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Zona</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SCENARIOS.map(s => {
+                    const r = kaitzRisk(s.kaitz);
+                    return (
+                      <tr key={s.label} className="border-b border-gray-50">
+                        <td className="px-5 py-3 font-medium text-gray-800">{s.label}</td>
+                        <td className="px-4 py-3 text-right font-mono text-gray-600">S/{s.sm.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-right">
+                          <span className="font-black" style={{ color: r.color }}>{(s.kaitz * 100).toFixed(0)}%</span>
+                        </td>
+                        <td className="px-4 py-3">
+                          <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-full"
+                            style={{ background: r.bg, color: r.color }}>
+                            {r.label}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              <div className="px-5 py-3 text-xs text-gray-400">
+                Kaitz = SM / mediana salarial formal nacional (denominador: S/1,863 en 2023).
+                Los estudios internacionales sugieren que aumentos por encima de Kaitz 0.65 entran en zona de riesgo de desempleo.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ S9: SECONDARY FINDINGS ════════════════════════════════════════════ */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card A: Compression */}
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-7 space-y-4">
+            <div className="text-xs font-semibold tracking-widest uppercase text-gray-400">Hallazgo secundario A</div>
+            <h3 className="text-lg font-bold text-gray-900">Compresión salarial</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              El aumento del SM comprime el percentil 10–50 de la distribución salarial formal en 3–7 puntos porcentuales
+              (DiD en log-salario, zona de compresión vs. cola superior).
+            </p>
+            <div className="bg-gray-50 rounded-xl px-4 py-3 space-y-2 text-xs text-gray-600 border border-gray-100">
+              <div className="font-semibold text-gray-700">Descomposición mecánica vs. genuina (Evento B)</div>
+              <div className="flex justify-between">
+                <span>Mechanical (composición de nuevos entrantes)</span>
+                <span className="font-bold">41–92%</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Genuine (reordenamiento salarial real)</span>
+                <span className="font-bold" style={{ color: TEAL }}>8–59%</span>
+              </div>
+            </div>
+            <p className="text-xs text-gray-400">
+              La mayor parte de la compresión observada es mecánica: refleja cambios en quiénes ocupan la zona del SM, no alzas reales para los mismos trabajadores.
+            </p>
+          </div>
+
+          {/* Card B: Heterogeneity */}
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-7 space-y-4">
+            <div className="text-xs font-semibold tracking-widest uppercase text-gray-400">Hallazgo secundario B</div>
+            <h3 className="text-lg font-bold text-gray-900">¿A quién afecta más?</h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: TEAL }} />
+                <div>
+                  <span className="font-semibold text-gray-800">Sector privado absorbe mejor (0.83 vs. 0.75)</span>
+                  <p className="text-xs text-gray-500 mt-0.5">Consistente con ajuste de mercado, no con cumplimiento por inspección.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: TERRACOTTA }} />
+                <div>
+                  <span className="font-semibold text-gray-800">Sin gradiente por edad, sexo ni etnicidad dentro del empleo formal</span>
+                  <p className="text-xs text-gray-500 mt-0.5">Los ratios son similares entre hombres y mujeres, jóvenes y adultos.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#f59e0b' }} />
+                <div>
+                  <span className="font-semibold text-gray-800">La brecha étnica opera por ACCESO, no por salarios</span>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    Trabajadores indígenas: 5.7% de formalidad vs. 20.7% para hablantes de castellano. Una vez dentro del empleo formal, los salarios y la exposición al SM son similares.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ S10: METHODOLOGY (accordion) ════════════════════════════════════ */}
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">Metodología y verificaciones</h2>
+          {[
+            {
+              id: 'metodo',
+              title: 'A. Estimador distribucional pre-post',
+              content: `Usamos un estimador distribucional pre-post (no el método Cengiz et al. directamente, sino una adaptación para SM nacional). Comparamos la distribución de salarios formales antes y después de cada aumento en bins de S/25, corrigiendo por tendencia de fondo usando la cola superior de la distribución (> 2×SM_nuevo).
+
+La "masa desaparecida" es la suma de deltas negativos en la zona afectada [0.85×SM_ant, SM_nuevo). La "masa en exceso" es la suma de deltas positivos en la zona de exceso [SM_nuevo, SM_nuevo + S/250). El ratio R = exceso / desaparecido mide qué fracción de los desplazados reaparece.
+
+El precedente metodológico más cercano es Harasztosi & Lindner (2016) para Hungría, que también tiene SM nacional único. A diferencia del estimador Cengiz, no requiere grupo de control.`,
+            },
+            {
+              id: 'empleo',
+              title: 'B. ¿Por qué no podemos medir el efecto sobre el empleo?',
+              content: `Intentamos tres métodos, todos fallaron:
+
+1. DiD con variación departamental: falla por violación de tendencias paralelas (test de pre-tendencias: p=0.007 para 2018, p=0.017 para 2022).
+
+2. Variables instrumentales (Kaitz departamental): instrumento débil (F=1.5/2.6/0.1 — muy por debajo del umbral F>10).
+
+3. Panel longitudinal ENAHO 978: 76% de desgaste, con desgaste diferencial entre tratamiento y control.
+
+La razón estructural: con SM nacional único y 25 departamentos, no existe variación exógena para identificar efectos sobre empleo. No es una falla de datos — es una restricción institucional.`,
+            },
+            {
+              id: 'autoempleo',
+              title: 'C. Evidencia de autoempleo',
+              content: `Para los trabajadores desaparecidos del empleo formal, calculamos la composición del empleo en la zona afectada combinando trabajadores dependientes (p524a1) y autoempleados (p530a, ingreso neto mensual de negocio).
+
+Evento A (2015→2017): autoempleo en zona afectada 38.0% → 57.1% (+19.1pp). Recuento absoluto: +8.7%.
+Evento B (2017→2019): autoempleo 35.5% → 55.5% (+20.0pp). Recuento absoluto: +5.1%.
+Evento C (2021→2023): autoempleo 33.1% → 47.8% (+14.7pp). Recuento absoluto: −3.5% (re-formalización post-COVID).
+
+Importante: esto no prueba que los trabajadores formales TRANSITARON al autoempleo — el diseño transversal no rastrea individuos. Es evidencia indirecta de que el autoempleo absorbió la masa desaparecida.`,
+            },
+            {
+              id: 'robustez',
+              title: 'D. Verificaciones y robustez',
+              content: `Test de falsificación: en la población del Evento B, ratios en umbrales ficticios S/1,100→1,200 y S/1,400→1,500 producen R=0.114 y R=0.013 — 7× menores que en el umbral real. El patrón de bunching es específico al SM.
+
+Bootstrap 1,000 repeticiones: IC 95% son [0.567, 0.896] (A), [0.716, 1.016] (B), [0.716, 0.960] (C).
+
+Replicación EPE Lima: dataset independiente, ventanas trimestrales de 6 meses, definición de formalidad diferente (afiliación EsSalud vs. ENAHO). Produce ratios 1.031 / 0.733 / 0.885 — consistentes con ENAHO.
+
+Alineación de bins: requisito crítico. Los bordes de los bins deben coincidir con el valor del SM. Con bins de S/50, el SM de S/930 cae en el bin [900, 950) con centro 925 < 930, generando sesgo a la baja de 75%. Todos los resultados reportados usan S/25 (alineado con los tres SM).`,
+            },
+            {
+              id: 'datos',
+              title: 'E. Datos y muestra',
+              content: `ENAHO 2015–2023 (excepto 2020), Módulo 500 (Empleo e Ingresos), INEI.
+Muestra: trabajadores formales dependientes (ocu500=1, p507∈{3,4,6} o cat07p500a1=2, ocupinf=2) con salario p524a1 > 0.
+Peso muestral: fac500a. N = 8,946–11,090 por año.
+
+EPE Lima Metropolitana: panel trimestral, ~2,600 obs formales dependientes/trimestre.
+Formalidad EPE: afiliación a EsSalud (p222==1) — definición más estrecha que ENAHO.
+
+Autoempleo: p530a (ingreso neto mensual de negocio, pregunta 530a del Módulo 500).
+Kaitz departamental: MW / mediana salarial formal ponderada por fac500a, por departamento.`,
+            },
+          ].map(sec => (
+            <div key={sec.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+              <button
+                className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
+                onClick={() => setOpenAccordion(openAccordion === sec.id ? null : sec.id)}
+              >
+                <span className="font-semibold text-gray-800 text-sm">{sec.title}</span>
+                <span className="text-gray-400 text-lg leading-none ml-4 flex-shrink-0">
+                  {openAccordion === sec.id ? '−' : '+'}
+                </span>
+              </button>
+              {openAccordion === sec.id && (
+                <div className="px-6 pb-5 border-t border-gray-50">
+                  <pre className="text-xs text-gray-600 leading-relaxed whitespace-pre-wrap font-sans mt-4">
+                    {sec.content}
+                  </pre>
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+
+        {/* Footer */}
+        <footer className="text-center space-y-3 pt-8 border-t border-gray-100">
+          <p className="text-xs text-gray-400">
+            Basado en: &ldquo;Missing Mass and Minimum Wages: Distributional Effects of Three Minimum Wage Increases in Peru&rdquo;
+            · Carlos César Chávez Padilla, University of Chicago, 2026
+          </p>
+          <p className="text-xs text-gray-300">
+            ENAHO 2015–2023 · EPE Lima · Estimador distribucional pre-post (adaptación de Harasztosi &amp; Lindner 2016)
+          </p>
+        </footer>
 
       </main>
     </div>

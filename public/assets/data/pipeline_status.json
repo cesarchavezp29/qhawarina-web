@@ -1,12 +1,10 @@
 {
   "date": "2026-03-18",
+  "run_time": "2026-03-18T15:39:59.310632",
   "supermarket": {
-    "passed": false,
-    "errors": [
-      "No snapshot for today (2026-03-18) — scraper may have failed or not yet run"
-    ]
+    "passed": true,
+    "errors": []
   },
-  "run_time": "2026-03-18T19:24:17.402878",
   "rss": {
     "passed": true,
     "errors": []
