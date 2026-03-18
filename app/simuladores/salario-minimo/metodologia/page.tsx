@@ -217,14 +217,14 @@ export default function MetodologiaPage() {
               label: 'Paper completo',
               desc: 'Working paper con todos los resultados y apéndices',
               icon: '📄',
-              href: '#',
+              href: 'https://github.com/cesarchavezp29/qhawarina/blob/master/paper/mw_paper.pdf',
               color: TERRACOTTA,
             },
             {
               label: 'Código y datos',
               desc: 'Scripts de Python y R. Datos ENAHO vía INEI.',
               icon: '⌨',
-              href: '#',
+              href: 'https://github.com/cesarchavezp29/qhawarina/tree/master/scripts',
               color: '#6b7280',
             },
             {
@@ -238,6 +238,8 @@ export default function MetodologiaPage() {
             <a
               key={item.label}
               href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className="rounded-2xl p-5 space-y-2 transition-all hover:-translate-y-0.5 block"
               style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}
             >
