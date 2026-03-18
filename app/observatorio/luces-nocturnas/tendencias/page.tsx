@@ -43,7 +43,7 @@ export default function TendenciasPage() {
     for (const dept of Object.values(monthlyData)) {
       for (const k of Object.keys(dept)) allKeys.add(k);
     }
-    return Array.from(allKeys).sort().slice(-24);
+    return Array.from(allKeys).sort();
   }, [monthlyData]);
 
   // Latest month label
@@ -120,7 +120,7 @@ export default function TendenciasPage() {
           Tendencias de luminosidad nocturna por departamento. Selecciona hasta 4 para comparar.
           {latestMonth && era === 'monthly' && (
             <span className="ml-2 text-xs font-medium px-2 py-0.5 rounded-full" style={{ background: '#f0fdf4', color: '#166534' }}>
-              Datos hasta {latestMonth}
+              2012-01 → {latestMonth}
             </span>
           )}
         </p>
@@ -131,7 +131,7 @@ export default function TendenciasPage() {
         <div className="flex flex-wrap gap-3 items-center justify-between">
           <div className="flex gap-2 flex-wrap">
             {([
-              { key: 'monthly', label: 'Mensual VIIRS (últ. 24 meses)' },
+              { key: 'monthly', label: 'Mensual VIIRS 2012–2026' },
               { key: 'viirs',   label: 'Anual 2014–2024' },
               { key: 'all',     label: 'Serie 1992–2024' },
             ] as { key: Era; label: string }[]).map(opt => (
@@ -244,7 +244,7 @@ export default function TendenciasPage() {
           )}
           {era === 'monthly' && latestMonth && (
             <p className="text-xs text-stone-400 mt-3">
-              Últimos 24 meses de datos VIIRS-DNB mensual · Último mes disponible: <strong>{latestMonth}</strong>
+              VIIRS-DNB mensual 2012-01 → <strong>{latestMonth}</strong> · {monthKeys.length} meses
             </p>
           )}
         </div>
