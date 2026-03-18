@@ -10,8 +10,8 @@ export default function SalarioMinimoLayout({ children }: { children: React.Reac
       position: 'relative',
     }}>
       <Watermark />
-      <SectionNav />
       {children}
+      <SectionNav />
     </div>
   );
 }

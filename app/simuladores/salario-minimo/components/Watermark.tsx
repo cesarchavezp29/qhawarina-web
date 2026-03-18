@@ -7,7 +7,7 @@ export default function Watermark() {
       <div style={{
         position: 'absolute', top: '-50%', left: '-50%', width: '200%', height: '200%',
         transform: 'rotate(-30deg)', display: 'flex', flexWrap: 'wrap', gap: '80px',
-        opacity: 0.018, fontSize: '24px', fontWeight: 700, color: '#1a1a1a',
+        opacity: 0.035, fontSize: '24px', fontWeight: 700, color: '#1a1a1a',
         letterSpacing: '8px', userSelect: 'none', alignContent: 'flex-start',
       }}>
         {Array.from({ length: 200 }, (_, i) => (

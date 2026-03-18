@@ -25,11 +25,12 @@ export default function SectionNav() {
 
   return (
     <nav style={{
-      position: 'sticky', top: 0, zIndex: 50,
+      position: 'sticky', bottom: 0, zIndex: 50,
       background: CARD_BG,
-      borderBottom: `1px solid ${CARD_BORDER}`,
+      borderTop: `1px solid ${CARD_BORDER}`,
       backdropFilter: 'blur(8px)',
       WebkitBackdropFilter: 'blur(8px)',
+      boxShadow: '0 -2px 12px rgba(0,0,0,0.06)',
     }}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 overflow-x-auto">
         <div className="flex gap-1.5 py-2.5 min-w-max">

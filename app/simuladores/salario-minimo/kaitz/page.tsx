@@ -15,7 +15,7 @@ export default function KaitzPage() {
   const [hoveredDept, setHoveredDept] = useState<DeptKaitz | null>(null);
 
   return (
-    <main className="relative max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16" style={{ zIndex: 1 }}>
+    <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16" style={{ zIndex: 1 }}>
 
       {/* Header */}
       <section className="space-y-3 pt-2">
@@ -262,6 +262,6 @@ export default function KaitzPage() {
       </div>
 
       <SourceFooter />
-    </main>
+    </div>
   );
 }

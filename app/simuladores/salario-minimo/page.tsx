@@ -100,7 +100,7 @@ export default function SalarioMinimoLanding() {
   }, []);
 
   return (
-    <main className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-20" style={{ zIndex: 1 }}>
+    <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-20" style={{ zIndex: 1 }}>
 
       {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <section className="text-center space-y-8 pt-4">
@@ -277,6 +277,6 @@ export default function SalarioMinimoLanding() {
       </div>
 
       <SourceFooter />
-    </main>
+    </div>
   );
 }
