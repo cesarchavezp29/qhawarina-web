@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip,
-  ReferenceLine, ResponsiveContainer, Legend,
+  ReferenceLine, ResponsiveContainer,
 } from 'recharts';
 import FadeSection from '../components/FadeSection';
 import SourceFooter from '../components/SourceFooter';
@@ -17,29 +17,78 @@ const PALETTE = [
   TEAL, TERRACOTTA, '#6366f1', '#f59e0b', '#ec4899', '#14b8a6', '#a855f7', '#84cc16',
 ];
 
-const VIIRS_START = 2014;
+type Era = 'monthly' | 'viirs' | 'all';
 
 export default function TendenciasPage() {
-  const [era, setEra] = useState<'viirs' | 'all'>('viirs');
-  const [selected, setSelected] = useState<string[]>(['15','04','08']);
+  const [era, setEra] = useState<Era>('monthly');
+  const [selected, setSelected] = useState<string[]>(['15', '04', '08']);
   const [sortBy, setSortBy] = useState<'growth5yr' | 'growth30yr'>('growth5yr');
+  const [monthlyData, setMonthlyData] = useState<Record<string, Record<string, number>> | null>(null);
+  const [monthlyLoading, setMonthlyLoading] = useState(false);
 
-  const years = era === 'viirs'
-    ? Array.from({ length: 11 }, (_, i) => 2014 + i)
-    : Array.from({ length: 33 }, (_, i) => 1992 + i);
+  // Fetch monthly JSON on first switch to monthly view
+  useEffect(() => {
+    if (era !== 'monthly' || monthlyData) return;
+    setMonthlyLoading(true);
+    fetch('/assets/data/ntl_dept_monthly.json')
+      .then(r => r.json())
+      .then((d: Record<string, Record<string, number>>) => { setMonthlyData(d); setMonthlyLoading(false); })
+      .catch(() => setMonthlyLoading(false));
+  }, [era, monthlyData]);
+
+  // Last 24 months available in monthly data
+  const monthKeys = useMemo(() => {
+    if (!monthlyData) return [];
+    const allKeys = new Set<string>();
+    for (const dept of Object.values(monthlyData)) {
+      for (const k of Object.keys(dept)) allKeys.add(k);
+    }
+    return Array.from(allKeys).sort().slice(-24);
+  }, [monthlyData]);
+
+  // Latest month label
+  const latestMonth = monthKeys[monthKeys.length - 1] ?? null;
+
+  // Acceleration: compare last 3 vs prev 3 months
+  const acceleration = useMemo(() => {
+    if (!monthlyData || monthKeys.length < 6) return {};
+    const last3 = monthKeys.slice(-3);
+    const prev3 = monthKeys.slice(-6, -3);
+    const out: Record<string, { last3: number; prev3: number; accel: number }> = {};
+    for (const code of Object.keys(DEPT_NAMES)) {
+      const s = monthlyData[code] ?? {};
+      const avg3  = last3.reduce((a, k) => a + (s[k] ?? 0), 0) / 3;
+      const avgP  = prev3.reduce((a, k) => a + (s[k] ?? 0), 0) / 3;
+      out[code] = { last3: avg3, prev3: avgP, accel: avgP > 0 ? Math.round((avg3 / avgP - 1) * 100) : 0 };
+    }
+    return out;
+  }, [monthlyData, monthKeys]);
+
+  const years = useMemo(() => {
+    if (era === 'viirs') return Array.from({ length: 11 }, (_, i) => 2014 + i);
+    return Array.from({ length: 33 }, (_, i) => 1992 + i);
+  }, [era]);
 
   // Build chart data
   const chartData = useMemo(() => {
+    if (era === 'monthly') {
+      if (!monthlyData || monthKeys.length === 0) return [];
+      return monthKeys.map(key => {
+        const row: Record<string, number | string> = { year: key };
+        for (const code of selected) {
+          row[code] = monthlyData[code]?.[key] ?? 0;
+        }
+        return row;
+      });
+    }
     return years.map(year => {
       const row: Record<string, number | string> = { year: String(year) };
       for (const code of selected) {
         row[code] = DEPT_NTL[code]?.[String(year)] ?? 0;
       }
-      // national total
-      row['total'] = Object.values(DEPT_NTL).reduce((sum, s) => sum + (s[String(year)] ?? 0), 0);
       return row;
     });
-  }, [years, selected]);
+  }, [era, years, selected, monthlyData, monthKeys]);
 
   // Growth ranking
   const ranked = useMemo(() => {
@@ -56,6 +105,8 @@ export default function TendenciasPage() {
     );
   };
 
+  const xInterval = era === 'monthly' ? 3 : era === 'viirs' ? 1 : 3;
+
   return (
     <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16" style={{ zIndex: 1 }}>
 
@@ -67,27 +118,36 @@ export default function TendenciasPage() {
         </h1>
         <p className="text-stone-500 max-w-2xl">
           Tendencias de luminosidad nocturna por departamento. Selecciona hasta 4 para comparar.
+          {latestMonth && era === 'monthly' && (
+            <span className="ml-2 text-xs font-medium px-2 py-0.5 rounded-full" style={{ background: '#f0fdf4', color: '#166534' }}>
+              Datos hasta {latestMonth}
+            </span>
+          )}
         </p>
       </section>
 
       {/* Line chart */}
       <FadeSection className="space-y-5">
         <div className="flex flex-wrap gap-3 items-center justify-between">
-          <div className="flex gap-2">
-            <button
-              onClick={() => setEra('viirs')}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors"
-              style={{ background: era === 'viirs' ? TEAL : CARD_BG, color: era === 'viirs' ? 'white' : '#78716c', border: `1px solid ${CARD_BORDER}` }}
-            >
-              VIIRS 2014–2024
-            </button>
-            <button
-              onClick={() => setEra('all')}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors"
-              style={{ background: era === 'all' ? TEAL : CARD_BG, color: era === 'all' ? 'white' : '#78716c', border: `1px solid ${CARD_BORDER}` }}
-            >
-              Serie completa 1992–2024
-            </button>
+          <div className="flex gap-2 flex-wrap">
+            {([
+              { key: 'monthly', label: 'Mensual VIIRS (últ. 24 meses)' },
+              { key: 'viirs',   label: 'Anual 2014–2024' },
+              { key: 'all',     label: 'Serie 1992–2024' },
+            ] as { key: Era; label: string }[]).map(opt => (
+              <button
+                key={opt.key}
+                onClick={() => setEra(opt.key)}
+                className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors"
+                style={{
+                  background: era === opt.key ? TEAL : CARD_BG,
+                  color: era === opt.key ? 'white' : '#78716c',
+                  border: `1px solid ${CARD_BORDER}`,
+                }}
+              >
+                {opt.label}
+              </button>
+            ))}
           </div>
           {era === 'all' && (
             <span className="text-xs px-2 py-1 rounded-full font-medium" style={{ background: '#fffbeb', color: '#92400e' }}>
@@ -122,61 +182,126 @@ export default function TendenciasPage() {
           className="rounded-2xl p-4 sm:p-6"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
         >
-          <ResponsiveContainer width="100%" height={360}>
-            <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-              <XAxis
-                dataKey="year"
-                tick={{ fontSize: 10, fill: '#a8a29e' }}
-                tickLine={false}
-                interval={era === 'viirs' ? 1 : 3}
-              />
-              <YAxis
-                tick={{ fontSize: 10, fill: '#a8a29e' }}
-                tickLine={false}
-                axisLine={false}
-                tickFormatter={v => v >= 1000000 ? `${(v/1000000).toFixed(1)}M` : v >= 1000 ? `${(v/1000).toFixed(0)}k` : String(v)}
-              />
-              <Tooltip
-                contentStyle={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, borderRadius: 12, fontSize: 12 }}
-                labelFormatter={(label) => `Año ${label}`}
-              />
-              {era === 'all' && (
-                <ReferenceLine x="2013" stroke={TERRACOTTA} strokeDasharray="4 2" label={{ value: '⚠ sensor', fontSize: 9, fill: TERRACOTTA }} />
-              )}
-              {TIMELINE_EVENTS.filter(e => e.year >= (era === 'viirs' ? 2014 : 1992)).map(ev => (
-                <ReferenceLine key={ev.year} x={String(ev.year)} stroke="#e7e5e4" strokeDasharray="2 2"/>
-              ))}
-              {selected.map((code, i) => (
-                <Line
-                  key={code}
-                  type="monotone"
-                  dataKey={code}
-                  stroke={PALETTE[i]}
-                  strokeWidth={2}
-                  dot={false}
-                  name={code}
+          {monthlyLoading ? (
+            <div className="flex items-center justify-center h-64 text-stone-400 text-sm">
+              Cargando datos mensuales…
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height={360}>
+              <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+                <XAxis
+                  dataKey="year"
+                  tick={{ fontSize: 10, fill: '#a8a29e' }}
+                  tickLine={false}
+                  interval={xInterval}
                 />
-              ))}
-            </LineChart>
-          </ResponsiveContainer>
+                <YAxis
+                  tick={{ fontSize: 10, fill: '#a8a29e' }}
+                  tickLine={false}
+                  axisLine={false}
+                  tickFormatter={v => v >= 1000000 ? `${(v/1000000).toFixed(1)}M` : v >= 1000 ? `${(v/1000).toFixed(0)}k` : String(v)}
+                />
+                <Tooltip
+                  contentStyle={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, borderRadius: 12, fontSize: 12 }}
+                  labelFormatter={(label) => era === 'monthly' ? `${label}` : `Año ${label}`}
+                />
+                {era === 'all' && (
+                  <ReferenceLine x="2013" stroke={TERRACOTTA} strokeDasharray="4 2" label={{ value: '⚠ sensor', fontSize: 9, fill: TERRACOTTA }} />
+                )}
+                {era !== 'monthly' && TIMELINE_EVENTS
+                  .filter(e => e.year >= (era === 'viirs' ? 2014 : 1992))
+                  .map(ev => (
+                    <ReferenceLine key={ev.year} x={String(ev.year)} stroke="#e7e5e4" strokeDasharray="2 2"/>
+                  ))
+                }
+                {era === 'monthly' && (
+                  <ReferenceLine x="2020-04" stroke="#e7e5e4" strokeDasharray="2 2"/>
+                )}
+                {selected.map((code, i) => (
+                  <Line
+                    key={code}
+                    type="monotone"
+                    dataKey={code}
+                    stroke={PALETTE[i]}
+                    strokeWidth={era === 'monthly' ? 1.5 : 2}
+                    dot={false}
+                    name={DEPT_NAMES[code] ?? code}
+                  />
+                ))}
+              </LineChart>
+            </ResponsiveContainer>
+          )}
 
-          {/* Event annotations */}
-          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-            {TIMELINE_EVENTS.filter(e => e.year >= (era === 'viirs' ? 2014 : 1992)).map(ev => (
-              <span key={ev.year} className="text-xs text-stone-400">
-                <strong>{ev.year}:</strong> {ev.label}
-              </span>
-            ))}
-          </div>
+          {/* Annotations */}
+          {era !== 'monthly' && (
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+              {TIMELINE_EVENTS.filter(e => e.year >= (era === 'viirs' ? 2014 : 1992)).map(ev => (
+                <span key={ev.year} className="text-xs text-stone-400">
+                  <strong>{ev.year}:</strong> {ev.label}
+                </span>
+              ))}
+            </div>
+          )}
+          {era === 'monthly' && latestMonth && (
+            <p className="text-xs text-stone-400 mt-3">
+              Últimos 24 meses de datos VIIRS-DNB mensual · Último mes disponible: <strong>{latestMonth}</strong>
+            </p>
+          )}
         </div>
       </FadeSection>
+
+      {/* Acceleration panel (monthly only) */}
+      {era === 'monthly' && monthlyData && Object.keys(acceleration).length > 0 && (
+        <FadeSection className="space-y-4">
+          <div>
+            <h2 className="text-xl font-bold text-stone-900">Aceleración reciente (últimos 3 vs. 3 anteriores)</h2>
+            <p className="text-sm text-stone-500 mt-1">¿Qué departamentos están acelerando o desacelerando en los meses más recientes?</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Top accelerating */}
+            <div className="rounded-2xl p-5 space-y-3" style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}>
+              <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Acelerando</div>
+              {Object.entries(acceleration)
+                .sort((a, b) => b[1].accel - a[1].accel)
+                .slice(0, 5)
+                .map(([code, d]) => (
+                  <div key={code} className="flex items-center justify-between">
+                    <span className="text-sm text-stone-700">{DEPT_NAMES[code]}</span>
+                    <span className="text-sm font-bold tabular-nums" style={{ color: TEAL }}>
+                      {d.accel > 0 ? '+' : ''}{d.accel}%
+                    </span>
+                  </div>
+                ))}
+            </div>
+            {/* Top decelerating */}
+            <div className="rounded-2xl p-5 space-y-3" style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}>
+              <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Desacelerando</div>
+              {Object.entries(acceleration)
+                .sort((a, b) => a[1].accel - b[1].accel)
+                .slice(0, 5)
+                .map(([code, d]) => (
+                  <div key={code} className="flex items-center justify-between">
+                    <span className="text-sm text-stone-700">{DEPT_NAMES[code]}</span>
+                    <span className="text-sm font-bold tabular-nums" style={{ color: TERRACOTTA }}>
+                      {d.accel > 0 ? '+' : ''}{d.accel}%
+                    </span>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <p className="text-xs text-stone-400">
+            Aceleración = (promedio NTL últimos 3 meses) / (promedio NTL 3 meses anteriores) − 1.
+            Solo indica cambio en luminosidad, no en actividad económica directamente.
+          </p>
+        </FadeSection>
+      )}
 
       <div style={{ height: 1, background: 'rgba(0,0,0,0.06)' }}/>
 
       {/* Growth ranking */}
       <FadeSection className="space-y-5">
         <div className="flex flex-wrap gap-3 items-center justify-between">
-          <h2 className="text-xl font-bold text-stone-900">Ranking de crecimiento</h2>
+          <h2 className="text-xl font-bold text-stone-900">Ranking de crecimiento anual</h2>
           <div className="flex gap-2">
             <button
               onClick={() => setSortBy('growth5yr')}
@@ -201,8 +326,8 @@ export default function TendenciasPage() {
         >
           {ranked.map((d, i) => {
             const val = d[sortBy] ?? 0;
-            const maxVal = ranked[0]?.[sortBy] ?? 1;
-            const barW = Math.max(2, Math.round(Math.abs(val) / Math.abs(maxVal ?? 1) * 100));
+            const maxVal = Math.abs(ranked[0]?.[sortBy] ?? 1);
+            const barW = Math.max(2, Math.round(Math.abs(val) / maxVal * 100));
             return (
               <div
                 key={d.code}
@@ -243,7 +368,7 @@ export default function TendenciasPage() {
           },
           {
             title: 'COVID-19 visible desde el espacio',
-            body: 'En 2020, todos los departamentos muestran una caída o estancamiento en NTL. Los departamentos más urbanos (Lima, Arequipa, Piura) registraron la caída más pronunciada en abril-mayo 2020.',
+            body: 'En 2020, todos los departamentos muestran caída o estancamiento en NTL. Los datos mensuales VIIRS revelan el impacto exacto mes a mes — visible claramente en el tab "Mensual".',
             color: TERRACOTTA,
           },
         ].map(box => (
