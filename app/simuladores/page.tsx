@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import ImpactCard from '../components/ImpactCard';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-  ResponsiveContainer, Cell, LineChart, Line, ReferenceLine,
+  ComposedChart, Scatter, Line, XAxis, YAxis, CartesianGrid,
+  Tooltip, ReferenceLine, ResponsiveContainer, Label,
 } from 'recharts';
 import {
   CHART_COLORS,
@@ -14,94 +13,59 @@ import {
   axisTickStyle,
 } from '../lib/chartTheme';
 
-// ── Types ──────────────────────────────────────────────────────────────────
-interface GDPData  { nowcast: { value: number; target_period: string } }
-interface InflData { nowcast: { value: number; target_period: string }; backtest_metrics: { rmse: number } }
-interface PovData  {
-  metadata: { target_year: number };
-  departments: Array<{ code: string; name: string; poverty_rate_2025_nowcast: number; poverty_rate_2024: number; change_pp: number }>;
-}
+// ── Audited elasticities (full_audit_output.txt, 2026-03-19) ───────────────
+// GDP→Poverty: OLS ENAHO 2005-2024 excl 2020-2021, N=18, R²=0.669, t=-5.69
+// Rate→GDP:    Cholesky VAR(1) T=85 FWL, CI includes zero at all h=0..8
+// FX→CPI:      LP OLS h=1 HAC, significant
+const BETA_POV   = -0.656;   // pp poverty per 1pp GDP growth
+const CI90_LO    = -0.847;   // 90% CI lower bound on β
+const CI90_HI    = -0.466;   // 90% CI upper bound on β
+const ALPHA_POV  =  0.888;   // intercept
+const BETA_RATE  = -0.195;   // pp GDP per 100bp rate hike (Cholesky VAR)
+const CI_RATE_LO = -0.698;   // 90% bootstrap CI low
+const CI_RATE_HI =  0.271;   // 90% bootstrap CI high
+const BETA_FX    =  0.237;   // pp CPI per 10% FX depreciation (LP h=1)
 
-interface Shock { id: string; type: string; magnitude: number }
+// Regression data: 18 years used in poverty elasticity OLS
+const SCATTER_DATA = [
+  { year: 2005, gdp:  6.282, dpov: -2.700 },
+  { year: 2006, gdp:  7.555, dpov: -5.000 },
+  { year: 2007, gdp:  8.470, dpov: -6.300 },
+  { year: 2008, gdp:  9.185, dpov: -5.000 },
+  { year: 2009, gdp:  1.123, dpov: -3.400 },
+  { year: 2010, gdp:  8.283, dpov: -4.500 },
+  { year: 2011, gdp:  6.380, dpov: -3.500 },
+  { year: 2012, gdp:  6.145, dpov: -2.300 },
+  { year: 2013, gdp:  5.827, dpov: -1.700 },
+  { year: 2014, gdp:  2.453, dpov: -0.400 },
+  { year: 2015, gdp:  3.223, dpov: -1.700 },
+  { year: 2016, gdp:  3.975, dpov: -1.100 },
+  { year: 2017, gdp:  2.515, dpov:  0.000 },
+  { year: 2018, gdp:  3.957, dpov: -1.600 },
+  { year: 2019, gdp:  2.250, dpov: -0.600 },
+  { year: 2022, gdp:  2.857, dpov:  1.500 },
+  { year: 2023, gdp: -0.345, dpov:  1.500 },
+  { year: 2024, gdp:  3.473, dpov: -2.100 },
+];
 
-const SHOCK_TYPES = {
-  commodity:     { name: 'Commodities',   name_en: 'Commodities',    unit: '% cambio', default: -10, min: -50, max: 50 },
-  fx:            { name: 'Tipo de Cambio', name_en: 'Exchange Rate',  unit: '% deprec.', default: 10, min: -20, max: 30 },
-  interest_rate: { name: 'Tasa BCRP',     name_en: 'BCRP Rate',      unit: 'bp',        default: 50, min: -200, max: 200 },
-  china:         { name: 'PIB China',     name_en: 'China GDP',       unit: 'pp',        default: -1, min: -5, max: 3 },
-};
+// Regression + CI lines (x from -1.5 to 10.5)
+const X_RANGE = Array.from({ length: 49 }, (_, i) => -1.5 + i * 0.25);
+const REG_LINE  = X_RANGE.map(x => ({ x, central: ALPHA_POV + BETA_POV  * x }));
+const CI_UPPER  = X_RANGE.map(x => ({ x, upper:   ALPHA_POV + CI90_HI   * x }));
+const CI_LOWER  = X_RANGE.map(x => ({ x, lower:   ALPHA_POV + CI90_LO   * x }));
 
-// Semi-elasticidades estimadas con VAR bivariado y Proyecciones Locales (Jordà 2005)
-// Datos BCRP trimestrales 2004-2025, n=85 observaciones
-// commodity → GDP: VAR bivariate (Qhawarina) +0.110pp per 10%
-// commodity → CPI: VAR 5-var OLS (Qhawarina) +0.008pp per 10%
-// fx → GDP: benchmark BCRP −0.12pp per 10% depreciación
-// fx → CPI: VAR bivariate (Qhawarina) +0.105pp per 10% depreciación
-// rate → GDP: benchmark BCRP DSGE −0.35pp per 100bp
-// rate → CPI: benchmark BCRP −0.15pp per 100bp
-const ELASTICITIES = {
-  commodity_gdp: 0.110,   // VAR bivariate, Qhawarina
-  commodity_cpi: 0.008,   // VAR 5-var OLS, Qhawarina
-  fx_gdp:       -0.12,    // BCRP benchmark
-  fx_cpi:        0.243,   // BVAR Minnesota prior (Qhawarina) — controls for commodity↔FX correlation
-  rate_gdp:     -0.35,    // BCRP DSGE benchmark
-  rate_cpi:     -0.15,    // BCRP benchmark
-  china_gdp:    -1.50,    // World Bank / IMF (trade channel)
-  china_cpi:    -0.80,
-};
-
-const CATEGORIES: Record<string, string> = {
-  all: 'Todos los productos', food: 'Alimentos',
-  arroz_cereales: 'Arroz y Cereales', carnes: 'Carnes',
-  lacteos: 'Lácteos y Huevos', frutas: 'Frutas', verduras: 'Verduras',
-  limpieza: 'Limpieza', cuidado_personal: 'Cuidado Personal',
-};
-
-const CATEGORIES_EN: Record<string, string> = {
-  all: 'All products', food: 'Food',
-  arroz_cereales: 'Rice & Cereals', carnes: 'Meat',
-  lacteos: 'Dairy & Eggs', frutas: 'Fruits', verduras: 'Vegetables',
-  limpieza: 'Cleaning', cuidado_personal: 'Personal Care',
-};
-
-const CATEGORY_MULT: Record<string, number> = {
-  all: 1.0, food: 1.15, arroz_cereales: 0.9, carnes: 1.2,
-  lacteos: 0.95, frutas: 1.3, verduras: 1.4, limpieza: 0.8, cuidado_personal: 0.75,
-};
-
-const DEPT_POP: Record<string, number> = {
-  Lima: 10500000, Ayacucho: 700000, Cusco: 1300000, Arequipa: 1400000,
-  Piura: 2000000, Huancavelica: 500000, Cajamarca: 1500000,
-  'La Libertad': 1900000, Puno: 1400000, Junín: 1400000, Ancash: 1200000,
-  Lambayeque: 1300000, Loreto: 1000000, 'San Martín': 900000, Ica: 900000,
-  Huánuco: 900000, Ucayali: 600000, Apurímac: 500000, Pasco: 300000,
-  Amazonas: 400000, Tumbes: 250000, Tacna: 350000, Moquegua: 200000,
-  'Madre de Dios': 150000, Callao: 1100000,
-};
-
-// ── Main component ─────────────────────────────────────────────────────────
 export default function SimuladoresPage() {
   const isEn = useLocale() === 'en';
-  const [tab, setTab] = useState<'pbi' | 'inflacion' | 'pobreza'>('pbi');
-  const [gdpData,  setGdpData]  = useState<GDPData | null>(null);
-  const [inflData, setInflData] = useState<InflData | null>(null);
-  const [povData,  setPovData]  = useState<PovData  | null>(null);
-
-  useEffect(() => {
-    const base = '/assets/data';
-    fetch(`${base}/gdp_nowcast.json`).then(r => r.json()).then(setGdpData).catch(() => {});
-    fetch(`${base}/inflation_nowcast.json`).then(r => r.json()).then(setInflData).catch(() => {});
-    fetch(`${base}/poverty_nowcast.json`).then(r => r.json()).then(setPovData).catch(() => {});
-  }, []);
+  const [tab, setTab] = useState<'pobreza' | 'monetaria' | 'fx'>('pobreza');
 
   const TABS = isEn ? [
-    { key: 'pbi'       as const, label: 'GDP — Shock Simulator' },
-    { key: 'inflacion' as const, label: 'Inflation Calculator' },
-    { key: 'pobreza'   as const, label: 'Poverty Projections' },
+    { key: 'pobreza'   as const, label: 'Growth → Poverty' },
+    { key: 'monetaria' as const, label: 'Monetary Policy' },
+    { key: 'fx'        as const, label: 'FX → Inflation' },
   ] : [
-    { key: 'pbi'       as const, label: 'PBI — Simulador de Shocks' },
-    { key: 'inflacion' as const, label: 'Calculadora de Inflación' },
-    { key: 'pobreza'   as const, label: 'Proyecciones de Pobreza' },
+    { key: 'pobreza'   as const, label: 'Crecimiento → Pobreza' },
+    { key: 'monetaria' as const, label: 'Política Monetaria' },
+    { key: 'fx'        as const, label: 'TC → Inflación' },
   ];
 
   return (
@@ -113,8 +77,8 @@ export default function SimuladoresPage() {
           </h1>
           <p className="text-sm text-gray-600">
             {isEn
-              ? "Interactive tools based on Qhawarina's nowcast models. Base values come from the latest model estimates."
-              : "Herramientas interactivas basadas en los modelos de nowcast de Qhawarina. Los valores base provienen de las estimaciones más recientes del modelo."}
+              ? 'Elasticity estimates from audited econometric models. Confidence intervals shown where available.'
+              : 'Estimaciones de elasticidades de modelos econométricos auditados. Se muestran intervalos de confianza donde corresponde.'}
           </p>
         </div>
 
@@ -136,8 +100,8 @@ export default function SimuladoresPage() {
             </div>
             <p className="text-xs" style={{ color: '#8D99AE' }}>
               {isEn
-                ? '9 natural experiments (Lima Metro, 2003–2022). DiD panel, Lee bounds, lighthouse effect. Slide to see impact of any proposed MW.'
-                : '9 experimentos naturales (Lima Metro, 2003–2022). Panel DiD, cotas de Lee, efecto faro. Desliza para ver el impacto de cualquier SM propuesto.'}
+                ? '9 natural experiments (Lima Metro, 2003–2022). DiD panel, Lee bounds, lighthouse effect.'
+                : '9 experimentos naturales (Lima Metro, 2003–2022). Panel DiD, cotas de Lee, efecto faro.'}
             </p>
           </div>
           <span className="text-sm font-medium group-hover:translate-x-1 transition-transform" style={{ color: '#C65D3E' }}>→</span>
@@ -159,614 +123,466 @@ export default function SimuladoresPage() {
           ))}
         </div>
 
-        {tab === 'pbi'       && <GDPSimulator       gdpData={gdpData} />}
-        {tab === 'inflacion' && <InflacionCalc       inflData={inflData} />}
-        {tab === 'pobreza'   && <PobrezaProyecciones povData={povData} />}
+        {tab === 'pobreza'   && <PobrezaElasticidad isEn={isEn} />}
+        {tab === 'monetaria' && <PoliticaMonetaria  isEn={isEn} />}
+        {tab === 'fx'        && <TCInflacion        isEn={isEn} />}
       </main>
     </div>
   );
 }
 
 // ══════════════════════════════════════════════════════════════════════════
-// TAB 1 — GDP Shock Builder
+// TAB 1 — GDP Growth → Poverty Impact
 // ══════════════════════════════════════════════════════════════════════════
-function GDPSimulator({ gdpData }: { gdpData: GDPData | null }) {
-  const isEn = useLocale() === 'en';
-  const baselineGDP = gdpData?.nowcast.value ?? 2.8;
-  const [baselineInflation, setBaselineInflation] = useState(2.3);
-  const [shocks, setShocks]       = useState<Shock[]>([]);
-  const [newShockType, setNewShockType]           = useState('commodity');
-  const [newShockMag,  setNewShockMag]            = useState(-10);
-  const [results, setResults]     = useState<any>(null);
+function PobrezaElasticidad({ isEn }: { isEn: boolean }) {
+  const [gdp, setGdp] = useState(3.0);
 
-  const shockName = (type: string) => {
-    const st = SHOCK_TYPES[type as keyof typeof SHOCK_TYPES];
-    return isEn ? st.name_en : st.name;
-  };
+  const impact  = BETA_POV  * gdp;
+  const ciLo    = CI90_LO   * gdp;
+  const ciHi    = CI90_HI   * gdp;
 
-  const addShock = () => {
-    setShocks(prev => [...prev, { id: Date.now().toString(), type: newShockType, magnitude: newShockMag }]);
-    setResults(null);
-  };
-  const removeShock = (id: string) => { setShocks(prev => prev.filter(s => s.id !== id)); setResults(null); };
-
-  const calculate = () => {
-    const impacts = shocks.map(s => {
-      let g = 0, inf = 0;
-      switch (s.type) {
-        case 'commodity':
-          g   = ELASTICITIES.commodity_gdp * (s.magnitude / 10);
-          inf = ELASTICITIES.commodity_cpi * (s.magnitude / 10);
-          break;
-        case 'fx':
-          g   = ELASTICITIES.fx_gdp * (s.magnitude / 10);
-          inf = ELASTICITIES.fx_cpi * (s.magnitude / 10);
-          break;
-        case 'interest_rate':
-          g   = ELASTICITIES.rate_gdp * (s.magnitude / 100);
-          inf = ELASTICITIES.rate_cpi * (s.magnitude / 100);
-          break;
-        case 'china':
-          g   = ELASTICITIES.china_gdp * s.magnitude;
-          inf = ELASTICITIES.china_cpi * s.magnitude;
-          break;
-      }
-      return { shockType: shockName(s.type), magnitude: s.magnitude, gdpImpact: g, inflationImpact: inf };
-    });
-    const tg = impacts.reduce((a, i) => a + i.gdpImpact, 0);
-    const ti = impacts.reduce((a, i) => a + i.inflationImpact, 0);
-    setResults({
-      baseline_gdp: baselineGDP, baseline_inflation: baselineInflation,
-      shocked_gdp: baselineGDP + tg, shocked_inflation: baselineInflation + ti,
-      total_gdp_impact: tg, total_inflation_impact: ti, shocks: impacts,
-    });
-  };
-
-  const chartData = results ? [
-    { name: isEn ? 'Baseline' : 'Escenario Base', GDP: results.baseline_gdp, Inflation: results.baseline_inflation },
-    { name: isEn ? 'With Shocks' : 'Con Shocks',  GDP: results.shocked_gdp,  Inflation: results.shocked_inflation },
-  ] : [];
-
-  const interpretation = () => {
-    if (!results) return '';
-    const g = results.total_gdp_impact, inf = results.total_inflation_impact;
-    if (isEn) {
-      if (g < -2 && inf > 1) return 'Stagflation: severe GDP drop with simultaneous inflationary pressure.';
-      if (g < -1) return `Moderate recession: GDP falls ${Math.abs(g).toFixed(2)}pp. Watch employment and poverty.`;
-      if (g > 1)  return `Economic expansion: GDP rises ${g.toFixed(2)}pp. Overheating risk if inflation > 3%.`;
-      return 'Moderate impact. The scenario remains close to baseline.';
-    } else {
-      if (g < -2 && inf > 1) return 'Estanflación: caída severa del PBI con presión inflacionaria simultánea.';
-      if (g < -1) return `Recesión moderada: el PBI cae ${Math.abs(g).toFixed(2)}pp. Atención a empleo y pobreza.`;
-      if (g > 1)  return `Expansión económica: el PBI sube ${g.toFixed(2)}pp. Riesgo de sobrecalentamiento si inflación > 3%.`;
-      return 'Impacto moderado. El escenario permanece cercano al baseline.';
-    }
-  };
+  const fmt = (v: number, dp = 2) => `${v >= 0 ? '+' : ''}${v.toFixed(dp)}`;
+  const fmtPP = (v: number) => `${fmt(v)}pp`;
 
   return (
     <div className="grid lg:grid-cols-3 gap-8">
       {/* Controls */}
       <div className="lg:col-span-1 space-y-4">
         <div className="bg-white border border-gray-300 p-6">
-          <h2 className="text-base font-semibold mb-4">{isEn ? 'Base Parameters' : 'Parámetros Base'}</h2>
-          <div className="mb-4">
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'GDP Nowcast (model)' : 'PBI Nowcast (modelo)'} — {gdpData?.nowcast.target_period ?? '…'}
-            </label>
-            <div className="text-2xl font-bold" style={{ color: CHART_COLORS.teal }}>{baselineGDP.toFixed(2)}%</div>
-            <p className="text-xs text-gray-400 mt-1">
-              {isEn ? 'Real DFM model estimate' : 'Estimación real del modelo DFM'}
-            </p>
+          <h2 className="text-base font-semibold mb-1">
+            {isEn ? 'GDP Growth Assumption' : 'Supuesto de Crecimiento del PBI'}
+          </h2>
+          <p className="text-xs text-gray-500 mb-4">
+            {isEn ? 'Annual real GDP growth (%)' : 'Crecimiento anual real del PBI (%)'}
+          </p>
+          <input
+            type="range" min="-6" max="9" step="0.1" value={gdp}
+            onChange={e => setGdp(Number(e.target.value))}
+            className="w-full mb-2 accent-[#C65D3E]"
+          />
+          <div className="flex justify-between text-xs text-gray-400 mb-3">
+            <span>−6%</span><span>+9%</span>
           </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'Assumed baseline inflation (%)' : 'Inflación base asumida (%)'}
-            </label>
-            <input
-              type="number" step="0.1" value={baselineInflation}
-              onChange={e => setBaselineInflation(Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
-            />
-          </div>
+          <input
+            type="number" step="0.1" value={gdp}
+            min="-6" max="9"
+            onChange={e => setGdp(Number(e.target.value))}
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm text-center font-bold text-lg"
+          />
+          <div className="text-center text-xs text-gray-400 mt-1">%</div>
         </div>
 
-        <div className="bg-white border border-gray-300 p-6">
-          <h2 className="text-base font-semibold mb-4">{isEn ? 'Add Shock' : 'Agregar Shock'}</h2>
-          <div className="mb-3">
-            <label className="block text-xs font-medium text-gray-600 mb-1">{isEn ? 'Type' : 'Tipo'}</label>
-            <select
-              value={newShockType}
-              onChange={e => { setNewShockType(e.target.value); setNewShockMag(SHOCK_TYPES[e.target.value as keyof typeof SHOCK_TYPES].default); }}
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
-            >
-              {Object.entries(SHOCK_TYPES).map(([k, v]) => (
-                <option key={k} value={k}>{isEn ? v.name_en : v.name}</option>
-              ))}
-            </select>
+        <div className="bg-green-50 border border-green-300 p-4 rounded">
+          <div className="text-xs font-semibold text-green-800 mb-1 uppercase tracking-wide">
+            {isEn ? 'Tier 1 — High Confidence' : 'Nivel 1 — Alta Confianza'}
           </div>
-          <div className="mb-4">
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'Magnitude' : 'Magnitud'} ({SHOCK_TYPES[newShockType as keyof typeof SHOCK_TYPES].unit})
-            </label>
-            <input
-              type="number" step="0.5" value={newShockMag}
-              min={SHOCK_TYPES[newShockType as keyof typeof SHOCK_TYPES].min}
-              max={SHOCK_TYPES[newShockType as keyof typeof SHOCK_TYPES].max}
-              onChange={e => setNewShockMag(Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
-            />
-          </div>
-          <button onClick={addShock} className="w-full bg-gray-800 text-white py-2 text-sm font-medium hover:bg-gray-700">
-            {isEn ? '+ Add Shock' : '+ Agregar Shock'}
-          </button>
+          <p className="text-xs text-green-700">
+            {isEn
+              ? 'β=−0.656, R²=0.669, N=18, p<0.0001. Stable across sub-periods.'
+              : 'β=−0.656, R²=0.669, N=18, p<0.0001. Estable entre sub-períodos.'}
+          </p>
+          <p className="text-xs text-green-600 mt-1">
+            {isEn
+              ? 'Source: OLS on ENAHO 2005–2024, excl. 2020–2021.'
+              : 'Fuente: MCO sobre ENAHO 2005–2024, excl. 2020–2021.'}
+          </p>
         </div>
-
-        {shocks.length > 0 && (
-          <div className="bg-white border border-gray-300 p-6">
-            <h3 className="text-sm font-semibold mb-3">{isEn ? 'Active shocks' : 'Shocks activos'}</h3>
-            <div className="space-y-2">
-              {shocks.map(s => (
-                <div key={s.id} className="flex items-center justify-between text-xs bg-gray-50 px-3 py-2 border border-gray-200">
-                  <span className="font-medium">{shockName(s.type)}</span>
-                  <span className="text-gray-600">{s.magnitude > 0 ? '+' : ''}{s.magnitude} {SHOCK_TYPES[s.type as keyof typeof SHOCK_TYPES].unit}</span>
-                  <button onClick={() => removeShock(s.id)} className="text-red-500 hover:text-red-700 ml-2">✕</button>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={calculate}
-              disabled={shocks.length === 0}
-              className="w-full mt-4 text-white py-2.5 text-sm font-medium disabled:opacity-40"
-              style={{ backgroundColor: CHART_COLORS.terra }}
-            >
-              {isEn ? 'Calculate Impact' : 'Calcular Impacto'}
-            </button>
-          </div>
-        )}
       </div>
 
       {/* Results */}
-      <div className="lg:col-span-2">
-        {!results ? (
-          <div className="bg-white border border-gray-300 p-16 text-center">
-            <div className="text-4xl mb-4 text-gray-300">⚡</div>
-            <h3 className="text-base font-medium text-gray-900 mb-2">
-              {isEn ? 'Add shocks and calculate impact' : 'Agrega shocks y calcula el impacto'}
-            </h3>
-            <p className="text-sm text-gray-500">
-              {isEn
-                ? 'Semi-elasticities estimated via VAR and Local Projections (Jordà 2005) using BCRP quarterly data (2004–2025).'
-                : 'Semi-elasticidades estimadas con VAR y Proyecciones Locales (Jordà 2005) con datos BCRP trimestrales (2004–2025).'}
-            </p>
+      <div className="lg:col-span-2 space-y-5">
+        {/* Impact display */}
+        <div className="bg-white border border-gray-300 p-6">
+          <h2 className="text-base font-semibold mb-4">
+            {isEn ? 'Poverty Impact (Δ percentage points)' : 'Impacto en Pobreza (Δ puntos porcentuales)'}
+          </h2>
+          <div className="flex items-baseline gap-3 mb-3">
+            <span className={`text-4xl font-bold ${impact > 0 ? 'text-red-600' : 'text-green-700'}`}>
+              {fmtPP(impact)}
+            </span>
+            <span className="text-sm text-gray-500">
+              {isEn ? 'point estimate' : 'estimación puntual'}
+            </span>
           </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <ImpactCard title={isEn ? "GDP with Shocks" : "PBI con Shocks"} value={`${results.shocked_gdp.toFixed(2)}%`}
-                change={results.total_gdp_impact} variant={results.total_gdp_impact < 0 ? 'danger' : 'success'}
-                trend={results.total_gdp_impact < 0 ? 'down' : 'up'} description={isEn ? "Projected growth" : "Crecimiento proyectado"} />
-              <ImpactCard title={isEn ? "Inflation with Shocks" : "Inflación con Shocks"} value={`${results.shocked_inflation.toFixed(2)}%`}
-                change={results.total_inflation_impact} variant={results.total_inflation_impact > 0 ? 'warning' : 'success'}
-                trend={results.total_inflation_impact > 0 ? 'up' : 'down'} description={isEn ? "Inflationary pressure" : "Presión inflacionaria"} />
-              <ImpactCard title={isEn ? "GDP Impact" : "Impacto en PBI"} value={`${results.total_gdp_impact > 0 ? '+' : ''}${results.total_gdp_impact.toFixed(2)}pp`}
-                variant={results.total_gdp_impact < 0 ? 'danger' : 'success'} description={isEn ? "vs baseline nowcast" : "vs baseline nowcast"} />
-              <ImpactCard title={isEn ? "Inflation Impact" : "Impacto en Inflación"} value={`${results.total_inflation_impact > 0 ? '+' : ''}${results.total_inflation_impact.toFixed(2)}pp`}
-                variant={results.total_inflation_impact > 0 ? 'warning' : 'success'} description={isEn ? "vs baseline inflation" : "vs inflación base"} />
-            </div>
-
-            <div className="bg-white border border-gray-300 p-6">
-              <h3 className="text-sm font-semibold text-gray-700 mb-4">
-                {isEn ? 'Baseline vs Shocked Scenario' : 'Base vs Escenario con Shocks'}
-              </h3>
-              <ResponsiveContainer width="100%" height={260}>
-                <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
-                  <XAxis dataKey="name" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                  <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                  <Tooltip contentStyle={tooltipContentStyle} formatter={(v: any) => `${Number(v).toFixed(2)}%`} />
-                  <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily }} />
-                  <Bar dataKey="GDP" fill={CHART_COLORS.teal} name={isEn ? "GDP (%)" : "PBI (%)"} />
-                  <Bar dataKey="Inflation" fill={CHART_COLORS.terra} name={isEn ? "Inflation (%)" : "Inflación (%)"} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-
-            <div className="bg-white border border-gray-300 p-5">
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">
-                {isEn ? 'Breakdown by shock' : 'Descomposición por shock'}
-              </h3>
-              <table className="w-full text-sm">
-                <thead><tr className="border-b border-gray-200">
-                  <th className="text-left py-2 text-xs font-semibold text-gray-500 uppercase">Shock</th>
-                  <th className="text-right py-2 text-xs font-semibold text-gray-500 uppercase">{isEn ? 'Magnitude' : 'Magnitud'}</th>
-                  <th className="text-right py-2 text-xs font-semibold text-gray-500 uppercase">Δ {isEn ? 'GDP' : 'PBI'}</th>
-                  <th className="text-right py-2 text-xs font-semibold text-gray-500 uppercase">Δ {isEn ? 'Inflation' : 'Inflación'}</th>
-                </tr></thead>
-                <tbody>
-                  {results.shocks.map((s: any, i: number) => (
-                    <tr key={i} className="border-b border-gray-100">
-                      <td className="py-2 font-medium">{s.shockType}</td>
-                      <td className="py-2 text-right text-gray-600">{s.magnitude}</td>
-                      <td className={`py-2 text-right font-medium ${s.gdpImpact < 0 ? 'text-red-600' : 'text-green-600'}`}>
-                        {s.gdpImpact > 0 ? '+' : ''}{s.gdpImpact.toFixed(2)}pp
-                      </td>
-                      <td className={`py-2 text-right font-medium ${s.inflationImpact > 0 ? 'text-amber-600' : 'text-green-600'}`}>
-                        {s.inflationImpact > 0 ? '+' : ''}{s.inflationImpact.toFixed(2)}pp
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="border p-4 text-sm" style={results.total_gdp_impact < -1 ? { background: '#fdf2f2', borderColor: CHART_COLORS.red, color: CHART_COLORS.red } : results.total_gdp_impact > 1 ? { background: '#f0faf8', borderColor: CHART_COLORS.teal, color: CHART_COLORS.teal } : { background: CHART_COLORS.surface, borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink }}>
-              <strong>{isEn ? 'Interpretation: ' : 'Interpretación: '}</strong>{interpretation()}
-            </div>
-
-            <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_DEFAULTS.gridStroke}`, color: CHART_COLORS.ink3 }}>
-              <strong>{isEn ? 'Methodology: ' : 'Metodología: '}</strong>
-              {isEn
-                ? 'Semi-elasticities estimated via VAR (bivariate) and Local Projections — Jordà (2005) — with BCRP quarterly data 2004–2025 (n=85). Commodity→GDP and FX→CPI: Qhawarina estimates. FX→GDP and Rate→GDP/CPI: BCRP benchmark (DSGE model).'
-                : 'Semi-elasticidades estimadas mediante VAR (bivariado) y Proyecciones Locales — Jordà (2005) — con datos BCRP trimestrales 2004–2025 (n=85). Commodity→PBI y TC→IPC: estimaciones propias de Qhawarina. TC→PBI y Tasa→PBI/IPC: benchmark BCRP (modelo DSGE).'}
-            </div>
+          <div className="text-sm text-gray-600 mb-4">
+            {isEn ? '90% CI:' : 'IC 90%:'}{' '}
+            <span className="font-medium">[{fmtPP(Math.min(ciLo, ciHi))}, {fmtPP(Math.max(ciLo, ciHi))}]</span>
+            {' '}—{' '}
+            {impact < 0
+              ? (isEn ? 'Poverty reduction' : 'Reducción de pobreza')
+              : impact > 0
+              ? (isEn ? 'Poverty increase' : 'Aumento de pobreza')
+              : (isEn ? 'No change' : 'Sin cambio')}
           </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ══════════════════════════════════════════════════════════════════════════
-// TAB 2 — Inflation Calculator
-// ══════════════════════════════════════════════════════════════════════════
-function InflacionCalc({ inflData }: { inflData: InflData | null }) {
-  const isEn = useLocale() === 'en';
-  const baseMonthlyRate = inflData?.nowcast.value ?? 0.2;
-  const [amount, setAmount]       = useState(1000);
-  const [startDate, setStartDate] = useState('2024-01-01');
-  const [endDate, setEndDate]     = useState(() => new Date().toISOString().slice(0, 10));
-  const [category, setCategory]   = useState('all');
-  const [results, setResults]     = useState<any>(null);
-  const [loading, setLoading]     = useState(false);
-
-  const cats = isEn ? CATEGORIES_EN : CATEGORIES;
-
-  const calculate = async () => {
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 500));
-    const days = Math.max(1, Math.floor((new Date(endDate).getTime() - new Date(startDate).getTime()) / 86400000));
-    const months = days / 30.44;
-    const mult = CATEGORY_MULT[category] ?? 1.0;
-    const accumulated = baseMonthlyRate * months * mult;
-    const equivalent = amount * (1 + accumulated / 100);
-    setResults({ amount, startDate, endDate, days, accumulated, equivalent, loss: equivalent - amount, category });
-    setLoading(false);
-  };
-
-  const chartData = results ? (() => {
-    const pts = [];
-    const steps = Math.min(results.days, 36);
-    for (let i = 0; i <= steps; i++) {
-      pts.push({
-        day: i,
-        index: 100 + (results.accumulated * (i / results.days)),
-        date: new Date(new Date(startDate).getTime() + (i / steps) * results.days * 86400000)
-          .toLocaleDateString(isEn ? 'en-US' : 'es-PE', { month: 'short', year: '2-digit' }),
-      });
-    }
-    return pts;
-  })() : [];
-
-  return (
-    <div className="grid lg:grid-cols-3 gap-8">
-      <div className="lg:col-span-1">
-        <div className="bg-white border border-gray-300 p-6 sticky top-24 space-y-5">
-          <h2 className="text-base font-semibold">{isEn ? 'Parameters' : 'Parámetros'}</h2>
-
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'Amount (PEN)' : 'Monto (S/)'}
-            </label>
-            <input type="number" value={amount} onChange={e => setAmount(Number(e.target.value))} min="1"
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm" />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'Start date' : 'Fecha inicial'}
-            </label>
-            <input type="date" value={startDate} max={endDate} onChange={e => setStartDate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm" />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'End date' : 'Fecha final'}
-            </label>
-            <input type="date" value={endDate} min={startDate} max="2027-12-31" onChange={e => setEndDate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm" />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">{isEn ? 'Category' : 'Categoría'}</label>
-            <select value={category} onChange={e => setCategory(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
-              {Object.entries(cats).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-            </select>
-          </div>
-
-          <button onClick={calculate} disabled={loading}
-            className="w-full text-white py-2.5 text-sm font-medium disabled:opacity-40"
-            style={{ backgroundColor: CHART_COLORS.terra }}>
-            {loading ? (isEn ? 'Calculating…' : 'Calculando…') : (isEn ? 'Calculate' : 'Calcular')}
-          </button>
-
-          {inflData && (
-            <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_COLORS.terra}`, color: CHART_COLORS.ink }}>
-              {isEn ? 'Base rate:' : 'Tasa base:'} <strong>{baseMonthlyRate.toFixed(3)}%/{isEn ? 'mo' : 'mes'}</strong> (DFM nowcast, {inflData.nowcast.target_period})
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="lg:col-span-2">
-        {!results ? (
-          <div className="bg-white border border-gray-300 p-16 text-center">
-            <div className="text-4xl mb-4 text-gray-300">S/</div>
-            <h3 className="text-base font-medium text-gray-900 mb-2">
-              {isEn ? 'Enter amount and dates' : 'Ingresa monto y fechas'}
-            </h3>
-            <p className="text-sm text-gray-500">
-              {isEn
-                ? 'Find out how much purchasing power you have lost to inflation'
-                : 'Descubre cuánto poder adquisitivo has perdido por la inflación'}
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-5">
-            <div className="grid grid-cols-2 gap-4">
-              <ImpactCard title={isEn ? "Original Amount" : "Monto Original"}
-                value={`S/ ${results.amount.toFixed(2)}`}
-                description={`${isEn ? 'Date' : 'Fecha'}: ${new Date(results.startDate).toLocaleDateString(isEn ? 'en-US' : 'es-PE')}`} />
-              <ImpactCard title={isEn ? "Equivalent Today" : "Equivalente Hoy"}
-                value={`S/ ${results.equivalent.toFixed(2)}`}
-                change={results.accumulated} variant={results.accumulated > 0 ? 'danger' : 'success'}
-                trend={results.accumulated > 0 ? 'up' : 'down'}
-                description={`${isEn ? 'Date' : 'Fecha'}: ${new Date(results.endDate).toLocaleDateString(isEn ? 'en-US' : 'es-PE')}`} />
-              <ImpactCard title={isEn ? "Purchasing Power Change" : "Cambio en Poder Adquisitivo"}
-                value={`S/ ${results.loss.toFixed(2)}`}
-                variant={results.loss > 0 ? 'danger' : 'success'}
-                description={results.loss > 0
-                  ? (isEn ? 'Loss of purchasing power' : 'Pérdida de poder adquisitivo')
-                  : (isEn ? 'Gain (deflation)' : 'Ganancia (deflación)')} />
-              <ImpactCard title={isEn ? "Cumulative Inflation" : "Inflación Acumulada"}
-                value={`${results.accumulated.toFixed(2)}%`}
-                variant={results.accumulated > 0 ? 'warning' : 'success'}
-                description={`${isEn ? 'In' : 'En'} ${results.days} ${isEn ? 'days' : 'días'} · ${cats[results.category]}`} />
-            </div>
-
-            <div className="bg-white border border-gray-300 p-5">
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">
-                {isEn ? 'Price Index Evolution' : 'Evolución del Índice de Precios'}
-              </h3>
-              <ResponsiveContainer width="100%" height={240}>
-                <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
-                  <XAxis dataKey="date" tick={axisTickStyle} interval="preserveStartEnd" stroke={CHART_DEFAULTS.axisStroke} />
-                  <YAxis domain={['auto', 'auto']} tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                  <Tooltip contentStyle={tooltipContentStyle} formatter={(v: any) => `${Number(v).toFixed(2)}`} />
-                  <Line type="monotone" dataKey="index" stroke={CHART_COLORS.terra} strokeWidth={2} name={isEn ? "Index (base=100)" : "Índice (base=100)"} dot={false} />
-                  <ReferenceLine y={100} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" label={{ value: isEn ? 'Base' : 'Base', fontSize: CHART_DEFAULTS.axisFontSize }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-
-            <div className={`border p-4 text-sm ${results.accumulated > 0 ? 'bg-amber-50 border-amber-200 text-amber-800' : 'bg-green-50 border-green-200 text-green-800'}`}>
-              {results.accumulated > 0 ? (
-                isEn
-                  ? <>Prices rose <strong>{results.accumulated.toFixed(2)}%</strong> in {results.days} days. For the same purchasing power you would need <strong>S/ {results.equivalent.toFixed(2)}</strong> today instead of S/ {results.amount.toFixed(2)}.</>
-                  : <>Los precios subieron <strong>{results.accumulated.toFixed(2)}%</strong> en {results.days} días. Para el mismo poder adquisitivo necesitarías <strong>S/ {results.equivalent.toFixed(2)}</strong> hoy en lugar de S/ {results.amount.toFixed(2)}.</>
-              ) : (
-                isEn
-                  ? <>Prices fell <strong>{Math.abs(results.accumulated).toFixed(2)}%</strong>. You can buy more with S/ {results.amount.toFixed(2)} today.</>
-                  : <>Los precios bajaron <strong>{Math.abs(results.accumulated).toFixed(2)}%</strong>. Puedes comprar más con S/ {results.amount.toFixed(2)} hoy.</>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ══════════════════════════════════════════════════════════════════════════
-// TAB 3 — Poverty Projections
-// ══════════════════════════════════════════════════════════════════════════
-function PobrezaProyecciones({ povData }: { povData: PovData | null }) {
-  const isEn = useLocale() === 'en';
-  const [dept, setDept]         = useState('Ayacucho');
-  const [scenario, setScenario] = useState<'baseline' | 'optimistic' | 'pessimistic'>('baseline');
-  const [results, setResults]   = useState<any>(null);
-  const [loading, setLoading]   = useState(false);
-
-  const deptData    = povData?.departments.find(d => d.name === dept);
-  const baseRate    = deptData?.poverty_rate_2025_nowcast ?? 24.5;
-  const pop         = DEPT_POP[dept] ?? 1000000;
-
-  const forecast = async () => {
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 500));
-    let rate = baseRate, ciLow = baseRate - 1.8, ciHigh = baseRate + 1.8;
-    if (scenario === 'optimistic')  { rate = baseRate - 2.0; ciLow = rate - 1.5; ciHigh = rate + 1.5; }
-    if (scenario === 'pessimistic') { rate = baseRate + 2.5; ciLow = rate - 2.0; ciHigh = rate + 2.0; }
-    setResults({
-      dept, scenario, poverty_rate: rate, baseline: baseRate,
-      change: rate - baseRate, pop,
-      people: Math.round((rate / 100) * pop),
-      ci_low: Math.max(0, ciLow), ci_high: Math.min(100, ciHigh),
-    });
-    setLoading(false);
-  };
-
-  const scenarioLabel = (s: string) => {
-    if (isEn) return s === 'optimistic' ? 'Optimistic' : s === 'pessimistic' ? 'Pessimistic' : 'Baseline';
-    return s === 'optimistic' ? 'Optimista' : s === 'pessimistic' ? 'Pesimista' : 'Base';
-  };
-
-  const barData = results ? [
-    { name: isEn ? 'Nowcast 2025' : 'Nowcast 2025', rate: results.baseline },
-    { name: isEn ? 'Projection' : 'Proyección', rate: results.poverty_rate },
-  ] : [];
-
-  const barColor = scenario === 'optimistic' ? CHART_COLORS.teal : scenario === 'pessimistic' ? CHART_COLORS.red : CHART_COLORS.amber;
-
-  return (
-    <div className="grid lg:grid-cols-3 gap-8">
-      <div className="lg:col-span-1">
-        <div className="bg-white border border-gray-300 p-6 sticky top-24 space-y-5">
-          <h2 className="text-base font-semibold">{isEn ? 'Configuration' : 'Configuración'}</h2>
-
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">
-              {isEn ? 'Department' : 'Departamento'}
-            </label>
-            {povData ? (
-              <select value={dept} onChange={e => { setDept(e.target.value); setResults(null); }}
-                className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
-                {povData.departments.map(d => <option key={d.code} value={d.name}>{d.name}</option>)}
-              </select>
-            ) : (
-              <div className="h-9 bg-gray-100 rounded animate-pulse" />
-            )}
-            <p className="text-xs text-gray-400 mt-1">~{(pop / 1e6).toFixed(1)}M {isEn ? 'inhabitants' : 'habitantes'}</p>
-          </div>
-
-          {/* Real rate from model */}
-          <div className="p-3 bg-gray-50 border border-gray-200">
-            <div className="text-xs text-gray-500 mb-1">
-              {isEn ? 'Nowcast 2025 (real model)' : 'Nowcast 2025 (modelo real)'}
-            </div>
-            <div className="text-2xl font-bold text-gray-900">{baseRate.toFixed(1)}%</div>
-            {deptData && (
-              <div className="text-xs text-gray-400 mt-1">
-                2024: {deptData.poverty_rate_2024.toFixed(1)}% →{' '}
-                <span className={deptData.change_pp < 0 ? 'text-green-600' : 'text-red-600'}>
-                  {deptData.change_pp > 0 ? '+' : ''}{deptData.change_pp.toFixed(1)}pp
-                </span>
+          <div className="grid grid-cols-3 gap-3 text-center">
+            {[
+              { label: isEn ? 'CI low (90%)' : 'IC inferior (90%)', val: Math.min(ciLo, ciHi), color: 'text-gray-600' },
+              { label: isEn ? 'Point estimate' : 'Estimación puntual', val: impact, color: impact > 0 ? 'text-red-600' : 'text-green-700', bold: true },
+              { label: isEn ? 'CI high (90%)' : 'IC superior (90%)', val: Math.max(ciLo, ciHi), color: 'text-gray-600' },
+            ].map(({ label, val, color, bold }) => (
+              <div key={label} className="bg-gray-50 border border-gray-200 rounded p-3">
+                <div className="text-xs text-gray-500 mb-1">{label}</div>
+                <div className={`text-xl font-${bold ? 'bold' : 'semibold'} ${color}`}>{fmtPP(val)}</div>
               </div>
-            )}
+            ))}
           </div>
-
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-2">{isEn ? 'Scenario' : 'Escenario'}</label>
-            <div className="space-y-2">
-              {(isEn ? [
-                { v: 'optimistic',  l: 'Optimistic', d: 'Strong growth, social programs' },
-                { v: 'baseline',    l: 'Baseline',    d: 'Current trend continues' },
-                { v: 'pessimistic', l: 'Pessimistic', d: 'Negative shocks (commodity, FX)' },
-              ] : [
-                { v: 'optimistic',  l: 'Optimista',  d: 'Crecimiento fuerte, programas sociales' },
-                { v: 'baseline',    l: 'Base',        d: 'Tendencia actual continúa' },
-                { v: 'pessimistic', l: 'Pesimista',   d: 'Shocks negativos (commodity, FX)' },
-              ]).map(({ v, l, d }) => (
-                <label key={v} className="flex items-start cursor-pointer">
-                  <input type="radio" name="sc" value={v} checked={scenario === v}
-                    onChange={e => { setScenario(e.target.value as any); setResults(null); }}
-                    className="mt-1 mr-2" />
-                  <div><div className="text-sm font-medium text-gray-900">{l}</div><div className="text-xs text-gray-500">{d}</div></div>
-                </label>
-              ))}
-            </div>
+          <div className="mt-4 text-xs text-gray-500 text-center">
+            ΔPobreza = {ALPHA_POV.toFixed(3)} + ({BETA_POV}) × {gdp.toFixed(1)} = {fmtPP(ALPHA_POV + impact)}
           </div>
+        </div>
 
-          <button onClick={forecast} disabled={loading || !povData}
-            className="w-full text-white py-2.5 text-sm font-medium disabled:opacity-40"
-            style={{ backgroundColor: CHART_COLORS.terra }}>
-            {loading ? (isEn ? 'Calculating…' : 'Calculando…') : (isEn ? 'Generate Projection' : 'Generar Proyección')}
-          </button>
+        {/* Scatter plot */}
+        <div className="bg-white border border-gray-300 p-5">
+          <h3 className="text-sm font-semibold text-gray-700 mb-1">
+            {isEn ? 'Regression Data (N=18)' : 'Datos de la Regresión (N=18)'}
+          </h3>
+          <p className="text-xs text-gray-400 mb-4">
+            {isEn
+              ? 'Annual GDP growth (%) vs. change in poverty rate (pp). 2005–2024, excluding 2020–2021.'
+              : 'Crecimiento anual PBI (%) vs. variación tasa de pobreza (pp). 2005–2024, excl. 2020–2021.'}
+          </p>
+          <ResponsiveContainer width="100%" height={300}>
+            <ComposedChart margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+              <XAxis
+                dataKey="x" type="number" domain={[-2, 10.5]}
+                tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                tickFormatter={v => `${v}%`}
+              >
+                <Label value={isEn ? 'GDP growth (%)' : 'Crecimiento PBI (%)'} offset={-10} position="insideBottom"
+                  style={{ fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_COLORS.ink3 }} />
+              </XAxis>
+              <YAxis
+                type="number" domain={[-8, 3]}
+                tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
+                tickFormatter={v => `${v}pp`}
+              >
+                <Label value={isEn ? 'Δ Poverty (pp)' : 'Δ Pobreza (pp)'} angle={-90} position="insideLeft" offset={15}
+                  style={{ fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_COLORS.ink3 }} />
+              </YAxis>
+              <Tooltip
+                contentStyle={tooltipContentStyle}
+                formatter={(val: any) => [`${Number(val).toFixed(2)}pp`, '']}
+                labelFormatter={(_, payload) => {
+                  const pt = payload?.[0]?.payload;
+                  return pt?.year ? `${pt.year} | PBI: ${pt.gdp?.toFixed(1)}%` : '';
+                }}
+              />
+              {/* CI band upper */}
+              <Line data={CI_UPPER} dataKey="upper" dot={false} stroke={CHART_COLORS.terra}
+                strokeWidth={1} strokeDasharray="3 3" strokeOpacity={0.5} name="CI 90% sup" legendType="none" />
+              {/* CI band lower */}
+              <Line data={CI_LOWER} dataKey="lower" dot={false} stroke={CHART_COLORS.terra}
+                strokeWidth={1} strokeDasharray="3 3" strokeOpacity={0.5} name="CI 90% inf" legendType="none" />
+              {/* Regression line */}
+              <Line data={REG_LINE} dataKey="central" dot={false} stroke={CHART_COLORS.terra}
+                strokeWidth={2} name={isEn ? 'Regression line' : 'Línea de regresión'} legendType="none" />
+              {/* User's selected point */}
+              <Scatter
+                data={[{ x: gdp, scatter: ALPHA_POV + BETA_POV * gdp }]}
+                dataKey="scatter" fill={CHART_COLORS.terra} r={8} name="scatter" />
+              {/* Data points */}
+              <Scatter
+                data={SCATTER_DATA.map(d => ({ x: d.gdp, scatter: d.dpov, year: d.year, gdp: d.gdp }))}
+                dataKey="scatter" fill={CHART_COLORS.teal} r={4} opacity={0.8} name="scatter" />
+              <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" />
+            </ComposedChart>
+          </ResponsiveContainer>
+          <p className="text-xs text-gray-400 mt-2 text-center">
+            {isEn
+              ? 'Teal dots = observed data. Terra dot = your assumption. Dashed lines = 90% CI on β.'
+              : 'Puntos verdes = datos observados. Punto terra = tu supuesto. Líneas punteadas = IC 90% sobre β.'}
+          </p>
+        </div>
 
-          {povData && (
-            <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_COLORS.terra}`, color: CHART_COLORS.ink }}>
-              GBR · {povData.metadata.target_year} · {isEn ? 'Real nowcast rates' : 'Tasas reales del nowcast'}
-            </div>
-          )}
+        <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_COLORS.terra}`, color: CHART_COLORS.ink3 }}>
+          <strong>{isEn ? 'Note: ' : 'Nota: '}</strong>
+          {isEn
+            ? 'β=−0.656pp per 1pp GDP growth. Stable: 2005–2014 β=−0.461, 2015–2024 β=−0.723. Outliers: 2009 (Juntos social transfers outperformed model), 2022 (K-shaped post-COVID recovery). No structural break.'
+            : 'β=−0.656pp por cada 1pp de crecimiento del PBI. Estable: 2005–2014 β=−0.461, 2015–2024 β=−0.723. Atípicos: 2009 (transferencias Juntos superaron el modelo), 2022 (recuperación post-COVID en K). Sin quiebre estructural.'}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 2 — Monetary Policy (Rate → GDP → Poverty)
+// ══════════════════════════════════════════════════════════════════════════
+function PoliticaMonetaria({ isEn }: { isEn: boolean }) {
+  const [bp, setBp] = useState(100);
+
+  const gdpImpact    = BETA_RATE * (bp / 100);
+  const gdpCiLo      = CI_RATE_LO * (bp / 100);
+  const gdpCiHi      = CI_RATE_HI * (bp / 100);
+  const povImpact    = gdpImpact * BETA_POV;   // chained: + = poverty rises
+  const povCiLoG     = gdpCiHi * BETA_POV;    // CI from GDP CI (sign flips)
+  const povCiHiG     = gdpCiLo * BETA_POV;
+
+  const fmt = (v: number, dp = 3) => `${v >= 0 ? '+' : ''}${v.toFixed(dp)}`;
+  const fmtPP = (v: number, dp = 3) => `${fmt(v, dp)}pp`;
+  const ciInclZero = gdpCiLo <= 0 && gdpCiHi >= 0;
+
+  return (
+    <div className="grid lg:grid-cols-3 gap-8">
+      {/* Controls */}
+      <div className="lg:col-span-1 space-y-4">
+        <div className="bg-white border border-gray-300 p-6">
+          <h2 className="text-base font-semibold mb-1">
+            {isEn ? 'Rate Change (bp)' : 'Cambio en Tasa (pb)'}
+          </h2>
+          <p className="text-xs text-gray-500 mb-4">
+            {isEn ? 'BCRP policy rate change in basis points' : 'Cambio en tasa de política del BCRP en puntos base'}
+          </p>
+          <input
+            type="range" min="-300" max="300" step="25" value={bp}
+            onChange={e => setBp(Number(e.target.value))}
+            className="w-full mb-2 accent-[#C65D3E]"
+          />
+          <div className="flex justify-between text-xs text-gray-400 mb-3">
+            <span>−300bp</span><span>+300bp</span>
+          </div>
+          <input
+            type="number" step="25" value={bp} min="-300" max="300"
+            onChange={e => setBp(Number(e.target.value))}
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm text-center font-bold text-lg"
+          />
+          <div className="text-center text-xs text-gray-400 mt-1">bp</div>
+        </div>
+
+        <div className="bg-amber-50 border border-amber-300 p-4 rounded">
+          <div className="text-xs font-semibold text-amber-800 mb-1 uppercase tracking-wide">
+            {isEn ? 'Tier 2 — Point Estimate Only' : 'Nivel 2 — Solo Estimación Puntual'}
+          </div>
+          <p className="text-xs text-amber-700">
+            {isEn
+              ? '90% bootstrap CI includes zero at all horizons h=0..8 (T=85, R²_GDP=0.056).'
+              : 'IC 90% bootstrap incluye cero en todos los horizontes h=0..8 (T=85, R²_PBI=0.056).'}
+          </p>
+          <p className="text-xs text-amber-600 mt-1">
+            {isEn
+              ? 'Literature range: −0.20 to −0.30pp per 100bp. Results consistent but not individually significant.'
+              : 'Rango literatura: −0.20 a −0.30pp por 100pb. Resultados consistentes pero no significativos individualmente.'}
+          </p>
         </div>
       </div>
 
-      <div className="lg:col-span-2">
-        {!results ? (
-          <div className="bg-white border border-gray-300 p-16 text-center">
-            <div className="text-4xl mb-4 text-gray-300">📊</div>
-            <h3 className="text-base font-medium text-gray-900 mb-2">
-              {isEn ? 'Select department and scenario' : 'Selecciona departamento y escenario'}
-            </h3>
-            <p className="text-sm text-gray-500">
-              {isEn ? 'Projections based on the real GBR model nowcast' : 'Proyecciones basadas en el nowcast real del modelo GBR'}
-            </p>
+      {/* Results */}
+      <div className="lg:col-span-2 space-y-5">
+        {/* CI warning — always visible */}
+        <div className="bg-amber-50 border-2 border-amber-400 p-4 rounded">
+          <div className="font-semibold text-amber-900 text-sm mb-1">
+            ⚠️ {isEn ? 'Statistical Caveat' : 'Advertencia Estadística'}
           </div>
-        ) : (
-          <div className="space-y-5">
-            <h2 className="text-lg font-semibold text-gray-900">
-              {isEn ? 'Projection —' : 'Proyección —'} {results.dept}
-            </h2>
+          <p className="text-sm text-amber-800">
+            {isEn
+              ? `90% CI for rate→GDP includes zero: [${fmtPP(CI_RATE_LO, 2)}, ${fmtPP(CI_RATE_HI, 2)}] per 100bp. Point estimate −0.195pp is consistent with the literature (−0.20 to −0.30) but cannot be distinguished from zero with T=85 quarterly observations.`
+              : `IC 90% para tasa→PBI incluye cero: [${fmtPP(CI_RATE_LO, 2)}, ${fmtPP(CI_RATE_HI, 2)}] por 100pb. Estimación puntual −0.195pp es consistente con la literatura (−0.20 a −0.30) pero no puede distinguirse de cero con T=85 observaciones trimestrales.`}
+          </p>
+        </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <ImpactCard title={isEn ? "Projected Rate" : "Tasa Proyectada"} value={`${results.poverty_rate.toFixed(1)}%`}
-                change={results.change} variant={results.change < 0 ? 'success' : 'danger'}
-                trend={results.change < 0 ? 'down' : 'up'}
-                description={`${isEn ? 'Scenario' : 'Escenario'}: ${scenarioLabel(scenario)}`} />
-              <ImpactCard title={isEn ? "People in Poverty" : "Personas en Pobreza"} value={results.people.toLocaleString()}
-                description={`${isEn ? 'Of' : 'De'} ${results.pop.toLocaleString()} ${isEn ? 'inhabitants' : 'habitantes'}`} />
-              <ImpactCard title={isEn ? "90% CI" : "IC 90%"}
-                value={`${results.ci_low.toFixed(1)}% – ${results.ci_high.toFixed(1)}%`}
-                description={isEn ? "Probable projection range" : "Rango probable de la proyección"} />
-              <ImpactCard title={isEn ? "Change vs Base Nowcast" : "Cambio vs Nowcast Base"}
-                value={`${results.change > 0 ? '+' : ''}${results.change.toFixed(1)}pp`}
-                variant={results.change < 0 ? 'success' : results.change === 0 ? 'default' : 'danger'}
-                description={results.change < 0
-                  ? (isEn ? 'Expected improvement' : 'Mejora esperada')
-                  : results.change === 0
-                  ? (isEn ? 'No change' : 'Sin cambio')
-                  : (isEn ? 'Expected deterioration' : 'Deterioro esperado')} />
+        {/* Step 1: Rate → GDP */}
+        <div className="bg-white border border-gray-300 p-6">
+          <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            {isEn ? 'Step 1: Rate → GDP Impact' : 'Paso 1: Tasa → Impacto en PBI'}
+          </h3>
+          <div className="flex items-baseline gap-3 mb-3">
+            <span className={`text-3xl font-bold ${gdpImpact <= 0 ? 'text-red-600' : 'text-green-700'}`}>
+              {fmtPP(gdpImpact)}
+            </span>
+            <span className="text-sm text-gray-400">PBI</span>
+          </div>
+          <div className="grid grid-cols-3 gap-3 text-center mb-3">
+            {[
+              { label: isEn ? 'CI low' : 'IC inf.', val: Math.min(gdpCiLo, gdpCiHi) },
+              { label: isEn ? 'Point est.' : 'Est. puntual', val: gdpImpact, bold: true },
+              { label: isEn ? 'CI high' : 'IC sup.', val: Math.max(gdpCiLo, gdpCiHi) },
+            ].map(({ label, val, bold }) => (
+              <div key={label} className={`rounded p-2 border ${bold ? 'bg-gray-100 border-gray-400' : 'bg-gray-50 border-gray-200'}`}>
+                <div className="text-xs text-gray-500">{label}</div>
+                <div className={`font-${bold ? 'bold' : 'medium'} text-gray-800`}>{fmtPP(val)}</div>
+              </div>
+            ))}
+          </div>
+          {ciInclZero && (
+            <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded p-2">
+              {isEn ? '↑ CI includes zero — cannot reject null of no GDP effect' : '↑ IC incluye cero — no se puede rechazar efecto nulo sobre PBI'}
             </div>
+          )}
+        </div>
 
-            <div className="bg-white border border-gray-300 p-5">
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">
-                {isEn ? 'Base Nowcast vs Projection' : 'Nowcast Base vs Proyección'}
-              </h3>
-              <ResponsiveContainer width="100%" height={240}>
-                <BarChart data={barData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
-                  <XAxis dataKey="name" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
-                  <YAxis
-                    domain={[0, Math.ceil((results.ci_high + 5) / 10) * 10]}
-                    label={{ value: isEn ? 'Poverty (%)' : 'Pobreza (%)', angle: -90, position: 'insideLeft', style: { fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_DEFAULTS.axisStroke } }}
-                    tick={axisTickStyle}
-                    stroke={CHART_DEFAULTS.axisStroke}
-                  />
-                  <Tooltip contentStyle={tooltipContentStyle} formatter={(v: any) => [`${Number(v).toFixed(1)}%`, isEn ? 'Poverty' : 'Pobreza']} />
-                  <Bar dataKey="rate" fill={barColor} name={isEn ? "Rate (%)" : "Tasa (%)"} />
-                  <ReferenceLine y={results.ci_low}  stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" label={{ value: isEn ? 'CI low' : 'IC inf.', fontSize: CHART_DEFAULTS.axisFontSize }} />
-                  <ReferenceLine y={results.ci_high} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 4" label={{ value: isEn ? 'CI high' : 'IC sup.', fontSize: CHART_DEFAULTS.axisFontSize }} />
-                </BarChart>
-              </ResponsiveContainer>
+        {/* Step 2: GDP → Poverty (chained) */}
+        <div className="bg-white border border-gray-300 p-6">
+          <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            {isEn ? 'Step 2: Chained Effect on Poverty' : 'Paso 2: Efecto Encadenado sobre Pobreza'}
+          </h3>
+          <p className="text-xs text-gray-400 mb-3">
+            {isEn
+              ? `GDP ${fmtPP(gdpImpact)} × β_poverty(−0.656) = poverty impact (GDP uncertainty carries through)`
+              : `PBI ${fmtPP(gdpImpact)} × β_pobreza(−0.656) = impacto pobreza (incertidumbre del PBI se propaga)`}
+          </p>
+          <div className="flex items-baseline gap-3 mb-3">
+            <span className={`text-3xl font-bold ${povImpact >= 0 ? 'text-red-600' : 'text-green-700'}`}>
+              {fmtPP(povImpact)}
+            </span>
+            <span className="text-sm text-gray-400">{isEn ? 'poverty' : 'pobreza'}</span>
+          </div>
+          <div className="grid grid-cols-3 gap-3 text-center">
+            {[
+              { label: isEn ? 'CI low' : 'IC inf.', val: Math.min(povCiLoG, povCiHiG) },
+              { label: isEn ? 'Point est.' : 'Est. puntual', val: povImpact, bold: true },
+              { label: isEn ? 'CI high' : 'IC sup.', val: Math.max(povCiLoG, povCiHiG) },
+            ].map(({ label, val, bold }) => (
+              <div key={label} className={`rounded p-2 border ${bold ? 'bg-gray-100 border-gray-400' : 'bg-gray-50 border-gray-200'}`}>
+                <div className="text-xs text-gray-500">{label}</div>
+                <div className={`font-${bold ? 'bold' : 'medium'} text-gray-800`}>{fmtPP(val)}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded p-2">
+            {isEn
+              ? 'Compound uncertainty: CI propagated from GDP step. The chained poverty effect inherits the zero-inclusive CI.'
+              : 'Incertidumbre compuesta: IC propagado desde el paso del PBI. El efecto encadenado hereda el IC que incluye cero.'}
+          </div>
+        </div>
+
+        <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_DEFAULTS.gridStroke}`, color: CHART_COLORS.ink3 }}>
+          <strong>{isEn ? 'Methodology: ' : 'Metodología: '}</strong>
+          {isEn
+            ? `Rate→GDP: Cholesky IRF from VAR(1), T=85, FWL COVID Q1+Q2 2020. Peak at h=3 quarters. 90% CI from 2,000 residual bootstrap replications. Rate→Poverty: chained via GDP→Poverty OLS elasticity β=−0.656 (ENAHO 2005–2024 excl. COVID, N=18).`
+            : `Tasa→PBI: FRI Cholesky de VAR(1), T=85, FWL COVID T1+T2 2020. Pico en h=3 trimestres. IC 90% de 2,000 réplicas bootstrap residual. Tasa→Pobreza: encadenado vía elasticidad MCO PBI→Pobreza β=−0.656 (ENAHO 2005–2024 excl. COVID, N=18).`}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 3 — FX Depreciation → CPI
+// ══════════════════════════════════════════════════════════════════════════
+function TCInflacion({ isEn }: { isEn: boolean }) {
+  const [fx, setFx] = useState(10);
+
+  const cpiImpact = BETA_FX * (fx / 10);
+  const fmtPP = (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(3)}pp`;
+
+  // Illustrative chart: CPI impact across FX depreciation values 0-40%
+  const chartData = Array.from({ length: 41 }, (_, i) => ({
+    fx: i,
+    cpi: BETA_FX * (i / 10),
+    userFx: i === Math.round(fx) ? BETA_FX * (i / 10) : null,
+  }));
+
+  return (
+    <div className="grid lg:grid-cols-3 gap-8">
+      {/* Controls */}
+      <div className="lg:col-span-1 space-y-4">
+        <div className="bg-white border border-gray-300 p-6">
+          <h2 className="text-base font-semibold mb-1">
+            {isEn ? 'FX Depreciation (%)' : 'Depreciación Cambiaria (%)'}
+          </h2>
+          <p className="text-xs text-gray-500 mb-4">
+            {isEn ? 'SOL/USD depreciation from current level' : 'Depreciación SOL/USD desde nivel actual'}
+          </p>
+          <input
+            type="range" min="0" max="40" step="0.5" value={fx}
+            onChange={e => setFx(Number(e.target.value))}
+            className="w-full mb-2 accent-[#C65D3E]"
+          />
+          <div className="flex justify-between text-xs text-gray-400 mb-3">
+            <span>0%</span><span>40%</span>
+          </div>
+          <input
+            type="number" step="0.5" value={fx} min="0" max="40"
+            onChange={e => setFx(Number(e.target.value))}
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm text-center font-bold text-lg"
+          />
+          <div className="text-center text-xs text-gray-400 mt-1">%</div>
+        </div>
+
+        <div className="bg-green-50 border border-green-300 p-4 rounded">
+          <div className="text-xs font-semibold text-green-800 mb-1 uppercase tracking-wide">
+            {isEn ? 'Tier 2 — Significant' : 'Nivel 2 — Significativo'}
+          </div>
+          <p className="text-xs text-green-700">
+            {isEn
+              ? 'β=+0.237pp per 10% depreciation. Significant at LP h=1 (HAC SE).'
+              : 'β=+0.237pp por cada 10% de depreciación. Significativo en PL h=1 (SE HAC).'}
+          </p>
+          <p className="text-xs text-green-600 mt-1">
+            {isEn ? 'Source: LP OLS h=1, T=85, BCRP quarterly data.' : 'Fuente: PL MCO h=1, T=85, datos BCRP trimestrales.'}
+          </p>
+        </div>
+      </div>
+
+      {/* Results */}
+      <div className="lg:col-span-2 space-y-5">
+        {/* Impact */}
+        <div className="bg-white border border-gray-300 p-6">
+          <h2 className="text-base font-semibold mb-4">
+            {isEn ? 'CPI Impact at h=1 quarter (pp)' : 'Impacto IPC en h=1 trimestre (pp)'}
+          </h2>
+          <div className="flex items-baseline gap-3 mb-4">
+            <span className="text-4xl font-bold text-amber-600">{fmtPP(cpiImpact)}</span>
+            <span className="text-sm text-gray-500">
+              {isEn ? 'quarterly CPI increase' : 'alza IPC trimestral'}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="bg-gray-50 border border-gray-200 rounded p-3">
+              <div className="text-xs text-gray-500 mb-1">
+                {isEn ? 'FX depreciation' : 'Depreciación TC'}
+              </div>
+              <div className="text-xl font-bold text-gray-800">{fx > 0 ? '+' : ''}{fx.toFixed(1)}%</div>
             </div>
-
-            <div className="border p-4 text-sm" style={results.change < -1 ? { background: '#f0faf8', borderColor: CHART_COLORS.teal, color: CHART_COLORS.teal } : results.change > 1 ? { background: '#fdf2f2', borderColor: CHART_COLORS.red, color: CHART_COLORS.red } : { background: CHART_COLORS.surface, borderColor: CHART_DEFAULTS.gridStroke, color: CHART_COLORS.ink }}>
-              {results.change < -1 ? (
-                isEn
-                  ? <>Improvement of <strong>{Math.abs(results.change).toFixed(1)}pp</strong> — approximately {Math.abs(Math.round((results.change / 100) * results.pop)).toLocaleString()} people would exit poverty.</>
-                  : <>Mejora de <strong>{Math.abs(results.change).toFixed(1)}pp</strong> — aproximadamente {Math.abs(Math.round((results.change / 100) * results.pop)).toLocaleString()} personas saldrían de la pobreza.</>
-              ) : results.change > 1 ? (
-                isEn
-                  ? <>Deterioration of <strong>{results.change.toFixed(1)}pp</strong> — {Math.round((results.change / 100) * results.pop).toLocaleString()} additional people would fall into poverty.</>
-                  : <>Deterioro de <strong>{results.change.toFixed(1)}pp</strong> — {Math.round((results.change / 100) * results.pop).toLocaleString()} personas adicionales caerían en pobreza.</>
-              ) : (
-                isEn
-                  ? <>Stability near <strong>{results.baseline.toFixed(1)}%</strong> in the baseline scenario.</>
-                  : <>Estabilidad cerca de <strong>{results.baseline.toFixed(1)}%</strong> en el escenario base.</>
-              )}
-              {' '}IC 90%: [{results.ci_low.toFixed(1)}%, {results.ci_high.toFixed(1)}%].
+            <div className="bg-amber-50 border border-amber-200 rounded p-3">
+              <div className="text-xs text-gray-500 mb-1">
+                {isEn ? 'CPI impact (h=1)' : 'Impacto IPC (h=1)'}
+              </div>
+              <div className="text-xl font-bold text-amber-700">{fmtPP(cpiImpact)}</div>
             </div>
           </div>
-        )}
+          <div className="mt-4 text-xs text-gray-500">
+            {isEn
+              ? `Formula: ΔCPI = ${BETA_FX} × (${fx.toFixed(1)} / 10) = ${fmtPP(cpiImpact)}`
+              : `Fórmula: ΔIPC = ${BETA_FX} × (${fx.toFixed(1)} / 10) = ${fmtPP(cpiImpact)}`}
+          </div>
+        </div>
+
+        {/* Chart */}
+        <div className="bg-white border border-gray-300 p-5">
+          <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            {isEn ? 'CPI Impact vs FX Depreciation' : 'Impacto IPC vs Depreciación TC'}
+          </h3>
+          <ResponsiveContainer width="100%" height={240}>
+            <ComposedChart data={chartData} margin={{ top: 10, right: 20, left: 10, bottom: 20 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+              <XAxis dataKey="fx" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} tickFormatter={v => `${v}%`}>
+                <Label value={isEn ? 'FX Depreciation (%)' : 'Depreciación TC (%)'} offset={-10} position="insideBottom"
+                  style={{ fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_COLORS.ink3 }} />
+              </XAxis>
+              <YAxis tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} tickFormatter={v => `${v.toFixed(2)}pp`}>
+                <Label value={isEn ? 'ΔCPI (pp)' : 'ΔIPC (pp)'} angle={-90} position="insideLeft" offset={15}
+                  style={{ fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_COLORS.ink3 }} />
+              </YAxis>
+              <Tooltip contentStyle={tooltipContentStyle}
+                formatter={(v: any) => [`${Number(v).toFixed(3)}pp`, isEn ? 'CPI impact' : 'Impacto IPC']}
+                labelFormatter={v => `${isEn ? 'Depreciation' : 'Depreciación'}: ${v}%`}
+              />
+              <Line type="monotone" dataKey="cpi" stroke={CHART_COLORS.amber} strokeWidth={2}
+                dot={false} name="cpi" />
+              <ReferenceLine x={fx} stroke={CHART_COLORS.terra} strokeDasharray="4 4"
+                label={{ value: `${fx}%`, fontSize: CHART_DEFAULTS.axisFontSize, fill: CHART_COLORS.terra }} />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className="p-3 text-xs rounded" style={{ background: CHART_COLORS.surface, borderLeft: `3px solid ${CHART_DEFAULTS.gridStroke}`, color: CHART_COLORS.ink3 }}>
+          <strong>{isEn ? 'Note: ' : 'Nota: '}</strong>
+          {isEn
+            ? 'This measures the pass-through to CPI at one quarter lag. Longer-run pass-through may differ. No poverty channel estimated for FX (FX→GDP is not well-identified in the data; BCRP DSGE estimate −0.12pp per 10% is used for reference only).'
+            : 'Mide el traslado al IPC con un trimestre de rezago. El traslado de más largo plazo puede diferir. No se estima canal de pobreza para TC (TC→PBI no está bien identificado en los datos; estimación BCRP DSGE −0.12pp por 10% se usa solo como referencia).'}
+        </div>
       </div>
     </div>
   );
