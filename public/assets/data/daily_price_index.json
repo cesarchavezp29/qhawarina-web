@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-17",
-    "n_days": 36,
+    "last_date": "2026-03-19",
+    "n_days": 38,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-18"
+    "updated": "2026-03-20"
   },
   "categories": {
     "arroz_cereales": {
@@ -1063,87 +1063,141 @@
       "index_limpieza": 98.8124,
       "index_cuidado_personal": 98.5496,
       "index_other": 100.9182
+    },
+    {
+      "date": "2026-03-18",
+      "index_all": 99.1109,
+      "index_all_unweighted": 99.4196,
+      "index_food": 99.3636,
+      "index_nonfood": 99.5994,
+      "var_all": -0.2588,
+      "var_food": -0.2171,
+      "cum_pct": -0.8891,
+      "yoy_inflation": null,
+      "mom_inflation": -0.1016,
+      "interpolated": false,
+      "n_matched": 39724,
+      "index_arroz_cereales": 99.4383,
+      "index_pan_harinas": 99.3693,
+      "index_carnes": 99.328,
+      "index_pescados_mariscos": 98.7966,
+      "index_lacteos": 98.8223,
+      "index_frutas": 99.5937,
+      "index_verduras": 98.2741,
+      "index_aceites_grasas": 98.3434,
+      "index_azucar_dulces": 102.8438,
+      "index_bebidas": 98.954,
+      "index_limpieza": 98.6688,
+      "index_cuidado_personal": 98.1884,
+      "index_other": 100.8035
+    },
+    {
+      "date": "2026-03-19",
+      "index_all": 99.1547,
+      "index_all_unweighted": 99.4489,
+      "index_food": 99.4482,
+      "index_nonfood": 99.4627,
+      "var_all": 0.0442,
+      "var_food": 0.0851,
+      "cum_pct": -0.8453,
+      "yoy_inflation": null,
+      "mom_inflation": -0.1402,
+      "interpolated": false,
+      "n_matched": 39469,
+      "index_arroz_cereales": 99.3625,
+      "index_pan_harinas": 99.5161,
+      "index_carnes": 99.367,
+      "index_pescados_mariscos": 98.684,
+      "index_lacteos": 98.8976,
+      "index_frutas": 100.0255,
+      "index_verduras": 98.3962,
+      "index_aceites_grasas": 98.4991,
+      "index_azucar_dulces": 102.8037,
+      "index_bebidas": 98.9677,
+      "index_limpieza": 98.6452,
+      "index_cuidado_personal": 98.0885,
+      "index_other": 100.5597
     }
   ],
   "latest": {
-    "date": "2026-03-17",
-    "index_all": 99.3681,
-    "index_food": 99.5798,
-    "cum_pct": -0.6319,
-    "var_all": 0.029,
+    "date": "2026-03-19",
+    "index_all": 99.1547,
+    "index_food": 99.4482,
+    "cum_pct": -0.8453,
+    "var_all": 0.0442,
     "yoy_inflation": null,
-    "mom_inflation": -0.0383,
-    "n_products_today": 36727,
+    "mom_inflation": -0.1402,
+    "n_products_today": 39469,
     "top_movers": [
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": 0.65
+        "var": 0.43
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.33
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": 0.16
       },
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 0.22
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 0.15
       },
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.21
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.12
       }
     ],
     "product_movers": [
       {
-        "name": "Chocolate HERSHEY'S Kisses Milk Choco...",
-        "store": "plazavea",
-        "category": "azucar_dulces",
-        "var": 100.0
-      },
-      {
-        "name": "Chocolate HERSHEY'S Kisses Corazón Co...",
-        "store": "plazavea",
-        "category": "azucar_dulces",
-        "var": 97.25
-      },
-      {
-        "name": "Protector Solar Banana Boat Dry Balan...",
+        "name": "Tarta de Lúcuma con Chocolate Denky 750g",
         "store": "wong",
-        "category": "other",
-        "var": 88.85
+        "category": "pan_harinas",
+        "var": 99.33
       },
       {
-        "name": "Protector Solar Banana Boat Advanced ...",
+        "name": "Tarta de Arándanos Personal",
         "store": "wong",
-        "category": "other",
-        "var": 85.95
+        "category": "pan_harinas",
+        "var": 97.67
+      },
+      {
+        "name": "Tartaleta de Fresa Dulce Pasión Personal",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 97.67
+      },
+      {
+        "name": "Eclair de Caramelo Dulce Pasión",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 97.67
       }
     ],
     "stores_coverage": {
-      "metro": 12414,
-      "plazavea": 13419,
-      "wong": 14321
+      "metro": 11636,
+      "plazavea": 13541,
+      "wong": 14928
     },
     "categories_coverage": {
-      "aceites_grasas": 706,
-      "arroz_cereales": 1355,
-      "azucar_dulces": 1006,
-      "bebidas": 974,
-      "carnes": 14556,
-      "cuidado_personal": 2880,
-      "frutas": 1934,
-      "lacteos": 3000,
-      "limpieza": 3086,
-      "pan_harinas": 5955,
-      "pescados_mariscos": 234,
-      "verduras": 307
+      "aceites_grasas": 707,
+      "arroz_cereales": 1361,
+      "azucar_dulces": 998,
+      "bebidas": 973,
+      "carnes": 14304,
+      "cuidado_personal": 2886,
+      "frutas": 1933,
+      "lacteos": 2620,
+      "limpieza": 3001,
+      "pan_harinas": 6596,
+      "pescados_mariscos": 235,
+      "verduras": 310
     }
   }
 }
