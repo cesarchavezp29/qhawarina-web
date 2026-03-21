@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import CiteButton from '../../../components/CiteButton';
 
 function DynamicLastUpdate({ isEn }: { isEn: boolean }) {
   const [dateStr, setDateStr] = useState('');
@@ -30,25 +32,28 @@ export default function RiesgoPoliticoMetodologiaPage() {
   const isEn = useLocale() === 'en';
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-10" style={{ backgroundColor: "#FAF8F4", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")` }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">
+          <Link href="/estadisticas" className="hover:text-blue-700">
             {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
+          </Link>
           {' / '}
-          <a href="/estadisticas/riesgo-politico" className="hover:text-blue-700">
+          <Link href="/estadisticas/riesgo-politico" className="hover:text-blue-700">
             {isEn ? 'Political Risk' : 'Riesgo Político'}
-          </a>
+          </Link>
           {' / '}
           <span className="text-gray-900 font-medium">{isEn ? 'Methodology' : 'Metodología'}</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          {isEn
-            ? 'Methodology — AI-GPR Dual Risk Indices (IRP + IRE)'
-            : 'Metodología — Índices de Riesgo Dual AI-GPR (IRP + IRE)'}
-        </h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">
+            {isEn
+              ? 'Methodology — AI-GPR Dual Risk Indices (IRP + IRE)'
+              : 'Metodología — Índices de Riesgo Dual AI-GPR (IRP + IRE)'}
+          </h1>
+          <CiteButton indicator={isEn ? 'Methodology — Political Risk Index (IRP)' : 'Metodología — Índice de Riesgo Político (IRP)'} isEn={isEn} />
+        </div>
         <div className="mt-4">
           <DynamicLastUpdate isEn={isEn} />
         </div>
@@ -61,7 +66,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   <strong>Methodological basis:</strong> Constructed following{' '}
                   <strong>Iacoviello &amp; Tong (2026)</strong>, &quot;The AI-GPR Index: Measuring Geopolitical Risk
                   using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Applied to Peru as{' '}
-                  <strong>two independent indices</strong> — IRP (political) and IRE (economic) — using Claude Haiku
+                  <strong>two independent indices</strong> — IRP (political) and IRE (economic) — using Claude Sonnet 4.6
                   as the LLM classifier, 16 news sources with RSS feeds and historical archive backfill, and per-feed normalization
                   (mean = 100 over 2025 baseline).
                 </>
@@ -69,7 +74,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   <strong>Base metodológica:</strong> Construido siguiendo a{' '}
                   <strong>Iacoviello &amp; Tong (2026)</strong>, &quot;The AI-GPR Index: Measuring Geopolitical Risk
                   using Artificial Intelligence&quot;, Federal Reserve Board Working Paper. Aplicado a Perú como{' '}
-                  <strong>dos índices independientes</strong> — IRP (político) e IRE (económico) — usando Claude Haiku
+                  <strong>dos índices independientes</strong> — IRP (político) e IRE (económico) — usando Claude Sonnet 4.6
                   como clasificador LLM, 16 fuentes de noticias con feeds RSS y backfill de archivo histórico, y normalización por feed
                   (media = 100 sobre línea base 2025).
                 </>}
@@ -87,7 +92,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   Qhawarina produces <strong>two independent daily risk indices</strong>:{' '}
                   the <strong>IRP</strong> (Índice de Riesgo Político) and the{' '}
                   <strong>IRE</strong> (Índice de Riesgo Económico). Each index aggregates severity scores
-                  assigned by Claude Haiku to individual news articles, using a per-feed normalization
+                  assigned by Claude Sonnet 4.6 to individual news articles, using a per-feed normalization
                   approach that eliminates composition bias when new feeds are added. Both indices are
                   calibrated to a mean of 100 over the 2025 calendar year baseline. This is the first
                   application of the AI-GPR methodology to a Latin American country at daily frequency.
@@ -96,7 +101,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                   Qhawarina produce <strong>dos índices de riesgo diarios independientes</strong>:{' '}
                   el <strong>IRP</strong> (Índice de Riesgo Político) y el{' '}
                   <strong>IRE</strong> (Índice de Riesgo Económico). Cada índice agrega puntajes de
-                  severidad asignados por Claude Haiku a artículos individuales, usando una normalización
+                  severidad asignados por Claude Sonnet 4.6 a artículos individuales, usando una normalización
                   por feed que elimina el sesgo de composición al agregar nuevos feeds. Ambos índices
                   están calibrados a una media de 100 sobre la línea base del año 2025. Es la primera
                   aplicación de la metodología AI-GPR a un país latinoamericano con frecuencia diaria.
@@ -236,13 +241,13 @@ export default function RiesgoPoliticoMetodologiaPage() {
           <p className="text-gray-700 mb-4">
             {isEn
               ? <>
-                  Each article is classified by <strong>Claude Haiku</strong> (Anthropic) via{' '}
+                  Each article is classified by <strong>Claude Sonnet 4.6</strong> (Anthropic) via{' '}
                   <strong>two independent API calls</strong>: one for the political dimension and one for
                   the economic dimension. Each call assigns an integer score from 0 to 100.
                   Classification is performed in batches of 20 articles per API call.
                 </>
               : <>
-                  Cada artículo es clasificado por <strong>Claude Haiku</strong> (Anthropic) mediante{' '}
+                  Cada artículo es clasificado por <strong>Claude Sonnet 4.6</strong> (Anthropic) mediante{' '}
                   <strong>dos llamadas independientes a la API</strong>: una para la dimensión política y
                   una para la dimensión económica. Cada llamada asigna un puntaje entero de 0 a 100.
                   La clasificación se realiza en lotes de 20 artículos por llamada a la API.
@@ -484,7 +489,7 @@ export default function RiesgoPoliticoMetodologiaPage() {
                     f:  isEn ? 'Classification method' : 'Método de clasificación',
                     bb: isEn ? 'Keyword counting' : 'Conteo de palabras clave',
                     it: isEn ? 'LLM (GPT)' : 'LLM (GPT)',
-                    qw: isEn ? 'LLM (Claude Haiku)' : 'LLM (Claude Haiku)',
+                    qw: isEn ? 'LLM (Claude Sonnet 4.6)' : 'LLM (Claude Sonnet 4.6)',
                   },
                   {
                     f:  isEn ? 'Unit of analysis' : 'Unidad de análisis',
@@ -548,8 +553,8 @@ export default function RiesgoPoliticoMetodologiaPage() {
             <li>
               <strong>{isEn ? 'LLM classification errors:' : 'Errores de clasificación LLM:'}</strong>{' '}
               {isEn
-                ? 'Claude Haiku may occasionally misclassify articles or assign incorrect severity scores. Over 415 retroactive corrections have been applied for systematic patterns (routine FX reports, foreign politics, sports), but residual errors remain.'
-                : 'Claude Haiku puede ocasionalmente clasificar incorrectamente artículos o asignar severidades erróneas. Se han aplicado más de 415 correcciones retroactivas para patrones sistemáticos (reportes cambiarios rutinarios, política extranjera, deportes), pero pueden quedar errores residuales.'}
+                ? 'Claude Sonnet 4.6 may occasionally misclassify articles or assign incorrect severity scores. Over 415 retroactive corrections have been applied for systematic patterns (routine FX reports, foreign politics, sports), but residual errors remain.'
+                : 'Claude Sonnet 4.6 puede ocasionalmente clasificar incorrectamente artículos o asignar severidades erróneas. Se han aplicado más de 415 correcciones retroactivas para patrones sistemáticos (reportes cambiarios rutinarios, política extranjera, deportes), pero pueden quedar errores residuales.'}
             </li>
             <li>
               <strong>{isEn ? 'Archive depth varies by source:' : 'Profundidad de archivo varía por fuente:'}</strong>{' '}

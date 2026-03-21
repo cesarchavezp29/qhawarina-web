@@ -7,6 +7,7 @@ import LastUpdate from '../../components/stats/LastUpdate';
 import EmbedWidget from '../../components/EmbedWidget';
 import ShareButton from '../../components/ShareButton';
 import ChartShareButton from '../../components/ChartShareButton';
+import CiteButton from '../../components/CiteButton';
 import PageSkeleton from '../../components/PageSkeleton';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -299,11 +300,14 @@ function computeRegression(points: Array<{ x: number; y: number }>) {
 // ─── SECTOR KEYWORD PATTERNS ──────────────────────────────────────────────────
 
 const SECTOR_PATTERNS: Array<{ key: string; label_es: string; label_en: string; color: string; pattern: RegExp }> = [
-  { key: 'energia',  label_es: 'Energía',      label_en: 'Energy',  color: '#E9C46A', pattern: /gas|gnv|petróleo|electricidad|combustible|camisea/i },
-  { key: 'mineria',  label_es: 'Minería',       label_en: 'Mining',  color: '#9B2226', pattern: /min[eé]r|pataz|cobre|oro|zinc/i },
-  { key: 'comercio', label_es: 'Comercio Ext.', label_en: 'Trade',   color: '#2A9D8F', pattern: /arancel|exporta|importa|comercio exterior|trump/i },
-  { key: 'fiscal',   label_es: 'Fiscal',        label_en: 'Fiscal',  color: '#C65D3E', pattern: /presupuest|deuda|petroper|bono|fiscal/i },
-  { key: 'laboral',  label_es: 'Laboral',        label_en: 'Labour',  color: '#8D99AE', pattern: /huelga|paro|empleo|desempleo|trabajo/i },
+  { key: 'energia',     label_es: 'Energía',       label_en: 'Energy',    color: '#E9C46A', pattern: /gas\b|gnv|petróleo|electricidad|combustible|camisea|petroper|energ[eé]t/i },
+  { key: 'mineria',     label_es: 'Minería',        label_en: 'Mining',    color: '#9B2226', pattern: /min[eé]r|pataz|cobre|oro\b|zinc|las bambas|tía maría|tia maria|southern|senace|antamina/i },
+  { key: 'transporte',  label_es: 'Transporte',     label_en: 'Transport', color: '#457B9D', pattern: /transportistas?|bloqueo.{0,30}(carretera|v[ií]a|ruta)|paro.{0,20}transport|carretera.{0,30}bloqueo/i },
+  { key: 'comercio',    label_es: 'Comercio Ext.',  label_en: 'Trade',     color: '#2A9D8F', pattern: /arancel|exporta|importa|comercio exterior|tlc|trump/i },
+  { key: 'fiscal',      label_es: 'Fiscal',         label_en: 'Fiscal',    color: '#C65D3E', pattern: /presupuest|deuda|bono|fiscal|mef\b|ministerio de econom/i },
+  { key: 'financiero',  label_es: 'Financiero',     label_en: 'Financial', color: '#6A4C93', pattern: /bcrp|tipo de cambio|tasa de inter[eé]s|cr[eé]dito|banco central|inflaci[oó]n|sol.{0,10}d[oó]lar/i },
+  { key: 'laboral',     label_es: 'Laboral',        label_en: 'Labour',    color: '#8D99AE', pattern: /huelga|empleo|desempleo|trabajo|sindicato|sueldo|salario/i },
+  { key: 'agro',        label_es: 'Agro',           label_en: 'Agro',      color: '#52B788', pattern: /canasta b[aá]sica|precio.{0,20}aliment|producci[oó]n agr[ií]c|agropec|cosecha|agricult/i },
 ];
 
 // ─── WATERMARK ────────────────────────────────────────────────────────────────
@@ -348,6 +352,8 @@ export default function RiesgoEconomicoPage() {
 
   // ── Draggable label state (all positions in px relative to chartContainerRef) ──
   const [viewMode, setViewMode] = useState<'daily' | 'monthly'>('daily');
+  const [chartRange, setChartRange] = useState<'1m' | '3m' | '1y' | 'all'>('all');
+  const [chartDisplay, setChartDisplay] = useState<'chart' | 'table'>('chart');
 
   const [dotPositions, setDotPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
@@ -426,14 +432,17 @@ export default function RiesgoEconomicoPage() {
   // ── Memos (must be before early returns to satisfy Rules of Hooks) ───────────
   const sectorData = useMemo(() => {
     if (!data) return [];
-    const drivers = data.current.top_economic_drivers ?? [];
+    // Prefer eco_sector_titles (all eco>20 articles) over top_economic_drivers (top 10 only)
+    const sectorTitles: string[] = (data.current as any).eco_sector_titles ?? [];
+    const driverTitles: string[] = (data.current.top_economic_drivers ?? []).map((d: any) => d.title);
+    const titles = sectorTitles.length > 0 ? sectorTitles : driverTitles;
     const counts: Record<string, number> = {};
     for (const s of SECTOR_PATTERNS) counts[s.key] = 0;
     let unclassified = 0;
-    for (const driver of drivers) {
+    for (const title of titles) {
       let matched = false;
       for (const s of SECTOR_PATTERNS) {
-        if (s.pattern.test(driver.title)) {
+        if (s.pattern.test(title)) {
           counts[s.key] = (counts[s.key] ?? 0) + 1;
           matched = true;
           break;
@@ -456,33 +465,57 @@ export default function RiesgoEconomicoPage() {
 
   if (loading) return <PageSkeleton cards={2} />;
   if (error || !data) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <p className="text-red-500">
-        {isEn ? 'Error loading data.' : 'Error cargando datos.'}{' '}
-        <button onClick={() => window.location.reload()} className="underline">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="max-w-md text-center">
+        <p className="text-red-500 font-medium mb-2">
+          {isEn ? 'Error loading data.' : 'Error cargando datos.'}
+        </p>
+        <p className="text-sm text-gray-500 mb-4">
+          {isEn
+            ? 'The pipeline runs daily at 9:00 PM PET. Data may be temporarily unavailable.'
+            : 'El pipeline corre diariamente a las 9:00 PM PET. Los datos pueden estar temporalmente no disponibles.'}
+        </p>
+        <button onClick={() => window.location.reload()}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium"
+          style={{ borderColor: '#C65D3E', color: '#C65D3E' }}>
           {isEn ? 'Retry' : 'Reintentar'}
         </button>
-      </p>
+      </div>
     </div>
   );
 
+  // ── Partial day detection ────────────────────────────────────────────────────
+  // When today has < 300 articles (9PM pipeline hasn't run), use yesterday as primary.
+  const todayArticles = data.current.articles_total ?? 0;
+  const isPartialDay = todayArticles < 300;
+  const series = data.daily_series ?? [];
+  // "yesterday" = second-to-last entry in series (last complete day)
+  const yesterdayRow = series.length >= 2 ? series[series.length - 2] : null;
+
   // ── Derived values ──────────────────────────────────────────────────────────
-  const ecoRaw   = data.current.economic_raw   ?? 0;
-  const eco7d    = data.current.economic_7d    ?? 0;
-  const ecoLevel = data.current.economic_level ?? 'MODERADO';
+  const ecoRaw   = isPartialDay && yesterdayRow
+    ? (yesterdayRow.economic_7d ?? 0)
+    : (data.current.economic_raw ?? 0);
+  const eco7d    = isPartialDay && yesterdayRow
+    ? (yesterdayRow.economic_7d ?? 0)
+    : (data.current.economic_7d  ?? 0);
+  const ecoLevel = (isPartialDay && yesterdayRow
+    ? getRiskLevel(eco7d)
+    : (data.current.economic_level ?? 'MODERADO')) as RiskLevel;
   const ecoMult  = data.current.economic_multiplier ?? (eco7d / 100);
   const mult     = toMult(ecoRaw);
   const mult7d   = toMult(eco7d);
+  const primaryDateStr = isPartialDay && yesterdayRow ? yesterdayRow.date : data.current.date;
 
   const currentDateStr = (() => {
     try {
-      const [y, m, d] = data.current.date.split('-').map(Number);
+      const [y, m, d] = primaryDateStr.split('-').map(Number);
       return new Date(y, m - 1, d).toLocaleDateString(
         isEn ? 'en-US' : 'es-PE',
         { day: 'numeric', month: 'long', year: 'numeric' }
       );
     } catch {
-      return data.current.date;
+      return primaryDateStr;
     }
   })();
 
@@ -492,6 +525,12 @@ export default function RiesgoEconomicoPage() {
     economic_7d:  d.economic_7d,
     economic_raw: d.economic_raw,
   }));
+
+  // Range-filtered chart data for time range buttons
+  const chartRangeData = (() => {
+    const days = chartRange === '1m' ? 30 : chartRange === '3m' ? 90 : chartRange === '1y' ? 365 : chartData.length;
+    return chartData.slice(-days);
+  })();
 
   const maxIre = Math.max(
     ...chartData.map((d) => Math.max(d.economic_7d ?? 0, d.economic_raw ?? 0)),
@@ -545,9 +584,9 @@ export default function RiesgoEconomicoPage() {
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6">
-          <a href="/estadisticas" className="hover:text-blue-700">
+          <Link href="/estadisticas" className="hover:text-blue-700">
             {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
+          </Link>
           {' / '}
           <span className="text-gray-900 font-medium">
             {isEn ? 'Economic Risk Index' : 'Índice de Riesgo Económico'}
@@ -600,6 +639,7 @@ export default function RiesgoEconomicoPage() {
             </p>
           </div>
           <div className="flex gap-2 flex-shrink-0">
+            <CiteButton indicator={isEn ? 'Economic Risk Index (IRE)' : 'Índice de Riesgo Económico (IRE)'} isEn={isEn} />
             <ShareButton
               title={`${isEn ? 'Economic Risk Index' : 'Índice de Riesgo Económico'} — Qhawarina`}
               text={
@@ -616,12 +656,33 @@ export default function RiesgoEconomicoPage() {
           </div>
         </div>
 
+        {/* ── Partial day banner ─────────────────────────────────────────── */}
+        {isPartialDay && (
+          <div className="mb-5 flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm"
+            style={{ background: '#FEF3C7', border: '1px solid #F59E0B', color: '#92400E' }}>
+            <span>⏳</span>
+            <div>
+              <strong>{isEn ? 'Partial day' : 'Día parcial'}</strong>
+              {' — '}
+              {isEn
+                ? `Only ${todayArticles} articles collected so far. Full data at 9:00 PM PET.`
+                : `Solo ${todayArticles} artículos recopilados hasta ahora. Datos completos a las 9:00 PM PET.`}
+              {' '}
+              <span style={{ opacity: 0.7 }}>
+                {isEn ? 'Showing last completed day as primary.' : 'Se muestran los valores del último día completo como referencia.'}
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* ══ SECTION 2: ECONOMIC READING CARDS (2 cards) ═════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-          {/* Card 1: Today */}
+          {/* Card 1: Today (or last complete day if partial) */}
           <ReadingCard
-            title={isEn ? 'ECONOMIC RISK · TODAY' : 'RIESGO ECONÓMICO · HOY'}
-            subtitle={currentDateStr}
+            title={isPartialDay
+              ? (isEn ? 'ECONOMIC RISK · LAST COMPLETE DAY' : 'RIESGO ECONÓMICO · ÚLTIMO DÍA COMPLETO')
+              : (isEn ? 'ECONOMIC RISK · TODAY' : 'RIESGO ECONÓMICO · HOY')}
+            subtitle={formatDate(primaryDateStr, isEn)}
             ire={ecoRaw}
             level={ecoLevel}
             accentColor="#2A9D8F"
@@ -639,6 +700,21 @@ export default function RiesgoEconomicoPage() {
             indexLabel="IRE"
           />
         </div>
+
+        {/* Partial day — today's raw secondary display */}
+        {isPartialDay && (
+          <div className="flex gap-4 mb-5">
+            <div className="flex-1 rounded-lg px-4 py-3 text-sm" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+              <span className="text-xs uppercase tracking-wider font-bold" style={{ color: '#8D99AE' }}>
+                {isEn ? 'IRE today (partial)' : 'IRE hoy (parcial)'}
+              </span>
+              <div className="text-2xl font-bold mt-1" style={{ color: '#2A9D8F' }}>
+                {Math.round(data.current.economic_raw ?? 0)}
+                <span className="text-xs font-normal ml-1" style={{ color: '#8D99AE' }}>/ {todayArticles} arts.</span>
+              </div>
+            </div>
+          </div>
+        )}
 
         {viewMode === 'daily' && (<>
 
@@ -674,6 +750,43 @@ export default function RiesgoEconomicoPage() {
                   }
                 </p>
               </div>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-1">
+                  {(['1m', '3m', '1y', 'all'] as const).map((r) => (
+                    <button
+                      key={r}
+                      onClick={() => setChartRange(r)}
+                      className="px-2.5 py-1 rounded text-xs font-medium transition-colors"
+                      style={{
+                        background: chartRange === r ? '#2D3142' : 'transparent',
+                        color: chartRange === r ? '#FAF8F4' : '#8D99AE',
+                        border: '1px solid',
+                        borderColor: chartRange === r ? '#2D3142' : '#E8E4DC',
+                      }}
+                    >
+                      {r === 'all' ? (isEn ? 'All' : 'Todo') : r}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-0.5 ml-1">
+                  {(['chart', 'table'] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setChartDisplay(mode)}
+                      className="px-2 py-1 rounded text-xs font-medium transition-colors"
+                      style={{
+                        background: chartDisplay === mode ? '#2A9D8F' : 'transparent',
+                        color: chartDisplay === mode ? '#fff' : '#8D99AE',
+                        border: '1px solid',
+                        borderColor: chartDisplay === mode ? '#2A9D8F' : '#E8E4DC',
+                      }}
+                      title={mode === 'chart' ? (isEn ? 'Chart view' : 'Ver gráfico') : (isEn ? 'Table view' : 'Ver tabla')}
+                    >
+                      {mode === 'chart' ? '📈' : '📋'}
+                    </button>
+                  ))}
+                </div>
+              </div>
               <ChartShareButton
                 url="https://qhawarina.pe/estadisticas/riesgo-economico"
                 shareText={
@@ -684,6 +797,7 @@ export default function RiesgoEconomicoPage() {
               />
             </div>
 
+            {chartDisplay === 'chart' && (
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-500">
               <div className="flex items-center gap-1.5">
                 <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#2A9D8F" strokeWidth="2.5" /></svg>
@@ -694,11 +808,40 @@ export default function RiesgoEconomicoPage() {
                 <span>{isEn ? 'Economic daily' : 'Económico diario'}</span>
               </div>
             </div>
+            )}
 
+            {chartDisplay === 'table' && (
+              <div className="overflow-auto max-h-72 rounded-lg border border-gray-100">
+                <table className="w-full text-xs border-collapse">
+                  <thead className="sticky top-0" style={{ background: '#FAF8F4' }}>
+                    <tr>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-500 border-b border-gray-100">{isEn ? 'Date' : 'Fecha'}</th>
+                      <th className="text-right py-2 px-3 font-semibold border-b border-gray-100" style={{ color: '#2A9D8F' }}>IRE {isEn ? '(daily)' : '(diario)'}</th>
+                      <th className="text-right py-2 px-3 font-semibold border-b border-gray-100" style={{ color: '#2A9D8F' }}>IRE 7d</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...chartRangeData].reverse().map((row, i) => (
+                      <tr key={row.date} className={i % 2 === 0 ? '' : 'bg-gray-50'}>
+                        <td className="py-1.5 px-3 text-gray-600">{row.date}</td>
+                        <td className="py-1.5 px-3 text-right tabular-nums" style={{ color: ireBarColor(row.economic_raw ?? 0) }}>
+                          {row.economic_raw != null ? Math.round(row.economic_raw) : '—'}
+                        </td>
+                        <td className="py-1.5 px-3 text-right tabular-nums font-medium" style={{ color: ireBarColor(row.economic_7d ?? 0) }}>
+                          {row.economic_7d != null ? Math.round(row.economic_7d) : '—'}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {chartDisplay === 'chart' && (
             <div ref={chartContainerRef} style={{ position: 'relative' }}>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart
-                data={chartData}
+                data={chartRangeData}
                 margin={{ top: 40, right: 16, left: 8, bottom: 8 }}
               >
                 <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
@@ -716,7 +859,7 @@ export default function RiesgoEconomicoPage() {
                   dataKey="date"
                   tick={axisTickStyle}
                   stroke={CHART_DEFAULTS.axisStroke}
-                  interval={Math.floor(chartData.length / 6)}
+                  interval={Math.floor(chartRangeData.length / 6)}
                 />
                 <YAxis
                   tick={axisTickStyle}
@@ -777,7 +920,7 @@ export default function RiesgoEconomicoPage() {
                 />
                 {/* Fixed peak dots on the smoothed line */}
                 {ecoPeaks.map((peak) => {
-                  const val = chartData.find((d: any) => d.date === peak.date)?.economic_7d ?? peak.value;
+                  const val = chartRangeData.find((d: any) => d.date === peak.date)?.economic_7d ?? peak.value;
                   return (
                     <ReferenceDot key={peak.date} x={peak.date} y={val}
                       r={4} fill="#2A9D8F" stroke="white" strokeWidth={1.5} />
@@ -851,6 +994,7 @@ export default function RiesgoEconomicoPage() {
               );
             })}
             </div>
+            )}
           </div>
         )}
 
@@ -909,59 +1053,221 @@ export default function RiesgoEconomicoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 5b: ECONOMIC JUSTIFICATION ══════════════════════════ */}
-        {(data.current.economic_justification || data.current.justification) && (
+        {/* ══ SECTION 5b: DUAL DRIVERS ═════════════════════════════════════ */}
+        {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (
           <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Why this level?' : '¿Por qué este nivel?'}
+                {isEn ? 'What\'s driving today\'s index?' : '¿Qué impulsa el índice hoy?'}
               </h3>
               <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
-                {formatDate(data.current.date, isEn)}
+                {formatDate(primaryDateStr, isEn)}
               </span>
             </div>
-            <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#2A9D8F' }}>
-                  {isEn ? 'Economic Risk' : 'Riesgo Económico'} · {ecoMult.toFixed(1)}×
-                </span>
-              </div>
-              {(data.current.articles_economic_relevant ?? 999) <= 1 ? (
-                <p className="text-sm leading-relaxed" style={{ color: '#2D3142' }}>
-                  {isEn
-                    ? 'Low economic news activity today. No significant macroeconomic impact detected. Underlying fundamentals remain stable.'
-                    : 'Jornada de baja actividad económica en medios. No se detectaron noticias con impacto significativo en indicadores económicos estructurales. Los fundamentales macroeconómicos se mantienen estables.'}
-                </p>
-              ) : (
-                <>
-                  <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
-                    {data.current.economic_justification ?? data.current.justification}
-                  </p>
-                  {data.current.top_economic_drivers && data.current.top_economic_drivers.length >= 2 && (
-                    <>
-                      <p className="text-xs text-gray-400 mb-1">
-                        {isEn ? 'Score: economic intensity (0–100)' : 'Puntuación: intensidad económica del artículo (0–100)'}
-                      </p>
-                      <ul className="space-y-1">
-                        {data.current.top_economic_drivers.slice(0, 5).map((d, i) => {
-                          const dotColor = d.score >= 70 ? '#9B2226' : d.score >= 40 ? '#2A9D8F' : '#E0A458';
-                          return (
-                            <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
-                              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
-                              <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{d.score}</span>
-                              <span className="truncate">{d.title}</span>
-                              <span className="flex-shrink-0" style={{ color: '#8D99AE', fontSize: '11px' }}>({d.source})</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </>
+            {(() => {
+              const polDrivers = (data.current.top_political_drivers ?? []);
+              const ecoDrivers = (data.current.top_economic_drivers ?? []);
+              if (polDrivers.length === 0 && ecoDrivers.length === 0) return null;
+
+              const EVENT_CLUSTERS: { keywords: string[]; label_es: string; label_en: string }[] = [
+                { keywords: ['petroperú', 'petroperu'], label_es: 'Crisis Petroperú', label_en: 'Petroperú crisis' },
+                { keywords: ['camisea', 'gas natural', 'gnv', 'gasoducto'], label_es: 'Crisis gas / Camisea', label_en: 'Natural gas / Camisea crisis' },
+                { keywords: ['arancel', 'trump', 'comercio exterior', 'exporta', 'importa'], label_es: 'Aranceles / comercio exterior', label_en: 'Tariffs / trade policy' },
+                { keywords: ['tipo de cambio', 'dólar', 'bcrp', 'reservas', 'banco central'], label_es: 'Tipo de cambio / BCRP', label_en: 'Exchange rate / BCRP' },
+                { keywords: ['inflación', 'inflacion', 'ipc', 'precios'], label_es: 'Inflación / precios', label_en: 'Inflation / prices' },
+                { keywords: ['presupuest', 'deuda', 'fiscal', 'déficit', 'deficit', 'bono'], label_es: 'Política fiscal / deuda', label_en: 'Fiscal policy / debt' },
+                { keywords: ['pbi', 'crecimiento económico', 'recesión', 'recession'], label_es: 'Crecimiento / PBI', label_en: 'Growth / GDP' },
+                { keywords: ['miner', 'pataz', 'cobre', 'oro', 'zinc'], label_es: 'Sector minero', label_en: 'Mining sector' },
+                { keywords: ['empleo', 'desempleo', 'huelga', 'paro laboral'], label_es: 'Empleo / paros', label_en: 'Employment / strikes' },
+                { keywords: ['voto de confianza', 'gabinete', 'premier'], label_es: 'Inestabilidad política', label_en: 'Political instability' },
+              ];
+
+              function clusterArticles(articles: { title: string; source: string; score: number }[]) {
+                const used = new Set<number>();
+                const groups: { label_es: string; label_en: string; articles: typeof articles; maxScore: number }[] = [];
+                for (const cluster of EVENT_CLUSTERS) {
+                  const matched = articles.filter((a, i) => {
+                    if (used.has(i)) return false;
+                    const t = a.title.toLowerCase();
+                    return cluster.keywords.some((k) => t.includes(k));
+                  });
+                  if (matched.length > 0) {
+                    matched.forEach((a) => used.add(articles.indexOf(a)));
+                    groups.push({
+                      label_es: cluster.label_es,
+                      label_en: cluster.label_en,
+                      articles: matched,
+                      maxScore: Math.max(...matched.map((a) => a.score)),
+                    });
+                  }
+                }
+                articles.forEach((a, i) => {
+                  if (!used.has(i)) {
+                    groups.push({ label_es: a.title.slice(0, 60), label_en: a.title.slice(0, 60), articles: [a], maxScore: a.score });
+                  }
+                });
+                return groups.sort((a, b) => b.maxScore - a.maxScore);
+              }
+
+              const polGroups = clusterArticles(polDrivers);
+              const ecoGroups = clusterArticles(ecoDrivers);
+
+              function dotColor(score: number) {
+                if (score >= 70) return '#9B2226';
+                if (score >= 55) return '#C65D3E';
+                if (score >= 35) return '#E9C46A';
+                return '#8D99AE';
+              }
+
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {polGroups.length > 0 && (
+                    <div className="rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                      <div className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: '#C65D3E' }}>
+                        {isEn ? 'Political drivers (IRP)' : 'Impulsores políticos (IRP)'}
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        {polGroups.slice(0, 5).map((g, i) => (
+                          <div key={i} className="flex items-start gap-2.5">
+                            <div className="mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: dotColor(g.maxScore) }} />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-sm font-medium leading-snug" style={{ color: '#2D3142' }}>
+                                  {isEn ? g.label_en : g.label_es}
+                                </span>
+                                <span className="text-xs flex-shrink-0 font-mono px-1.5 py-0.5 rounded"
+                                  style={{ background: dotColor(g.maxScore) + '18', color: dotColor(g.maxScore) }}>
+                                  {g.articles.length} art.
+                                </span>
+                              </div>
+                              <div className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+                                {g.articles.slice(0, 2).map(a => a.source).join(', ')}
+                                {' · '}pol={g.maxScore}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
-                </>
-              )}
-            </div>
+                  {ecoGroups.length > 0 && (
+                    <div className="rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                      <div className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: '#2A9D8F' }}>
+                        {isEn ? 'Economic drivers (IRE)' : 'Impulsores económicos (IRE)'}
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        {ecoGroups.slice(0, 5).map((g, i) => (
+                          <div key={i} className="flex items-start gap-2.5">
+                            <div className="mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: dotColor(g.maxScore) }} />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-sm font-medium leading-snug" style={{ color: '#2D3142' }}>
+                                  {isEn ? g.label_en : g.label_es}
+                                </span>
+                                <span className="text-xs flex-shrink-0 font-mono px-1.5 py-0.5 rounded"
+                                  style={{ background: dotColor(g.maxScore) + '18', color: dotColor(g.maxScore) }}>
+                                  {g.articles.length} art.
+                                </span>
+                              </div>
+                              <div className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+                                {g.articles.slice(0, 2).map(a => a.source).join(', ')}
+                                {' · '}eco={g.maxScore}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         )}
+
+        {/* ══ SECTION: HISTORICAL CONTEXT + YoY ══════════════════════════ */}
+        {(() => {
+          const allValues = (data.daily_series ?? []).map((d) => d.economic_7d ?? 0).filter((v) => v > 0);
+          if (allValues.length < 30) return null;
+          const todayVal = eco7d;
+          const sorted = [...allValues].sort((a, b) => a - b);
+          const percentile = Math.round((sorted.filter((v) => v <= todayVal).length / sorted.length) * 100);
+          const seriesArr = data.daily_series ?? [];
+          const todayIdx = seriesArr.length - 1;
+
+          // Consecutive days at/above average
+          const reversed = [...seriesArr].reverse();
+          let consecutive = 0;
+          for (const d of reversed) { if ((d.economic_7d ?? 0) >= 100) consecutive++; else break; }
+
+          // YoY: find entry ~365 days ago
+          const todayDate = new Date(primaryDateStr);
+          const yoyDate = new Date(todayDate);
+          yoyDate.setFullYear(yoyDate.getFullYear() - 1);
+          const yoyStr = yoyDate.toISOString().slice(0, 10);
+          const yoyRow = seriesArr.find((d) => d.date === yoyStr)
+            ?? seriesArr.filter((d) => d.date <= yoyStr).slice(-1)[0];
+          const yoyVal = yoyRow?.economic_7d ?? null;
+          const yoyDelta = yoyVal != null ? todayVal - yoyVal : null;
+          const yoyPct = yoyVal != null && yoyVal > 0 ? ((todayVal - yoyVal) / yoyVal * 100) : null;
+
+          return (
+            <div className="mb-6 rounded-xl border border-gray-200 p-5" style={{ background: '#FAF8F4' }}>
+              <h3 className="text-sm font-semibold uppercase tracking-wide mb-4" style={{ color: '#2D3142' }}>
+                {isEn ? 'Historical context' : 'Contexto histórico'}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold" style={{ color: '#2A9D8F' }}>{percentile}°</p>
+                  <p className="text-xs mt-1" style={{ color: '#8D99AE' }}>
+                    {isEn ? 'percentile since Jan 2025' : 'percentil desde ene. 2025'}
+                  </p>
+                </div>
+                {consecutive > 0 && (
+                  <div className="text-center">
+                    <p className="text-3xl font-bold" style={{ color: consecutive >= 7 ? '#9B2226' : '#C65D3E' }}>{consecutive}</p>
+                    <p className="text-xs mt-1" style={{ color: '#8D99AE' }}>
+                      {isEn ? 'days above average' : 'días sobre el promedio'}
+                    </p>
+                  </div>
+                )}
+                {yoyPct != null && (
+                  <div className="text-center">
+                    <p className="text-3xl font-bold" style={{ color: yoyPct > 0 ? '#C65D3E' : '#2A9D8F' }}>
+                      {yoyPct > 0 ? '+' : ''}{yoyPct.toFixed(0)}%
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: '#8D99AE' }}>
+                      {isEn ? 'vs same day last year' : 'vs mismo día año pasado'}
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+                      {isEn ? `Last year: IRE ${Math.round(yoyVal!)}` : `Año pasado: IRE ${Math.round(yoyVal!)}`}
+                    </p>
+                  </div>
+                )}
+                {(() => {
+                  const similar = seriesArr
+                    .slice(0, todayIdx - 14)
+                    .filter((d) => { const v = d.economic_7d ?? 0; return v > 0 && Math.abs(v - todayVal) / Math.max(todayVal, 1) < 0.15; })
+                    .sort((a, b) => Math.abs((a.economic_7d ?? 0) - todayVal) - Math.abs((b.economic_7d ?? 0) - todayVal))
+                    .slice(0, 2);
+                  if (similar.length === 0) return null;
+                  return (
+                    <div className="text-center">
+                      <p className="text-xs font-semibold mb-1" style={{ color: '#8D99AE' }}>
+                        {isEn ? 'Similar days (±15%)' : 'Días similares (±15%)'}
+                      </p>
+                      {similar.map((d) => (
+                        <p key={d.date} className="text-xs" style={{ color: '#2D3142' }}>
+                          {d.date} — IRE {Math.round(d.economic_7d ?? 0)}
+                        </p>
+                      ))}
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* ══ SECTION 6: IRE vs TIPO DE CAMBIO SCATTER ════════════════════ */}
         {scatterRaw.length >= 10 && (
@@ -1091,16 +1397,8 @@ export default function RiesgoEconomicoPage() {
 
           return (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#2A9D8F44', background: '#2A9D8F0A' }}>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                  {currentMonthLabel} {isEn ? '(partial)' : '(parcial)'}
-                </p>
-                <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#2A9D8F' }}>
-                  {Math.round(currentVal)}
-                </p>
-                <p className="text-xs text-gray-400 mt-2">IRE · {isEn ? 'month-to-date average' : 'promedio hasta hoy'}</p>
-              </div>
-              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#2A9D8F44', background: '#2A9D8F0A' }}>
+              {/* Primary: last completed month */}
+              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#2A9D8F66', background: '#2A9D8F0D' }}>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
                   {lastMonthLabel}
                 </p>
@@ -1113,6 +1411,16 @@ export default function RiesgoEconomicoPage() {
                   </p>
                 )}
                 <p className="text-xs text-gray-400 mt-1">IRE · {isEn ? 'monthly average' : 'promedio mensual'}</p>
+              </div>
+              {/* Secondary: current partial month */}
+              <div className="rounded-xl border p-5 flex flex-col" style={{ borderColor: '#d1d5db', background: '#f9fafb' }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                  {currentMonthLabel} {isEn ? '(partial)' : '(parcial)'}
+                </p>
+                <p className="text-4xl font-bold leading-none mt-3 text-gray-500">
+                  {Math.round(currentVal)}
+                </p>
+                <p className="text-xs text-gray-400 mt-2">IRE · {isEn ? 'month-to-date average' : 'promedio hasta hoy'}</p>
               </div>
             </div>
           );
@@ -1307,6 +1615,29 @@ export default function RiesgoEconomicoPage() {
             ? 'Coverage: ~110 articles/day from 16 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'
             : 'Cobertura: ~110 artículos/día de 16 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'}
         </p>
+
+        {/* ══ SECTION: ALERT CTA ════════════════════════════════════════════ */}
+        <div className="mb-6 rounded-xl border border-dashed p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          style={{ borderColor: '#2A9D8F55', background: '#f0fafa' }}>
+          <div className="text-2xl flex-shrink-0">🔔</div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold" style={{ color: '#2D3142' }}>
+              {isEn ? 'Get alerts when economic risk spikes' : 'Recibe alertas cuando el riesgo económico se dispare'}
+            </p>
+            <p className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+              {isEn
+                ? 'Email us to be notified when IRE exceeds 150 (elevated risk).'
+                : 'Escríbenos para recibir alertas cuando el IRE supere 150 (riesgo elevado).'}
+            </p>
+          </div>
+          <a
+            href={`mailto:hola@qhawarina.pe?subject=${encodeURIComponent(isEn ? 'IRE Alert Request' : 'Solicitud de alerta IRE')}&body=${encodeURIComponent(isEn ? 'Please notify me when IRE exceeds 150.\n\nName: \nOrganization: ' : 'Por favor, notifícame cuando el IRE supere 150.\n\nNombre: \nOrganización: ')}`}
+            className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
+            style={{ background: '#2A9D8F', color: '#fff' }}
+          >
+            {isEn ? 'Request alerts' : 'Solicitar alertas'}
+          </a>
+        </div>
 
         {/* ══ SECTION 8: LINKS ════════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row gap-3">

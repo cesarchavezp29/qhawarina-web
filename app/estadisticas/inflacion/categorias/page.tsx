@@ -1,11 +1,30 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
+import { useState, useEffect, useMemo } from 'react';
+import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import CiteButton from '../../../components/CiteButton';
+import ShareButton from '../../../components/ShareButton';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, ReferenceLine, ReferenceArea,
+} from 'recharts';
+import { CHART_DEFAULTS, tooltipContentStyle, axisTickStyle } from '../../../lib/chartTheme';
+import PageSkeleton from '../../../components/PageSkeleton';
 
-const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
+const WATERMARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
+
+// Qhawarina palette overrides for category colors
+const CAT_COLORS: Record<string, string> = {
+  total:          '#2D3142',
+  core:           '#C65D3E',
+  non_core:       '#2A9D8F',
+  food:           '#8B7355',
+  tradables:      '#4A7C8C',
+  non_tradables:  '#D4956A',
+  services:       '#5B8C5A',
+  energy:         '#C4A35A',
+};
 
 interface Category {
   id: string;
@@ -20,380 +39,252 @@ interface Category {
   latest_monthly: number;
   latest_12m: number;
   latest_date: string;
-  n_obs: number;
 }
 
 interface InflationData {
-  metadata: {
-    last_update: string;
-    source: string;
-    coverage: string;
-    n_categories: number;
-  };
+  metadata: { last_update: string; source: string; coverage: string; n_categories: number };
   categories: Category[];
 }
 
-type ChartMode = "monthly" | "12m";
+type ChartMode = 'monthly' | '12m';
 
 export default function InflacionCategoriasPage() {
   const isEn = useLocale() === 'en';
   const [data, setData] = useState<InflationData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [chartMode, setChartMode] = useState<ChartMode>("12m");
+  const [error, setError] = useState(false);
+  const [chartMode, setChartMode] = useState<ChartMode>('12m');
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   useEffect(() => {
     fetch(`/assets/data/inflation_categories.json?v=${new Date().toISOString().slice(0, 13)}`)
-      .then((r) => r.json())
-      .then((d) => {
+      .then(r => r.json())
+      .then((d: InflationData) => {
         setData(d);
-        setSelectedIds(d.categories.map((c: Category) => c.id));
+        setSelectedIds(d.categories.map(c => c.id));
         setLoading(false);
-      });
+      })
+      .catch(() => { setError(true); setLoading(false); });
   }, []);
 
-  if (loading || !data) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">{isEn ? 'Loading data...' : 'Cargando datos...'}</p>
-      </div>
-    );
-  }
-
   const toggle = (id: string) =>
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
+    setSelectedIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
 
-  const total = data.categories.find((c) => c.id === "total");
-  const visible = data.categories.filter((c) => selectedIds.includes(c.id));
+  // Pivot category arrays to flat chart data
+  const chartData = useMemo(() => {
+    if (!data || data.categories.length === 0) return [];
+    const totalCat = data.categories.find(c => c.id === 'total') ?? data.categories[0];
+    const allDates = totalCat.dates;
+    const valueKey = chartMode === 'monthly' ? 'values_monthly' : 'values_12m';
+    return allDates.map((date, i) => {
+      const pt: Record<string, string | number | null> = { date };
+      for (const cat of data.categories) {
+        pt[cat.id] = cat.dates[i] === date ? cat[valueKey][i] ?? null : null;
+      }
+      return pt;
+    });
+  }, [data, chartMode]);
 
-  const valueKey = chartMode === "monthly" ? "values_monthly" : "values_12m";
-  const latestKey = chartMode === "monthly" ? "latest_monthly" : "latest_12m";
+  if (loading) return <PageSkeleton cards={2} />;
 
-  const traces = visible.map((cat) => ({
-    x: cat.dates,
-    y: cat[valueKey],
-    type: "scatter" as const,
-    mode: "lines" as const,
-    name: isEn ? cat.name_en : cat.name_es,
-    line: {
-      color: cat.color,
-      width: cat.id === "total" ? 3 : 1.5,
-      dash: cat.id === "total" ? ("solid" as const) : ("solid" as const),
-    },
-  }));
+  if (error || !data) return (
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#FAF8F4' }}>
+      <div className="max-w-md text-center">
+        <p className="text-red-500 font-medium mb-2">{isEn ? 'Error loading data.' : 'Error cargando datos.'}</p>
+        <p className="text-sm text-gray-500 mb-4">{isEn ? 'Try again later.' : 'Intenta de nuevo más tarde.'}</p>
+        <button onClick={() => window.location.reload()} className="px-4 py-2 rounded-lg border text-sm font-medium" style={{ borderColor: '#C65D3E', color: '#C65D3E' }}>
+          {isEn ? 'Retry' : 'Reintentar'}
+        </button>
+      </div>
+    </div>
+  );
 
-  const unit = chartMode === "monthly"
-    ? (isEn ? "% monthly change" : "var% mensual")
-    : (isEn ? "% 12-month change" : "var% interanual");
+  const latestKey = chartMode === 'monthly' ? 'latest_monthly' : 'latest_12m';
+  const unit = chartMode === 'monthly'
+    ? (isEn ? '% monthly' : '% mensual')
+    : (isEn ? '% 12-month (YoY)' : '% 12 meses (YoY)');
 
-  const layout = {
-    xaxis: { title: "", gridcolor: "#e5e7eb" },
-    yaxis: {
-      title: unit,
-      gridcolor: "#e5e7eb",
-      zeroline: true,
-      zerolinecolor: "#6b7280",
-      zerolinewidth: 1,
-    },
-    hovermode: "x unified" as const,
-    plot_bgcolor: "#ffffff",
-    paper_bgcolor: "#ffffff",
-    margin: { t: 20, r: 20, b: 50, l: 55 },
-    legend: {
-      orientation: "v" as const,
-      y: 1,
-      yanchor: "top" as const,
-      x: 1.02,
-      xanchor: "left" as const,
-      font: { size: 12 },
-    },
-    height: 460,
-    shapes: [
-      {
-        type: "rect" as const,
-        xref: "paper" as const,
-        yref: "y" as const,
-        x0: 0, x1: 1, y0: 1, y1: 3,
-        fillcolor: "#dcfce7",
-        opacity: 0.3,
-        line: { width: 0 },
-      },
-    ],
-    annotations:
-      chartMode === "12m"
-        ? [
-            {
-              xref: "paper" as const,
-              yref: "y" as const,
-              x: 0.01,
-              y: 2,
-              text: isEn ? "BCRP target: 1%–3%" : "Meta BCRP: 1%–3%",
-              showarrow: false,
-              font: { color: "#16a34a", size: 11 },
-            },
-          ]
-        : [],
-  };
+  const total = data.categories.find(c => c.id === 'total');
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-4">
-          <Link href="/estadisticas" className="hover:text-blue-700">
-            {isEn ? 'Statistics' : 'Estadísticas'}
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/estadisticas/inflacion" className="hover:text-blue-700">
-            {isEn ? 'Inflation' : 'Inflación'}
-          </Link>
-          <span className="mx-2">/</span>
+    <div className="min-h-screen py-10" style={{ backgroundColor: '#FAF8F4', backgroundImage: WATERMARK }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <nav className="text-sm text-gray-500 mb-6">
+          <Link href="/estadisticas" className="hover:underline">{isEn ? 'Statistics' : 'Estadísticas'}</Link>
+          {' / '}
+          <Link href="/estadisticas/inflacion" className="hover:underline">{isEn ? 'Inflation' : 'Inflación'}</Link>
+          {' / '}
           <span className="text-gray-900 font-medium">{isEn ? 'Categories' : 'Categorías'}</span>
         </nav>
 
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-3xl font-bold" style={{ color: '#1a1a1a' }}>
             {isEn ? 'Inflation by Category' : 'Inflación por Categoría'}
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            {isEn
-              ? `Breakdown of Lima Metropolitan CPI by analytical categories. Coverage: December 2010 – ${data.metadata.last_update}.`
-              : `Desagregación del IPC de Lima Metropolitana por categorías analíticas. Cobertura: diciembre 2010 – ${data.metadata.last_update}.`}
-          </p>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton indicator={isEn ? 'Inflation by Category' : 'Inflación por Categoría'} isEn={isEn} />
+            <ShareButton
+              title={isEn ? 'Inflation by Category — Qhawarina' : 'Inflación por Categoría — Qhawarina'}
+              text={isEn ? '📊 Peru inflation breakdown by category | Qhawarina\nhttps://qhawarina.pe/estadisticas/inflacion/categorias' : '📊 Inflación por categoría en Perú | Qhawarina\nhttps://qhawarina.pe/estadisticas/inflacion/categorias'}
+            />
+          </div>
         </div>
+        <p className="text-base text-gray-600 mb-6 max-w-3xl">
+          {isEn
+            ? `Breakdown of Lima Metropolitan CPI by analytical categories. Coverage: December 2010 – ${data.metadata.last_update}.`
+            : `Desagregación del IPC de Lima Metropolitana por categorías analíticas. Cobertura: diciembre 2010 – ${data.metadata.last_update}.`}
+        </p>
 
-        {/* Latest Values Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
-          {data.categories.map((cat) => {
+        {/* Category cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
+          {data.categories.map(cat => {
+            const active = selectedIds.includes(cat.id);
+            const color = CAT_COLORS[cat.id] ?? cat.color;
             const val = cat[latestKey];
-            const isPositive = val > 0;
-            const isInTarget = chartMode === "12m" && val >= 1 && val <= 3;
+            const isInTarget = chartMode === '12m' && val >= 1 && val <= 3;
             return (
-              <div
+              <button
                 key={cat.id}
                 onClick={() => toggle(cat.id)}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 cursor-pointer hover:shadow-md transition-shadow"
+                className="rounded-xl p-4 text-left transition-all"
                 style={{
-                  borderLeft: selectedIds.includes(cat.id)
-                    ? `4px solid ${cat.color}`
-                    : "4px solid #e5e7eb",
-                  opacity: selectedIds.includes(cat.id) ? 1 : 0.45,
+                  background: '#FFFCF7',
+                  border: `1px solid ${active ? color : '#E8E4DF'}`,
+                  borderLeft: `4px solid ${active ? color : '#E8E4DF'}`,
+                  opacity: active ? 1 : 0.45,
                 }}
               >
                 <div className="flex items-start justify-between mb-1">
                   <p className="text-xs font-medium text-gray-500 leading-tight">
                     {isEn ? cat.name_en : cat.name_es}
-                    {cat.weight_pct && (
-                      <span className="ml-1 text-gray-400">
-                        ({cat.weight_pct}%)
-                      </span>
-                    )}
+                    {cat.weight_pct && <span className="ml-1 text-gray-400">({cat.weight_pct}%)</span>}
                   </p>
                   {isInTarget && (
-                    <span className="text-xs text-green-600 font-semibold ml-1 shrink-0">
-                      {isEn ? 'On target ✓' : 'Meta ✓'}
+                    <span className="text-xs font-semibold shrink-0 ml-1" style={{ color: '#2A9D8F' }}>
+                      {isEn ? 'On target' : 'Meta'}
                     </span>
                   )}
                 </div>
-                <p
-                  className="text-2xl font-bold mt-1"
-                  style={{ color: cat.color }}
-                >
-                  {isPositive ? "+" : ""}
-                  {val.toFixed(chartMode === "monthly" ? 3 : 2)}%
+                <p className="text-xl font-bold mt-1" style={{ color }}>
+                  {val > 0 ? '+' : ''}{val.toFixed(chartMode === 'monthly' ? 3 : 2)}%
                 </p>
-                <p className="text-xs text-gray-400 mt-1">
-                  {chartMode === "monthly"
-                    ? (isEn ? "month-to-month" : "mes a mes")
-                    : (isEn ? "12 months" : "12 meses")}{" "}
-                  • {cat.latest_date}
-                </p>
-              </div>
+                <p className="text-xs text-gray-400 mt-0.5">{cat.latest_date}</p>
+              </button>
             );
           })}
         </div>
 
         {/* Chart + Controls */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          {/* Controls */}
+        <div className="rounded-xl border p-6 mb-6" style={{ background: '#FFFCF7', borderColor: '#E8E4DF' }}>
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-            <div className="flex gap-2">
-              <button
-                onClick={() => setChartMode("12m")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  chartMode === "12m"
-                    ? "bg-blue-800 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {isEn ? '12 months (YoY)' : '12 meses (YoY)'}
-              </button>
-              <button
-                onClick={() => setChartMode("monthly")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  chartMode === "monthly"
-                    ? "bg-blue-800 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {isEn ? 'Monthly (m/m)' : 'Mensual (m/m)'}
-              </button>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setSelectedIds(data.categories.map((c) => c.id))}
-                className="text-xs text-blue-700 hover:underline"
-              >
+            <h2 className="text-base font-semibold" style={{ color: '#1a1a1a' }}>
+              {isEn ? `CPI by Category (${unit})` : `IPC por Categoría (${unit})`}
+            </h2>
+            <div className="flex gap-2 items-center">
+              {(['12m', 'monthly'] as ChartMode[]).map(f => (
+                <button
+                  key={f}
+                  onClick={() => setChartMode(f)}
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
+                  style={{
+                    background: chartMode === f ? '#C65D3E' : 'transparent',
+                    color: chartMode === f ? 'white' : '#6b7280',
+                    border: `2px solid ${chartMode === f ? '#C65D3E' : '#d6d3d1'}`,
+                  }}
+                >
+                  {f === '12m' ? (isEn ? 'YoY (12m)' : 'YoY (12m)') : (isEn ? 'Monthly' : 'Mensual')}
+                </button>
+              ))}
+              <span className="text-gray-300 text-xs mx-1">|</span>
+              <button onClick={() => setSelectedIds(data.categories.map(c => c.id))} className="text-xs hover:underline" style={{ color: '#C65D3E' }}>
                 {isEn ? 'All' : 'Todas'}
               </button>
-              <span className="text-gray-300">|</span>
-              <button
-                onClick={() => setSelectedIds([])}
-                className="text-xs text-blue-700 hover:underline"
-              >
+              <button onClick={() => setSelectedIds([])} className="text-xs hover:underline" style={{ color: '#C65D3E' }}>
                 {isEn ? 'None' : 'Ninguna'}
               </button>
             </div>
           </div>
-
-          <Plot
-            data={traces}
-            layout={layout}
-            config={{
-              responsive: true,
-              displayModeBar: true,
-              displaylogo: false,
-              modeBarButtonsToRemove: ["select2d", "lasso2d"],
-              toImageButtonOptions: {
-                format: "png",
-                filename: "qhawarina_inflacion_categorias",
-                height: 800,
-                width: 1400,
-                scale: 2,
-              },
-            }}
-            style={{ width: "100%", height: "100%" }}
-            useResizeHandler
-          />
-
-          <p className="text-sm text-gray-500 mt-3">
-            <strong>{isEn ? 'Source:' : 'Fuente:'}</strong> {data.metadata.source} •{" "}
-            <strong>{isEn ? 'Coverage:' : 'Cobertura:'}</strong> {data.metadata.coverage} •{" "}
-            {chartMode === "12m" && (
-              <span className="text-green-700">
-                {isEn ? 'The green band indicates the BCRP target range (1%–3%)' : 'La banda verde indica el rango meta del BCRP (1%–3%)'}
-              </span>
-            )}
+          <p className="text-xs text-gray-500 mb-4">
+            {isEn ? 'Click category cards above to show/hide lines.' : 'Clic en las tarjetas para mostrar/ocultar líneas.'}
+          </p>
+          <ResponsiveContainer width="100%" height={420}>
+            <LineChart data={chartData} margin={{ top: 8, right: 20, left: 0, bottom: 40 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+              <XAxis
+                dataKey="date"
+                tick={axisTickStyle}
+                stroke={CHART_DEFAULTS.axisStroke}
+                angle={-45}
+                textAnchor="end"
+                interval={11}
+                height={55}
+              />
+              <YAxis
+                tick={axisTickStyle}
+                stroke={CHART_DEFAULTS.axisStroke}
+                tickFormatter={v => `${v}%`}
+                label={{ value: unit, angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+              />
+              <Tooltip
+                contentStyle={tooltipContentStyle}
+                formatter={(v: any) => [v != null ? `${Number(v).toFixed(chartMode === 'monthly' ? 3 : 2)}%` : '—']}
+              />
+              <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily, paddingTop: 8 }} />
+              <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+              {/* BCRP target band for 12m */}
+              {chartMode === '12m' && (
+                <ReferenceArea y1={1} y2={3} fill="#2A9D8F" fillOpacity={0.05} stroke="none"
+                  label={{ value: isEn ? 'BCRP target 1%–3%' : 'Meta BCRP 1%–3%', position: 'insideTopLeft', style: { fontSize: 9, fill: '#2A9D8F' } }}
+                />
+              )}
+              {data.categories.map(cat => selectedIds.includes(cat.id) && (
+                <Line
+                  key={cat.id}
+                  type="monotone"
+                  dataKey={cat.id}
+                  name={isEn ? cat.name_en : cat.name_es}
+                  stroke={CAT_COLORS[cat.id] ?? cat.color}
+                  strokeWidth={cat.id === 'total' ? 2.5 : 1.5}
+                  dot={false}
+                  connectNulls={false}
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+          <p className="text-xs mt-3" style={{ color: CHART_DEFAULTS.axisStroke }}>
+            {isEn ? 'Source:' : 'Fuente:'} {data.metadata.source} · {isEn ? 'Coverage:' : 'Cobertura:'} {data.metadata.coverage}
           </p>
         </div>
 
-        {/* Interpretation Guide */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              {isEn ? 'Category Interpretation' : 'Interpretación de Categorías'}
-            </h3>
-            <div className="space-y-3">
-              {data.categories
-                .filter((c) => c.id !== "total")
-                .map((cat) => (
-                  <div key={cat.id} className="flex items-start gap-3">
-                    <div
-                      className="w-3 h-3 rounded-full mt-1 shrink-0"
-                      style={{ backgroundColor: cat.color }}
-                    />
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        {isEn ? cat.name_en : cat.name_es}
-                        {cat.weight_pct && (
-                          <span className="text-gray-500 font-normal">
-                            {" "}(~{cat.weight_pct}% {isEn ? 'of CPI' : 'del IPC'})
-                          </span>
-                        )}
-                      </p>
-                      <p className="text-xs text-gray-600">
-                        {cat.description_es}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-4">
-              {isEn ? 'Monetary Policy Signals' : 'Señales de Política Monetaria'}
-            </h3>
-            <div className="space-y-4 text-sm text-blue-800">
-              <div>
-                <p className="font-medium">{isEn ? 'Core vs Non-Core Inflation' : 'Inflación Subyacente vs No Subyacente'}</p>
-                <p className="text-blue-700 mt-1">
-                  {isEn
-                    ? 'Core inflation reflects persistent domestic pressures. If core rises while non-core falls, BCRP has more reason to raise rates.'
-                    : 'La inflación subyacente refleja presiones domésticas persistentes. Si la subyacente sube mientras la no subyacente baja, el BCRP tiene más razón para subir tasas.'}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">{isEn ? 'Tradables vs Non-Tradables' : 'Transables vs No Transables'}</p>
-                <p className="text-blue-700 mt-1">
-                  {isEn
-                    ? 'Tradables inflation reflects exchange rate and imports. Non-tradables reflects domestic demand and local labor costs.'
-                    : 'Inflación de transables refleja tipo de cambio e importaciones. No transables refleja demanda interna y costos laborales locales.'}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">{isEn ? 'Food' : 'Alimentos'}</p>
-                <p className="text-blue-700 mt-1">
-                  {isEn
-                    ? 'High volatility from climate factors (El Niño, frost). BCRP looks at core to calibrate policy, not food.'
-                    : 'Alta volatilidad por factores climáticos (El Niño, heladas). El BCRP mira el core para calibrar su política, no los alimentos.'}
-                </p>
-              </div>
-              <div className="bg-white rounded p-3 mt-2">
-                <p className="font-semibold text-gray-900">
-                  {isEn ? 'BCRP current target: 1% – 3% (12m)' : 'Meta actual BCRP: 1% – 3% (12m)'}
-                </p>
-                <p className="text-gray-700">
-                  {isEn ? 'Total CPI current:' : 'IPC Total actual:'}{" "}
-                  <strong style={{ color: total?.color }}>
-                    {total
-                      ? `${total.latest_12m > 0 ? "+" : ""}${total.latest_12m.toFixed(2)}%`
-                      : "N/D"}
-                  </strong>{" "}
-                  {total && total.latest_12m >= 1 && total.latest_12m <= 3
-                    ? (isEn ? "✅ Within target" : "✅ Dentro de meta")
-                    : (isEn ? "⚠️ Outside target" : "⚠️ Fuera de meta")}
-                </p>
-              </div>
-            </div>
-          </div>
+        {/* Interpretation */}
+        <div className="rounded-xl p-5 mb-6" style={{ background: '#FFFCF7', borderLeft: '3px solid #C65D3E', border: '1px solid #E8E4DF' }}>
+          <h3 className="text-sm font-semibold mb-3" style={{ color: '#C65D3E' }}>
+            {isEn ? 'Monetary Policy Signals' : 'Señales de Política Monetaria'}
+          </h3>
+          <ul className="space-y-1.5 text-sm text-gray-700">
+            <li><strong>{isEn ? 'Core vs Non-Core:' : 'Subyacente vs No Subyacente:'}</strong>{' '}{isEn ? 'Core reflects persistent domestic pressures; non-core captures food and energy volatility.' : 'La subyacente refleja presiones domésticas persistentes; la no subyacente captura la volatilidad de alimentos y energía.'}</li>
+            <li><strong>{isEn ? 'Tradables vs Non-tradables:' : 'Transables vs No Transables:'}</strong>{' '}{isEn ? 'Tradables track the exchange rate and imports; non-tradables reflect domestic demand.' : 'Transables siguen el tipo de cambio e importaciones; no transables reflejan la demanda interna.'}</li>
+            <li>
+              <strong>{isEn ? 'BCRP target: 1%–3% (12m):' : 'Meta BCRP: 1%–3% (12m):'}</strong>{' '}
+              {total && (
+                <span style={{ color: total.latest_12m >= 1 && total.latest_12m <= 3 ? '#2A9D8F' : '#C65D3E' }}>
+                  {isEn ? 'Current CPI total:' : 'IPC total actual:'}{' '}
+                  {total.latest_12m > 0 ? '+' : ''}{total.latest_12m.toFixed(2)}%{' '}
+                  {total.latest_12m >= 1 && total.latest_12m <= 3 ? (isEn ? '(within target)' : '(dentro de meta)') : (isEn ? '(outside target)' : '(fuera de meta)')}
+                </span>
+              )}
+            </li>
+          </ul>
         </div>
 
-        {/* Navigation */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/estadisticas/inflacion"
-              className="text-blue-700 hover:text-blue-800 font-medium"
-            >
-              {isEn ? '← Back to Inflation' : '← Volver a Inflación'}
-            </Link>
-            <Link
-              href="/estadisticas/inflacion/graficos"
-              className="text-blue-700 hover:text-blue-800 font-medium"
-            >
-              {isEn ? 'View historical charts →' : 'Ver gráficos históricos →'}
-            </Link>
-            <Link
-              href="/estadisticas/inflacion/metodologia"
-              className="text-blue-700 hover:text-blue-800 font-medium"
-            >
-              {isEn ? 'View methodology →' : 'Ver metodología →'}
-            </Link>
-          </div>
+        <div className="flex gap-4 text-xs">
+          <Link href="/estadisticas/inflacion/metodologia" className="font-medium hover:underline" style={{ color: '#C65D3E' }}>
+            {isEn ? 'Full methodology →' : 'Metodología completa →'}
+          </Link>
+          <Link href="/estadisticas/inflacion" className="font-medium hover:underline" style={{ color: '#C65D3E' }}>
+            {isEn ? '← Back to Inflation' : '← Volver a Inflación'}
+          </Link>
         </div>
       </div>
     </div>

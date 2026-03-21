@@ -126,20 +126,29 @@ export const DEPT_STATS: DeptStat[] = Object.keys(DEPT_NAMES).map(code => {
 });
 
 // ── Validation stats ──────────────────────────────────────────────────────────
+// Proxy: BCRP credit by department (log-transformed). 525 dept-years, 2004-2024.
+// Original analysis used electricity PRODUCTION (wrong — breaks for hydro/mining depts).
 export const VALIDATION = {
-  r2_levels:  0.158,
-  r2_within:  0.013,
-  r2_growth:  0.001,
-  beta_levels: 0.744,
-  n_dept_years: 480,
-  gdp_proxy: 'BCRP electricity production (INEI departmental VAB unavailable locally)',
-  verdict: 'NO' as const,
-  strong_depts: ['Cusco','Ica','La Libertad','Lima','Piura','Tumbes'],
-  weak_depts: ['Amazonas','Apurímac','Arequipa','Ayacucho','Loreto','Moquegua','Pasco','Tacna'],
+  // Cross-sectional: NTL predicts WHERE economic activity is located
+  r2_cross_section: 0.742,   // Spec 7: single year 2019, log(credit) ~ log(NTL)
+  r2_year_fe:       0.819,   // Spec 2: pooled with year fixed effects
+  // Within-department over time: NTL predicts HOW FAST it grows — weaker
+  r2_within:        0.313,   // Spec 3: dept FE (but beta negative — Lima/Callao effect)
+  r2_growth:        0.000,   // Growth rates: no predictive power
+  beta_cross_section: 1.318,
+  beta_year_fe:       1.430,
+  n_dept_years: 525,
+  gdp_proxy: 'BCRP credit by department (total S/ mns, log-log)',
+  verdict: 'YES (cross-sectional)' as const,
+  summary: 'Las luces nocturnas explican el 74% de la variación del crédito departamental',
+  strong_depts: ['Ancash','Apurímac','Arequipa','Ayacucho','Cusco','Ica','Junín','La Libertad','Lambayeque','Lima','Piura','Puno','San Martín','Tacna','Tumbes'],
+  weak_depts: ['Callao'],
+  caveat_lima: 'Sin Lima: R²=0.01 — el 74% cross-seccional se ancla en Lima vs. resto',
+  caveat_growth: 'NTL NO predice crecimiento año a año (R²=0.00) — solo dónde está la actividad, no cuánto crece',
   // Rossi global benchmark (Henderson et al. 2012, cross-country):
   rossi_r2_cross_country: 0.73,
   rossi_beta: 0.30,
-  rossi_note: 'Henderson, Storeygard & Weil (2012) — 188 countries, 1992-2008',
+  rossi_note: 'Henderson, Storeygard & Weil (2012) — 188 países, 1992-2008',
 };
 
 // ── Key events for timeline annotation ───────────────────────────────────────
@@ -157,6 +166,7 @@ export const TIMELINE_EVENTS = [
 export const NTL_NAV = [
   { href: '/observatorio/luces-nocturnas',              label: 'Inicio'        },
   { href: '/observatorio/luces-nocturnas/mapa',         label: 'Mapa'          },
+  { href: '/observatorio/luces-nocturnas/brechas',      label: 'Brechas'       },
   { href: '/observatorio/luces-nocturnas/nowcasting',   label: 'Indicador'     },
   { href: '/observatorio/luces-nocturnas/tendencias',   label: 'Tendencias'    },
   { href: '/observatorio/luces-nocturnas/metodologia',  label: 'Metodología'   },

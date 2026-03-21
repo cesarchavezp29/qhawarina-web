@@ -10,6 +10,8 @@ import SourceFooter from './components/SourceFooter';
 import {
   TERRACOTTA, TEAL, CARD_BG, CARD_BORDER, EVENTS,
 } from './components/mwData';
+import CiteButton from '../../components/CiteButton';
+import ShareButton from '../../components/ShareButton';
 
 const BASE = '/simuladores/salario-minimo';
 
@@ -119,6 +121,13 @@ export default function SalarioMinimoLanding() {
             Perú aumentó el SM tres veces entre 2016 y 2022.
             Analizamos qué pasó con los salarios y el empleo.
           </p>
+          <div className="flex gap-2 mt-2 flex-wrap justify-center">
+            <CiteButton indicator="Simulador de Salario Mínimo" isEn={false} />
+            <ShareButton
+              title="Salario Mínimo — Qhawarina"
+              text={"🔬 Simulador del impacto del salario mínimo en Perú | Qhawarina\nhttps://qhawarina.pe/simuladores/salario-minimo"}
+            />
+          </div>
         </div>
 
         {/* Animated bars */}

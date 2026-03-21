@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import PobrezaSectionNav from './components/SectionNav';
+
 export const metadata: Metadata = {
   title: 'Poverty / Pobreza — Annual Nowcast | Qhawarina',
   description: 'Annual poverty nowcast for Peru by department using Gradient Boosting and nighttime light data. / Nowcast anual de pobreza monetaria por departamento con GBR y datos NTL.',
@@ -10,4 +12,11 @@ export const metadata: Metadata = {
     images: ['/og-pobreza.png'],
   },
 };
-export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <PobrezaSectionNav />
+    </>
+  );
+}

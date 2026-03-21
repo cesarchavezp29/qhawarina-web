@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-18",
-    "n_days": 37,
+    "last_date": "2026-03-20",
+    "n_days": 39,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -1090,86 +1090,140 @@
       "index_limpieza": 98.6688,
       "index_cuidado_personal": 98.1884,
       "index_other": 100.8035
+    },
+    {
+      "date": "2026-03-19",
+      "index_all": 99.1547,
+      "index_all_unweighted": 99.4489,
+      "index_food": 99.4482,
+      "index_nonfood": 99.4627,
+      "var_all": 0.0442,
+      "var_food": 0.0851,
+      "cum_pct": -0.8453,
+      "yoy_inflation": null,
+      "mom_inflation": -0.1402,
+      "interpolated": false,
+      "n_matched": 39469,
+      "index_arroz_cereales": 99.3625,
+      "index_pan_harinas": 99.5161,
+      "index_carnes": 99.367,
+      "index_pescados_mariscos": 98.684,
+      "index_lacteos": 98.8976,
+      "index_frutas": 100.0255,
+      "index_verduras": 98.3962,
+      "index_aceites_grasas": 98.4991,
+      "index_azucar_dulces": 102.8037,
+      "index_bebidas": 98.9677,
+      "index_limpieza": 98.6452,
+      "index_cuidado_personal": 98.0885,
+      "index_other": 100.5597
+    },
+    {
+      "date": "2026-03-20",
+      "index_all": 99.0138,
+      "index_all_unweighted": 99.2644,
+      "index_food": 99.2735,
+      "index_nonfood": 99.2491,
+      "var_all": -0.1421,
+      "var_food": -0.1757,
+      "cum_pct": -0.9862,
+      "yoy_inflation": null,
+      "mom_inflation": -0.167,
+      "interpolated": false,
+      "n_matched": 40041,
+      "index_arroz_cereales": 99.1778,
+      "index_pan_harinas": 99.4044,
+      "index_carnes": 99.1123,
+      "index_pescados_mariscos": 98.814,
+      "index_lacteos": 98.637,
+      "index_frutas": 100.1634,
+      "index_verduras": 98.2345,
+      "index_aceites_grasas": 98.4564,
+      "index_azucar_dulces": 102.7067,
+      "index_bebidas": 98.9219,
+      "index_limpieza": 98.432,
+      "index_cuidado_personal": 97.9315,
+      "index_other": 100.3066
     }
   ],
   "latest": {
-    "date": "2026-03-18",
-    "index_all": 99.1109,
-    "index_food": 99.3636,
-    "cum_pct": -0.8891,
-    "var_all": -0.2588,
+    "date": "2026-03-20",
+    "index_all": 99.0138,
+    "index_food": 99.2735,
+    "cum_pct": -0.9862,
+    "var_all": -0.1421,
     "yoy_inflation": null,
-    "mom_inflation": -0.1016,
-    "n_products_today": 39724,
+    "mom_inflation": -0.167,
+    "n_products_today": 40041,
     "top_movers": [
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -0.45
-      },
-      {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.42
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.26
       },
       {
         "category": "lacteos",
         "label_es": "Lácteos y Huevos",
         "label_en": "Dairy & Eggs",
-        "var": -0.38
+        "var": -0.26
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -0.37
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": -0.22
+      },
+      {
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -0.19
       }
     ],
     "product_movers": [
       {
-        "name": "Lechuga Hidropónica Don Miguel x unid",
+        "name": "Zanahoria Especial x kg",
         "store": "metro",
         "category": "frutas",
-        "var": 95.45
+        "var": 71.63
       },
       {
-        "name": "Champiñón Picado Paccu 100g",
-        "store": "metro",
-        "category": "frutas",
-        "var": 95.0
-      },
-      {
-        "name": "Ají Amarillo x kg",
+        "name": "Orejitas Dulces Cuisine & Co 250g",
         "store": "wong",
-        "category": "frutas",
-        "var": 77.86
+        "category": "pan_harinas",
+        "var": 66.67
       },
       {
-        "name": "Berenjena x un",
-        "store": "metro",
+        "name": "Camote Amarillo Procesado x kg",
+        "store": "plazavea",
         "category": "frutas",
-        "var": 75.47
+        "var": 60.74
+      },
+      {
+        "name": "Yuca x kg",
+        "store": "plazavea",
+        "category": "frutas",
+        "var": 58.32
       }
     ],
     "stores_coverage": {
-      "metro": 12447,
-      "plazavea": 13451,
-      "wong": 14915
+      "metro": 12534,
+      "plazavea": 13671,
+      "wong": 15019
     },
     "categories_coverage": {
-      "aceites_grasas": 697,
-      "arroz_cereales": 1370,
-      "azucar_dulces": 995,
-      "bebidas": 969,
-      "carnes": 14672,
-      "cuidado_personal": 2888,
-      "frutas": 1942,
-      "lacteos": 3001,
-      "limpieza": 2995,
-      "pan_harinas": 6578,
-      "pescados_mariscos": 235,
+      "aceites_grasas": 709,
+      "arroz_cereales": 1386,
+      "azucar_dulces": 1003,
+      "bebidas": 976,
+      "carnes": 14812,
+      "cuidado_personal": 2920,
+      "frutas": 1953,
+      "lacteos": 3038,
+      "limpieza": 3033,
+      "pan_harinas": 6643,
+      "pescados_mariscos": 237,
       "verduras": 310
     }
   }

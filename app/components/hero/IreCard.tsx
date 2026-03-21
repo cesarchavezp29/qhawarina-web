@@ -8,6 +8,7 @@ interface PoliticalData {
     economic_raw?: number;
     economic_7d?: number;
     economic_level?: string;
+    economic_multiplier?: number;
     articles_total: number;
   };
   daily_series: Array<{
@@ -117,6 +118,12 @@ export default function IreCard({
   const cfg = LEVEL_CONFIG[ecoLevel] ?? LEVEL_CONFIG["MODERADO"];
   const articles = current.articles_total ?? 0;
 
+  const multiplier = current.economic_multiplier ?? 1.0;
+  const pctVsAvg = Math.round((multiplier - 1) * 100);
+  const max30d = series30.length > 0
+    ? Math.max(...series30.map((r) => r.economic_7d ?? 0))
+    : null;
+
   return (
     <Link href="/estadisticas/riesgo-economico" className="block group">
       <div
@@ -224,6 +231,16 @@ export default function IreCard({
                 <span className="text-xs" style={{ color: "#8D99AE" }}>0</span>
                 <span className="text-xs absolute" style={{ color: "#8D99AE", left: "33%", transform: "translateX(-50%)" }}>100 (avg)</span>
                 <span className="text-xs" style={{ color: "#8D99AE" }}>300</span>
+              </div>
+              <div className="flex items-center justify-between mt-2 flex-wrap gap-x-3">
+                <span className="text-xs font-medium" style={{ color: pctVsAvg >= 0 ? "#C65D3E" : "#2A9D8F" }}>
+                  {pctVsAvg >= 0 ? "↑" : "↓"} {Math.abs(pctVsAvg)}% {isEn ? "vs avg" : "vs promedio"}
+                </span>
+                {max30d !== null && (
+                  <span className="text-xs" style={{ color: "#8D99AE" }}>
+                    {isEn ? `Max 30d: ${Math.round(max30d)}` : `Máx 30d: ${Math.round(max30d)}`}
+                  </span>
+                )}
               </div>
             </div>
             <div className="flex-1 h-12">

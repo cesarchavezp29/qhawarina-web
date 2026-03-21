@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 import LanguageSwitcher from "../LanguageSwitcher";
 
 const chevron = (open: boolean) => (
@@ -22,6 +23,7 @@ const dropdownStyle = {
 
 export default function Header() {
   const isEn = useLocale() === "en";
+  const pathname = usePathname();
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isPubsOpen, setIsPubsOpen]         = useState(false);
   const [isDataOpen, setIsDataOpen]         = useState(false);
@@ -45,6 +47,7 @@ export default function Header() {
   const navLink =
     "text-sm font-medium transition-colors px-3 py-2 rounded-sm hover:bg-[#fdf3f0]";
   const ink = { color: "#2D3142" };
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   // ── dropdown item lists ──────────────────────────────────────────────────
 
@@ -57,6 +60,7 @@ export default function Header() {
     ["/estadisticas/riesgo-economico","Economic Risk"],
     ["/estadisticas/intervenciones", "FX Market"],
     ["/estadisticas/pobreza/distritos", "District Poverty"],
+    ["/observatorio/luces-nocturnas","Nighttime Lights"],
   ] : [
     ["/estadisticas/pbi",            "PBI Nowcast"],
     ["/estadisticas/inflacion",      "Inflación"],
@@ -66,6 +70,7 @@ export default function Header() {
     ["/estadisticas/riesgo-economico","Riesgo Económico"],
     ["/estadisticas/intervenciones", "Mercado Cambiario"],
     ["/estadisticas/pobreza/distritos", "Pobreza Distrital"],
+    ["/observatorio/luces-nocturnas","Luminosidad Nocturna"],
   ];
 
   const pubsItems = isEn ? [
@@ -112,7 +117,7 @@ export default function Header() {
   const aboutLabel    = isEn ? "About"        : "Nosotros";
 
   return (
-    <header style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
+    <header style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC", position: "sticky", top: 0, zIndex: 50 }}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14">
 
@@ -147,7 +152,7 @@ export default function Header() {
               <button
                 onClick={() => setIsResearchOpen(!isResearchOpen)}
                 className={navBtn}
-                style={ink}
+                style={researchItems.some(([href]) => isActive(href)) ? { color: "#C65D3E", fontWeight: 600 } : ink}
               >
                 {researchLabel}
                 {chevron(isResearchOpen)}
@@ -159,7 +164,7 @@ export default function Header() {
                       key={href}
                       href={href}
                       className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
-                      style={ink}
+                      style={isActive(href) ? { color: "#C65D3E", fontWeight: 600, background: "#fdf3f0" } : ink}
                       onClick={closeMobile}
                     >
                       {label}
@@ -178,7 +183,7 @@ export default function Header() {
               <button
                 onClick={() => setIsPubsOpen(!isPubsOpen)}
                 className={navBtn}
-                style={ink}
+                style={pubsItems.some(([href]) => isActive(href)) ? { color: "#C65D3E", fontWeight: 600 } : ink}
               >
                 {pubsLabel}
                 {chevron(isPubsOpen)}
@@ -190,7 +195,7 @@ export default function Header() {
                       key={href}
                       href={href}
                       className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
-                      style={ink}
+                      style={isActive(href) ? { color: "#C65D3E", fontWeight: 600, background: "#fdf3f0" } : ink}
                       onClick={closeMobile}
                     >
                       {label}
@@ -209,7 +214,7 @@ export default function Header() {
               <button
                 onClick={() => setIsDataOpen(!isDataOpen)}
                 className={navBtn}
-                style={ink}
+                style={dataItems.some(([href]) => isActive(href)) ? { color: "#C65D3E", fontWeight: 600 } : ink}
               >
                 {dataLabel}
                 {chevron(isDataOpen)}
@@ -221,7 +226,7 @@ export default function Header() {
                       key={href}
                       href={href}
                       className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
-                      style={ink}
+                      style={isActive(href) ? { color: "#C65D3E", fontWeight: 600, background: "#fdf3f0" } : ink}
                       onClick={closeMobile}
                     >
                       {label}
@@ -240,7 +245,7 @@ export default function Header() {
               <button
                 onClick={() => setIsAboutOpen(!isAboutOpen)}
                 className={navBtn}
-                style={ink}
+                style={aboutItems.some(([href]) => isActive(href)) ? { color: "#C65D3E", fontWeight: 600 } : ink}
               >
                 {aboutLabel}
                 {chevron(isAboutOpen)}
@@ -252,7 +257,7 @@ export default function Header() {
                       key={href}
                       href={href}
                       className="block px-4 py-2 text-sm transition-colors hover:bg-[#fdf3f0]"
-                      style={ink}
+                      style={isActive(href) ? { color: "#C65D3E", fontWeight: 600, background: "#fdf3f0" } : ink}
                       onClick={closeMobile}
                     >
                       {label}

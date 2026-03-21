@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import CiteButton from '../../../components/CiteButton';
 
 function DynamicLastUpdate({ src, isEn }: { src: string; isEn: boolean }) {
   const [dateStr, setDateStr] = useState('');
@@ -27,23 +29,26 @@ export default function InflacionMetodologiaPage() {
   const isEn = useLocale() === 'en';
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-10" style={{ backgroundColor: '#FAF8F4', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")` }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">
+        <nav className="text-sm text-gray-500 mb-6">
+          <Link href="/estadisticas" className="hover:underline">
             {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
+          </Link>
           {' / '}
-          <a href="/estadisticas/inflacion" className="hover:text-blue-700">
+          <Link href="/estadisticas/inflacion" className="hover:underline">
             {isEn ? 'Inflation' : 'Inflación'}
-          </a>
+          </Link>
           {' / '}
           <span className="text-gray-900 font-medium">{isEn ? 'Methodology' : 'Metodología'}</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          {isEn ? 'Methodology — Inflation Nowcast' : 'Metodología - Nowcast de Inflación'}
-        </h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">
+            {isEn ? 'Methodology — Inflation Nowcast' : 'Metodología - Nowcast de Inflación'}
+          </h1>
+          <CiteButton indicator={isEn ? 'Methodology — Inflation Nowcast' : 'Metodología — Nowcast de Inflación'} isEn={isEn} />
+        </div>
         <div className="mt-4">
           <DynamicLastUpdate src="/assets/data/inflation_nowcast.json" isEn={isEn} />
         </div>
@@ -61,15 +66,15 @@ export default function InflacionMetodologiaPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="bg-blue-50 p-4 rounded-lg">
               <div className="text-sm text-gray-600 mb-1">RMSE (3M-MA)</div>
-              <div className="text-2xl font-bold text-blue-900">0.319 pp</div>
+              <div className="text-2xl font-bold" style={{ color: '#C65D3E' }}>0.319 pp</div>
             </div>
             <div className="bg-green-50 p-4 rounded-lg">
               <div className="text-sm text-gray-600 mb-1">{isEn ? 'Early Backtest R²' : 'R² Early Backtest'}</div>
-              <div className="text-2xl font-bold text-green-900">0.70-0.82</div>
+              <div className="text-2xl font-bold" style={{ color: '#2A9D8F' }}>0.70-0.82</div>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg">
               <div className="text-sm text-gray-600 mb-1">{isEn ? 'vs AR(1)' : 'vs AR(1)'}</div>
-              <div className="text-2xl font-bold text-purple-900">-0.9%</div>
+              <div className="text-2xl font-bold" style={{ color: '#4A7C8C' }}>-0.9%</div>
               <div className="text-xs text-gray-600">Rel.RMSE = 0.991</div>
             </div>
           </div>
@@ -266,7 +271,7 @@ export default function InflacionMetodologiaPage() {
           <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
             {isEn ? '3.2 Current Nowcast (Feb 2026)' : '3.2 Nowcast Actual (Feb 2026)'}
           </h3>
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+          <div className="rounded-xl p-4" style={{ background: '#F0FAF8', border: '1px solid #2A9D8F40' }}>
             <p className="text-green-900 font-medium">
               {isEn ? 'CPI Feb-2026 (3M-MA):' : 'IPC Feb-2026 (3M-MA):'} <strong>+0.29%</strong>
             </p>
@@ -306,7 +311,7 @@ export default function InflacionMetodologiaPage() {
             {isEn ? '4.2 Advantages and Limitations' : '4.2 Ventajas y Limitaciones'}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+            <div className="rounded-xl p-4" style={{ background: '#F0FAF8', border: '1px solid #2A9D8F40' }}>
               <h4 className="font-semibold text-green-900 mb-2">✓ {isEn ? 'Advantages' : 'Ventajas'}</h4>
               <ul className="list-disc pl-4 text-sm text-green-800 space-y-1">
                 <li>{isEn ? 'Daily frequency vs monthly CPI' : 'Frecuencia diaria vs IPC mensual'}</li>
@@ -315,7 +320,7 @@ export default function InflacionMetodologiaPage() {
                 <li>{isEn ? 'Replicates MIT BPP methodology' : 'Replica metodología MIT BPP'}</li>
               </ul>
             </div>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <div className="rounded-xl p-4" style={{ background: '#FDFAF4', border: '1px solid #E8E4DF' }}>
               <h4 className="font-semibold text-yellow-900 mb-2">⚠ {isEn ? 'Limitations' : 'Limitaciones'}</h4>
               <ul className="list-disc pl-4 text-sm text-yellow-800 space-y-1">
                 <li>{isEn ? 'Supermarkets only (not traditional markets)' : 'Solo supermercados (no mercados tradicionales)'}</li>
@@ -328,9 +333,9 @@ export default function InflacionMetodologiaPage() {
 
           <p className="text-gray-700 mt-4">
             {isEn ? 'See ' : 'Ver '}
-            <a href="/estadisticas/inflacion/precios-alta-frecuencia" className="text-blue-700 hover:underline">
+            <Link href="/estadisticas/inflacion/precios-alta-frecuencia" className="text-blue-700 hover:underline">
               {isEn ? 'daily price index' : 'índice de precios diarios'}
-            </a>
+            </Link>
             {isEn ? ' for updated data.' : ' para datos actualizados.'}
           </p>
         </div>
@@ -400,7 +405,7 @@ export default function InflacionMetodologiaPage() {
               href="https://github.com/btorressz/nexus"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-700 hover:text-blue-900 font-medium"
+              className="font-medium hover:underline" style={{ color: '#C65D3E' }}
             >
               {isEn ? 'NEXUS repository' : 'repositorio NEXUS'}
             </a>

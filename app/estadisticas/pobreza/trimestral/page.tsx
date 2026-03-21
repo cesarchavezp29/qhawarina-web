@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import LastUpdate from "../../../components/stats/LastUpdate";
 import { useLocale } from 'next-intl';
+import CiteButton from "../../../components/CiteButton";
+import ShareButton from "../../../components/ShareButton";
 import {
   LineChart,
   Line,
@@ -19,6 +22,7 @@ import {
   tooltipContentStyle,
   axisTickStyle,
 } from "../../../lib/chartTheme";
+import PageSkeleton from "../../../components/PageSkeleton";
 
 interface QuarterlyData {
   quarter: string;
@@ -36,6 +40,7 @@ export default function PobrezaTrimestralPage() {
   const [quarterlyData, setQuarterlyData] = useState<QuarterlyData[]>([]);
   const [monthlyData, setMonthlyData] = useState<MonthlyData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [viewMode, setViewMode] = useState<"quarterly" | "monthly">("monthly");
   const [lastUpdate, setLastUpdate] = useState<string>("");
 
@@ -55,17 +60,24 @@ export default function PobrezaTrimestralPage() {
       })
       .catch((err) => {
         console.error("Error loading poverty data:", err);
+        setError(true);
         setLoading(false);
       });
   }, [isEn]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">{isEn ? 'Loading data...' : 'Cargando datos...'}</p>
+  if (loading) return <PageSkeleton cards={2} />;
+
+  if (error) return (
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#FAF8F4' }}>
+      <div className="max-w-md text-center">
+        <p className="text-red-500 font-medium mb-2">{isEn ? 'Error loading data.' : 'Error cargando datos.'}</p>
+        <p className="text-sm text-gray-500 mb-4">{isEn ? 'Data is updated monthly. Try again later.' : 'Los datos se actualizan mensualmente. Intenta de nuevo más tarde.'}</p>
+        <button onClick={() => window.location.reload()} className="px-4 py-2 rounded-lg border text-sm font-medium" style={{ borderColor: '#C65D3E', color: '#C65D3E' }}>
+          {isEn ? 'Retry' : 'Reintentar'}
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
 
   const latestQuarter = quarterlyData[quarterlyData.length - 1];
   const latestMonth = monthlyData[monthlyData.length - 1];
@@ -75,49 +87,54 @@ export default function PobrezaTrimestralPage() {
   const inactiveBtn = { backgroundColor: CHART_COLORS.surface, color: CHART_COLORS.ink };
 
   return (
-    <div style={{ background: CHART_COLORS.bg }} className="min-h-screen py-12">
+    <div className="min-h-screen py-10" style={{ backgroundColor: "#FAF8F4", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.045'%3EQHAWARINA%3C/text%3E%3C/svg%3E")` }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <nav className="text-sm mb-4" style={{ color: CHART_COLORS.ink3 }}>
-            <a href="/estadisticas" className="hover:underline">
+            <Link href="/estadisticas" className="hover:underline">
               {isEn ? 'Statistics' : 'Estadísticas'}
-            </a>
+            </Link>
             {" / "}
-            <a href="/estadisticas/pobreza" className="hover:underline">
+            <Link href="/estadisticas/pobreza" className="hover:underline">
               {isEn ? 'Poverty' : 'Pobreza'}
-            </a>
+            </Link>
             {" / "}
             <span style={{ color: CHART_COLORS.ink }} className="font-medium">
               {isEn ? 'Quarterly' : 'Trimestral'}
             </span>
           </nav>
 
-          <div className="flex items-baseline justify-between">
-            <div>
-              <h1 className="text-4xl font-bold mb-2" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'High-Frequency Poverty' : 'Pobreza de Alta Frecuencia'}
-              </h1>
-              <p className="text-lg" style={{ color: CHART_COLORS.ink3 }}>
-                {isEn ? 'Monthly and quarterly temporal disaggregation' : 'Desagregación temporal mensual y trimestral'}
-              </p>
+          <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+            <h1 className="text-4xl font-bold" style={{ color: CHART_COLORS.ink }}>
+              {isEn ? 'High-Frequency Poverty' : 'Pobreza de Alta Frecuencia'}
+            </h1>
+            <div className="flex gap-2 flex-shrink-0">
+              <CiteButton indicator={isEn ? 'Poverty — Quarterly Data' : 'Pobreza — Datos Trimestrales'} isEn={isEn} />
+              <ShareButton
+                title={isEn ? 'Poverty Quarterly — Qhawarina' : 'Pobreza Trimestral — Qhawarina'}
+                text={isEn ? '📊 Peru poverty quarterly data | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza/trimestral' : '📊 Datos trimestrales de pobreza en Perú | Qhawarina\nhttps://qhawarina.pe/estadisticas/pobreza/trimestral'}
+              />
             </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setViewMode("monthly")}
-                className="px-4 py-2 rounded text-sm font-medium transition-colors"
-                style={viewMode === "monthly" ? activeBtn : inactiveBtn}
-              >
-                {isEn ? 'Monthly' : 'Mensual'}
-              </button>
-              <button
-                onClick={() => setViewMode("quarterly")}
-                className="px-4 py-2 rounded text-sm font-medium transition-colors"
-                style={viewMode === "quarterly" ? activeBtn : inactiveBtn}
-              >
-                {isEn ? 'Quarterly' : 'Trimestral'}
-              </button>
-            </div>
+          </div>
+          <p className="text-lg mb-3" style={{ color: CHART_COLORS.ink3 }}>
+            {isEn ? 'Monthly and quarterly temporal disaggregation' : 'Desagregación temporal mensual y trimestral'}
+          </p>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setViewMode("monthly")}
+              className="px-4 py-2 rounded text-sm font-medium transition-colors"
+              style={viewMode === "monthly" ? activeBtn : inactiveBtn}
+            >
+              {isEn ? 'Monthly' : 'Mensual'}
+            </button>
+            <button
+              onClick={() => setViewMode("quarterly")}
+              className="px-4 py-2 rounded text-sm font-medium transition-colors"
+              style={viewMode === "quarterly" ? activeBtn : inactiveBtn}
+            >
+              {isEn ? 'Quarterly' : 'Trimestral'}
+            </button>
           </div>
           <div className="mt-4">
             <LastUpdate date={lastUpdate} />
@@ -125,7 +142,7 @@ export default function PobrezaTrimestralPage() {
         </div>
 
         {/* Current Value Card */}
-        <div className="rounded-lg border p-8 mb-8" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+        <div className="rounded-lg border p-8 mb-8" style={{ background: '#FFFCF7', borderColor: CHART_DEFAULTS.gridStroke }}>
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: CHART_COLORS.ink3 }}>
@@ -178,7 +195,7 @@ export default function PobrezaTrimestralPage() {
                 stroke={CHART_DEFAULTS.axisStroke}
               />
               <YAxis
-                domain={[15, 70]}
+                domain={['auto', 'auto']}
                 tick={axisTickStyle}
                 stroke={CHART_DEFAULTS.axisStroke}
                 label={{
@@ -232,7 +249,7 @@ export default function PobrezaTrimestralPage() {
         </div>
 
         {/* Methodology */}
-        <div className="rounded-lg border p-6" style={{ background: '#fff', borderColor: CHART_DEFAULTS.gridStroke }}>
+        <div className="rounded-lg border p-6" style={{ background: '#FFFCF7', borderColor: CHART_DEFAULTS.gridStroke }}>
           <h3 className="text-lg font-semibold mb-4" style={{ color: CHART_COLORS.ink }}>
             {isEn ? 'Methodology' : 'Metodología'}
           </h3>

@@ -1,13 +1,26 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import ShareButton from "../../components/ShareButton";
 import EmbedWidget from "../../components/EmbedWidget";
+import PageSkeleton from "../../components/PageSkeleton";
+import CiteButton from "../../components/CiteButton";
 import { useLocale } from 'next-intl';
-
-const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
+import {
+  ComposedChart,
+  Bar,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ReferenceLine,
+  ResponsiveContainer,
+  Cell,
+} from "recharts";
+import { CHART_DEFAULTS, tooltipContentStyle, axisTickStyle } from "../../lib/chartTheme";
 
 // ─── Variable catalog ────────────────────────────────────────────────────────
 
@@ -200,13 +213,13 @@ function getVal(
   }
 }
 
-/** Normalize a series to % change from its first non-null value */
-function normalizeToBase(vals: (number | null)[]): (number | null)[] {
-  const firstNonNull = vals.find((v) => v !== null && v !== 0);
-  if (firstNonNull === undefined || firstNonNull === null) return vals;
-  return vals.map((v) =>
-    v !== null ? ((v / firstNonNull) - 1) * 100 : null
-  );
+// ─── Dark color helper ────────────────────────────────────────────────────────
+function adjustColorDark(hex: string): string {
+  const variants: Record<string, string> = {
+    "#1d4ed8": "#1e40af",
+    "#7c3aed": "#6d28d9",
+  };
+  return variants[hex] ?? hex;
 }
 
 // ─── Variable Selector Pill ───────────────────────────────────────────────────
@@ -251,6 +264,7 @@ export default function IntervencionesBCRPPage() {
   const isEn = useLocale() === 'en';
   const [data, setData] = useState<FXData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [selected, setSelected] = useState<Set<VarKey>>(
     new Set<VarKey>(["spot_net_purchases", "fx"])
   );
@@ -264,7 +278,7 @@ export default function IntervencionesBCRPPage() {
         setData(d);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => { setError(true); setLoading(false); });
   }, []);
 
   function toggleVar(key: VarKey) {
@@ -279,15 +293,39 @@ export default function IntervencionesBCRPPage() {
     });
   }
 
-  // ── Derived chart data ────────────────────────────────────────────────────
-  const { traces, layout, hasScale } = useMemo(() => {
-    if (!data) return { traces: [], layout: {}, hasScale: false };
-
+  // ── Chart data (normalized to varDef.key regardless of view mode) ──────────
+  const chartData = useMemo(() => {
+    if (!data) return [];
     const series = viewMode === "diario" ? data.daily_series : data.monthly_series;
-    const xLabels = viewMode === "diario"
-      ? (series as DailyRecord[]).map((r) => r.date)
-      : (series as MonthlyRecord[]).map((r) => r.month);
+    return series.map((rec) => {
+      const dateKey =
+        viewMode === "diario"
+          ? { date: (rec as DailyRecord).date }
+          : { month: (rec as MonthlyRecord).month };
+      if (!normalized) {
+        const row: any = { ...dateKey };
+        VARIABLES.forEach((varDef) => {
+          row[varDef.key] = getVal(rec as any, varDef, viewMode);
+        });
+        return row;
+      } else {
+        const row: any = { ...dateKey };
+        VARIABLES.forEach((varDef) => {
+          const rawVals = series.map((r) => getVal(r as any, varDef, viewMode));
+          const firstNonNull = rawVals.find((v) => v !== null && v !== 0) ?? null;
+          const raw = getVal(rec as any, varDef, viewMode);
+          row[varDef.key] =
+            raw !== null && firstNonNull !== null
+              ? ((raw / firstNonNull) - 1) * 100
+              : null;
+        });
+        return row;
+      }
+    });
+  }, [data, viewMode, normalized]);
 
+  // ── Derived flags ──────────────────────────────────────────────────────────
+  const { hasScale, showDualAxis, selectedVars, hasBars } = useMemo(() => {
     const selectedVars = VARIABLES.filter((v) => selected.has(v.key));
     const hasBars = selectedVars.some((v) => v.type === "bar");
     const hasLines = selectedVars.some((v) => v.type === "line");
@@ -295,142 +333,26 @@ export default function IntervencionesBCRPPage() {
     const hasOtherLines = selectedVars.some(
       (v) => v.type === "line" && v.key !== "bvl"
     );
-
-    // Mixed scale warning: BVL (50k) + rates/TC (3-7) without normalization
     const mixedScaleWarning = hasBVL && hasOtherLines && !normalized && !hasBars;
-    const hasScale = mixedScaleWarning;
-
-    const buildTraces = () => {
-      return selectedVars.map((varDef) => {
-        const rawVals = series.map((rec) =>
-          getVal(rec as DailyRecord | MonthlyRecord, varDef, viewMode)
-        );
-        const yVals = normalized ? normalizeToBase(rawVals) : rawVals;
-
-        const isBar = varDef.type === "bar" && !normalized;
-        const yaxis =
-          normalized || (!hasBars && hasLines)
-            ? "y"
-            : isBar
-            ? "y"
-            : "y2";
-
-        const traceName = isEn ? varDef.label_en : varDef.label;
-
-        if (isBar) {
-          return {
-            x: xLabels,
-            y: yVals,
-            name: traceName,
-            type: "bar" as const,
-            marker: {
-              color: (yVals as (number | null)[]).map((v) =>
-                v !== null && v >= 0 ? varDef.color : adjustColorDark(varDef.color)
-              ),
-              opacity: 0.85,
-            },
-            yaxis,
-          };
-        } else {
-          return {
-            x: xLabels,
-            y: yVals,
-            name: traceName,
-            type: "scatter" as const,
-            mode: "lines" as const,
-            line: {
-              color: varDef.color,
-              width: varDef.key === "reference_rate" ? 1.5 : 2,
-              dash: varDef.dash ?? "solid",
-            },
-            connectgaps: true,
-            yaxis,
-          };
-        }
-      });
-    };
-
-    const traces = buildTraces();
-
-    // Build layout
-    const leftTitle = normalized
-      ? (isEn ? "Cumulative change from start (%)" : "Variación desde inicio (%)")
-      : hasBars
-      ? "Mill. USD"
-      : selectedVars.length === 1
-      ? `${selectedVars[0].unit}`
-      : (isEn ? "Value" : "Valor");
-
-    const rightTitle = normalized
-      ? ""
-      : hasBars && hasLines
-      ? selectedVars
-          .filter((v) => v.type === "line")
-          .map((v) => v.unit)
-          .filter((u, i, arr) => arr.indexOf(u) === i)
-          .join(" / ")
-      : "";
-
     const showDualAxis = hasBars && hasLines && !normalized;
-    const layout: any = {
-      barmode: "relative",
-      xaxis: { gridcolor: "#e5e7eb", tickformat: viewMode === "diario" ? "%d %b %y" : "%b %y" },
-      yaxis: {
-        title: leftTitle,
-        gridcolor: "#e5e7eb",
-        zeroline: hasBars,
-        zerolinecolor: "#374151",
-        zerolinewidth: 1,
-      },
-      ...(showDualAxis
-        ? {
-            yaxis2: {
-              title: rightTitle,
-              overlaying: "y",
-              side: "right",
-              anchor: "x",
-              showgrid: false,
-            },
-          }
-        : {}),
-      hovermode: "x unified",
-      plot_bgcolor: "#ffffff",
-      paper_bgcolor: "#ffffff",
-      margin: { t: 20, r: showDualAxis ? 70 : 20, b: 50, l: 70 },
-      legend: { orientation: "h" as const, y: -0.18 },
-      height: 440,
-    };
-
-    return { traces, layout, hasScale };
-  }, [data, selected, viewMode, normalized, isEn]);
+    return { hasScale: mixedScaleWarning, showDualAxis, selectedVars, hasBars };
+  }, [selected, normalized]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">{isEn ? "Loading FX market data..." : "Cargando datos del mercado cambiario..."}</p>
-      </div>
-    );
+    return <PageSkeleton cards={2} />;
   }
 
-  if (!data) {
-    return (
-      <div className="bg-gray-50 min-h-screen py-12">
-        <div className="max-w-5xl mx-auto px-4">
-          <nav className="text-sm text-gray-500 mb-6">
-            <Link href="/estadisticas" className="hover:text-blue-700">{isEn ? "Statistics" : "Estadísticas"}</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">{isEn ? "FX Market" : "Mercado Cambiario"}</span>
-          </nav>
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">{isEn ? "FX Market & BCRP Interventions" : "Mercado Cambiario & Intervenciones BCRP"}</h1>
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-            <p className="text-amber-800">
-              Ejecuta el pipeline de exportación para generar los datos más recientes.
-            </p>
-          </div>
-        </div>
+  if (error || !data) return (
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#FAF8F4' }}>
+      <div className="max-w-md text-center">
+        <p className="text-red-500 font-medium mb-2">{isEn ? 'Error loading data.' : 'Error cargando datos.'}</p>
+        <p className="text-sm text-gray-500 mb-4">{isEn ? 'Try again later.' : 'Intenta de nuevo más tarde.'}</p>
+        <button onClick={() => window.location.reload()} className="px-4 py-2 rounded-lg border text-sm font-medium" style={{ borderColor: '#C65D3E', color: '#C65D3E' }}>
+          {isEn ? 'Retry' : 'Reintentar'}
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
 
   const { latest, monthly_series } = data;
   const prevMonth = monthly_series[monthly_series.length - 2] ?? null;
@@ -448,10 +370,11 @@ export default function IntervencionesBCRPPage() {
     vars: VARIABLES.filter((v) => v.group === g),
   }));
 
-  const locale = isEn ? 'en-US' : 'es-PE';
+  // Raw series for Cell coloring (one entry per chart row)
+  const rawSeries = viewMode === "diario" ? data.daily_series : data.monthly_series;
 
   return (
-    <div className="bg-gray-50 min-h-screen py-10">
+    <div className="min-h-screen py-10" style={{ backgroundColor: "#FAF8F4", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")` }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
@@ -479,6 +402,10 @@ export default function IntervencionesBCRPPage() {
             </p>
           </div>
           <div className="flex gap-2 shrink-0">
+            <CiteButton
+              indicator={isEn ? "FX Market & BCRP Interventions" : "Mercado Cambiario & Intervenciones BCRP"}
+              isEn={isEn}
+            />
             <ShareButton title={isEn ? "FX Market — Qhawarina" : "Mercado Cambiario — Qhawarina"} text={isEn ? `💱 FX PEN/USD: ${latest.fx?.toFixed(4)} | BCRP Rate: ${latest.reference_rate?.toFixed(2)}% | Qhawarina\nhttps://qhawarina.pe/estadisticas/intervenciones` : `💱 TC PEN/USD: ${latest.fx?.toFixed(4)} | Tasa BCRP: ${latest.reference_rate?.toFixed(2)}% | Qhawarina\nhttps://qhawarina.pe/estadisticas/intervenciones`} />
             <EmbedWidget path="/estadisticas/intervenciones" title="Mercado Cambiario — Qhawarina" height={700} />
           </div>
@@ -558,35 +485,136 @@ export default function IntervencionesBCRPPage() {
           )}
 
           {/* Chart */}
-          <Plot
-            key={`${viewMode}-${normalized ? 1 : 0}-${[...selected].sort().join(",")}`}
-            data={traces as any}
-            layout={layout}
-            config={{
-              responsive: true,
-              displayModeBar: true,
-              displaylogo: false,
-              modeBarButtonsToRemove: ["select2d", "lasso2d"],
-              toImageButtonOptions: {
-                format: "png",
-                filename: "qhawarina_bcrp_mercado_cambiario",
-                height: 700,
-                width: 1400,
-                scale: 2,
-              },
-            }}
-            style={{ width: "100%", height: "100%" }}
-            useResizeHandler
-          />
+          <ResponsiveContainer width="100%" height={440}>
+            <ComposedChart
+              data={chartData}
+              margin={{ top: 8, right: showDualAxis ? 60 : 16, left: 8, bottom: 8 }}
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke={CHART_DEFAULTS.gridStroke}
+                strokeWidth={CHART_DEFAULTS.gridStrokeWidth}
+              />
+              <XAxis
+                dataKey={viewMode === "diario" ? "date" : "month"}
+                tick={axisTickStyle}
+                stroke={CHART_DEFAULTS.axisStroke}
+                interval="preserveStartEnd"
+              />
+              <YAxis
+                yAxisId="left"
+                tick={axisTickStyle}
+                stroke={CHART_DEFAULTS.axisStroke}
+                tickFormatter={(v) =>
+                  normalized
+                    ? `${Number(v).toFixed(1)}%`
+                    : hasBars
+                    ? `${Number(v).toFixed(0)}M`
+                    : `${Number(v).toFixed(2)}`
+                }
+              />
+              {showDualAxis && (
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={(v) => `${Number(v).toFixed(2)}`}
+                />
+              )}
+              <ReferenceLine
+                yAxisId="left"
+                y={0}
+                stroke={CHART_DEFAULTS.axisStroke}
+                strokeDasharray="4 2"
+              />
+              <Tooltip
+                contentStyle={tooltipContentStyle}
+                formatter={(value, name) => {
+                  const varDef = VARIABLES.find(
+                    (x) => (isEn ? x.label_en : x.label) === name
+                  );
+                  const unit = normalized ? "%" : (varDef?.unit ?? "");
+                  return [
+                    value != null ? `${Number(value).toFixed(2)} ${unit}` : "—",
+                    name,
+                  ];
+                }}
+              />
+              <Legend
+                wrapperStyle={{
+                  fontSize: CHART_DEFAULTS.axisFontSize,
+                  fontFamily: CHART_DEFAULTS.axisFontFamily,
+                }}
+              />
+              {selectedVars.map((varDef) => {
+                const isBar = varDef.type === "bar" && !normalized;
+                const yAxisId = showDualAxis
+                  ? isBar
+                    ? "left"
+                    : "right"
+                  : "left";
+                const name = isEn ? varDef.label_en : varDef.label;
+                if (isBar) {
+                  return (
+                    <Bar
+                      key={varDef.key}
+                      dataKey={varDef.key}
+                      yAxisId={yAxisId}
+                      name={name}
+                      stackId="stack"
+                      fill={varDef.color}
+                      radius={[2, 2, 0, 0]}
+                    >
+                      {rawSeries.map((rec, idx) => {
+                        const val = getVal(rec as any, varDef, viewMode);
+                        return (
+                          <Cell
+                            key={idx}
+                            fill={
+                              val !== null && val >= 0
+                                ? varDef.color
+                                : adjustColorDark(varDef.color)
+                            }
+                          />
+                        );
+                      })}
+                    </Bar>
+                  );
+                } else {
+                  return (
+                    <Line
+                      key={varDef.key}
+                      dataKey={varDef.key}
+                      yAxisId={yAxisId}
+                      name={name}
+                      type="monotone"
+                      stroke={varDef.color}
+                      strokeWidth={varDef.key === "reference_rate" ? 1.5 : 2}
+                      strokeDasharray={
+                        varDef.dash === "dot"
+                          ? "3 3"
+                          : varDef.dash === "dash"
+                          ? "6 3"
+                          : undefined
+                      }
+                      dot={false}
+                      connectNulls
+                    />
+                  );
+                }
+              })}
+            </ComposedChart>
+          </ResponsiveContainer>
 
           <p className="text-xs text-gray-400 mt-3">
             {normalized
-              ? (isEn
-                  ? "Cumulative percentage change since the start of the selected period (base=0%)."
-                  : "Variación porcentual acumulada desde el inicio del período seleccionado (base=0%).")
-              : (isEn
-                  ? "Daily (2 years) or monthly cumulative (since Jan 2020). Bars: Mill. USD · Lines: right axis."
-                  : "Datos diarios (2 años) o mensuales acumulados (desde ene 2020). Barras: Mill. USD · Líneas: escala derecha.")}
+              ? isEn
+                ? "Cumulative percentage change since the start of the selected period (base=0%)."
+                : "Variación porcentual acumulada desde el inicio del período seleccionado (base=0%)."
+              : isEn
+              ? "Daily (2 years) or monthly cumulative (since Jan 2020). Bars: Mill. USD · Lines: right axis."
+              : "Datos diarios (2 años) o mensuales acumulados (desde ene 2020). Barras: Mill. USD · Líneas: escala derecha."}
             {" "}Fuente: BCRP.
           </p>
         </div>
@@ -647,15 +675,6 @@ export default function IntervencionesBCRPPage() {
       </div>
     </div>
   );
-}
-
-// ─── Dark color helper ────────────────────────────────────────────────────────
-function adjustColorDark(hex: string): string {
-  const variants: Record<string, string> = {
-    "#1d4ed8": "#1e40af",
-    "#7c3aed": "#6d28d9",
-  };
-  return variants[hex] ?? hex;
 }
 
 // ─── Methodology ─────────────────────────────────────────────────────────────

@@ -2,13 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import EventTabs from '../components/EventTabs';
 import HStackBar from '../components/HStackBar';
 import FadeSection from '../components/FadeSection';
 import SourceFooter from '../components/SourceFooter';
 import { TERRACOTTA, TEAL, CARD_BG, CARD_BORDER, EVENTS } from '../components/mwData';
+import CiteButton from '../../../components/CiteButton';
+import ShareButton from '../../../components/ShareButton';
 
 export default function EvidenciaPage() {
+  const isEn = useLocale() === 'en';
   const [activeEvent, setActiveEvent] = useState(1);
   const ev = EVENTS[activeEvent];
 
@@ -17,19 +21,42 @@ export default function EvidenciaPage() {
 
       {/* Header */}
       <section className="space-y-3 pt-2">
-        <p className="text-xs text-stone-400 font-medium tracking-wide">Salario Mínimo / Evidencia</p>
-        <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
-          ¿Cuántos empleos regresan?
-        </h1>
+        <p className="text-xs text-stone-400 font-medium tracking-wide">
+          {isEn ? 'Minimum Wage / Evidence' : 'Salario Mínimo / Evidencia'}
+        </p>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-1">
+          <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
+            {isEn ? 'How many jobs come back?' : '¿Cuántos empleos regresan?'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton
+              indicator={isEn
+                ? 'Distributional evidence of minimum wage effects on formal employment in Peru (ENAHO 2015–2023)'
+                : 'Evidencia distribucional de efectos del salario mínimo sobre el empleo formal en Perú (ENAHO 2015–2023)'}
+              isEn={isEn}
+            />
+            <ShareButton
+              title={isEn
+                ? 'Minimum wage evidence in Peru — Qhawarina'
+                : 'Evidencia del salario mínimo en Perú — Qhawarina'}
+              text={isEn
+                ? 'Missing vs. excess mass across three minimum wage increases in Peru. Results from the pre–post distributional estimator. https://qhawarina.pe/simuladores/salario-minimo/evidencia'
+                : 'Masa desaparecida vs. reaparecida en tres aumentos del salario mínimo en Perú. Resultados del estimador distribucional pre-post. https://qhawarina.pe/simuladores/salario-minimo/evidencia'}
+            />
+          </div>
+        </div>
         <p className="text-stone-500 max-w-2xl">
-          Masa desaparecida vs. reaparecida en tres aumentos del salario mínimo.
-          Resultados del estimador distribucional pre-post.
+          {isEn
+            ? 'Missing vs. excess mass across three minimum wage increases. Results from the pre–post distributional estimator.'
+            : 'Masa desaparecida vs. reaparecida en tres aumentos del salario mínimo. Resultados del estimador distribucional pre-post.'}
         </p>
       </section>
 
       {/* ── SECTION A: EVIDENCE TABLE ──────────────────────────────────────────── */}
       <FadeSection className="space-y-5">
-        <h2 className="text-xl font-bold text-stone-900">Resumen de resultados</h2>
+        <h2 className="text-xl font-bold text-stone-900">
+          {isEn ? 'Summary of results' : 'Resumen de resultados'}
+        </h2>
         <div
           className="rounded-2xl overflow-hidden"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
@@ -38,12 +65,24 @@ export default function EvidenciaPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ borderBottom: `1px solid ${CARD_BORDER}`, background: 'rgba(0,0,0,0.02)' }}>
-                  <th className="text-left px-5 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">Evento</th>
-                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">Desaparecen</th>
-                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">Reaparecen</th>
-                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">Regresan</th>
-                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">IC 95%</th>
-                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">Autoempleo</th>
+                  <th className="text-left px-5 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">
+                    {isEn ? 'Event' : 'Evento'}
+                  </th>
+                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">
+                    {isEn ? 'Disappear' : 'Desaparecen'}
+                  </th>
+                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">
+                    {isEn ? 'Reappear' : 'Reaparecen'}
+                  </th>
+                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">
+                    {isEn ? 'Return' : 'Regresan'}
+                  </th>
+                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">
+                    {isEn ? '95% CI' : 'IC 95%'}
+                  </th>
+                  <th className="text-right px-4 py-3 font-semibold text-stone-400 text-xs uppercase tracking-wider">
+                    {isEn ? 'Self-emp.' : 'Autoempleo'}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -93,19 +132,35 @@ export default function EvidenciaPage() {
           className="rounded-xl px-5 py-3.5 text-xs text-stone-500 space-y-1"
           style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
         >
-          <p><strong>Test de falsificación:</strong> Ratios en umbrales ficticios S/1,100→1,200 y S/1,400→1,500 son 0.114 y 0.013 — 7× menores que el umbral real.</p>
-          <p><strong>Replicación EPE Lima:</strong> Dataset independiente, ventanas de 6 meses, produce ratios 0.73–1.03 — consistentes con ENAHO 0.70–0.83.</p>
+          <p>
+            <strong>{isEn ? 'Falsification test:' : 'Test de falsificación:'}</strong>{' '}
+            {isEn
+              ? 'Ratios at fictitious thresholds S/1,100→1,200 and S/1,400→1,500 are 0.114 and 0.013 — 7× smaller than the real threshold.'
+              : 'Ratios en umbrales ficticios S/1,100→1,200 y S/1,400→1,500 son 0.114 y 0.013 — 7× menores que el umbral real.'}
+          </p>
+          <p>
+            <strong>{isEn ? 'EPE Lima replication:' : 'Replicación EPE Lima:'}</strong>{' '}
+            {isEn
+              ? 'Independent dataset, 6-month windows, produces ratios 0.73–1.03 — consistent with ENAHO 0.70–0.83.'
+              : 'Dataset independiente, ventanas de 6 meses, produce ratios 0.73–1.03 — consistentes con ENAHO 0.70–0.83.'}
+          </p>
         </div>
       </FadeSection>
 
       <div style={{ height: 1, background: 'rgba(0,0,0,0.06)' }}/>
 
-      {/* ── SECTION B: ¿A DÓNDE VAN? ──────────────────────────────────────────── */}
+      {/* ── SECTION B: WHERE DO THEY GO? ───────────────────────────────────────── */}
       <FadeSection className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-xl font-bold text-stone-900">¿A dónde van los trabajadores que desaparecen?</h2>
+          <h2 className="text-xl font-bold text-stone-900">
+            {isEn
+              ? 'Where do the workers who disappear go?'
+              : '¿A dónde van los trabajadores que desaparecen?'}
+          </h2>
           <p className="text-sm text-stone-500 max-w-2xl">
-            Composición del empleo en la zona afectada [0.85×SM<sub>ant</sub>, SM<sub>nuevo</sub>), antes y después
+            {isEn
+              ? <>Employment composition in the affected zone [0.85×SM<sub>ant</sub>, SM<sub>nuevo</sub>), before and after</>
+              : <>Composición del empleo en la zona afectada [0.85×SM<sub>ant</sub>, SM<sub>nuevo</sub>), antes y después</>}
           </p>
         </div>
 
@@ -119,22 +174,25 @@ export default function EvidenciaPage() {
           >
             <div className="flex gap-4 text-xs flex-wrap">
               <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded" style={{ background: TERRACOTTA }}/>Formal dep.
+                <span className="w-3 h-3 rounded" style={{ background: TERRACOTTA }}/>
+                {isEn ? 'Formal dep.' : 'Formal dep.'}
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded" style={{ background: '#94a3b8' }}/>Informal dep.
+                <span className="w-3 h-3 rounded" style={{ background: '#94a3b8' }}/>
+                {isEn ? 'Informal dep.' : 'Informal dep.'}
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded" style={{ background: TEAL }}/>Autoempleado
+                <span className="w-3 h-3 rounded" style={{ background: TEAL }}/>
+                {isEn ? 'Self-employed' : 'Autoempleado'}
               </span>
             </div>
             <HStackBar
               formal={ev.formal_pre} informal={ev.informal_pre} selfemp={ev.selfemp_pre}
-              label={`Antes (${ev.pre_year})`}
+              label={isEn ? `Before (${ev.pre_year})` : `Antes (${ev.pre_year})`}
             />
             <HStackBar
               formal={ev.formal_post} informal={ev.informal_post} selfemp={ev.selfemp_post}
-              label={`Después (${ev.post_year})`}
+              label={isEn ? `After (${ev.post_year})` : `Después (${ev.post_year})`}
             />
 
             <div className="flex items-center justify-center gap-6 pt-2">
@@ -142,14 +200,14 @@ export default function EvidenciaPage() {
                 <div className="text-2xl font-black" style={{ color: TERRACOTTA }}>
                   {ev.formal_pre.toFixed(0)}%→{ev.formal_post.toFixed(0)}%
                 </div>
-                <div className="text-xs text-stone-400">Formal dep.</div>
+                <div className="text-xs text-stone-400">{isEn ? 'Formal dep.' : 'Formal dep.'}</div>
               </div>
               <div className="text-stone-200 text-2xl">·</div>
               <div className="text-center">
                 <div className="text-2xl font-black" style={{ color: TEAL }}>
                   {ev.selfemp_pre.toFixed(0)}%→{ev.selfemp_post.toFixed(0)}%
                 </div>
-                <div className="text-xs text-stone-400">Autoempleado</div>
+                <div className="text-xs text-stone-400">{isEn ? 'Self-employed' : 'Autoempleado'}</div>
               </div>
             </div>
           </div>
@@ -164,13 +222,15 @@ export default function EvidenciaPage() {
                 ↑{ev.selfemp_delta_pp.toFixed(0)}pp
               </div>
               <p className="text-sm font-semibold text-stone-800">
-                de autoempleo en la zona afectada ({ev.pre_year} → {ev.post_year})
+                {isEn
+                  ? `in self-employment in the affected zone (${ev.pre_year} → ${ev.post_year})`
+                  : `de autoempleo en la zona afectada (${ev.pre_year} → ${ev.post_year})`}
               </p>
               <div className="space-y-2 text-sm text-stone-600 border-t pt-3" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
                 {[
-                  { label: 'Formal dep.',    pre: ev.formal_pre,   post: ev.formal_post,   color: TERRACOTTA },
-                  { label: 'Informal dep.',  pre: ev.informal_pre, post: ev.informal_post, color: '#94a3b8' },
-                  { label: 'Autoempleado',   pre: ev.selfemp_pre,  post: ev.selfemp_post,  color: TEAL },
+                  { label: isEn ? 'Formal dep.'   : 'Formal dep.',   pre: ev.formal_pre,   post: ev.formal_post,   color: TERRACOTTA },
+                  { label: isEn ? 'Informal dep.' : 'Informal dep.', pre: ev.informal_pre, post: ev.informal_post, color: '#94a3b8' },
+                  { label: isEn ? 'Self-employed' : 'Autoempleado',  pre: ev.selfemp_pre,  post: ev.selfemp_post,  color: TEAL },
                 ].map(row => (
                   <div key={row.label} className="flex justify-between items-center">
                     <span className="text-stone-500">{row.label}</span>
@@ -185,22 +245,30 @@ export default function EvidenciaPage() {
             </div>
 
             <div className="rounded-2xl p-5 space-y-2" style={{ background: '#fffbeb', border: '1px solid #fde68a' }}>
-              <div className="font-bold text-amber-900 text-sm">El empleo total se mantiene. La MODALIDAD cambia.</div>
+              <div className="font-bold text-amber-900 text-sm">
+                {isEn
+                  ? 'Total employment holds. The TYPE changes.'
+                  : 'El empleo total se mantiene. La MODALIDAD cambia.'}
+              </div>
               <p className="text-xs text-amber-800 leading-relaxed">
-                El aumento en autoempleo no implica bienestar equivalente — los autoempleados informales
-                pierden acceso a seguridad social. Pero tampoco implica destrucción de empleo.
+                {isEn
+                  ? 'The increase in self-employment does not imply equivalent welfare — informal self-employed workers lose access to social security. But it does not imply employment destruction either.'
+                  : 'El aumento en autoempleo no implica bienestar equivalente — los autoempleados informales pierden acceso a seguridad social. Pero tampoco implica destrucción de empleo.'}
               </p>
               {ev.id === 'C' && (
                 <p className="text-xs text-amber-700 leading-relaxed border-t border-amber-200 pt-2">
-                  <strong>Evento C:</strong> Recuento absoluto de autoempleados cae (−3.5%), consistente
-                  con re-formalización post-COVID (fuerza laboral formal creció 12.5% en 2021–2023).
+                  <strong>{isEn ? 'Event C:' : 'Evento C:'}</strong>{' '}
+                  {isEn
+                    ? 'Absolute count of self-employed falls (−3.5%), consistent with post-COVID re-formalization (formal labor force grew 12.5% in 2021–2023).'
+                    : 'Recuento absoluto de autoempleados cae (−3.5%), consistente con re-formalización post-COVID (fuerza laboral formal creció 12.5% en 2021–2023).'}
                 </p>
               )}
             </div>
 
             <p className="text-xs text-stone-400 leading-relaxed">
-              Fuente: ENAHO Módulo 500. Ingresos de autoempleados: p530a (ingreso neto mensual de negocio).
-              Diseño transversal — no se rastrean individuos. Evidencia indirecta, no prueba directa de transición.
+              {isEn
+                ? 'Source: ENAHO Module 500. Self-employed income: p530a (monthly net business income). Cross-sectional design — individuals are not tracked. Indirect evidence, not direct proof of transition.'
+                : 'Fuente: ENAHO Módulo 500. Ingresos de autoempleados: p530a (ingreso neto mensual de negocio). Diseño transversal — no se rastrean individuos. Evidencia indirecta, no prueba directa de transición.'}
             </p>
           </div>
         </div>
@@ -210,34 +278,45 @@ export default function EvidenciaPage() {
 
       {/* ── SECTION C: SECONDARY FINDINGS ─────────────────────────────────────── */}
       <FadeSection className="space-y-5">
-        <h2 className="text-xl font-bold text-stone-900">Hallazgos secundarios</h2>
+        <h2 className="text-xl font-bold text-stone-900">
+          {isEn ? 'Secondary findings' : 'Hallazgos secundarios'}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             className="rounded-3xl p-7 space-y-4"
             style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
           >
-            <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Hallazgo A</div>
-            <h3 className="text-lg font-bold text-stone-900">Compresión salarial</h3>
+            <div className="text-xs font-bold tracking-widest uppercase text-stone-400">
+              {isEn ? 'Finding A' : 'Hallazgo A'}
+            </div>
+            <h3 className="text-lg font-bold text-stone-900">
+              {isEn ? 'Wage compression' : 'Compresión salarial'}
+            </h3>
             <p className="text-sm text-stone-600 leading-relaxed">
-              El aumento del SM comprime el p10–p50 en 3–7 puntos porcentuales (DiD en log-salario).
+              {isEn
+                ? 'The MW increase compresses the p10–p50 by 3–7 percentage points (DiD in log-wage).'
+                : 'El aumento del SM comprime el p10–p50 en 3–7 puntos porcentuales (DiD en log-salario).'}
             </p>
             <div
               className="rounded-xl px-4 py-3 space-y-2 text-xs text-stone-600"
               style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
             >
-              <div className="font-semibold text-stone-700">Mecánica vs. genuina (Evento B)</div>
+              <div className="font-semibold text-stone-700">
+                {isEn ? 'Mechanical vs. genuine (Event B)' : 'Mecánica vs. genuina (Evento B)'}
+              </div>
               <div className="flex justify-between">
-                <span>Composición (mecánica)</span>
+                <span>{isEn ? 'Composition (mechanical)' : 'Composición (mecánica)'}</span>
                 <span className="font-bold">41–92%</span>
               </div>
               <div className="flex justify-between">
-                <span>Reordenamiento real (genuina)</span>
+                <span>{isEn ? 'Real reordering (genuine)' : 'Reordenamiento real (genuina)'}</span>
                 <span className="font-bold" style={{ color: TEAL }}>8–59%</span>
               </div>
             </div>
             <p className="text-xs text-stone-400 leading-relaxed">
-              La mayor parte de la compresión refleja cambios en quién ocupa la zona del SM,
-              no alzas reales para los mismos trabajadores.
+              {isEn
+                ? 'Most of the compression reflects changes in who occupies the MW zone, not real wage increases for the same workers.'
+                : 'La mayor parte de la compresión refleja cambios en quién ocupa la zona del SM, no alzas reales para los mismos trabajadores.'}
             </p>
           </div>
 
@@ -245,24 +324,40 @@ export default function EvidenciaPage() {
             className="rounded-3xl p-7 space-y-4"
             style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
           >
-            <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Hallazgo B</div>
-            <h3 className="text-lg font-bold text-stone-900">¿A quién afecta más?</h3>
+            <div className="text-xs font-bold tracking-widest uppercase text-stone-400">
+              {isEn ? 'Finding B' : 'Hallazgo B'}
+            </div>
+            <h3 className="text-lg font-bold text-stone-900">
+              {isEn ? 'Who is most affected?' : '¿A quién afecta más?'}
+            </h3>
             <div className="space-y-3 text-sm">
               {[
                 {
                   dot: TEAL,
-                  title: 'Sector privado absorbe mejor (0.83 vs. 0.75)',
-                  sub: 'Consistente con ajuste de mercado, no cumplimiento por inspección.',
+                  title: isEn
+                    ? 'Private sector absorbs better (0.83 vs. 0.75)'
+                    : 'Sector privado absorbe mejor (0.83 vs. 0.75)',
+                  sub: isEn
+                    ? 'Consistent with market adjustment, not compliance via inspection.'
+                    : 'Consistente con ajuste de mercado, no cumplimiento por inspección.',
                 },
                 {
                   dot: TERRACOTTA,
-                  title: 'Sin gradiente por edad, sexo ni etnicidad dentro del empleo formal',
-                  sub: 'Ratios similares entre hombres/mujeres y grupos de edad.',
+                  title: isEn
+                    ? 'No gradient by age, sex, or ethnicity within formal employment'
+                    : 'Sin gradiente por edad, sexo ni etnicidad dentro del empleo formal',
+                  sub: isEn
+                    ? 'Similar ratios across men/women and age groups.'
+                    : 'Ratios similares entre hombres/mujeres y grupos de edad.',
                 },
                 {
                   dot: '#f59e0b',
-                  title: 'La brecha étnica opera por ACCESO, no por salarios',
-                  sub: 'Trabajadores indígenas: 5.7% de formalidad vs. 20.7% para hablantes de castellano. Dentro del empleo formal, la exposición al SM es similar.',
+                  title: isEn
+                    ? 'The ethnic gap operates through ACCESS, not wages'
+                    : 'La brecha étnica opera por ACCESO, no por salarios',
+                  sub: isEn
+                    ? 'Indigenous workers: 5.7% formality vs. 20.7% for Spanish speakers. Within formal employment, MW exposure is similar.'
+                    : 'Trabajadores indígenas: 5.7% de formalidad vs. 20.7% para hablantes de castellano. Dentro del empleo formal, la exposición al SM es similar.',
                 },
               ].map(row => (
                 <div key={row.title} className="flex items-start gap-3">
@@ -285,7 +380,7 @@ export default function EvidenciaPage() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-90"
           style={{ background: TERRACOTTA, color: 'white' }}
         >
-          Siguiente: Mapa regional →
+          {isEn ? 'Next: Regional map →' : 'Siguiente: Mapa regional →'}
         </Link>
       </div>
 

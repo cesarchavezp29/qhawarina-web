@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import FadeSection from '../components/FadeSection';
 import SourceFooter from '../components/SourceFooter';
@@ -10,8 +11,11 @@ import {
   DEPTS_KAITZ, kaitzMap, kaitzColor, GEO_URL,
   type DeptKaitz,
 } from '../components/mwData';
+import CiteButton from '../../../components/CiteButton';
+import ShareButton from '../../../components/ShareButton';
 
 export default function KaitzPage() {
+  const isEn = useLocale() === 'en';
   const [hoveredDept, setHoveredDept] = useState<DeptKaitz | null>(null);
 
   return (
@@ -19,13 +23,36 @@ export default function KaitzPage() {
 
       {/* Header */}
       <section className="space-y-3 pt-2">
-        <p className="text-xs text-stone-400 font-medium tracking-wide">Salario Mínimo / Kaitz</p>
-        <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
-          ¿Dónde muerde más el salario mínimo?
-        </h1>
+        <p className="text-xs text-stone-400 font-medium tracking-wide">
+          {isEn ? 'Minimum Wage / Kaitz Index' : 'Salario Mínimo / Kaitz'}
+        </p>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-1">
+          <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
+            {isEn
+              ? 'Where does the minimum wage bite hardest?'
+              : '¿Dónde muerde más el salario mínimo?'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton
+              indicator={isEn
+                ? 'Departmental Kaitz Index in Peru: regional exposure to the minimum wage (2016–2022)'
+                : 'Índice de Kaitz departamental en Perú: exposición regional al salario mínimo (2016–2022)'}
+              isEn={isEn}
+            />
+            <ShareButton
+              title={isEn
+                ? 'Kaitz Index by department — Qhawarina'
+                : 'Índice de Kaitz por departamento — Qhawarina'}
+              text={isEn
+                ? 'Where does the minimum wage bite hardest? Kaitz Index by department in Peru. https://qhawarina.pe/simuladores/salario-minimo/kaitz'
+                : '¿Dónde muerde más el salario mínimo? Índice de Kaitz por departamento en Perú. https://qhawarina.pe/simuladores/salario-minimo/kaitz'}
+            />
+          </div>
+        </div>
         <p className="text-stone-500 max-w-2xl">
-          Índice de Kaitz = SM / mediana salarial formal por departamento.
-          Verde = bajo riesgo · Rojo = alto riesgo.
+          {isEn
+            ? 'Kaitz Index = MW / median formal wage by department. Green = low risk · Red = high risk.'
+            : 'Índice de Kaitz = SM / mediana salarial formal por departamento. Verde = bajo riesgo · Rojo = alto riesgo.'}
         </p>
       </section>
 
@@ -53,7 +80,9 @@ export default function KaitzPage() {
                   {hoveredDept.kaitz.toFixed(2)}
                 </div>
                 <div className="text-xs text-stone-400 mt-0.5">
-                  SM = {(hoveredDept.kaitz * 100).toFixed(0)}% del salario mediano
+                  {isEn
+                    ? `MW = ${(hoveredDept.kaitz * 100).toFixed(0)}% of median wage`
+                    : `SM = ${(hoveredDept.kaitz * 100).toFixed(0)}% del salario mediano`}
                 </div>
                 {hoveredDept.note && (
                   <div className="text-xs text-amber-700 rounded-lg px-2 py-1.5 mt-2" style={{ background: '#fffbeb' }}>
@@ -102,14 +131,19 @@ export default function KaitzPage() {
                 background: 'linear-gradient(to right,#52c288,#86efac,#fbbf24,#f97316,#ef4444,#b91c1c)',
               }}/>
               <div className="flex justify-between text-xs text-stone-300 mt-1.5">
-                <span>0.45 — Bajo</span><span>0.55</span><span>0.65</span><span>0.75+ — Alto</span>
+                <span>{isEn ? '0.45 — Low' : '0.45 — Bajo'}</span>
+                <span>0.55</span>
+                <span>0.65</span>
+                <span>{isEn ? '0.75+ — High' : '0.75+ — Alto'}</span>
               </div>
             </div>
           </div>
 
           {/* Rankings */}
           <div className="space-y-2">
-            <div className="text-sm font-semibold text-stone-500 mb-3">Más expuestos al SM</div>
+            <div className="text-sm font-semibold text-stone-500 mb-3">
+              {isEn ? 'Most exposed to MW' : 'Más expuestos al SM'}
+            </div>
             {[...DEPTS_KAITZ].sort((a, b) => b.kaitz - a.kaitz).slice(0, 10).map(d => (
               <div
                 key={d.code}
@@ -137,7 +171,9 @@ export default function KaitzPage() {
 
         {/* Mobile fallback: full list */}
         <div className="sm:hidden space-y-2">
-          <div className="text-sm font-semibold text-stone-500 mb-3">Kaitz por departamento</div>
+          <div className="text-sm font-semibold text-stone-500 mb-3">
+            {isEn ? 'Kaitz Index by department' : 'Kaitz por departamento'}
+          </div>
           {[...DEPTS_KAITZ].sort((a, b) => b.kaitz - a.kaitz).map(d => (
             <div
               key={d.code}
@@ -156,8 +192,9 @@ export default function KaitzPage() {
         </div>
 
         <p className="text-xs text-stone-400">
-          Ica: agro-exportadores con salarios mensuales bajos pese a jornada completa —
-          el sector más expuesto al SM en Perú.
+          {isEn
+            ? 'Ica: agro-export workers with low monthly wages despite full-time hours — the sector most exposed to the MW in Peru.'
+            : 'Ica: agro-exportadores con salarios mensuales bajos pese a jornada completa — el sector más expuesto al SM en Perú.'}
         </p>
       </FadeSection>
 
@@ -169,18 +206,36 @@ export default function KaitzPage() {
           className="rounded-2xl p-6 space-y-4"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
         >
-          <h3 className="font-bold text-stone-900">¿Qué significa el Kaitz?</h3>
+          <h3 className="font-bold text-stone-900">
+            {isEn ? 'What does the Kaitz Index mean?' : '¿Qué significa el Kaitz?'}
+          </h3>
           <p className="text-sm text-stone-600 leading-relaxed">
-            Un Kaitz de <strong>0.57</strong> significa que el salario mínimo es el 57% del salario
-            mediano formal. Cuando está por debajo de 0.50, el SM no es vinculante para la mayoría.
-            Por encima de 0.65, la evidencia internacional sugiere mayor riesgo de desempleo.
+            {isEn
+              ? <>A Kaitz of <strong>0.57</strong> means the minimum wage is 57% of the median formal wage. When it is below 0.50, the MW is not binding for most workers. Above 0.65, international evidence suggests a greater risk of unemployment.</>
+              : <>Un Kaitz de <strong>0.57</strong> significa que el salario mínimo es el 57% del salario mediano formal. Cuando está por debajo de 0.50, el SM no es vinculante para la mayoría. Por encima de 0.65, la evidencia internacional sugiere mayor riesgo de desempleo.</>}
           </p>
           <div className="space-y-2 text-sm">
             {[
-              { range: '&lt; 0.50', label: 'SM no vinculante para la mayoría', color: '#52c288' },
-              { range: '0.50–0.57', label: 'Rango estudiado en este análisis', color: '#fbbf24' },
-              { range: '0.57–0.65', label: 'Sin evidencia propia — extrapolación', color: '#f97316' },
-              { range: '&gt; 0.65',  label: 'Mayor riesgo según literatura internacional', color: '#ef4444' },
+              {
+                range: '&lt; 0.50',
+                label: isEn ? 'MW not binding for most workers' : 'SM no vinculante para la mayoría',
+                color: '#52c288',
+              },
+              {
+                range: '0.50–0.57',
+                label: isEn ? 'Range studied in this analysis' : 'Rango estudiado en este análisis',
+                color: '#fbbf24',
+              },
+              {
+                range: '0.57–0.65',
+                label: isEn ? 'No own evidence — extrapolation' : 'Sin evidencia propia — extrapolación',
+                color: '#f97316',
+              },
+              {
+                range: '&gt; 0.65',
+                label: isEn ? 'Higher risk per international literature' : 'Mayor riesgo según literatura internacional',
+                color: '#ef4444',
+              },
             ].map(z => (
               <div key={z.range} className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: z.color }}/>
@@ -196,11 +251,13 @@ export default function KaitzPage() {
           className="rounded-2xl p-6 space-y-4"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
         >
-          <h3 className="font-bold text-stone-900">Kaitz nacional 2016–2022</h3>
+          <h3 className="font-bold text-stone-900">
+            {isEn ? 'National Kaitz Index 2016–2022' : 'Kaitz nacional 2016–2022'}
+          </h3>
           <p className="text-sm text-stone-600 leading-relaxed">
-            El índice de Kaitz nacional se mantuvo estable entre <strong>0.52 y 0.57</strong> durante
-            el período estudiado, a pesar de tres aumentos del SM. Esto ocurre porque los salarios
-            formales también crecieron al mismo ritmo que el SM.
+            {isEn
+              ? <>The national Kaitz Index remained stable between <strong>0.52 and 0.57</strong> during the study period, despite three MW increases. This occurred because formal wages also grew at the same pace as the MW.</>
+              : <>El índice de Kaitz nacional se mantuvo estable entre <strong>0.52 y 0.57</strong> durante el período estudiado, a pesar de tres aumentos del SM. Esto ocurre porque los salarios formales también crecieron al mismo ritmo que el SM.</>}
           </p>
           <div className="space-y-1.5">
             {[
@@ -229,8 +286,9 @@ export default function KaitzPage() {
             ))}
           </div>
           <p className="text-xs text-stone-400">
-            El aumento a S/1,130 en 2025 eleva el Kaitz a ~0.61 — por primera vez fuera del
-            rango histórico estudiado.
+            {isEn
+              ? 'The increase to S/1,130 in 2025 raises the Kaitz to ~0.61 — for the first time outside the historical range studied.'
+              : 'El aumento a S/1,130 en 2025 eleva el Kaitz a ~0.61 — por primera vez fuera del rango histórico estudiado.'}
           </p>
         </div>
       </FadeSection>
@@ -241,11 +299,13 @@ export default function KaitzPage() {
           className="rounded-2xl px-6 py-5 space-y-2"
           style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
         >
-          <div className="font-semibold text-stone-700 text-sm">Nota sobre Ica</div>
+          <div className="font-semibold text-stone-700 text-sm">
+            {isEn ? 'Note on Ica' : 'Nota sobre Ica'}
+          </div>
           <p className="text-xs text-stone-500 leading-relaxed">
-            El Kaitz de Ica (0.93) refleja la estructura del sector agro-exportador: contratos
-            temporales con salarios diarios o semanales bajos que, anualizados/mensualmente,
-            quedan cerca del SM. No indica que el 93% de los trabajadores gane el SM.
+            {isEn
+              ? `Ica's Kaitz (0.93) reflects the structure of the agro-export sector: temporary contracts with daily or weekly wages that, when annualized/monthly, fall close to the MW. It does not mean that 93% of workers earn the MW.`
+              : `El Kaitz de Ica (0.93) refleja la estructura del sector agro-exportador: contratos temporales con salarios diarios o semanales bajos que, anualizados/mensualmente, quedan cerca del SM. No indica que el 93% de los trabajadores gane el SM.`}
           </p>
         </div>
       </FadeSection>
@@ -257,7 +317,7 @@ export default function KaitzPage() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-90"
           style={{ background: TEAL, color: 'white' }}
         >
-          Siguiente: Simulador →
+          {isEn ? 'Next: Simulator →' : 'Siguiente: Simulador →'}
         </Link>
       </div>
 

@@ -6,6 +6,8 @@ import {
   ComposedChart, Scatter, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, ReferenceLine, ResponsiveContainer, Label,
 } from 'recharts';
+import CiteButton from '../components/CiteButton';
+import ShareButton from '../components/ShareButton';
 import {
   CHART_COLORS,
   CHART_DEFAULTS,
@@ -18,13 +20,21 @@ import {
 // Rate→GDP:    Cholesky VAR(1) T=85 FWL, CI includes zero at all h=0..8
 // FX→CPI:      LP OLS h=1 HAC, significant
 const BETA_POV   = -0.656;   // pp poverty per 1pp GDP growth
-const CI90_LO    = -0.847;   // 90% CI lower bound on β
-const CI90_HI    = -0.466;   // 90% CI upper bound on β
-const ALPHA_POV  =  0.888;   // intercept
+const ALPHA_POV  =  0.888;   // intercept (used for regression line only)
 const BETA_RATE  = -0.195;   // pp GDP per 100bp rate hike (Cholesky VAR)
 const CI_RATE_LO = -0.698;   // 90% bootstrap CI low
 const CI_RATE_HI =  0.271;   // 90% bootstrap CI high
 const BETA_FX    =  0.237;   // pp CPI per 10% FX depreciation (LP h=1)
+
+// Prediction interval constants (poverty regression)
+const RMSE   = 1.2958;   // regression RMSE (pp poverty)
+const N_OBS  = 18;       // number of observations
+const X_MEAN = 4.645;    // mean GDP growth in sample (%)
+const SXX    = 126.18;   // Σ(x−x̄)²
+
+// Observed GDP range in sample (for out-of-sample warning)
+const X_MIN_OBS = -1.0;
+const X_MAX_OBS = 10.5;
 
 // Regression data: 18 years used in poverty elasticity OLS
 const SCATTER_DATA = [
@@ -51,8 +61,8 @@ const SCATTER_DATA = [
 // Regression + CI lines (x from -1.5 to 10.5)
 const X_RANGE = Array.from({ length: 49 }, (_, i) => -1.5 + i * 0.25);
 const REG_LINE  = X_RANGE.map(x => ({ x, central: ALPHA_POV + BETA_POV  * x }));
-const CI_UPPER  = X_RANGE.map(x => ({ x, upper:   ALPHA_POV + CI90_HI   * x }));
-const CI_LOWER  = X_RANGE.map(x => ({ x, lower:   ALPHA_POV + CI90_LO   * x }));
+const CI_UPPER  = X_RANGE.map(x => ({ x, upper: ALPHA_POV + BETA_POV * x + 1.645 * RMSE * Math.sqrt(1/N_OBS + Math.pow(x - X_MEAN, 2)/SXX) }));
+const CI_LOWER  = X_RANGE.map(x => ({ x, lower: ALPHA_POV + BETA_POV * x - 1.645 * RMSE * Math.sqrt(1/N_OBS + Math.pow(x - X_MEAN, 2)/SXX) }));
 
 export default function SimuladoresPage() {
   const isEn = useLocale() === 'en';
@@ -80,7 +90,42 @@ export default function SimuladoresPage() {
               ? 'Elasticity estimates from audited econometric models. Confidence intervals shown where available.'
               : 'Estimaciones de elasticidades de modelos econométricos auditados. Se muestran intervalos de confianza donde corresponde.'}
           </p>
+          <div className="flex gap-2 mt-3 flex-wrap">
+            <CiteButton
+              indicator={isEn ? 'Economic Simulators — Qhawarina' : 'Simuladores Económicos — Qhawarina'}
+              isEn={isEn}
+            />
+            <ShareButton
+              title="Simuladores — Qhawarina"
+              text={"🔬 Simuladores económicos interactivos para Perú | Qhawarina\nhttps://qhawarina.pe/simuladores"}
+            />
+          </div>
         </div>
+
+        {/* Impacto Macro mini-site */}
+        <a
+          href="/simuladores/impacto-macro"
+          className="flex items-start gap-4 p-5 mb-4 border rounded-sm transition-colors hover:border-[#C65D3E] group"
+          style={{ background: '#fff', borderColor: '#E8E4DF' }}
+        >
+          <span className="text-2xl mt-0.5">📊</span>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-sm font-semibold" style={{ color: '#2D3142' }}>
+                {isEn ? 'Macro Impact Simulator' : 'Simulador de Impacto Macro'}
+              </span>
+              <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: '#fff7ed', color: '#d97706', border: '1px solid #d97706' }}>
+                {isEn ? 'New' : 'Nuevo'}
+              </span>
+            </div>
+            <p className="text-xs" style={{ color: '#8D99AE' }}>
+              {isEn
+                ? 'GDP→Poverty, Rate→GDP, FX→CPI. Audited VAR + OLS elasticities. 6 pages with confidence tiers.'
+                : 'PBI→Pobreza, Tasa→PBI, TC→IPC. Elasticidades VAR + MCO auditadas. 6 páginas con niveles de confianza.'}
+            </p>
+          </div>
+          <span className="text-sm font-medium group-hover:translate-x-1 transition-transform" style={{ color: '#C65D3E' }}>→</span>
+        </a>
 
         {/* Salario Mínimo featured card */}
         <a
@@ -137,9 +182,11 @@ export default function SimuladoresPage() {
 function PobrezaElasticidad({ isEn }: { isEn: boolean }) {
   const [gdp, setGdp] = useState(3.0);
 
-  const impact  = BETA_POV  * gdp;
-  const ciLo    = CI90_LO   * gdp;
-  const ciHi    = CI90_HI   * gdp;
+  const impact     = BETA_POV * gdp;
+  const sePred     = RMSE * Math.sqrt(1/N_OBS + Math.pow(gdp - X_MEAN, 2) / SXX);
+  const ciLo       = impact - 1.645 * sePred;
+  const ciHi       = impact + 1.645 * sePred;
+  const outOfSample = gdp < X_MIN_OBS || gdp > X_MAX_OBS;
 
   const fmt = (v: number, dp = 2) => `${v >= 0 ? '+' : ''}${v.toFixed(dp)}`;
   const fmtPP = (v: number) => `${fmt(v)}pp`;
@@ -226,8 +273,15 @@ function PobrezaElasticidad({ isEn }: { isEn: boolean }) {
               </div>
             ))}
           </div>
+          {outOfSample && (
+            <div className="mt-3 bg-amber-50 border border-amber-300 rounded p-2 text-xs text-amber-800">
+              ⚠️ {isEn
+                ? `GDP ${gdp.toFixed(1)}% is outside the observed sample range (${X_MIN_OBS}% to ${X_MAX_OBS}%). This is an out-of-sample extrapolation — prediction intervals are wider and reliability decreases.`
+                : `PBI ${gdp.toFixed(1)}% está fuera del rango muestral observado (${X_MIN_OBS}% a ${X_MAX_OBS}%). Esta es una extrapolación fuera de muestra — los intervalos de predicción son más amplios y la confiabilidad disminuye.`}
+            </div>
+          )}
           <div className="mt-4 text-xs text-gray-500 text-center">
-            ΔPobreza = {ALPHA_POV.toFixed(3)} + ({BETA_POV}) × {gdp.toFixed(1)} = {fmtPP(ALPHA_POV + impact)}
+            ΔPobreza = ({BETA_POV}) × {gdp.toFixed(1)} = {fmtPP(impact)}
           </div>
         </div>
 
@@ -254,6 +308,7 @@ function PobrezaElasticidad({ isEn }: { isEn: boolean }) {
               </XAxis>
               <YAxis
                 type="number" domain={[-8, 3]}
+                ticks={[-8, -6, -4, -2, 0, 2]}
                 tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke}
                 tickFormatter={v => `${v}pp`}
               >

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import PBISectionNav from './components/SectionNav';
+
 export const metadata: Metadata = {
   title: 'GDP / PBI — Quarterly Nowcast | Qhawarina',
   description: 'Quarterly GDP nowcast for Peru using Dynamic Factor Models. Historical data since 2003, updated daily. / Nowcast trimestral del PBI de Perú con DFM. Actualizado diariamente.',
@@ -10,4 +12,11 @@ export const metadata: Metadata = {
     images: ['/og-pbi.png'],
   },
 };
-export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <PBISectionNav />
+    </>
+  );
+}

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    zoom: 125%;
+  }
+
   body {
     background-color: #FAF8F4;
     color: #2D3142;

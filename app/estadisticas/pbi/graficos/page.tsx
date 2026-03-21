@@ -1,11 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from 'next-intl';
-import LastUpdate from "../../../components/stats/LastUpdate";
+import Link from 'next/link';
+import LastUpdate from '../../../components/stats/LastUpdate';
+import CiteButton from '../../../components/CiteButton';
+import ShareButton from '../../../components/ShareButton';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, ReferenceLine, ReferenceArea,
+} from 'recharts';
+import { CHART_COLORS, CHART_DEFAULTS, tooltipContentStyle, axisTickStyle } from '../../lib/chartTheme';
+import PageSkeleton from '../../../components/PageSkeleton';
 
-const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
+const WATERMARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
 
 interface GDPData {
   metadata: { generated_at: string };
@@ -19,327 +27,189 @@ export default function PBIGraficosPage() {
   const isEn = useLocale() === 'en';
   const [data, setData] = useState<GDPData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [frequency, setFrequency] = useState<'annual' | 'quarterly'>('quarterly');
+  const [error, setError] = useState(false);
+  const [frequency, setFrequency] = useState<'quarterly' | 'annual'>('quarterly');
 
   useEffect(() => {
     fetch(`/assets/data/gdp_nowcast.json?v=${new Date().toISOString().slice(0, 13)}`)
       .then(r => r.json())
-      .then(d => { setData(d); setLoading(false); });
+      .then(d => { setData(d); setLoading(false); })
+      .catch(() => { setError(true); setLoading(false); });
   }, []);
 
-  if (loading || !data) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">{isEn ? 'Loading data...' : 'Cargando datos...'}</p>
+  const quarterlyData = useMemo(() => (data?.quarterly_series ?? []).map(q => ({
+    quarter: q.quarter,
+    [isEn ? 'Official (INEI)' : 'Oficial (INEI)']: q.official,
+    [isEn ? 'Nowcast excl. COVID' : 'Nowcast sin COVID']: q.nowcast,
+    [isEn ? 'Nowcast incl. COVID' : 'Nowcast con COVID']: q.nowcast_full,
+  })), [data, isEn]);
+
+  const annualData = useMemo(() => (data?.annual_series ?? []).map(a => ({
+    year: String(a.year),
+    [isEn ? 'Official (INEI)' : 'Oficial (INEI)']: a.official,
+    [isEn ? 'Nowcast excl. COVID' : 'Nowcast sin COVID']: a.nowcast,
+    [isEn ? 'Nowcast incl. COVID' : 'Nowcast con COVID']: a.nowcast_full,
+  })), [data, isEn]);
+
+  if (loading) return <PageSkeleton cards={2} />;
+
+  if (error || !data) return (
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#FAF8F4' }}>
+      <div className="max-w-md text-center">
+        <p className="text-red-500 font-medium mb-2">{isEn ? 'Error loading data.' : 'Error cargando datos.'}</p>
+        <p className="text-sm text-gray-500 mb-4">{isEn ? 'Data is updated quarterly. Try again later.' : 'Los datos se actualizan trimestralmente. Intenta de nuevo más tarde.'}</p>
+        <button onClick={() => window.location.reload()} className="px-4 py-2 rounded-lg border text-sm font-medium" style={{ borderColor: '#C65D3E', color: '#C65D3E' }}>
+          {isEn ? 'Retry' : 'Reintentar'}
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
+
+  const officialKey = isEn ? 'Official (INEI)' : 'Oficial (INEI)';
+  const nowcastKey  = isEn ? 'Nowcast excl. COVID' : 'Nowcast sin COVID';
+  const fullKey     = isEn ? 'Nowcast incl. COVID' : 'Nowcast con COVID';
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">
-            {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
-          {" / "}
-          <a href="/estadisticas/pbi" className="hover:text-blue-700">
-            {isEn ? 'GDP' : 'PBI'}
-          </a>
-          {" / "}
-          <span className="text-gray-900 font-medium">
-            {isEn ? 'Charts' : 'Gráficos'}
-          </span>
+    <div className="min-h-screen py-10" style={{ backgroundColor: '#FAF8F4', backgroundImage: WATERMARK }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Breadcrumb */}
+        <nav className="text-sm text-gray-500 mb-6">
+          <Link href="/estadisticas" className="hover:underline">{isEn ? 'Statistics' : 'Estadísticas'}</Link>
+          {' / '}
+          <Link href="/estadisticas/pbi" className="hover:underline">{isEn ? 'GDP' : 'PBI'}</Link>
+          {' / '}
+          <span className="text-gray-900 font-medium">{isEn ? 'Time Series' : 'Evolución Temporal'}</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          {isEn ? 'GDP - Historical Series' : 'PBI - Evolución Temporal'}
-        </h1>
-        <p className="text-lg text-gray-600">
-          {isEn ? 'Quarterly nowcast' : 'Nowcast trimestral'}{' '}
-          - {data.nowcast.target_period}: {data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(2)}%
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-1">
+          <h1 className="text-3xl font-bold" style={{ color: '#1a1a1a' }}>
+            {isEn ? 'GDP — Historical Series' : 'PBI — Evolución Temporal'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton indicator={isEn ? 'GDP Historical Series (Nowcasting)' : 'PBI — Evolución Temporal (Nowcasting)'} isEn={isEn} />
+            <ShareButton
+              title={isEn ? 'GDP Time Series — Qhawarina' : 'PBI: Serie Temporal — Qhawarina'}
+              text={isEn ? '📊 Peru GDP historical series | Qhawarina\nhttps://qhawarina.pe/estadisticas/pbi/graficos' : '📊 Serie histórica de PBI en Perú | Qhawarina\nhttps://qhawarina.pe/estadisticas/pbi/graficos'}
+            />
+          </div>
+        </div>
+        <p className="text-base text-gray-600 mb-2">
+          {isEn ? 'Quarterly nowcast' : 'Nowcast trimestral'} · {data.nowcast.target_period}:{' '}
+          <strong style={{ color: '#C65D3E' }}>{data.nowcast.value > 0 ? '+' : ''}{data.nowcast.value.toFixed(2)}%</strong>
         </p>
-        <div className="mt-4">
-          <LastUpdate
-            date={new Date(data.metadata.generated_at).toLocaleDateString(
-              isEn ? 'en-US' : 'es-PE',
-              { day: 'numeric', month: 'short', year: 'numeric' }
-            )}
-          />
+        <div className="mb-6">
+          <LastUpdate date={new Date(data.metadata.generated_at).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' })} />
         </div>
 
-        {/* TIMELINE CHART with Annual/Quarterly Toggle */}
-        <div className="mt-8 bg-white rounded-lg border border-gray-200 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
+        {/* Chart card */}
+        <div className="rounded-xl border p-6 mb-6" style={{ background: '#FFFCF7', borderColor: '#E8E4DF' }}>
+
+          {/* Frequency toggle — MW style */}
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-lg font-semibold" style={{ color: '#1a1a1a' }}>
               {isEn ? 'Historical Series' : 'Evolución Temporal'}
             </h2>
-
-            {/* Frequency Toggle */}
-            <div className="inline-flex rounded-md shadow-sm" role="group">
-              <button
-                onClick={() => setFrequency('annual')}
-                className={`px-4 py-2 text-sm font-medium border ${
-                  frequency === 'annual'
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-                } rounded-l-lg transition-colors`}
-              >
-                📅 {isEn ? 'Annual' : 'Anual'}
-              </button>
-              <button
-                onClick={() => setFrequency('quarterly')}
-                className={`px-4 py-2 text-sm font-medium border-t border-b border-r ${
-                  frequency === 'quarterly'
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-                } rounded-r-lg transition-colors`}
-              >
-                📊 {isEn ? 'Quarterly' : 'Trimestral'}
-              </button>
+            <div className="flex gap-1">
+              {(['quarterly', 'annual'] as const).map(f => (
+                <button
+                  key={f}
+                  onClick={() => setFrequency(f)}
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
+                  style={{
+                    background: frequency === f ? '#C65D3E' : 'transparent',
+                    color: frequency === f ? 'white' : '#6b7280',
+                    border: `2px solid ${frequency === f ? '#C65D3E' : '#d6d3d1'}`,
+                  }}
+                >
+                  {f === 'quarterly' ? (isEn ? 'Quarterly' : 'Trimestral') : (isEn ? 'Annual' : 'Anual')}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Quarterly Chart */}
-          {frequency === 'quarterly' && data.quarterly_series && (
-            <div>
-              <Plot
-                data={[
-                  {
-                    x: data.quarterly_series.map(q => q.quarter),
-                    y: data.quarterly_series.map(q => q.official),
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: isEn ? 'Official (INEI)' : 'Oficial (INEI)',
-                    line: { color: '#2563eb', width: 2 },
-                    marker: { size: 5 },
-                    hovertemplate: '<b>%{x}</b><br>Oficial: %{y:.2f}%<extra></extra>',
-                  },
-                  {
-                    x: data.quarterly_series.map(q => q.quarter),
-                    y: data.quarterly_series.map(q => q.nowcast),
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: isEn
-                      ? 'Nowcast excl. COVID (structural break)'
-                      : 'Nowcast sin COVID (quiebre estructural)',
-                    line: { color: '#059669', width: 2, dash: 'dot' },
-                    marker: { size: 5 },
-                    connectgaps: false,
-                    hovertemplate: isEn
-                      ? '<b>%{x}</b><br>Nowcast (excl. COVID): %{y:.2f}%<extra></extra>'
-                      : '<b>%{x}</b><br>Nowcast (sin COVID): %{y:.2f}%<extra></extra>',
-                  },
-                  {
-                    x: data.quarterly_series.map(q => q.quarter),
-                    y: data.quarterly_series.map(q => q.nowcast_full),
-                    type: 'scatter',
-                    mode: 'lines',
-                    name: isEn
-                      ? 'Nowcast incl. COVID (extrapolation)'
-                      : 'Nowcast con COVID (extrapolación)',
-                    line: { color: '#d97706', width: 1.5, dash: 'dashdot' },
-                    opacity: 0.6,
-                    connectgaps: true,
-                    hovertemplate: isEn
-                      ? '<b>%{x}</b><br>Nowcast (incl. COVID): %{y:.2f}%<extra></extra>'
-                      : '<b>%{x}</b><br>Nowcast (con COVID): %{y:.2f}%<extra></extra>',
-                  }
-                ]}
-                layout={{
-                  height: 420,
-                  margin: { l: 50, r: 30, t: 30, b: 80 },
-                  xaxis: {
-                    title: isEn ? 'Quarter' : 'Trimestre',
-                    gridcolor: '#e5e7eb',
-                    tickangle: -45,
-                    nticks: 20
-                  },
-                  yaxis: {
-                    title: isEn ? 'GDP Growth (% YoY)' : 'Crecimiento PBI (% YoY)',
-                    gridcolor: '#e5e7eb',
-                  },
-                  plot_bgcolor: '#ffffff',
-                  paper_bgcolor: '#ffffff',
-                  legend: { x: 0.01, y: 0.99, bgcolor: 'rgba(255,255,255,0.85)', bordercolor: '#e5e7eb', borderwidth: 1 },
-                  shapes: [
-                    {
-                      type: 'rect',
-                      xref: 'x',
-                      yref: 'paper',
-                      x0: '2020-Q1',
-                      x1: '2021-Q4',
-                      y0: 0,
-                      y1: 1,
-                      fillcolor: 'rgba(220, 38, 38, 0.07)',
-                      line: { width: 0 },
-                    }
-                  ],
-                  annotations: [
-                    {
-                      xref: 'x',
-                      yref: 'paper',
-                      x: '2020-Q3',
-                      y: 0.98,
-                      text: 'COVID-19',
-                      showarrow: false,
-                      font: { size: 11, color: '#dc2626' },
-                    }
-                  ]
-                }}
-                config={{ displayModeBar: false, responsive: true }}
-                style={{ width: '100%' }}
-              />
-              <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded text-xs text-amber-900 space-y-1">
-                <p>
-                  {isEn ? (
-                    <>
-                      <strong>COVID-19 structural break (2020-Q1 — 2021-Q4):</strong>{' '}
-                      The DFM model was trained excluding this period to prevent the pandemic shock from distorting
-                      the latent factor structure. The <span className="text-green-700 font-medium">green dotted line</span>{' '}
-                      omits the COVID period (clean break). The{' '}
-                      <span className="text-amber-700 font-medium">orange line</span> shows the model extrapolation
-                      without retraining (~2.77% fixed), which should be interpreted with caution: the DFM
-                      did not capture the -30% collapse or the +42% recovery.
-                    </>
-                  ) : (
-                    <>
-                      <strong>Quiebre estructural COVID-19 (2020-Q1 — 2021-Q4):</strong>{' '}
-                      El modelo DFM fue entrenado excluyendo este período para evitar que el shock pandémico distorsione
-                      la estructura de factores latentes. La <span className="text-green-700 font-medium">línea verde punteada</span>{' '}
-                      omite el período COVID (quiebre limpio). La{' '}
-                      <span className="text-amber-700 font-medium">línea naranja</span> muestra la extrapolación
-                      del modelo sin reentrenamiento (~2.77% fijo), que debe interpretarse con cautela: el DFM
-                      no capturó el colapso de -30% ni la recuperación de +42%.
-                    </>
-                  )}
-                </p>
-              </div>
-            </div>
+          {frequency === 'quarterly' && (
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={quarterlyData} margin={{ top: 8, right: 16, left: 0, bottom: 40 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis
+                  dataKey="quarter"
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  angle={-45}
+                  textAnchor="end"
+                  interval={7}
+                  height={55}
+                />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={v => `${v}%`}
+                  label={{ value: isEn ? '% YoY' : '% i.a.', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any) => [v != null ? `${Number(v).toFixed(2)}%` : '—']}
+                />
+                <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily, paddingTop: 8 }} />
+                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+                <ReferenceArea x1="2020-Q1" x2="2021-Q4" fill="#DC262608" stroke="none" label={{ value: 'COVID-19', position: 'insideTopLeft', style: { fontSize: 9, fill: '#DC2626' } }} />
+                <Line type="monotone" dataKey={officialKey} stroke="#C65D3E" strokeWidth={2} dot={false} connectNulls={false} />
+                <Line type="monotone" dataKey={nowcastKey} stroke="#2A9D8F" strokeWidth={2} strokeDasharray="5 3" dot={false} connectNulls={false} />
+                <Line type="monotone" dataKey={fullKey} stroke="#D4956A" strokeWidth={1.5} strokeDasharray="3 3" dot={false} connectNulls={true} opacity={0.7} />
+              </LineChart>
+            </ResponsiveContainer>
           )}
 
           {/* Annual Chart */}
-          {frequency === 'annual' && data.annual_series && (
-            <div>
-              <Plot
-                data={[
-                  {
-                    x: data.annual_series.map(a => a.year),
-                    y: data.annual_series.map(a => a.official),
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: isEn ? 'Official (INEI)' : 'Oficial (INEI)',
-                    line: { color: '#2563eb', width: 2 },
-                    marker: { size: 7 },
-                    hovertemplate: '<b>%{x}</b><br>Oficial: %{y:.2f}%<extra></extra>',
-                  },
-                  {
-                    x: data.annual_series.map(a => a.year),
-                    y: data.annual_series.map(a => a.nowcast),
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: isEn
-                      ? 'Nowcast excl. COVID (structural break)'
-                      : 'Nowcast sin COVID (quiebre estructural)',
-                    line: { color: '#059669', width: 2, dash: 'dot' },
-                    marker: { size: 7 },
-                    connectgaps: false,
-                    hovertemplate: isEn
-                      ? '<b>%{x}</b><br>Nowcast (excl. COVID): %{y:.2f}%<extra></extra>'
-                      : '<b>%{x}</b><br>Nowcast (sin COVID): %{y:.2f}%<extra></extra>',
-                  },
-                  {
-                    x: data.annual_series.map(a => a.year),
-                    y: data.annual_series.map(a => a.nowcast_full),
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: isEn
-                      ? 'Nowcast incl. COVID (extrapolation)'
-                      : 'Nowcast con COVID (extrapolación)',
-                    line: { color: '#d97706', width: 1.5, dash: 'dashdot' },
-                    marker: { size: 6, symbol: 'diamond' },
-                    opacity: 0.6,
-                    connectgaps: true,
-                    hovertemplate: isEn
-                      ? '<b>%{x}</b><br>Nowcast (incl. COVID): %{y:.2f}%<extra></extra>'
-                      : '<b>%{x}</b><br>Nowcast (con COVID): %{y:.2f}%<extra></extra>',
-                  }
-                ]}
-                layout={{
-                  height: 420,
-                  margin: { l: 50, r: 30, t: 30, b: 50 },
-                  xaxis: {
-                    title: isEn ? 'Year' : 'Año',
-                    gridcolor: '#e5e7eb',
-                    dtick: 1,
-                  },
-                  yaxis: {
-                    title: isEn ? 'GDP Growth (% YoY)' : 'Crecimiento PBI (% YoY)',
-                    gridcolor: '#e5e7eb',
-                  },
-                  plot_bgcolor: '#ffffff',
-                  paper_bgcolor: '#ffffff',
-                  legend: { x: 0.01, y: 0.99, bgcolor: 'rgba(255,255,255,0.85)', bordercolor: '#e5e7eb', borderwidth: 1 },
-                  shapes: [
-                    {
-                      type: 'rect',
-                      xref: 'x',
-                      yref: 'paper',
-                      x0: 2019.5,
-                      x1: 2022.5,
-                      y0: 0,
-                      y1: 1,
-                      fillcolor: 'rgba(220, 38, 38, 0.07)',
-                      line: { width: 0 },
-                    }
-                  ],
-                  annotations: [
-                    {
-                      xref: 'x',
-                      yref: 'paper',
-                      x: 2021,
-                      y: 0.98,
-                      text: 'COVID-19',
-                      showarrow: false,
-                      font: { size: 11, color: '#dc2626' },
-                    }
-                  ]
-                }}
-                config={{ displayModeBar: false, responsive: true }}
-                style={{ width: '100%' }}
-              />
-              <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded text-xs text-amber-900 space-y-1">
-                <p>
-                  {isEn ? (
-                    <>
-                      <strong>Method:</strong> Average of 4 quarters per year. The{' '}
-                      <span className="text-green-700 font-medium">green dotted line</span> excludes
-                      2020-2021 (structural break). The{' '}
-                      <span className="text-amber-700 font-medium">orange line</span> shows
-                      the extrapolation without retraining — for 2020-2021, the model predicted ~2.77%
-                      ignoring the COVID shock.
-                    </>
-                  ) : (
-                    <>
-                      <strong>Método:</strong> Promedio de 4 trimestres por año. La{' '}
-                      <span className="text-green-700 font-medium">línea verde punteada</span> excluye
-                      2020-2021 (quiebre estructural). La{' '}
-                      <span className="text-amber-700 font-medium">línea naranja</span> muestra
-                      la extrapolación sin reentrenamiento — para 2020-2021, el modelo predijo ~2.77%
-                      ignorando el choque COVID.
-                    </>
-                  )}
-                </p>
-              </div>
-            </div>
+          {frequency === 'annual' && (
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={annualData} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_DEFAULTS.gridStroke} strokeWidth={CHART_DEFAULTS.gridStrokeWidth} />
+                <XAxis dataKey="year" tick={axisTickStyle} stroke={CHART_DEFAULTS.axisStroke} />
+                <YAxis
+                  tick={axisTickStyle}
+                  stroke={CHART_DEFAULTS.axisStroke}
+                  tickFormatter={v => `${v}%`}
+                  label={{ value: isEn ? '% YoY' : '% i.a.', angle: -90, position: 'insideLeft', style: { fontSize: 10, fill: CHART_DEFAULTS.axisStroke } }}
+                />
+                <Tooltip
+                  contentStyle={tooltipContentStyle}
+                  formatter={(v: any) => [v != null ? `${Number(v).toFixed(2)}%` : '—']}
+                />
+                <Legend wrapperStyle={{ fontSize: CHART_DEFAULTS.axisFontSize, fontFamily: CHART_DEFAULTS.axisFontFamily, paddingTop: 8 }} />
+                <ReferenceLine y={0} stroke={CHART_DEFAULTS.axisStroke} strokeDasharray="4 2" />
+                <ReferenceArea x1="2020" x2="2021" fill="#DC262608" stroke="none" label={{ value: 'COVID-19', position: 'insideTopLeft', style: { fontSize: 9, fill: '#DC2626' } }} />
+                <Line type="monotone" dataKey={officialKey} stroke="#C65D3E" strokeWidth={2} dot={{ r: 4, fill: '#C65D3E' }} connectNulls={false} />
+                <Line type="monotone" dataKey={nowcastKey} stroke="#2A9D8F" strokeWidth={2} strokeDasharray="5 3" dot={{ r: 4, fill: '#2A9D8F' }} connectNulls={false} />
+                <Line type="monotone" dataKey={fullKey} stroke="#D4956A" strokeWidth={1.5} strokeDasharray="3 3" dot={{ r: 3, fill: '#D4956A' }} connectNulls={true} opacity={0.7} />
+              </LineChart>
+            </ResponsiveContainer>
           )}
         </div>
 
-        {/* Methodology Link */}
-        <div className="mt-8 text-center">
-          <a href="/estadisticas/pbi/metodologia" className="text-blue-700 hover:text-blue-900 font-medium">
-            📖 {isEn ? 'View full methodology →' : 'Ver metodología completa →'}
-          </a>
+        {/* COVID methodology note — MW callout style */}
+        <div className="rounded-xl p-4 mb-8" style={{ background: '#FFFCF7', borderLeft: '3px solid #C65D3E', border: '1px solid #E8E4DF' }}>
+          <p className="text-xs" style={{ color: '#1a1a1a' }}>
+            {isEn ? (
+              <><strong>COVID-19 structural break (2020-Q1 — 2021-Q4):</strong>{' '}
+              The DFM model was trained excluding this period. The <span style={{ color: '#2A9D8F' }}>teal dashed line</span> omits COVID (clean break).
+              The <span style={{ color: '#D4956A' }}>orange line</span> shows model extrapolation without retraining (~2.77% fixed) — interpret with caution.
+              </>
+            ) : (
+              <><strong>Quiebre estructural COVID-19 (2020-Q1 — 2021-Q4):</strong>{' '}
+              El modelo DFM fue entrenado excluyendo este período. La <span style={{ color: '#2A9D8F' }}>línea teal punteada</span> omite el período COVID.
+              La <span style={{ color: '#D4956A' }}>línea naranja</span> muestra la extrapolación sin reentrenamiento (~2.77% fijo) — interpretar con cautela.
+              </>
+            )}
+          </p>
+        </div>
+
+        <div className="text-center">
+          <Link href="/estadisticas/pbi/metodologia" className="text-sm font-medium hover:underline" style={{ color: '#C65D3E' }}>
+            {isEn ? 'View full methodology →' : 'Ver metodología completa →'}
+          </Link>
         </div>
       </div>
     </div>

@@ -14,18 +14,22 @@ export default function Footer() {
     ["/estadisticas/precios-diarios",   "Daily Prices (BPP)"],
     ["/estadisticas/pobreza",           "Poverty"],
     ["/estadisticas/riesgo-politico",   "Political Risk"],
+    ["/estadisticas/riesgo-economico",  "Economic Risk"],
     ["/estadisticas/intervenciones",    "FX Market"],
     ["/estadisticas/pobreza/distritos", "District Poverty"],
     ["/estadisticas/calendario",        "Economic Calendar"],
+    ["/observatorio/luces-nocturnas",   "Nighttime Lights"],
   ] : [
     ["/estadisticas/pbi",               "PBI Nowcast"],
     ["/estadisticas/inflacion",         "Inflación"],
     ["/estadisticas/precios-diarios",   "Precios Diarios (BPP)"],
     ["/estadisticas/pobreza",           "Pobreza"],
     ["/estadisticas/riesgo-politico",   "Riesgo Político"],
+    ["/estadisticas/riesgo-economico",  "Riesgo Económico"],
     ["/estadisticas/intervenciones",    "Mercado Cambiario"],
     ["/estadisticas/pobreza/distritos", "Pobreza Distrital"],
     ["/estadisticas/calendario",        "Calendario Económico"],
+    ["/observatorio/luces-nocturnas",   "Luminosidad Nocturna"],
   ];
 
   const publicacionesLinks = isEn ? [

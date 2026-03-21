@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import CiteButton from '../../components/CiteButton';
+import ShareButton from '../../components/ShareButton';
 
 interface Release {
   date: string;
@@ -251,22 +254,33 @@ export default function CalendarioPage() {
   ];
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-10" style={{ backgroundColor: "#FAF8F4", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")` }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-[#C65D3E]">
+          <Link href="/estadisticas" className="hover:text-[#C65D3E]">
             {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
+          </Link>
           {' / '}
           <span className="text-gray-900 font-medium">
             {isEn ? 'Publications Calendar' : 'Calendario de Publicaciones'}
           </span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          {isEn ? 'Publications Calendar' : 'Calendario de Publicaciones'}
-        </h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">
+            {isEn ? 'Publications Calendar' : 'Calendario de Publicaciones'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton indicator={isEn ? 'Economic Data Calendar' : 'Calendario de Datos Económicos'} isEn={isEn} />
+            <ShareButton
+              title={isEn ? 'Publications Calendar — Qhawarina' : 'Calendario de Publicaciones — Qhawarina'}
+              text={isEn
+                ? '📅 Peru economic data release calendar 2026 | Qhawarina\nhttps://qhawarina.pe/estadisticas/calendario'
+                : '📅 Calendario de publicaciones económicas Perú 2026 | Qhawarina\nhttps://qhawarina.pe/estadisticas/calendario'}
+            />
+          </div>
+        </div>
         <p className="text-lg text-gray-600 mb-8">
           {isEn
             ? 'Release dates for official statistics and Qhawarina indicators for 2026.'

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip,
   ReferenceLine, ResponsiveContainer,
@@ -12,6 +13,8 @@ import {
   TERRACOTTA, TEAL, CARD_BG, CARD_BORDER,
   DEPT_NAMES, DEPT_NTL, DEPT_STATS, growthColor, TIMELINE_EVENTS,
 } from '../components/ntlData';
+import CiteButton from '../../../components/CiteButton';
+import ShareButton from '../../../components/ShareButton';
 
 const PALETTE = [
   TEAL, TERRACOTTA, '#6366f1', '#f59e0b', '#ec4899', '#14b8a6', '#a855f7', '#84cc16',
@@ -20,6 +23,8 @@ const PALETTE = [
 type Era = 'monthly' | 'viirs' | 'all';
 
 export default function TendenciasPage() {
+  const isEn = useLocale() === 'en';
+
   const [era, setEra] = useState<Era>('monthly');
   const [selected, setSelected] = useState<string[]>(['15', '04', '08']);
   const [sortBy, setSortBy] = useState<'growth5yr' | 'growth30yr'>('growth5yr');
@@ -107,17 +112,68 @@ export default function TendenciasPage() {
 
   const xInterval = era === 'monthly' ? 3 : era === 'viirs' ? 1 : 3;
 
+  const eraOptions: { key: Era; label: string }[] = [
+    { key: 'monthly', label: isEn ? 'Monthly VIIRS 2012–2026' : 'Mensual VIIRS 2012–2026' },
+    { key: 'viirs',   label: isEn ? 'Annual 2014–2024'        : 'Anual 2014–2024' },
+    { key: 'all',     label: isEn ? 'Series 1992–2024'        : 'Serie 1992–2024' },
+  ];
+
+  const insightBoxes = [
+    {
+      title: isEn
+        ? 'Amazonas: highest 5-year growth'
+        : 'Amazonas: mayor crecimiento 5 años',
+      body: isEn
+        ? 'The Amazonian region shows the highest NTL growth for 2018–2023 (+394%), driven by rural electrification and urban expansion in cities such as Chachapoyas and Bagua Grande.'
+        : 'La región amazónica muestra el mayor crecimiento de NTL 2018-2023 (+394%), impulsado por electrificación rural y expansión de centros urbanos como Chachapoyas y Bagua Grande.',
+      color: TEAL,
+    },
+    {
+      title: isEn
+        ? 'COVID-19 visible from space'
+        : 'COVID-19 visible desde el espacio',
+      body: isEn
+        ? 'In 2020, every department shows a drop or stagnation in NTL. Monthly VIIRS data reveal the exact month-by-month impact — clearly visible in the "Monthly" tab.'
+        : 'En 2020, todos los departamentos muestran caída o estancamiento en NTL. Los datos mensuales VIIRS revelan el impacto exacto mes a mes — visible claramente en el tab "Mensual".',
+      color: TERRACOTTA,
+    },
+  ];
+
   return (
     <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16" style={{ zIndex: 1 }}>
 
       {/* Header */}
       <section className="space-y-3 pt-2">
-        <p className="text-xs text-stone-400 font-medium tracking-wide">Luces Nocturnas / Tendencias</p>
-        <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
-          ¿Quién crece, quién se estanca?
-        </h1>
+        <p className="text-xs text-stone-400 font-medium tracking-wide">
+          {isEn ? 'Night Lights / Trends' : 'Luces Nocturnas / Tendencias'}
+        </p>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-1">
+          <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
+            {isEn ? 'Who grows, who stagnates?' : '¿Quién crece, quién se estanca?'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton
+              indicator={
+                isEn
+                  ? 'Night-time light trends by department in Peru (1992–2024)'
+                  : 'Tendencias de luminosidad nocturna por departamento en Perú (1992–2024)'
+              }
+              isEn={isEn}
+            />
+            <ShareButton
+              title={isEn ? 'Night-time light trends — Qhawarina' : 'Tendencias de luminosidad nocturna — Qhawarina'}
+              text={
+                isEn
+                  ? 'Who grows and who stagnates? Night-time light trends by department in Peru. https://qhawarina.pe/observatorio/luces-nocturnas/tendencias'
+                  : '¿Quién crece y quién se estanca? Tendencias de actividad económica por departamento en Perú. https://qhawarina.pe/observatorio/luces-nocturnas/tendencias'
+              }
+            />
+          </div>
+        </div>
         <p className="text-stone-500 max-w-2xl">
-          Tendencias de luminosidad nocturna por departamento. Selecciona hasta 4 para comparar.
+          {isEn
+            ? 'Night-time light trends by department. Select up to 4 to compare.'
+            : 'Tendencias de luminosidad nocturna por departamento. Selecciona hasta 4 para comparar.'}
           {latestMonth && era === 'monthly' && (
             <span className="ml-2 text-xs font-medium px-2 py-0.5 rounded-full" style={{ background: '#f0fdf4', color: '#166534' }}>
               2012-01 → {latestMonth}
@@ -130,11 +186,7 @@ export default function TendenciasPage() {
       <FadeSection className="space-y-5">
         <div className="flex flex-wrap gap-3 items-center justify-between">
           <div className="flex gap-2 flex-wrap">
-            {([
-              { key: 'monthly', label: 'Mensual VIIRS 2012–2026' },
-              { key: 'viirs',   label: 'Anual 2014–2024' },
-              { key: 'all',     label: 'Serie 1992–2024' },
-            ] as { key: Era; label: string }[]).map(opt => (
+            {eraOptions.map(opt => (
               <button
                 key={opt.key}
                 onClick={() => setEra(opt.key)}
@@ -151,7 +203,7 @@ export default function TendenciasPage() {
           </div>
           {era === 'all' && (
             <span className="text-xs px-2 py-1 rounded-full font-medium" style={{ background: '#fffbeb', color: '#92400e' }}>
-              ⚠ Incluye transición DMSP→VIIRS (2013–2014)
+              {isEn ? '⚠ Includes DMSP→VIIRS sensor transition (2013–2014)' : '⚠ Incluye transición DMSP→VIIRS (2013–2014)'}
             </span>
           )}
         </div>
@@ -184,7 +236,7 @@ export default function TendenciasPage() {
         >
           {monthlyLoading ? (
             <div className="flex items-center justify-center h-64 text-stone-400 text-sm">
-              Cargando datos mensuales…
+              {isEn ? 'Loading monthly data…' : 'Cargando datos mensuales…'}
             </div>
           ) : (
             <ResponsiveContainer width="100%" height={360}>
@@ -203,7 +255,7 @@ export default function TendenciasPage() {
                 />
                 <Tooltip
                   contentStyle={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, borderRadius: 12, fontSize: 12 }}
-                  labelFormatter={(label) => era === 'monthly' ? `${label}` : `Año ${label}`}
+                  labelFormatter={(label) => era === 'monthly' ? `${label}` : isEn ? `Year ${label}` : `Año ${label}`}
                 />
                 {era === 'all' && (
                   <ReferenceLine x="2013" stroke={TERRACOTTA} strokeDasharray="4 2" label={{ value: '⚠ sensor', fontSize: 9, fill: TERRACOTTA }} />
@@ -244,7 +296,10 @@ export default function TendenciasPage() {
           )}
           {era === 'monthly' && latestMonth && (
             <p className="text-xs text-stone-400 mt-3">
-              VIIRS-DNB mensual 2012-01 → <strong>{latestMonth}</strong> · {monthKeys.length} meses
+              {isEn
+                ? <>VIIRS-DNB monthly 2012-01 → <strong>{latestMonth}</strong> · {monthKeys.length} months</>
+                : <>VIIRS-DNB mensual 2012-01 → <strong>{latestMonth}</strong> · {monthKeys.length} meses</>
+              }
             </p>
           )}
         </div>
@@ -254,13 +309,21 @@ export default function TendenciasPage() {
       {era === 'monthly' && monthlyData && Object.keys(acceleration).length > 0 && (
         <FadeSection className="space-y-4">
           <div>
-            <h2 className="text-xl font-bold text-stone-900">Aceleración reciente (últimos 3 vs. 3 anteriores)</h2>
-            <p className="text-sm text-stone-500 mt-1">¿Qué departamentos están acelerando o desacelerando en los meses más recientes?</p>
+            <h2 className="text-xl font-bold text-stone-900">
+              {isEn ? 'Recent acceleration (last 3 vs. prior 3 months)' : 'Aceleración reciente (últimos 3 vs. 3 anteriores)'}
+            </h2>
+            <p className="text-sm text-stone-500 mt-1">
+              {isEn
+                ? 'Which departments are accelerating or decelerating in the most recent months?'
+                : '¿Qué departamentos están acelerando o desacelerando en los meses más recientes?'}
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Top accelerating */}
             <div className="rounded-2xl p-5 space-y-3" style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}>
-              <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Acelerando</div>
+              <div className="text-xs font-bold tracking-widest uppercase text-stone-400">
+                {isEn ? 'Accelerating' : 'Acelerando'}
+              </div>
               {Object.entries(acceleration)
                 .sort((a, b) => b[1].accel - a[1].accel)
                 .slice(0, 5)
@@ -275,7 +338,9 @@ export default function TendenciasPage() {
             </div>
             {/* Top decelerating */}
             <div className="rounded-2xl p-5 space-y-3" style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}>
-              <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Desacelerando</div>
+              <div className="text-xs font-bold tracking-widest uppercase text-stone-400">
+                {isEn ? 'Decelerating' : 'Desacelerando'}
+              </div>
               {Object.entries(acceleration)
                 .sort((a, b) => a[1].accel - b[1].accel)
                 .slice(0, 5)
@@ -290,8 +355,9 @@ export default function TendenciasPage() {
             </div>
           </div>
           <p className="text-xs text-stone-400">
-            Aceleración = (promedio NTL últimos 3 meses) / (promedio NTL 3 meses anteriores) − 1.
-            Solo indica cambio en luminosidad, no en actividad económica directamente.
+            {isEn
+              ? 'Acceleration = (avg NTL last 3 months) / (avg NTL prior 3 months) − 1. Reflects changes in luminosity only, not directly in economic activity.'
+              : 'Aceleración = (promedio NTL últimos 3 meses) / (promedio NTL 3 meses anteriores) − 1. Solo indica cambio en luminosidad, no en actividad económica directamente.'}
           </p>
         </FadeSection>
       )}
@@ -301,21 +367,23 @@ export default function TendenciasPage() {
       {/* Growth ranking */}
       <FadeSection className="space-y-5">
         <div className="flex flex-wrap gap-3 items-center justify-between">
-          <h2 className="text-xl font-bold text-stone-900">Ranking de crecimiento anual</h2>
+          <h2 className="text-xl font-bold text-stone-900">
+            {isEn ? 'Annual growth ranking' : 'Ranking de crecimiento anual'}
+          </h2>
           <div className="flex gap-2">
             <button
               onClick={() => setSortBy('growth5yr')}
               className="px-3 py-1.5 rounded-lg text-xs font-semibold"
               style={{ background: sortBy === 'growth5yr' ? TEAL : CARD_BG, color: sortBy === 'growth5yr' ? 'white' : '#78716c', border: `1px solid ${CARD_BORDER}` }}
             >
-              5 años (2018→2023)
+              {isEn ? '5 years (2018→2023)' : '5 años (2018→2023)'}
             </button>
             <button
               onClick={() => setSortBy('growth30yr')}
               className="px-3 py-1.5 rounded-lg text-xs font-semibold"
               style={{ background: sortBy === 'growth30yr' ? TEAL : CARD_BG, color: sortBy === 'growth30yr' ? 'white' : '#78716c', border: `1px solid ${CARD_BORDER}` }}
             >
-              30 años (1992→2023)
+              {isEn ? '30 years (1992→2023)' : '30 años (1992→2023)'}
             </button>
           </div>
         </div>
@@ -352,26 +420,16 @@ export default function TendenciasPage() {
 
         {sortBy === 'growth30yr' && (
           <div className="rounded-xl px-4 py-3 text-xs" style={{ background: '#fffbeb', border: '1px solid #fde68a', color: '#92400e' }}>
-            ⚠ Crecimiento 30 años mezcla sensores DMSP (pre-2014) y VIIRS (post-2014). Interpretar con cautela.
-            Lima muestra caída negativa por corrección de saturación DMSP, no por caída económica real.
+            {isEn
+              ? '⚠ 30-year growth mixes DMSP (pre-2014) and VIIRS (post-2014) sensors. Interpret with caution. Lima shows a negative reading due to DMSP saturation correction, not an actual economic decline.'
+              : '⚠ Crecimiento 30 años mezcla sensores DMSP (pre-2014) y VIIRS (post-2014). Interpretar con cautela. Lima muestra caída negativa por corrección de saturación DMSP, no por caída económica real.'}
           </div>
         )}
       </FadeSection>
 
       {/* Insight boxes */}
       <FadeSection className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {[
-          {
-            title: 'Amazonas: mayor crecimiento 5 años',
-            body: 'La región amazónica muestra el mayor crecimiento de NTL 2018-2023 (+394%), impulsado por electrificación rural y expansión de centros urbanos como Chachapoyas y Bagua Grande.',
-            color: TEAL,
-          },
-          {
-            title: 'COVID-19 visible desde el espacio',
-            body: 'En 2020, todos los departamentos muestran caída o estancamiento en NTL. Los datos mensuales VIIRS revelan el impacto exacto mes a mes — visible claramente en el tab "Mensual".',
-            color: TERRACOTTA,
-          },
-        ].map(box => (
+        {insightBoxes.map(box => (
           <div
             key={box.title}
             className="rounded-2xl p-6 space-y-3"
@@ -390,7 +448,7 @@ export default function TendenciasPage() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-90"
           style={{ background: TERRACOTTA, color: 'white' }}
         >
-          Ver validación →
+          {isEn ? 'See validation →' : 'Ver validación →'}
         </Link>
       </div>
 

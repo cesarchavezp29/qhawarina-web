@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import CiteButton from '../../../components/CiteButton';
 
 function DynamicLastUpdate({ src, isEn }: { src: string; isEn: boolean }) {
   const [dateStr, setDateStr] = useState('');
@@ -27,21 +29,24 @@ export default function PBIMetodologiaPage() {
   const isEn = useLocale() === 'en';
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="min-h-screen py-10" style={{ backgroundColor: "#FAF8F4", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")` }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/estadisticas" className="hover:text-blue-700">
+          <Link href="/estadisticas" className="hover:text-blue-700">
             {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
+          </Link>
           {' / '}
-          <a href="/estadisticas/pbi" className="hover:text-blue-700">PBI</a>
+          <Link href="/estadisticas/pbi" className="hover:text-blue-700">PBI</Link>
           {' / '}
           <span className="text-gray-900 font-medium">{isEn ? 'Methodology' : 'Metodología'}</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          {isEn ? 'Methodology — GDP Nowcast' : 'Metodología - Nowcast de PBI'}
-        </h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900">
+            {isEn ? 'Methodology — GDP Nowcast' : 'Metodología - Nowcast de PBI'}
+          </h1>
+          <CiteButton indicator={isEn ? 'Methodology — GDP Nowcast' : 'Metodología — Nowcast de PBI'} isEn={isEn} />
+        </div>
         <div className="mt-4">
           <DynamicLastUpdate src="/assets/data/gdp_nowcast.json" isEn={isEn} />
         </div>
@@ -312,9 +317,9 @@ export default function PBIMetodologiaPage() {
             {isEn
               ? 'Homogeneous model — all departments grow at the national rate. Only the economic share varies, not growth rates. See '
               : 'Modelo homogéneo - todos los departamentos crecen al ritmo nacional. Solo varía la participación económica, no las tasas de crecimiento. Ver '}
-            <a href="/estadisticas/pbi/mapas" className="text-blue-700 hover:underline">
+            <Link href="/estadisticas/pbi/mapas" className="text-blue-700 hover:underline">
               {isEn ? 'regional maps' : 'mapas regionales'}
-            </a>
+            </Link>
             {isEn ? ' for details.' : ' para detalles.'}
           </p>
         </div>

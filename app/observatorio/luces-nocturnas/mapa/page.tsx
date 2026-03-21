@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import FadeSection from '../components/FadeSection';
 import SourceFooter from '../components/SourceFooter';
@@ -10,10 +11,13 @@ import {
   DEPT_NAMES, DEPT_NTL, DEPT_STATS, ntlColor, growthColor,
   ALL_YEARS,
 } from '../components/ntlData';
+import CiteButton from '../../../components/CiteButton';
+import ShareButton from '../../../components/ShareButton';
 
 type SortMode = 'ntl' | 'growth5yr';
 
 export default function MapaPage() {
+  const isEn = useLocale() === 'en';
   const [year, setYear] = useState(2023);
   const [hoveredDept, setHoveredDept] = useState<{ code: string; name: string; ntl: number; growth5yr: number | null } | null>(null);
   const [sortMode, setSortMode] = useState<SortMode>('ntl');
@@ -45,28 +49,56 @@ export default function MapaPage() {
 
       {/* Header */}
       <section className="space-y-3 pt-2">
-        <p className="text-xs text-stone-400 font-medium tracking-wide">Luces Nocturnas / Mapa</p>
-        <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
-          Mapa de actividad económica
-        </h1>
+        <p className="text-xs text-stone-400 font-medium tracking-wide">
+          {isEn ? 'Night Lights / Map' : 'Luces Nocturnas / Mapa'}
+        </p>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-1">
+          <h1 className="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
+            {isEn ? 'Economic activity map' : 'Mapa de actividad económica'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton
+              indicator={isEn
+                ? 'Map of night light intensity by department (1992–2024)'
+                : 'Mapa de luminosidad nocturna por departamento (1992–2024)'
+              }
+              isEn={isEn}
+            />
+            <ShareButton
+              title={isEn
+                ? 'Economic activity map — Night Lights · Qhawarina'
+                : 'Mapa de actividad económica — Luces Nocturnas · Qhawarina'
+              }
+              text={isEn
+                ? 'Night light intensity by department in Peru, 1992–2024. https://qhawarina.pe/observatorio/luces-nocturnas/mapa'
+                : 'Luminosidad nocturna por departamento en Perú, 1992–2024. https://qhawarina.pe/observatorio/luces-nocturnas/mapa'
+              }
+            />
+          </div>
+        </div>
         <p className="text-stone-500 max-w-2xl">
-          Luminosidad nocturna por departamento. Arrastra el slider para ver la evolución 1992–2024.
+          {isEn
+            ? 'Night light intensity by department. Drag the slider to see the evolution 1992–2024.'
+            : 'Luminosidad nocturna por departamento. Arrastra el slider para ver la evolución 1992–2024.'
+          }
         </p>
       </section>
 
       {/* Year slider */}
       <FadeSection className="space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-stone-500">Año seleccionado:</span>
+          <span className="text-sm text-stone-500">
+            {isEn ? 'Selected year:' : 'Año seleccionado:'}
+          </span>
           <span className="text-2xl font-black text-stone-900 tabular-nums">{year}</span>
           {!isViirs && (
             <span className="text-xs px-2 py-1 rounded-full font-medium" style={{ background: '#fffbeb', color: '#92400e' }}>
-              Sensor DMSP
+              {isEn ? 'DMSP Sensor' : 'Sensor DMSP'}
             </span>
           )}
           {isViirs && (
             <span className="text-xs px-2 py-1 rounded-full font-medium" style={{ background: '#f0fdf4', color: '#166534' }}>
-              Sensor VIIRS
+              {isEn ? 'VIIRS Sensor' : 'Sensor VIIRS'}
             </span>
           )}
         </div>
@@ -81,13 +113,18 @@ export default function MapaPage() {
         />
         <div className="flex justify-between text-xs text-stone-400">
           <span>1992</span>
-          <span className="text-amber-500">⚠ 2013–2014 transición sensor</span>
+          <span className="text-amber-500">
+            {isEn ? '⚠ 2013–2014 sensor transition' : '⚠ 2013–2014 transición sensor'}
+          </span>
           <span>2024</span>
         </div>
         {isSensorTransition && (
           <div className="rounded-xl px-4 py-3 text-xs" style={{ background: '#fffbeb', border: '1px solid #fde68a', color: '#92400e' }}>
-            <strong>Transición DMSP → VIIRS:</strong> Los valores de 2013-2014 no son comparables entre sí.
-            La serie armonizada de Chen et al. corrige parcialmente, pero puede quedar discontinuidad.
+            {isEn ? (
+              <><strong>DMSP → VIIRS transition:</strong> The 2013-2014 values are not comparable to each other. The harmonized series by Chen et al. partially corrects this, but some discontinuity may remain.</>
+            ) : (
+              <><strong>Transición DMSP → VIIRS:</strong> Los valores de 2013-2014 no son comparables entre sí. La serie armonizada de Chen et al. corrige parcialmente, pero puede quedar discontinuidad.</>
+            )}
           </div>
         )}
       </FadeSection>
@@ -112,7 +149,7 @@ export default function MapaPage() {
                 <div className="text-xs text-stone-400 mt-0.5">NTL total (GW-eq)</div>
                 {hoveredDept.growth5yr !== null && (
                   <div className="text-sm font-bold mt-1" style={{ color: growthColor(hoveredDept.growth5yr) }}>
-                    {hoveredDept.growth5yr > 0 ? '+' : ''}{hoveredDept.growth5yr}% (5 años)
+                    {hoveredDept.growth5yr > 0 ? '+' : ''}{hoveredDept.growth5yr}% ({isEn ? '5 years' : '5 años'})
                   </div>
                 )}
               </div>
@@ -158,8 +195,8 @@ export default function MapaPage() {
                 background: 'linear-gradient(to right, #1a1a3e, #4a2080, #c84040, #e8a020, #ffffc0)',
               }}/>
               <div className="flex justify-between text-xs text-stone-500 mt-1.5">
-                <span>Oscuro (bajo)</span>
-                <span>Brillante (alto)</span>
+                <span>{isEn ? 'Dark (low)' : 'Oscuro (bajo)'}</span>
+                <span>{isEn ? 'Bright (high)' : 'Brillante (alto)'}</span>
               </div>
             </div>
           </div>
@@ -176,7 +213,7 @@ export default function MapaPage() {
                   border: `1px solid ${CARD_BORDER}`,
                 }}
               >
-                Por NTL
+                {isEn ? 'By NTL' : 'Por NTL'}
               </button>
               <button
                 onClick={() => setSortMode('growth5yr')}
@@ -187,12 +224,15 @@ export default function MapaPage() {
                   border: `1px solid ${CARD_BORDER}`,
                 }}
               >
-                Por crecimiento
+                {isEn ? 'By growth' : 'Por crecimiento'}
               </button>
             </div>
 
             <div className="text-xs font-semibold text-stone-400 mb-1">
-              {sortMode === 'ntl' ? `Top 10 por NTL (${year})` : 'Top 10 crecimiento 2018→2023'}
+              {sortMode === 'ntl'
+                ? (isEn ? `Top 10 by NTL (${year})` : `Top 10 por NTL (${year})`)
+                : (isEn ? 'Top 10 growth 2018→2023' : 'Top 10 crecimiento 2018→2023')
+              }
             </div>
 
             <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -229,7 +269,9 @@ export default function MapaPage() {
 
         {/* Mobile fallback */}
         <div className="sm:hidden space-y-2">
-          <div className="text-sm font-semibold text-stone-400">NTL por departamento ({year})</div>
+          <div className="text-sm font-semibold text-stone-400">
+            {isEn ? `NTL by department (${year})` : `NTL por departamento (${year})`}
+          </div>
           {[...DEPT_STATS].sort((a,b) => (yearNtl[b.code]??0)-(yearNtl[a.code]??0)).map(d => (
             <div key={d.code} className="rounded-xl px-3 py-2.5 flex items-center gap-3" style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}>
               <div className="w-4 h-4 rounded flex-shrink-0" style={{ background: ntlColor(yearNtl[d.code]??0, maxNtl) }}/>
@@ -246,12 +288,14 @@ export default function MapaPage() {
           className="rounded-2xl px-6 py-5 space-y-2"
           style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
         >
-          <div className="font-semibold text-stone-700 text-sm">Nota: Lima y la saturación DMSP</div>
+          <div className="font-semibold text-stone-700 text-sm">
+            {isEn ? 'Note: Lima and DMSP saturation' : 'Nota: Lima y la saturación DMSP'}
+          </div>
           <p className="text-xs text-stone-500 leading-relaxed">
-            Lima concentra el ~16% de la luminosidad total (2023). En el período DMSP (1992-2013),
-            Lima aparecía como un porcentaje mucho mayor porque el sensor se saturaba en zonas muy brillantes.
-            La serie armonizada corrige esto parcialmente. El crecimiento acumulado de Lima muestra valores
-            negativos en el período largo — artefacto de la corrección de saturación, no una caída real.
+            {isEn
+              ? 'Lima concentrates ~16% of total luminosity (2023). During the DMSP period (1992-2013), Lima appeared as a much larger percentage because the sensor saturated in very bright areas. The harmonized series partially corrects this. Lima\'s cumulative growth shows negative values over the long period — an artifact of the saturation correction, not a real decline.'
+              : 'Lima concentra el ~16% de la luminosidad total (2023). En el período DMSP (1992-2013), Lima aparecía como un porcentaje mucho mayor porque el sensor se saturaba en zonas muy brillantes. La serie armonizada corrige esto parcialmente. El crecimiento acumulado de Lima muestra valores negativos en el período largo — artefacto de la corrección de saturación, no una caída real.'
+            }
           </p>
         </div>
       </FadeSection>
@@ -263,7 +307,7 @@ export default function MapaPage() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-90"
           style={{ background: TEAL, color: 'white' }}
         >
-          Siguiente: Tendencias →
+          {isEn ? 'Next: Trends →' : 'Siguiente: Tendencias →'}
         </Link>
       </div>
 

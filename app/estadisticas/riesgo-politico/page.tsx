@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import LastUpdate from '../../components/stats/LastUpdate';
 import EmbedWidget from '../../components/EmbedWidget';
 import ShareButton from '../../components/ShareButton';
+import CiteButton from '../../components/CiteButton';
 import ChartShareButton from '../../components/ChartShareButton';
 import PageSkeleton from '../../components/PageSkeleton';
 import {
@@ -323,6 +324,8 @@ export default function RiesgoPoliticoPage() {
 
   // ── Draggable label state (all positions in px relative to chartContainerRef) ──
   const [viewMode, setViewMode] = useState<'daily' | 'monthly'>('daily');
+  const [chartRange, setChartRange] = useState<'1m' | '3m' | '1y' | 'all'>('all');
+  const [chartDisplay, setChartDisplay] = useState<'chart' | 'table'>('chart');
 
   const [dotPositions, setDotPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
@@ -461,27 +464,58 @@ export default function RiesgoPoliticoPage() {
 
   if (loading) return <PageSkeleton cards={4} />;
   if (error || !data) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <p className="text-red-500">
-        {isEn ? 'Error loading data.' : 'Error cargando datos.'}{' '}
-        <button onClick={() => window.location.reload()} className="underline">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="max-w-md text-center">
+        <p className="text-red-500 font-medium mb-2">
+          {isEn ? 'Error loading data.' : 'Error cargando datos.'}
+        </p>
+        <p className="text-sm text-gray-500 mb-4">
+          {isEn
+            ? 'The pipeline runs daily at 9:00 PM PET. Data may be temporarily unavailable.'
+            : 'El pipeline corre diariamente a las 9:00 PM PET. Los datos pueden estar temporalmente no disponibles.'}
+        </p>
+        <button onClick={() => window.location.reload()}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium"
+          style={{ borderColor: '#C65D3E', color: '#C65D3E' }}>
           {isEn ? 'Retry' : 'Reintentar'}
         </button>
-      </p>
+      </div>
     </div>
   );
 
+  // ── Partial day detection ────────────────────────────────────────────────────
+  // When today has < 300 articles (9PM pipeline hasn't run), use yesterday as primary.
+  const todayArticles = data.current.articles_total ?? 0;
+  const isPartialDay = todayArticles < 300;
+  const series = data.daily_series ?? [];
+  // "yesterday" = second-to-last entry in series (last complete day)
+  const yesterdayRow = series.length >= 2 ? series[series.length - 2] : null;
+
   // ── Derived values ──────────────────────────────────────────────────────────
-  const rawPrr   = data.current.political_raw ?? data.current.prr_raw ?? data.current.score ?? 0;
-  const avg7d    = data.current.political_7d  ?? data.current.prr_7d  ?? data.current.score ?? 0;
-  const polLevel = data.current.political_level ?? data.current.level ?? 'MODERADO';
+  // When partial day, primary = yesterday's 7d smoothed; today shown as secondary
+  const rawPrr   = isPartialDay && yesterdayRow
+    ? (yesterdayRow.political_7d ?? yesterdayRow.prr_7d ?? 0)
+    : (data.current.political_raw ?? data.current.prr_raw ?? data.current.score ?? 0);
+  const avg7d    = isPartialDay && yesterdayRow
+    ? (yesterdayRow.political_7d ?? yesterdayRow.prr_7d ?? 0)
+    : (data.current.political_7d  ?? data.current.prr_7d  ?? data.current.score ?? 0);
+  const polLevel = (isPartialDay && yesterdayRow)
+    ? getRiskLevel(avg7d)
+    : (data.current.political_level ?? data.current.level ?? 'MODERADO') as RiskLevel;
   const polMult  = data.current.political_multiplier ?? (avg7d / 100);
-  const ecoRaw   = data.current.economic_raw ?? 0;
-  const eco7d    = data.current.economic_7d  ?? 0;
-  const ecoLevel = data.current.economic_level ?? 'MODERADO';
+  const ecoRaw   = isPartialDay && yesterdayRow
+    ? (yesterdayRow.economic_7d ?? 0)
+    : (data.current.economic_raw ?? 0);
+  const eco7d    = isPartialDay && yesterdayRow
+    ? (yesterdayRow.economic_7d ?? 0)
+    : (data.current.economic_7d  ?? 0);
+  const ecoLevel = isPartialDay && yesterdayRow
+    ? getRiskLevel(eco7d)
+    : (data.current.economic_level ?? 'MODERADO') as RiskLevel;
   const ecoMult  = data.current.economic_multiplier ?? (eco7d / 100);
   const mult      = toMult(rawPrr);
   const multTrend = toMult(avg7d);
+  const primaryDateStr = isPartialDay && yesterdayRow ? yesterdayRow.date : data.current.date;
 
   const currentDateStr = (() => {
     try {
@@ -505,6 +539,12 @@ export default function RiesgoPoliticoPage() {
   }));
   // Keep backward-compat alias used by MultiplierScale
   const dailyTrend = chartData;
+
+  // Range-filtered chart data for time range buttons
+  const chartRangeData = (() => {
+    const days = chartRange === '1m' ? 30 : chartRange === '3m' ? 90 : chartRange === '1y' ? 365 : chartData.length;
+    return chartData.slice(-days);
+  })();
 
   const polPeaks = (data.peak_events ?? []).filter(
     (e) => e.dimension === 'political' && e.label
@@ -545,9 +585,9 @@ export default function RiesgoPoliticoPage() {
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6">
-          <a href="/estadisticas" className="hover:text-blue-700">
+          <Link href="/estadisticas" className="hover:text-blue-700">
             {isEn ? 'Statistics' : 'Estadísticas'}
-          </a>
+          </Link>
           {' / '}
           <span className="text-gray-900 font-medium">
             {isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'}
@@ -600,6 +640,7 @@ export default function RiesgoPoliticoPage() {
             </p>
           </div>
           <div className="flex gap-2 flex-shrink-0">
+            <CiteButton indicator={isEn ? 'Political Risk Index (IRP)' : 'Índice de Riesgo Político (IRP)'} isEn={isEn} />
             <ShareButton
               title={`${isEn ? 'Political Risk Index' : 'Índice de Riesgo Político'} — Qhawarina`}
               text={
@@ -616,55 +657,78 @@ export default function RiesgoPoliticoPage() {
           </div>
         </div>
 
-        {/* ══ SECTION 2: POLITICAL READING CARDS (2 cards) ════════════════ */}
+        {/* ── Partial day banner ─────────────────────────────────────────── */}
+        {isPartialDay && (
+          <div className="mb-5 flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm"
+            style={{ background: '#FEF3C7', border: '1px solid #F59E0B', color: '#92400E' }}>
+            <span>⏳</span>
+            <div>
+              <strong>{isEn ? 'Partial day' : 'Día parcial'}</strong>
+              {' — '}
+              {isEn
+                ? `Only ${todayArticles} articles collected so far. Full data at 9:00 PM PET.`
+                : `Solo ${todayArticles} artículos recopilados hasta ahora. Datos completos a las 9:00 PM PET.`}
+              {' '}
+              <span style={{ opacity: 0.7 }}>
+                {isEn ? 'Showing yesterday\'s completed values as primary.' : 'Se muestran los valores del último día completo como referencia.'}
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ══ SECTION 2: IRP + IRE CARDS — equal weight ════════════════════ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-          {/* Card 1: Today */}
+          {/* IRP primary */}
           <ReadingCard
-            title={isEn ? 'POLITICAL RISK · TODAY' : 'RIESGO POLÍTICO · HOY'}
-            subtitle={currentDateStr}
+            title={isPartialDay
+              ? (isEn ? 'POLITICAL RISK · LAST COMPLETE DAY' : 'RIESGO POLÍTICO · ÚLTIMO DÍA COMPLETO')
+              : (isEn ? 'POLITICAL RISK · TODAY' : 'RIESGO POLÍTICO · HOY')}
+            subtitle={formatDate(primaryDateStr, isEn)}
             prr={rawPrr}
             level={polLevel}
             accentColor="#C65D3E"
             isEn={isEn}
             indexLabel="IRP"
           />
-          {/* Card 2: 7-day trend */}
+          {/* IRE — same visual weight, not a link */}
           <ReadingCard
-            title={isEn ? '7-DAY TREND' : 'TENDENCIA 7 DÍAS'}
-            subtitle={isEn ? `${polMult.toFixed(1)}× the historical average` : `${polMult.toFixed(1)}× el promedio histórico`}
-            prr={avg7d}
-            level={polLevel}
-            accentColor="#C65D3E"
+            title={isPartialDay
+              ? (isEn ? 'ECONOMIC RISK · LAST COMPLETE DAY' : 'RIESGO ECONÓMICO · ÚLTIMO DÍA COMPLETO')
+              : (isEn ? 'ECONOMIC RISK · TODAY' : 'RIESGO ECONÓMICO · HOY')}
+            subtitle={formatDate(primaryDateStr, isEn)}
+            prr={eco7d}
+            level={ecoLevel}
+            accentColor="#2A9D8F"
             isEn={isEn}
-            indexLabel="IRP"
+            indexLabel="IRE"
           />
         </div>
 
-        {viewMode === 'daily' && (<>
-
-        {/* ── Link to economic risk page ──────────────────────────────────── */}
-        <div className="mb-5">
-          <Link href="/estadisticas/riesgo-economico">
-            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-4 hover:border-teal-400 hover:shadow-sm transition-all flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-base flex-shrink-0">📈</span>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">
-                    {isEn ? 'Economic Risk Index (IRE)' : 'Índice de Riesgo Económico (IRE)'}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    {isEn
-                      ? `Today: ${toMult(ecoRaw)} · 7d: ${toMult(eco7d)}`
-                      : `Hoy: ${toMult(ecoRaw)} · 7d: ${toMult(eco7d)}`}
-                  </p>
-                </div>
-              </div>
-              <span className="text-gray-400 text-sm flex-shrink-0">
-                {isEn ? 'See economic risk →' : 'Ver riesgo económico →'}
+        {/* Partial day today's raw secondary display */}
+        {isPartialDay && (
+          <div className="flex gap-4 mb-5">
+            <div className="flex-1 rounded-lg px-4 py-3 text-sm" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+              <span className="text-xs uppercase tracking-wider font-bold" style={{ color: '#8D99AE' }}>
+                {isEn ? 'IRP today (partial)' : 'IRP hoy (parcial)'}
               </span>
+              <div className="text-2xl font-bold mt-1" style={{ color: '#C65D3E' }}>
+                {Math.round(data.current.political_raw ?? 0)}
+                <span className="text-xs font-normal ml-1" style={{ color: '#8D99AE' }}>/ {todayArticles} arts.</span>
+              </div>
             </div>
-          </Link>
-        </div>
+            <div className="flex-1 rounded-lg px-4 py-3 text-sm" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+              <span className="text-xs uppercase tracking-wider font-bold" style={{ color: '#8D99AE' }}>
+                {isEn ? 'IRE today (partial)' : 'IRE hoy (parcial)'}
+              </span>
+              <div className="text-2xl font-bold mt-1" style={{ color: '#2A9D8F' }}>
+                {Math.round(data.current.economic_raw ?? 0)}
+                <span className="text-xs font-normal ml-1" style={{ color: '#8D99AE' }}>/ {todayArticles} arts.</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {viewMode === 'daily' && (<>
 
         {/* ══ SECTION 3: MULTIPLIER SCALE ═════════════════════════════════ */}
         <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
@@ -698,6 +762,43 @@ export default function RiesgoPoliticoPage() {
                   }
                 </p>
               </div>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-1">
+                  {(['1m', '3m', '1y', 'all'] as const).map((r) => (
+                    <button
+                      key={r}
+                      onClick={() => setChartRange(r)}
+                      className="px-2.5 py-1 rounded text-xs font-medium transition-colors"
+                      style={{
+                        background: chartRange === r ? '#2D3142' : 'transparent',
+                        color: chartRange === r ? '#FAF8F4' : '#8D99AE',
+                        border: '1px solid',
+                        borderColor: chartRange === r ? '#2D3142' : '#E8E4DC',
+                      }}
+                    >
+                      {r === 'all' ? (isEn ? 'All' : 'Todo') : r}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-0.5 ml-1">
+                  {(['chart', 'table'] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setChartDisplay(mode)}
+                      className="px-2 py-1 rounded text-xs font-medium transition-colors"
+                      style={{
+                        background: chartDisplay === mode ? '#C65D3E' : 'transparent',
+                        color: chartDisplay === mode ? '#fff' : '#8D99AE',
+                        border: '1px solid',
+                        borderColor: chartDisplay === mode ? '#C65D3E' : '#E8E4DC',
+                      }}
+                      title={mode === 'chart' ? (isEn ? 'Chart view' : 'Ver gráfico') : (isEn ? 'Table view' : 'Ver tabla')}
+                    >
+                      {mode === 'chart' ? '📈' : '📋'}
+                    </button>
+                  ))}
+                </div>
+              </div>
               <ChartShareButton
                 url="https://qhawarina.pe/estadisticas/riesgo-politico"
                 shareText={
@@ -707,6 +808,38 @@ export default function RiesgoPoliticoPage() {
                 }
               />
             </div>
+            {chartDisplay === 'table' && (
+              <div className="overflow-auto max-h-72 rounded-lg border border-gray-100">
+                <table className="w-full text-xs border-collapse">
+                  <thead className="sticky top-0" style={{ background: '#FAF8F4' }}>
+                    <tr>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-500 border-b border-gray-100">{isEn ? 'Date' : 'Fecha'}</th>
+                      <th className="text-right py-2 px-3 font-semibold border-b border-gray-100" style={{ color: '#C65D3E' }}>IRP {isEn ? '(daily)' : '(diario)'}</th>
+                      <th className="text-right py-2 px-3 font-semibold border-b border-gray-100" style={{ color: '#C65D3E' }}>IRP 7d</th>
+                      <th className="text-right py-2 px-3 font-semibold border-b border-gray-100" style={{ color: '#2A9D8F' }}>IRE 7d</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...chartRangeData].reverse().map((row, i) => (
+                      <tr key={row.date} className={i % 2 === 0 ? '' : 'bg-gray-50'}>
+                        <td className="py-1.5 px-3 text-gray-600">{row.date}</td>
+                        <td className="py-1.5 px-3 text-right tabular-nums" style={{ color: '#C65D3E' }}>
+                          {row.political_raw != null ? Math.round(row.political_raw) : '—'}
+                        </td>
+                        <td className="py-1.5 px-3 text-right tabular-nums font-medium" style={{ color: '#C65D3E' }}>
+                          {row.political_7d != null ? Math.round(row.political_7d) : '—'}
+                        </td>
+                        <td className="py-1.5 px-3 text-right tabular-nums" style={{ color: '#2A9D8F' }}>
+                          {row.economic_7d != null ? Math.round(row.economic_7d) : '—'}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {chartDisplay === 'chart' && (<>
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-500">
               <div className="flex items-center gap-1.5">
                 <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#C65D3E" strokeWidth="2.5" /></svg>
@@ -719,7 +852,7 @@ export default function RiesgoPoliticoPage() {
             </div>
             <div ref={chartContainerRef} style={{ position: 'relative' }}>
             <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={chartData} margin={{ top: 40, right: 16, left: 8, bottom: 8 }}>
+              <AreaChart data={chartRangeData} margin={{ top: 40, right: 16, left: 8, bottom: 8 }}>
                 <ReferenceArea y1={0}   y2={100} fill="#2A9D8F" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={100} y2={200} fill="#E0A458" fillOpacity={0.03} stroke="none" />
                 <ReferenceArea y1={200} y2={300} fill="#C65D3E" fillOpacity={0.05} stroke="none" />
@@ -734,7 +867,7 @@ export default function RiesgoPoliticoPage() {
                   dataKey="date"
                   tick={axisTickStyle}
                   stroke={CHART_DEFAULTS.axisStroke}
-                  interval={Math.floor(chartData.length / 6)}
+                  interval={Math.floor(chartRangeData.length / 6)}
                 />
                 <YAxis
                   tick={axisTickStyle}
@@ -867,6 +1000,7 @@ export default function RiesgoPoliticoPage() {
               );
             })}
             </div>
+            </>)}
           </div>
         )}
 
@@ -913,51 +1047,247 @@ export default function RiesgoPoliticoPage() {
         {/* ══ SECTION 5b: DUAL JUSTIFICATION ══════════════════════════════ */}
         {(data.current.political_justification || data.current.economic_justification || data.current.justification) && (
           <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-semibold uppercase tracking-wide" style={{ color: CHART_COLORS.ink }}>
-                {isEn ? 'Why this level?' : '¿Por qué este nivel?'}
+                {isEn ? 'What\'s driving today\'s index?' : '¿Qué impulsa el índice hoy?'}
               </h3>
               <span className="text-xs" style={{ color: CHART_COLORS.ink3 }}>
                 {formatDate(data.current.date, isEn)}
               </span>
             </div>
-            {(data.current.political_justification ?? data.current.justification) && (
-              <div className="mb-4 rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#C65D3E' }}>
-                    {isEn ? 'Political Risk' : 'Riesgo Político'} · {polMult.toFixed(1)}×
-                  </span>
+            {(() => {
+              // Group articles by event using keyword clusters
+              const polDrivers = (data.current.top_political_drivers ?? []);
+              const ecoDrivers = (data.current.top_economic_drivers ?? []);
+              if (polDrivers.length === 0 && ecoDrivers.length === 0) return null;
+
+              // Keyword → event label mapping (Spanish)
+              const EVENT_CLUSTERS: { keywords: string[]; label_es: string; label_en: string }[] = [
+                { keywords: ['voto de confianza', 'gabinete', 'premier', 'consejo de ministros', 'balcázar', 'arroyo', 'miralles'], label_es: 'Voto de confianza / gabinete', label_en: 'Confidence vote / cabinet' },
+                { keywords: ['cerrón', 'tribunal constitucional', 'tc ', ' tc'], label_es: 'Caso Cerrón / TC', label_en: 'Cerrón case / Constitutional Tribunal' },
+                { keywords: ['andrea vidal', 'asesinato', 'asesora del congreso', 'crimen'], label_es: 'Asesinato asesora Andrea Vidal', label_en: 'Murder of congressional advisor Andrea Vidal' },
+                { keywords: ['petroperú', 'petroperu'], label_es: 'Crisis Petroperú', label_en: 'Petroperú crisis' },
+                { keywords: ['camisea', 'gas natural'], label_es: 'Crisis gas natural', label_en: 'Natural gas crisis' },
+                { keywords: ['keiko', 'fujimori'], label_es: 'Caso Keiko Fujimori', label_en: 'Keiko Fujimori case' },
+                { keywords: ['castillo', 'pedro castillo'], label_es: 'Caso Pedro Castillo', label_en: 'Pedro Castillo case' },
+                { keywords: ['paro', 'huelga', 'protesta', 'marcha'], label_es: 'Paros / protestas', label_en: 'Strikes / protests' },
+                { keywords: ['congreso', 'interpelac', 'cens'], label_es: 'Conflicto Ejecutivo–Congreso', label_en: 'Executive–Congress conflict' },
+                { keywords: ['narco', 'crimen organizado', 'organizado'], label_es: 'Crimen organizado en política', label_en: 'Organized crime in politics' },
+              ];
+
+              function clusterArticles(articles: { title: string; source: string; score: number }[]) {
+                const used = new Set<number>();
+                const groups: { label_es: string; label_en: string; articles: typeof articles; maxScore: number }[] = [];
+                for (const cluster of EVENT_CLUSTERS) {
+                  const matched = articles.filter((a, i) => {
+                    if (used.has(i)) return false;
+                    const t = a.title.toLowerCase();
+                    return cluster.keywords.some((k) => t.includes(k));
+                  });
+                  if (matched.length > 0) {
+                    matched.forEach((a) => used.add(articles.indexOf(a)));
+                    groups.push({
+                      label_es: cluster.label_es,
+                      label_en: cluster.label_en,
+                      articles: matched,
+                      maxScore: Math.max(...matched.map((a) => a.score)),
+                    });
+                  }
+                }
+                // Remaining unclustered — show individually
+                articles.forEach((a, i) => {
+                  if (!used.has(i)) {
+                    groups.push({ label_es: a.title.slice(0, 60), label_en: a.title.slice(0, 60), articles: [a], maxScore: a.score });
+                  }
+                });
+                return groups.sort((a, b) => b.maxScore - a.maxScore);
+              }
+
+              const polGroups = clusterArticles(polDrivers);
+              const ecoGroups = clusterArticles(ecoDrivers);
+
+              function dotColor(score: number) {
+                if (score >= 70) return '#9B2226';
+                if (score >= 55) return '#C65D3E';
+                if (score >= 35) return '#E9C46A';
+                return '#8D99AE';
+              }
+
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Political events */}
+                  {polGroups.length > 0 && (
+                    <div className="rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                      <div className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: '#C65D3E' }}>
+                        {isEn ? 'Political drivers (IRP)' : 'Impulsores políticos (IRP)'}
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        {polGroups.slice(0, 5).map((g, i) => (
+                          <div key={i} className="flex items-start gap-2.5">
+                            <div className="mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: dotColor(g.maxScore) }} />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-sm font-medium leading-snug" style={{ color: '#2D3142' }}>
+                                  {isEn ? g.label_en : g.label_es}
+                                </span>
+                                <span className="text-xs flex-shrink-0 font-mono px-1.5 py-0.5 rounded"
+                                  style={{ background: dotColor(g.maxScore) + '18', color: dotColor(g.maxScore) }}>
+                                  {g.articles.length} art.
+                                </span>
+                              </div>
+                              <div className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+                                {g.articles.slice(0, 2).map(a => a.source).join(', ')}
+                                {' · '}pol={g.maxScore}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {/* Economic events */}
+                  {ecoGroups.length > 0 && (
+                    <div className="rounded-lg p-4" style={{ background: '#FAF8F4', border: '1px solid #E8E4DC' }}>
+                      <div className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: '#2A9D8F' }}>
+                        {isEn ? 'Economic drivers (IRE)' : 'Impulsores económicos (IRE)'}
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        {ecoGroups.slice(0, 5).map((g, i) => (
+                          <div key={i} className="flex items-start gap-2.5">
+                            <div className="mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: dotColor(g.maxScore) }} />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-sm font-medium leading-snug" style={{ color: '#2D3142' }}>
+                                  {isEn ? g.label_en : g.label_es}
+                                </span>
+                                <span className="text-xs flex-shrink-0 font-mono px-1.5 py-0.5 rounded"
+                                  style={{ background: dotColor(g.maxScore) + '18', color: dotColor(g.maxScore) }}>
+                                  {g.articles.length} art.
+                                </span>
+                              </div>
+                              <div className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+                                {g.articles.slice(0, 2).map(a => a.source).join(', ')}
+                                {' · '}eco={g.maxScore}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: '#2D3142' }}>
-                  {data.current.political_justification ?? data.current.justification}
-                </p>
-                {(data.current.top_political_drivers ?? data.current.top_drivers) && (
-                  <>
-                    <p className="text-xs text-gray-400 mb-1">
-                      {isEn ? 'Score: political intensity (0–100)' : 'Puntuación: intensidad política del artículo (0–100)'}
-                    </p>
-                    <ul className="space-y-1">
-                      {(data.current.top_political_drivers
-                        ? data.current.top_political_drivers.slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.score }))
-                        : (data.current.top_drivers ?? []).slice(0, 5).map((d) => ({ title: d.title, source: d.source, numScore: d.severity * 100 }))
-                      ).map((d, i) => {
-                        const dotColor = d.numScore >= 70 ? '#9B2226' : d.numScore >= 40 ? '#C65D3E' : '#E0A458';
-                        return (
-                          <li key={i} className="flex items-center gap-2 text-xs" style={{ color: '#2D3142' }}>
-                            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
-                            <span className="font-mono w-7 flex-shrink-0" style={{ color: dotColor }}>{Math.round(d.numScore)}</span>
-                            <span className="truncate">{d.title}</span>
-                            <span className="flex-shrink-0" style={{ color: '#8D99AE', fontSize: '11px' }}>({d.source})</span>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </>
-                )}
-              </div>
-            )}
+              );
+            })()}
           </div>
         )}
+
+        {/* ══ SECTION: HISTORICAL COMPARISON ══════════════════════════════ */}
+        {(() => {
+          const allValues = (data.daily_series ?? [])
+            .map((d) => d.political_7d ?? d.prr_7d ?? d.score ?? 0)
+            .filter((v) => v > 0);
+          if (allValues.length < 30) return null;
+          const todayVal = avg7d;
+          const sorted = [...allValues].sort((a, b) => a - b);
+          const rank = sorted.filter((v) => v <= todayVal).length;
+          const percentile = Math.round((rank / sorted.length) * 100);
+          // Find 2 similar days (within 15% of today's value, excluding last 14 days)
+          const todayIdx = (data.daily_series ?? []).length - 1;
+          const similar = (data.daily_series ?? [])
+            .slice(0, todayIdx - 14)
+            .filter((d) => {
+              const v = d.political_7d ?? d.prr_7d ?? 0;
+              return v > 0 && Math.abs(v - todayVal) / Math.max(todayVal, 1) < 0.15;
+            })
+            .sort((a, b) => {
+              const va = a.political_7d ?? a.prr_7d ?? 0;
+              const vb = b.political_7d ?? b.prr_7d ?? 0;
+              return Math.abs(va - todayVal) - Math.abs(vb - todayVal);
+            })
+            .slice(0, 2);
+          // Consecutive days above average
+          const series = [...(data.daily_series ?? [])].reverse();
+          let consecutive = 0;
+          for (const d of series) {
+            const v = d.political_7d ?? d.prr_7d ?? 0;
+            if (v >= 100) consecutive++; else break;
+          }
+          // YoY: find entry ~365 days ago
+          const yoyDate = new Date(primaryDateStr);
+          yoyDate.setFullYear(yoyDate.getFullYear() - 1);
+          const yoyStr = yoyDate.toISOString().slice(0, 10);
+          const yoyRow = (data.daily_series ?? []).find((d) => d.date === yoyStr)
+            ?? (data.daily_series ?? []).filter((d) => d.date <= yoyStr).slice(-1)[0];
+          const yoyVal = yoyRow ? (yoyRow.political_7d ?? yoyRow.prr_7d ?? null) : null;
+          const yoyPct = yoyVal != null && yoyVal > 0 ? ((todayVal - yoyVal) / yoyVal * 100) : null;
+          return (
+            <div className="bg-[#FAF8F4] rounded-xl border border-gray-200 p-5 mb-5">
+              <h3 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: CHART_COLORS.ink }}>
+                {isEn ? 'Historical context' : 'Contexto histórico'}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold" style={{ color: '#C65D3E' }}>{percentile}°</p>
+                  <p className="text-xs mt-1 text-gray-400">
+                    {isEn ? 'percentile since Jan 2025' : 'percentil desde ene. 2025'}
+                  </p>
+                </div>
+                {consecutive > 0 && (
+                  <div className="text-center">
+                    <p className="text-3xl font-bold" style={{ color: consecutive >= 5 ? '#9B2226' : '#C65D3E' }}>
+                      {consecutive}
+                    </p>
+                    <p className="text-xs mt-1 text-gray-400">
+                      {isEn ? 'days above average' : 'días sobre el promedio'}
+                    </p>
+                  </div>
+                )}
+                {yoyPct != null && (
+                  <div className="text-center">
+                    <p className="text-3xl font-bold" style={{ color: yoyPct > 0 ? '#C65D3E' : '#2A9D8F' }}>
+                      {yoyPct > 0 ? '+' : ''}{yoyPct.toFixed(0)}%
+                    </p>
+                    <p className="text-xs mt-1 text-gray-400">
+                      {isEn ? 'vs same day last year' : 'vs mismo día año pasado'}
+                    </p>
+                    <p className="text-xs mt-0.5 text-gray-400">
+                      {isEn ? `Last year: IRP ${Math.round(yoyVal!)}` : `Año pasado: IRP ${Math.round(yoyVal!)}`}
+                    </p>
+                  </div>
+                )}
+              </div>
+              {similar.length > 0 && (
+                <div className="mt-4">
+                  <p className="text-xs text-gray-400 mb-2">
+                    {isEn
+                      ? `IRP ${Math.round(todayVal)} is comparable to:`
+                      : `IRP ${Math.round(todayVal)} es comparable a:`}
+                  </p>
+                  <div className="flex flex-col gap-1.5">
+                    {similar.map((d, i) => {
+                      const v = d.political_7d ?? d.prr_7d ?? 0;
+                      const evtPeak = (data.peak_events ?? []).find((e) =>
+                        e.dimension === 'political' && Math.abs(new Date(e.date).getTime() - new Date(d.date).getTime()) < 7 * 86400000
+                      );
+                      const [y, m, day] = d.date.split('-').map(Number);
+                      const dateLabel = new Date(y, m - 1, day).toLocaleDateString(isEn ? 'en-US' : 'es-PE', { day: 'numeric', month: 'short', year: 'numeric' });
+                      return (
+                        <div key={i} className="flex items-start gap-2 text-xs">
+                          <span className="w-1.5 h-1.5 rounded-full mt-1 flex-shrink-0" style={{ background: '#C65D3E' }} />
+                          <span>
+                            <strong>{dateLabel}</strong>
+                            {' '}(IRP {Math.round(v)})
+                            {evtPeak && <span style={{ color: '#8D99AE' }}> — {evtPeak.label}</span>}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })()}
 
         {/* ══ SECTION A1: IRP vs TIPO DE CAMBIO (scatter) ═════════════════ */}
         {irpFxData.length >= 10 && (
@@ -965,6 +1295,17 @@ export default function RiesgoPoliticoPage() {
             <h3 className="text-base font-semibold text-gray-900 mb-1">
               {isEn ? 'Does political instability move the dollar?' : '¿La inestabilidad política mueve el dólar?'}
             </h3>
+            {irpFxReg && Math.abs(irpFxReg.r) < 0.15 && (
+              <div className="flex items-start gap-2 mb-3 px-3 py-2 rounded-lg text-xs"
+                style={{ background: '#FEF3C7', border: '1px solid #F59E0B', color: '#92400E' }}>
+                <span className="flex-shrink-0">⚠</span>
+                <span>
+                  {isEn
+                    ? `Daily correlation is not significant (r = ${irpFxReg.r.toFixed(2)}). Individual daily movements reflect many factors beyond political risk. Switch to Monthly view for a clearer relationship (r ≈ 0.46).`
+                    : `La correlación diaria no es significativa (r = ${irpFxReg.r.toFixed(2)}). Los movimientos diarios reflejan muchos factores más allá del riesgo político. Cambia a vista Mensual para una relación más clara (r ≈ 0.46).`}
+                </span>
+              </div>
+            )}
             <p className="text-xs text-gray-500 mb-4">
               {isEn
                 ? 'Each dot = 1 day. Older = gray, recent = terracotta. Line = linear trend.'
@@ -1104,15 +1445,7 @@ export default function RiesgoPoliticoPage() {
 
           return (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-              <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                  {currentMonthLabel} {isEn ? '(partial)' : '(parcial)'}
-                </p>
-                <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#C65D3E' }}>
-                  {Math.round(currentVal)}
-                </p>
-                <p className="text-xs text-gray-400 mt-2">IRP · {isEn ? 'month-to-date average' : 'promedio hasta hoy'}</p>
-              </div>
+              {/* Primary: last COMPLETE month */}
               <div className="rounded-xl border-2 p-5 flex flex-col" style={{ borderColor: '#C65D3E44', background: '#C65D3E0A' }}>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-500">
                   {lastMonthLabel}
@@ -1127,6 +1460,18 @@ export default function RiesgoPoliticoPage() {
                 )}
                 <p className="text-xs text-gray-400 mt-1">IRP · {isEn ? 'monthly average' : 'promedio mensual'}</p>
               </div>
+              {/* Secondary: current partial month (only shown if data exists) */}
+              {currentMonthData && (
+                <div className="rounded-xl border p-5 flex flex-col" style={{ borderColor: '#E8E4DC', background: '#FAF8F4' }}>
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                    {currentMonthLabel} · {isEn ? 'partial' : 'parcial'}
+                  </p>
+                  <p className="text-4xl font-bold leading-none mt-3" style={{ color: '#8D99AE' }}>
+                    {Math.round(currentVal)}
+                  </p>
+                  <p className="text-xs text-gray-400 mt-2">IRP · {isEn ? 'month-to-date avg' : 'promedio hasta hoy'}</p>
+                </div>
+              )}
             </div>
           );
         })()}
@@ -1210,10 +1555,21 @@ export default function RiesgoPoliticoPage() {
                   peakMap[e.date.slice(0, 7)] = e.label;
                 }
               }
-              const entries = monthlyBarData
+              // Deduplicate consecutive months with identical event labels (e.g. "Censura Jerí" I/II)
+              const rawEntries = monthlyBarData
                 .filter(m => peakMap[m.month])
-                .map(m => ({ month: m.label, event: peakMap[m.month], value: m.value, color: m.color }))
-                .reverse();
+                .map(m => ({ month: m.label, event: peakMap[m.month], value: m.value, color: m.color }));
+              const labelCount: Record<string, number> = {};
+              const labelSeen: Record<string, number> = {};
+              for (const e of rawEntries) labelCount[e.event] = (labelCount[e.event] ?? 0) + 1;
+              const entries = rawEntries.map(e => {
+                if (labelCount[e.event] > 1) {
+                  labelSeen[e.event] = (labelSeen[e.event] ?? 0) + 1;
+                  const suffix = labelSeen[e.event] === 1 ? ' I' : labelSeen[e.event] === 2 ? ' II' : ` ${labelSeen[e.event]}`;
+                  return { ...e, event: e.event + suffix };
+                }
+                return e;
+              }).reverse();
               if (entries.length === 0) return null;
               return (
                 <div className="mt-4 border-t border-gray-100 pt-4">
@@ -1374,9 +1730,32 @@ export default function RiesgoPoliticoPage() {
         </div>
         <p className="text-xs text-gray-400 mb-6 px-1">
           {isEn
-            ? 'Coverage: ~110 articles/day from 16 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'
-            : 'Cobertura: ~110 artículos/día de 16 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).'}
+            ? `Coverage: ${data.current.articles_total?.toLocaleString() ?? '~800'} articles today from 16 Peruvian media outlets (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).`
+            : `Cobertura: ${data.current.articles_total?.toLocaleString() ?? '~800'} artículos hoy de 16 medios peruanos (La República, El Comercio, Gestión, RPP, Andina, Correo, Peru21, Trome, Caretas, ATV, Canal N, El Búho, Inforegión, Diario UNO, La Razón, Panamericana).`}
         </p>
+
+        {/* ══ SECTION: ALERT CTA ════════════════════════════════════════════ */}
+        <div className="mb-6 rounded-xl border border-dashed p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          style={{ borderColor: '#C65D3E55', background: '#fdf3f0' }}>
+          <div className="text-2xl flex-shrink-0">🔔</div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold" style={{ color: '#2D3142' }}>
+              {isEn ? 'Get alerts when political risk spikes' : 'Recibe alertas cuando el riesgo político se dispare'}
+            </p>
+            <p className="text-xs mt-0.5" style={{ color: '#8D99AE' }}>
+              {isEn
+                ? 'Email us to be notified when IRP exceeds 200 (high risk).'
+                : 'Escríbenos para recibir alertas cuando el IRP supere 200 (riesgo alto).'}
+            </p>
+          </div>
+          <a
+            href={`mailto:hola@qhawarina.pe?subject=${encodeURIComponent(isEn ? 'IRP Alert Request' : 'Solicitud de alerta IRP')}&body=${encodeURIComponent(isEn ? 'Please notify me when IRP exceeds 200.\n\nName: \nOrganization: ' : 'Por favor, notifícame cuando el IRP supere 200.\n\nNombre: \nOrganización: ')}`}
+            className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
+            style={{ background: '#C65D3E', color: '#fff' }}
+          >
+            {isEn ? 'Request alerts' : 'Solicitar alertas'}
+          </a>
+        </div>
 
         {/* ══ SECTION 7: LINKS ════════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row flex-wrap gap-3">
@@ -1421,6 +1800,20 @@ export default function RiesgoPoliticoPage() {
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">
                   {isEn ? `Today: ${toMult(ecoRaw)} · 7d: ${toMult(eco7d)}` : `Hoy: ${toMult(ecoRaw)} · 7d: ${toMult(eco7d)}`}
+                </p>
+              </div>
+              <span className="text-gray-400 text-sm flex-shrink-0">→</span>
+            </div>
+          </Link>
+          <Link href="/escenarios" className="flex-1">
+            <div className="bg-[#FAF8F4] rounded-lg border border-gray-200 p-5 hover:border-purple-400 hover:shadow-sm transition-all flex items-center gap-4">
+              <span className="text-xl flex-shrink-0">🔮</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-900 text-sm">
+                  {isEn ? 'Scenarios' : 'Escenarios'}
+                </p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {isEn ? 'Macro impact simulation' : 'Simulación de impacto macroeconómico'}
                 </p>
               </div>
               <span className="text-gray-400 text-sm flex-shrink-0">→</span>

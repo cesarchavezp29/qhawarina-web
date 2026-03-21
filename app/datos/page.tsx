@@ -12,6 +12,7 @@ const INK3  = "#8D99AE";
 const BG    = "#FAF8F4";
 const SURFACE = "#EDEAE5";
 const BORDER  = "#E8E4DF";
+const WATERMARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.045'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
 
 interface DataFile {
   name: string;
@@ -26,7 +27,7 @@ interface DataSection {
   id: string;
   title: string;
   icon: string;
-  badgeClass: string;
+  badgeStyle: { background: string; color: string };
   description: string;
   files: DataFile[];
 }
@@ -41,7 +42,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "nowcasts",
     title: "Nowcasts",
     icon: "📡",
-    badgeClass: "bg-teal-100 text-teal-800",
+    badgeStyle: { background: '#ccfbf1', color: '#0f5e56' },
     description: "Predicciones en tiempo real de los modelos Qhawarina. Actualizados diariamente.",
     files: [
       {
@@ -112,7 +113,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "sectoral",
     title: "Desagregaciones",
     icon: "🏭",
-    badgeClass: "bg-amber-100 text-amber-800",
+    badgeStyle: { background: '#fef3c7', color: '#92400e' },
     description: "PBI por sector económico e inflación por categoría analítica.",
     files: [
       {
@@ -154,7 +155,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "panels",
     title: "Paneles de Datos",
     icon: "📊",
-    badgeClass: "bg-slate-100 text-slate-700",
+    badgeStyle: { background: SURFACE, color: INK3 },
     description: "Paneles completos de indicadores económicos en formato largo. Para análisis propios.",
     files: [
       {
@@ -184,7 +185,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "backtests",
     title: "Backtests",
     icon: "🔬",
-    badgeClass: "bg-orange-100 text-orange-800",
+    badgeStyle: { background: '#ffedd5', color: '#9a3412' },
     description: "Resultados de evaluación fuera de muestra de los modelos. Transparencia metodológica.",
     files: [
       {
@@ -214,7 +215,7 @@ const DATA_SECTIONS: DataSection[] = [
     id: "prices",
     title: "Precios",
     icon: "🛒",
-    badgeClass: "bg-red-100 text-red-800",
+    badgeStyle: { background: '#fee2e2', color: '#991b1b' },
     description: "Datos de precios de supermercados (BPP — Billion Prices Project para Perú).",
     files: [
       {
@@ -300,7 +301,7 @@ export default function DatosPage() {
   }, [locale]);
 
   return (
-    <div style={{ background: BG }} className="min-h-screen py-12">
+    <div style={{ background: BG, backgroundImage: WATERMARK }} className="min-h-screen py-12">
       <BreadcrumbJsonLd
         crumbs={[
           { name: "Qhawarina", href: "/" },
@@ -431,12 +432,15 @@ export default function DatosPage() {
                   return (
                     <div
                       key={`${file.file}-${file.name}`}
-                      className="rounded-lg border p-5 hover:shadow-md transition-shadow"
-                      style={{ background: "#fff", borderColor: BORDER }}
+                      className="rounded-2xl border p-5 hover:shadow-md transition-shadow"
+                      style={{ background: SURFACE, borderColor: BORDER }}
                     >
                       <div className="flex items-start justify-between mb-2">
                         <h3 className="font-semibold pr-2" style={{ color: INK }}>{file.name}</h3>
-                        <span className={`shrink-0 text-xs font-mono px-2 py-0.5 rounded font-medium ${section.badgeClass}`}>
+                        <span
+                          className="shrink-0 text-xs font-mono px-2 py-0.5 rounded font-medium"
+                          style={section.badgeStyle}
+                        >
                           {hasCsv ? "JSON+CSV" : file.format}
                         </span>
                       </div>
@@ -474,7 +478,7 @@ export default function DatosPage() {
                           <a
                             href={`/assets/data/${file.file}`}
                             download={file.file}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-colors hover:bg-gray-50 border"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-opacity hover:opacity-80 border"
                             style={
                               hasCsv
                                 ? { borderColor: BORDER, color: INK3 }
@@ -496,7 +500,7 @@ export default function DatosPage() {
 
         {/* License + Citation */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="rounded-lg border p-6" style={{ background: "#fff", borderColor: BORDER }}>
+          <div className="rounded-2xl border p-6" style={{ background: SURFACE, borderColor: BORDER }}>
             <h3 className="font-semibold mb-3" style={{ color: INK }}>
               📄 {isEn ? "License" : "Licencia"}
             </h3>
@@ -512,7 +516,7 @@ export default function DatosPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border p-6" style={{ background: "#fff", borderColor: BORDER }}>
+          <div className="rounded-2xl border p-6" style={{ background: SURFACE, borderColor: BORDER }}>
             <h3 className="font-semibold mb-3" style={{ color: INK }}>
               📖 {isEn ? "How to cite" : "Cómo citar"}
             </h3>
@@ -530,7 +534,7 @@ export default function DatosPage() {
 
         {/* API Link */}
         <div
-          className="mt-6 rounded-lg border p-6 flex items-center justify-between"
+          className="mt-6 rounded-2xl border p-6 flex items-center justify-between"
           style={{ background: SURFACE, borderColor: BORDER }}
         >
           <div>

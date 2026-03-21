@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useLocale } from 'next-intl';
 import FadeSection from '../simuladores/impacto-macro/components/FadeSection';
+import CiteButton from '../components/CiteButton';
+import ShareButton from '../components/ShareButton';
 import {
   TERRACOTTA, TEAL, CARD_BG, CARD_BORDER,
 } from '../simuladores/impacto-macro/components/macroData';
@@ -76,9 +78,20 @@ export default function EscenariosPage() {
             ? 'Scenario Analysis · ENAHO 2005–2024 · OLS + Cholesky VAR(1)'
             : 'Análisis de Escenarios · ENAHO 2005–2024 · MCO + VAR(1) Cholesky'}
         </div>
-        <h1 className="text-4xl sm:text-5xl font-black text-stone-900 leading-tight tracking-tight">
-          {isEn ? 'Scenario Analysis' : 'Análisis de Escenarios'}
-        </h1>
+        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
+          <h1 className="text-4xl sm:text-5xl font-black text-stone-900 leading-tight tracking-tight">
+            {isEn ? 'Scenario Analysis' : 'Análisis de Escenarios'}
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <CiteButton indicator={isEn ? 'Macro Scenario Simulator' : 'Simulador de Escenarios Macroeconómicos'} isEn={isEn} />
+            <ShareButton
+              title={isEn ? 'Scenario Simulator — Qhawarina' : 'Escenarios — Qhawarina'}
+              text={isEn
+                ? '🔮 Peru macro scenario simulator — GDP & poverty impact | Qhawarina\nhttps://qhawarina.pe/escenarios'
+                : '🔮 Simulador de escenarios macroeconómicos Perú | Qhawarina\nhttps://qhawarina.pe/escenarios'}
+            />
+          </div>
+        </div>
         <p className="text-xl text-stone-500 font-light max-w-2xl leading-relaxed">
           {isEn
             ? 'GDP growth assumption → poverty impact, computed from an audited OLS regression (ENAHO 2005–2024, N=18, R²=0.669). Uncertainty intervals shown throughout.'
