@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 
+const WATERMARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext transform='rotate(-45 150 150)' x='20' y='160' font-family='sans-serif' font-size='28' font-weight='700' letter-spacing='4' fill='%232D3142' opacity='0.018'%3EQHAWARINA%3C/text%3E%3C/svg%3E")`;
+
 type ReportType = 'diario-economico' | 'diario-politico' | 'mensual-economico' | 'mensual-politico';
 
 function fmt(v: number | null | undefined, decimals = 2, suffix = '') {
@@ -651,7 +653,7 @@ export default function ReportesPage() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ backgroundColor: '#FAF8F4', backgroundImage: WATERMARK }}>
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* Title */}
         <div className="mb-6">
