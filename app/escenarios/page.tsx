@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { useLocale } from 'next-intl';
+import FadeSection from '../simuladores/impacto-macro/components/FadeSection';
+import {
+  TERRACOTTA, TEAL, CARD_BG, CARD_BORDER,
+} from '../simuladores/impacto-macro/components/macroData';
 
 // Audited elasticities — full_audit_output.txt, 2026-03-19
 const BETA_POV   = -0.656;   // pp poverty per 1pp annual GDP growth (OLS, ENAHO, N=18, R²=0.669)
@@ -36,16 +40,22 @@ export default function EscenariosPage() {
   const isBcrpCut  = preset === 'bcrp_cut';
   const isRatePreset = isBcrpHike || isBcrpCut;
 
-  // Poverty impact
-  const povPoint = BETA_POV * gdp;
-  const povCiLo  = CI90_LO  * gdp;
-  const povCiHi  = CI90_HI  * gdp;
-  const povLo    = Math.min(povCiLo, povCiHi);
-  const povHi    = Math.max(povCiLo, povCiHi);
-
-  // GDP CI (only relevant for rate presets)
+  // GDP CI (rate presets only — flips sign for cut)
   const gdpCiLo = CI_RATE_LO * (isBcrpHike ? 1 : isBcrpCut ? -1 : 0);
   const gdpCiHi = CI_RATE_HI * (isBcrpHike ? 1 : isBcrpCut ? -1 : 0);
+
+  // Poverty impact
+  const povPoint = BETA_POV * gdp;
+
+  // For rate presets: propagate the full GDP CI through β_poverty.
+  // β is negative, so GDP_CI_high → most negative poverty change, GDP_CI_low → most positive.
+  // For non-rate presets: GDP is a fixed assumption; CI comes from β uncertainty only.
+  const povLo = isRatePreset
+    ? Math.min(BETA_POV * gdpCiLo, BETA_POV * gdpCiHi)
+    : Math.min(CI90_LO * gdp, CI90_HI * gdp);
+  const povHi = isRatePreset
+    ? Math.max(BETA_POV * gdpCiLo, BETA_POV * gdpCiHi)
+    : Math.max(CI90_LO * gdp, CI90_HI * gdp);
 
   const fmt    = (v: number, dp = 2) => `${v >= 0 ? '+' : ''}${v.toFixed(dp)}`;
   const fmtPP  = (v: number, dp = 2) => `${fmt(v, dp)}pp`;
@@ -54,44 +64,63 @@ export default function EscenariosPage() {
   const presetData = PRESETS[preset];
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">
-            {isEn ? 'Scenario Analysis' : 'Análisis de Escenarios'}
-          </h1>
-          <p className="text-gray-600 leading-relaxed">
-            {isEn
-              ? 'GDP growth assumption → poverty impact, computed from an audited OLS regression (ENAHO 2005–2024, N=18, R²=0.669). Uncertainty intervals shown throughout.'
-              : 'Supuesto de crecimiento del PBI → impacto en pobreza, calculado con una regresión MCO auditada (ENAHO 2005–2024, N=18, R²=0.669). Intervalos de incertidumbre mostrados en todo momento.'}
-          </p>
-        </div>
+    <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-10" style={{ zIndex: 1 }}>
 
-        {/* Confidence note */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-          <p className="text-sm text-blue-900">
+      {/* ── HEADER ────────────────────────────────────────────────────────────── */}
+      <section className="space-y-4">
+        <div
+          className="inline-block rounded-full px-4 py-1.5 text-xs font-medium text-stone-500 tracking-wide"
+          style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
+        >
+          {isEn
+            ? 'Scenario Analysis · ENAHO 2005–2024 · OLS + Cholesky VAR(1)'
+            : 'Análisis de Escenarios · ENAHO 2005–2024 · MCO + VAR(1) Cholesky'}
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-black text-stone-900 leading-tight tracking-tight">
+          {isEn ? 'Scenario Analysis' : 'Análisis de Escenarios'}
+        </h1>
+        <p className="text-xl text-stone-500 font-light max-w-2xl leading-relaxed">
+          {isEn
+            ? 'GDP growth assumption → poverty impact, computed from an audited OLS regression (ENAHO 2005–2024, N=18, R²=0.669). Uncertainty intervals shown throughout.'
+            : 'Supuesto de crecimiento del PBI → impacto en pobreza, calculado con una regresión MCO auditada (ENAHO 2005–2024, N=18, R²=0.669). Intervalos de incertidumbre mostrados en todo momento.'}
+        </p>
+      </section>
+
+      <div style={{ height: 1, background: 'rgba(0,0,0,0.06)' }}/>
+
+      {/* ── CONFIDENCE NOTE ───────────────────────────────────────────────────── */}
+      <FadeSection>
+        <div
+          className="rounded-2xl p-5"
+          style={{ background: '#fffbeb', border: '1px solid #fcd34d' }}
+        >
+          <p className="text-sm text-amber-900">
             <strong>{isEn ? 'What is estimated here:' : 'Qué se estima aquí:'}</strong>{' '}
             {isEn
               ? 'The GDP→Poverty elasticity (β=−0.656) is our Tier 1 high-confidence result. The rate→GDP elasticity (β=−0.195) is a Tier 2 point estimate — its 90% CI includes zero. Scenarios that go via rate→GDP→Poverty carry compounded uncertainty.'
               : 'La elasticidad PBI→Pobreza (β=−0.656) es nuestro resultado Nivel 1 de alta confianza. La elasticidad tasa→PBI (β=−0.195) es una estimación puntual Nivel 2 — su IC 90% incluye cero. Los escenarios que pasan por tasa→PBI→Pobreza tienen incertidumbre compuesta.'}
           </p>
         </div>
+      </FadeSection>
 
-        {/* Preset buttons */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
-          <label className="block text-sm font-semibold text-gray-700 mb-3">
+      {/* ── PRESET BUTTONS ────────────────────────────────────────────────────── */}
+      <FadeSection>
+        <div
+          className="rounded-2xl p-6 space-y-4"
+          style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
+        >
+          <label className="block text-sm font-semibold text-stone-700">
             {isEn ? 'Select a preset or enter custom GDP growth' : 'Selecciona un preset o ingresa crecimiento PBI personalizado'}
           </label>
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2">
             {(Object.entries(PRESETS) as [Preset, typeof PRESETS[Preset]][]).map(([key, val]) => (
               <button
                 key={key}
                 onClick={() => handlePreset(key)}
-                className="px-4 py-2 text-sm font-medium rounded border transition-colors"
+                className="px-4 py-2 text-sm font-medium rounded-full border transition-colors"
                 style={preset === key
-                  ? { background: '#C65D3E', borderColor: '#C65D3E', color: '#fff' }
-                  : { background: '#fff', borderColor: '#D1D5DB', color: '#374151' }}
+                  ? { background: TERRACOTTA, borderColor: TERRACOTTA, color: '#fff' }
+                  : { background: CARD_BG, borderColor: CARD_BORDER, color: '#44403c' }}
               >
                 {isEn ? val.label_en : val.label_es}
               </button>
@@ -100,7 +129,7 @@ export default function EscenariosPage() {
 
           {isCustom && (
             <div className="mt-2">
-              <label className="block text-xs font-medium text-gray-600 mb-1">
+              <label className="block text-xs font-medium text-stone-500 mb-1">
                 {isEn ? 'GDP growth assumption (%)' : 'Supuesto de crecimiento PBI (%)'}
               </label>
               <div className="flex gap-3 items-center">
@@ -112,15 +141,19 @@ export default function EscenariosPage() {
                 <input
                   type="number" step="0.1" value={gdp} min="-8" max="9"
                   onChange={e => setGdp(Number(e.target.value))}
-                  className="w-24 px-3 py-2 border border-gray-300 rounded text-sm text-center font-bold"
+                  className="w-24 px-3 py-2 border rounded-xl text-sm text-center font-bold"
+                  style={{ borderColor: CARD_BORDER, background: CARD_BG }}
                 />
-                <span className="text-sm text-gray-500">%</span>
+                <span className="text-sm text-stone-400">%</span>
               </div>
             </div>
           )}
 
           {!isCustom && (
-            <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded text-xs text-gray-600">
+            <div
+              className="mt-2 p-3 rounded-xl text-xs text-stone-500"
+              style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
+            >
               <strong>{isEn ? 'Preset note: ' : 'Nota del preset: '}</strong>
               {isEn ? presetData.note_en : presetData.note_es}
               {' '}{isEn ? 'GDP assumption:' : 'Supuesto PBI:'}{' '}
@@ -128,20 +161,22 @@ export default function EscenariosPage() {
             </div>
           )}
         </div>
+      </FadeSection>
 
-        {/* Rate→GDP chain (only for rate presets) */}
-        {isRatePreset && (
-          <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-5 mb-6">
-            <h3 className="font-semibold text-amber-900 mb-2">
+      {/* ── RATE→GDP CHAIN (rate presets only) ────────────────────────────────── */}
+      {isRatePreset && (
+        <FadeSection>
+          <div className="rounded-2xl p-5 space-y-3" style={{ background: '#fffbeb', border: '2px solid #fcd34d' }}>
+            <h3 className="font-semibold text-amber-900">
               {isEn ? '⚠️ Rate → GDP (Tier 2 — CI includes zero)' : '⚠️ Tasa → PBI (Nivel 2 — IC incluye cero)'}
             </h3>
-            <div className="grid grid-cols-3 gap-3 text-center mb-3">
+            <div className="grid grid-cols-3 gap-3 text-center">
               {[
                 { label: isEn ? 'GDP CI low' : 'PBI IC inf.', val: Math.min(gdpCiLo, gdpCiHi) },
                 { label: isEn ? 'GDP point est.' : 'PBI est. puntual', val: gdp, bold: true },
                 { label: isEn ? 'GDP CI high' : 'PBI IC sup.', val: Math.max(gdpCiLo, gdpCiHi) },
               ].map(({ label, val, bold }) => (
-                <div key={label} className={`rounded p-2 ${bold ? 'bg-amber-100 border border-amber-400' : 'bg-white border border-amber-200'}`}>
+                <div key={label} className={`rounded-xl p-2 ${bold ? 'border-2 border-amber-400 bg-amber-100' : 'border border-amber-200 bg-white'}`}>
                   <div className="text-xs text-amber-700">{label}</div>
                   <div className={`font-${bold ? 'bold' : 'medium'} text-amber-900`}>{fmtPP(val)}</div>
                 </div>
@@ -153,53 +188,73 @@ export default function EscenariosPage() {
                 : `IC 90% bootstrap [${fmtPP(CI_RATE_LO)}, ${fmtPP(CI_RATE_HI)}] por 100pb — cruza cero. Estimación puntual consistente con literatura (−0.20 a −0.30pp) pero no significativa individualmente con T=85.`}
             </p>
           </div>
-        )}
+        </FadeSection>
+      )}
 
-        {/* Poverty impact */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">
+      {/* ── POVERTY IMPACT ────────────────────────────────────────────────────── */}
+      <FadeSection>
+        <div
+          className="rounded-2xl p-6 space-y-5"
+          style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
+        >
+          <h2 className="text-2xl font-bold text-stone-900">
             {isEn ? 'Poverty Impact' : 'Impacto en Pobreza'}
           </h2>
 
-          <div className="flex items-baseline gap-3 mb-4">
-            <span className={`text-5xl font-bold ${povPoint > 0 ? 'text-red-600' : 'text-green-700'}`}>
+          <div className="flex items-baseline gap-3">
+            <span
+              className="text-5xl font-black"
+              style={{ color: povPoint > 0 ? '#dc2626' : TEAL }}
+            >
               {fmtPP(povPoint)}
             </span>
-            <span className="text-lg text-gray-500">
+            <span className="text-lg text-stone-500">
               {povPoint > 0
                 ? (isEn ? 'increase in poverty rate' : 'aumento en tasa de pobreza')
                 : (isEn ? 'reduction in poverty rate' : 'reducción en tasa de pobreza')}
             </span>
           </div>
 
-          {/* CI bar */}
-          <div className="mb-4">
-            <div className="text-xs text-gray-500 mb-1">
+          {/* CI grid */}
+          <div>
+            <div className="text-xs text-stone-400 mb-2">
               {isEn ? '90% confidence interval on poverty impact' : 'Intervalo de confianza 90% sobre impacto en pobreza'}
             </div>
             <div className="grid grid-cols-3 gap-3 text-center">
               {[
-                { label: isEn ? 'CI low (90%)' : 'IC inferior (90%)', val: povLo, color: 'text-gray-600' },
-                { label: isEn ? 'Point estimate' : 'Estimación puntual', val: povPoint, color: povPoint > 0 ? 'text-red-700' : 'text-green-700', bold: true, bg: 'bg-gray-100 border-gray-400' },
-                { label: isEn ? 'CI high (90%)' : 'IC superior (90%)', val: povHi, color: 'text-gray-600' },
-              ].map(({ label, val, color, bold, bg }) => (
-                <div key={label} className={`rounded-lg p-4 border ${bg ?? 'bg-gray-50 border-gray-200'}`}>
-                  <div className="text-xs text-gray-500 mb-1">{label}</div>
-                  <div className={`text-2xl font-${bold ? 'bold' : 'semibold'} ${color}`}>{fmtPP(val)}</div>
+                { label: isEn ? 'CI low (90%)' : 'IC inferior (90%)', val: povLo, highlight: false },
+                { label: isEn ? 'Point estimate' : 'Estimación puntual', val: povPoint, highlight: true },
+                { label: isEn ? 'CI high (90%)' : 'IC superior (90%)', val: povHi, highlight: false },
+              ].map(({ label, val, highlight }) => (
+                <div
+                  key={label}
+                  className="rounded-xl p-4"
+                  style={{
+                    background: highlight ? 'rgba(0,0,0,0.04)' : CARD_BG,
+                    border: `1px solid ${highlight ? 'rgba(120,113,108,0.35)' : CARD_BORDER}`,
+                  }}
+                >
+                  <div className="text-xs text-stone-400 mb-1">{label}</div>
+                  <div
+                    className={`text-2xl font-${highlight ? 'black' : 'semibold'}`}
+                    style={{ color: highlight ? (povPoint > 0 ? '#dc2626' : TEAL) : '#78716c' }}
+                  >
+                    {fmtPP(val)}
+                  </div>
                 </div>
               ))}
             </div>
-            {/* Visual bar */}
-            <div className="mt-3 bg-gray-100 rounded-full h-2 relative">
-              <div className="text-xs text-gray-400 text-center mt-1">
-                [{fmtPP(povLo)} — {fmtPP(povHi)}]
-              </div>
+            <div className="mt-2 text-xs text-stone-400 text-center">
+              [{fmtPP(povLo)} — {fmtPP(povHi)}]
             </div>
           </div>
 
           {/* Chain formula */}
-          <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700">
-            <div className="font-semibold text-gray-900 mb-2">
+          <div
+            className="rounded-xl p-4 text-sm text-stone-600 space-y-1"
+            style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
+          >
+            <div className="font-semibold text-stone-800 mb-2">
               {isEn ? 'Computation:' : 'Cálculo:'}
             </div>
             <div className="font-mono text-sm space-y-1">
@@ -210,41 +265,56 @@ export default function EscenariosPage() {
                 </div>
               )}
               <div>
-                ΔPobreza = {BETA_POV} × {fmtPct(gdp)} = <strong className={povPoint > 0 ? 'text-red-600' : 'text-green-700'}>{fmtPP(povPoint, 3)}</strong>
+                ΔPobreza = {BETA_POV} × {fmtPct(gdp)} = <strong style={{ color: povPoint > 0 ? '#dc2626' : TEAL }}>{fmtPP(povPoint, 3)}</strong>
               </div>
-              <div className="text-xs text-gray-500">
-                IC 90%: [{BETA_POV} ± 1.645×0.115] × {fmtPct(gdp)} = [{fmtPP(povLo)}, {fmtPP(povHi)}]
+              <div className="text-xs text-stone-400">
+                {isRatePreset
+                  ? `IC 90%: ${BETA_POV} × GDP_CI[${fmtPP(Math.min(gdpCiLo,gdpCiHi))}, ${fmtPP(Math.max(gdpCiLo,gdpCiHi))}] = [${fmtPP(povLo)}, ${fmtPP(povHi)}]`
+                  : `IC 90%: [${BETA_POV} ± 1.645×0.115] × ${fmtPct(gdp)} = [${fmtPP(povLo)}, ${fmtPP(povHi)}]`}
               </div>
             </div>
           </div>
         </div>
+      </FadeSection>
 
-        {/* Methodology footer */}
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 text-sm text-gray-600">
-          <h3 className="font-semibold text-gray-800 mb-2">
+      {/* ── CONFIDENCE TIERS ──────────────────────────────────────────────────── */}
+      <FadeSection>
+        <div
+          className="rounded-2xl p-5 space-y-3"
+          style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
+        >
+          <h3 className="font-semibold text-stone-800">
             {isEn ? 'Confidence Tiers' : 'Niveles de Confianza'}
           </h3>
-          <div className="space-y-2">
+          <div className="space-y-2 text-sm text-stone-600">
             <div className="flex gap-2 items-start">
-              <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded whitespace-nowrap">Nivel 1</span>
+              <span className="rounded-full px-3 py-0.5 text-xs font-medium whitespace-nowrap" style={{ background: '#dcfce7', color: '#166534' }}>Nivel 1</span>
               <span>{isEn ? 'GDP→Poverty β=−0.656: significant (p<0.0001), stable, N=18.' : 'PBI→Pobreza β=−0.656: significativo (p<0.0001), estable, N=18.'}</span>
             </div>
             <div className="flex gap-2 items-start">
-              <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-0.5 rounded whitespace-nowrap">Nivel 2</span>
+              <span className="rounded-full px-3 py-0.5 text-xs font-medium whitespace-nowrap" style={{ background: '#fef9c3', color: '#854d0e' }}>Nivel 2</span>
               <span>{isEn ? 'Rate→GDP β=−0.195: 90% CI includes zero, point estimate literature-consistent.' : 'Tasa→PBI β=−0.195: IC 90% incluye cero, estimación puntual consistente con la literatura.'}</span>
             </div>
             <div className="flex gap-2 items-start">
-              <span className="bg-gray-200 text-gray-600 text-xs font-medium px-2 py-0.5 rounded whitespace-nowrap">Nivel 3</span>
+              <span className="rounded-full px-3 py-0.5 text-xs font-medium whitespace-nowrap" style={{ background: 'rgba(0,0,0,0.06)', color: '#57534e' }}>Nivel 3</span>
               <span>{isEn ? 'Narrative SR, Proxy-SVAR: attempted, not identified with available data.' : 'SR narrativa, Proxy-SVAR: intentados, no identificados con los datos disponibles.'}</span>
             </div>
           </div>
-          <p className="text-xs text-gray-400 mt-3">
-            {isEn
-              ? 'Full audit: D:/Nexus/nexus/estimation/full_audit_output.txt · Estimated 2026-03-19'
-              : 'Auditoría completa: D:/Nexus/nexus/estimation/full_audit_output.txt · Estimado 2026-03-19'}
-          </p>
         </div>
+      </FadeSection>
+
+      {/* ── DATA BADGE ────────────────────────────────────────────────────────── */}
+      <div className="text-center">
+        <span
+          className="inline-block rounded-full px-5 py-2 text-xs font-medium text-stone-400 tracking-wide"
+          style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
+        >
+          {isEn
+            ? 'ENAHO 2005–2024 · OLS N=18 R²=0.669 · Cholesky VAR(1) T=85 · Estimated 2026-03-19'
+            : 'ENAHO 2005–2024 · MCO N=18 R²=0.669 · VAR(1) Cholesky T=85 · Estimado 2026-03-19'}
+        </span>
       </div>
+
     </div>
   );
 }
