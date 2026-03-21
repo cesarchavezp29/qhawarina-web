@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-20"
+    "updated": "2026-03-21"
   },
   "categories": {
     "arroz_cereales": {
@@ -1120,110 +1120,110 @@
     },
     {
       "date": "2026-03-20",
-      "index_all": 99.0138,
-      "index_all_unweighted": 99.2644,
-      "index_food": 99.2735,
-      "index_nonfood": 99.2491,
-      "var_all": -0.1421,
-      "var_food": -0.1757,
-      "cum_pct": -0.9862,
+      "index_all": 99.1554,
+      "index_all_unweighted": 99.4509,
+      "index_food": 99.4507,
+      "index_nonfood": 99.4631,
+      "var_all": 0.0007,
+      "var_food": 0.0025,
+      "cum_pct": -0.8446,
       "yoy_inflation": null,
-      "mom_inflation": -0.167,
+      "mom_inflation": -0.1622,
       "interpolated": false,
-      "n_matched": 40041,
-      "index_arroz_cereales": 99.1778,
-      "index_pan_harinas": 99.4044,
-      "index_carnes": 99.1123,
-      "index_pescados_mariscos": 98.814,
-      "index_lacteos": 98.637,
-      "index_frutas": 100.1634,
-      "index_verduras": 98.2345,
-      "index_aceites_grasas": 98.4564,
-      "index_azucar_dulces": 102.7067,
-      "index_bebidas": 98.9219,
-      "index_limpieza": 98.432,
-      "index_cuidado_personal": 97.9315,
-      "index_other": 100.3066
+      "n_matched": 40051,
+      "index_arroz_cereales": 99.3533,
+      "index_pan_harinas": 99.5273,
+      "index_carnes": 99.3657,
+      "index_pescados_mariscos": 98.684,
+      "index_lacteos": 98.8976,
+      "index_frutas": 100.0421,
+      "index_verduras": 98.3962,
+      "index_aceites_grasas": 98.4991,
+      "index_azucar_dulces": 102.8037,
+      "index_bebidas": 98.9677,
+      "index_limpieza": 98.6452,
+      "index_cuidado_personal": 98.0885,
+      "index_other": 100.5606
     }
   ],
   "latest": {
     "date": "2026-03-20",
-    "index_all": 99.0138,
-    "index_food": 99.2735,
-    "cum_pct": -0.9862,
-    "var_all": -0.1421,
+    "index_all": 99.1554,
+    "index_food": 99.4507,
+    "cum_pct": -0.8446,
+    "var_all": 0.0007,
     "yoy_inflation": null,
-    "mom_inflation": -0.167,
-    "n_products_today": 40041,
+    "mom_inflation": -0.1622,
+    "n_products_today": 40051,
     "top_movers": [
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.26
-      },
-      {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.26
-      },
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": -0.22
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.02
       },
       {
         "category": "arroz_cereales",
         "label_es": "Arroz y Cereales",
         "label_en": "Rice & Cereals",
-        "var": -0.19
+        "var": -0.01
+      },
+      {
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 0.01
+      },
+      {
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.0
       }
     ],
     "product_movers": [
       {
-        "name": "Zanahoria Especial x kg",
-        "store": "metro",
+        "name": "Rocoto x kg",
+        "store": "wong",
         "category": "frutas",
-        "var": 71.63
+        "var": 45.05
       },
       {
-        "name": "Orejitas Dulces Cuisine & Co 250g",
+        "name": "Torta Helada de Fresa 10 Porciones",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": 43.01
+      },
+      {
+        "name": "Pan Multigrano Victorsdou 750g",
         "store": "wong",
         "category": "pan_harinas",
-        "var": 66.67
+        "var": 23.26
       },
       {
-        "name": "Camote Amarillo Procesado x kg",
-        "store": "plazavea",
-        "category": "frutas",
-        "var": 60.74
-      },
-      {
-        "name": "Yuca x kg",
-        "store": "plazavea",
-        "category": "frutas",
-        "var": 58.32
+        "name": "Pan Brioche Victorsdou 600g",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 18.87
       }
     ],
     "stores_coverage": {
-      "metro": 12534,
-      "plazavea": 13671,
-      "wong": 15019
+      "metro": 12471,
+      "plazavea": 13548,
+      "wong": 14923
     },
     "categories_coverage": {
-      "aceites_grasas": 709,
-      "arroz_cereales": 1386,
-      "azucar_dulces": 1003,
-      "bebidas": 976,
-      "carnes": 14812,
-      "cuidado_personal": 2920,
-      "frutas": 1953,
-      "lacteos": 3038,
-      "limpieza": 3033,
-      "pan_harinas": 6643,
-      "pescados_mariscos": 237,
+      "aceites_grasas": 708,
+      "arroz_cereales": 1375,
+      "azucar_dulces": 996,
+      "bebidas": 974,
+      "carnes": 14736,
+      "cuidado_personal": 2884,
+      "frutas": 1933,
+      "lacteos": 3014,
+      "limpieza": 3007,
+      "pan_harinas": 6596,
+      "pescados_mariscos": 235,
       "verduras": 310
     }
   }
