@@ -55,6 +55,7 @@ export default function Header() {
     ["/estadisticas/pbi",            "GDP Nowcast"],
     ["/estadisticas/inflacion",      "Inflation"],
     ["/estadisticas/precios-diarios","Daily Prices (BPP)"],
+    ["/precios",                     "Product Price Tracker"],
     ["/estadisticas/pobreza",        "Poverty"],
     ["/estadisticas/riesgo-politico","Political Risk"],
     ["/estadisticas/riesgo-economico","Economic Risk"],
@@ -65,6 +66,7 @@ export default function Header() {
     ["/estadisticas/pbi",            "PBI Nowcast"],
     ["/estadisticas/inflacion",      "Inflación"],
     ["/estadisticas/precios-diarios","Precios Diarios (BPP)"],
+    ["/precios",                     "Comparador de Precios"],
     ["/estadisticas/pobreza",        "Pobreza"],
     ["/estadisticas/riesgo-politico","Riesgo Político"],
     ["/estadisticas/riesgo-economico","Riesgo Económico"],
@@ -114,6 +116,7 @@ export default function Header() {
   const researchLabel = isEn ? "Research"     : "Investigación";
   const pubsLabel     = isEn ? "Publications" : "Publicaciones";
   const dataLabel     = isEn ? "Data"         : "Datos";
+  const planesLabel   = isEn ? "Plans"        : "Planes";
   const aboutLabel    = isEn ? "About"        : "Nosotros";
 
   return (
@@ -236,7 +239,17 @@ export default function Header() {
               )}
             </div>
 
-            {/* 4. NOSOTROS */}
+            {/* 4. PLANES */}
+            <Link
+              href="/pricing"
+              className={navBtn}
+              style={isActive('/pricing') ? { color: "#C65D3E", fontWeight: 600 } : ink}
+              onClick={closeMobile}
+            >
+              {planesLabel}
+            </Link>
+
+            {/* 5. NOSOTROS */}
             <div
               className="relative"
               onMouseEnter={() => setIsAboutOpen(true)}
@@ -378,6 +391,16 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {/* Mobile: Planes */}
+            <Link
+              href="/pricing"
+              onClick={closeMobile}
+              className="block px-3 py-2 text-sm font-medium rounded-sm hover:bg-[#fdf3f0] transition-colors"
+              style={isActive('/pricing') ? { color: "#C65D3E", fontWeight: 600 } : ink}
+            >
+              {planesLabel}
+            </Link>
 
             {/* Mobile: Nosotros accordion */}
             <div>
