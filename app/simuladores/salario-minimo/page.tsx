@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import {
   BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell, ReferenceLine,
 } from 'recharts';
@@ -89,6 +90,7 @@ const NAV_CARDS = [
 ];
 
 export default function SalarioMinimoLanding() {
+  const isEn = useLocale() === 'en';
   const [heroBars, setHeroBars] = useState([0, 0, 0]);
 
   useEffect(() => {
@@ -110,22 +112,27 @@ export default function SalarioMinimoLanding() {
           className="inline-block rounded-full px-4 py-1.5 text-xs font-medium text-stone-500 tracking-wide"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}` }}
         >
-          Análisis distribucional · ENAHO 2015–2023 · INEI Perú
+          {isEn ? 'Distributional analysis · ENAHO 2015–2023 · INEI Peru' : 'Análisis distribucional · ENAHO 2015–2023 · INEI Perú'}
         </div>
 
         <div className="space-y-3">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 leading-tight tracking-tight">
-            ¿Qué pasa cuando sube<br className="hidden sm:block"/> el salario mínimo?
+            {isEn
+              ? <>What happens when<br className="hidden sm:block"/> the minimum wage rises?</>
+              : <>¿Qué pasa cuando sube<br className="hidden sm:block"/> el salario mínimo?</>}
           </h1>
           <p className="text-xl sm:text-2xl text-stone-500 font-light max-w-2xl mx-auto">
-            Perú aumentó el SM tres veces entre 2016 y 2022.
-            Analizamos qué pasó con los salarios y el empleo.
+            {isEn
+              ? 'Peru raised the MW three times between 2016 and 2022. We analyze what happened to wages and employment.'
+              : 'Perú aumentó el SM tres veces entre 2016 y 2022. Analizamos qué pasó con los salarios y el empleo.'}
           </p>
           <div className="flex gap-2 mt-2 flex-wrap justify-center">
-            <CiteButton indicator="Simulador de Salario Mínimo" isEn={false} />
+            <CiteButton indicator={isEn ? 'Minimum Wage Simulator' : 'Simulador de Salario Mínimo'} isEn={isEn} />
             <ShareButton
-              title="Salario Mínimo — Qhawarina"
-              text={"🔬 Simulador del impacto del salario mínimo en Perú | Qhawarina\nhttps://qhawarina.pe/simuladores/salario-minimo"}
+              title={isEn ? 'Minimum Wage — Qhawarina' : 'Salario Mínimo — Qhawarina'}
+              text={isEn
+                ? '🔬 Minimum wage impact simulator for Peru | Qhawarina\nhttps://qhawarina.pe/simuladores/salario-minimo'
+                : '🔬 Simulador del impacto del salario mínimo en Perú | Qhawarina\nhttps://qhawarina.pe/simuladores/salario-minimo'}
             />
           </div>
         </div>
@@ -136,7 +143,7 @@ export default function SalarioMinimoLanding() {
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
         >
           <div className="text-sm font-semibold text-stone-500 tracking-wide">
-            de empleos desplazados que reaparecen
+            {isEn ? 'of displaced jobs that reappear' : 'de empleos desplazados que reaparecen'}
           </div>
           <div className="w-full space-y-2">
             {EVENTS.map((e, i) => (
@@ -159,13 +166,15 @@ export default function SalarioMinimoLanding() {
             ))}
           </div>
           <div className="text-xs text-stone-400">
-            70–83% reaparecen · Verificado con test de falsificación
+            {isEn ? '70–83% reappear · Verified with falsification test' : '70–83% reaparecen · Verificado con test de falsificación'}
           </div>
         </div>
 
         <div className="inline-flex items-center gap-2 text-xs text-stone-400 font-medium">
           <span className="w-1.5 h-1.5 rounded-full" style={{ background: TEAL }}/>
-          Basado en ~10,000 trabajadores formales por año · ENAHO Módulo 500 2015–2023
+          {isEn
+            ? 'Based on ~10,000 formal workers per year · ENAHO Module 500 2015–2023'
+            : 'Basado en ~10,000 trabajadores formales por año · ENAHO Módulo 500 2015–2023'}
         </div>
       </section>
 
@@ -176,10 +185,14 @@ export default function SalarioMinimoLanding() {
         {/* Card: redistribution */}
         <div className="rounded-3xl p-8 space-y-4"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
-          <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Redistribución salarial</div>
+          <div className="text-xs font-bold tracking-widest uppercase text-stone-400">
+            {isEn ? 'Wage redistribution' : 'Redistribución salarial'}
+          </div>
           <div className="text-7xl font-black leading-none" style={{ color: TERRACOTTA }}>70–83%</div>
           <p className="text-base font-medium text-stone-700 leading-snug">
-            de los empleos formales desplazados reaparecen por encima del nuevo piso salarial
+            {isEn
+              ? 'of displaced formal jobs reappear above the new wage floor'
+              : 'de los empleos formales desplazados reaparecen por encima del nuevo piso salarial'}
           </p>
           <div className="h-24 -mx-2">
             <ResponsiveContainer width="100%" height="100%">
@@ -202,17 +215,23 @@ export default function SalarioMinimoLanding() {
             </ResponsiveContainer>
           </div>
           <p className="text-xs text-stone-400 leading-relaxed">
-            Test de falsificación: ratios 7× menores en umbrales ficticios · Replicado en EPE Lima (0.73–1.03)
+            {isEn
+              ? 'Falsification test: ratios 7× smaller at fictional thresholds · Replicated in EPE Lima (0.73–1.03)'
+              : 'Test de falsificación: ratios 7× menores en umbrales ficticios · Replicado en EPE Lima (0.73–1.03)'}
           </p>
         </div>
 
         {/* Card: self-employment */}
         <div className="rounded-3xl p-8 space-y-4"
           style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
-          <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Autoempleo informal</div>
+          <div className="text-xs font-bold tracking-widest uppercase text-stone-400">
+            {isEn ? 'Informal self-employment' : 'Autoempleo informal'}
+          </div>
           <div className="text-7xl font-black leading-none" style={{ color: TEAL }}>+15–21pp</div>
           <p className="text-base font-medium text-stone-700 leading-snug">
-            de autoempleo en la zona salarial afectada — los trabajadores cambian de modalidad, no desaparecen
+            {isEn
+              ? 'self-employment in the affected wage zone — workers change status, they do not disappear'
+              : 'de autoempleo en la zona salarial afectada — los trabajadores cambian de modalidad, no desaparecen'}
           </p>
           <div className="h-24 -mx-2">
             <ResponsiveContainer width="100%" height="100%">
@@ -235,7 +254,9 @@ export default function SalarioMinimoLanding() {
             </ResponsiveContainer>
           </div>
           <p className="text-xs text-stone-400 leading-relaxed">
-            Gris: % autoempleados antes · Teal: después · Zona afectada [0.85×SM_ant, SM_nuevo)
+            {isEn
+              ? 'Gray: % self-employed before · Teal: after · Affected zone [0.85×MW_old, MW_new)'
+              : 'Gris: % autoempleados antes · Teal: después · Zona afectada [0.85×SM_ant, SM_nuevo)'}
           </p>
         </div>
       </FadeSection>
@@ -245,8 +266,12 @@ export default function SalarioMinimoLanding() {
       {/* ── NAVIGATION CARDS ──────────────────────────────────────────────────── */}
       <FadeSection className="space-y-6">
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-bold text-stone-900">Explora en detalle</h2>
-          <p className="text-stone-500 text-sm">Cinco secciones. Cada una profundiza en un ángulo distinto.</p>
+          <h2 className="text-2xl font-bold text-stone-900">
+            {isEn ? 'Explore in detail' : 'Explora en detalle'}
+          </h2>
+          <p className="text-stone-500 text-sm">
+            {isEn ? 'Five sections. Each one digs into a different angle.' : 'Cinco secciones. Cada una profundiza en un ángulo distinto.'}
+          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {NAV_CARDS.map(card => (
@@ -268,7 +293,7 @@ export default function SalarioMinimoLanding() {
                 <p className="text-sm text-stone-500 mt-1 leading-relaxed">{card.desc}</p>
               </div>
               <div className="text-xs font-semibold flex items-center gap-1" style={{ color: card.color }}>
-                Ver sección <span>→</span>
+                {isEn ? 'View section' : 'Ver sección'} <span>→</span>
               </div>
             </Link>
           ))}
@@ -281,7 +306,7 @@ export default function SalarioMinimoLanding() {
           className="inline-block rounded-full px-5 py-2 text-xs font-medium text-stone-400 tracking-wide"
           style={{ background: 'rgba(0,0,0,0.025)', border: `1px solid ${CARD_BORDER}` }}
         >
-          ENAHO 2015–2023 · EPE Lima · ~10,000 trabajadores formales/año
+          ENAHO 2015–2023 · EPE Lima · ~10,000 {isEn ? 'formal workers/year' : 'trabajadores formales/año'}
         </span>
       </div>
 

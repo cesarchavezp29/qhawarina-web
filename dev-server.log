@@ -1,0 +1,461 @@
+
+> qhawarina@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.18
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.2s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 515ms (72 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 9.5s (1952 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 10228ms
+ ✓ Compiled in 866ms (886 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 47ms
+ ○ Compiling /estadisticas/riesgo-politico ...
+ ✓ Compiled /estadisticas/riesgo-politico in 945ms (1945 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ✓ Compiled in 400ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 45ms
+ ✓ Compiled in 276ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 35ms
+ ✓ Compiled in 320ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 51ms
+ ✓ Compiled in 177ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 49ms
+ ✓ Compiled in 165ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 61ms
+ ✓ Compiled in 282ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 41ms
+ ✓ Compiled in 185ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 51ms
+ ✓ Compiled in 281ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 34ms
+ ✓ Compiled in 253ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 59ms
+ ✓ Compiled in 233ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 37ms
+ ✓ Compiled in 252ms (905 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 41ms
+ ✓ Compiled in 923ms (2009 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 731ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 25ms
+ ✓ Compiled in 831ms (2009 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 567ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 25ms
+ ✓ Compiled in 824ms (2009 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 503ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /estadisticas/riesgo-politico. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /estadisticas/riesgo-politico?_rsc=1xxr5 200 in 34ms
+ ✓ Compiled in 648ms (2009 modules)
+ ✓ Compiled in 553ms (2009 modules)
+ ○ Compiling /simuladores/salario-minimo ...
+ ✓ Compiled /simuladores/salario-minimo in 1676ms (1962 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 2069ms
+ ✓ Compiled /_not-found in 358ms (1963 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/error.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773866470932 404 in 575ms
+ GET /_next/static/chunks/main-app.js?v=1773866470932 404 in 571ms
+ GET /_next/static/chunks/app/layout.js 404 in 547ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 570ms
+ GET /_next/static/chunks/app/error.js 404 in 519ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/not-found.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/app/not-found.js 404 in 31ms
+ ✓ Compiled in 1298ms (1960 modules)
+ ⨯ ./app/estadisticas/riesgo-politico/page.tsx
+Error: 
+  [31mx[0m Unexpected token `div`. Expected jsx identifier
+     ,-[[36;1;4mD:\qhawarina\app\estadisticas\riesgo-politico\page.tsx[0m:569:1]
+ [2m569[0m | 
+ [2m570[0m |   // ── Render ──────────────────────────────────────────────────────────────────
+ [2m571[0m |   return (
+ [2m572[0m |     <div className="min-h-screen py-10" style={{ backgroundColor: '#FAF8F4', backgroundImage: WATERMARK_BG }}>
+     : [31;1m     ^^^[0m
+ [2m573[0m |       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+ [2m574[0m | 
+ [2m574[0m |         {/* Breadcrumb */}
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./app/estadisticas/riesgo-politico/page.tsx
+ ✓ Compiled in 710ms (1946 modules)
+ ✓ Compiled /simuladores/salario-minimo in 249ms (1062 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 639ms
+ ✓ Compiled /_not-found in 268ms (1063 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/error.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/not-found.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773866657304 404 in 473ms
+ GET /_next/static/chunks/main-app.js?v=1773866657304 404 in 474ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 474ms
+ GET /_next/static/chunks/app/error.js 404 in 438ms
+ GET /_next/static/chunks/app/not-found.js 404 in 217ms
+ ✓ Compiled in 680ms (1977 modules)
+ ✓ Compiled in 619ms (1960 modules)
+ ✓ Compiled in 183ms (914 modules)
+ ✓ Compiled in 280ms (914 modules)
+ ✓ Compiled in 211ms (914 modules)
+ ✓ Compiled in 1166ms (1960 modules)
+ ✓ Compiled in 350ms (914 modules)
+ ✓ Compiled in 424ms (914 modules)
+ ✓ Compiled /simuladores/salario-minimo in 251ms (1062 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (D:\qhawarina\.next\server\webpack-runtime.js:33:42)
+digest: "3867891570"
+ ⨯ Internal error: Error: Could not find the module "D:\qhawarina\node_modules\next-intl\dist\esm\development\shared\NextIntlClientProvider.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:266905
+    at eN (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:267100)
+    at eF (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:268766)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265814
+    at Array.toJSON (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:266278)
+    at stringify (<anonymous>)
+    at eq (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:274646)
+    at eJ (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:275164)
+    at Timeout._onTimeout (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:264951)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+digest: "2506859683"
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (D:\qhawarina\.next\server\webpack-runtime.js:33:42)
+    at require (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:39:19927)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108279
+    at eo (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108464)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:110693
+    at Object._fromJSON (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:111249)
+    at JSON.parse (<anonymous>)
+    at eu (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108958)
+    at en (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108026)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115168
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115185
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115218
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115235
+    at t (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115458)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (D:\qhawarina\.next\server\webpack-runtime.js:33:42)
+    at require (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:39:19927)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108279
+    at eo (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108464)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:110693
+    at Object._fromJSON (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:111249)
+    at JSON.parse (<anonymous>)
+    at eu (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108958)
+    at en (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:108026)
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115168
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115185
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115218
+    at D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115235
+    at t (D:\qhawarina\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:115458) {
+  page: '/simuladores/salario-minimo'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1562ms (2187 modules)
+ GET /simuladores/salario-minimo 500 in 2338ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 303ms
+ ✓ Compiled /_not-found in 199ms (1103 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773867243971 404 in 392ms
+ GET /_next/static/chunks/main-app.js?v=1773867243971 404 in 392ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/layout.js 404 in 386ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 391ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/page.js 404 in 385ms
+ GET /_next/static/chunks/app/layout.js 404 in 381ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/error.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/not-found.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/app/error.js 404 in 39ms
+ GET /_next/static/chunks/app/not-found.js 404 in 33ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 126ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773867246985 404 in 48ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/error.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/main-app.js?v=1773867246985 404 in 139ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/page.js 404 in 137ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 139ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/layout.js 404 in 137ms
+ GET /_next/static/chunks/app/layout.js 404 in 101ms
+ GET /_next/static/chunks/app/error.js 404 in 34ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/not-found.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/app/not-found.js 404 in 65ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 91ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773867268795 404 in 33ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/main-app.js?v=1773867268795 404 in 97ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 96ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/page.js 404 in 92ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/layout.js 404 in 89ms
+ GET /_next/static/chunks/app/layout.js 404 in 88ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/error.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/not-found.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/app/error.js 404 in 38ms
+ GET /_next/static/chunks/app/not-found.js 404 in 28ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 83ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/main-app.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app-pages-internals.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/page.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/simuladores/salario-minimo/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773867269810 404 in 69ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/layout.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/main-app.js?v=1773867269810 404 in 79ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/layout.js 404 in 77ms
+ GET /_next/static/chunks/app/simuladores/salario-minimo/page.js 404 in 78ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 79ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/error.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/app/layout.js 404 in 57ms
+ GET /_next/static/chunks/app/error.js 404 in 45ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/chunks/app/not-found.js. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/chunks/app/not-found.js 404 in 45ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'D:\qhawarina\.next\server\vendor-chunks\clsx.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/clsx' in D:\qhawarina\.next\server for build dependencies doesn't lead to expected result 'D:\qhawarina\.next\server\vendor-chunks\clsx.js', but to 'Error: Can't resolve './vendor-chunks/clsx' in 'D:\qhawarina\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/clsx (expected D:\qhawarina\.next\server\vendor-chunks\clsx.js)
+<w>  at file dependencies D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file dependencies D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at resolve commonjs D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/redux-thunk' in D:\qhawarina\.next\server for build dependencies doesn't lead to expected result 'D:\qhawarina\.next\server\vendor-chunks\redux-thunk.js', but to 'Error: Can't resolve './vendor-chunks/redux-thunk' in 'D:\qhawarina\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/redux-thunk (expected D:\qhawarina\.next\server\vendor-chunks\redux-thunk.js)
+<w>  at file dependencies D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file dependencies D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at resolve commonjs D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/tiny-invariant' in D:\qhawarina\.next\server for build dependencies doesn't lead to expected result 'D:\qhawarina\.next\server\vendor-chunks\tiny-invariant.js', but to 'Error: Can't resolve './vendor-chunks/tiny-invariant' in 'D:\qhawarina\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/tiny-invariant (expected D:\qhawarina\.next\server\vendor-chunks\tiny-invariant.js)
+<w>  at file dependencies D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file dependencies D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at resolve commonjs D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/internmap' in D:\qhawarina\.next\server for build dependencies doesn't lead to expected result 'D:\qhawarina\.next\server\vendor-chunks\internmap.js', but to 'Error: Can't resolve './vendor-chunks/internmap' in 'D:\qhawarina\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/internmap (expected D:\qhawarina\.next\server\vendor-chunks\internmap.js)
+<w>  at file dependencies D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file D:\qhawarina\.next\server\webpack-runtime.js
+<w>  at file dependencies D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file D:\qhawarina\.next\server\app\simuladores\salario-minimo\page.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\require.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file D:\qhawarina\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\utils.js
+<w>  at file dependencies D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at file D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+<w>  at resolve commonjs D:\qhawarina\node_modules\next\dist\build\webpack\loaders\next-route-loader\index.js
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /simuladores/salario-minimo. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /simuladores/salario-minimo 200 in 52ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773867396886 404 in 61ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /_next/static/css/app/layout.css. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /_next/static/css/app/layout.css?v=1773867396886 404 in 94ms
+ GET /simuladores/salario-minimo 404 in 16ms
+ GET /simuladores/salario-minimo 404 in 19ms
+ GET /simuladores/salario-minimo 404 in 25ms
+^C^CTerminate batch job (Y/N)? 

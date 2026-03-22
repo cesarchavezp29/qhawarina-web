@@ -1,32 +1,32 @@
 {
   "metadata": {
-    "generated_at": "2026-03-21T21:29:18.399441",
-    "coverage_days": 444,
+    "generated_at": "2026-03-21T23:24:19.249735",
+    "coverage_days": 445,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-03-20",
-    "political_raw": 147.3,
-    "political_raw_level": "ELEVADO",
-    "political_7d": 153.1,
-    "political_level": "ALTO",
-    "political_multiplier": 1.53,
-    "economic_raw": 299.7,
-    "economic_raw_level": "CRITICO",
-    "economic_7d": 288.1,
-    "economic_level": "CRITICO",
-    "economic_multiplier": 2.88,
-    "score": 153.1,
-    "prr_7d": 153.1,
-    "prr_raw": 147.3,
-    "level": "ALTO",
-    "articles_total": 823,
+    "date": "2026-03-21",
+    "political_raw": 73.0,
+    "political_raw_level": "BAJO",
+    "political_7d": 97.0,
+    "political_level": "NORMAL",
+    "political_multiplier": 0.97,
+    "economic_raw": 100.8,
+    "economic_raw_level": "NORMAL",
+    "economic_7d": 157.0,
+    "economic_level": "ALTO",
+    "economic_multiplier": 1.57,
+    "score": 97.0,
+    "prr_7d": 97.0,
+    "prr_raw": 73.0,
+    "level": "NORMAL",
+    "articles_total": 463,
     "articles_political_relevant": 172,
     "articles_economic_relevant": 87,
-    "political_justification": "El país enfrenta un riesgo político elevado caracterizado por desafíos simultáneos a la institucionalidad: conflictos judiciales de alto perfil, cuestionamientos a la integridad ministerial y advertencias sobre potenciales vacíos de poder ejecutivo. La polarización y los desafíos directos a autoridades judiciales intensifican la inestabilidad política.",
-    "economic_justification": "La economía enfrenta presiones críticas por la crisis energética en gas natural, que amenaza cadenas productivas y costos operacionales. Simultáneamente, tensiones fiscales por gasto público, vulnerabilidad agrícola ante El Niño e incertidumbre regulatoria en minería amplían la exposición de riesgos sistémicos.",
+    "political_justification": "El Perú mantiene un nivel de riesgo político bajo, aunque con tensiones latentes. Los desafíos judiciales de figuras políticas prominentes y advertencias sobre inestabilidad presidencial generan preocupación, pero no han escalado a crisis sistémica. La situación requiere monitoreo continuo de conflictos institucionales.",
+    "economic_justification": "La economía peruana enfrenta presiones moderadas concentradas en sectores críticos. La crisis energética por el accidente en TGP genera volatilidad en costos de producción, mientras que tensiones fiscales por gasto público y amenazas regulatorias a la minería limitan el crecimiento. Riesgos climáticos adicionales podrían intensificar presiones inflacionarias.",
     "top_political_drivers": [
       {
         "title": "Se entregó expolicía prófugo vinculado con el asesinato de Andrea Vidal",
@@ -155,7 +155,7 @@
       "Más de 20 países afirman estar \"listos para contribuir\" al desbloqueo del estrecho de Ormuz tras 22 días de guerra en Medio Oriente",
       "EE. UU. asegura que ha «debilitado» el control de Irán sobre Ormuz tras su reciente ataque a la costa iraní"
     ],
-    "justification": "El país enfrenta un riesgo político elevado caracterizado por desafíos simultáneos a la institucionalidad: conflictos judiciales de alto perfil, cuestionamientos a la integridad ministerial y advertencias sobre potenciales vacíos de poder ejecutivo. La polarización y los desafíos directos a autoridades judiciales intensifican la inestabilidad política.",
+    "justification": "El Perú mantiene un nivel de riesgo político bajo, aunque con tensiones latentes. Los desafíos judiciales de figuras políticas prominentes y advertencias sobre inestabilidad presidencial generan preocupación, pero no han escalado a crisis sistémica. La situación requiere monitoreo continuo de conflictos institucionales.",
     "top_drivers": [
       {
         "title": "Se entregó expolicía prófugo vinculado con el asesinato de Andrea Vidal",
@@ -210,10 +210,10 @@
     ]
   },
   "aggregates": {
-    "political_7d_avg": 122.9,
-    "political_30d_avg": 90.8,
-    "economic_7d_avg": 174.9,
-    "economic_30d_avg": 177.1,
+    "political_7d_avg": 126.3,
+    "political_30d_avg": 86.7,
+    "economic_7d_avg": 170.8,
+    "economic_30d_avg": 179.7,
     "year_max": 309.2,
     "year_max_date": "2026-02-18"
   },
@@ -223,7 +223,7 @@
       "score": 153.1,
       "level": "ALTO",
       "n_articles": 823,
-      "summary": "Nuevo gabinete enfrenta rechazo de múltiples bancadas parlamentarias.",
+      "summary": "Nuevo Gabinete enfrenta rechazo parlamentario de múltiples bancadas.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -231,7 +231,7 @@
       "score": 166.7,
       "level": "ALTO",
       "n_articles": 582,
-      "summary": "Conflicto institucional entre poderes del Estado peruano.",
+      "summary": "Pugna entre poderes del estado debilita instituciones.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -239,7 +239,7 @@
       "score": 174.4,
       "level": "ALTO",
       "n_articles": 935,
-      "summary": "No puedo proporcionar un resumen porque las noticias mencionadas no corresponden a Perú. Las noticias sobre OTAN-Trump son internacionales, y la de cadena perpetua corresponde a",
+      "summary": "Propuesta de gestión estatal descentralizada genera conflictos institucionales.",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -247,7 +247,7 @@
       "score": 154.5,
       "level": "ALTO",
       "n_articles": 630,
-      "summary": "Incertidumbre sobre participación electoral y cumplimiento de deberes cívicos.",
+      "summary": "Ausencia de gobernanza efectiva ante migración irregular.",
       "report_url": "/political/daily-reports/2026-03-17.html"
     },
     {
@@ -255,7 +255,7 @@
       "score": 149.0,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Pugna política por control del Congreso y presidencia.",
+      "summary": "Pugna por el poder presidencial entre bloques parlamentarios.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -263,7 +263,7 @@
       "score": 219.3,
       "level": "CRITICO",
       "n_articles": 135,
-      "summary": "Debilitamiento institucional y fragmentación política en Perú.",
+      "summary": "Debilitamiento de instituciones democráticas y respeto institucional.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -271,7 +271,7 @@
       "score": 309.2,
       "level": "CRITICO",
       "n_articles": 171,
-      "summary": "Conflicto entre Congreso y ministro genera inestabilidad gubernamental.",
+      "summary": "Conflicto político entre ministro y congresistas por censura.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -279,7 +279,7 @@
       "score": 284.4,
       "level": "CRITICO",
       "n_articles": 136,
-      "summary": "Inestabilidad presidencial por debate de censura en Congreso.",
+      "summary": "Congreso debate censura del presidente en crisis política.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -287,7 +287,7 @@
       "score": 189.7,
       "level": "ALTO",
       "n_articles": 157,
-      "summary": "Desconfianza generalizada en liderazgo político actual del país.",
+      "summary": "Desconfianza generalizada en liderazgo político y fragilidad institucional del Congreso.",
       "report_url": "/political/daily-reports/2026-02-16.html"
     },
     {
@@ -295,7 +295,7 @@
       "score": 150.1,
       "level": "ALTO",
       "n_articles": 109,
-      "summary": "Investigación sobre vínculos corruptos del mandatario con empresarios chinos.",
+      "summary": "Vinculaciones sospechosas del mandatario con empresarios chinos.",
       "report_url": "/political/daily-reports/2026-01-22.html"
     }
   ],
@@ -401,6 +401,12 @@
       "dimension": "political",
       "value": 174.4,
       "label": "Gabinete Inestable"
+    },
+    {
+      "date": "2026-03-20",
+      "dimension": "economic",
+      "value": 288.1,
+      "label": "Estabilidad Energética Perú"
     }
   ],
   "daily_series": [
@@ -6175,6 +6181,19 @@
       "n_articles": 823,
       "low_coverage": false,
       "provisional": true
+    },
+    {
+      "date": "2026-03-21",
+      "political_raw": 73.0,
+      "political_7d": 97.0,
+      "economic_raw": 100.8,
+      "economic_7d": 157.0,
+      "score": 97.0,
+      "prr": 73.0,
+      "prr_7d": 97.0,
+      "n_articles": 463,
+      "low_coverage": false,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -7502,9 +7521,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 87.5,
-      "economic_avg": 229.1,
-      "n_articles": 7775,
+      "political_avg": 87.9,
+      "economic_avg": 225.6,
+      "n_articles": 8238,
       "fx_level": null,
       "fx_yoy": null
     }
