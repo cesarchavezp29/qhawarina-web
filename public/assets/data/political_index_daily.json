@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-23T21:32:22.803172",
+    "generated_at": "2026-03-23T23:04:44.052549",
     "coverage_days": 447,
     "rss_feeds": 35,
     "rss_sources": 16,
@@ -8,28 +8,53 @@
   },
   "current": {
     "date": "2026-03-23",
-    "political_raw": 114.8,
+    "political_raw": 136.2,
     "political_raw_level": "ELEVADO",
-    "political_7d": 101.3,
-    "political_level": "NORMAL",
-    "political_multiplier": 1.01,
-    "economic_raw": 124.1,
+    "political_7d": 117.2,
+    "political_level": "ELEVADO",
+    "political_multiplier": 1.17,
+    "economic_raw": 132.5,
     "economic_raw_level": "ELEVADO",
-    "economic_7d": 117.1,
+    "economic_7d": 121.9,
     "economic_level": "ELEVADO",
-    "economic_multiplier": 1.17,
-    "score": 101.3,
-    "prr_7d": 101.3,
-    "prr_raw": 114.8,
-    "level": "NORMAL",
+    "economic_multiplier": 1.22,
+    "score": 117.2,
+    "prr_7d": 117.2,
+    "prr_raw": 136.2,
+    "level": "ELEVADO",
     "articles_total": 504,
-    "articles_political_relevant": 210,
-    "articles_economic_relevant": 105,
-    "political_justification": "El país enfrenta inestabilidad institucional por la renuncia ministerial bajo presión, maniobras judiciales cuestionadas y tensiones en el Congreso que requieren negociación urgente. La polarización política se intensifica con decisiones que erosionan la confianza en instituciones clave, generando un escenario de riesgo moderadamente elevado.",
-    "economic_justification": "El riesgo económico se sitúa en nivel elevado, impulsado por conflictividad en transporte de carga, presiones inflacionarias y volatilidad en combustibles. La paralización de rutas críticas como Los Libertadores amenaza cadenas de suministro. Se suma debilidad institucional con irregularidades en gasto público que erosionan confianza en la gestión económica.",
+    "articles_political_relevant": 215,
+    "articles_economic_relevant": 113,
+    "political_justification": "El país enfrenta un riesgo político elevado impulsado por la crisis de gobernanza en el gabinete ministerial, agravada por denuncias de abuso sexual contra funcionarios de alto nivel. Simultáneamente, persisten cuestionamientos sobre la independencia judicial y la selectividad en la aplicación de la ley, erosionando la confianza institucional.",
+    "economic_justification": "El riesgo económico se sitúa en nivel elevado, impulsado por tensiones en sectores clave como minería e infraestructura vial. Los paros de transportistas y conflictividad en regiones andinas amenazan cadenas de suministro y presionan inflación. La incertidumbre regulatoria en inversión minera agrava el panorama.",
     "top_political_drivers": [
       {
         "title": "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
+        "source": "elcomercio",
+        "score": 82
+      },
+      {
+        "title": "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
+        "source": "correo",
+        "score": 82
+      },
+      {
+        "title": "Ministro Ángelo Alfaro admite que mantuvo una relación con menor de 16 años y asegura que no es delito",
+        "source": "larepublica",
+        "score": 80
+      },
+      {
+        "title": "Exministro Ángelo Alfaro admite relación amorosa con adolescente de 16 años (VIDEO)",
+        "source": "caretas",
+        "score": 80
+      },
+      {
+        "title": "JNJ bajo el mando de María Teresa Cabrera ratifica destituciones a fiscales opositores al poder de turno",
+        "source": "larepublica",
+        "score": 72
+      },
+      {
+        "title": "Ángelo Alfaro sobre denuncia de abuso sexual: “Mi único pecado ha sido enamorarme, yo no he cometido ningún delito”",
         "source": "elcomercio",
         "score": 72
       },
@@ -39,50 +64,25 @@
         "score": 72
       },
       {
+        "title": "Exministro Ángelo Alfaro responde por denuncia de presunto abuso sexual: “Mi único pecado fue enamorarme”",
+        "source": "correo",
+        "score": 72
+      },
+      {
+        "title": "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
+        "source": "caretas",
+        "score": 72
+      },
+      {
         "title": "PerúCheck: ¿Vladimir Cerrón no está obligado a entregarse a la justicia? Es falsa la afirmación del candidato",
         "source": "elcomercio",
         "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón se queda fuera del debate: TC verá su habeas corpus el 31 de marzo",
-        "source": "correo",
-        "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón no llegará al debate presidencial 2026: TC verá el habeas corpus el 31 de marzo",
-        "source": "larepublica",
-        "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón: \"Los mejores alumnos que ha tenido Perú Libre son Atencio, Roberto Sánchez y López-Chau\" [VIDEO]",
-        "source": "peru21",
-        "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón: Arequipa sigue siendo clasista y Jaime Quito es un plebeyo traidor",
-        "source": "elbuho",
-        "score": 70
-      },
-      {
-        "title": "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "JNJ bajo el mando de María Teresa Cabrera ratifica destituciones a fiscales opositores al poder de turno",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Ministro Ángelo Alfaro admite que mantuvo una relación con menor de 16 años y asegura que no es delito",
-        "source": "larepublica",
-        "score": 65
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Congresista Víctor Cutipa usa a personal legislativo hasta como animadores de campaña",
-        "source": "elcomercio",
+        "title": "El ataque del Congreso a la inversión minera formal",
+        "source": "gestion",
         "score": 65
       },
       {
@@ -96,19 +96,9 @@
         "score": 60
       },
       {
-        "title": "Transportistas de carga pesada acatarán paro indefinido desde este lunes 23 de marzo: exigen mejora de la vía Los Libertadores",
-        "source": "larepublica",
-        "score": 55
-      },
-      {
         "title": "Transportistas acatan paro en Ayacucho por vías",
         "source": "canaln",
         "score": 55
-      },
-      {
-        "title": "La inflación vuelve a ser una preocupación en el Perú",
-        "source": "gestion",
-        "score": 40
       },
       {
         "title": "Ayacucho: Medida de lucha de los transportistas paralizó comercios y transporte informal elevó sus tarifas ante la falta de servicio",
@@ -121,50 +111,87 @@
         "score": 38
       },
       {
-        "title": "Presidente Balcázar promulgará autógrafa de ley sobre trabajadores CAS",
+        "title": "Huancavelica: transportistas paralizan vía Los Libertadores y exigen intervención del MTC",
         "source": "elcomercio",
+        "score": 35
+      },
+      {
+        "title": "La inflación vuelve a ser una preocupación en el Perú",
+        "source": "gestion",
         "score": 35
       },
       {
         "title": "Transportistas anuncian paro de 48 horas por alza de combustibles en Juliaca",
         "source": "larepublica",
         "score": 35
+      },
+      {
+        "title": "Transportistas de carga pesada acatarán paro indefinido desde este lunes 23 de marzo: exigen mejora de la vía Los Libertadores",
+        "source": "larepublica",
+        "score": 35
       }
     ],
     "eco_sector_titles": [
-      "Congresista Víctor Cutipa usa a personal legislativo hasta como animadores de campaña",
+      "El ataque del Congreso a la inversión minera formal",
       "Especialista advierte falta de desglose en gasto digital de César Acuña en campaña electoral",
       "Alza de precios de combustibles, Petroperú y concesiones mineras: los temas urgentes para el nuevo ministro del Minem",
-      "El ataque del Congreso a la inversión minera formal",
-      "Transportistas de carga pesada acatarán paro indefinido desde este lunes 23 de marzo: exigen mejora de la vía Los Libertadores",
       "Transportistas acatan paro en Ayacucho por vías",
       "Waldir Ayasta Mechán es el nuevo ministro de Energía y Minas en reemplazo de Ángelo Alfaro: ¿cuál es su perfil?",
-      "La inflación vuelve a ser una preocupación en el Perú",
+      "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
       "Ayacucho: Medida de lucha de los transportistas paralizó comercios y transporte informal elevó sus tarifas ante la falta de servicio",
       "Huancavelica: bloquean carretera Los Libertadores por demora del Gobierno en asfaltar vías Rumichaca – Santa Inés",
-      "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
-      "Presidente Balcázar promulgará autógrafa de ley sobre trabajadores CAS",
-      "Transportistas anuncian paro de 48 horas por alza de combustibles en Juliaca",
-      "Congresista Aguinaga niega presión para mantener a una funcionaria de EsSalud en su cargo",
-      "Gobierno evalúa dar bono a transportistas por alza de precios de combustibles",
+      "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
       "Huancavelica: transportistas paralizan vía Los Libertadores y exigen intervención del MTC",
-      "Tributación imprevisible: cuando cumplir deja de ser suficiente",
-      "Nueva Carretera Central: Junín propone financiar obra con deuda por S/ 19,000 millones y evitar APP",
-      "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
-      "Minera Poderosa exige que presidente Balcázar se rectifique por afirmar que compra oro a extorsionadores",
+      "La inflación vuelve a ser una preocupación en el Perú",
+      "Transportistas anuncian paro de 48 horas por alza de combustibles en Juliaca",
+      "Transportistas de carga pesada acatarán paro indefinido desde este lunes 23 de marzo: exigen mejora de la vía Los Libertadores",
+      "Exministro Ángelo Alfaro admite relación amorosa con adolescente de 16 años (VIDEO)",
+      "Vía Libertadores: Buses varados por paro en Rumichaca",
       "Advierten riesgos en propuestas que impactarían la formalización minera: ¿qué hacer?",
-      "Juliaca: caen ‘Los irrecuperables’, acusados de saquear viviendas en el sur del país",
+      "Presidente Balcázar promulgará autógrafa de ley sobre trabajadores CAS",
+      "Gobierno declara en emergencia tramo de la vía Los Libertadores entre Pisco y Ayacucho",
+      "Tributación imprevisible: cuando cumplir deja de ser suficiente",
+      "Minera Poderosa exige que presidente Balcázar se rectifique por afirmar que compra oro a extorsionadores",
+      "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
+      "Gobierno evalúa dar bono a transportistas por alza de precios de combustibles",
+      "Machu Picchu: Aluvión dejó dos personas fallecidas y daños en viviendas y comercios",
+      "Tragedia en Machu Picchu: Aluvión mata a dos vecinos y deja cuantiosos daños (FOTOS)",
       "Revelan que personas con bajos recursos figuran como representantes de empresas con contratos del Estado por miles de soles",
       "Declaran en emergencia la vía Los Libertadores tras anuncio de paro indefinido por deplorable estado de la carretera",
+      "Nueva Carretera Central: Junín propone financiar obra con deuda por S/ 19,000 millones y evitar APP",
       "El oro se desploma en medio de la crisis de Oriente Próximo y ve peligrar los 4000 dólares",
-      "Vía Libertadores: Buses varados por paro en Rumichaca",
       "Línea 8 sube pasaje 60% y desata rechazo ciudadano en Juliaca",
       "Ayacucho y Huancavelica: bloquean vía Los Libertadores por mal estado de carreteras"
     ],
-    "justification": "El país enfrenta inestabilidad institucional por la renuncia ministerial bajo presión, maniobras judiciales cuestionadas y tensiones en el Congreso que requieren negociación urgente. La polarización política se intensifica con decisiones que erosionan la confianza en instituciones clave, generando un escenario de riesgo moderadamente elevado.",
+    "justification": "El país enfrenta un riesgo político elevado impulsado por la crisis de gobernanza en el gabinete ministerial, agravada por denuncias de abuso sexual contra funcionarios de alto nivel. Simultáneamente, persisten cuestionamientos sobre la independencia judicial y la selectividad en la aplicación de la ley, erosionando la confianza institucional.",
     "top_drivers": [
       {
         "title": "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
+        "source": "elcomercio",
+        "score": 82
+      },
+      {
+        "title": "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
+        "source": "correo",
+        "score": 82
+      },
+      {
+        "title": "Ministro Ángelo Alfaro admite que mantuvo una relación con menor de 16 años y asegura que no es delito",
+        "source": "larepublica",
+        "score": 80
+      },
+      {
+        "title": "Exministro Ángelo Alfaro admite relación amorosa con adolescente de 16 años (VIDEO)",
+        "source": "caretas",
+        "score": 80
+      },
+      {
+        "title": "JNJ bajo el mando de María Teresa Cabrera ratifica destituciones a fiscales opositores al poder de turno",
+        "source": "larepublica",
+        "score": 72
+      },
+      {
+        "title": "Ángelo Alfaro sobre denuncia de abuso sexual: “Mi único pecado ha sido enamorarme, yo no he cometido ningún delito”",
         "source": "elcomercio",
         "score": 72
       },
@@ -174,52 +201,27 @@
         "score": 72
       },
       {
+        "title": "Exministro Ángelo Alfaro responde por denuncia de presunto abuso sexual: “Mi único pecado fue enamorarme”",
+        "source": "correo",
+        "score": 72
+      },
+      {
+        "title": "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
+        "source": "caretas",
+        "score": 72
+      },
+      {
         "title": "PerúCheck: ¿Vladimir Cerrón no está obligado a entregarse a la justicia? Es falsa la afirmación del candidato",
         "source": "elcomercio",
         "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón se queda fuera del debate: TC verá su habeas corpus el 31 de marzo",
-        "source": "correo",
-        "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón no llegará al debate presidencial 2026: TC verá el habeas corpus el 31 de marzo",
-        "source": "larepublica",
-        "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón: \"Los mejores alumnos que ha tenido Perú Libre son Atencio, Roberto Sánchez y López-Chau\" [VIDEO]",
-        "source": "peru21",
-        "score": 70
-      },
-      {
-        "title": "Vladimir Cerrón: Arequipa sigue siendo clasista y Jaime Quito es un plebeyo traidor",
-        "source": "elbuho",
-        "score": 70
-      },
-      {
-        "title": "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "JNJ bajo el mando de María Teresa Cabrera ratifica destituciones a fiscales opositores al poder de turno",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Ministro Ángelo Alfaro admite que mantuvo una relación con menor de 16 años y asegura que no es delito",
-        "source": "larepublica",
-        "score": 65
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 131.0,
-    "political_30d_avg": 83.8,
-    "economic_7d_avg": 171.1,
-    "economic_30d_avg": 181.5,
+    "political_7d_avg": 133.7,
+    "political_30d_avg": 84.4,
+    "economic_7d_avg": 171.3,
+    "economic_30d_avg": 181.6,
     "year_max": 309.2,
     "year_max_date": "2026-02-18"
   },
@@ -229,7 +231,7 @@
       "score": 153.1,
       "level": "ALTO",
       "n_articles": 823,
-      "summary": "Nuevo gabinete enfrenta rechazo parlamentario de seis bancadas.",
+      "summary": "Nuevo gabinete rechazado por seis bancadas parlamentarias.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -237,7 +239,7 @@
       "score": 166.7,
       "level": "ALTO",
       "n_articles": 582,
-      "summary": "Conflicto político entre poder judicial y autoridades electas.",
+      "summary": "Conflicto entre poderes del Estado y corrupción política.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -245,7 +247,7 @@
       "score": 174.4,
       "level": "ALTO",
       "n_articles": 935,
-      "summary": "No puedo proporcionar un resumen ya que las noticias presentadas no corresponden a Perú en la fecha especificada.",
+      "summary": "No puedo resumir noticias del 18 de marzo de 2026 porque esa fecha está en el futuro. Mi conocimiento se detiene en abril de 2024.",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -253,7 +255,7 @@
       "score": 154.5,
       "level": "ALTO",
       "n_articles": 630,
-      "summary": "Tensiones migratorias y elecciones presidenciales generan inestabilidad regional.",
+      "summary": "Proceso electoral con multas por inasistencia al voto.",
       "report_url": "/political/daily-reports/2026-03-17.html"
     },
     {
@@ -261,7 +263,7 @@
       "score": 149.0,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Disputa partidaria sobre poder presidencial y control institucional.",
+      "summary": "Fragmentación política impide consenso institucional en Perú.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -269,7 +271,7 @@
       "score": 219.3,
       "level": "CRITICO",
       "n_articles": 135,
-      "summary": "Debilitamiento institucional democrático por retorno de Perú Libre.",
+      "summary": "Debilitamiento institucional democrático por pugna política partidaria.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -277,7 +279,7 @@
       "score": 309.2,
       "level": "CRITICO",
       "n_articles": 171,
-      "summary": "Conflicto entre el Congreso y ministro José Jerí.",
+      "summary": "Conflicto entre ejecutivo y legislativo por censura ministerial.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -285,7 +287,7 @@
       "score": 284.4,
       "level": "CRITICO",
       "n_articles": 136,
-      "summary": "Congreso debate censura presidencial ante incertidumbre sucesoria.",
+      "summary": "Inestabilidad presidencial por posible censura del Congreso.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -293,7 +295,7 @@
       "score": 189.7,
       "level": "ALTO",
       "n_articles": 157,
-      "summary": "Falta de opciones viables para reemplazar presidente censurado.",
+      "summary": "Desconfianza generalizada hacia el liderazgo político actual.",
       "report_url": "/political/daily-reports/2026-02-16.html"
     },
     {
@@ -301,7 +303,7 @@
       "score": 150.1,
       "level": "ALTO",
       "n_articles": 109,
-      "summary": "Investigación sobre reuniones del mandatario con empresarios chinos.",
+      "summary": "Escándalo de reuniones secretas con empresarios chinos involucra mandatario.",
       "report_url": "/political/daily-reports/2026-01-22.html"
     }
   ],
@@ -6203,26 +6205,26 @@
     },
     {
       "date": "2026-03-22",
-      "political_raw": 58.3,
-      "political_7d": 69.9,
-      "economic_raw": 76.2,
-      "economic_7d": 100.6,
-      "score": 69.9,
-      "prr": 58.3,
-      "prr_7d": 69.9,
+      "political_raw": 62.7,
+      "political_7d": 72.9,
+      "economic_raw": 71.2,
+      "economic_7d": 97.1,
+      "score": 72.9,
+      "prr": 62.7,
+      "prr_7d": 72.9,
       "n_articles": 464,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-23",
-      "political_raw": 114.8,
-      "political_7d": 101.3,
-      "economic_raw": 124.1,
-      "economic_7d": 117.1,
-      "score": 101.3,
-      "prr": 114.8,
-      "prr_7d": 101.3,
+      "political_raw": 136.2,
+      "political_7d": 117.2,
+      "economic_raw": 132.5,
+      "economic_7d": 121.9,
+      "score": 117.2,
+      "prr": 136.2,
+      "prr_7d": 117.2,
       "n_articles": 504,
       "low_coverage": false,
       "provisional": true
@@ -7557,8 +7559,8 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 87.7,
-      "economic_avg": 215.5,
+      "political_avg": 88.6,
+      "economic_avg": 215.6,
       "n_articles": 9209,
       "fx_level": null,
       "fx_yoy": null
