@@ -1,237 +1,264 @@
 {
   "metadata": {
-    "generated_at": "2026-03-23T23:04:44.052549",
-    "coverage_days": 447,
+    "generated_at": "2026-03-24T21:31:15.272538",
+    "coverage_days": 448,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-03-23",
-    "political_raw": 136.2,
-    "political_raw_level": "ELEVADO",
-    "political_7d": 117.2,
-    "political_level": "ELEVADO",
-    "political_multiplier": 1.17,
-    "economic_raw": 132.5,
-    "economic_raw_level": "ELEVADO",
-    "economic_7d": 121.9,
-    "economic_level": "ELEVADO",
-    "economic_multiplier": 1.22,
-    "score": 117.2,
-    "prr_7d": 117.2,
-    "prr_raw": 136.2,
-    "level": "ELEVADO",
-    "articles_total": 504,
-    "articles_political_relevant": 215,
-    "articles_economic_relevant": 113,
-    "political_justification": "El país enfrenta un riesgo político elevado impulsado por la crisis de gobernanza en el gabinete ministerial, agravada por denuncias de abuso sexual contra funcionarios de alto nivel. Simultáneamente, persisten cuestionamientos sobre la independencia judicial y la selectividad en la aplicación de la ley, erosionando la confianza institucional.",
-    "economic_justification": "El riesgo económico se sitúa en nivel elevado, impulsado por tensiones en sectores clave como minería e infraestructura vial. Los paros de transportistas y conflictividad en regiones andinas amenazan cadenas de suministro y presionan inflación. La incertidumbre regulatoria en inversión minera agrava el panorama.",
+    "date": "2026-03-24",
+    "political_raw": 167.7,
+    "political_raw_level": "ALTO",
+    "political_7d": 153.3,
+    "political_level": "ALTO",
+    "political_multiplier": 1.53,
+    "economic_raw": 192.5,
+    "economic_raw_level": "ALTO",
+    "economic_7d": 171.3,
+    "economic_level": "ALTO",
+    "economic_multiplier": 1.71,
+    "score": 153.3,
+    "prr_7d": 153.3,
+    "prr_raw": 167.7,
+    "level": "ALTO",
+    "articles_total": 641,
+    "articles_political_relevant": 283,
+    "articles_economic_relevant": 139,
+    "political_justification": "El país enfrenta un riesgo político elevado marcado por tensiones institucionales críticas: participación cuestionada de candidatos en debates, corrupción de alto nivel en juicio, y debilitamiento de instituciones clave como la Fiscalía y PNP. La violencia electoral y presuntos delitos electorales agravan la polarización.",
+    "economic_justification": "La economía peruana enfrenta presiones simultáneas en sectores clave: incertidumbre regulatoria en energía (Petroperú, gas), postergación de inversiones mineras estratégicas y disrupciones en transporte por crisis de combustibles. Estos choques de oferta y confianza empresarial generan un entorno de riesgo económico elevado.",
     "top_political_drivers": [
       {
-        "title": "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
-        "source": "elcomercio",
-        "score": 82
-      },
-      {
-        "title": "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
-        "source": "correo",
-        "score": 82
-      },
-      {
-        "title": "Ministro Ángelo Alfaro admite que mantuvo una relación con menor de 16 años y asegura que no es delito",
-        "source": "larepublica",
-        "score": 80
-      },
-      {
-        "title": "Exministro Ángelo Alfaro admite relación amorosa con adolescente de 16 años (VIDEO)",
+        "title": "Vladimir Cerrón en el debate presidencial de hoy: ¿participará? Esto es lo que dice el JNE",
         "source": "caretas",
-        "score": 80
-      },
-      {
-        "title": "JNJ bajo el mando de María Teresa Cabrera ratifica destituciones a fiscales opositores al poder de turno",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Ángelo Alfaro sobre denuncia de abuso sexual: “Mi único pecado ha sido enamorarme, yo no he cometido ningún delito”",
-        "source": "elcomercio",
-        "score": 72
-      },
-      {
-        "title": "PCM iniciará diálogo con bancadas del Congreso para asegurar voto de confianza la próxima semana",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Exministro Ángelo Alfaro responde por denuncia de presunto abuso sexual: “Mi único pecado fue enamorarme”",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
-        "source": "caretas",
-        "score": 72
-      },
-      {
-        "title": "PerúCheck: ¿Vladimir Cerrón no está obligado a entregarse a la justicia? Es falsa la afirmación del candidato",
-        "source": "elcomercio",
         "score": 70
-      }
-    ],
-    "top_economic_drivers": [
-      {
-        "title": "El ataque del Congreso a la inversión minera formal",
-        "source": "gestion",
-        "score": 65
       },
       {
-        "title": "Especialista advierte falta de desglose en gasto digital de César Acuña en campaña electoral",
+        "title": "Fiorella Molinelli irá a juicio oral por caso Chinchero: Fiscalía pide 10 años de cárcel por el presunto delito de colusión",
+        "source": "larepublica",
+        "score": 62
+      },
+      {
+        "title": "Debate presidencial arrancó con propuestas, ataques e imitaciones",
         "source": "canaln",
-        "score": 65
+        "score": 62
       },
       {
-        "title": "Alza de precios de combustibles, Petroperú y concesiones mineras: los temas urgentes para el nuevo ministro del Minem",
+        "title": "Dos muertos y dos heridos deja ataque armado contra dirigente de construcción civil en plaza de armas de Huaura",
         "source": "rpp",
-        "score": 60
+        "score": 55
       },
       {
-        "title": "Transportistas acatan paro en Ayacucho por vías",
+        "title": "Tomás Gálvez confirma que “no habrá más equipos especiales”: ¿Cuáles serán sus acciones y retos tras ser elegido fiscal de la Nación?",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "PNP dejará de informar cifras de criminalidad: Óscar Arriola anunció que ya no darán datos de homicidios",
+        "source": "larepublica",
+        "score": 55
+      },
+      {
+        "title": "Fiscalía irtervino la sede de la Municipalidad de Comas por presunto caso de coacción a trabajadores para participar en campaña electoral",
+        "source": "rpp",
+        "score": 55
+      },
+      {
+        "title": "Gálvez es elegido fiscal de la Nación en medio de críticas",
+        "source": "caretas",
+        "score": 55
+      },
+      {
+        "title": "Olivera acusa a César Acuña de liderar organización criminal",
         "source": "canaln",
         "score": 55
       },
       {
-        "title": "Ayacucho: Medida de lucha de los transportistas paralizó comercios y transporte informal elevó sus tarifas ante la falta de servicio",
+        "title": "Colegio de Abogados de Lima, IDL y CNDDHH cuestionan elección de Tomás Gálvez como fiscal de la Nación",
         "source": "elbuho",
-        "score": 40
-      },
+        "score": 52
+      }
+    ],
+    "top_economic_drivers": [
       {
-        "title": "Huancavelica: bloquean carretera Los Libertadores por demora del Gobierno en asfaltar vías Rumichaca – Santa Inés",
-        "source": "elbuho",
-        "score": 38
-      },
-      {
-        "title": "Huancavelica: transportistas paralizan vía Los Libertadores y exigen intervención del MTC",
-        "source": "elcomercio",
-        "score": 35
-      },
-      {
-        "title": "La inflación vuelve a ser una preocupación en el Perú",
+        "title": "Petroperú: Presidente Balcázar “evalúa” retroceder en su proceso de reorganización",
         "source": "gestion",
-        "score": 35
+        "score": 70
       },
       {
-        "title": "Transportistas anuncian paro de 48 horas por alza de combustibles en Juliaca",
-        "source": "larepublica",
-        "score": 35
+        "title": "Presidente Balcázar evalúa eliminar decreto de urgencia que plantea reorganización de Petroperú",
+        "source": "correo",
+        "score": 70
       },
       {
-        "title": "Transportistas de carga pesada acatarán paro indefinido desde este lunes 23 de marzo: exigen mejora de la vía Los Libertadores",
+        "title": "Gobierno evalúa derogar decreto que privatiza Petroperú: \"En los próximos días se adoptará una decisión\"",
         "source": "larepublica",
-        "score": 35
+        "score": 70
+      },
+      {
+        "title": "Teck pospone construcción del proyecto Zafranal, el más esperado por la minería después de Tía María, para priorizar inversión en Chile",
+        "source": "elcomercio",
+        "score": 60
+      },
+      {
+        "title": "Ignacio Buse y un progreso que ni una herida “en carne viva” debe frenar: las claves del gran momento del tenista peruano",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "Transportistas de Puno inician paro de 48 horas y advierten alza de pasajes por crisis de combustibles",
+        "source": "caretas",
+        "score": 55
+      },
+      {
+        "title": "TGP, Osinergmin: Cuando el gas falla, ¿quién responde?",
+        "source": "gestion",
+        "score": 50
+      },
+      {
+        "title": "Carlos Adrianzén advierte impacto en finanzas públicas por gratificaciones y CTS a trabajadores CAS",
+        "source": "canaln",
+        "score": 50
+      },
+      {
+        "title": "Puno: Transporte urbano e interprovincial acatan paralización contra la suba de combustibles",
+        "source": "correo",
+        "score": 45
+      },
+      {
+        "title": "Osinergmin rechazó prórroga solicitada por TGP para presentar el reporte sobre evento de fuerza mayor en el ducto de Camisea",
+        "source": "rpp",
+        "score": 45
       }
     ],
     "eco_sector_titles": [
-      "El ataque del Congreso a la inversión minera formal",
-      "Especialista advierte falta de desglose en gasto digital de César Acuña en campaña electoral",
-      "Alza de precios de combustibles, Petroperú y concesiones mineras: los temas urgentes para el nuevo ministro del Minem",
-      "Transportistas acatan paro en Ayacucho por vías",
-      "Waldir Ayasta Mechán es el nuevo ministro de Energía y Minas en reemplazo de Ángelo Alfaro: ¿cuál es su perfil?",
-      "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
-      "Ayacucho: Medida de lucha de los transportistas paralizó comercios y transporte informal elevó sus tarifas ante la falta de servicio",
-      "Huancavelica: bloquean carretera Los Libertadores por demora del Gobierno en asfaltar vías Rumichaca – Santa Inés",
-      "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
-      "Huancavelica: transportistas paralizan vía Los Libertadores y exigen intervención del MTC",
-      "La inflación vuelve a ser una preocupación en el Perú",
-      "Transportistas anuncian paro de 48 horas por alza de combustibles en Juliaca",
-      "Transportistas de carga pesada acatarán paro indefinido desde este lunes 23 de marzo: exigen mejora de la vía Los Libertadores",
-      "Exministro Ángelo Alfaro admite relación amorosa con adolescente de 16 años (VIDEO)",
-      "Vía Libertadores: Buses varados por paro en Rumichaca",
-      "Advierten riesgos en propuestas que impactarían la formalización minera: ¿qué hacer?",
-      "Presidente Balcázar promulgará autógrafa de ley sobre trabajadores CAS",
-      "Gobierno declara en emergencia tramo de la vía Los Libertadores entre Pisco y Ayacucho",
-      "Tributación imprevisible: cuando cumplir deja de ser suficiente",
-      "Minera Poderosa exige que presidente Balcázar se rectifique por afirmar que compra oro a extorsionadores",
-      "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
-      "Gobierno evalúa dar bono a transportistas por alza de precios de combustibles",
-      "Machu Picchu: Aluvión dejó dos personas fallecidas y daños en viviendas y comercios",
-      "Tragedia en Machu Picchu: Aluvión mata a dos vecinos y deja cuantiosos daños (FOTOS)",
-      "Revelan que personas con bajos recursos figuran como representantes de empresas con contratos del Estado por miles de soles",
-      "Declaran en emergencia la vía Los Libertadores tras anuncio de paro indefinido por deplorable estado de la carretera",
-      "Nueva Carretera Central: Junín propone financiar obra con deuda por S/ 19,000 millones y evitar APP",
-      "El oro se desploma en medio de la crisis de Oriente Próximo y ve peligrar los 4000 dólares",
-      "Línea 8 sube pasaje 60% y desata rechazo ciudadano en Juliaca",
-      "Ayacucho y Huancavelica: bloquean vía Los Libertadores por mal estado de carreteras"
+      "Petroperú: Presidente Balcázar “evalúa” retroceder en su proceso de reorganización",
+      "Presidente Balcázar evalúa eliminar decreto de urgencia que plantea reorganización de Petroperú",
+      "Gobierno evalúa derogar decreto que privatiza Petroperú: \"En los próximos días se adoptará una decisión\"",
+      "Teck pospone construcción del proyecto Zafranal, el más esperado por la minería después de Tía María, para priorizar inversión en Chile",
+      "Ignacio Buse y un progreso que ni una herida “en carne viva” debe frenar: las claves del gran momento del tenista peruano",
+      "Agricultores del Valle de Tambo bloquean la Panamericana Sur",
+      "Transportistas de Puno inician paro de 48 horas y advierten alza de pasajes por crisis de combustibles",
+      "TGP, Osinergmin: Cuando el gas falla, ¿quién responde?",
+      "Carlos Adrianzén advierte impacto en finanzas públicas por gratificaciones y CTS a trabajadores CAS",
+      "Puno: Transporte urbano e interprovincial acatan paralización contra la suba de combustibles",
+      "Paro por la vía Los Libertadores continúa y presionan al Gobierno",
+      "Osinergmin rechazó prórroga solicitada por TGP para presentar el reporte sobre evento de fuerza mayor en el ducto de Camisea",
+      "Productores de arroz anuncian paro si no declaran al sector en emergencia",
+      "Mega Millions: cómo jugar, premios y resultados del martes 24 de marzo",
+      "San Ignacio: alertan avance de minería ilegal y escasa respuesta por parte de las autoridades",
+      "Transportistas protestan en Pisco e Ilo por alza del precio del combustible",
+      "Contraloría alerta desabastecimiento de fórmulas nutricionales en hospital del Callao",
+      "CAS con “grati” y CTS: Gobierno promulga ley pese a cuestionamientos por alto costo",
+      "Continúa bloqueada vía Libertadores en Huancavelica: los detalles",
+      "El Niño “no viene solo”: alza de fletes y de precios de fertilizantes también amenazan al agro",
+      "La Libertad: Empresarios rechazan modificar régimen de concesiones mineras",
+      "El precio de los alimentos aumenta en 50 % en Piura por alza de combustible",
+      "Congreso aprobó 25 leyes con nuevos beneficios tributarios a empresas en cuatro años: ¿a qué sectores favorecieron?",
+      "Asbanc: El populismo financiero abre las puertas al “gota a gota” y a la inseguridad",
+      "Puno: Transportistas y comuneros bloquean vía por precio de combustible",
+      "Luis Miguel Inchaustegui critica designaciones sin evaluación en Energía y Minas",
+      "Gobierno promulga ley que otorga gratificaciones y CTS a trabajadores CAS",
+      "Petroperú y los 9 beneficios extras a sus trabajadores, ¿podrían renegociarse?",
+      "Alza de combustible abre debate sobre aumento de sueldo y ministro de Trabajo evalúa medidas (VIDEO)",
+      "Transportistas del Cono Norte paralizan el servicio y miles de usuarios se perjudican",
+      "Comunidades mantienen bloqueada la vía en Rumichaca y exigen el asfaltado en vía Libertadores",
+      "Segundo día de paro en Huamanga: comerciantes abrieron sus negocios y algunos mercados permanecieron cerrados",
+      "Hospital Daniel A. Carrión en crisis",
+      "¿El fracaso del SIT? Zonas de Arequipa desabastecidas tras ‘apagado de motores’ de transporte",
+      "Precio del oro se mantiene estable tras nueve días de pérdidas provocadas por la guerra con Irán",
+      "Lima pierde 250.000 trabajadores por el aumento del tráfico: la congestión en cifras y cómo estamos frente a la región",
+      "Qatar informa que su capacidad de exportación de gas ha quedado afectada a largo plazo",
+      "Indecopi inicia investigación por dumping de neumáticos chinos tras denuncia de Goodyear",
+      "El clima ya golpea las finanzas: cómo blindar la rentabilidad empresarial",
+      "La Libertad: En 2025 tasa de informalidad laboral fue de 72.6%",
+      "Lambayeque: Alertan falta de medicinas en EsSalud para casos de VIH y cáncer",
+      "Decano de Abogados: No existe sustento legal para el alza de pasajes en Arequipa",
+      "Usuarios reclaman por cobros elevados en Piura",
+      "Junín: 15 mil comuneros en marcha de sacrificio por represamiento de Conacocha y Yahuarcocha",
+      "Fiorella Molinelli irá a juicio oral por caso Chinchero: Fiscalía pide 10 años de cárcel por el presunto delito de colusión",
+      "Falta de medicinas expone a pacientes con TBC resistente a graves secuelas",
+      "Corrupción genera pérdidas por S/ 24,268 millones anuales al Estado peruano",
+      "Cortes de electricidad este 25 de marzo: conoce qué distritos afectará",
+      "Atención pasajeros de Arequipa: aprueban nuevo pasaje de transporte, aquí detalles"
     ],
-    "justification": "El país enfrenta un riesgo político elevado impulsado por la crisis de gobernanza en el gabinete ministerial, agravada por denuncias de abuso sexual contra funcionarios de alto nivel. Simultáneamente, persisten cuestionamientos sobre la independencia judicial y la selectividad en la aplicación de la ley, erosionando la confianza institucional.",
+    "justification": "El país enfrenta un riesgo político elevado marcado por tensiones institucionales críticas: participación cuestionada de candidatos en debates, corrupción de alto nivel en juicio, y debilitamiento de instituciones clave como la Fiscalía y PNP. La violencia electoral y presuntos delitos electorales agravan la polarización.",
     "top_drivers": [
       {
-        "title": "Ángelo Alfaro renuncia al cargo de ministro de Energía y Minas, informa la Presidencia",
-        "source": "elcomercio",
-        "score": 82
-      },
-      {
-        "title": "Ángelo Alfaro renuncia al Ministerio de Energía y Minas en medio de denuncia por abuso sexual",
-        "source": "correo",
-        "score": 82
-      },
-      {
-        "title": "Ministro Ángelo Alfaro admite que mantuvo una relación con menor de 16 años y asegura que no es delito",
-        "source": "larepublica",
-        "score": 80
-      },
-      {
-        "title": "Exministro Ángelo Alfaro admite relación amorosa con adolescente de 16 años (VIDEO)",
+        "title": "Vladimir Cerrón en el debate presidencial de hoy: ¿participará? Esto es lo que dice el JNE",
         "source": "caretas",
-        "score": 80
-      },
-      {
-        "title": "JNJ bajo el mando de María Teresa Cabrera ratifica destituciones a fiscales opositores al poder de turno",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Ángelo Alfaro sobre denuncia de abuso sexual: “Mi único pecado ha sido enamorarme, yo no he cometido ningún delito”",
-        "source": "elcomercio",
-        "score": 72
-      },
-      {
-        "title": "PCM iniciará diálogo con bancadas del Congreso para asegurar voto de confianza la próxima semana",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Exministro Ángelo Alfaro responde por denuncia de presunto abuso sexual: “Mi único pecado fue enamorarme”",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Renuncia en el Minem: sale Ángelo Alfaro del gabinete",
-        "source": "caretas",
-        "score": 72
-      },
-      {
-        "title": "PerúCheck: ¿Vladimir Cerrón no está obligado a entregarse a la justicia? Es falsa la afirmación del candidato",
-        "source": "elcomercio",
         "score": 70
+      },
+      {
+        "title": "Fiorella Molinelli irá a juicio oral por caso Chinchero: Fiscalía pide 10 años de cárcel por el presunto delito de colusión",
+        "source": "larepublica",
+        "score": 62
+      },
+      {
+        "title": "Debate presidencial arrancó con propuestas, ataques e imitaciones",
+        "source": "canaln",
+        "score": 62
+      },
+      {
+        "title": "Dos muertos y dos heridos deja ataque armado contra dirigente de construcción civil en plaza de armas de Huaura",
+        "source": "rpp",
+        "score": 55
+      },
+      {
+        "title": "Tomás Gálvez confirma que “no habrá más equipos especiales”: ¿Cuáles serán sus acciones y retos tras ser elegido fiscal de la Nación?",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "PNP dejará de informar cifras de criminalidad: Óscar Arriola anunció que ya no darán datos de homicidios",
+        "source": "larepublica",
+        "score": 55
+      },
+      {
+        "title": "Fiscalía irtervino la sede de la Municipalidad de Comas por presunto caso de coacción a trabajadores para participar en campaña electoral",
+        "source": "rpp",
+        "score": 55
+      },
+      {
+        "title": "Gálvez es elegido fiscal de la Nación en medio de críticas",
+        "source": "caretas",
+        "score": 55
+      },
+      {
+        "title": "Olivera acusa a César Acuña de liderar organización criminal",
+        "source": "canaln",
+        "score": 55
+      },
+      {
+        "title": "Colegio de Abogados de Lima, IDL y CNDDHH cuestionan elección de Tomás Gálvez como fiscal de la Nación",
+        "source": "elbuho",
+        "score": 52
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 133.7,
-    "political_30d_avg": 84.4,
-    "economic_7d_avg": 171.3,
-    "economic_30d_avg": 181.6,
+    "political_7d_avg": 133.9,
+    "political_30d_avg": 86.6,
+    "economic_7d_avg": 178.4,
+    "economic_30d_avg": 185.5,
     "year_max": 309.2,
     "year_max_date": "2026-02-18"
   },
   "major_events": [
     {
+      "date": "2026-03-24",
+      "score": 153.3,
+      "level": "ALTO",
+      "n_articles": 641,
+      "summary": "Polarización electoral en el proceso de elecciones presidenciales.",
+      "report_url": "/political/daily-reports/2026-03-24.html"
+    },
+    {
       "date": "2026-03-20",
       "score": 153.1,
       "level": "ALTO",
       "n_articles": 823,
-      "summary": "Nuevo gabinete rechazado por seis bancadas parlamentarias.",
+      "summary": "Nuevo gabinete carece de apoyo parlamentario mayoritario.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -239,7 +266,7 @@
       "score": 166.7,
       "level": "ALTO",
       "n_articles": 582,
-      "summary": "Conflicto entre poderes del Estado y corrupción política.",
+      "summary": "Conflictos políticos y corrupción debilitan instituciones peruanas.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -247,7 +274,7 @@
       "score": 174.4,
       "level": "ALTO",
       "n_articles": 935,
-      "summary": "No puedo resumir noticias del 18 de marzo de 2026 porque esa fecha está en el futuro. Mi conocimiento se detiene en abril de 2024.",
+      "summary": "No puedo proporcionar un resumen porque las noticias mencionadas no corresponden a Perú. Dos son sobre EE.UU./Europa y una sobre El Salvador. Para resumir la inestabilidad",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -255,7 +282,7 @@
       "score": 154.5,
       "level": "ALTO",
       "n_articles": 630,
-      "summary": "Proceso electoral con multas por inasistencia al voto.",
+      "summary": "Ausencia de consenso electoral y enforcement coercitivo.",
       "report_url": "/political/daily-reports/2026-03-17.html"
     },
     {
@@ -263,7 +290,7 @@
       "score": 149.0,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Fragmentación política impide consenso institucional en Perú.",
+      "summary": "Conflicto parlamentario por poder ejecutivo y judicial.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -271,7 +298,7 @@
       "score": 219.3,
       "level": "CRITICO",
       "n_articles": 135,
-      "summary": "Debilitamiento institucional democrático por pugna política partidaria.",
+      "summary": "Debilitamiento de instituciones democráticas y fragmentación política.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -279,7 +306,7 @@
       "score": 309.2,
       "level": "CRITICO",
       "n_articles": 171,
-      "summary": "Conflicto entre ejecutivo y legislativo por censura ministerial.",
+      "summary": "Conflicto entre el Congreso y funcionarios del gobierno.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -287,7 +314,7 @@
       "score": 284.4,
       "level": "CRITICO",
       "n_articles": 136,
-      "summary": "Inestabilidad presidencial por posible censura del Congreso.",
+      "summary": "Congreso debate censura del presidente en horas decisivas.",
       "report_url": "/political/daily-reports/2026-02-17.html"
     },
     {
@@ -295,16 +322,8 @@
       "score": 189.7,
       "level": "ALTO",
       "n_articles": 157,
-      "summary": "Desconfianza generalizada hacia el liderazgo político actual.",
+      "summary": "Desconfianza ciudadana en liderazgo político y debilidad institucional.",
       "report_url": "/political/daily-reports/2026-02-16.html"
-    },
-    {
-      "date": "2026-01-22",
-      "score": 150.1,
-      "level": "ALTO",
-      "n_articles": 109,
-      "summary": "Escándalo de reuniones secretas con empresarios chinos involucra mandatario.",
-      "report_url": "/political/daily-reports/2026-01-22.html"
     }
   ],
   "peak_events": [
@@ -6188,44 +6207,57 @@
       "prr_7d": 153.1,
       "n_articles": 823,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-03-21",
-      "political_raw": 72.8,
-      "political_7d": 96.9,
-      "economic_raw": 101.6,
-      "economic_7d": 157.6,
-      "score": 96.9,
-      "prr": 72.8,
-      "prr_7d": 96.9,
-      "n_articles": 466,
+      "political_raw": 72.9,
+      "political_7d": 97.0,
+      "economic_raw": 105.8,
+      "economic_7d": 160.5,
+      "score": 97.0,
+      "prr": 72.9,
+      "prr_7d": 97.0,
+      "n_articles": 469,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-22",
-      "political_raw": 62.7,
-      "political_7d": 72.9,
-      "economic_raw": 71.2,
-      "economic_7d": 97.1,
-      "score": 72.9,
-      "prr": 62.7,
-      "prr_7d": 72.9,
-      "n_articles": 464,
+      "political_raw": 62.5,
+      "political_7d": 72.8,
+      "economic_raw": 71.0,
+      "economic_7d": 97.9,
+      "score": 72.8,
+      "prr": 62.5,
+      "prr_7d": 72.8,
+      "n_articles": 467,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-23",
-      "political_raw": 136.2,
-      "political_7d": 117.2,
-      "economic_raw": 132.5,
-      "economic_7d": 121.9,
-      "score": 117.2,
-      "prr": 136.2,
-      "prr_7d": 117.2,
-      "n_articles": 504,
+      "political_raw": 139.8,
+      "political_7d": 119.7,
+      "economic_raw": 132.0,
+      "economic_7d": 121.7,
+      "score": 119.7,
+      "prr": 139.8,
+      "prr_7d": 119.7,
+      "n_articles": 510,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-03-24",
+      "political_raw": 167.7,
+      "political_7d": 153.3,
+      "economic_raw": 192.5,
+      "economic_7d": 171.3,
+      "score": 153.3,
+      "prr": 167.7,
+      "prr_7d": 153.3,
+      "n_articles": 641,
       "low_coverage": false,
       "provisional": true
     }
@@ -7442,6 +7474,10 @@
     {
       "date": "2026-03-20",
       "fx": 3.4773
+    },
+    {
+      "date": "2026-03-23",
+      "fx": 3.4559
     }
   ],
   "monthly_series": [
@@ -7559,9 +7595,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 88.6,
-      "economic_avg": 215.6,
-      "n_articles": 9209,
+      "political_avg": 91.4,
+      "economic_avg": 213.9,
+      "n_articles": 9862,
       "fx_level": null,
       "fx_yoy": null
     }
