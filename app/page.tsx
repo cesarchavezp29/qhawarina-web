@@ -87,7 +87,10 @@ export default function HomePage() {
           <div className="flex items-center gap-2 mb-5">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
               style={{ background: '#C65D3E18', color: '#C65D3E', border: '1px solid #C65D3E30' }}>
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-current" style={{ animation: 'pulse 2s infinite' }} />
+              <span className="relative inline-flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#C65D3E' }} />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-current" />
+              </span>
               {(() => {
                 const t = pipelineStatus?.run_time
                   ? new Date(pipelineStatus.run_time).toLocaleTimeString('en-US', {
