@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-25T03:16:42.651959",
+    "generated_at": "2026-03-25T21:33:57.128983",
     "coverage_days": 449,
     "rss_feeds": 35,
     "rss_sources": 16,
@@ -8,46 +8,252 @@
   },
   "current": {
     "date": "2026-03-25",
-    "political_raw": 32.5,
-    "political_raw_level": "MINIMO",
-    "political_7d": 68.7,
-    "political_level": "BAJO",
-    "political_multiplier": 0.69,
-    "economic_raw": 29.8,
-    "economic_raw_level": "MINIMO",
-    "economic_7d": 72.2,
-    "economic_level": "BAJO",
-    "economic_multiplier": 0.72,
-    "score": 68.7,
-    "prr_7d": 68.7,
-    "prr_raw": 32.5,
-    "level": "BAJO",
-    "articles_total": 91,
-    "articles_political_relevant": 40,
-    "articles_economic_relevant": 15,
-    "political_justification": null,
-    "economic_justification": null,
-    "top_political_drivers": [],
-    "top_economic_drivers": [],
-    "eco_sector_titles": [],
-    "justification": null,
-    "top_drivers": []
+    "political_raw": 209.9,
+    "political_raw_level": "CRITICO",
+    "political_7d": 193.1,
+    "political_level": "ALTO",
+    "political_multiplier": 1.93,
+    "economic_raw": 183.5,
+    "economic_raw_level": "ALTO",
+    "economic_7d": 179.7,
+    "economic_level": "ALTO",
+    "economic_multiplier": 1.8,
+    "score": 193.1,
+    "prr_7d": 193.1,
+    "prr_raw": 209.9,
+    "level": "ALTO",
+    "articles_total": 602,
+    "articles_political_relevant": 304,
+    "articles_economic_relevant": 143,
+    "political_justification": "El país enfrenta una crisis política severa caracterizada por violencia electoral contra candidatos, la participación de prófugos en procesos electorales y debilidad institucional en investigaciones de muertes sospechosas. La convergencia de amenazas a candidatos, conflictos judiciales de alto nivel y polarización extrema genera un entorno de riesgo crítico para la gobernanza democrática.",
+    "economic_justification": "El sector energético enfrenta presiones críticas: Petroperú requiere rescate fiscal masivo mientras proyectos gasíferos permanecen paralizados por conflictos sociales irresueltos. Simultáneamente, disputas regulatorias con concesionarios y erosión tributaria amplían el déficit fiscal, generando vulnerabilidad macroeconómica significativa.",
+    "top_political_drivers": [
+      {
+        "title": "Asesinan a candidato a diputado del Partido FE tras amenazas en Lima",
+        "source": "caretas",
+        "score": 78
+      },
+      {
+        "title": "Asesinan a candidato a diputado del partido Fe en el Perú en Chorrillos quien ya había recibido amenazas",
+        "source": "elbuho",
+        "score": 78
+      },
+      {
+        "title": "Asesinan a Gilbert Infante, candidato a diputado del partido Fe en el Perú",
+        "source": "elcomercio",
+        "score": 75
+      },
+      {
+        "title": "Gilbert Infante, candidato a diputado del partido Fe en el Perú, fue asesinado en Chorrillos, según Álvaro Paz de la Barra",
+        "source": "rpp",
+        "score": 72
+      },
+      {
+        "title": "Candidato a diputado, Gilbert Infante, habría muerto en extrañas circunstancias",
+        "source": "peru21",
+        "score": 72
+      },
+      {
+        "title": "Prófugo Vladimir Cerrón figura en terna de candidatos presidenciales que debaten esta noche",
+        "source": "elcomercio",
+        "score": 70
+      },
+      {
+        "title": "Vladimir Cerrón participa en el debate vía Twitter y arremete contra Fiorella Molinelli",
+        "source": "caretas",
+        "score": 70
+      },
+      {
+        "title": "PNP investiga deceso de candidato Gilbert Infante: \"Es una muerte sospechosa, pero hasta el momento no tenemos un agente causante externo\"",
+        "source": "rpp",
+        "score": 68
+      },
+      {
+        "title": "Hijo de clonador de placas implica a su padre con asesinos de Andrea Vidal",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "TC rechaza pedido de Pedro Castillo: ¿Cuál es la situación de los recursos contra la sentencia por el ‘Golpe de Estado’?",
+        "source": "elcomercio",
+        "score": 65
+      }
+    ],
+    "top_economic_drivers": [
+      {
+        "title": "Petro-Perú: Gobierno pondría fin a la reorganización de la estatal y otorgaría un salvataje por más de US$2.000 millones",
+        "source": "elcomercio",
+        "score": 85
+      },
+      {
+        "title": "Contraloría: proyecto de petróleo y gas natural en Lote Z-6 lleva más de 13 años paralizado",
+        "source": "peru21",
+        "score": 80
+      },
+      {
+        "title": "Gas natural: proyecto en Lote Z-6 permanece paralizado más de 13 años por conflicto social no resuelto",
+        "source": "caretas",
+        "score": 80
+      },
+      {
+        "title": "Aval a Petroperú y derogatoria del decreto: ¿qué se discutió en la reunión de Balcázar con gremios?",
+        "source": "larepublica",
+        "score": 75
+      },
+      {
+        "title": "Petro-Perú: Balcázar evalúa posible derogatoria del decreto de urgencia sobre reorganización de la petrolera estatal",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Osinergmin rechazó extensión del plazo para que TGP sustente que crisis fue por “fuerza mayor”",
+        "source": "gestion",
+        "score": 65
+      },
+      {
+        "title": "Perú deja de recaudar S/27.000 millones al año por beneficios tributarios aprobados por el Congreso que favorecen a grandes empresas",
+        "source": "larepublica",
+        "score": 55
+      },
+      {
+        "title": "Concesionario de ductos de Camisea no acreditó condiciones excepcionales",
+        "source": "andina",
+        "score": 55
+      },
+      {
+        "title": "Leyes aprobadas por el Congreso y nuevos fondos a Petro-Perú pondrían presión sobre el déficit fiscal, según Scotiabank",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "Osinergmin rechaza prórroga que pidió TGP, concesionario de Camisea, por falta de sustento",
+        "source": "elcomercio",
+        "score": 55
+      }
+    ],
+    "eco_sector_titles": [
+      "Petro-Perú: Gobierno pondría fin a la reorganización de la estatal y otorgaría un salvataje por más de US$2.000 millones",
+      "Contraloría: proyecto de petróleo y gas natural en Lote Z-6 lleva más de 13 años paralizado",
+      "Gas natural: proyecto en Lote Z-6 permanece paralizado más de 13 años por conflicto social no resuelto",
+      "Aval a Petroperú y derogatoria del decreto: ¿qué se discutió en la reunión de Balcázar con gremios?",
+      "Petro-Perú: Balcázar evalúa posible derogatoria del decreto de urgencia sobre reorganización de la petrolera estatal",
+      "Osinergmin rechazó extensión del plazo para que TGP sustente que crisis fue por “fuerza mayor”",
+      "Perú deja de recaudar S/27.000 millones al año por beneficios tributarios aprobados por el Congreso que favorecen a grandes empresas",
+      "Concesionario de ductos de Camisea no acreditó condiciones excepcionales",
+      "Leyes aprobadas por el Congreso y nuevos fondos a Petro-Perú pondrían presión sobre el déficit fiscal, según Scotiabank",
+      "Osinergmin rechaza prórroga que pidió TGP, concesionario de Camisea, por falta de sustento",
+      "Suspenden paro indefinido en Ayacucho tras acuerdos con transportistas",
+      "Transportistas de carga pesada suspenden paro indefinido en Ayacucho tras acuerdo de 10 días con el Gobierno Regional",
+      "Deflagración en Camisea en Cusco reabre debate por rol del Estado y olvido a comunidad de Megatoni",
+      "IIMP: modificación del régimen de concesiones mineras desalentaría inversión",
+      "Cambios a la Ley de Minería abren debate sobre el futuro de la inversión en el Perú",
+      "Protestantes bloquean puente de Ilave y paralizan vía hacia Bolivia",
+      "Fenómeno El Niño, ¿cuánto caerían los  ingresos de los hogares sin acceso al crédito?",
+      "Essalud: inestabilidad y uso político agravan la crisis del servicio",
+      "Puno: transportistas acatan segundo día de paro y anuncian alza de pasajes (VIDEO)",
+      "BCR prevé mayor inflación en marzo por gasoducto de Camisea y guerra en Medio Oriente",
+      "Sunass: más de 700 mil personas sin agua potable en Lima y Callao",
+      "Huánuco cumple tres días sin agua tras huaico y vecinos exigen renuncia de directivos de Seda",
+      "Transportistas paralizan Puno para justificar suba de pasajes por incremento en precio de combustible",
+      "Precios del oro y plata a la bajo presión por inicio de la guerra en Medio Oriente",
+      "Sin mayoría en el Senado, el próximo gobierno enfrentará el mismo ciclo de crisis otros 5 años",
+      "Tráfico de drogas, trata y minería ilegal: las economías criminales detrás de la inseguridad ciudadana",
+      "Ambulantes de Gamarra intentaron tomar av. Aviación tras desalojo: cierran vías alrededor de emporio comercial",
+      "Se restablece abastecimiento de crudo a la refinería Iquitos",
+      "Perú enfrenta crisis de seguridad con avance del crimen organizado y expertos proponen reformas",
+      "Extorsionadores exigen S/10.000 a directora de colegio público de SMP y obligan a suspender las clases presenciales",
+      "Petróleo y el oro: precios rebotan y cierran con ganancias, ¿cómo impacta al Perú?",
+      "Desprendimiento glaciar en Huaytapallana causaría desembalse de 1.5 MMC de agua",
+      "Asesinan a Gilbert Infante, candidato a diputado del partido Fe en el Perú",
+      "Sunat: detectan S/ 3,195 millones en operaciones con facturas sin sustento",
+      "SMP: Colegio suspende clases presenciales tras amenazas de extorsionadores que exigen cobro de cupos",
+      "Alza de diésel genera conflictos entre usuarios y transportistas en Huancayo",
+      "Ayacucho: Transportistas lanzan basura a Wilfredo Oscorima y gobernador tuvo que irse resguardado",
+      "Tres atentados contra el transporte público en Lima: un chofer asesinado y varios heridos en una sola noche",
+      "Asesinan a candidato a diputado del Partido FE tras amenazas en Lima",
+      "El petróleo retoma la senda alcista y vuelve a superar los 100 dólares por barril",
+      "Transportistas cuestionan acuerdo tras reunión con gobernador Wilfredo Oscorima",
+      "Suspensión de paro reactiva viajes interprovinciales y dispara demanda de pasajes en Ayacucho",
+      "Huánuco: Contraloría advierte liquidación de obra incompleta en Monzón que eleva riesgo de desbordes",
+      "Panificadores en Cusco evalúan subir precio del pan por alza de insumos"
+    ],
+    "justification": "El país enfrenta una crisis política severa caracterizada por violencia electoral contra candidatos, la participación de prófugos en procesos electorales y debilidad institucional en investigaciones de muertes sospechosas. La convergencia de amenazas a candidatos, conflictos judiciales de alto nivel y polarización extrema genera un entorno de riesgo crítico para la gobernanza democrática.",
+    "top_drivers": [
+      {
+        "title": "Asesinan a candidato a diputado del Partido FE tras amenazas en Lima",
+        "source": "caretas",
+        "score": 78
+      },
+      {
+        "title": "Asesinan a candidato a diputado del partido Fe en el Perú en Chorrillos quien ya había recibido amenazas",
+        "source": "elbuho",
+        "score": 78
+      },
+      {
+        "title": "Asesinan a Gilbert Infante, candidato a diputado del partido Fe en el Perú",
+        "source": "elcomercio",
+        "score": 75
+      },
+      {
+        "title": "Gilbert Infante, candidato a diputado del partido Fe en el Perú, fue asesinado en Chorrillos, según Álvaro Paz de la Barra",
+        "source": "rpp",
+        "score": 72
+      },
+      {
+        "title": "Candidato a diputado, Gilbert Infante, habría muerto en extrañas circunstancias",
+        "source": "peru21",
+        "score": 72
+      },
+      {
+        "title": "Prófugo Vladimir Cerrón figura en terna de candidatos presidenciales que debaten esta noche",
+        "source": "elcomercio",
+        "score": 70
+      },
+      {
+        "title": "Vladimir Cerrón participa en el debate vía Twitter y arremete contra Fiorella Molinelli",
+        "source": "caretas",
+        "score": 70
+      },
+      {
+        "title": "PNP investiga deceso de candidato Gilbert Infante: \"Es una muerte sospechosa, pero hasta el momento no tenemos un agente causante externo\"",
+        "source": "rpp",
+        "score": 68
+      },
+      {
+        "title": "Hijo de clonador de placas implica a su padre con asesinos de Andrea Vidal",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "TC rechaza pedido de Pedro Castillo: ¿Cuál es la situación de los recursos contra la sentencia por el ‘Golpe de Estado’?",
+        "source": "elcomercio",
+        "score": 65
+      }
+    ]
   },
   "aggregates": {
-    "political_7d_avg": 118.8,
-    "political_30d_avg": 86.3,
-    "economic_7d_avg": 167.5,
-    "economic_30d_avg": 185.4,
+    "political_7d_avg": 136.6,
+    "political_30d_avg": 90.4,
+    "economic_7d_avg": 182.8,
+    "economic_30d_avg": 189.0,
     "year_max": 309.2,
     "year_max_date": "2026-02-18"
   },
   "major_events": [
     {
-      "date": "2026-03-24",
-      "score": 153.3,
+      "date": "2026-03-25",
+      "score": 193.1,
       "level": "ALTO",
-      "n_articles": 641,
-      "summary": "Incertidumbre electoral ante primer debate presidencial 2026.",
+      "n_articles": 602,
+      "summary": "Prófugo Cerrón participa en debate presidencial.",
+      "report_url": "/political/daily-reports/2026-03-25.html"
+    },
+    {
+      "date": "2026-03-24",
+      "score": 153.8,
+      "level": "ALTO",
+      "n_articles": 647,
+      "summary": "Incertidumbre electoral ante primer debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -55,7 +261,7 @@
       "score": 153.1,
       "level": "ALTO",
       "n_articles": 823,
-      "summary": "Nuevo gabinete enfrenta rechazo de múltiples bancadas parlamentarias.",
+      "summary": "Falta de apoyo parlamentario para nuevo gabinete ministerial.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -63,7 +269,7 @@
       "score": 166.7,
       "level": "ALTO",
       "n_articles": 582,
-      "summary": "Conflicto entre poderes del Estado y corrupción minera.",
+      "summary": "Pugna entre poderes del Estado debilita gobernanza.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -71,7 +277,7 @@
       "score": 174.4,
       "level": "ALTO",
       "n_articles": 935,
-      "summary": "No puedo completar esta tarea porque no tengo acceso a noticias del 18 de marzo de 2026. Esa fecha es posterior a mi fecha de corte de conocimiento (abril de 2024",
+      "summary": "Debilidad institucional y fragmentación política en gobierno peruano.",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -79,7 +285,7 @@
       "score": 154.5,
       "level": "ALTO",
       "n_articles": 630,
-      "summary": "Tensión entre cumplimiento electoral y capacidad institucional peruana.",
+      "summary": "Tensiones migratorias y cumplimiento electoral generan inestabilidad política.",
       "report_url": "/political/daily-reports/2026-03-17.html"
     },
     {
@@ -87,7 +293,7 @@
       "score": 149.0,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Disputa por poder presidencial y indulto de Castillo.",
+      "summary": "Conflicto entre bloques parlamentarios por control del Congreso.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -95,7 +301,7 @@
       "score": 219.3,
       "level": "CRITICO",
       "n_articles": 135,
-      "summary": "Debilitamiento de instituciones democráticas y fragmentación política.",
+      "summary": "Debilitamiento de instituciones democráticas y respeto institucional.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -103,7 +309,7 @@
       "score": 309.2,
       "level": "CRITICO",
       "n_articles": 171,
-      "summary": "Conflicto entre gobierno y congreso sobre ministro.",
+      "summary": "Conflicto político entre ministerio y congreso sobre censura.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     },
     {
@@ -111,16 +317,8 @@
       "score": 284.4,
       "level": "CRITICO",
       "n_articles": 136,
-      "summary": "Congreso debate censura del Presidente Jerí.",
+      "summary": "Congreso debate censura del presidente en crisis sucesoria.",
       "report_url": "/political/daily-reports/2026-02-17.html"
-    },
-    {
-      "date": "2026-02-16",
-      "score": 189.7,
-      "level": "ALTO",
-      "n_articles": 157,
-      "summary": "Desconfianza ciudadana en integridad del presidente actual.",
-      "report_url": "/political/daily-reports/2026-02-16.html"
     }
   ],
   "peak_events": [
@@ -6017,57 +6215,57 @@
       "prr_7d": 97.0,
       "n_articles": 469,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-03-22",
-      "political_raw": 62.5,
+      "political_raw": 62.4,
       "political_7d": 72.8,
       "economic_raw": 71.0,
-      "economic_7d": 97.9,
+      "economic_7d": 97.8,
       "score": 72.8,
-      "prr": 62.5,
+      "prr": 62.4,
       "prr_7d": 72.8,
-      "n_articles": 467,
+      "n_articles": 468,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-23",
-      "political_raw": 139.8,
-      "political_7d": 119.7,
-      "economic_raw": 132.0,
-      "economic_7d": 121.7,
-      "score": 119.7,
-      "prr": 139.8,
-      "prr_7d": 119.7,
-      "n_articles": 510,
+      "political_raw": 139.5,
+      "political_7d": 119.5,
+      "economic_raw": 131.8,
+      "economic_7d": 121.6,
+      "score": 119.5,
+      "prr": 139.5,
+      "prr_7d": 119.5,
+      "n_articles": 512,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-24",
-      "political_raw": 167.7,
-      "political_7d": 153.3,
-      "economic_raw": 192.5,
-      "economic_7d": 171.3,
-      "score": 153.3,
-      "prr": 167.7,
-      "prr_7d": 153.3,
-      "n_articles": 641,
+      "political_raw": 168.5,
+      "political_7d": 153.8,
+      "economic_raw": 191.9,
+      "economic_7d": 170.8,
+      "score": 153.8,
+      "prr": 168.5,
+      "prr_7d": 153.8,
+      "n_articles": 647,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-25",
-      "political_raw": 32.5,
-      "political_7d": 68.7,
-      "economic_raw": 29.8,
-      "economic_7d": 72.2,
-      "score": 68.7,
-      "prr": 32.5,
-      "prr_7d": 68.7,
-      "n_articles": 91,
+      "political_raw": 209.9,
+      "political_7d": 193.1,
+      "economic_raw": 183.5,
+      "economic_7d": 179.7,
+      "score": 193.1,
+      "prr": 209.9,
+      "prr_7d": 193.1,
+      "n_articles": 602,
       "low_coverage": false,
       "provisional": true
     }
@@ -7288,6 +7486,10 @@
     {
       "date": "2026-03-23",
       "fx": 3.4559
+    },
+    {
+      "date": "2026-03-24",
+      "fx": 3.4595
     }
   ],
   "monthly_series": [
@@ -7405,9 +7607,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 90.5,
-      "economic_avg": 208.2,
-      "n_articles": 9953,
+      "political_avg": 95.4,
+      "economic_avg": 212.5,
+      "n_articles": 10473,
       "fx_level": null,
       "fx_yoy": null
     }
