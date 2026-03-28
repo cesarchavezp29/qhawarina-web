@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-26",
-    "n_days": 45,
+    "last_date": "2026-03-27",
+    "n_days": 46,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-26"
+    "updated": "2026-03-27"
   },
   "categories": {
     "arroz_cereales": {
@@ -1306,87 +1306,114 @@
       "index_limpieza": 98.7663,
       "index_cuidado_personal": 97.7946,
       "index_other": 99.4809
+    },
+    {
+      "date": "2026-03-27",
+      "index_all": 98.641,
+      "index_all_unweighted": 98.8464,
+      "index_food": 98.8634,
+      "index_nonfood": 98.8022,
+      "var_all": -0.1751,
+      "var_food": -0.2178,
+      "cum_pct": -1.359,
+      "yoy_inflation": null,
+      "mom_inflation": -0.2284,
+      "interpolated": false,
+      "n_matched": 37881,
+      "index_arroz_cereales": 98.8111,
+      "index_pan_harinas": 98.6318,
+      "index_carnes": 98.8606,
+      "index_pescados_mariscos": 98.5409,
+      "index_lacteos": 99.1572,
+      "index_frutas": 100.4931,
+      "index_verduras": 97.0826,
+      "index_aceites_grasas": 98.1287,
+      "index_azucar_dulces": 98.521,
+      "index_bebidas": 98.5506,
+      "index_limpieza": 98.6777,
+      "index_cuidado_personal": 97.634,
+      "index_other": 99.3124
     }
   ],
   "latest": {
-    "date": "2026-03-26",
-    "index_all": 98.814,
-    "index_food": 99.0792,
-    "cum_pct": -1.186,
-    "var_all": -0.0794,
+    "date": "2026-03-27",
+    "index_all": 98.641,
+    "index_food": 98.8634,
+    "cum_pct": -1.359,
+    "var_all": -0.1751,
     "yoy_inflation": null,
-    "mom_inflation": -0.2034,
-    "n_products_today": 35333,
+    "mom_inflation": -0.2284,
+    "n_products_today": 37881,
     "top_movers": [
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.2
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -1.47
       },
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -0.16
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.49
+      },
+      {
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.31
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.14
-      },
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": -0.09
+        "var": -0.23
       }
     ],
     "product_movers": [
       {
-        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
+        "name": "Mini Torta Futbolera Blanqueazul 6 Po...",
         "store": "metro",
-        "category": "carnes",
-        "var": 80.0
-      },
-      {
-        "name": "Zapallo Italiano x und.",
-        "store": "plazavea",
-        "category": "frutas",
-        "var": 80.0
-      },
-      {
-        "name": "Pie de Limón Denky",
-        "store": "wong",
         "category": "pan_harinas",
-        "var": 66.95
+        "var": 99.23
       },
       {
-        "name": "Arveja Pack x 250g aprox.",
-        "store": "plazavea",
-        "category": "carnes",
-        "var": 55.7
+        "name": "Mini Torta Futbolera Celeste 6 Porciones",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": 99.23
+      },
+      {
+        "name": "Chocoteja de Pecana Helena 30g",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": 96.97
+      },
+      {
+        "name": "Pimiento Metro Kg",
+        "store": "metro",
+        "category": "frutas",
+        "var": 78.68
       }
     ],
     "stores_coverage": {
-      "metro": 12288,
-      "plazavea": 13137,
-      "wong": 13615
+      "metro": 11625,
+      "plazavea": 13611,
+      "wong": 14936
     },
     "categories_coverage": {
-      "aceites_grasas": 511,
-      "arroz_cereales": 1338,
-      "azucar_dulces": 1067,
-      "bebidas": 956,
-      "carnes": 14176,
-      "cuidado_personal": 2881,
-      "frutas": 1587,
-      "lacteos": 2830,
-      "limpieza": 2993,
-      "pan_harinas": 6297,
-      "pescados_mariscos": 202,
-      "verduras": 274
+      "aceites_grasas": 710,
+      "arroz_cereales": 1377,
+      "azucar_dulces": 1100,
+      "bebidas": 986,
+      "carnes": 14340,
+      "cuidado_personal": 2901,
+      "frutas": 1922,
+      "lacteos": 2483,
+      "limpieza": 3017,
+      "pan_harinas": 6618,
+      "pescados_mariscos": 237,
+      "verduras": 309
     }
   }
 }
