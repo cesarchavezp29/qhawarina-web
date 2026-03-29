@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-27",
-    "n_days": 46,
+    "last_date": "2026-03-28",
+    "n_days": 47,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-27"
+    "updated": "2026-03-28"
   },
   "categories": {
     "arroz_cereales": {
@@ -1333,87 +1333,114 @@
       "index_limpieza": 98.6777,
       "index_cuidado_personal": 97.634,
       "index_other": 99.3124
+    },
+    {
+      "date": "2026-03-28",
+      "index_all": 98.8628,
+      "index_all_unweighted": 99.021,
+      "index_food": 99.0486,
+      "index_nonfood": 98.9451,
+      "var_all": 0.2249,
+      "var_food": 0.1873,
+      "cum_pct": -1.1372,
+      "yoy_inflation": null,
+      "mom_inflation": -0.2519,
+      "interpolated": false,
+      "n_matched": 39777,
+      "index_arroz_cereales": 98.9397,
+      "index_pan_harinas": 98.8353,
+      "index_carnes": 98.9992,
+      "index_pescados_mariscos": 98.5409,
+      "index_lacteos": 99.2967,
+      "index_frutas": 101.0189,
+      "index_verduras": 98.0295,
+      "index_aceites_grasas": 98.5857,
+      "index_azucar_dulces": 98.6271,
+      "index_bebidas": 98.536,
+      "index_limpieza": 98.7324,
+      "index_cuidado_personal": 97.8513,
+      "index_other": 99.467
     }
   ],
   "latest": {
-    "date": "2026-03-27",
-    "index_all": 98.641,
-    "index_food": 98.8634,
-    "cum_pct": -1.359,
-    "var_all": -0.1751,
+    "date": "2026-03-28",
+    "index_all": 98.8628,
+    "index_food": 99.0486,
+    "cum_pct": -1.1372,
+    "var_all": 0.2249,
     "yoy_inflation": null,
-    "mom_inflation": -0.2284,
-    "n_products_today": 37881,
+    "mom_inflation": -0.2519,
+    "n_products_today": 39777,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -1.47
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.98
       },
       {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.49
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.52
       },
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 0.31
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": 0.47
       },
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.23
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.22
       }
     ],
     "product_movers": [
       {
-        "name": "Mini Torta Futbolera Blanqueazul 6 Po...",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 99.23
+        "name": "Acondicionador ELVIVE Glycolic Gloss ...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 88.44
       },
       {
-        "name": "Mini Torta Futbolera Celeste 6 Porciones",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 99.23
+        "name": "Shampoo ELVIVE Glycolic Gloss Frasco ...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 88.44
       },
       {
-        "name": "Chocoteja de Pecana Helena 30g",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 96.97
+        "name": "Acondicionador Ácido Hialurónico ELVI...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 88.44
       },
       {
-        "name": "Pimiento Metro Kg",
+        "name": "Champiñones Portobello Paccu Bandeja ...",
         "store": "metro",
         "category": "frutas",
-        "var": 78.68
+        "var": 87.37
       }
     ],
     "stores_coverage": {
-      "metro": 11625,
-      "plazavea": 13611,
-      "wong": 14936
+      "metro": 12472,
+      "plazavea": 13599,
+      "wong": 14928
     },
     "categories_coverage": {
-      "aceites_grasas": 710,
-      "arroz_cereales": 1377,
-      "azucar_dulces": 1100,
-      "bebidas": 986,
-      "carnes": 14340,
-      "cuidado_personal": 2901,
-      "frutas": 1922,
-      "lacteos": 2483,
+      "aceites_grasas": 713,
+      "arroz_cereales": 1397,
+      "azucar_dulces": 1104,
+      "bebidas": 987,
+      "carnes": 14751,
+      "cuidado_personal": 2889,
+      "frutas": 1920,
+      "lacteos": 2883,
       "limpieza": 3017,
-      "pan_harinas": 6618,
+      "pan_harinas": 6627,
       "pescados_mariscos": 237,
-      "verduras": 309
+      "verduras": 304
     }
   }
 }

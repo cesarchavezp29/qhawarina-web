@@ -1,239 +1,205 @@
 {
   "metadata": {
-    "generated_at": "2026-03-27T21:31:21.710776",
-    "coverage_days": 451,
+    "generated_at": "2026-03-28T21:31:36.658356",
+    "coverage_days": 452,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-03-27",
-    "political_raw": 83.4,
-    "political_raw_level": "BAJO",
-    "political_7d": 110.3,
-    "political_level": "ELEVADO",
-    "political_multiplier": 1.1,
-    "economic_raw": 122.9,
-    "economic_raw_level": "ELEVADO",
-    "economic_7d": 140.3,
-    "economic_level": "ELEVADO",
-    "economic_multiplier": 1.4,
-    "score": 110.3,
-    "prr_7d": 110.3,
-    "prr_raw": 83.4,
-    "level": "ELEVADO",
-    "articles_total": 605,
-    "articles_political_relevant": 217,
-    "articles_economic_relevant": 115,
-    "political_justification": "El panorama político mantiene una estabilidad relativa, aunque con tensiones moderadas. La prolongación de la prisión preventiva de Castillo y la gestión del voto de confianza del Premier generan incertidumbre institucional. Sin embargo, los mecanismos de control judicial y parlamentario funcionan dentro de parámetros normales.",
-    "economic_justification": "El país enfrenta presiones fiscales elevadas por el gasto público insostenible y la crisis de Petroperú, que requiere aportes estatales significativos. Simultáneamente, tensiones en sectores clave como energía y minería amenazan la inversión de largo plazo, mientras organismos internacionales advierten sobre la necesidad de reformas urgentes.",
+    "date": "2026-03-28",
+    "political_raw": 47.5,
+    "political_raw_level": "MINIMO",
+    "political_7d": 66.3,
+    "political_level": "BAJO",
+    "political_multiplier": 0.66,
+    "economic_raw": 33.3,
+    "economic_raw_level": "MINIMO",
+    "economic_7d": 65.4,
+    "economic_level": "BAJO",
+    "economic_multiplier": 0.65,
+    "score": 66.3,
+    "prr_7d": 66.3,
+    "prr_raw": 47.5,
+    "level": "BAJO",
+    "articles_total": 421,
+    "articles_political_relevant": 133,
+    "articles_economic_relevant": 71,
+    "political_justification": "El riesgo político se mantiene en niveles mínimos, reflejando una relativa estabilidad institucional a pesar de tensiones puntuales. Sin embargo, la acumulación de conflictos judiciales, nombramientos cuestionados y violencia localizada demanda vigilancia continua para evitar escaladas.",
+    "economic_justification": "La economía peruana enfrenta presiones significativas por déficits presupuestales críticos, incertidumbre electoral y volatilidad de precios de combustibles. Aunque los riesgos son moderados actualmente, la acumulación de tensiones fiscales y factores climáticos adversos requiere vigilancia cercana para evitar deterioro adicional.",
     "top_political_drivers": [
       {
-        "title": "Pedro Castillo: PJ amplía por 12 meses prisión preventiva en caso de presunta corrupción",
-        "source": "elcomercio",
-        "score": 82
-      },
-      {
-        "title": "Amplían prisión preventiva contra Pedro Castillo por caso de presunta organización criminal",
-        "source": "correo",
-        "score": 82
-      },
-      {
-        "title": "Pedro Castillo: Poder Judicial amplía prisión preventiva en su contra por 12 meses",
-        "source": "larepublica",
-        "score": 82
-      },
-      {
-        "title": "Poder Judicial amplía la prisión preventiva del expresidente Pedro Castillo y el exministro Geiner Alvarado",
-        "source": "rpp",
-        "score": 82
-      },
-      {
-        "title": "Amplían prisión preventiva a Pedro Castillo y Geiner Alvarado",
-        "source": "canaln",
-        "score": 82
-      },
-      {
-        "title": "Premier aún sin fecha para presentarse al Congreso en busca del voto de confianza",
-        "source": "gestion",
-        "score": 72
-      },
-      {
-        "title": "Luis Arroyo coordina con el Congreso fecha para solicitar voto de confianza",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Luis Arroyo anuncia que \"próximamente\" se definirá la fecha para solicitar el voto de confianza al Congreso",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Ollanta Humala: Sala de apelaciones rechaza pedido para suspender ejecución provisional de su condena de 15 años",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo seguirá en prisión: Poder Judicial amplía por 12 meses su detención preventiva",
+        "title": "Vladimir Cerrón condiciona su entrega a la decisión final del Tribunal Constitucional",
         "source": "caretas",
+        "score": 72
+      },
+      {
+        "title": "Gobierno nombra en el Minsa a exjefe de EsSalud retirado horas después de asumir por orden de captura",
+        "source": "larepublica",
+        "score": 70
+      },
+      {
+        "title": "Intentaron acribillar al alcalde de La Morada pertenece a provincia de Marañón",
+        "source": "correo",
         "score": 65
+      },
+      {
+        "title": "Gobierno extiende el estado de emergencia en Lima y Callao",
+        "source": "peru21",
+        "score": 62
+      },
+      {
+        "title": "Ejecutivo extiende estado de emergencia en Lima y Callao por 30 días",
+        "source": "caretas",
+        "score": 60
+      },
+      {
+        "title": "PJ rechaza suspender condena de Ollanta Humala: defensa alega caso similar al de Fujimori",
+        "source": "caretas",
+        "score": 60
+      },
+      {
+        "title": "Estafador de policías | Denuncian a Juan José Santiváñez por cobrar miles de soles y abandonar casos (VIDEO)",
+        "source": "elbuho",
+        "score": 60
+      },
+      {
+        "title": "Tomás Gálvez es Fiscal de la Nación  oficialmente y marca el retorno de los cuellos blancos (VIDEO)",
+        "source": "elbuho",
+        "score": 55
+      },
+      {
+        "title": "Ollanta Humala luego de que el PJ declaró infundada suspensión de su condena: \"Se me ha negado la posibilidad de defenderme\"",
+        "source": "larepublica",
+        "score": 45
+      },
+      {
+        "title": "Britney Spears acusa a su exguardaespaldas de presunto hackeo tras ser arrestada en California",
+        "source": "rpp",
+        "score": 45
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Petroperú a la espera de decreto para recibir aval del Estado por US$2.000 millones y reperfilamiento de su deuda",
-        "source": "larepublica",
-        "score": 85
-      },
-      {
-        "title": "Petroperú: transferencia de S/ 23 millones para operación de gas",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Huancayo: Fiscalía interviene grifos por escasez de combustible y advierte sobre especulación",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Alonso Segura, presidente del Consejo Fiscal, advierte que leyes aprobadas por el Congreso podría comprometer la estabilidad económica del país",
-        "source": "elcomercio",
+        "title": "¡La estabilidad económica del país en riesgo! Consejo Fiscal alerta que leyes del Congreso comprometen el gasto público",
+        "source": "rpp",
         "score": 60
       },
       {
-        "title": "Consejo Fiscal cuestiona al Ejecutivo por promulgar leyes que hacen insostenible el gasto público",
-        "source": "correo",
-        "score": 60
+        "title": "Bomberos advierten déficit presupuestal de 1,200 millones dólares y evalúan suspensión de servicios",
+        "source": "caretas",
+        "score": 35
       },
       {
-        "title": "ComexPerú advierte que Balcázar “está hipotecando el futuro del país” con leyes de impacto fiscal",
+        "title": "La incertidumbre en el Perú se eleva en un entorno global y electoral más complejo",
         "source": "elcomercio",
-        "score": 55
+        "score": 30
       },
       {
-        "title": "FMI le apunta a Perú dos tareas “urgentes”: continuar reforma de Petroperú y frenar gasto público",
-        "source": "gestion",
-        "score": 55
+        "title": "Donald Trump dice que Irán debe reabrir el estrecho de Ormuz para alcanzar un acuerdo",
+        "source": "elcomercio",
+        "score": 30
       },
       {
-        "title": "Exviceministro de Energía y Minas advirtió que nuevos aportes a Petroperú tendrían impacto en la situación fiscal del país",
-        "source": "canaln",
-        "score": 55
+        "title": "Índice Global del Hambre: Perú está en el puesto 39 pero hay 8 regiones con niveles “graves”",
+        "source": "elbuho",
+        "score": 30
       },
       {
-        "title": "SNI: cambios a concesiones mineras afectarían inversiones de largo plazo",
-        "source": "gestion",
-        "score": 45
+        "title": "ENFEN extiende alerta de El Niño Costero hasta diciembre con posibles lluvias superiores en el norte",
+        "source": "elcomercio",
+        "score": 25
       },
       {
-        "title": "El concesionario que negó la pandemia hoy invoca fuerza mayor: la crisis del gas revela reglas desiguales",
-        "source": "gestion",
-        "score": 45
+        "title": "Minem evalúa medidas ante volatilidad de precios de combustibles",
+        "source": "andina",
+        "score": 25
+      },
+      {
+        "title": "Israel y EE.UU. bombardean por tercera vez la central nuclear iraní de Bushehr",
+        "source": "correo",
+        "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Petroperú a la espera de decreto para recibir aval del Estado por US$2.000 millones y reperfilamiento de su deuda",
-      "Petroperú: transferencia de S/ 23 millones para operación de gas",
-      "Huancayo: Fiscalía interviene grifos por escasez de combustible y advierte sobre especulación",
-      "Alonso Segura, presidente del Consejo Fiscal, advierte que leyes aprobadas por el Congreso podría comprometer la estabilidad económica del país",
-      "Consejo Fiscal cuestiona al Ejecutivo por promulgar leyes que hacen insostenible el gasto público",
-      "ComexPerú advierte que Balcázar “está hipotecando el futuro del país” con leyes de impacto fiscal",
-      "FMI le apunta a Perú dos tareas “urgentes”: continuar reforma de Petroperú y frenar gasto público",
-      "Exviceministro de Energía y Minas advirtió que nuevos aportes a Petroperú tendrían impacto en la situación fiscal del país",
-      "SNI: cambios a concesiones mineras afectarían inversiones de largo plazo",
-      "El concesionario que negó la pandemia hoy invoca fuerza mayor: la crisis del gas revela reglas desiguales",
-      "Colegio de Economistas de Lima advierte riesgos fiscales por leyes que incrementan gasto público",
-      "Confiep pide a Balcázar frenar derroche fiscal",
-      "Precio del pollo se duplica en Huamanga en menos de dos semanas y llega hasta 16 soles el kilo",
-      "Dólar, deudas y precios: ¿qué pasará si la guerra y El Niño convulsionan, según Rímac?",
-      "Menos minería formal, más ilegalidad: el efecto de la reforma",
-      "El barril de petróleo Brent cerró la semana a 112,57 dólares, el precio más alto desde 2022",
-      "Dan ultimátum al MTC y anuncian paro por colapso de la margen izquierda de la carretera Central",
-      "Loreto: Transporte fluvial en riesgo por alza del combustible",
-      "Petroperú: alzas en combustibles son principalmente por aumento en cotización internacional",
-      "Marco Rubio dice la operación militar en Irán terminará “en cuestión de semanas”",
-      "Presidente oneroso",
-      "Transporte de carga pide declaratoria de emergencia al MTC",
-      "El presidente de Estados Unidos llama \"estrecho de Trump\" al estrecho de Ormuz",
-      "Werner Salcedo señala decisiones políticas frenaron gasoducto del sur",
-      "Retiran la Línea 3 del Plan Nacional y Lima pierde clave proyecto para reducir viajes de 3 horas a 1",
-      "Nuevo ataque al transporte: presuntos extorsionadores queman combi en el Callao",
-      "Osinergmin: ¿Dónde puedes encontrar el combustible más barato en Lima y provincias?",
-      "EE.UU. e Israel atacan plantas nucleares en Irán que amenaza con un “precio muy alto”",
-      "La Autoridad Nacional de Control y el caso Awajún en Condorcanqui sin presupuesto, advierte Tomás Gálvez",
-      "Osinergmin dice que \"no ha emitido ninguna estimación\" de multa contra la concesionaria de gas de Camisea",
-      "Juliaca evalúa protestas por alza de pasajes y crece tensión social",
-      "“La casa de la comedia” suspende grabaciones y presentaciones por extorsión: “Nos duele cerrar este capítulo”"
+      "¡La estabilidad económica del país en riesgo! Consejo Fiscal alerta que leyes del Congreso comprometen el gasto público",
+      "Bomberos advierten déficit presupuestal de 1,200 millones dólares y evalúan suspensión de servicios",
+      "La incertidumbre en el Perú se eleva en un entorno global y electoral más complejo",
+      "Donald Trump dice que Irán debe reabrir el estrecho de Ormuz para alcanzar un acuerdo",
+      "Índice Global del Hambre: Perú está en el puesto 39 pero hay 8 regiones con niveles “graves”",
+      "ENFEN extiende alerta de El Niño Costero hasta diciembre con posibles lluvias superiores en el norte",
+      "Minem evalúa medidas ante volatilidad de precios de combustibles",
+      "Arequipa: Protestas por alza del pasaje se intensifican con marcha estudiantil y anuncio de paro seco"
     ],
-    "justification": "El panorama político mantiene una estabilidad relativa, aunque con tensiones moderadas. La prolongación de la prisión preventiva de Castillo y la gestión del voto de confianza del Premier generan incertidumbre institucional. Sin embargo, los mecanismos de control judicial y parlamentario funcionan dentro de parámetros normales.",
+    "justification": "El riesgo político se mantiene en niveles mínimos, reflejando una relativa estabilidad institucional a pesar de tensiones puntuales. Sin embargo, la acumulación de conflictos judiciales, nombramientos cuestionados y violencia localizada demanda vigilancia continua para evitar escaladas.",
     "top_drivers": [
       {
-        "title": "Pedro Castillo: PJ amplía por 12 meses prisión preventiva en caso de presunta corrupción",
-        "source": "elcomercio",
-        "score": 82
-      },
-      {
-        "title": "Amplían prisión preventiva contra Pedro Castillo por caso de presunta organización criminal",
-        "source": "correo",
-        "score": 82
-      },
-      {
-        "title": "Pedro Castillo: Poder Judicial amplía prisión preventiva en su contra por 12 meses",
-        "source": "larepublica",
-        "score": 82
-      },
-      {
-        "title": "Poder Judicial amplía la prisión preventiva del expresidente Pedro Castillo y el exministro Geiner Alvarado",
-        "source": "rpp",
-        "score": 82
-      },
-      {
-        "title": "Amplían prisión preventiva a Pedro Castillo y Geiner Alvarado",
-        "source": "canaln",
-        "score": 82
-      },
-      {
-        "title": "Premier aún sin fecha para presentarse al Congreso en busca del voto de confianza",
-        "source": "gestion",
-        "score": 72
-      },
-      {
-        "title": "Luis Arroyo coordina con el Congreso fecha para solicitar voto de confianza",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Luis Arroyo anuncia que \"próximamente\" se definirá la fecha para solicitar el voto de confianza al Congreso",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Ollanta Humala: Sala de apelaciones rechaza pedido para suspender ejecución provisional de su condena de 15 años",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo seguirá en prisión: Poder Judicial amplía por 12 meses su detención preventiva",
+        "title": "Vladimir Cerrón condiciona su entrega a la decisión final del Tribunal Constitucional",
         "source": "caretas",
+        "score": 72
+      },
+      {
+        "title": "Gobierno nombra en el Minsa a exjefe de EsSalud retirado horas después de asumir por orden de captura",
+        "source": "larepublica",
+        "score": 70
+      },
+      {
+        "title": "Intentaron acribillar al alcalde de La Morada pertenece a provincia de Marañón",
+        "source": "correo",
         "score": 65
+      },
+      {
+        "title": "Gobierno extiende el estado de emergencia en Lima y Callao",
+        "source": "peru21",
+        "score": 62
+      },
+      {
+        "title": "Ejecutivo extiende estado de emergencia en Lima y Callao por 30 días",
+        "source": "caretas",
+        "score": 60
+      },
+      {
+        "title": "PJ rechaza suspender condena de Ollanta Humala: defensa alega caso similar al de Fujimori",
+        "source": "caretas",
+        "score": 60
+      },
+      {
+        "title": "Estafador de policías | Denuncian a Juan José Santiváñez por cobrar miles de soles y abandonar casos (VIDEO)",
+        "source": "elbuho",
+        "score": 60
+      },
+      {
+        "title": "Tomás Gálvez es Fiscal de la Nación  oficialmente y marca el retorno de los cuellos blancos (VIDEO)",
+        "source": "elbuho",
+        "score": 55
+      },
+      {
+        "title": "Ollanta Humala luego de que el PJ declaró infundada suspensión de su condena: \"Se me ha negado la posibilidad de defenderme\"",
+        "source": "larepublica",
+        "score": 45
+      },
+      {
+        "title": "Britney Spears acusa a su exguardaespaldas de presunto hackeo tras ser arrestada en California",
+        "source": "rpp",
+        "score": 45
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 131.5,
-    "political_30d_avg": 94.7,
-    "economic_7d_avg": 150.2,
-    "economic_30d_avg": 195.4,
+    "political_7d_avg": 127.1,
+    "political_30d_avg": 94.5,
+    "economic_7d_avg": 136.5,
+    "economic_30d_avg": 195.6,
     "year_max": 309.2,
     "year_max_date": "2026-02-18"
   },
   "major_events": [
     {
       "date": "2026-03-26",
-      "score": 172.9,
+      "score": 172.7,
       "level": "ALTO",
-      "n_articles": 687,
-      "summary": "Tensión política por debate presidencial en curso hoy.",
+      "n_articles": 689,
+      "summary": "Tercera fecha de debate presidencial genera incertidumbre electoral.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -241,7 +207,7 @@
       "score": 194.5,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial nacional.",
+      "summary": "Candidato prófugo participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     },
     {
@@ -249,7 +215,7 @@
       "score": 153.8,
       "level": "ALTO",
       "n_articles": 647,
-      "summary": "Competencia electoral incertidumbre en proceso democrático peruano.",
+      "summary": "Incertidumbre electoral por primer debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -257,7 +223,7 @@
       "score": 153.1,
       "level": "ALTO",
       "n_articles": 823,
-      "summary": "Nuevo Gabinete enfrenta rechazo parlamentario de múltiples bancadas.",
+      "summary": "Nuevo Gabinete rechazado por seis bancadas parlamentarias.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -265,7 +231,7 @@
       "score": 166.7,
       "level": "ALTO",
       "n_articles": 582,
-      "summary": "Pugnas políticas y conflictos dentro de instituciones judiciales desestabilizan país.",
+      "summary": "Conflicto entre poderes del Estado y corrupción minera.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -273,7 +239,7 @@
       "score": 174.4,
       "level": "ALTO",
       "n_articles": 935,
-      "summary": "Debilidad institucional y pérdida de credibilidad en gestión pública.",
+      "summary": "Debilitamiento institucional por ausencia de control fiscal central.",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -281,7 +247,7 @@
       "score": 154.5,
       "level": "ALTO",
       "n_articles": 630,
-      "summary": "Tensiones migratorias y elecciones presidenciales generan inestabilidad.",
+      "summary": "Tensiones en elecciones presidenciales y políticas migratorias.",
       "report_url": "/political/daily-reports/2026-03-17.html"
     },
     {
@@ -289,7 +255,7 @@
       "score": 149.0,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Pugna por el poder entre bloques parlamentarios enfrentados.",
+      "summary": "Pugna política por poder y decisiones presidenciales cruciales.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -297,7 +263,7 @@
       "score": 219.3,
       "level": "CRITICO",
       "n_articles": 135,
-      "summary": "Debilitamiento institucional y fragmentación política del país.",
+      "summary": "Debilitamiento de instituciones democráticas y fragmentación política.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -305,7 +271,7 @@
       "score": 309.2,
       "level": "CRITICO",
       "n_articles": 171,
-      "summary": "Conflicto entre el Ejecutivo y el Congreso sobre ministro.",
+      "summary": "Conflicto entre el Ejecutivo y el Congreso sobre gestión ministerial.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     }
   ],
@@ -6242,7 +6208,7 @@
       "prr_7d": 153.8,
       "n_articles": 647,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-03-25",
@@ -6259,27 +6225,40 @@
     },
     {
       "date": "2026-03-26",
-      "political_raw": 163.6,
-      "political_7d": 172.9,
-      "economic_raw": 181.7,
-      "economic_7d": 180.9,
-      "score": 172.9,
-      "prr": 163.6,
-      "prr_7d": 172.9,
-      "n_articles": 687,
+      "political_raw": 163.4,
+      "political_7d": 172.7,
+      "economic_raw": 181.5,
+      "economic_7d": 180.8,
+      "score": 172.7,
+      "prr": 163.4,
+      "prr_7d": 172.7,
+      "n_articles": 689,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-03-27",
       "political_raw": 83.4,
-      "political_7d": 110.3,
-      "economic_raw": 122.9,
-      "economic_7d": 140.3,
-      "score": 110.3,
+      "political_7d": 110.2,
+      "economic_raw": 122.7,
+      "economic_7d": 140.2,
+      "score": 110.2,
       "prr": 83.4,
-      "prr_7d": 110.3,
-      "n_articles": 605,
+      "prr_7d": 110.2,
+      "n_articles": 607,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-03-28",
+      "political_raw": 47.5,
+      "political_7d": 66.3,
+      "economic_raw": 33.3,
+      "economic_7d": 65.4,
+      "score": 66.3,
+      "prr": 47.5,
+      "prr_7d": 66.3,
+      "n_articles": 421,
       "low_coverage": false,
       "provisional": true
     }
@@ -7629,9 +7608,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 98.9,
-      "economic_avg": 208.6,
-      "n_articles": 11772,
+      "political_avg": 97.7,
+      "economic_avg": 203.5,
+      "n_articles": 12197,
       "fx_level": null,
       "fx_yoy": null
     }
