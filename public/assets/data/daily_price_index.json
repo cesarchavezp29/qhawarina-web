@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-28",
-    "n_days": 47,
+    "last_date": "2026-03-29",
+    "n_days": 48,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-28"
+    "updated": "2026-03-29"
   },
   "categories": {
     "arroz_cereales": {
@@ -1360,87 +1360,114 @@
       "index_limpieza": 98.7324,
       "index_cuidado_personal": 97.8513,
       "index_other": 99.467
+    },
+    {
+      "date": "2026-03-29",
+      "index_all": 98.8775,
+      "index_all_unweighted": 99.042,
+      "index_food": 99.0683,
+      "index_nonfood": 98.9704,
+      "var_all": 0.0149,
+      "var_food": 0.0199,
+      "cum_pct": -1.1225,
+      "yoy_inflation": null,
+      "mom_inflation": -0.2609,
+      "interpolated": false,
+      "n_matched": 40651,
+      "index_arroz_cereales": 98.9604,
+      "index_pan_harinas": 98.872,
+      "index_carnes": 99.0228,
+      "index_pescados_mariscos": 98.5409,
+      "index_lacteos": 99.2961,
+      "index_frutas": 101.0137,
+      "index_verduras": 97.9991,
+      "index_aceites_grasas": 98.5565,
+      "index_azucar_dulces": 98.6271,
+      "index_bebidas": 98.5664,
+      "index_limpieza": 98.809,
+      "index_cuidado_personal": 97.8566,
+      "index_other": 99.4687
     }
   ],
   "latest": {
-    "date": "2026-03-28",
-    "index_all": 98.8628,
-    "index_food": 99.0486,
-    "cum_pct": -1.1372,
-    "var_all": 0.2249,
+    "date": "2026-03-29",
+    "index_all": 98.8775,
+    "index_food": 99.0683,
+    "cum_pct": -1.1225,
+    "var_all": 0.0149,
     "yoy_inflation": null,
-    "mom_inflation": -0.2519,
-    "n_products_today": 39777,
+    "mom_inflation": -0.2609,
+    "n_products_today": 40651,
     "top_movers": [
+      {
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": 0.08
+      },
+      {
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 0.04
+      },
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 0.98
-      },
-      {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.52
+        "var": -0.03
       },
       {
         "category": "aceites_grasas",
         "label_es": "Aceites y Grasas",
         "label_en": "Oils & Fats",
-        "var": 0.47
-      },
-      {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": 0.22
+        "var": -0.03
       }
     ],
     "product_movers": [
       {
-        "name": "Acondicionador ELVIVE Glycolic Gloss ...",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 88.44
-      },
-      {
-        "name": "Shampoo ELVIVE Glycolic Gloss Frasco ...",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 88.44
-      },
-      {
-        "name": "Acondicionador Ácido Hialurónico ELVI...",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 88.44
-      },
-      {
-        "name": "Champiñones Portobello Paccu Bandeja ...",
+        "name": "Chocoteja de Guindón Helena 30g",
         "store": "metro",
-        "category": "frutas",
-        "var": 87.37
+        "category": "pan_harinas",
+        "var": 96.97
+      },
+      {
+        "name": "Kit de Limpieza de Calzado Clean Lab ...",
+        "store": "wong",
+        "category": "limpieza",
+        "var": 96.35
+      },
+      {
+        "name": "Corvina Entera",
+        "store": "wong",
+        "category": "carnes",
+        "var": 83.51
+      },
+      {
+        "name": "Lasagna de Carne Wong Caja 250 g",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 73.97
       }
     ],
     "stores_coverage": {
-      "metro": 12472,
-      "plazavea": 13599,
-      "wong": 14928
+      "metro": 12450,
+      "plazavea": 13581,
+      "wong": 14915
     },
     "categories_coverage": {
-      "aceites_grasas": 713,
-      "arroz_cereales": 1397,
-      "azucar_dulces": 1104,
-      "bebidas": 987,
-      "carnes": 14751,
-      "cuidado_personal": 2889,
-      "frutas": 1920,
-      "lacteos": 2883,
-      "limpieza": 3017,
-      "pan_harinas": 6627,
-      "pescados_mariscos": 237,
-      "verduras": 304
+      "aceites_grasas": 718,
+      "arroz_cereales": 1394,
+      "azucar_dulces": 1096,
+      "bebidas": 985,
+      "carnes": 14733,
+      "cuidado_personal": 2882,
+      "frutas": 1912,
+      "lacteos": 2884,
+      "limpieza": 3009,
+      "pan_harinas": 6610,
+      "pescados_mariscos": 241,
+      "verduras": 306
     }
   }
 }
