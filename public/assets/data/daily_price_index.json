@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-29",
-    "n_days": 48,
+    "last_date": "2026-03-30",
+    "n_days": 49,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-29"
+    "updated": "2026-03-30"
   },
   "categories": {
     "arroz_cereales": {
@@ -1387,87 +1387,114 @@
       "index_limpieza": 98.809,
       "index_cuidado_personal": 97.8566,
       "index_other": 99.4687
+    },
+    {
+      "date": "2026-03-30",
+      "index_all": 99.025,
+      "index_all_unweighted": 99.2376,
+      "index_food": 99.2915,
+      "index_nonfood": 99.0379,
+      "var_all": 0.1492,
+      "var_food": 0.2253,
+      "cum_pct": -0.975,
+      "yoy_inflation": null,
+      "mom_inflation": -0.2632,
+      "interpolated": false,
+      "n_matched": 34672,
+      "index_arroz_cereales": 99.0686,
+      "index_pan_harinas": 99.1629,
+      "index_carnes": 99.3665,
+      "index_pescados_mariscos": 98.9319,
+      "index_lacteos": 99.4818,
+      "index_frutas": 100.6395,
+      "index_verduras": 98.0561,
+      "index_aceites_grasas": 98.609,
+      "index_azucar_dulces": 98.347,
+      "index_bebidas": 98.7131,
+      "index_limpieza": 98.8496,
+      "index_cuidado_personal": 98.0465,
+      "index_other": 99.4683
     }
   ],
   "latest": {
-    "date": "2026-03-29",
-    "index_all": 98.8775,
-    "index_food": 99.0683,
-    "cum_pct": -1.1225,
-    "var_all": 0.0149,
+    "date": "2026-03-30",
+    "index_all": 99.025,
+    "index_food": 99.2915,
+    "cum_pct": -0.975,
+    "var_all": 0.1492,
     "yoy_inflation": null,
-    "mom_inflation": -0.2609,
-    "n_products_today": 40651,
+    "mom_inflation": -0.2632,
+    "n_products_today": 34672,
     "top_movers": [
       {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 0.08
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.4
+      },
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": -0.37
+      },
+      {
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": 0.35
       },
       {
         "category": "pan_harinas",
         "label_es": "Pan y Harinas",
         "label_en": "Bread & Flour",
-        "var": 0.04
-      },
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -0.03
-      },
-      {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.03
+        "var": 0.29
       }
     ],
     "product_movers": [
       {
-        "name": "Chocoteja de Guindón Helena 30g",
+        "name": "Cebolla Roja Metro x kg",
         "store": "metro",
+        "category": "frutas",
+        "var": 84.34
+      },
+      {
+        "name": "Keke con Granos Andinos Cuisine & Co ...",
+        "store": "wong",
         "category": "pan_harinas",
-        "var": 96.97
+        "var": 67.18
       },
       {
-        "name": "Kit de Limpieza de Calzado Clean Lab ...",
-        "store": "wong",
-        "category": "limpieza",
-        "var": 96.35
-      },
-      {
-        "name": "Corvina Entera",
-        "store": "wong",
+        "name": "Tripack Vino Tinto Pinot Noir Navarro...",
+        "store": "metro",
         "category": "carnes",
-        "var": 83.51
+        "var": 64.75
       },
       {
-        "name": "Lasagna de Carne Wong Caja 250 g",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 73.97
+        "name": "Tripack Vino Tinto Cabernet Sauvignon...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 64.75
       }
     ],
     "stores_coverage": {
-      "metro": 12450,
-      "plazavea": 13581,
-      "wong": 14915
+      "metro": 9026,
+      "plazavea": 13542,
+      "wong": 12424
     },
     "categories_coverage": {
-      "aceites_grasas": 718,
-      "arroz_cereales": 1394,
-      "azucar_dulces": 1096,
-      "bebidas": 985,
-      "carnes": 14733,
-      "cuidado_personal": 2882,
-      "frutas": 1912,
-      "lacteos": 2884,
-      "limpieza": 3009,
-      "pan_harinas": 6610,
-      "pescados_mariscos": 241,
-      "verduras": 306
+      "aceites_grasas": 626,
+      "arroz_cereales": 1348,
+      "azucar_dulces": 1071,
+      "bebidas": 938,
+      "carnes": 13739,
+      "cuidado_personal": 1780,
+      "frutas": 1872,
+      "lacteos": 2459,
+      "limpieza": 2013,
+      "pan_harinas": 6187,
+      "pescados_mariscos": 245,
+      "verduras": 293
     }
   }
 }
