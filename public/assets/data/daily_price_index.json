@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-03-30",
-    "n_days": 49,
+    "last_date": "2026-03-31",
+    "n_days": 50,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-03-30"
+    "updated": "2026-03-31"
   },
   "categories": {
     "arroz_cereales": {
@@ -1414,87 +1414,114 @@
       "index_limpieza": 98.8496,
       "index_cuidado_personal": 98.0465,
       "index_other": 99.4683
+    },
+    {
+      "date": "2026-03-31",
+      "index_all": 99.1442,
+      "index_all_unweighted": 99.3791,
+      "index_food": 99.4356,
+      "index_nonfood": 99.1675,
+      "var_all": 0.1204,
+      "var_food": 0.1451,
+      "cum_pct": -0.8558,
+      "yoy_inflation": null,
+      "mom_inflation": -0.3359,
+      "interpolated": false,
+      "n_matched": 34637,
+      "index_arroz_cereales": 99.1406,
+      "index_pan_harinas": 99.2456,
+      "index_carnes": 99.4935,
+      "index_pescados_mariscos": 98.6147,
+      "index_lacteos": 99.5116,
+      "index_frutas": 101.504,
+      "index_verduras": 98.1256,
+      "index_aceites_grasas": 98.7881,
+      "index_azucar_dulces": 98.3118,
+      "index_bebidas": 98.8372,
+      "index_limpieza": 99.2312,
+      "index_cuidado_personal": 97.9758,
+      "index_other": 99.5319
     }
   ],
   "latest": {
-    "date": "2026-03-30",
-    "index_all": 99.025,
-    "index_food": 99.2915,
-    "cum_pct": -0.975,
-    "var_all": 0.1492,
+    "date": "2026-03-31",
+    "index_all": 99.1442,
+    "index_food": 99.4356,
+    "cum_pct": -0.8558,
+    "var_all": 0.1204,
     "yoy_inflation": null,
-    "mom_inflation": -0.2632,
-    "n_products_today": 34672,
+    "mom_inflation": -0.3359,
+    "n_products_today": 34637,
     "top_movers": [
-      {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 0.4
-      },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.37
+        "var": 0.86
       },
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.35
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": 0.39
       },
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": 0.29
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.32
+      },
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": 0.18
       }
     ],
     "product_movers": [
       {
-        "name": "Cebolla Roja Metro x kg",
-        "store": "metro",
-        "category": "frutas",
-        "var": 84.34
-      },
-      {
-        "name": "Keke con Granos Andinos Cuisine & Co ...",
+        "name": "Salsa de Rocoto Wong Pote 450 g",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 67.18
+        "category": "lacteos",
+        "var": 100.0
       },
       {
-        "name": "Tripack Vino Tinto Pinot Noir Navarro...",
-        "store": "metro",
-        "category": "carnes",
-        "var": 64.75
+        "name": "Infusiones WAWASANA Té verde piña Caj...",
+        "store": "plazavea",
+        "category": "other",
+        "var": 98.4
       },
       {
-        "name": "Tripack Vino Tinto Cabernet Sauvignon...",
-        "store": "metro",
+        "name": "Vino Tinto Borgoña Julián Cortez Semi...",
+        "store": "plazavea",
         "category": "carnes",
-        "var": 64.75
+        "var": 97.32
+      },
+      {
+        "name": "Arveja Pack x 250g aprox.",
+        "store": "plazavea",
+        "category": "carnes",
+        "var": 95.15
       }
     ],
     "stores_coverage": {
-      "metro": 9026,
-      "plazavea": 13542,
-      "wong": 12424
+      "metro": 12396,
+      "plazavea": 13534,
+      "wong": 14934
     },
     "categories_coverage": {
-      "aceites_grasas": 626,
-      "arroz_cereales": 1348,
-      "azucar_dulces": 1071,
-      "bebidas": 938,
-      "carnes": 13739,
-      "cuidado_personal": 1780,
-      "frutas": 1872,
-      "lacteos": 2459,
-      "limpieza": 2013,
-      "pan_harinas": 6187,
+      "aceites_grasas": 715,
+      "arroz_cereales": 1377,
+      "azucar_dulces": 1096,
+      "bebidas": 993,
+      "carnes": 14677,
+      "cuidado_personal": 2877,
+      "frutas": 1913,
+      "lacteos": 2893,
+      "limpieza": 3009,
+      "pan_harinas": 6598,
       "pescados_mariscos": 245,
-      "verduras": 293
+      "verduras": 302
     }
   }
 }

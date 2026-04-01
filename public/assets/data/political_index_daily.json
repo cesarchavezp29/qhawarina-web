@@ -1,235 +1,171 @@
 {
   "metadata": {
-    "generated_at": "2026-03-30T21:29:40.232033",
-    "coverage_days": 454,
+    "generated_at": "2026-03-31T21:33:27.627073",
+    "coverage_days": 455,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-03-30",
-    "political_raw": 68.0,
-    "political_raw_level": "BAJO",
-    "political_7d": 61.6,
-    "political_level": "BAJO",
-    "political_multiplier": 0.62,
-    "economic_raw": 138.9,
-    "economic_raw_level": "ELEVADO",
-    "economic_7d": 108.3,
-    "economic_level": "NORMAL",
-    "economic_multiplier": 1.08,
-    "score": 61.6,
-    "prr_7d": 61.6,
-    "prr_raw": 68.0,
-    "level": "BAJO",
-    "articles_total": 515,
-    "articles_political_relevant": 177,
-    "articles_economic_relevant": 117,
-    "political_justification": "El país experimenta un nivel bajo de riesgo político, caracterizado por tensiones moderadas en torno a la gobernanza y cuestiones de integridad institucional. Los principales focos de preocupación se concentran en debates sobre procedimientos constitucionales y denuncias contra funcionarios públicos, sin indicios de crisis sistémica inmediata.",
-    "economic_justification": "El riesgo económico se sitúa en nivel elevado, impulsado por incertidumbre fiscal crítica en torno a Petroperú y presiones sobre el gasto público. La amenaza de rescates fiscales, combinada con proyectos de ley con impacto adverso en inversión, genera vulnerabilidad macroeconómica que requiere definiciones urgentes del gobierno.",
+    "date": "2026-03-31",
+    "political_raw": 17.2,
+    "political_raw_level": "MINIMO",
+    "political_7d": 30.5,
+    "political_level": "MINIMO",
+    "political_multiplier": 0.3,
+    "economic_raw": 12.0,
+    "economic_raw_level": "MINIMO",
+    "economic_7d": 39.8,
+    "economic_level": "MINIMO",
+    "economic_multiplier": 0.4,
+    "score": 30.5,
+    "prr_7d": 30.5,
+    "prr_raw": 17.2,
+    "level": "MINIMO",
+    "articles_total": 89,
+    "articles_political_relevant": 35,
+    "articles_economic_relevant": 16,
+    "political_justification": "El panorama político actual refleja estabilidad institucional. La cobertura mediática se concentra en procesos electorales ordenados y debates presidenciales, sin reportes de crisis sistémica, violencia política generalizada ni quiebres institucionales significativos. El sistema democrático funciona dentro de parámetros normales.",
+    "economic_justification": "La economía peruana enfrenta riesgos mínimos actualmente, con tensiones geopolíticas en Medio Oriente que podrían afectar precios energéticos globales. Internamente, desastres naturales interrumpen infraestructura crítica como acceso a Machu Picchu, pero sin impacto sistémico. El sector inmobiliario muestra signos de recuperación.",
     "top_political_drivers": [
       {
-        "title": "Balcázar afirma que gabinete Arroyo solicitaría voto de confianza “probablemente” tras las elecciones",
-        "source": "correo",
-        "score": 70
+        "title": "Debate presidencial 2026 EN VIVO hoy, 30 de marzo: los 12 candidatos que participarán",
+        "source": "gestion",
+        "score": 65
       },
       {
-        "title": "General PNP Óscar Arriola revela que Vladimir Cerrón usaría tecnología avanzada para evitar ser rastreado",
-        "source": "correo",
-        "score": 70
-      },
-      {
-        "title": "Segundo Montalvo pide a Vladimir Cerrón asistir al debate presidencial del JNE pese a orden de captura",
-        "source": "correo",
-        "score": 70
-      },
-      {
-        "title": "Segundo Montalvo pide a Vladimir Cerrón acudir al debate presidencial: \"Es su derecho, la Constitución lo protege\"",
-        "source": "rpp",
-        "score": 70
-      },
-      {
-        "title": "Gabinete de Luis Arroyo pedirá voto de confianza tras elecciones",
-        "source": "canaln",
-        "score": 70
-      },
-      {
-        "title": "Nuevo presidente Petro-Perú enfrenta denuncia por acoso sexual",
+        "title": "Las carpetas fiscales y la red familiar de Roberto Sánchez",
         "source": "elcomercio",
-        "score": 65
+        "score": 60
       },
       {
-        "title": "Nuevo presidente de Petroperú enfrenta denuncia por acoso sexual y una investigación por el caso Odebrecht",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Nuevo presidente de Petroperú tiene denuncia por acoso sexual y es investigado por caso Odebrecht",
+        "title": "Debate presidencial EN VIVO HOY, lunes 30 de marzo: 12 candidatos cara a cara presentarán sus propuestas",
         "source": "larepublica",
-        "score": 65
+        "score": 60
       },
       {
-        "title": "Presidente de Petroperú denunciado por acoso sexual a una joven de 20 años",
+        "title": "Debate presidencial 2026 EN VIVO: cruces, ataques y el minuto a minuto de los candidatos hoy, lunes30 de marzo",
         "source": "caretas",
-        "score": 65
+        "score": 60
       },
       {
-        "title": "Pedro Castillo ratifica respaldo a Roberto Sánchez: «Le entregué mi sombrero para que recorra la Ruta Castillista»",
+        "title": "EN VIVO | Sigue el minuto a minuto de la cuarta fecha del debate presidencial 2026",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "Debate presidencial del JNE inicia hoy segunda jornada",
+        "source": "canaln",
+        "score": 55
+      },
+      {
+        "title": "Debate presidencial EN VIVO: Sigue aquí todas las incidencias de las ternas de candidatos",
+        "source": "elcomercio",
+        "score": 50
+      },
+      {
+        "title": "Fernando Olivera vs. el APRA: el cara a cara más explosivo del debate presidencial 2026 hoy, 30 de abril",
         "source": "caretas",
-        "score": 65
+        "score": 45
+      },
+      {
+        "title": "Debate presidencial: 12 candidatos exponen sus propuestas sobre educación y empleo",
+        "source": "andina",
+        "score": 42
+      },
+      {
+        "title": "Fernando Olivera fue agredido por militantes del APRA con agua e insultos antes de iniciar el debate presidencial",
+        "source": "correo",
+        "score": 30
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "AFIN pide no retroceder en la reforma de Petro-Perú y exige definiciones claras ante nuevos riesgos fiscales",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Cualquier rescate a Petroperú afectará la proyección del déficit fiscal",
-        "source": "gestion",
-        "score": 65
-      },
-      {
-        "title": "Jaloneo de poder",
-        "source": "elcomercio",
-        "score": 55
-      },
-      {
-        "title": "AFIN pide no retroceder en la reforma de Petroperú",
-        "source": "gestion",
-        "score": 55
-      },
-      {
-        "title": "Advierten urgencia en retomar el gasto público prudente para cuidar las finanzas públicas",
-        "source": "andina",
-        "score": 55
-      },
-      {
-        "title": "Sugieren presentar demandas de inconstitucionalidad por leyes con alto impacto fiscal",
-        "source": "andina",
-        "score": 50
-      },
-      {
-        "title": "El Colegio de Economistas alista una demanda contra leyes con impacto fiscal adverso",
-        "source": "correo",
-        "score": 45
-      },
-      {
-        "title": "Agroexportadores “en alerta”: la lista de proyectos de ley antiinversión que los asusta",
-        "source": "gestion",
-        "score": 40
-      },
-      {
-        "title": "Transporte de gas natural: Oportunidades para fortalecerlo",
+        "title": "Emiratos Árabes Unidos: Un ataque iraní impacta un petrolero de Kuwait en el puerto de Dubái",
         "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Desborde de río en Puno sepulta campamentos mineros: reportan un muerto y varios desaparecidos",
+        "title": "Isla de Kharg: qué es, por qué es clave para Irán y por qué Estados Unidos quiere tomarla",
         "source": "elcomercio",
         "score": 35
+      },
+      {
+        "title": "Incursión terrestre de EE.UU. en Irán: el plan militar, los objetivos estratégicos y la duración de los combates",
+        "source": "elcomercio",
+        "score": 30
+      },
+      {
+        "title": "Huaico en Machu Picchu bloquea vía férrea y suspende trenes a la ciudadela hasta nuevo aviso",
+        "source": "larepublica",
+        "score": 30
       }
     ],
     "eco_sector_titles": [
-      "AFIN pide no retroceder en la reforma de Petro-Perú y exige definiciones claras ante nuevos riesgos fiscales",
-      "Cualquier rescate a Petroperú afectará la proyección del déficit fiscal",
-      "Jaloneo de poder",
-      "AFIN pide no retroceder en la reforma de Petroperú",
-      "Carolina Trivelli, miembro del Consejo Fiscal: “Hay debilidad del Ejecutivo frente a un muy poderoso Congreso”",
-      "Advierten urgencia en retomar el gasto público prudente para cuidar las finanzas públicas",
-      "Sugieren presentar demandas de inconstitucionalidad por leyes con alto impacto fiscal",
-      "El Colegio de Economistas alista una demanda contra leyes con impacto fiscal adverso",
-      "Agroexportadores “en alerta”: la lista de proyectos de ley antiinversión que los asusta",
-      "Transporte de gas natural: Oportunidades para fortalecerlo",
-      "Desborde de río en Puno sepulta campamentos mineros: reportan un muerto y varios desaparecidos",
-      "Línea 2, Anillo Vial y los otros 9 megaproyectos “problemáticos” preocupan al MEF",
-      "Trump amenaza con destruir principal terminal petrolera de Irán: sus exigencias",
-      "Cusco: Huaico desaparece la vía férrea en la vía a Machu Picchu (FOTOS)",
-      "Construcción inicia fuerte, pero perdería ritmo por crisis de combustibles, clima y trabas en proyectos",
-      "Machu Picchu: huaico destruye la vía férrea y deja aturistas varados sin trenes",
-      "Huaico destruye vía férrea y suspende trenes a Machu Picchu",
-      "El precio del petróleo sube a los 100,11 dólares por temor a una guerra prolongada en Irán",
-      "Minería: decisiones urgentes para no perder la ola",
-      "¿Una nueva amenaza a los precios en Perú? Alza de fletes marítimos “sin freno”",
-      "PeruRail suspende ruta Machu Picchu - Hidroeléctrica tras huaico",
-      "Secretario del Tesoro de EE.UU. asegura que la situación en Ormuz está mejorando",
-      "Arequipa: más de 52 mil personas sin agua potable por rotura de una red matriz en Cerro Colorado",
-      "Nuevo presidente de Petroperú enfrenta denuncia por acoso sexual y una investigación por el caso Odebrecht",
-      "Osinergmin: mira dónde puedes encontrar combustible más barato en Lima y provincias",
-      "Caso Atico: investigación por masacre alcanza a empresarios mineros",
-      "Julio Rodríguez advierte implicancias penales por denuncia contra presidente de Petroperú",
-      "Balcázar contra Velarde: ideología frente a realidad fiscal",
-      "Trump dice que EE.UU. “está en conversaciones serias con un régimen nuevo y más razonable” en Irán",
-      "Proceso de formalización en Perú sigue siendo lento porque hay trámites que no están digitalizados",
-      "Emergencia en Ayna: Casas colapsan y otras en riesgo, río pasa por debajo de sus estructuras",
-      "Nuevo presidente de Petroperú tiene denuncia por acoso sexual y es investigado por caso Odebrecht",
-      "Carolina Trivelli, investigadora principal del IEP: “En el Perú no falta comida, el problema es que a la gente no le alcanza para comprarla”",
-      "Un hogar de Lima y Callao sin acceso a red de agua paga seis veces más por servicio",
-      "Huaico en Machu Picchu: instalarán puente aéreo para turistas afectados por evento natural",
-      "Waldemar Cerrón y Roberto Sánchez también recibieron aportes de mineros y apoyan ampliación del Reinfo",
-      "Día de la Trabajadora del Hogar evidencia alta informalidad laboral en Junín",
-      "Tránsito de vehículos es restringido en 15 vías nacionales debido a efectos de las lluvias"
+      "Emiratos Árabes Unidos: Un ataque iraní impacta un petrolero de Kuwait en el puerto de Dubái",
+      "Isla de Kharg: qué es, por qué es clave para Irán y por qué Estados Unidos quiere tomarla",
+      "Incursión terrestre de EE.UU. en Irán: el plan militar, los objetivos estratégicos y la duración de los combates",
+      "Huaico en Machu Picchu bloquea vía férrea y suspende trenes a la ciudadela hasta nuevo aviso"
     ],
-    "justification": "El país experimenta un nivel bajo de riesgo político, caracterizado por tensiones moderadas en torno a la gobernanza y cuestiones de integridad institucional. Los principales focos de preocupación se concentran en debates sobre procedimientos constitucionales y denuncias contra funcionarios públicos, sin indicios de crisis sistémica inmediata.",
+    "justification": "El panorama político actual refleja estabilidad institucional. La cobertura mediática se concentra en procesos electorales ordenados y debates presidenciales, sin reportes de crisis sistémica, violencia política generalizada ni quiebres institucionales significativos. El sistema democrático funciona dentro de parámetros normales.",
     "top_drivers": [
       {
-        "title": "Balcázar afirma que gabinete Arroyo solicitaría voto de confianza “probablemente” tras las elecciones",
-        "source": "correo",
-        "score": 70
+        "title": "Debate presidencial 2026 EN VIVO hoy, 30 de marzo: los 12 candidatos que participarán",
+        "source": "gestion",
+        "score": 65
       },
       {
-        "title": "General PNP Óscar Arriola revela que Vladimir Cerrón usaría tecnología avanzada para evitar ser rastreado",
-        "source": "correo",
-        "score": 70
-      },
-      {
-        "title": "Segundo Montalvo pide a Vladimir Cerrón asistir al debate presidencial del JNE pese a orden de captura",
-        "source": "correo",
-        "score": 70
-      },
-      {
-        "title": "Segundo Montalvo pide a Vladimir Cerrón acudir al debate presidencial: \"Es su derecho, la Constitución lo protege\"",
-        "source": "rpp",
-        "score": 70
-      },
-      {
-        "title": "Gabinete de Luis Arroyo pedirá voto de confianza tras elecciones",
-        "source": "canaln",
-        "score": 70
-      },
-      {
-        "title": "Nuevo presidente Petro-Perú enfrenta denuncia por acoso sexual",
+        "title": "Las carpetas fiscales y la red familiar de Roberto Sánchez",
         "source": "elcomercio",
-        "score": 65
+        "score": 60
       },
       {
-        "title": "Nuevo presidente de Petroperú enfrenta denuncia por acoso sexual y una investigación por el caso Odebrecht",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Nuevo presidente de Petroperú tiene denuncia por acoso sexual y es investigado por caso Odebrecht",
+        "title": "Debate presidencial EN VIVO HOY, lunes 30 de marzo: 12 candidatos cara a cara presentarán sus propuestas",
         "source": "larepublica",
-        "score": 65
+        "score": 60
       },
       {
-        "title": "Presidente de Petroperú denunciado por acoso sexual a una joven de 20 años",
+        "title": "Debate presidencial 2026 EN VIVO: cruces, ataques y el minuto a minuto de los candidatos hoy, lunes30 de marzo",
         "source": "caretas",
-        "score": 65
+        "score": 60
       },
       {
-        "title": "Pedro Castillo ratifica respaldo a Roberto Sánchez: «Le entregué mi sombrero para que recorra la Ruta Castillista»",
+        "title": "EN VIVO | Sigue el minuto a minuto de la cuarta fecha del debate presidencial 2026",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "Debate presidencial del JNE inicia hoy segunda jornada",
+        "source": "canaln",
+        "score": 55
+      },
+      {
+        "title": "Debate presidencial EN VIVO: Sigue aquí todas las incidencias de las ternas de candidatos",
+        "source": "elcomercio",
+        "score": 50
+      },
+      {
+        "title": "Fernando Olivera vs. el APRA: el cara a cara más explosivo del debate presidencial 2026 hoy, 30 de abril",
         "source": "caretas",
-        "score": 65
+        "score": 45
+      },
+      {
+        "title": "Debate presidencial: 12 candidatos exponen sus propuestas sobre educación y empleo",
+        "source": "andina",
+        "score": 42
+      },
+      {
+        "title": "Fernando Olivera fue agredido por militantes del APRA con agua e insultos antes de iniciar el debate presidencial",
+        "source": "correo",
+        "score": 30
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 115.4,
-    "political_30d_avg": 94.9,
-    "economic_7d_avg": 126.8,
-    "economic_30d_avg": 194.9,
+    "political_7d_avg": 97.8,
+    "political_30d_avg": 94.6,
+    "economic_7d_avg": 107.6,
+    "economic_30d_avg": 194.4,
     "year_max": 309.2,
     "year_max_date": "2026-02-18"
   },
@@ -239,7 +175,7 @@
       "score": 172.7,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tensión política por debates presidenciales en proceso electoral.",
+      "summary": "Continua la inestabilidad política con debates presidenciales.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -247,7 +183,7 @@
       "score": 194.5,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     },
     {
@@ -255,7 +191,7 @@
       "score": 153.8,
       "level": "ALTO",
       "n_articles": 647,
-      "summary": "Incertidumbre electoral por primer debate presidencial 2026.",
+      "summary": "Incertidumbre electoral ante primer debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -263,7 +199,7 @@
       "score": 153.1,
       "level": "ALTO",
       "n_articles": 823,
-      "summary": "Nuevo Gabinete rechazado por seis bancadas parlamentarias.",
+      "summary": "Nuevo Gabinete enfrenta rechazo parlamentario de seis bancadas.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -271,7 +207,7 @@
       "score": 166.7,
       "level": "ALTO",
       "n_articles": 582,
-      "summary": "Crisis institucional y pugna de poder entre organismos estatales.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -279,7 +215,7 @@
       "score": 174.4,
       "level": "ALTO",
       "n_articles": 935,
-      "summary": "Debilitamiento de instituciones financieras y control presupuestario estatal.",
+      "summary": "No puedo proporcionar un resumen ya que las noticias presentadas no son sobre Perú. La primera es sobre EE.UU. y OTAN, y la tercera sobre El Salvador. Solo la segunda",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -287,7 +223,7 @@
       "score": 154.5,
       "level": "ALTO",
       "n_articles": 630,
-      "summary": "Conflicto migratorio y electoral desestabiliza región.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-17.html"
     },
     {
@@ -295,7 +231,7 @@
       "score": 149.0,
       "level": "ELEVADO",
       "n_articles": 130,
-      "summary": "Pugna por poder entre bloques parlamentarios y ejecutivo.",
+      "summary": "Pugna por poder entre bloques parlamentarios enfrentados.",
       "report_url": "/political/daily-reports/2026-02-20.html"
     },
     {
@@ -303,7 +239,7 @@
       "score": 219.3,
       "level": "CRITICO",
       "n_articles": 135,
-      "summary": "Debilitamiento de instituciones democráticas y fragmentación política peruana.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-02-19.html"
     },
     {
@@ -311,7 +247,7 @@
       "score": 309.2,
       "level": "CRITICO",
       "n_articles": 171,
-      "summary": "Conflicto entre el Congreso y funcionarios del ejecutivo.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-02-18.html"
     }
   ],
@@ -6304,13 +6240,13 @@
     },
     {
       "date": "2026-03-29",
-      "political_raw": 37.4,
-      "political_7d": 46.7,
+      "political_raw": 37.3,
+      "political_7d": 46.6,
       "economic_raw": 22.0,
       "economic_7d": 36.9,
-      "score": 46.7,
-      "prr": 37.4,
-      "prr_7d": 46.7,
+      "score": 46.6,
+      "prr": 37.3,
+      "prr_7d": 46.6,
       "n_articles": 432,
       "low_coverage": false,
       "provisional": true
@@ -6319,12 +6255,25 @@
       "date": "2026-03-30",
       "political_raw": 68.0,
       "political_7d": 61.6,
-      "economic_raw": 138.9,
-      "economic_7d": 108.3,
+      "economic_raw": 133.7,
+      "economic_7d": 104.7,
       "score": 61.6,
       "prr": 68.0,
       "prr_7d": 61.6,
       "n_articles": 515,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-03-31",
+      "political_raw": 17.2,
+      "political_7d": 30.5,
+      "economic_raw": 12.0,
+      "economic_7d": 39.8,
+      "score": 30.5,
+      "prr": 17.2,
+      "prr_7d": 30.5,
+      "n_articles": 89,
       "low_coverage": false,
       "provisional": true
     }
@@ -7561,6 +7510,10 @@
     {
       "date": "2026-03-27",
       "fx": 3.4899
+    },
+    {
+      "date": "2026-03-30",
+      "fx": 3.4907
     }
   ],
   "monthly_series": [
@@ -7678,9 +7631,9 @@
     },
     {
       "month": "2026-03",
-      "political_avg": 94.9,
-      "economic_avg": 194.9,
-      "n_articles": 13162,
+      "political_avg": 92.8,
+      "economic_avg": 189.8,
+      "n_articles": 13251,
       "fx_level": null,
       "fx_yoy": null
     }
