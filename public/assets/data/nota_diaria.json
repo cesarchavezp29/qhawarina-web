@@ -1,14 +1,14 @@
 {
-  "date": "2026-03-31",
-  "headline_es": "Precios supermercado -0.86% MTD · Nowcast PBI +2.84%",
-  "headline_en": "Supermarket prices -0.86% MTD · GDP nowcast +2.84%",
+  "date": "2026-04-02",
+  "headline_es": "Precios supermercado -0.14% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.14% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.86% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.86% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.14% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.14% month-to-date."
     },
     {
       "icon": "📈",
@@ -16,25 +16,25 @@
       "text_en": "Fruits: +0.9% this month."
     },
     {
-      "icon": "📈",
-      "text_es": "Limpieza: +0.4% en el mes.",
-      "text_en": "Cleaning: +0.4% this month."
+      "icon": "📉",
+      "text_es": "Azúcar y Dulces: -0.8% en el mes.",
+      "text_en": "Sugar & Sweets: -0.8% this month."
     },
     {
       "icon": "📊",
-      "text_es": "Nowcast PBI 2026-Q1: +2.84% (variación anual estimada).",
-      "text_en": "GDP nowcast 2026-Q1: +2.84% (estimated year-on-year)."
+      "text_es": "Nowcast PBI 2026-Q1: +2.81% (variación anual estimada).",
+      "text_en": "GDP nowcast 2026-Q1: +2.81% (estimated year-on-year)."
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +0.18% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +0.18% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +0.41% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +0.41% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 30 — nivel mínimo.",
-      "text_en": "Political risk: IRP 30 — minimal level."
+      "text_es": "Riesgo político: IRP 105 — nivel normal.",
+      "text_en": "Political risk: IRP 105 — normal level."
     }
   ],
-  "updated_at": "2026-04-01T01:38:17.396170+00:00"
+  "updated_at": "2026-04-03T01:38:50.579178+00:00"
 }

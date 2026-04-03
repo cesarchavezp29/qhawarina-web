@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-01T01:33:27.648184Z",
+  "generated_at": "2026-04-03T01:32:19.859231Z",
   "months": [
     {
       "month": "2025-01",
@@ -117,7 +117,7 @@
     },
     {
       "month": "2025-07",
-      "irp_7d_peak": 172.7,
+      "irp_7d_peak": 172.6,
       "irp_peak_date": "2025-07-28",
       "irp_event": "Fragmentación Izquierda Peruana",
       "irp_top_articles": [
@@ -125,7 +125,7 @@
         "Pedro Castillo: Denuncia constitucional de la fiscalía alcanza a congresistas Ilich López y Carlos Zeballos que postulan a la Mesa Directiva",
         "Corte IDH exige suspensión inmediata de ley de amnistía para militares y policías"
       ],
-      "ire_7d_peak": 180.2,
+      "ire_7d_peak": 179.6,
       "ire_peak_date": "2025-07-11",
       "ire_event": "AFP reform + Cobre 50% + Huelgas",
       "ire_top_articles": [
@@ -136,7 +136,7 @@
     },
     {
       "month": "2025-08",
-      "irp_7d_peak": 155.7,
+      "irp_7d_peak": 155.6,
       "irp_peak_date": "2025-08-13",
       "irp_event": "Prisión Vizcarra",
       "irp_top_articles": [
@@ -144,7 +144,7 @@
         "PPK sobre cuatro expresidentes presos en Perú: “Todo esto genera mucha inestabilidad”",
         "Alejandro Toledo llora en audiencia y pide traslado a clínica por grave estado de salud"
       ],
-      "ire_7d_peak": 158.5,
+      "ire_7d_peak": 157.8,
       "ire_peak_date": "2025-08-21",
       "ire_event": "Paro Parcial Lima",
       "ire_top_articles": [
@@ -163,7 +163,7 @@
         "Delia Espinoza responde a pedido para suspenderla",
         "JEE archivó denuncia contra Rafael López Aliaga por neutralidad electoral"
       ],
-      "ire_7d_peak": 259.9,
+      "ire_7d_peak": 259.2,
       "ire_peak_date": "2025-09-17",
       "ire_event": "Pensiones en Riesgo",
       "ire_top_articles": [
@@ -182,7 +182,7 @@
         "Congreso: se alistan tres mociones de vacancia contra la presidenta Dina Boluarte",
         "Fuerza Popular anuncia que votará a favor de moción de vacancia contra Dina Boluarte"
       ],
-      "ire_7d_peak": 301.7,
+      "ire_7d_peak": 301.5,
       "ire_peak_date": "2025-10-06",
       "ire_event": "Paro Transportistas",
       "ire_top_articles": [
@@ -201,7 +201,7 @@
         "Jefe del INPE niega que sea su voz la que aparece en audios y descarta renunciar",
         "Paro de transportes 4 de noviembre: las empresas  que no circulan en Lima y Callao"
       ],
-      "ire_7d_peak": 170.5,
+      "ire_7d_peak": 170.4,
       "ire_peak_date": "2025-11-03",
       "ire_event": "Minería ilegal lava $22B",
       "ire_top_articles": [
@@ -231,7 +231,7 @@
     },
     {
       "month": "2026-01",
-      "irp_7d_peak": 216.5,
+      "irp_7d_peak": 218.9,
       "irp_peak_date": "2026-01-21",
       "irp_event": "Censura Jerí",
       "irp_top_articles": [
@@ -250,7 +250,7 @@
     },
     {
       "month": "2026-02",
-      "irp_7d_peak": 309.2,
+      "irp_7d_peak": 309.1,
       "irp_peak_date": "2026-02-18",
       "irp_event": "Censura Jerí",
       "irp_top_articles": [
@@ -266,6 +266,17 @@
         "Grifos de Lima: detienen venta de GNV a taxis y vehículos particulares por emergencia en Camisea",
         "Gremios de transporte rechazan la restricción de GNV para vehículos livianos, taxis y mototaxis"
       ]
+    },
+    {
+      "month": "2026-03",
+      "irp_7d_peak": 194.4,
+      "irp_peak_date": "2026-03-25",
+      "irp_event": "Violencia Electoral Perú",
+      "irp_top_articles": [],
+      "ire_7d_peak": 358.9,
+      "ire_peak_date": "2026-03-03",
+      "ire_event": "Crisis Energética Perú",
+      "ire_top_articles": []
     }
   ]
 }
