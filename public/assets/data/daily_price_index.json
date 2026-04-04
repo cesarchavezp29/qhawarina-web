@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-02",
-    "n_days": 52,
+    "last_date": "2026-04-03",
+    "n_days": 53,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-02"
+    "updated": "2026-04-03"
   },
   "categories": {
     "arroz_cereales": {
@@ -1495,87 +1495,114 @@
       "index_limpieza": 100.0787,
       "index_cuidado_personal": 99.0739,
       "index_other": 99.8399
+    },
+    {
+      "date": "2026-04-03",
+      "index_all": 99.7752,
+      "index_all_unweighted": 100.147,
+      "index_food": 100.2324,
+      "index_nonfood": 99.8479,
+      "var_all": -0.0893,
+      "var_food": -0.1129,
+      "cum_pct": -0.2248,
+      "yoy_inflation": null,
+      "mom_inflation": -0.4797,
+      "interpolated": false,
+      "n_matched": 38183,
+      "index_arroz_cereales": 99.6396,
+      "index_pan_harinas": 99.7794,
+      "index_carnes": 100.716,
+      "index_pescados_mariscos": 98.9173,
+      "index_lacteos": 100.4329,
+      "index_frutas": 102.1189,
+      "index_verduras": 98.0092,
+      "index_aceites_grasas": 98.9933,
+      "index_azucar_dulces": 96.5416,
+      "index_bebidas": 99.5667,
+      "index_limpieza": 100.0568,
+      "index_cuidado_personal": 99.0973,
+      "index_other": 99.8032
     }
   ],
   "latest": {
-    "date": "2026-04-02",
-    "index_all": 99.8644,
-    "index_food": 100.3457,
-    "cum_pct": -0.1356,
-    "var_all": -0.1779,
+    "date": "2026-04-03",
+    "index_all": 99.7752,
+    "index_food": 100.2324,
+    "cum_pct": -0.2248,
+    "var_all": -0.0893,
     "yoy_inflation": null,
-    "mom_inflation": -0.4522,
-    "n_products_today": 39445,
+    "mom_inflation": -0.4797,
+    "n_products_today": 38183,
     "top_movers": [
-      {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.91
-      },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": -0.78
-      },
-      {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.61
+        "var": -1.57
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.49
+        "var": -0.09
+      },
+      {
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.08
+      },
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": -0.08
       }
     ],
     "product_movers": [
       {
-        "name": "Base Repostera para 3 Leches Gloria L...",
-        "store": "wong",
-        "category": "lacteos",
-        "var": 97.14
-      },
-      {
-        "name": "Lechuga Crespa Cuisine & Co",
+        "name": "Zanahoria Especial x kg",
         "store": "metro",
-        "category": "carnes",
-        "var": 87.65
+        "category": "frutas",
+        "var": 71.63
       },
       {
-        "name": "Mini Tostada Il Pastificio Tomate y O...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 81.82
+        "name": "Vainita Metro x kg",
+        "store": "metro",
+        "category": "frutas",
+        "var": 68.67
       },
       {
-        "name": "Pitachips de Finas Hierbas Cuisine & ...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 81.74
+        "name": "Sandía en Trozos Natifrut 280g",
+        "store": "metro",
+        "category": "frutas",
+        "var": 56.11
+      },
+      {
+        "name": "Ají Amarillo x kg",
+        "store": "metro",
+        "category": "frutas",
+        "var": 55.06
       }
     ],
     "stores_coverage": {
-      "metro": 12421,
-      "plazavea": 13479,
-      "wong": 14954
+      "metro": 9900,
+      "plazavea": 13585,
+      "wong": 14934
     },
     "categories_coverage": {
-      "aceites_grasas": 714,
-      "arroz_cereales": 1387,
-      "azucar_dulces": 1086,
-      "bebidas": 984,
-      "carnes": 14735,
-      "cuidado_personal": 2860,
-      "frutas": 1913,
-      "lacteos": 2891,
+      "aceites_grasas": 634,
+      "arroz_cereales": 1264,
+      "azucar_dulces": 914,
+      "bebidas": 982,
+      "carnes": 14259,
+      "cuidado_personal": 2866,
+      "frutas": 1864,
+      "lacteos": 2761,
       "limpieza": 2996,
-      "pan_harinas": 6569,
-      "pescados_mariscos": 248,
-      "verduras": 307
+      "pan_harinas": 5479,
+      "pescados_mariscos": 142,
+      "verduras": 236
     }
   }
 }

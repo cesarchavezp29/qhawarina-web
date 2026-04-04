@@ -1,24 +1,24 @@
 {
-  "date": "2026-04-02",
-  "headline_es": "Precios supermercado -0.14% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.14% MTD · GDP nowcast +2.81%",
+  "date": "2026-04-03",
+  "headline_es": "Precios supermercado -0.22% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.22% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.14% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.14% month-to-date."
-    },
-    {
-      "icon": "📈",
-      "text_es": "Frutas: +0.9% en el mes.",
-      "text_en": "Fruits: +0.9% this month."
+      "text_es": "Precios de supermercado bajó 0.22% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.22% month-to-date."
     },
     {
       "icon": "📉",
-      "text_es": "Azúcar y Dulces: -0.8% en el mes.",
-      "text_en": "Sugar & Sweets: -0.8% this month."
+      "text_es": "Azúcar y Dulces: -1.6% en el mes.",
+      "text_en": "Sugar & Sweets: -1.6% this month."
+    },
+    {
+      "icon": "📉",
+      "text_es": "Carnes: -0.1% en el mes.",
+      "text_en": "Meat: -0.1% this month."
     },
     {
       "icon": "📊",
@@ -27,14 +27,14 @@
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +0.41% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +0.41% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +0.61% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +0.61% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 105 — nivel normal.",
-      "text_en": "Political risk: IRP 105 — normal level."
+      "text_es": "Riesgo político: IRP 56 — nivel bajo.",
+      "text_en": "Political risk: IRP 56 — low level."
     }
   ],
-  "updated_at": "2026-04-03T01:38:50.579178+00:00"
+  "updated_at": "2026-04-04T01:35:45.938833+00:00"
 }
