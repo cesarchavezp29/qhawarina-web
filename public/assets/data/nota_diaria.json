@@ -1,24 +1,24 @@
 {
-  "date": "2026-04-03",
-  "headline_es": "Precios supermercado -0.22% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.22% MTD · GDP nowcast +2.81%",
+  "date": "2026-04-04",
+  "headline_es": "Precios supermercado -0.17% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.17% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.22% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.22% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.17% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.17% month-to-date."
     },
     {
-      "icon": "📉",
-      "text_es": "Azúcar y Dulces: -1.6% en el mes.",
-      "text_en": "Sugar & Sweets: -1.6% this month."
+      "icon": "📈",
+      "text_es": "Frutas: +0.3% en el mes.",
+      "text_en": "Fruits: +0.3% this month."
     },
     {
-      "icon": "📉",
-      "text_es": "Carnes: -0.1% en el mes.",
-      "text_en": "Meat: -0.1% this month."
+      "icon": "📈",
+      "text_es": "Pan y Harinas: +0.1% en el mes.",
+      "text_en": "Bread & Flour: +0.1% this month."
     },
     {
       "icon": "📊",
@@ -27,14 +27,14 @@
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +0.61% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +0.61% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +0.56% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +0.56% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 56 — nivel bajo.",
-      "text_en": "Political risk: IRP 56 — low level."
+      "text_es": "Riesgo político: IRP 69 — nivel bajo.",
+      "text_en": "Political risk: IRP 69 — low level."
     }
   ],
-  "updated_at": "2026-04-04T01:35:45.938833+00:00"
+  "updated_at": "2026-04-05T01:12:16.241184+00:00"
 }

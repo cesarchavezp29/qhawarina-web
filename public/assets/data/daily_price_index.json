@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-03",
-    "n_days": 53,
+    "last_date": "2026-04-04",
+    "n_days": 54,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-03"
+    "updated": "2026-04-04"
   },
   "categories": {
     "arroz_cereales": {
@@ -1522,87 +1522,114 @@
       "index_limpieza": 100.0568,
       "index_cuidado_personal": 99.0973,
       "index_other": 99.8032
+    },
+    {
+      "date": "2026-04-04",
+      "index_all": 99.825,
+      "index_all_unweighted": 100.204,
+      "index_food": 100.3084,
+      "index_nonfood": 99.8504,
+      "var_all": 0.0499,
+      "var_food": 0.0758,
+      "cum_pct": -0.175,
+      "yoy_inflation": null,
+      "mom_inflation": -0.4784,
+      "interpolated": false,
+      "n_matched": 38316,
+      "index_arroz_cereales": 99.6782,
+      "index_pan_harinas": 99.8468,
+      "index_carnes": 100.7893,
+      "index_pescados_mariscos": 98.9173,
+      "index_lacteos": 100.4634,
+      "index_frutas": 102.4632,
+      "index_verduras": 98.0092,
+      "index_aceites_grasas": 98.9933,
+      "index_azucar_dulces": 96.5416,
+      "index_bebidas": 99.5667,
+      "index_limpieza": 100.0568,
+      "index_cuidado_personal": 99.0973,
+      "index_other": 99.8092
     }
   ],
   "latest": {
-    "date": "2026-04-03",
-    "index_all": 99.7752,
-    "index_food": 100.2324,
-    "cum_pct": -0.2248,
-    "var_all": -0.0893,
+    "date": "2026-04-04",
+    "index_all": 99.825,
+    "index_food": 100.3084,
+    "cum_pct": -0.175,
+    "var_all": 0.0499,
     "yoy_inflation": null,
-    "mom_inflation": -0.4797,
-    "n_products_today": 38183,
+    "mom_inflation": -0.4784,
+    "n_products_today": 38316,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -1.57
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.34
+      },
+      {
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 0.07
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.09
+        "var": 0.07
       },
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.08
-      },
-      {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.08
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": 0.04
       }
     ],
     "product_movers": [
       {
-        "name": "Zanahoria Especial x kg",
+        "name": "Paco Entero",
         "store": "metro",
-        "category": "frutas",
-        "var": 71.63
+        "category": "carnes",
+        "var": 97.67
       },
       {
-        "name": "Vainita Metro x kg",
-        "store": "metro",
+        "name": "Maracuyá x kg",
+        "store": "wong",
         "category": "frutas",
-        "var": 68.67
+        "var": 87.72
       },
       {
-        "name": "Sandía en Trozos Natifrut 280g",
+        "name": "Pejerrey Limpio x kg",
         "store": "metro",
-        "category": "frutas",
-        "var": 56.11
+        "category": "carnes",
+        "var": 70.35
       },
       {
-        "name": "Ají Amarillo x kg",
-        "store": "metro",
+        "name": "Manzana Israel x kg",
+        "store": "wong",
         "category": "frutas",
-        "var": 55.06
+        "var": 56.86
       }
     ],
     "stores_coverage": {
-      "metro": 9900,
-      "plazavea": 13585,
-      "wong": 14934
+      "metro": 12374,
+      "plazavea": 13580,
+      "wong": 14914
     },
     "categories_coverage": {
-      "aceites_grasas": 634,
-      "arroz_cereales": 1264,
-      "azucar_dulces": 914,
+      "aceites_grasas": 713,
+      "arroz_cereales": 1389,
+      "azucar_dulces": 1095,
       "bebidas": 982,
-      "carnes": 14259,
-      "cuidado_personal": 2866,
-      "frutas": 1864,
-      "lacteos": 2761,
+      "carnes": 14744,
+      "cuidado_personal": 2868,
+      "frutas": 1899,
+      "lacteos": 2900,
       "limpieza": 2996,
-      "pan_harinas": 5479,
-      "pescados_mariscos": 142,
-      "verduras": 236
+      "pan_harinas": 6567,
+      "pescados_mariscos": 247,
+      "verduras": 308
     }
   }
 }
