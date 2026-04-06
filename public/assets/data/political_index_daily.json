@@ -1,197 +1,174 @@
 {
   "metadata": {
-    "generated_at": "2026-04-04T21:07:26.560079",
-    "coverage_days": 459,
+    "generated_at": "2026-04-05T21:26:10.149221",
+    "coverage_days": 460,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-04",
-    "political_raw": 27.5,
-    "political_raw_level": "MINIMO",
-    "political_7d": 69.0,
+    "date": "2026-04-05",
+    "political_raw": 63.9,
+    "political_raw_level": "BAJO",
+    "political_7d": 68.1,
     "political_level": "BAJO",
-    "political_multiplier": 0.69,
-    "economic_raw": 17.8,
+    "political_multiplier": 0.68,
+    "economic_raw": 19.9,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 59.4,
-    "economic_level": "BAJO",
-    "economic_multiplier": 0.59,
-    "score": 69.0,
-    "prr_7d": 69.0,
-    "prr_raw": 27.5,
+    "economic_7d": 46.9,
+    "economic_level": "MINIMO",
+    "economic_multiplier": 0.47,
+    "score": 68.1,
+    "prr_7d": 68.1,
+    "prr_raw": 63.9,
     "level": "BAJO",
-    "articles_total": 451,
-    "articles_political_relevant": 137,
-    "articles_economic_relevant": 41,
-    "political_justification": "El panorama político muestra estabilidad institucional con tensiones procedimentales moderadas. La postergación del voto de confianza ministerial y disputas judiciales contra candidatos generan incertidumbre, pero sin amenazar la continuidad democrática. Las elecciones 2026 canalizan competencia política dentro de marcos constitucionales.",
-    "economic_justification": "La economía peruana atraviesa un período de estabilidad relativa con presiones moderadas. Aunque persisten vulnerabilidades en infraestructura y sectores clave como hidrocarburos, los indicadores de recaudación y consumo muestran dinamismo. Los riesgos geológicos y de infraestructura requieren atención preventiva para evitar impactos mayores.",
+    "articles_total": 381,
+    "articles_political_relevant": 138,
+    "articles_economic_relevant": 49,
+    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Aunque persisten tensiones por financiamiento irregular y procedimientos sancionadores contra candidatos, la competencia electoral se desarrolla dentro de marcos institucionales. La fragmentación de preferencias electorales y ausencia de liderazgo consolidado mantienen incertidumbre, pero sin indicadores de crisis sistémica inmediata.",
+    "economic_justification": "La economía peruana enfrenta un riesgo económico **mínimo**, reflejando estabilidad relativa en indicadores clave. Sin embargo, emergen vulnerabilidades por tensiones geopolíticas en energía global, presiones fiscales electorales y dependencia de combustibles. La baja diversificación energética amplifica exposición a shocks externos.",
     "top_political_drivers": [
       {
-        "title": "Presidente del Congreso anunció que voto de confianza del nuevo gabinete se verá recién luego de elecciones | Al Vuelo",
-        "source": "elbuho",
-        "score": 72
-      },
-      {
-        "title": "Voto de confianza en suspenso: gabinete ministerial recién se presentará después de las elecciones (VIDEO)",
-        "source": "elbuho",
-        "score": 70
-      },
-      {
-        "title": "Paul Jaimes: ¿Cuál es el proceso judicial que se le sigue al candidato y por qué el PJ admitió una reparación provisional de la Procuraduría por S/50 mil?",
+        "title": "Los aportes del Reinfo: Estos son los partidos y candidatos que recibieron financiamiento de mineros informales",
         "source": "elcomercio",
-        "score": 58
+        "score": 62
       },
       {
-        "title": "Comisión de Ética evaluará suspender procesos contra el presidente José Balcázar",
+        "title": "PJ autoriza levantar secreto bancario de Óscar Acuña por caso Frigoinca y Qali Warma",
+        "source": "correo",
+        "score": 55
+      },
+      {
+        "title": "Diez claves para entender el poder del Senado que lo decidirá todo",
+        "source": "elbuho",
+        "score": 55
+      },
+      {
+        "title": "A una semana de las elecciones, ninguno de los 35 candidatos tienen asegurado su pase a segunda vuelta",
+        "source": "larepublica",
+        "score": 52
+      },
+      {
+        "title": "Datum: Carlos Álvarez se ubica en segundo lugar y crece intención de voto por Marisol Pérez Tello y Ricardo Belmont",
+        "source": "rpp",
+        "score": 50
+      },
+      {
+        "title": "Última encuesta electoral 2026: simulacro y tendencias finales del voto a nivel nacional y regional",
+        "source": "elcomercio",
+        "score": 48
+      },
+      {
+        "title": "Simulacro de Datum muestra empate técnico entre Rafael López Aliaga y Carlos Álvarez en el segundo lugar",
+        "source": "correo",
+        "score": 48
+      },
+      {
+        "title": "Encuesta CPI: ¿quiénes lideran la intención de voto y el simulacro electoral a una semana de los comicios?",
+        "source": "rpp",
+        "score": 48
+      },
+      {
+        "title": "Último día de encuestas: Revelan la preferencia de los ciudadanos si las elecciones fueran mañana",
+        "source": "elbuho",
+        "score": 48
+      },
+      {
+        "title": "JEE de Lima Centro dispuso iniciar procedimiento sancionador contra George Forsyth",
         "source": "elcomercio",
         "score": 45
-      },
-      {
-        "title": "Elecciones 2026: Fuerza Popular alcanza apenas 8.5% en el Senado, seguida de Renovación Popular y Juntos por el Perú",
-        "source": "larepublica",
-        "score": 45
-      },
-      {
-        "title": "¿Quién pasa a segunda vuelta? Esto dicen las últimas encuestas de Ipsos, Datum y CPI",
-        "source": "caretas",
-        "score": 45
-      },
-      {
-        "title": "Rafael López Aliaga llama «gente de mierda» a ciudadanos de Abancay y población casi lo lincha (VIDEO)",
-        "source": "elbuho",
-        "score": 45
-      },
-      {
-        "title": "Encuesta IEP: 55% votaría por el mismo partido para presidente y Senado en las elecciones generales 2026",
-        "source": "larepublica",
-        "score": 42
-      },
-      {
-        "title": "Tomás Gálvez plantea que fiscales no dependan de colegios profesionales para seguir en el cargo",
-        "source": "correo",
-        "score": 35
-      },
-      {
-        "title": "Demoras burocráticas ponen en riesgo compra de los F-16 para la FAP",
-        "source": "correo",
-        "score": 35
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Premier: Petroperú se reflotará “de otra manera diferente”",
-        "source": "gestion",
-        "score": 45
+        "title": "Jorge González Izquierdo, economista: “Fondo de combustibles enriquece a mayoristas”",
+        "source": "correo",
+        "score": 35
       },
       {
-        "title": "El costo de no prevenir: ¿Cuánto más se gasta en reconstrucción?",
-        "source": "gestion",
+        "title": "Propuestas electorales incluyen iniciativas de alto costo fiscal",
+        "source": "elcomercio",
         "score": 30
       },
       {
-        "title": "Petroperú y su futuro: “el plan A” de Renovación Popular para la petrolera",
+        "title": "Awa, un restaurante donde la selva se cuenta en primera persona",
+        "source": "elcomercio",
+        "score": 25
+      },
+      {
+        "title": "¿Crisis del petróleo podría impulsar mayor interés por autos eléctricos? Lo que pasa en Perú",
         "source": "gestion",
         "score": 25
-      },
-      {
-        "title": "Pensión 65: conoce a Américo Salinas, experto tejedor de sillas de junco en La Libertad",
-        "source": "andina",
-        "score": 25
-      },
-      {
-        "title": "San Martín: derrumbe de grandes proporciones cubre carretera Tarapoto-Yurimaguas",
-        "source": "andina",
-        "score": 25
-      },
-      {
-        "title": "Interés en Perú de construir un dique seco post-panamax genera reacción en Chile",
-        "source": "gestion",
-        "score": 20
-      },
-      {
-        "title": "Recaudación tributaria crece 6.2% impulsada por consumo y minería",
-        "source": "correo",
-        "score": 20
-      },
-      {
-        "title": "Hospital Honorio Delgado de Arequipa sin laparoscopía",
-        "source": "correo",
-        "score": 20
-      },
-      {
-        "title": "Indeci: 345 distritos de la sierra centro y sur en riesgo por precipitaciones",
-        "source": "andina",
-        "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Premier: Petroperú se reflotará “de otra manera diferente”",
-      "El costo de no prevenir: ¿Cuánto más se gasta en reconstrucción?",
-      "Petroperú y su futuro: “el plan A” de Renovación Popular para la petrolera",
-      "Pensión 65: conoce a Américo Salinas, experto tejedor de sillas de junco en La Libertad",
-      "San Martín: derrumbe de grandes proporciones cubre carretera Tarapoto-Yurimaguas"
+      "Sindicatos advierten protestas si el Gobierno de Balcázar mantiene decreto que privatiza Petroperú",
+      "Jorge González Izquierdo, economista: “Fondo de combustibles enriquece a mayoristas”",
+      "Propuestas electorales incluyen iniciativas de alto costo fiscal",
+      "Perú llega a las elecciones con 7 millones de trabajadores que ganan menos que el sueldo mínimo",
+      "Awa, un restaurante donde la selva se cuenta en primera persona",
+      "Los aportes del Reinfo: Estos son los partidos y candidatos que recibieron financiamiento de mineros informales",
+      "¿Crisis del petróleo podría impulsar mayor interés por autos eléctricos? Lo que pasa en Perú"
     ],
-    "justification": "El panorama político muestra estabilidad institucional con tensiones procedimentales moderadas. La postergación del voto de confianza ministerial y disputas judiciales contra candidatos generan incertidumbre, pero sin amenazar la continuidad democrática. Las elecciones 2026 canalizan competencia política dentro de marcos constitucionales.",
+    "justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Aunque persisten tensiones por financiamiento irregular y procedimientos sancionadores contra candidatos, la competencia electoral se desarrolla dentro de marcos institucionales. La fragmentación de preferencias electorales y ausencia de liderazgo consolidado mantienen incertidumbre, pero sin indicadores de crisis sistémica inmediata.",
     "top_drivers": [
       {
-        "title": "Presidente del Congreso anunció que voto de confianza del nuevo gabinete se verá recién luego de elecciones | Al Vuelo",
-        "source": "elbuho",
-        "score": 72
-      },
-      {
-        "title": "Voto de confianza en suspenso: gabinete ministerial recién se presentará después de las elecciones (VIDEO)",
-        "source": "elbuho",
-        "score": 70
-      },
-      {
-        "title": "Paul Jaimes: ¿Cuál es el proceso judicial que se le sigue al candidato y por qué el PJ admitió una reparación provisional de la Procuraduría por S/50 mil?",
+        "title": "Los aportes del Reinfo: Estos son los partidos y candidatos que recibieron financiamiento de mineros informales",
         "source": "elcomercio",
-        "score": 58
+        "score": 62
       },
       {
-        "title": "Comisión de Ética evaluará suspender procesos contra el presidente José Balcázar",
+        "title": "PJ autoriza levantar secreto bancario de Óscar Acuña por caso Frigoinca y Qali Warma",
+        "source": "correo",
+        "score": 55
+      },
+      {
+        "title": "Diez claves para entender el poder del Senado que lo decidirá todo",
+        "source": "elbuho",
+        "score": 55
+      },
+      {
+        "title": "A una semana de las elecciones, ninguno de los 35 candidatos tienen asegurado su pase a segunda vuelta",
+        "source": "larepublica",
+        "score": 52
+      },
+      {
+        "title": "Datum: Carlos Álvarez se ubica en segundo lugar y crece intención de voto por Marisol Pérez Tello y Ricardo Belmont",
+        "source": "rpp",
+        "score": 50
+      },
+      {
+        "title": "Última encuesta electoral 2026: simulacro y tendencias finales del voto a nivel nacional y regional",
+        "source": "elcomercio",
+        "score": 48
+      },
+      {
+        "title": "Simulacro de Datum muestra empate técnico entre Rafael López Aliaga y Carlos Álvarez en el segundo lugar",
+        "source": "correo",
+        "score": 48
+      },
+      {
+        "title": "Encuesta CPI: ¿quiénes lideran la intención de voto y el simulacro electoral a una semana de los comicios?",
+        "source": "rpp",
+        "score": 48
+      },
+      {
+        "title": "Último día de encuestas: Revelan la preferencia de los ciudadanos si las elecciones fueran mañana",
+        "source": "elbuho",
+        "score": 48
+      },
+      {
+        "title": "JEE de Lima Centro dispuso iniciar procedimiento sancionador contra George Forsyth",
         "source": "elcomercio",
         "score": 45
-      },
-      {
-        "title": "Elecciones 2026: Fuerza Popular alcanza apenas 8.5% en el Senado, seguida de Renovación Popular y Juntos por el Perú",
-        "source": "larepublica",
-        "score": 45
-      },
-      {
-        "title": "¿Quién pasa a segunda vuelta? Esto dicen las últimas encuestas de Ipsos, Datum y CPI",
-        "source": "caretas",
-        "score": 45
-      },
-      {
-        "title": "Rafael López Aliaga llama «gente de mierda» a ciudadanos de Abancay y población casi lo lincha (VIDEO)",
-        "source": "elbuho",
-        "score": 45
-      },
-      {
-        "title": "Encuesta IEP: 55% votaría por el mismo partido para presidente y Senado en las elecciones generales 2026",
-        "source": "larepublica",
-        "score": 42
-      },
-      {
-        "title": "Tomás Gálvez plantea que fiscales no dependan de colegios profesionales para seguir en el cargo",
-        "source": "correo",
-        "score": 35
-      },
-      {
-        "title": "Demoras burocráticas ponen en riesgo compra de los F-16 para la FAP",
-        "source": "correo",
-        "score": 35
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 91.1,
+    "political_7d_avg": 88.6,
     "political_30d_avg": 99.0,
-    "economic_7d_avg": 90.7,
-    "economic_30d_avg": 176.7,
+    "economic_7d_avg": 84.2,
+    "economic_30d_avg": 169.3,
     "year_max": 226.0,
     "year_max_date": "2026-02-18"
   },
@@ -201,7 +178,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno generan preocupación económica.",
+      "summary": "Políticas fiscales del gobierno comprometen estabilidad económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -209,7 +186,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera incertidumbre sobre candidatos.",
+      "summary": "Tensión política por debate presidencial en curso.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -217,7 +194,7 @@
       "score": 155.2,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo Cerrón participa en debate presidencial.",
+      "summary": "Candidato prófugo participa en debate presidencial 2026.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     },
     {
@@ -225,7 +202,7 @@
       "score": 130.9,
       "level": "ELEVADO",
       "n_articles": 648,
-      "summary": "Competencia electoral y confrontación entre candidatos presidenciales.",
+      "summary": "Confrontación de candidatos en elecciones presidenciales peruanas.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -233,7 +210,7 @@
       "score": 122.2,
       "level": "ELEVADO",
       "n_articles": 469,
-      "summary": "La inseguridad ciudadana debilita economía y estabilidad política.",
+      "summary": "Inseguridad ciudadana y debilitamiento económico por gasto público.",
       "report_url": "/political/daily-reports/2026-03-21.html"
     },
     {
@@ -241,7 +218,7 @@
       "score": 143.3,
       "level": "ELEVADO",
       "n_articles": 823,
-      "summary": "Parlamento fragmentado rechaza nuevo gabinete ministerial.",
+      "summary": "Nuevo Gabinete enfrenta rechazo parlamentario de seis bancadas.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -249,7 +226,7 @@
       "score": 141.6,
       "level": "ELEVADO",
       "n_articles": 583,
-      "summary": "Conflicto político y corrupción debilitan instituciones peruanas.",
+      "summary": "Conflictos de poder judicial y corrupción vinculada a intereses mineros.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -257,7 +234,7 @@
       "score": 132.3,
       "level": "ELEVADO",
       "n_articles": 935,
-      "summary": "No puedo proporcionar un resumen porque las noticias mencionadas no corresponden a Perú en esa fecha.",
+      "summary": "No puedo proporcionar un resumen preciso porque las noticias listadas no parecen ser específicamente sobre Perú el 2026-03-18. Dos son internacionales (OTAN/Trump",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -265,7 +242,7 @@
       "score": 134.1,
       "level": "ELEVADO",
       "n_articles": 63,
-      "summary": "Irregularidades financieras en candidatos para las elecciones.",
+      "summary": "Irregularidades financieras en candidatos durante campaña electoral.",
       "report_url": "/political/daily-reports/2026-02-22.html"
     },
     {
@@ -273,7 +250,7 @@
       "score": 157.1,
       "level": "ALTO",
       "n_articles": 61,
-      "summary": "Juicios orales contra el presidente Balcázar generan inestabilidad institucional.",
+      "summary": "Balcázar elegido presidente enfrenta juicios pendientes.",
       "report_url": "/political/daily-reports/2026-02-21.html"
     }
   ],
@@ -1033,25 +1010,25 @@
     {
       "date": "2025-02-24",
       "political_raw": 27.0,
-      "political_7d": 48.2,
+      "political_7d": 47.6,
       "economic_raw": 32.2,
       "economic_7d": 26.2,
-      "score": 48.2,
+      "score": 47.6,
       "prr": 27.0,
-      "prr_7d": 48.2,
-      "n_articles": 10,
+      "prr_7d": 47.6,
+      "n_articles": 11,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2025-02-25",
       "political_raw": 28.7,
-      "political_7d": 42.5,
+      "political_7d": 42.1,
       "economic_raw": 24.1,
       "economic_7d": 22.6,
-      "score": 42.5,
+      "score": 42.1,
       "prr": 28.7,
-      "prr_7d": 42.5,
+      "prr_7d": 42.1,
       "n_articles": 18,
       "low_coverage": false,
       "provisional": false
@@ -1059,12 +1036,12 @@
     {
       "date": "2025-02-26",
       "political_raw": 30.4,
-      "political_7d": 38.9,
+      "political_7d": 38.6,
       "economic_raw": 15.9,
       "economic_7d": 20.6,
-      "score": 38.9,
+      "score": 38.6,
       "prr": 30.4,
-      "prr_7d": 38.9,
+      "prr_7d": 38.6,
       "n_articles": 27,
       "low_coverage": false,
       "provisional": false
@@ -1072,12 +1049,12 @@
     {
       "date": "2025-02-27",
       "political_raw": 46.4,
-      "political_7d": 41.1,
+      "political_7d": 40.9,
       "economic_raw": 14.7,
       "economic_7d": 18.8,
-      "score": 41.1,
+      "score": 40.9,
       "prr": 46.4,
-      "prr_7d": 41.1,
+      "prr_7d": 40.9,
       "n_articles": 26,
       "low_coverage": false,
       "provisional": false
@@ -1085,12 +1062,12 @@
     {
       "date": "2025-02-28",
       "political_raw": 62.5,
-      "political_7d": 47.5,
+      "political_7d": 47.4,
       "economic_raw": 95.1,
       "economic_7d": 41.7,
-      "score": 47.5,
+      "score": 47.4,
       "prr": 62.5,
-      "prr_7d": 47.5,
+      "prr_7d": 47.4,
       "n_articles": 56,
       "low_coverage": false,
       "provisional": false
@@ -1098,12 +1075,12 @@
     {
       "date": "2025-03-01",
       "political_raw": 39.4,
-      "political_7d": 45.1,
+      "political_7d": 45.0,
       "economic_raw": 10.0,
       "economic_7d": 32.2,
-      "score": 45.1,
+      "score": 45.0,
       "prr": 39.4,
-      "prr_7d": 45.1,
+      "prr_7d": 45.0,
       "n_articles": 61,
       "low_coverage": false,
       "provisional": false
@@ -1111,12 +1088,12 @@
     {
       "date": "2025-03-02",
       "political_raw": 72.4,
-      "political_7d": 53.3,
+      "political_7d": 53.2,
       "economic_raw": 53.6,
       "economic_7d": 38.6,
-      "score": 53.3,
+      "score": 53.2,
       "prr": 72.4,
-      "prr_7d": 53.3,
+      "prr_7d": 53.2,
       "n_articles": 46,
       "low_coverage": false,
       "provisional": false
@@ -1124,12 +1101,12 @@
     {
       "date": "2025-03-03",
       "political_raw": 93.5,
-      "political_7d": 65.4,
+      "political_7d": 65.3,
       "economic_raw": 0.0,
       "economic_7d": 27.0,
-      "score": 65.4,
+      "score": 65.3,
       "prr": 93.5,
-      "prr_7d": 65.4,
+      "prr_7d": 65.3,
       "n_articles": 31,
       "low_coverage": false,
       "provisional": false
@@ -1137,12 +1114,12 @@
     {
       "date": "2025-03-04",
       "political_raw": 123.8,
-      "political_7d": 73.5,
+      "political_7d": 73.4,
       "economic_raw": 46.3,
       "economic_7d": 18.9,
-      "score": 73.5,
+      "score": 73.4,
       "prr": 123.8,
-      "prr_7d": 73.5,
+      "prr_7d": 73.4,
       "n_articles": 20,
       "low_coverage": false,
       "provisional": false
@@ -2683,26 +2660,26 @@
     },
     {
       "date": "2025-07-01",
-      "political_raw": 81.3,
-      "political_7d": 84.4,
-      "economic_raw": 44.2,
-      "economic_7d": 26.7,
-      "score": 84.4,
-      "prr": 81.3,
-      "prr_7d": 84.4,
-      "n_articles": 54,
+      "political_raw": 80.5,
+      "political_7d": 84.2,
+      "economic_raw": 44.0,
+      "economic_7d": 26.6,
+      "score": 84.2,
+      "prr": 80.5,
+      "prr_7d": 84.2,
+      "n_articles": 55,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2025-07-02",
       "political_raw": 78.3,
-      "political_7d": 82.6,
+      "political_7d": 82.5,
       "economic_raw": 43.9,
       "economic_7d": 31.8,
-      "score": 82.6,
+      "score": 82.5,
       "prr": 78.3,
-      "prr_7d": 82.6,
+      "prr_7d": 82.5,
       "n_articles": 49,
       "low_coverage": false,
       "provisional": false
@@ -2710,12 +2687,12 @@
     {
       "date": "2025-07-03",
       "political_raw": 153.0,
-      "political_7d": 103.7,
+      "political_7d": 103.6,
       "economic_raw": 31.7,
       "economic_7d": 31.8,
-      "score": 103.7,
+      "score": 103.6,
       "prr": 153.0,
-      "prr_7d": 103.7,
+      "prr_7d": 103.6,
       "n_articles": 54,
       "low_coverage": false,
       "provisional": false
@@ -2723,12 +2700,12 @@
     {
       "date": "2025-07-04",
       "political_raw": 97.2,
-      "political_7d": 101.8,
+      "political_7d": 101.7,
       "economic_raw": 0.0,
-      "economic_7d": 22.3,
-      "score": 101.8,
+      "economic_7d": 22.2,
+      "score": 101.7,
       "prr": 97.2,
-      "prr_7d": 101.8,
+      "prr_7d": 101.7,
       "n_articles": 40,
       "low_coverage": false,
       "provisional": false
@@ -2775,12 +2752,12 @@
     {
       "date": "2025-07-08",
       "political_raw": 61.5,
-      "political_7d": 68.7,
+      "political_7d": 68.6,
       "economic_raw": 50.0,
       "economic_7d": 28.6,
-      "score": 68.7,
+      "score": 68.6,
       "prr": 61.5,
-      "prr_7d": 68.7,
+      "prr_7d": 68.6,
       "n_articles": 61,
       "low_coverage": false,
       "provisional": false
@@ -2853,12 +2830,12 @@
     {
       "date": "2025-07-14",
       "political_raw": 35.5,
-      "political_7d": 53.5,
+      "political_7d": 53.4,
       "economic_raw": 23.3,
       "economic_7d": 101.3,
-      "score": 53.5,
+      "score": 53.4,
       "prr": 35.5,
-      "prr_7d": 53.5,
+      "prr_7d": 53.4,
       "n_articles": 29,
       "low_coverage": false,
       "provisional": false
@@ -6254,44 +6231,57 @@
       "prr_7d": 110.2,
       "n_articles": 650,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-02",
-      "political_raw": 93.8,
-      "political_7d": 105.3,
-      "economic_raw": 104.3,
-      "economic_7d": 98.4,
-      "score": 105.3,
-      "prr": 93.8,
-      "prr_7d": 105.3,
-      "n_articles": 583,
+      "political_raw": 96.4,
+      "political_7d": 106.1,
+      "economic_raw": 106.2,
+      "economic_7d": 99.0,
+      "score": 106.1,
+      "prr": 96.4,
+      "prr_7d": 106.1,
+      "n_articles": 586,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-03",
       "political_raw": 43.7,
-      "political_7d": 86.8,
+      "political_7d": 87.4,
       "economic_raw": 28.0,
-      "economic_7d": 77.3,
-      "score": 86.8,
+      "economic_7d": 77.7,
+      "score": 87.4,
       "prr": 43.7,
-      "prr_7d": 86.8,
+      "prr_7d": 87.4,
       "n_articles": 459,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-04",
-      "political_raw": 27.5,
-      "political_7d": 69.0,
-      "economic_raw": 17.8,
-      "economic_7d": 59.4,
-      "score": 69.0,
-      "prr": 27.5,
-      "prr_7d": 69.0,
-      "n_articles": 451,
+      "political_raw": 29.3,
+      "political_7d": 69.9,
+      "economic_raw": 13.6,
+      "economic_7d": 58.4,
+      "score": 69.9,
+      "prr": 29.3,
+      "prr_7d": 69.9,
+      "n_articles": 452,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-05",
+      "political_raw": 63.9,
+      "political_7d": 68.1,
+      "economic_raw": 19.9,
+      "economic_7d": 46.9,
+      "score": 68.1,
+      "prr": 63.9,
+      "prr_7d": 68.1,
+      "n_articles": 381,
       "low_coverage": false,
       "provisional": true
     }
@@ -7549,9 +7539,9 @@
     },
     {
       "month": "2025-02",
-      "political_avg": 53.4,
+      "political_avg": 53.3,
       "economic_avg": 35.1,
-      "n_articles": 1081,
+      "n_articles": 1082,
       "fx_level": 3.6977,
       "fx_yoy": -3.39
     },
@@ -7591,7 +7581,7 @@
       "month": "2025-07",
       "political_avg": 78.0,
       "economic_avg": 49.4,
-      "n_articles": 1223,
+      "n_articles": 1224,
       "fx_level": 3.5562,
       "fx_yoy": -5.53
     },
@@ -7661,9 +7651,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 92.8,
-      "economic_avg": 82.8,
-      "n_articles": 2143,
+      "political_avg": 88.3,
+      "economic_avg": 75.6,
+      "n_articles": 2528,
       "fx_level": null,
       "fx_yoy": null
     }

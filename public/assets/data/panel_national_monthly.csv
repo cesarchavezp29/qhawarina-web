@@ -17577,7 +17577,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_FUEL_ENERGY_SCORE,"News fuel/energy crisis intensity score (0-100, monthly, RSS)",news,1.1273288240180372,1.1273288240180372,0.7548671194824852,-0.037171928719765934,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_FUEL_ENERGY_SCORE,"News fuel/energy crisis intensity score (0-100, monthly, RSS)",news,2.7446858210698437,2.7446858210698437,1.3203377205447275,0.5654706010622423,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_FUEL_ENERGY_SCORE,"News fuel/energy crisis intensity score (0-100, monthly, RSS)",news,20.575092286768992,20.575092286768992,3.071539514446739,1.7512017939020115,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_FUEL_ENERGY_SCORE,"News fuel/energy crisis intensity score (0-100, monthly, RSS)",news,8.73873873873874,8.73873873873874,2.276111616326874,-0.7954278981198648,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_FUEL_ENERGY_SCORE,"News fuel/energy crisis intensity score (0-100, monthly, RSS)",news,9.140316205533598,9.140316205533598,2.3165191816544994,-0.7550203327922396,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_FOOD_SHOCK_SCORE,"News food price shock intensity score (0-100, monthly, RSS)",news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_FOOD_SHOCK_SCORE,"News food price shock intensity score (0-100, monthly, RSS)",news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_FOOD_SHOCK_SCORE,"News food price shock intensity score (0-100, monthly, RSS)",news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17629,7 +17629,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_GNV_SCARCITY_SCORE,"News GNV physical scarcity score — pipeline ruptures, rationing (0-100, monthly, RSS)",news,0.0,0.0,0.0,-0.467149952670669,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_GNV_SCARCITY_SCORE,"News GNV physical scarcity score — pipeline ruptures, rationing (0-100, monthly, RSS)",news,0.35038542396636296,0.35038542396636296,0.30039005093752996,0.30039005093752996,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_GNV_SCARCITY_SCORE,"News GNV physical scarcity score — pipeline ruptures, rationing (0-100, monthly, RSS)",news,9.391172262747938,9.391172262747938,2.340956624805267,2.040566573867737,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_GNV_SCARCITY_SCORE,"News GNV physical scarcity score — pipeline ruptures, rationing (0-100, monthly, RSS)",news,2.1621621621621623,2.1621621621621623,1.1512560221535317,-1.1897006026517352,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_GNV_SCARCITY_SCORE,"News GNV physical scarcity score — pipeline ruptures, rationing (0-100, monthly, RSS)",news,1.9762845849802373,1.9762845849802373,1.0906757390723734,-1.2502808857328935,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17655,7 +17655,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,-0.7233555149127946,-0.7233555149127946,-0.5442732710920981,0.023572316411175853,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,0.8457254913571862,0.8457254913571862,0.6128724204494671,1.1571456915415652,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,3.14418082863943,3.14418082863943,1.4217051402598369,0.8088327198103697,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,0.8388157715023141,0.8388157715023141,0.6091217619755384,-0.8125833782842985,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_FUEL_ENERGY_ZSCORE,News fuel/energy z-score (rolling 12m std-normalized),news,0.8992830496337247,0.8992830496337247,0.6414764726628356,-0.7802286675970013,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17681,7 +17681,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.5232432009547542,0.5232432009547542,0.42084174662411666,-0.03936498718718068,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.715251606731354,0.715251606731354,0.5395597793214686,0.11871803269735193,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,9.885873083183732,9.885873083183732,2.3874659012249317,1.8479061219034632,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.7036118985210225,0.7036118985210225,0.5327506433821779,-1.854715257842754,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_FUEL_ENERGY_ZSCORE_SQ,News fuel/energy z-score squared (amplifies extreme events),news,0.8087100033585323,0.8087100033585323,0.5926138858557781,-1.7948520153691536,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17707,7 +17707,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,-0.0805650174246304,-0.0805650174246304,-0.07748406861547195,0.37702145935228265,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,1.6173569970518065,1.6173569970518065,0.9621650288610438,1.0396490974765158,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,17.83040646569915,17.83040646569915,2.9354729285061407,1.9733078996450968,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,-11.836353548030253,-11.836353548030253,-2.5522812663421393,-5.48775419484828,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_FUEL_ENERGY_MOM,News fuel/energy month-over-month change (shock suddenness),news,-11.434776081235395,-11.434776081235395,-2.52049706995495,-5.455969998461091,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17733,7 +17733,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,0.7548671194824852,0.7548671194824852,0.5623931386566786,-0.020960965950090005,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,1.3203377205447275,1.3203377205447275,0.8417127442843643,0.27931960562768565,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,3.071539514446739,3.071539514446739,1.404021187010397,0.5623084427260326,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,2.276111616326874,2.276111616326874,1.1866572363282717,-0.21736395068212522,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_FUEL_ENERGY_LOG,News fuel/energy log1p score (range-compressed),news,2.3165191816544994,2.3165191816544994,1.1989157936708035,-0.20510539333959343,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17759,7 +17759,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,-0.5453328597961155,-0.5453328597961155,-0.43523933037887974,-1.348576885438396,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,0.7624330066034976,0.7624330066034976,0.5666952445441399,1.0019345749230197,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,3.159394107313142,3.159394107313142,1.425369416385082,0.8586741718409422,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,0.3936991922867724,0.3936991922867724,0.33196150159718235,-1.0934079147878997,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_GNV_SCARCITY_ZSCORE,News GNV scarcity zscore (physical shortage signal),news,0.33098269178944234,0.33098269178944234,0.2859175354136539,-1.1394518809714282,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17785,7 +17785,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.29738792797340974,0.29738792797340974,0.26035295696966027,-0.9114906462777779,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.5813040895584489,0.5813040895584489,0.4582498797440356,0.19789692277437532,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,9.981771125325007,9.981771125325007,2.396236727747593,1.9379868480035574,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.154999054007257,0.154999054007257,0.14409952493208553,-2.2521372028155073,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_GNV_SCARCITY_ZSCORE_SQ,News GNV scarcity zscore_sq (physical shortage signal),news,0.10954954226418498,0.10954954226418498,0.10395411517790938,-2.2922826125696836,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17811,7 +17811,7 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,-0.5954406260632868,-0.5954406260632868,-0.467149952670669,-0.31115040167279295,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,0.35038542396636296,0.35038542396636296,0.30039005093752996,0.767540003608199,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,9.040786838781575,9.040786838781575,2.306655481589355,2.0062654306518253,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,-7.229010100585776,-7.229010100585776,-2.107665728060637,-4.414321209649993,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_GNV_SCARCITY_MOM,News GNV scarcity mom (physical shortage signal),news,-7.414887677767701,-7.414887677767701,-2.1300024796948267,-4.436657961284181,,COMPUTED_RSS,M,1
 2021-09-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,0.0,0.0,0.0,,,COMPUTED_RSS,M,1
 2021-10-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
 2021-12-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,0.0,0.0,0.0,0.0,,COMPUTED_RSS,M,1
@@ -17837,4 +17837,4 @@ date,series_id,series_name,category,value_raw,value_sa,value_log,value_dlog,valu
 2026-01-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,0.0,0.0,0.0,-0.38332171116310654,,COMPUTED_RSS,M,1
 2026-02-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,0.30039005093752996,0.30039005093752996,0.26266425864745235,0.26266425864745235,,COMPUTED_RSS,M,1
 2026-03-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,2.340956624805267,2.340956624805267,1.2062571805921294,0.943592921944677,,COMPUTED_RSS,M,1
-2026-04-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,1.1512560221535317,1.1512560221535317,0.7660518679137934,-0.44020531267833596,,COMPUTED_RSS,M,1
+2026-04-01,NEWS_GNV_SCARCITY_LOG,News GNV scarcity log (physical shortage signal),news,1.0906757390723734,1.0906757390723734,0.7374873338503519,-0.46876984674177746,,COMPUTED_RSS,M,1
