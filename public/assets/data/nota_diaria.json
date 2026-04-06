@@ -1,40 +1,40 @@
 {
-  "date": "2026-04-05",
-  "headline_es": "Precios supermercado -0.26% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.26% MTD · GDP nowcast +2.81%",
+  "date": "2026-04-06",
+  "headline_es": "Precios supermercado -0.96% MTD · Nowcast PBI +2.84%",
+  "headline_en": "Supermarket prices -0.96% MTD · GDP nowcast +2.84%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.26% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.26% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.96% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.96% month-to-date."
     },
     {
       "icon": "📉",
-      "text_es": "Frutas: -0.9% en el mes.",
-      "text_en": "Fruits: -0.9% this month."
+      "text_es": "Carnes: -0.3% en el mes.",
+      "text_en": "Meat: -0.3% this month."
     },
     {
       "icon": "📉",
-      "text_es": "Bebidas: -0.1% en el mes.",
-      "text_en": "Beverages: -0.1% this month."
+      "text_es": "Azúcar y Dulces: -0.3% en el mes.",
+      "text_en": "Sugar & Sweets: -0.3% this month."
     },
     {
       "icon": "📊",
-      "text_es": "Nowcast PBI 2026-Q1: +2.81% (variación anual estimada).",
-      "text_en": "GDP nowcast 2026-Q1: +2.81% (estimated year-on-year)."
+      "text_es": "Nowcast PBI 2026-Q1: +2.84% (variación anual estimada).",
+      "text_en": "GDP nowcast 2026-Q1: +2.84% (estimated year-on-year)."
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +0.56% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +0.56% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +0.18% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +0.18% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 68 — nivel bajo.",
-      "text_en": "Political risk: IRP 68 — low level."
+      "text_es": "Riesgo político: IRP 110 — nivel elevado.",
+      "text_en": "Political risk: IRP 110 — elevated level."
     }
   ],
-  "updated_at": "2026-04-06T01:31:57.923558+00:00"
+  "updated_at": "2026-04-06T05:39:15.249546+00:00"
 }

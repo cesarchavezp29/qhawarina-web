@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-04-05T21:25:32.389178",
+    "generated_at": "2026-03-27T21:30:27.453218",
     "methodology": "Dynamic Factor Model with Ridge bridge equation (Baker 2023, Aruoba 2020)",
     "model": "DynamicFactorModel",
     "model_params": {
@@ -20,33 +20,27 @@
       "nowcast_full": null,
       "error": null
     },
-    "data_vintage": "2026-01",
+    "data_vintage": "2025-12",
     "series_coverage": "36/36"
   },
   "nowcast": {
     "target_period": "2026-Q1",
-    "value": 2.81,
+    "value": 2.84,
     "unit": "percent_yoy",
-    "bridge_r2": 0.557
+    "bridge_r2": 0.562
   },
   "forecasts": [
     {
       "quarter": "2026-Q1",
-      "value": 2.81,
-      "lower": 0.05,
-      "upper": 5.57
+      "value": 2.84,
+      "lower": 0.08,
+      "upper": 5.6
     },
     {
       "quarter": "2026-Q2",
-      "value": 3.57,
-      "lower": 0.81,
-      "upper": 6.33
-    },
-    {
-      "quarter": "2026-Q3",
-      "value": 3.83,
-      "lower": 1.07,
-      "upper": 6.59
+      "value": 3.27,
+      "lower": 0.51,
+      "upper": 6.03
     }
   ],
   "quarterly_series": [
@@ -939,7 +933,7 @@
     {
       "quarter": "2026-Q1",
       "official": null,
-      "nowcast": 2.81,
+      "nowcast": 2.84,
       "error": null,
       "is_forecast": true
     }
