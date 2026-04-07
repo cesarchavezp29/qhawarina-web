@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-05",
-    "n_days": 55,
+    "last_date": "2026-04-06",
+    "n_days": 56,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-05"
+    "updated": "2026-04-06"
   },
   "categories": {
     "arroz_cereales": {
@@ -1576,87 +1576,114 @@
       "index_limpieza": 100.0308,
       "index_cuidado_personal": 99.1115,
       "index_other": 99.8099
+    },
+    {
+      "date": "2026-04-06",
+      "index_all": 99.9211,
+      "index_all_unweighted": 100.3397,
+      "index_food": 100.5081,
+      "index_nonfood": 99.796,
+      "var_all": 0.1845,
+      "var_food": 0.3158,
+      "cum_pct": -0.0789,
+      "yoy_inflation": null,
+      "mom_inflation": -0.4363,
+      "interpolated": false,
+      "n_matched": 39859,
+      "index_arroz_cereales": 99.6918,
+      "index_pan_harinas": 99.9771,
+      "index_carnes": 101.1645,
+      "index_pescados_mariscos": 99.3911,
+      "index_lacteos": 100.5612,
+      "index_frutas": 101.3802,
+      "index_verduras": 98.3948,
+      "index_aceites_grasas": 98.8451,
+      "index_azucar_dulces": 97.7195,
+      "index_bebidas": 99.5549,
+      "index_limpieza": 100.0907,
+      "index_cuidado_personal": 98.8782,
+      "index_other": 99.8061
     }
   ],
   "latest": {
-    "date": "2026-04-05",
-    "index_all": 99.7371,
-    "index_food": 100.1917,
-    "cum_pct": -0.2629,
-    "var_all": -0.0881,
+    "date": "2026-04-06",
+    "index_all": 99.9211,
+    "index_food": 100.5081,
+    "cum_pct": -0.0789,
+    "var_all": 0.1845,
     "yoy_inflation": null,
-    "mom_inflation": -0.463,
-    "n_products_today": 40417,
+    "mom_inflation": -0.4363,
+    "n_products_today": 39859,
     "top_movers": [
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.93
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 1.22
       },
       {
-        "category": "bebidas",
-        "label_es": "Bebidas",
-        "label_en": "Beverages",
-        "var": -0.11
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.1
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.48
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.08
+        "var": 0.45
+      },
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.39
       }
     ],
     "product_movers": [
       {
-        "name": "Marshmellows Tropical 255g",
+        "name": "Fourpack Muffin Cuisine & Co Clásicos",
         "store": "wong",
         "category": "pan_harinas",
-        "var": 75.95
+        "var": 100.0
       },
       {
-        "name": "Marshmellows Tropical Bolsa 255 g",
+        "name": "Muffins Choco Chips 4un",
         "store": "wong",
         "category": "pan_harinas",
-        "var": 75.95
+        "var": 100.0
       },
       {
-        "name": "Marshmellows Tropical Bolsa 255 g",
-        "store": "metro",
+        "name": "Muffin Cuisine & Co Vainilla Chips",
+        "store": "wong",
         "category": "pan_harinas",
-        "var": 73.42
+        "var": 100.0
       },
       {
-        "name": "Marshmellows Tropical 255g",
-        "store": "metro",
+        "name": "Sandwich Doble Huevo y Tocino x un",
+        "store": "wong",
         "category": "pan_harinas",
-        "var": 73.42
+        "var": 100.0
       }
     ],
     "stores_coverage": {
-      "metro": 12383,
-      "plazavea": 13448,
-      "wong": 14897
+      "metro": 11735,
+      "plazavea": 13418,
+      "wong": 14880
     },
     "categories_coverage": {
-      "aceites_grasas": 711,
-      "arroz_cereales": 1389,
+      "aceites_grasas": 709,
+      "arroz_cereales": 1384,
       "azucar_dulces": 1069,
-      "bebidas": 985,
-      "carnes": 14692,
-      "cuidado_personal": 2855,
-      "frutas": 1908,
-      "lacteos": 2885,
-      "limpieza": 2992,
-      "pan_harinas": 6544,
+      "bebidas": 699,
+      "carnes": 14491,
+      "cuidado_personal": 2856,
+      "frutas": 1776,
+      "lacteos": 2881,
+      "limpieza": 2975,
+      "pan_harinas": 6501,
       "pescados_mariscos": 241,
-      "verduras": 303
+      "verduras": 306
     }
   }
 }

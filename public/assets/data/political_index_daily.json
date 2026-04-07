@@ -1,174 +1,214 @@
 {
   "metadata": {
-    "generated_at": "2026-04-05T21:26:10.149221",
-    "coverage_days": 460,
+    "generated_at": "2026-04-06T21:07:53.332116",
+    "coverage_days": 461,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-05",
-    "political_raw": 63.9,
+    "date": "2026-04-06",
+    "political_raw": 88.4,
     "political_raw_level": "BAJO",
-    "political_7d": 68.1,
+    "political_7d": 74.1,
     "political_level": "BAJO",
-    "political_multiplier": 0.68,
-    "economic_raw": 19.9,
-    "economic_raw_level": "MINIMO",
-    "economic_7d": 46.9,
+    "political_multiplier": 0.74,
+    "economic_raw": 54.0,
+    "economic_raw_level": "BAJO",
+    "economic_7d": 48.6,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.47,
-    "score": 68.1,
-    "prr_7d": 68.1,
-    "prr_raw": 63.9,
+    "economic_multiplier": 0.49,
+    "score": 74.1,
+    "prr_7d": 74.1,
+    "prr_raw": 88.4,
     "level": "BAJO",
-    "articles_total": 381,
-    "articles_political_relevant": 138,
-    "articles_economic_relevant": 49,
-    "political_justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Aunque persisten tensiones por financiamiento irregular y procedimientos sancionadores contra candidatos, la competencia electoral se desarrolla dentro de marcos institucionales. La fragmentación de preferencias electorales y ausencia de liderazgo consolidado mantienen incertidumbre, pero sin indicadores de crisis sistémica inmediata.",
-    "economic_justification": "La economía peruana enfrenta un riesgo económico **mínimo**, reflejando estabilidad relativa en indicadores clave. Sin embargo, emergen vulnerabilidades por tensiones geopolíticas en energía global, presiones fiscales electorales y dependencia de combustibles. La baja diversificación energética amplifica exposición a shocks externos.",
+    "articles_total": 556,
+    "articles_political_relevant": 217,
+    "articles_economic_relevant": 82,
+    "political_justification": "El panorama político muestra estabilidad relativa con tensiones controladas. La solicitud de voto de confianza del Premier representa un procedimiento institucional rutinario, mientras que la defensa legal de Castillo y propuestas de indulto generan polarización, pero sin indicadores de crisis inmediata o desestabilización sistémica.",
+    "economic_justification": "La economía peruana enfrenta presiones inflacionarias moderadas concentradas en combustibles y transporte, mientras persisten vulnerabilidades estructurales en seguridad alimentaria y dependencia de ingresos petroleros. Aunque el riesgo se mantiene controlado, la incertidumbre política y limitaciones fiscales generan preocupación entre inversionistas.",
     "top_political_drivers": [
       {
-        "title": "Los aportes del Reinfo: Estos son los partidos y candidatos que recibieron financiamiento de mineros informales",
+        "title": "Presidente del Consejo de Ministros, Luis Enrique Arroyo acudirá al Congreso el 16 de abril para pedir el voto de confianza",
         "source": "elcomercio",
-        "score": 62
+        "score": 72
       },
       {
-        "title": "PJ autoriza levantar secreto bancario de Óscar Acuña por caso Frigoinca y Qali Warma",
+        "title": "Congreso: voto de confianza gabinete Arroyo se debatirá el jueves 16 de abril",
+        "source": "caretas",
+        "score": 72
+      },
+      {
+        "title": "Premier Luis Arroyo pedirá el voto de confianza el 16 de abril",
+        "source": "canaln",
+        "score": 72
+      },
+      {
+        "title": "José Domingo Pérez asume la defensa del golpista y condenado expresidente Pedro Castillo",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Exfiscal José Domingo Pérez defenderá a Pedro Castillo en proceso por golpe de Estado (VIDEO)",
         "source": "correo",
-        "score": 55
+        "score": 65
       },
       {
-        "title": "Diez claves para entender el poder del Senado que lo decidirá todo",
-        "source": "elbuho",
-        "score": 55
-      },
-      {
-        "title": "A una semana de las elecciones, ninguno de los 35 candidatos tienen asegurado su pase a segunda vuelta",
+        "title": "Alfonso López Chau indultará a Pedro Castillo: \"Buscaremos la forma\"",
         "source": "larepublica",
-        "score": 52
+        "score": 65
       },
       {
-        "title": "Datum: Carlos Álvarez se ubica en segundo lugar y crece intención de voto por Marisol Pérez Tello y Ricardo Belmont",
+        "title": "José Domingo Pérez anunció que asumirá la defensa legal de Pedro Castillo y dice que es \"un presidente secuestrado\"",
         "source": "rpp",
-        "score": 50
+        "score": 65
       },
       {
-        "title": "Última encuesta electoral 2026: simulacro y tendencias finales del voto a nivel nacional y regional",
-        "source": "elcomercio",
-        "score": 48
+        "title": "Domingo Pérez asumirá la defensa legal Pedro Castillo: «Es un preso político»",
+        "source": "caretas",
+        "score": 65
       },
       {
-        "title": "Simulacro de Datum muestra empate técnico entre Rafael López Aliaga y Carlos Álvarez en el segundo lugar",
-        "source": "correo",
-        "score": 48
+        "title": "López Chau propone indulto a Pedro Castillo, pero es cuestionado en redes sociales",
+        "source": "caretas",
+        "score": 65
       },
       {
-        "title": "Encuesta CPI: ¿quiénes lideran la intención de voto y el simulacro electoral a una semana de los comicios?",
-        "source": "rpp",
-        "score": 48
-      },
-      {
-        "title": "Último día de encuestas: Revelan la preferencia de los ciudadanos si las elecciones fueran mañana",
-        "source": "elbuho",
-        "score": 48
-      },
-      {
-        "title": "JEE de Lima Centro dispuso iniciar procedimiento sancionador contra George Forsyth",
-        "source": "elcomercio",
-        "score": 45
+        "title": "José Domingo Pérez asume defensa de Pedro Castillo: \"No hay dudas de la injusticia que él viene sufriendo\"",
+        "source": "canaln",
+        "score": 65
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Jorge González Izquierdo, economista: “Fondo de combustibles enriquece a mayoristas”",
+        "title": "Combustibles disparan la inflación: transporte sube hasta 7.86% en marzo",
+        "source": "gestion",
+        "score": 75
+      },
+      {
+        "title": "Ocho regiones del país están en situación grave de hambre y no es por falta de alimentos",
         "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Jesús Salazar Nishi, presidente del IDIS: “El problema del Perú no es la falta de dinero, sino que no sabe gastarlo”",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "El tercer lote petrolero de mayor producción del Perú, el Z-69, estaría en riesgo de quedar paralizado",
+        "source": "gestion",
+        "score": 55
+      },
+      {
+        "title": "Inversionistas temen populismo de próximo gobierno: ¿Cómo pagará usted farra de 5 años?",
+        "source": "gestion",
+        "score": 45
+      },
+      {
+        "title": "Promesas sin caja: el límite fiscal que los candidatos no están diciendo",
+        "source": "gestion",
+        "score": 40
+      },
+      {
+        "title": "Fertilizantes en alza: costos presionan al agro y obligan a las empresas a ajustar estrategias en el campo, ¿a qué cultivos impacta?",
+        "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Propuestas electorales incluyen iniciativas de alto costo fiscal",
-        "source": "elcomercio",
+        "title": "Precios de combustible: ¿Hasta cuándo habrá alza en Lambayeque? Esto dice el gobernador regional",
+        "source": "rpp",
+        "score": 35
+      },
+      {
+        "title": "Trabajadores del Estado ya no serían cesados cuando su entidad se extinga o fusione",
+        "source": "gestion",
         "score": 30
       },
       {
-        "title": "Awa, un restaurante donde la selva se cuenta en primera persona",
+        "title": "Indecopi inició un procedimiento sancionador contra 5 avícolas por presunta concertación de precios de pollo vivo",
         "source": "elcomercio",
-        "score": 25
-      },
-      {
-        "title": "¿Crisis del petróleo podría impulsar mayor interés por autos eléctricos? Lo que pasa en Perú",
-        "source": "gestion",
         "score": 25
       }
     ],
     "eco_sector_titles": [
-      "Sindicatos advierten protestas si el Gobierno de Balcázar mantiene decreto que privatiza Petroperú",
-      "Jorge González Izquierdo, economista: “Fondo de combustibles enriquece a mayoristas”",
-      "Propuestas electorales incluyen iniciativas de alto costo fiscal",
-      "Perú llega a las elecciones con 7 millones de trabajadores que ganan menos que el sueldo mínimo",
-      "Awa, un restaurante donde la selva se cuenta en primera persona",
-      "Los aportes del Reinfo: Estos son los partidos y candidatos que recibieron financiamiento de mineros informales",
-      "¿Crisis del petróleo podría impulsar mayor interés por autos eléctricos? Lo que pasa en Perú"
+      "Combustibles disparan la inflación: transporte sube hasta 7.86% en marzo",
+      "Ocho regiones del país están en situación grave de hambre y no es por falta de alimentos",
+      "Jesús Salazar Nishi, presidente del IDIS: “El problema del Perú no es la falta de dinero, sino que no sabe gastarlo”",
+      "El tercer lote petrolero de mayor producción del Perú, el Z-69, estaría en riesgo de quedar paralizado",
+      "Inversionistas temen populismo de próximo gobierno: ¿Cómo pagará usted farra de 5 años?",
+      "Promesas sin caja: el límite fiscal que los candidatos no están diciendo",
+      "Fertilizantes en alza: costos presionan al agro y obligan a las empresas a ajustar estrategias en el campo, ¿a qué cultivos impacta?",
+      "Minería ilegal en Perú: 8 candidatos buscan ajustes normativos que permitirían su avance, ¿quiénes?",
+      "Precios de combustible: ¿Hasta cuándo habrá alza en Lambayeque? Esto dice el gobernador regional",
+      "Trabajadores del Estado ya no serían cesados cuando su entidad se extinga o fusione",
+      "Indecopi inició un procedimiento sancionador contra 5 avícolas por presunta concertación de precios de pollo vivo",
+      "Se cancelan cuatro rutas directas desde Lima por la TUUA de transferencia, según AETAI",
+      "Guerra en Irán: la mitad de empresas peruanas están poco preparadas para shocks externos",
+      "Indecopi investiga a 5 avícolas por presunta concertación de precios de pollo vivo",
+      "Cártel del Pollo en Perú: Indecopi inicia investigación contra cinco avícolas por presunta concertación de precios",
+      "Huancayo: Transportistas protestan y amenazan con huelga de hambre por falta de autorización",
+      "Revisa AQUÍ el precio del combustible en Arequipa hoy 6 de abril"
     ],
-    "justification": "El panorama político muestra estabilidad relativa con preocupaciones puntuales. Aunque persisten tensiones por financiamiento irregular y procedimientos sancionadores contra candidatos, la competencia electoral se desarrolla dentro de marcos institucionales. La fragmentación de preferencias electorales y ausencia de liderazgo consolidado mantienen incertidumbre, pero sin indicadores de crisis sistémica inmediata.",
+    "justification": "El panorama político muestra estabilidad relativa con tensiones controladas. La solicitud de voto de confianza del Premier representa un procedimiento institucional rutinario, mientras que la defensa legal de Castillo y propuestas de indulto generan polarización, pero sin indicadores de crisis inmediata o desestabilización sistémica.",
     "top_drivers": [
       {
-        "title": "Los aportes del Reinfo: Estos son los partidos y candidatos que recibieron financiamiento de mineros informales",
+        "title": "Presidente del Consejo de Ministros, Luis Enrique Arroyo acudirá al Congreso el 16 de abril para pedir el voto de confianza",
         "source": "elcomercio",
-        "score": 62
+        "score": 72
       },
       {
-        "title": "PJ autoriza levantar secreto bancario de Óscar Acuña por caso Frigoinca y Qali Warma",
+        "title": "Congreso: voto de confianza gabinete Arroyo se debatirá el jueves 16 de abril",
+        "source": "caretas",
+        "score": 72
+      },
+      {
+        "title": "Premier Luis Arroyo pedirá el voto de confianza el 16 de abril",
+        "source": "canaln",
+        "score": 72
+      },
+      {
+        "title": "José Domingo Pérez asume la defensa del golpista y condenado expresidente Pedro Castillo",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Exfiscal José Domingo Pérez defenderá a Pedro Castillo en proceso por golpe de Estado (VIDEO)",
         "source": "correo",
-        "score": 55
+        "score": 65
       },
       {
-        "title": "Diez claves para entender el poder del Senado que lo decidirá todo",
-        "source": "elbuho",
-        "score": 55
-      },
-      {
-        "title": "A una semana de las elecciones, ninguno de los 35 candidatos tienen asegurado su pase a segunda vuelta",
+        "title": "Alfonso López Chau indultará a Pedro Castillo: \"Buscaremos la forma\"",
         "source": "larepublica",
-        "score": 52
+        "score": 65
       },
       {
-        "title": "Datum: Carlos Álvarez se ubica en segundo lugar y crece intención de voto por Marisol Pérez Tello y Ricardo Belmont",
+        "title": "José Domingo Pérez anunció que asumirá la defensa legal de Pedro Castillo y dice que es \"un presidente secuestrado\"",
         "source": "rpp",
-        "score": 50
+        "score": 65
       },
       {
-        "title": "Última encuesta electoral 2026: simulacro y tendencias finales del voto a nivel nacional y regional",
-        "source": "elcomercio",
-        "score": 48
+        "title": "Domingo Pérez asumirá la defensa legal Pedro Castillo: «Es un preso político»",
+        "source": "caretas",
+        "score": 65
       },
       {
-        "title": "Simulacro de Datum muestra empate técnico entre Rafael López Aliaga y Carlos Álvarez en el segundo lugar",
-        "source": "correo",
-        "score": 48
+        "title": "López Chau propone indulto a Pedro Castillo, pero es cuestionado en redes sociales",
+        "source": "caretas",
+        "score": 65
       },
       {
-        "title": "Encuesta CPI: ¿quiénes lideran la intención de voto y el simulacro electoral a una semana de los comicios?",
-        "source": "rpp",
-        "score": 48
-      },
-      {
-        "title": "Último día de encuestas: Revelan la preferencia de los ciudadanos si las elecciones fueran mañana",
-        "source": "elbuho",
-        "score": 48
-      },
-      {
-        "title": "JEE de Lima Centro dispuso iniciar procedimiento sancionador contra George Forsyth",
-        "source": "elcomercio",
-        "score": 45
+        "title": "José Domingo Pérez asume defensa de Pedro Castillo: \"No hay dudas de la injusticia que él viene sufriendo\"",
+        "source": "canaln",
+        "score": 65
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 88.6,
-    "political_30d_avg": 99.0,
-    "economic_7d_avg": 84.2,
-    "economic_30d_avg": 169.3,
+    "political_7d_avg": 87.5,
+    "political_30d_avg": 99.5,
+    "economic_7d_avg": 76.0,
+    "economic_30d_avg": 162.1,
     "year_max": 226.0,
     "year_max_date": "2026-02-18"
   },
@@ -178,7 +218,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno comprometen estabilidad económica.",
+      "summary": "Políticas fiscales del gobierno generan inestabilidad económica nacional.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -186,7 +226,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tensión política por debate presidencial en curso.",
+      "summary": "Debate presidencial genera tensiones entre candidatos presidenciales.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -194,7 +234,7 @@
       "score": 155.2,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial 2026.",
+      "summary": "Candidato prófugo participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     },
     {
@@ -202,7 +242,7 @@
       "score": 130.9,
       "level": "ELEVADO",
       "n_articles": 648,
-      "summary": "Confrontación de candidatos en elecciones presidenciales peruanas.",
+      "summary": "Incertidumbre electoral ante primer debate presidencial 2026.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -218,7 +258,7 @@
       "score": 143.3,
       "level": "ELEVADO",
       "n_articles": 823,
-      "summary": "Nuevo Gabinete enfrenta rechazo parlamentario de seis bancadas.",
+      "summary": "Nuevo gabinete enfrenta rechazo de seis bancadas parlamentarias.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -226,7 +266,7 @@
       "score": 141.6,
       "level": "ELEVADO",
       "n_articles": 583,
-      "summary": "Conflictos de poder judicial y corrupción vinculada a intereses mineros.",
+      "summary": "Conflicto entre poderes del Estado e instituciones judiciales.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -234,7 +274,7 @@
       "score": 132.3,
       "level": "ELEVADO",
       "n_articles": 935,
-      "summary": "No puedo proporcionar un resumen preciso porque las noticias listadas no parecen ser específicamente sobre Perú el 2026-03-18. Dos son internacionales (OTAN/Trump",
+      "summary": "No puedo proporcionar un resumen de noticias de una fecha futura (2026-03-18) que aún no ha ocurrido. Las noticias que mencionas no existen en registros re",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -242,7 +282,7 @@
       "score": 134.1,
       "level": "ELEVADO",
       "n_articles": 63,
-      "summary": "Irregularidades financieras en candidatos durante campaña electoral.",
+      "summary": "Irregularidades financieras y negociaciones opacas en campaña electoral.",
       "report_url": "/political/daily-reports/2026-02-22.html"
     },
     {
@@ -250,7 +290,7 @@
       "score": 157.1,
       "level": "ALTO",
       "n_articles": 61,
-      "summary": "Balcázar elegido presidente enfrenta juicios pendientes.",
+      "summary": "Conflicto institucional entre poderes presidenciales y judiciales.",
       "report_url": "/political/daily-reports/2026-02-21.html"
     }
   ],
@@ -6209,26 +6249,26 @@
     },
     {
       "date": "2026-03-31",
-      "political_raw": 126.2,
-      "political_7d": 95.8,
+      "political_raw": 127.4,
+      "political_7d": 96.1,
       "economic_raw": 109.4,
-      "economic_7d": 106.4,
-      "score": 95.8,
-      "prr": 126.2,
-      "prr_7d": 95.8,
-      "n_articles": 675,
+      "economic_7d": 106.3,
+      "score": 96.1,
+      "prr": 127.4,
+      "prr_7d": 96.1,
+      "n_articles": 676,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-04-01",
       "political_raw": 143.9,
-      "political_7d": 110.2,
+      "political_7d": 110.5,
       "economic_raw": 71.4,
       "economic_7d": 95.9,
-      "score": 110.2,
+      "score": 110.5,
       "prr": 143.9,
-      "prr_7d": 110.2,
+      "prr_7d": 110.5,
       "n_articles": 650,
       "low_coverage": false,
       "provisional": false
@@ -6236,52 +6276,65 @@
     {
       "date": "2026-04-02",
       "political_raw": 96.4,
-      "political_7d": 106.1,
+      "political_7d": 106.2,
       "economic_raw": 106.2,
       "economic_7d": 99.0,
-      "score": 106.1,
+      "score": 106.2,
       "prr": 96.4,
-      "prr_7d": 106.1,
+      "prr_7d": 106.2,
       "n_articles": 586,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-03",
-      "political_raw": 43.7,
+      "political_raw": 43.6,
       "political_7d": 87.4,
       "economic_raw": 28.0,
       "economic_7d": 77.7,
       "score": 87.4,
-      "prr": 43.7,
+      "prr": 43.6,
       "prr_7d": 87.4,
-      "n_articles": 459,
+      "n_articles": 461,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-04",
-      "political_raw": 29.3,
-      "political_7d": 69.9,
-      "economic_raw": 13.6,
+      "political_raw": 29.2,
+      "political_7d": 70.0,
+      "economic_raw": 13.5,
       "economic_7d": 58.4,
-      "score": 69.9,
-      "prr": 29.3,
-      "prr_7d": 69.9,
-      "n_articles": 452,
+      "score": 70.0,
+      "prr": 29.2,
+      "prr_7d": 70.0,
+      "n_articles": 454,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-05",
-      "political_raw": 63.9,
-      "political_7d": 68.1,
-      "economic_raw": 19.9,
-      "economic_7d": 46.9,
-      "score": 68.1,
-      "prr": 63.9,
-      "prr_7d": 68.1,
-      "n_articles": 381,
+      "political_raw": 63.4,
+      "political_7d": 68.0,
+      "economic_raw": 18.1,
+      "economic_7d": 46.3,
+      "score": 68.0,
+      "prr": 63.4,
+      "prr_7d": 68.0,
+      "n_articles": 383,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-06",
+      "political_raw": 88.4,
+      "political_7d": 74.1,
+      "economic_raw": 54.0,
+      "economic_7d": 48.6,
+      "score": 74.1,
+      "prr": 88.4,
+      "prr_7d": 74.1,
+      "n_articles": 556,
       "low_coverage": false,
       "provisional": true
     }
@@ -7526,6 +7579,10 @@
     {
       "date": "2026-03-31",
       "fx": 3.4901
+    },
+    {
+      "date": "2026-04-01",
+      "fx": 3.459
     }
   ],
   "monthly_series": [
@@ -7645,15 +7702,15 @@
       "month": "2026-03",
       "political_avg": 93.9,
       "economic_avg": 190.0,
-      "n_articles": 13846,
+      "n_articles": 13847,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-04",
-      "political_avg": 88.3,
-      "economic_avg": 75.6,
-      "n_articles": 2528,
+      "political_avg": 86.0,
+      "economic_avg": 71.0,
+      "n_articles": 3090,
       "fx_level": null,
       "fx_yoy": null
     }
