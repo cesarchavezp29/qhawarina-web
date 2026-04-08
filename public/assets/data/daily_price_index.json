@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-06",
-    "n_days": 56,
+    "last_date": "2026-04-07",
+    "n_days": 57,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-06"
+    "updated": "2026-04-07"
   },
   "categories": {
     "arroz_cereales": {
@@ -1603,87 +1603,114 @@
       "index_limpieza": 100.0907,
       "index_cuidado_personal": 98.8782,
       "index_other": 99.8061
+    },
+    {
+      "date": "2026-04-07",
+      "index_all": 100.7038,
+      "index_all_unweighted": 100.8078,
+      "index_food": 100.9515,
+      "index_nonfood": 100.3489,
+      "var_all": 0.7833,
+      "var_food": 0.4412,
+      "cum_pct": 0.7038,
+      "yoy_inflation": null,
+      "mom_inflation": -0.3852,
+      "interpolated": false,
+      "n_matched": 35762,
+      "index_arroz_cereales": 100.4117,
+      "index_pan_harinas": 100.169,
+      "index_carnes": 101.5235,
+      "index_pescados_mariscos": 101.3337,
+      "index_lacteos": 101.7048,
+      "index_frutas": 102.2678,
+      "index_verduras": 100.3694,
+      "index_aceites_grasas": 99.0484,
+      "index_azucar_dulces": 97.3777,
+      "index_bebidas": 100.3425,
+      "index_limpieza": 100.5096,
+      "index_cuidado_personal": 99.9919,
+      "index_other": 100.0674
     }
   ],
   "latest": {
-    "date": "2026-04-06",
-    "index_all": 99.9211,
-    "index_food": 100.5081,
-    "cum_pct": -0.0789,
-    "var_all": 0.1845,
+    "date": "2026-04-07",
+    "index_all": 100.7038,
+    "index_food": 100.9515,
+    "cum_pct": 0.7038,
+    "var_all": 0.7833,
     "yoy_inflation": null,
-    "mom_inflation": -0.4363,
-    "n_products_today": 39859,
+    "mom_inflation": -0.3852,
+    "n_products_today": 35762,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 1.22
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 2.01
       },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": 0.48
+        "var": 1.95
       },
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.45
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": 1.14
       },
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 0.39
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 1.13
       }
     ],
     "product_movers": [
       {
-        "name": "Fourpack Muffin Cuisine & Co Clásicos",
-        "store": "wong",
+        "name": "Base Repostera Tres Leches GLORIA Lat...",
+        "store": "plazavea",
         "category": "pan_harinas",
-        "var": 100.0
+        "var": 97.14
       },
       {
-        "name": "Muffins Choco Chips 4un",
-        "store": "wong",
+        "name": "Panetón Sabor Trufado Cuisine & Co 400g",
+        "store": "metro",
         "category": "pan_harinas",
-        "var": 100.0
+        "var": 79.86
       },
       {
-        "name": "Muffin Cuisine & Co Vainilla Chips",
+        "name": "Panetón Sabor Trufado Cuisine & Co 400g",
         "store": "wong",
         "category": "pan_harinas",
-        "var": 100.0
+        "var": 79.86
       },
       {
-        "name": "Sandwich Doble Huevo y Tocino x un",
+        "name": "Huevo Sorpresa Kinder Joy 2un Azul",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 100.0
+        "category": "carnes",
+        "var": 79.26
       }
     ],
     "stores_coverage": {
-      "metro": 11735,
-      "plazavea": 13418,
-      "wong": 14880
+      "metro": 12314,
+      "plazavea": 13402,
+      "wong": 11017
     },
     "categories_coverage": {
-      "aceites_grasas": 709,
-      "arroz_cereales": 1384,
-      "azucar_dulces": 1069,
-      "bebidas": 699,
-      "carnes": 14491,
-      "cuidado_personal": 2856,
-      "frutas": 1776,
-      "lacteos": 2881,
-      "limpieza": 2975,
-      "pan_harinas": 6501,
-      "pescados_mariscos": 241,
-      "verduras": 306
+      "aceites_grasas": 654,
+      "arroz_cereales": 1358,
+      "azucar_dulces": 1047,
+      "bebidas": 956,
+      "carnes": 13652,
+      "cuidado_personal": 2346,
+      "frutas": 1856,
+      "lacteos": 2184,
+      "limpieza": 2409,
+      "pan_harinas": 6345,
+      "pescados_mariscos": 236,
+      "verduras": 300
     }
   }
 }
