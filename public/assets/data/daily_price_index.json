@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-07",
-    "n_days": 57,
+    "last_date": "2026-04-08",
+    "n_days": 58,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-07"
+    "updated": "2026-04-08"
   },
   "categories": {
     "arroz_cereales": {
@@ -1630,87 +1630,114 @@
       "index_limpieza": 100.5096,
       "index_cuidado_personal": 99.9919,
       "index_other": 100.0674
+    },
+    {
+      "date": "2026-04-08",
+      "index_all": 99.975,
+      "index_all_unweighted": 100.2274,
+      "index_food": 100.3873,
+      "index_nonfood": 99.7101,
+      "var_all": -0.7237,
+      "var_food": -0.5589,
+      "cum_pct": -0.025,
+      "yoy_inflation": null,
+      "mom_inflation": -0.3556,
+      "interpolated": false,
+      "n_matched": 35394,
+      "index_arroz_cereales": 99.6722,
+      "index_pan_harinas": 99.8197,
+      "index_carnes": 100.9907,
+      "index_pescados_mariscos": 100.2895,
+      "index_lacteos": 100.8322,
+      "index_frutas": 101.584,
+      "index_verduras": 98.9389,
+      "index_aceites_grasas": 98.923,
+      "index_azucar_dulces": 96.4668,
+      "index_bebidas": 99.4957,
+      "index_limpieza": 99.9527,
+      "index_cuidado_personal": 99.1349,
+      "index_other": 99.5265
     }
   ],
   "latest": {
-    "date": "2026-04-07",
-    "index_all": 100.7038,
-    "index_food": 100.9515,
-    "cum_pct": 0.7038,
-    "var_all": 0.7833,
+    "date": "2026-04-08",
+    "index_all": 99.975,
+    "index_food": 100.3873,
+    "cum_pct": -0.025,
+    "var_all": -0.7237,
     "yoy_inflation": null,
-    "mom_inflation": -0.3852,
-    "n_products_today": 35762,
+    "mom_inflation": -0.3556,
+    "n_products_today": 35394,
     "top_movers": [
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 2.01
+        "var": -1.43
       },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": 1.95
+        "var": -1.03
+      },
+      {
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -0.94
       },
       {
         "category": "lacteos",
         "label_es": "Lácteos y Huevos",
         "label_en": "Dairy & Eggs",
-        "var": 1.14
-      },
-      {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": 1.13
+        "var": -0.86
       }
     ],
     "product_movers": [
       {
-        "name": "Base Repostera Tres Leches GLORIA Lat...",
-        "store": "plazavea",
-        "category": "pan_harinas",
-        "var": 97.14
-      },
-      {
-        "name": "Panetón Sabor Trufado Cuisine & Co 400g",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 79.86
-      },
-      {
-        "name": "Panetón Sabor Trufado Cuisine & Co 400g",
+        "name": "Media Col Morada x un",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 79.86
+        "category": "frutas",
+        "var": 82.0
       },
       {
-        "name": "Huevo Sorpresa Kinder Joy 2un Azul",
+        "name": "Pepinillo x un",
         "store": "wong",
-        "category": "carnes",
-        "var": 79.26
+        "category": "frutas",
+        "var": 80.81
+      },
+      {
+        "name": "Limón x kg",
+        "store": "wong",
+        "category": "frutas",
+        "var": 73.58
+      },
+      {
+        "name": "Floretes de Brócoli 500g aprox",
+        "store": "wong",
+        "category": "frutas",
+        "var": 72.14
       }
     ],
     "stores_coverage": {
-      "metro": 12314,
-      "plazavea": 13402,
-      "wong": 11017
+      "metro": 12342,
+      "plazavea": 13387,
+      "wong": 11004
     },
     "categories_coverage": {
-      "aceites_grasas": 654,
-      "arroz_cereales": 1358,
-      "azucar_dulces": 1047,
-      "bebidas": 956,
-      "carnes": 13652,
-      "cuidado_personal": 2346,
-      "frutas": 1856,
-      "lacteos": 2184,
-      "limpieza": 2409,
-      "pan_harinas": 6345,
-      "pescados_mariscos": 236,
-      "verduras": 300
+      "aceites_grasas": 645,
+      "arroz_cereales": 1371,
+      "azucar_dulces": 1042,
+      "bebidas": 731,
+      "carnes": 13826,
+      "cuidado_personal": 2291,
+      "frutas": 1764,
+      "lacteos": 2662,
+      "limpieza": 2168,
+      "pan_harinas": 6365,
+      "pescados_mariscos": 235,
+      "verduras": 304
     }
   }
 }

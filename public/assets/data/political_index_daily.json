@@ -1,222 +1,221 @@
 {
   "metadata": {
-    "generated_at": "2026-04-07T21:08:51.316896",
-    "coverage_days": 462,
+    "generated_at": "2026-04-08T21:10:33.152437",
+    "coverage_days": 463,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-07",
-    "political_raw": 101.5,
-    "political_raw_level": "NORMAL",
-    "political_7d": 82.4,
-    "political_level": "BAJO",
-    "political_multiplier": 0.82,
-    "economic_raw": 70.8,
+    "date": "2026-04-08",
+    "political_raw": 110.4,
+    "political_raw_level": "ELEVADO",
+    "political_7d": 90.8,
+    "political_level": "NORMAL",
+    "political_multiplier": 0.91,
+    "economic_raw": 90.0,
     "economic_raw_level": "BAJO",
-    "economic_7d": 54.7,
+    "economic_7d": 65.3,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.55,
-    "score": 82.4,
-    "prr_7d": 82.4,
-    "prr_raw": 101.5,
-    "level": "BAJO",
-    "articles_total": 568,
-    "articles_political_relevant": 224,
-    "articles_economic_relevant": 102,
-    "political_justification": "El panorama político mantiene una estabilidad relativa, aunque con tensiones moderadas. La judicialización de conflictos políticos y las controversias sobre figuras clave en procesos electorales generan fricción institucional. Sin embargo, no hay indicadores de crisis sistémica inmediata.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. La volatilidad cambiaria, presiones inflacionarias por combustibles y tensiones geopolíticas en Medio Oriente generan incertidumbre. Sin embargo, los fundamentos mantienen estabilidad relativa, aunque requieren vigilancia cercana en próximas semanas.",
+    "economic_multiplier": 0.65,
+    "score": 90.8,
+    "prr_7d": 90.8,
+    "prr_raw": 110.4,
+    "level": "NORMAL",
+    "articles_total": 618,
+    "articles_political_relevant": 269,
+    "articles_economic_relevant": 132,
+    "political_justification": "El país enfrenta tensiones políticas elevadas por la convergencia de tres factores: negociaciones de confianza gubernamental, movilización militar electoral y polarización extrema en torno a la figura de Pedro Castillo. La fragmentación parlamentaria y el debate sobre indultos intensifican la inestabilidad institucional.",
+    "economic_justification": "El riesgo económico se mantiene en nivel bajo, reflejando presiones moderadas en sectores clave como energía y minería. Sin embargo, emergen vulnerabilidades críticas: debilitamiento de Petroperú, amenazas arancelarias al cobre y riesgos operativos en hidrocarburos. Estas tensiones requieren monitoreo cercano para evitar escalada.",
     "top_political_drivers": [
       {
-        "title": "TC rechazó habeas corpus para anular prisión preventiva contra Pedro Castillo",
-        "source": "correo",
-        "score": 82
-      },
-      {
-        "title": "A 6 días de las elecciones Arturo Fernández queda fuera de plancha presidencial de Un Camino Diferente",
-        "source": "elbuho",
-        "score": 72
-      },
-      {
-        "title": "La historia política de Ricardo Belmont, su cercanía con Vladimir Cerrón y Pedro Castillo y sus declaraciones xenófobas y machistas",
-        "source": "elcomercio",
-        "score": 70
-      },
-      {
-        "title": "Ricardo Belmont: el candidato acusado de estafa, investigado en Fiscalía y vinculado a Vladimir Cerrón y Pedro Castillo",
-        "source": "larepublica",
-        "score": 70
-      },
-      {
-        "title": "Gabinete de Luis Arroyo pedirá el que sería el último voto de confianza del Congreso este 16 de abril",
-        "source": "elbuho",
-        "score": 70
-      },
-      {
-        "title": "Juárez afirma que Domingo Pérez confirma ideología antifujimorista tras asumir defensa de Pedro Castillo",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "José Domingo Pérez: De fiscal del Caso Lava Jato a defensor del golpista Pedro Castillo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Tribunal Constitucional declara improcedente ‘hábeas corpus’ de Pedro Castillo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "PJ evaluará este miércoles 8 pedido de Pedro Castillo para anular investigación preparatoria en su contra por tres casos",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Keiko Fujimori cuestiona a José Domingo Pérez por asumir defensa de Pedro Castillo",
+        "title": "Voto de confianza: premier inicia diálogo con bancadas en medio de despliegue militar por elecciones 2026",
         "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "Primer ministro inicia este viernes ronda de diálogo con bancadas con miras al voto de confianza",
+        "source": "elcomercio",
+        "score": 70
+      },
+      {
+        "title": "Mirtha Vásquez en Huancayo: “La detención de Pedro Castillo fue un acto golpista y el indulto es posible”",
+        "source": "elbuho",
+        "score": 65
+      },
+      {
+        "title": "Keiko Fujimori calificó de “oportunismo político” promesas de candidatos de indultar a Pedro Castillo",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo reaparece en audiencia judicial y le cortan el micrófono tras reiterar respaldo a Roberto Sánchez",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo aprovechó audiencia para hacer propaganda a favor de Roberto Sánchez",
+        "source": "caretas",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo realizó propaganda política en audiencia judicial",
+        "source": "canaln",
+        "score": 65
+      },
+      {
+        "title": "Mineros con Reinfo financian al menos cinco partidos políticos",
+        "source": "canaln",
+        "score": 65
+      },
+      {
+        "title": "Keiko Fujimori critica propuesta de indulto a Pedro Castillo",
+        "source": "canaln",
+        "score": 65
+      },
+      {
+        "title": "Jorge Nieto sobre indulto a Pedro Castillo: No me entrometo en decisiones del Poder Judicial",
+        "source": "elbuho",
         "score": 65
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Petroperú: Falta de apoyo del Gobierno hace perder millonarios ingresos a la petrolera en plena alza de combustibles",
+        "title": "Pedro Gamio: “A Petroperú se la está dejando morir por inanición y a diario pierde mercado ante privados”",
         "source": "larepublica",
-        "score": 55
+        "score": 70
       },
       {
-        "title": "Tipo de cambio: dólar cerró en S/3,427 para este martes 7 de abril de 2026",
+        "title": "GLP en el Perú: una crisis que deja lecciones urgentes para la seguridad energética",
+        "source": "caretas",
+        "score": 70
+      },
+      {
+        "title": "Estados Unidos impone aranceles de hasta 50% a manufacturas de cobre peruano",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Perúpetro advierte que está en riesgo la continuidad operativa del Lote Z-69",
+        "source": "elcomercio",
+        "score": 60
+      },
+      {
+        "title": "El valor de la estacionalidad en el consumo moderno",
         "source": "elcomercio",
         "score": 55
       },
       {
-        "title": "Le disparó más de 20 veces: Sicario mata a hombre frente a su familia en Piura (VIDEO)",
-        "source": "peru21",
+        "title": "Policía muere tras recibir disparo dentro de la USE Arequipa",
+        "source": "correo",
         "score": 55
       },
       {
-        "title": "Israel bombardea la planta Pars Sur en Irán, el mayor yacimiento de gas del mundo",
-        "source": "gestion",
-        "score": 52
-      },
-      {
-        "title": "Retiro de AFP de hasta 4 UIT: afiliados podrán retirar por novena vez más de S/20.000 de sus fondos, según nuevo proyecto de ley",
+        "title": "Suboficial PNP muere tras disparo dentro de unidad policial en Arequipa: detuvieron a compañero",
         "source": "larepublica",
-        "score": 52
+        "score": 55
       },
       {
-        "title": "400,000 trabajadores públicos se quedan sin acceso a crédito, ¿qué bola de nieve los asfixia?",
-        "source": "gestion",
-        "score": 45
-      },
-      {
-        "title": "Congreso ahora quiere subir sueldo a estos trabajadores del Estado: el proyecto",
+        "title": "Maíz, trigo y soya sin freno: Perú teme incremento en precio de alimentos",
         "source": "gestion",
         "score": 40
       },
       {
-        "title": "Fenómeno de El Niño: pesca, agroexportación y logística fluvial en riesgo durante la segunda mitad de este año",
-        "source": "larepublica",
-        "score": 40
-      },
-      {
-        "title": "Petróleo supera los US$110 y bolsas avanzan con cautela ante escalada entre EE.UU. e Irán",
-        "source": "peru21",
+        "title": "Fallece el presidente de Southern Perú y líder del Grupo México, Óscar González Rocha",
+        "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Tarifas eléctricas se incrementan este mes a nivel nacional",
-        "source": "gestion",
+        "title": "TUUA de transferencia pone en riesgo que Lima se consolide como hub regional, advierte IATA",
+        "source": "elcomercio",
         "score": 35
       }
     ],
     "eco_sector_titles": [
-      "Petroperú: Falta de apoyo del Gobierno hace perder millonarios ingresos a la petrolera en plena alza de combustibles",
-      "Tipo de cambio: dólar cerró en S/3,427 para este martes 7 de abril de 2026",
-      "Le disparó más de 20 veces: Sicario mata a hombre frente a su familia en Piura (VIDEO)",
-      "Israel bombardea la planta Pars Sur en Irán, el mayor yacimiento de gas del mundo",
-      "Retiro de AFP de hasta 4 UIT: afiliados podrán retirar por novena vez más de S/20.000 de sus fondos, según nuevo proyecto de ley",
-      "400,000 trabajadores públicos se quedan sin acceso a crédito, ¿qué bola de nieve los asfixia?",
-      "Congreso ahora quiere subir sueldo a estos trabajadores del Estado: el proyecto",
-      "Elecciones 2026: promesas que no cuadran y riesgos que sí pesan",
-      "Fenómeno de El Niño: pesca, agroexportación y logística fluvial en riesgo durante la segunda mitad de este año",
-      "Petróleo supera los US$110 y bolsas avanzan con cautela ante escalada entre EE.UU. e Irán",
-      "Álvarez asegura que minería ilegal domina la criminalidad: “Ha sobrepasado al narcotráfico”",
-      "Tarifas eléctricas se incrementan este mes a nivel nacional",
-      "El Perú de Camisea",
-      "Cámara de Comercio de Loreto advierte caída en producción petrolera",
-      "Petro-Perú compra casi medio millón de barriles de crudo de la reserva de emergencia de Estados Unidos",
-      "Renzo Costa prepara expansión local e internacional con nuevas tiendas: las expectativas",
-      "Piura: Investigan cinco avícolas por concertación de precios",
+      "Pedro Gamio: “A Petroperú se la está dejando morir por inanición y a diario pierde mercado ante privados”",
+      "GLP en el Perú: una crisis que deja lecciones urgentes para la seguridad energética",
+      "Estados Unidos impone aranceles de hasta 50% a manufacturas de cobre peruano",
+      "Perúpetro advierte que está en riesgo la continuidad operativa del Lote Z-69",
+      "El valor de la estacionalidad en el consumo moderno",
+      "Policía muere tras recibir disparo dentro de la USE Arequipa",
+      "Suboficial PNP muere tras disparo dentro de unidad policial en Arequipa: detuvieron a compañero",
+      "Maíz, trigo y soya sin freno: Perú teme incremento en precio de alimentos",
+      "Fallece el presidente de Southern Perú y líder del Grupo México, Óscar González Rocha",
+      "TUUA de transferencia pone en riesgo que Lima se consolide como hub regional, advierte IATA",
+      "Inversión minera se dispara, pero crecen dudas para el resto del año por estos factores",
+      "Banco Mundial es menos entusiasta que el MEF y BCR: ¿Combustibles y El Niño frenarán la economía o habrá recuperación tras elecciones?",
+      "Líneas 3 y 4 del Metro de Lima movilizarán más de un millón de pasajeros al día: ¿cómo se financiarán?",
+      "Aerolíneas insisten que Perú pierde tráfico aéreo frente a otros hubs por TUUA, ¿a dónde van?",
+      "Indecopi abre proceso sancionador contra cinco avícolas por presunto acuerdo de precios del pollo: ¿Cuáles son?",
       "Ni agua ni pasaje barato: Cono Norte se moviliza contra falta de servicios y aumento de pasajes",
-      "Tipo de cambio retrocede en la previa a las elecciones, mientras el mercado anticipa mayor volatilidad, ¿qué pasará con el dólar?",
-      "Minem anuncia nuevo cambio en el Viceministerio de Minas",
-      "La AIE dice que estamos ante una crisis energética peor que las de 1973, 1979 y 2022 juntas",
-      "CHANCAY, MÁS DEMORAS, columna de Paola Lazarte",
-      "Bono de S/120 GNV: más de 10.000 taxistas se registraron, ¿Cuál es el LINK y la fecha límite para acceder a este beneficio?",
-      "El incremento del pasaje urbano en Arequipa queda en manos del MEF",
-      "El incremento del pasaje urbano en Arequipa queda en manos del MEF"
+      "La ruta de la Clínica Cayetano Heredia hacia una red integrada, según su gerente general",
+      "AFIN: en riesgo 21 puentes de la Carretera Central por transporte de cargas con peso excesivo",
+      "Petróleo en medio de “vaivenes” por guerra, ¿Perú espera alza inminente de la inflación?",
+      "Petroperú compra petróleo de la reserva estratégica de Estados Unidos",
+      "Recuperar la tecnocracia: la tarea urgente del próximo Gobierno",
+      "Congreso plantea elevar remuneración de trabajadores CAS",
+      "Vía interoceánica Cusco-Madre de Dios bloqueada por deslizamiento de lodo, tierra y rocas",
+      "Puno: Dirigente pide ruta libre si transportistas no revierten alza de pasajes"
     ],
-    "justification": "El panorama político mantiene una estabilidad relativa, aunque con tensiones moderadas. La judicialización de conflictos políticos y las controversias sobre figuras clave en procesos electorales generan fricción institucional. Sin embargo, no hay indicadores de crisis sistémica inmediata.",
+    "justification": "El país enfrenta tensiones políticas elevadas por la convergencia de tres factores: negociaciones de confianza gubernamental, movilización militar electoral y polarización extrema en torno a la figura de Pedro Castillo. La fragmentación parlamentaria y el debate sobre indultos intensifican la inestabilidad institucional.",
     "top_drivers": [
       {
-        "title": "TC rechazó habeas corpus para anular prisión preventiva contra Pedro Castillo",
-        "source": "correo",
-        "score": 82
-      },
-      {
-        "title": "A 6 días de las elecciones Arturo Fernández queda fuera de plancha presidencial de Un Camino Diferente",
-        "source": "elbuho",
-        "score": 72
-      },
-      {
-        "title": "La historia política de Ricardo Belmont, su cercanía con Vladimir Cerrón y Pedro Castillo y sus declaraciones xenófobas y machistas",
-        "source": "elcomercio",
-        "score": 70
-      },
-      {
-        "title": "Ricardo Belmont: el candidato acusado de estafa, investigado en Fiscalía y vinculado a Vladimir Cerrón y Pedro Castillo",
-        "source": "larepublica",
-        "score": 70
-      },
-      {
-        "title": "Gabinete de Luis Arroyo pedirá el que sería el último voto de confianza del Congreso este 16 de abril",
-        "source": "elbuho",
-        "score": 70
-      },
-      {
-        "title": "Juárez afirma que Domingo Pérez confirma ideología antifujimorista tras asumir defensa de Pedro Castillo",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "José Domingo Pérez: De fiscal del Caso Lava Jato a defensor del golpista Pedro Castillo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Tribunal Constitucional declara improcedente ‘hábeas corpus’ de Pedro Castillo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "PJ evaluará este miércoles 8 pedido de Pedro Castillo para anular investigación preparatoria en su contra por tres casos",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Keiko Fujimori cuestiona a José Domingo Pérez por asumir defensa de Pedro Castillo",
+        "title": "Voto de confianza: premier inicia diálogo con bancadas en medio de despliegue militar por elecciones 2026",
         "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "Primer ministro inicia este viernes ronda de diálogo con bancadas con miras al voto de confianza",
+        "source": "elcomercio",
+        "score": 70
+      },
+      {
+        "title": "Mirtha Vásquez en Huancayo: “La detención de Pedro Castillo fue un acto golpista y el indulto es posible”",
+        "source": "elbuho",
+        "score": 65
+      },
+      {
+        "title": "Keiko Fujimori calificó de “oportunismo político” promesas de candidatos de indultar a Pedro Castillo",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo reaparece en audiencia judicial y le cortan el micrófono tras reiterar respaldo a Roberto Sánchez",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo aprovechó audiencia para hacer propaganda a favor de Roberto Sánchez",
+        "source": "caretas",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo realizó propaganda política en audiencia judicial",
+        "source": "canaln",
+        "score": 65
+      },
+      {
+        "title": "Mineros con Reinfo financian al menos cinco partidos políticos",
+        "source": "canaln",
+        "score": 65
+      },
+      {
+        "title": "Keiko Fujimori critica propuesta de indulto a Pedro Castillo",
+        "source": "canaln",
+        "score": 65
+      },
+      {
+        "title": "Jorge Nieto sobre indulto a Pedro Castillo: No me entrometo en decisiones del Poder Judicial",
+        "source": "elbuho",
         "score": 65
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 85.5,
-    "political_30d_avg": 100.5,
-    "economic_7d_avg": 68.5,
-    "economic_30d_avg": 156.3,
+    "political_7d_avg": 82.7,
+    "political_30d_avg": 101.4,
+    "economic_7d_avg": 64.1,
+    "economic_30d_avg": 149.7,
     "year_max": 226.0,
     "year_max_date": "2026-02-18"
   },
@@ -226,7 +225,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales insostenibles del gobierno Balcázar.",
+      "summary": "Políticas fiscales que hipotecan el futuro económico.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -234,7 +233,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tercera fecha de debate presidencial genera tensiones políticas.",
+      "summary": "Debate presidencial genera incertidumbre sobre liderazgo futuro.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -250,7 +249,7 @@
       "score": 130.9,
       "level": "ELEVADO",
       "n_articles": 648,
-      "summary": "Incertidumbre electoral por próximas elecciones presidenciales.",
+      "summary": "Incertidumbre electoral por primer debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -258,7 +257,7 @@
       "score": 122.2,
       "level": "ELEVADO",
       "n_articles": 469,
-      "summary": "Inseguridad criminal debilita economía y crecimiento nacional.",
+      "summary": "Inseguridad y violencia comprometen estabilidad económica peruana.",
       "report_url": "/political/daily-reports/2026-03-21.html"
     },
     {
@@ -274,7 +273,7 @@
       "score": 141.6,
       "level": "ELEVADO",
       "n_articles": 583,
-      "summary": "Conflictos políticos y crisis económica desestabilizan el país.",
+      "summary": "Pugna entre poderes del Estado genera inestabilidad institucional.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -282,7 +281,7 @@
       "score": 132.3,
       "level": "ELEVADO",
       "n_articles": 935,
-      "summary": "Debilitamiento institucional por presión hacia gobiernos autoritarios.",
+      "summary": "No puedo resumir estas noticias porque no son específicamente sobre Perú en 2026.\n\nLas noticias mencionan: situación geopolítica de OTAN/Trump (internacional), una propuesta",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -290,7 +289,7 @@
       "score": 134.1,
       "level": "ELEVADO",
       "n_articles": 63,
-      "summary": "Discrepancia financiera sospechosa en declaración de bienes.",
+      "summary": "Irregularidades financieras en candidatos presidenciales generan desconfianza electoral.",
       "report_url": "/political/daily-reports/2026-02-22.html"
     },
     {
@@ -298,7 +297,7 @@
       "score": 157.1,
       "level": "ALTO",
       "n_articles": 61,
-      "summary": "Presidencia de Balcázar genera tensión política y judicial.",
+      "summary": "Balcázar asume presidencia mientras enfrenta juicios pendientes.",
       "report_url": "/political/daily-reports/2026-02-21.html"
     }
   ],
@@ -6298,12 +6297,12 @@
       "date": "2026-04-03",
       "political_raw": 43.6,
       "political_7d": 87.4,
-      "economic_raw": 28.0,
+      "economic_raw": 27.9,
       "economic_7d": 77.6,
       "score": 87.4,
       "prr": 43.6,
       "prr_7d": 87.4,
-      "n_articles": 461,
+      "n_articles": 462,
       "low_coverage": false,
       "provisional": false
     },
@@ -6316,9 +6315,9 @@
       "score": 69.9,
       "prr": 29.1,
       "prr_7d": 69.9,
-      "n_articles": 455,
+      "n_articles": 456,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-05",
@@ -6348,14 +6347,27 @@
     },
     {
       "date": "2026-04-07",
-      "political_raw": 101.5,
+      "political_raw": 101.6,
       "political_7d": 82.4,
       "economic_raw": 70.8,
       "economic_7d": 54.7,
       "score": 82.4,
-      "prr": 101.5,
+      "prr": 101.6,
       "prr_7d": 82.4,
-      "n_articles": 568,
+      "n_articles": 569,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-08",
+      "political_raw": 110.4,
+      "political_7d": 90.8,
+      "economic_raw": 90.0,
+      "economic_7d": 65.3,
+      "score": 90.8,
+      "prr": 110.4,
+      "prr_7d": 90.8,
+      "n_articles": 618,
       "low_coverage": false,
       "provisional": true
     }
@@ -7608,6 +7620,10 @@
     {
       "date": "2026-04-06",
       "fx": 3.4296
+    },
+    {
+      "date": "2026-04-07",
+      "fx": 3.4325
     }
   ],
   "monthly_series": [
@@ -7733,9 +7749,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 85.5,
-      "economic_avg": 68.5,
-      "n_articles": 3665,
+      "political_avg": 86.2,
+      "economic_avg": 68.1,
+      "n_articles": 4286,
       "fx_level": null,
       "fx_yoy": null
     }
