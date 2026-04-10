@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-09T01:10:33.187599Z",
+  "generated_at": "2026-04-10T01:10:18.777064Z",
   "months": [
     {
       "month": "2025-01",
@@ -250,7 +250,7 @@
     },
     {
       "month": "2026-02",
-      "irp_7d_peak": 226.0,
+      "irp_7d_peak": 225.9,
       "irp_peak_date": "2026-02-18",
       "irp_event": "Censura Jerí",
       "irp_top_articles": [
@@ -273,7 +273,7 @@
       "irp_peak_date": "2026-03-26",
       "irp_event": "Muerte candidato",
       "irp_top_articles": [],
-      "ire_7d_peak": 290.0,
+      "ire_7d_peak": 289.9,
       "ire_peak_date": "2026-03-13",
       "ire_event": "Crisis GNV Perú",
       "ire_top_articles": []

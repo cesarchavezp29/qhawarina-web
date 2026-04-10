@@ -1,222 +1,219 @@
 {
   "metadata": {
-    "generated_at": "2026-04-08T21:10:33.152437",
-    "coverage_days": 463,
+    "generated_at": "2026-04-09T21:10:18.753137",
+    "coverage_days": 464,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-08",
-    "political_raw": 110.4,
-    "political_raw_level": "ELEVADO",
-    "political_7d": 90.8,
-    "political_level": "NORMAL",
-    "political_multiplier": 0.91,
-    "economic_raw": 90.0,
+    "date": "2026-04-09",
+    "political_raw": 87.0,
+    "political_raw_level": "BAJO",
+    "political_7d": 89.6,
+    "political_level": "BAJO",
+    "political_multiplier": 0.9,
+    "economic_raw": 63.7,
     "economic_raw_level": "BAJO",
-    "economic_7d": 65.3,
+    "economic_7d": 64.8,
     "economic_level": "BAJO",
     "economic_multiplier": 0.65,
-    "score": 90.8,
-    "prr_7d": 90.8,
-    "prr_raw": 110.4,
-    "level": "NORMAL",
-    "articles_total": 618,
-    "articles_political_relevant": 269,
-    "articles_economic_relevant": 132,
-    "political_justification": "El país enfrenta tensiones políticas elevadas por la convergencia de tres factores: negociaciones de confianza gubernamental, movilización militar electoral y polarización extrema en torno a la figura de Pedro Castillo. La fragmentación parlamentaria y el debate sobre indultos intensifican la inestabilidad institucional.",
-    "economic_justification": "El riesgo económico se mantiene en nivel bajo, reflejando presiones moderadas en sectores clave como energía y minería. Sin embargo, emergen vulnerabilidades críticas: debilitamiento de Petroperú, amenazas arancelarias al cobre y riesgos operativos en hidrocarburos. Estas tensiones requieren monitoreo cercano para evitar escalada.",
+    "score": 89.6,
+    "prr_7d": 89.6,
+    "prr_raw": 87.0,
+    "level": "BAJO",
+    "articles_total": 559,
+    "articles_political_relevant": 234,
+    "articles_economic_relevant": 87,
+    "political_justification": "El país atraviesa un período de estabilidad relativa en materia política, aunque persisten tensiones moderadas vinculadas a procesos electorales y comportamientos irregulares de autoridades. Los focos de preocupación se concentran en integridad electoral y disciplina institucional, sin alcanzar niveles de crisis sistémica.",
+    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. Los aranceles estadounidenses al cobre y las manufacturas amenazan sectores clave, mientras que la rebaja de calificación de Colombia señala vulnerabilidades fiscales regionales. Aunque el riesgo actual es contenido, la credibilidad económica requiere atención inmediata.",
     "top_political_drivers": [
       {
-        "title": "Voto de confianza: premier inicia diálogo con bancadas en medio de despliegue militar por elecciones 2026",
+        "title": "Juez reprende y silencia a Pedro Castillo por intento de proselitismo",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Antauro Humala en cierre de campaña de Roberto Sánchez: «Viva el general Velasco, viva Pedro Castillo»",
         "source": "caretas",
-        "score": 75
+        "score": 65
       },
       {
-        "title": "Primer ministro inicia este viernes ronda de diálogo con bancadas con miras al voto de confianza",
-        "source": "elcomercio",
-        "score": 70
-      },
-      {
-        "title": "Mirtha Vásquez en Huancayo: “La detención de Pedro Castillo fue un acto golpista y el indulto es posible”",
+        "title": "Captan presunta entrega de tapers a cambio de votos para Keiko Fujimori (VIDEO)",
         "source": "elbuho",
         "score": 65
       },
       {
-        "title": "Keiko Fujimori calificó de “oportunismo político” promesas de candidatos de indultar a Pedro Castillo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo reaparece en audiencia judicial y le cortan el micrófono tras reiterar respaldo a Roberto Sánchez",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo aprovechó audiencia para hacer propaganda a favor de Roberto Sánchez",
-        "source": "caretas",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo realizó propaganda política en audiencia judicial",
-        "source": "canaln",
-        "score": 65
-      },
-      {
-        "title": "Mineros con Reinfo financian al menos cinco partidos políticos",
-        "source": "canaln",
-        "score": 65
-      },
-      {
-        "title": "Keiko Fujimori critica propuesta de indulto a Pedro Castillo",
-        "source": "canaln",
-        "score": 65
-      },
-      {
-        "title": "Jorge Nieto sobre indulto a Pedro Castillo: No me entrometo en decisiones del Poder Judicial",
+        "title": "Encuestas: Pedro Castillo estaba sexto en abril de 2021 | Pico a Pico con Mabel Cáceres (VIDEO)",
         "source": "elbuho",
         "score": 65
-      }
-    ],
-    "top_economic_drivers": [
-      {
-        "title": "Pedro Gamio: “A Petroperú se la está dejando morir por inanición y a diario pierde mercado ante privados”",
-        "source": "larepublica",
-        "score": 70
       },
       {
-        "title": "GLP en el Perú: una crisis que deja lecciones urgentes para la seguridad energética",
-        "source": "caretas",
-        "score": 70
+        "title": "Cusco: Detienen al alcalde de San Jerónimo acusado de libar con funcionarios en vehículo municipal",
+        "source": "correo",
+        "score": 62
       },
       {
-        "title": "Estados Unidos impone aranceles de hasta 50% a manufacturas de cobre peruano",
-        "source": "elcomercio",
-        "score": 65
+        "title": "Cusco: detienen en estado de ebriedad a alcalde de San Jerónimo, Máximo Rimachi Morales",
+        "source": "andina",
+        "score": 62
       },
       {
-        "title": "Perúpetro advierte que está en riesgo la continuidad operativa del Lote Z-69",
-        "source": "elcomercio",
-        "score": 60
-      },
-      {
-        "title": "El valor de la estacionalidad en el consumo moderno",
-        "source": "elcomercio",
-        "score": 55
-      },
-      {
-        "title": "Policía muere tras recibir disparo dentro de la USE Arequipa",
+        "title": "Poder Judicial de La Libertad responsabiliza a PNP por liberación de alias “Cocinero”",
         "source": "correo",
         "score": 55
       },
       {
-        "title": "Suboficial PNP muere tras disparo dentro de unidad policial en Arequipa: detuvieron a compañero",
+        "title": "Más de 17 mil miembros de mesa no han sido capacitados a pocos días de las elecciones en Arequipa",
+        "source": "rpp",
+        "score": 48
+      },
+      {
+        "title": "Más de 50 reportes no entregados: Incógnitas y contradicciones alrededor del financiamiento de campaña de Ricardo Belmont y Obras",
+        "source": "elcomercio",
+        "score": 45
+      },
+      {
+        "title": "La recta final de las elecciones: ¿Cuáles son los escenarios y cómo llega el país a los comicios?",
+        "source": "elcomercio",
+        "score": 45
+      }
+    ],
+    "top_economic_drivers": [
+      {
+        "title": "¿El precio de la gasolina en California finalmente bajará? Esto dicen los expertos y usuarios",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "S&P rebaja la calificación de Colombia a BB- por el desequilibrio fiscal",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "Aranceles al cobre: Perú activa diálogo con Estados Unidos y evalúa medidas ante impuestos a las manufacturas del metal rojo",
         "source": "larepublica",
         "score": 55
       },
       {
-        "title": "Maíz, trigo y soya sin freno: Perú teme incremento en precio de alimentos",
-        "source": "gestion",
-        "score": 40
+        "title": "Estabilidad en riesgo: estudio advierte sobre pérdida de credibilidad económica en Perú",
+        "source": "andina",
+        "score": 55
       },
       {
-        "title": "Fallece el presidente de Southern Perú y líder del Grupo México, Óscar González Rocha",
+        "title": "Estados Unidos impone aranceles de hasta 50 % a manufacturas de cobre peruano",
+        "source": "rpp",
+        "score": 45
+      },
+      {
+        "title": "Perú mantiene diálogo con Estados Unidos para mitigar impacto de aranceles",
         "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "TUUA de transferencia pone en riesgo que Lima se consolide como hub regional, advierte IATA",
-        "source": "elcomercio",
+        "title": "Perupetro advierte que Petroperú pone trabas al Lote Z-69 porque no entrega la información que se le pide",
+        "source": "correo",
         "score": 35
+      },
+      {
+        "title": "Aranceles: Perú en diálogo con Estados Unidos para mitigar impacto de medidas comerciales",
+        "source": "andina",
+        "score": 35
+      },
+      {
+        "title": "Es cierto que en el Perú no se explora gas, tal como mencionó el candidato Carlos Jaico",
+        "source": "elbuho",
+        "score": 35
+      },
+      {
+        "title": "La informalidad afecta al 65% de la población de las regiones del sur",
+        "source": "correo",
+        "score": 30
       }
     ],
     "eco_sector_titles": [
-      "Pedro Gamio: “A Petroperú se la está dejando morir por inanición y a diario pierde mercado ante privados”",
-      "GLP en el Perú: una crisis que deja lecciones urgentes para la seguridad energética",
-      "Estados Unidos impone aranceles de hasta 50% a manufacturas de cobre peruano",
-      "Perúpetro advierte que está en riesgo la continuidad operativa del Lote Z-69",
-      "El valor de la estacionalidad en el consumo moderno",
-      "Policía muere tras recibir disparo dentro de la USE Arequipa",
-      "Suboficial PNP muere tras disparo dentro de unidad policial en Arequipa: detuvieron a compañero",
-      "Maíz, trigo y soya sin freno: Perú teme incremento en precio de alimentos",
-      "Fallece el presidente de Southern Perú y líder del Grupo México, Óscar González Rocha",
-      "TUUA de transferencia pone en riesgo que Lima se consolide como hub regional, advierte IATA",
-      "Inversión minera se dispara, pero crecen dudas para el resto del año por estos factores",
-      "Banco Mundial es menos entusiasta que el MEF y BCR: ¿Combustibles y El Niño frenarán la economía o habrá recuperación tras elecciones?",
-      "Líneas 3 y 4 del Metro de Lima movilizarán más de un millón de pasajeros al día: ¿cómo se financiarán?",
-      "Aerolíneas insisten que Perú pierde tráfico aéreo frente a otros hubs por TUUA, ¿a dónde van?",
-      "Indecopi abre proceso sancionador contra cinco avícolas por presunto acuerdo de precios del pollo: ¿Cuáles son?",
-      "Ni agua ni pasaje barato: Cono Norte se moviliza contra falta de servicios y aumento de pasajes",
-      "La ruta de la Clínica Cayetano Heredia hacia una red integrada, según su gerente general",
-      "AFIN: en riesgo 21 puentes de la Carretera Central por transporte de cargas con peso excesivo",
-      "Petróleo en medio de “vaivenes” por guerra, ¿Perú espera alza inminente de la inflación?",
-      "Petroperú compra petróleo de la reserva estratégica de Estados Unidos",
-      "Recuperar la tecnocracia: la tarea urgente del próximo Gobierno",
-      "Congreso plantea elevar remuneración de trabajadores CAS",
-      "Vía interoceánica Cusco-Madre de Dios bloqueada por deslizamiento de lodo, tierra y rocas",
-      "Puno: Dirigente pide ruta libre si transportistas no revierten alza de pasajes"
+      "¿El precio de la gasolina en California finalmente bajará? Esto dicen los expertos y usuarios",
+      "S&P rebaja la calificación de Colombia a BB- por el desequilibrio fiscal",
+      "Aranceles al cobre: Perú activa diálogo con Estados Unidos y evalúa medidas ante impuestos a las manufacturas del metal rojo",
+      "Estabilidad en riesgo: estudio advierte sobre pérdida de credibilidad económica en Perú",
+      "Estados Unidos impone aranceles de hasta 50 % a manufacturas de cobre peruano",
+      "Perú mantiene diálogo con Estados Unidos para mitigar impacto de aranceles",
+      "Perupetro advierte que Petroperú pone trabas al Lote Z-69 porque no entrega la información que se le pide",
+      "Elecciones 2026: Más del 50% de empresarios industriales evita contratar e invertir por incertidumbre electoral",
+      "Aranceles: Perú en diálogo con Estados Unidos para mitigar impacto de medidas comerciales",
+      "Es cierto que en el Perú no se explora gas, tal como mencionó el candidato Carlos Jaico",
+      "La informalidad afecta al 65% de la población de las regiones del sur",
+      "Costa norte y central en alerta: Senamhi advierte posible Niño global este 2026",
+      "Gobierno peruano se endeuda para modernizar Base Naval: pidió un préstamo por más de S/4.000 millones",
+      "Caso Espinar: radiografía del conflicto entre autoridades, sociedad civil y la minera Antapaccay",
+      "Ayacucho registra 151 obras paralizadas y más de 592 millones de soles en inversión pública detenida en 2025",
+      "Combustibles suben hasta S/1 por galón en Arequipa tras alza del petróleo",
+      "Tarifas eléctricas subirán en abril 2026 para hogares, comercios e industrias, según Osinergmin",
+      "Deslizamiento de enormes rocas bloquea el km 97 de la Carretera Central y deja varados a transportistas",
+      "Gobierno inyecta millones a regiones",
+      "Gobierno busca mitigar impacto de aranceles de EE.UU.",
+      "Osinergmin: Tarifas eléctricas subirán 1.34% en el mes de abril"
     ],
-    "justification": "El país enfrenta tensiones políticas elevadas por la convergencia de tres factores: negociaciones de confianza gubernamental, movilización militar electoral y polarización extrema en torno a la figura de Pedro Castillo. La fragmentación parlamentaria y el debate sobre indultos intensifican la inestabilidad institucional.",
+    "justification": "El país atraviesa un período de estabilidad relativa en materia política, aunque persisten tensiones moderadas vinculadas a procesos electorales y comportamientos irregulares de autoridades. Los focos de preocupación se concentran en integridad electoral y disciplina institucional, sin alcanzar niveles de crisis sistémica.",
     "top_drivers": [
       {
-        "title": "Voto de confianza: premier inicia diálogo con bancadas en medio de despliegue militar por elecciones 2026",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "Primer ministro inicia este viernes ronda de diálogo con bancadas con miras al voto de confianza",
-        "source": "elcomercio",
-        "score": 70
-      },
-      {
-        "title": "Mirtha Vásquez en Huancayo: “La detención de Pedro Castillo fue un acto golpista y el indulto es posible”",
-        "source": "elbuho",
+        "title": "Juez reprende y silencia a Pedro Castillo por intento de proselitismo",
+        "source": "correo",
         "score": 65
       },
       {
-        "title": "Keiko Fujimori calificó de “oportunismo político” promesas de candidatos de indultar a Pedro Castillo",
-        "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo reaparece en audiencia judicial y le cortan el micrófono tras reiterar respaldo a Roberto Sánchez",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Pedro Castillo aprovechó audiencia para hacer propaganda a favor de Roberto Sánchez",
+        "title": "Antauro Humala en cierre de campaña de Roberto Sánchez: «Viva el general Velasco, viva Pedro Castillo»",
         "source": "caretas",
         "score": 65
       },
       {
-        "title": "Pedro Castillo realizó propaganda política en audiencia judicial",
-        "source": "canaln",
-        "score": 65
-      },
-      {
-        "title": "Mineros con Reinfo financian al menos cinco partidos políticos",
-        "source": "canaln",
-        "score": 65
-      },
-      {
-        "title": "Keiko Fujimori critica propuesta de indulto a Pedro Castillo",
-        "source": "canaln",
-        "score": 65
-      },
-      {
-        "title": "Jorge Nieto sobre indulto a Pedro Castillo: No me entrometo en decisiones del Poder Judicial",
+        "title": "Captan presunta entrega de tapers a cambio de votos para Keiko Fujimori (VIDEO)",
         "source": "elbuho",
         "score": 65
+      },
+      {
+        "title": "Encuestas: Pedro Castillo estaba sexto en abril de 2021 | Pico a Pico con Mabel Cáceres (VIDEO)",
+        "source": "elbuho",
+        "score": 65
+      },
+      {
+        "title": "Cusco: Detienen al alcalde de San Jerónimo acusado de libar con funcionarios en vehículo municipal",
+        "source": "correo",
+        "score": 62
+      },
+      {
+        "title": "Cusco: detienen en estado de ebriedad a alcalde de San Jerónimo, Máximo Rimachi Morales",
+        "source": "andina",
+        "score": 62
+      },
+      {
+        "title": "Poder Judicial de La Libertad responsabiliza a PNP por liberación de alias “Cocinero”",
+        "source": "correo",
+        "score": 55
+      },
+      {
+        "title": "Más de 17 mil miembros de mesa no han sido capacitados a pocos días de las elecciones en Arequipa",
+        "source": "rpp",
+        "score": 48
+      },
+      {
+        "title": "Más de 50 reportes no entregados: Incógnitas y contradicciones alrededor del financiamiento de campaña de Ricardo Belmont y Obras",
+        "source": "elcomercio",
+        "score": 45
+      },
+      {
+        "title": "La recta final de las elecciones: ¿Cuáles son los escenarios y cómo llega el país a los comicios?",
+        "source": "elcomercio",
+        "score": 45
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 82.7,
-    "political_30d_avg": 101.4,
-    "economic_7d_avg": 64.1,
-    "economic_30d_avg": 149.7,
-    "year_max": 226.0,
+    "political_7d_avg": 80.3,
+    "political_30d_avg": 102.3,
+    "economic_7d_avg": 59.3,
+    "economic_30d_avg": 144.2,
+    "year_max": 225.9,
     "year_max_date": "2026-02-18"
   },
   "major_events": [
@@ -225,7 +222,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales que hipotecan el futuro económico.",
+      "summary": "Políticas fiscales insostenibles comprometen la estabilidad económica peruana.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -233,20 +230,20 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera incertidumbre sobre liderazgo futuro.",
+      "summary": "Crisis política por debatible legitimidad electoral presidencial.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
       "date": "2026-03-25",
-      "score": 155.2,
+      "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Candidato prófugo participa en debate presidencial 2026.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     },
     {
       "date": "2026-03-24",
-      "score": 130.9,
+      "score": 130.8,
       "level": "ELEVADO",
       "n_articles": 648,
       "summary": "Incertidumbre electoral por primer debate presidencial.",
@@ -257,7 +254,7 @@
       "score": 122.2,
       "level": "ELEVADO",
       "n_articles": 469,
-      "summary": "Inseguridad y violencia comprometen estabilidad económica peruana.",
+      "summary": "Inseguridad ciudadana y debilitamiento económico generan inestabilidad política.",
       "report_url": "/political/daily-reports/2026-03-21.html"
     },
     {
@@ -265,7 +262,7 @@
       "score": 143.3,
       "level": "ELEVADO",
       "n_articles": 823,
-      "summary": "Nuevo gabinete enfrenta rechazo parlamentario de seis bancadas.",
+      "summary": "Nuevo Gabinete enfrenta rechazo parlamentario de múltiples bancadas.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -273,7 +270,7 @@
       "score": 141.6,
       "level": "ELEVADO",
       "n_articles": 583,
-      "summary": "Pugna entre poderes del Estado genera inestabilidad institucional.",
+      "summary": "Confrontación entre poderes judiciales y políticos debilita estabilidad.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -281,7 +278,7 @@
       "score": 132.3,
       "level": "ELEVADO",
       "n_articles": 935,
-      "summary": "No puedo resumir estas noticias porque no son específicamente sobre Perú en 2026.\n\nLas noticias mencionan: situación geopolítica de OTAN/Trump (internacional), una propuesta",
+      "summary": "No puedo resumir estas noticias como si fueran específicamente de Perú el 2026-03-18, ya que:\n\n1. La fecha es futura (estoy entrenado con datos hasta abril",
       "report_url": "/political/daily-reports/2026-03-18.html"
     },
     {
@@ -289,7 +286,7 @@
       "score": 134.1,
       "level": "ELEVADO",
       "n_articles": 63,
-      "summary": "Irregularidades financieras en candidatos presidenciales generan desconfianza electoral.",
+      "summary": "Irregularidades financieras y falta de transparencia electoral comprometen confianza democrática.",
       "report_url": "/political/daily-reports/2026-02-22.html"
     },
     {
@@ -297,7 +294,7 @@
       "score": 157.1,
       "level": "ALTO",
       "n_articles": 61,
-      "summary": "Balcázar asume presidencia mientras enfrenta juicios pendientes.",
+      "summary": "Balcázar enfrenta juicios mientras ejerce presidencia.",
       "report_url": "/political/daily-reports/2026-02-21.html"
     }
   ],
@@ -335,13 +332,13 @@
     {
       "date": "2026-02-18",
       "dimension": "political",
-      "value": 226.0,
+      "value": 225.9,
       "label": "Censura Jerí"
     },
     {
       "date": "2026-03-13",
       "dimension": "economic",
-      "value": 290.0,
+      "value": 289.9,
       "label": "Crisis GNV Perú"
     },
     {
@@ -5437,39 +5434,39 @@
     },
     {
       "date": "2026-01-27",
-      "political_raw": 100.7,
-      "political_7d": 94.4,
-      "economic_raw": 43.8,
+      "political_raw": 101.2,
+      "political_7d": 94.6,
+      "economic_raw": 43.7,
       "economic_7d": 43.9,
-      "score": 94.4,
-      "prr": 100.7,
-      "prr_7d": 94.4,
-      "n_articles": 116,
+      "score": 94.6,
+      "prr": 101.2,
+      "prr_7d": 94.6,
+      "n_articles": 117,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-01-28",
       "political_raw": 65.7,
-      "political_7d": 85.8,
+      "political_7d": 85.9,
       "economic_raw": 101.6,
       "economic_7d": 61.2,
-      "score": 85.8,
+      "score": 85.9,
       "prr": 65.7,
-      "prr_7d": 85.8,
+      "prr_7d": 85.9,
       "n_articles": 109,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-01-29",
-      "political_raw": 49.8,
-      "political_7d": 75.0,
+      "political_raw": 49.7,
+      "political_7d": 75.1,
       "economic_raw": 62.2,
       "economic_7d": 61.5,
-      "score": 75.0,
-      "prr": 49.8,
-      "prr_7d": 75.0,
+      "score": 75.1,
+      "prr": 49.7,
+      "prr_7d": 75.1,
       "n_articles": 100,
       "low_coverage": false,
       "provisional": false
@@ -5490,12 +5487,12 @@
     {
       "date": "2026-01-31",
       "political_raw": 20.4,
-      "political_7d": 52.2,
+      "political_7d": 52.3,
       "economic_raw": 15.8,
       "economic_7d": 41.0,
-      "score": 52.2,
+      "score": 52.3,
       "prr": 20.4,
-      "prr_7d": 52.2,
+      "prr_7d": 52.3,
       "n_articles": 45,
       "low_coverage": false,
       "provisional": false
@@ -5632,12 +5629,12 @@
     },
     {
       "date": "2026-02-11",
-      "political_raw": 84.7,
+      "political_raw": 84.6,
       "political_7d": 68.7,
       "economic_raw": 64.7,
       "economic_7d": 47.6,
       "score": 68.7,
-      "prr": 84.7,
+      "prr": 84.6,
       "prr_7d": 68.7,
       "n_articles": 103,
       "low_coverage": false,
@@ -5646,12 +5643,12 @@
     {
       "date": "2026-02-12",
       "political_raw": 60.6,
-      "political_7d": 66.3,
+      "political_7d": 66.2,
       "economic_raw": 46.0,
       "economic_7d": 47.1,
-      "score": 66.3,
+      "score": 66.2,
       "prr": 60.6,
-      "prr_7d": 66.3,
+      "prr_7d": 66.2,
       "n_articles": 96,
       "low_coverage": false,
       "provisional": false
@@ -5724,12 +5721,12 @@
     {
       "date": "2026-02-18",
       "political_raw": 319.7,
-      "political_7d": 226.0,
+      "political_7d": 225.9,
       "economic_raw": 81.7,
       "economic_7d": 66.8,
-      "score": 226.0,
+      "score": 225.9,
       "prr": 319.7,
-      "prr_7d": 226.0,
+      "prr_7d": 225.9,
       "n_articles": 171,
       "low_coverage": false,
       "provisional": false
@@ -5762,12 +5759,12 @@
     },
     {
       "date": "2026-02-21",
-      "political_raw": 93.7,
+      "political_raw": 93.6,
       "political_7d": 157.1,
       "economic_raw": 84.0,
       "economic_7d": 76.9,
       "score": 157.1,
-      "prr": 93.7,
+      "prr": 93.6,
       "prr_7d": 157.1,
       "n_articles": 61,
       "low_coverage": false,
@@ -5789,12 +5786,12 @@
     {
       "date": "2026-02-23",
       "political_raw": 74.6,
-      "political_7d": 116.3,
+      "political_7d": 116.2,
       "economic_raw": 80.3,
       "economic_7d": 71.6,
-      "score": 116.3,
+      "score": 116.2,
       "prr": 74.6,
-      "prr_7d": 116.3,
+      "prr_7d": 116.2,
       "n_articles": 112,
       "low_coverage": false,
       "provisional": false
@@ -5892,12 +5889,12 @@
     },
     {
       "date": "2026-03-03",
-      "political_raw": 76.2,
+      "political_raw": 76.1,
       "political_7d": 63.3,
       "economic_raw": 417.9,
       "economic_7d": 218.4,
       "score": 63.3,
-      "prr": 76.2,
+      "prr": 76.1,
       "prr_7d": 63.3,
       "n_articles": 115,
       "low_coverage": false,
@@ -5918,12 +5915,12 @@
     },
     {
       "date": "2026-03-05",
-      "political_raw": 86.8,
+      "political_raw": 86.7,
       "political_7d": 70.1,
       "economic_raw": 240.1,
       "economic_7d": 250.0,
       "score": 70.1,
-      "prr": 86.8,
+      "prr": 86.7,
       "prr_7d": 70.1,
       "n_articles": 134,
       "low_coverage": false,
@@ -5983,14 +5980,14 @@
     },
     {
       "date": "2026-03-10",
-      "political_raw": 62.1,
+      "political_raw": 61.9,
       "political_7d": 63.2,
-      "economic_raw": 157.2,
-      "economic_7d": 230.8,
+      "economic_raw": 157.0,
+      "economic_7d": 230.7,
       "score": 63.2,
-      "prr": 62.1,
+      "prr": 61.9,
       "prr_7d": 63.2,
-      "n_articles": 167,
+      "n_articles": 168,
       "low_coverage": false,
       "provisional": false
     },
@@ -5999,7 +5996,7 @@
       "political_raw": 65.3,
       "political_7d": 63.8,
       "economic_raw": 258.1,
-      "economic_7d": 239.0,
+      "economic_7d": 238.9,
       "score": 63.8,
       "prr": 65.3,
       "prr_7d": 63.8,
@@ -6022,14 +6019,14 @@
     },
     {
       "date": "2026-03-13",
-      "political_raw": 107.2,
+      "political_raw": 107.1,
       "political_7d": 90.4,
-      "economic_raw": 359.9,
-      "economic_7d": 290.0,
+      "economic_raw": 359.8,
+      "economic_7d": 289.9,
       "score": 90.4,
-      "prr": 107.2,
+      "prr": 107.1,
       "prr_7d": 90.4,
-      "n_articles": 999,
+      "n_articles": 1000,
       "low_coverage": false,
       "provisional": false
     },
@@ -6038,7 +6035,7 @@
       "political_raw": 58.4,
       "political_7d": 80.8,
       "economic_raw": 120.6,
-      "economic_7d": 239.2,
+      "economic_7d": 239.1,
       "score": 80.8,
       "prr": 58.4,
       "prr_7d": 80.8,
@@ -6049,12 +6046,12 @@
     {
       "date": "2026-03-15",
       "political_raw": 33.6,
-      "political_7d": 66.7,
+      "political_7d": 66.6,
       "economic_raw": 29.2,
-      "economic_7d": 176.2,
-      "score": 66.7,
+      "economic_7d": 176.1,
+      "score": 66.6,
       "prr": 33.6,
-      "prr_7d": 66.7,
+      "prr_7d": 66.6,
       "n_articles": 420,
       "low_coverage": false,
       "provisional": false
@@ -6074,25 +6071,25 @@
     },
     {
       "date": "2026-03-17",
-      "political_raw": 181.0,
-      "political_7d": 110.7,
+      "political_raw": 180.9,
+      "political_7d": 110.6,
       "economic_raw": 118.9,
       "economic_7d": 157.1,
-      "score": 110.7,
-      "prr": 181.0,
-      "prr_7d": 110.7,
+      "score": 110.6,
+      "prr": 180.9,
+      "prr_7d": 110.6,
       "n_articles": 630,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-03-18",
-      "political_raw": 182.9,
+      "political_raw": 182.8,
       "political_7d": 132.3,
       "economic_raw": 157.9,
       "economic_7d": 157.3,
       "score": 132.3,
-      "prr": 182.9,
+      "prr": 182.8,
       "prr_7d": 132.3,
       "n_articles": 935,
       "low_coverage": false,
@@ -6166,12 +6163,12 @@
     {
       "date": "2026-03-24",
       "political_raw": 168.3,
-      "political_7d": 130.9,
+      "political_7d": 130.8,
       "economic_raw": 191.9,
       "economic_7d": 162.3,
-      "score": 130.9,
+      "score": 130.8,
       "prr": 168.3,
-      "prr_7d": 130.9,
+      "prr_7d": 130.8,
       "n_articles": 648,
       "low_coverage": false,
       "provisional": false
@@ -6179,12 +6176,12 @@
     {
       "date": "2026-03-25",
       "political_raw": 211.9,
-      "political_7d": 155.2,
+      "political_7d": 155.1,
       "economic_raw": 182.8,
       "economic_7d": 168.4,
-      "score": 155.2,
+      "score": 155.1,
       "prr": 211.9,
-      "prr_7d": 155.2,
+      "prr_7d": 155.1,
       "n_articles": 609,
       "low_coverage": false,
       "provisional": false
@@ -6218,12 +6215,12 @@
     {
       "date": "2026-03-28",
       "political_raw": 50.4,
-      "political_7d": 109.9,
+      "political_7d": 109.8,
       "economic_raw": 42.4,
       "economic_7d": 123.0,
-      "score": 109.9,
+      "score": 109.8,
       "prr": 50.4,
-      "prr_7d": 109.9,
+      "prr_7d": 109.8,
       "n_articles": 437,
       "low_coverage": false,
       "provisional": false
@@ -6271,12 +6268,12 @@
       "date": "2026-04-01",
       "political_raw": 144.1,
       "political_7d": 110.5,
-      "economic_raw": 71.4,
-      "economic_7d": 95.8,
+      "economic_raw": 71.5,
+      "economic_7d": 95.9,
       "score": 110.5,
       "prr": 144.1,
       "prr_7d": 110.5,
-      "n_articles": 651,
+      "n_articles": 653,
       "low_coverage": false,
       "provisional": false
     },
@@ -6295,14 +6292,14 @@
     },
     {
       "date": "2026-04-03",
-      "political_raw": 43.6,
+      "political_raw": 43.5,
       "political_7d": 87.4,
       "economic_raw": 27.9,
       "economic_7d": 77.6,
       "score": 87.4,
-      "prr": 43.6,
+      "prr": 43.5,
       "prr_7d": 87.4,
-      "n_articles": 462,
+      "n_articles": 463,
       "low_coverage": false,
       "provisional": false
     },
@@ -6330,44 +6327,57 @@
       "prr_7d": 67.9,
       "n_articles": 385,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-06",
       "political_raw": 88.7,
-      "political_7d": 74.2,
+      "political_7d": 74.1,
       "economic_raw": 51.4,
       "economic_7d": 47.8,
-      "score": 74.2,
+      "score": 74.1,
       "prr": 88.7,
-      "prr_7d": 74.2,
+      "prr_7d": 74.1,
       "n_articles": 556,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-07",
-      "political_raw": 101.6,
-      "political_7d": 82.4,
-      "economic_raw": 70.8,
+      "political_raw": 101.4,
+      "political_7d": 82.3,
+      "economic_raw": 70.7,
       "economic_7d": 54.7,
-      "score": 82.4,
-      "prr": 101.6,
-      "prr_7d": 82.4,
-      "n_articles": 569,
+      "score": 82.3,
+      "prr": 101.4,
+      "prr_7d": 82.3,
+      "n_articles": 571,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-08",
-      "political_raw": 110.4,
-      "political_7d": 90.8,
-      "economic_raw": 90.0,
+      "political_raw": 110.2,
+      "political_7d": 90.7,
+      "economic_raw": 89.9,
       "economic_7d": 65.3,
-      "score": 90.8,
-      "prr": 110.4,
-      "prr_7d": 90.8,
-      "n_articles": 618,
+      "score": 90.7,
+      "prr": 110.2,
+      "prr_7d": 90.7,
+      "n_articles": 620,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-09",
+      "political_raw": 87.0,
+      "political_7d": 89.6,
+      "economic_raw": 63.7,
+      "economic_7d": 64.8,
+      "score": 89.6,
+      "prr": 87.0,
+      "prr_7d": 89.6,
+      "n_articles": 559,
       "low_coverage": false,
       "provisional": true
     }
@@ -7624,6 +7634,10 @@
     {
       "date": "2026-04-07",
       "fx": 3.4325
+    },
+    {
+      "date": "2026-04-08",
+      "fx": 3.3871
     }
   ],
   "monthly_series": [
@@ -7727,7 +7741,7 @@
       "month": "2026-01",
       "political_avg": 68.4,
       "economic_avg": 61.4,
-      "n_articles": 2481,
+      "n_articles": 2482,
       "fx_level": 3.3567,
       "fx_yoy": -10.43
     },
@@ -7742,16 +7756,16 @@
     {
       "month": "2026-03",
       "political_avg": 93.9,
-      "economic_avg": 190.0,
-      "n_articles": 13847,
+      "economic_avg": 189.9,
+      "n_articles": 13849,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-04",
-      "political_avg": 86.2,
-      "economic_avg": 68.1,
-      "n_articles": 4286,
+      "political_avg": 86.5,
+      "economic_avg": 67.7,
+      "n_articles": 4852,
       "fx_level": null,
       "fx_yoy": null
     }

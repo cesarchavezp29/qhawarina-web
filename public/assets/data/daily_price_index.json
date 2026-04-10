@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-08",
-    "n_days": 58,
+    "last_date": "2026-04-09",
+    "n_days": 59,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-08"
+    "updated": "2026-04-09"
   },
   "categories": {
     "arroz_cereales": {
@@ -1657,87 +1657,114 @@
       "index_limpieza": 99.9527,
       "index_cuidado_personal": 99.1349,
       "index_other": 99.5265
+    },
+    {
+      "date": "2026-04-09",
+      "index_all": 99.8584,
+      "index_all_unweighted": 100.048,
+      "index_food": 100.2192,
+      "index_nonfood": 99.4891,
+      "var_all": -0.1166,
+      "var_food": -0.1675,
+      "cum_pct": -0.1416,
+      "yoy_inflation": null,
+      "mom_inflation": -0.3394,
+      "interpolated": false,
+      "n_matched": 36407,
+      "index_arroz_cereales": 99.4977,
+      "index_pan_harinas": 99.6912,
+      "index_carnes": 100.7211,
+      "index_pescados_mariscos": 100.2507,
+      "index_lacteos": 100.6284,
+      "index_frutas": 102.2368,
+      "index_verduras": 99.0201,
+      "index_aceites_grasas": 98.877,
+      "index_azucar_dulces": 95.9063,
+      "index_bebidas": 99.4301,
+      "index_limpieza": 99.8126,
+      "index_cuidado_personal": 98.8991,
+      "index_other": 99.2641
     }
   ],
   "latest": {
-    "date": "2026-04-08",
-    "index_all": 99.975,
-    "index_food": 100.3873,
-    "cum_pct": -0.025,
-    "var_all": -0.7237,
+    "date": "2026-04-09",
+    "index_all": 99.8584,
+    "index_food": 100.2192,
+    "cum_pct": -0.1416,
+    "var_all": -0.1166,
     "yoy_inflation": null,
-    "mom_inflation": -0.3556,
-    "n_products_today": 35394,
+    "mom_inflation": -0.3394,
+    "n_products_today": 36407,
     "top_movers": [
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -1.43
-      },
-      {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -1.03
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.64
       },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": -0.94
+        "var": -0.58
       },
       {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.86
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.27
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -0.24
       }
     ],
     "product_movers": [
       {
-        "name": "Media Col Morada x un",
+        "name": "Mini Cachito con Chocochips Wong 10un",
         "store": "wong",
-        "category": "frutas",
-        "var": 82.0
+        "category": "pan_harinas",
+        "var": 100.0
       },
       {
-        "name": "Pepinillo x un",
+        "name": "Mini Torta de Zanahoria con Buttercre...",
         "store": "wong",
-        "category": "frutas",
-        "var": 80.81
+        "category": "pan_harinas",
+        "var": 99.64
       },
       {
-        "name": "Limón x kg",
+        "name": "Mini Torta de Chocolate con Buttercre...",
         "store": "wong",
-        "category": "frutas",
-        "var": 73.58
+        "category": "pan_harinas",
+        "var": 99.64
       },
       {
-        "name": "Floretes de Brócoli 500g aprox",
+        "name": "Macarrones L'Detalle Halloween 6un",
         "store": "wong",
-        "category": "frutas",
-        "var": 72.14
+        "category": "pan_harinas",
+        "var": 99.2
       }
     ],
     "stores_coverage": {
-      "metro": 12342,
-      "plazavea": 13387,
-      "wong": 11004
+      "metro": 12363,
+      "plazavea": 13439,
+      "wong": 14881
     },
     "categories_coverage": {
-      "aceites_grasas": 645,
-      "arroz_cereales": 1371,
-      "azucar_dulces": 1042,
-      "bebidas": 731,
-      "carnes": 13826,
-      "cuidado_personal": 2291,
-      "frutas": 1764,
-      "lacteos": 2662,
-      "limpieza": 2168,
-      "pan_harinas": 6365,
-      "pescados_mariscos": 235,
-      "verduras": 304
+      "aceites_grasas": 712,
+      "arroz_cereales": 1386,
+      "azucar_dulces": 1050,
+      "bebidas": 982,
+      "carnes": 14675,
+      "cuidado_personal": 2864,
+      "frutas": 1890,
+      "lacteos": 2878,
+      "limpieza": 3001,
+      "pan_harinas": 6550,
+      "pescados_mariscos": 232,
+      "verduras": 312
     }
   }
 }
