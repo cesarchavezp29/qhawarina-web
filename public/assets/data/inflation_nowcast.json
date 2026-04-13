@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-04-09T21:09:45.399047",
+    "generated_at": "2026-04-12T21:43:44.504708",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -14,58 +14,58 @@
   },
   "nowcast": {
     "target_period": "2026-04",
-    "value": 0.287,
+    "value": 2.785,
     "unit": "percent_monthly_var",
-    "bridge_r2": 0.754,
+    "bridge_r2": 0.804,
     "gnv_shock_active": false,
-    "gnv_scarcity_score": 1.054
+    "gnv_scarcity_score": 0.786
   },
   "model_breakdown": {
-    "bottom_up": 0.027,
-    "dfm_nowcast": 0.378,
-    "ml_lasso": 0.68,
-    "ml_elastic_net": 0.691,
-    "ml_gbm": 1.332,
+    "bottom_up": 2.99,
+    "dfm_nowcast": 2.354,
+    "ml_lasso": 2.307,
+    "ml_elastic_net": 2.309,
+    "ml_gbm": 2.647,
     "ar1_nowcast": 0.92,
-    "phillips_nowcast": 0.726,
-    "fuel_shock_zscore": 1.002
+    "phillips_nowcast": 1.445,
+    "fuel_shock_zscore": 0.962
   },
   "forecasts": [
     {
-      "month": "2026-03",
-      "value": 0.338,
-      "lower": -0.236,
-      "upper": 0.912
-    },
-    {
       "month": "2026-04",
-      "value": 0.189,
-      "lower": -0.385,
-      "upper": 0.762
+      "value": 0.795,
+      "lower": 0.224,
+      "upper": 1.365
     },
     {
       "month": "2026-05",
-      "value": 0.18,
-      "lower": -0.394,
-      "upper": 0.754
+      "value": 0.713,
+      "lower": 0.142,
+      "upper": 1.283
     },
     {
       "month": "2026-06",
-      "value": 0.182,
-      "lower": -0.391,
-      "upper": 0.756
+      "value": 0.727,
+      "lower": 0.156,
+      "upper": 1.297
     },
     {
       "month": "2026-07",
-      "value": 0.185,
-      "lower": -0.388,
-      "upper": 0.759
+      "value": 0.743,
+      "lower": 0.172,
+      "upper": 1.313
     },
     {
       "month": "2026-08",
-      "value": 0.189,
-      "lower": -0.385,
-      "upper": 0.762
+      "value": 0.755,
+      "lower": 0.184,
+      "upper": 1.325
+    },
+    {
+      "month": "2026-09",
+      "value": 0.762,
+      "lower": 0.192,
+      "upper": 1.333
     }
   ],
   "monthly_series": [
@@ -1674,7 +1674,7 @@
     {
       "month": "2026-04",
       "official": null,
-      "nowcast": 0.287,
+      "nowcast": 2.785,
       "error": null
     }
   ],
@@ -1988,7 +1988,7 @@
     {
       "month": "2026-04",
       "official": null,
-      "nowcast": 0.287,
+      "nowcast": 2.785,
       "error": null
     }
   ],

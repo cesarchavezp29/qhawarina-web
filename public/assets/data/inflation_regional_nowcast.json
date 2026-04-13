@@ -1,14 +1,14 @@
 {
   "metadata": {
     "method": "Food/core basket decomposition",
-    "target_date": "2026-02",
+    "target_date": "2026-03",
     "n_departments": 25,
     "components": {
-      "food_ipc_monthly": 1.2713,
-      "core_ipc_monthly": 0.2737,
-      "lima_headline_monthly": 0.6936,
-      "food_3m_avg": 0.4853,
-      "core_3m_avg": 0.2423
+      "food_ipc_monthly": 2.2039,
+      "core_ipc_monthly": 2.507,
+      "lima_headline_monthly": 2.3787,
+      "food_3m_avg": 1.2229,
+      "core_3m_avg": 0.9352
     },
     "food_share_source": "ENAHO 2023 (INEI) — Estructura del gasto de los hogares",
     "note": "IPC_regional = food_share × IPC_alimentos + (1 - food_share) × IPC_core. Alimentos y bebidas: PN01383PM. Core (sin alimentos y energía): PN38706PM. No es una estimación oficial del INEI."
@@ -17,201 +17,201 @@
     {
       "dept_code": "01",
       "department": "Amazonas",
-      "ipc_monthly": 0.7944,
-      "ipc_monthly_3ma": 0.3692,
-      "ipc_12m_approx": 9.96,
+      "ipc_monthly": 2.3488,
+      "ipc_monthly_3ma": 1.0854,
+      "ipc_12m_approx": 32.13,
       "food_share": 0.522
     },
     {
       "dept_code": "02",
       "department": "Ancash",
-      "ipc_monthly": 0.7206,
-      "ipc_monthly_3ma": 0.3512,
-      "ipc_12m_approx": 9.0,
+      "ipc_monthly": 2.3712,
+      "ipc_monthly_3ma": 1.0641,
+      "ipc_12m_approx": 32.47,
       "food_share": 0.448
     },
     {
       "dept_code": "03",
       "department": "Apurímac",
-      "ipc_monthly": 0.7845,
-      "ipc_monthly_3ma": 0.3667,
-      "ipc_12m_approx": 9.83,
+      "ipc_monthly": 2.3518,
+      "ipc_monthly_3ma": 1.0825,
+      "ipc_12m_approx": 32.17,
       "food_share": 0.512
     },
     {
       "dept_code": "04",
       "department": "Arequipa",
-      "ipc_monthly": 0.6548,
-      "ipc_monthly_3ma": 0.3352,
-      "ipc_12m_approx": 8.15,
+      "ipc_monthly": 2.3912,
+      "ipc_monthly_3ma": 1.0451,
+      "ipc_12m_approx": 32.79,
       "food_share": 0.382
     },
     {
       "dept_code": "05",
       "department": "Ayacucho",
-      "ipc_monthly": 0.7755,
-      "ipc_monthly_3ma": 0.3646,
-      "ipc_12m_approx": 9.71,
+      "ipc_monthly": 2.3545,
+      "ipc_monthly_3ma": 1.0799,
+      "ipc_12m_approx": 32.22,
       "food_share": 0.503
     },
     {
       "dept_code": "06",
       "department": "Cajamarca",
-      "ipc_monthly": 0.7695,
-      "ipc_monthly_3ma": 0.3631,
-      "ipc_12m_approx": 9.64,
+      "ipc_monthly": 2.3564,
+      "ipc_monthly_3ma": 1.0782,
+      "ipc_12m_approx": 32.25,
       "food_share": 0.497
     },
     {
       "dept_code": "07",
       "department": "Callao",
-      "ipc_monthly": 0.5909,
-      "ipc_monthly_3ma": 0.3196,
-      "ipc_12m_approx": 7.33,
+      "ipc_monthly": 2.4106,
+      "ipc_monthly_3ma": 1.0267,
+      "ipc_12m_approx": 33.09,
       "food_share": 0.318
     },
     {
       "dept_code": "08",
       "department": "Cusco",
-      "ipc_monthly": 0.7356,
-      "ipc_monthly_3ma": 0.3548,
-      "ipc_12m_approx": 9.19,
+      "ipc_monthly": 2.3667,
+      "ipc_monthly_3ma": 1.0684,
+      "ipc_12m_approx": 32.41,
       "food_share": 0.463
     },
     {
       "dept_code": "09",
       "department": "Huancavelica",
-      "ipc_monthly": 0.8054,
-      "ipc_monthly_3ma": 0.3718,
-      "ipc_12m_approx": 10.1,
+      "ipc_monthly": 2.3455,
+      "ipc_monthly_3ma": 1.0885,
+      "ipc_12m_approx": 32.08,
       "food_share": 0.533
     },
     {
       "dept_code": "10",
       "department": "Huánuco",
-      "ipc_monthly": 0.7705,
-      "ipc_monthly_3ma": 0.3633,
-      "ipc_12m_approx": 9.65,
+      "ipc_monthly": 2.3561,
+      "ipc_monthly_3ma": 1.0785,
+      "ipc_12m_approx": 32.24,
       "food_share": 0.498
     },
     {
       "dept_code": "11",
       "department": "Ica",
-      "ipc_monthly": 0.6707,
-      "ipc_monthly_3ma": 0.339,
-      "ipc_12m_approx": 8.35,
+      "ipc_monthly": 2.3864,
+      "ipc_monthly_3ma": 1.0497,
+      "ipc_12m_approx": 32.71,
       "food_share": 0.398
     },
     {
       "dept_code": "12",
       "department": "Junín",
-      "ipc_monthly": 0.7136,
-      "ipc_monthly_3ma": 0.3495,
-      "ipc_12m_approx": 8.91,
+      "ipc_monthly": 2.3733,
+      "ipc_monthly_3ma": 1.0621,
+      "ipc_12m_approx": 32.51,
       "food_share": 0.441
     },
     {
       "dept_code": "13",
       "department": "La Libertad",
-      "ipc_monthly": 0.6747,
-      "ipc_monthly_3ma": 0.34,
-      "ipc_12m_approx": 8.4,
+      "ipc_monthly": 2.3852,
+      "ipc_monthly_3ma": 1.0508,
+      "ipc_12m_approx": 32.69,
       "food_share": 0.402
     },
     {
       "dept_code": "14",
       "department": "Lambayeque",
-      "ipc_monthly": 0.6717,
-      "ipc_monthly_3ma": 0.3393,
-      "ipc_12m_approx": 8.36,
+      "ipc_monthly": 2.3861,
+      "ipc_monthly_3ma": 1.05,
+      "ipc_12m_approx": 32.71,
       "food_share": 0.399
     },
     {
       "dept_code": "15",
       "department": "Lima",
-      "ipc_monthly": 0.575,
-      "ipc_monthly_3ma": 0.3157,
-      "ipc_12m_approx": 7.12,
+      "ipc_monthly": 2.4155,
+      "ipc_monthly_3ma": 1.0221,
+      "ipc_12m_approx": 33.16,
       "food_share": 0.302
     },
     {
       "dept_code": "16",
       "department": "Loreto",
-      "ipc_monthly": 0.7994,
-      "ipc_monthly_3ma": 0.3704,
-      "ipc_12m_approx": 10.03,
+      "ipc_monthly": 2.3473,
+      "ipc_monthly_3ma": 1.0868,
+      "ipc_12m_approx": 32.1,
       "food_share": 0.527
     },
     {
       "dept_code": "17",
       "department": "Madre de Dios",
-      "ipc_monthly": 0.7136,
-      "ipc_monthly_3ma": 0.3495,
-      "ipc_12m_approx": 8.91,
+      "ipc_monthly": 2.3733,
+      "ipc_monthly_3ma": 1.0621,
+      "ipc_12m_approx": 32.51,
       "food_share": 0.441
     },
     {
       "dept_code": "18",
       "department": "Moquegua",
-      "ipc_monthly": 0.6428,
-      "ipc_monthly_3ma": 0.3322,
-      "ipc_12m_approx": 7.99,
+      "ipc_monthly": 2.3949,
+      "ipc_monthly_3ma": 1.0416,
+      "ipc_12m_approx": 32.84,
       "food_share": 0.37
     },
     {
       "dept_code": "19",
       "department": "Pasco",
-      "ipc_monthly": 0.7545,
-      "ipc_monthly_3ma": 0.3595,
-      "ipc_12m_approx": 9.44,
+      "ipc_monthly": 2.3609,
+      "ipc_monthly_3ma": 1.0739,
+      "ipc_12m_approx": 32.32,
       "food_share": 0.482
     },
     {
       "dept_code": "20",
       "department": "Piura",
-      "ipc_monthly": 0.6947,
-      "ipc_monthly_3ma": 0.3449,
-      "ipc_12m_approx": 8.66,
+      "ipc_monthly": 2.3791,
+      "ipc_monthly_3ma": 1.0566,
+      "ipc_12m_approx": 32.6,
       "food_share": 0.422
     },
     {
       "dept_code": "21",
       "department": "Puno",
-      "ipc_monthly": 0.7835,
-      "ipc_monthly_3ma": 0.3665,
-      "ipc_12m_approx": 9.82,
+      "ipc_monthly": 2.3521,
+      "ipc_monthly_3ma": 1.0822,
+      "ipc_12m_approx": 32.18,
       "food_share": 0.511
     },
     {
       "dept_code": "22",
       "department": "San Martín",
-      "ipc_monthly": 0.7486,
-      "ipc_monthly_3ma": 0.358,
-      "ipc_12m_approx": 9.36,
+      "ipc_monthly": 2.3627,
+      "ipc_monthly_3ma": 1.0721,
+      "ipc_12m_approx": 32.34,
       "food_share": 0.476
     },
     {
       "dept_code": "23",
       "department": "Tacna",
-      "ipc_monthly": 0.6438,
-      "ipc_monthly_3ma": 0.3325,
-      "ipc_12m_approx": 8.01,
+      "ipc_monthly": 2.3946,
+      "ipc_monthly_3ma": 1.0419,
+      "ipc_12m_approx": 32.84,
       "food_share": 0.371
     },
     {
       "dept_code": "24",
       "department": "Tumbes",
-      "ipc_monthly": 0.6737,
-      "ipc_monthly_3ma": 0.3398,
-      "ipc_12m_approx": 8.39,
+      "ipc_monthly": 2.3855,
+      "ipc_monthly_3ma": 1.0506,
+      "ipc_12m_approx": 32.7,
       "food_share": 0.401
     },
     {
       "dept_code": "25",
       "department": "Ucayali",
-      "ipc_monthly": 0.7635,
-      "ipc_monthly_3ma": 0.3616,
-      "ipc_12m_approx": 9.56,
+      "ipc_monthly": 2.3582,
+      "ipc_monthly_3ma": 1.0765,
+      "ipc_12m_approx": 32.27,
       "food_share": 0.491
     }
   ]
