@@ -1,194 +1,226 @@
 {
   "metadata": {
-    "generated_at": "2026-04-12T21:44:28.305996",
-    "coverage_days": 467,
+    "generated_at": "2026-04-13T16:45:42.014468",
+    "coverage_days": 468,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-12",
-    "political_raw": 393.3,
+    "date": "2026-04-13",
+    "political_raw": 410.7,
     "political_raw_level": "CRITICO",
-    "political_7d": 187.3,
-    "political_level": "ALTO",
-    "political_multiplier": 1.87,
-    "economic_raw": 22.4,
+    "political_7d": 255.7,
+    "political_level": "CRITICO",
+    "political_multiplier": 2.56,
+    "economic_raw": 40.1,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 56.2,
+    "economic_7d": 51.4,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.56,
-    "score": 187.3,
-    "prr_7d": 187.3,
-    "prr_raw": 393.3,
-    "level": "ALTO",
-    "articles_total": 546,
-    "articles_political_relevant": 417,
-    "articles_economic_relevant": 65,
-    "political_justification": "Perú enfrenta una crisis electoral sin precedentes. Las denuncias masivas de fraude, irregularidades en la ONPE, problemas con material electoral y miles de ciudadanos impedidos de votar generan desconfianza institucional severa. La legitimidad del proceso electoral está comprometida, alimentando polarización política extrema.",
-    "economic_justification": "La economía enfrenta presiones múltiples pero contenidas: crisis energética afecta industria, minería ilegal distorsiona mercados, y tensiones geopolíticas elevan precios de combustibles. Sin embargo, la inflación permanece moderada y no hay señales de desestabilización sistémica inmediata. El riesgo se mantiene bajo, aunque requiere vigilancia en sectores vulnerables.",
+    "economic_multiplier": 0.51,
+    "score": 255.7,
+    "prr_7d": 255.7,
+    "prr_raw": 410.7,
+    "level": "CRITICO",
+    "articles_total": 623,
+    "articles_political_relevant": 410,
+    "articles_economic_relevant": 76,
+    "political_justification": "La situación electoral presenta características de crisis institucional: denuncias de fraude, detenciones de funcionarios electorales, destrucción de actas y rechazo de resultados por candidatos. La polarización extrema y deslegitimación simultánea de autoridades electorales generan riesgo de escalada de conflictividad y movilización social descontrolada.",
+    "economic_justification": "La economía enfrenta un entorno de incertidumbre crítica. La parálisis inversora empresarial, combinada con tensiones políticas y volatilidad internacional, genera desconfianza generalizada. Aunque persisten iniciativas de largo plazo en energía, el corto plazo permanece congelado por la falta de confianza empresarial.",
     "top_political_drivers": [
       {
-        "title": "Lopez Aliaga señala la presencia de fraude en las elecciones",
-        "source": "caretas",
+        "title": "Fujimori lidera con 17.1% y hay triple empate técnico en el segundo lugar, según conteo rápido integral de Transparencia-Ipsos al 95.7%",
+        "source": "rpp",
         "score": 88
       },
       {
-        "title": "EN VIVO Elecciones 2026 en Perú: así se vive la jornada electoral de la primera vuelta",
-        "source": "gestion",
+        "title": "López Aliaga denuncia fraude | Asegura que le robaron más de 100 mil votos y pide salgan a protestar (VIDEO)",
+        "source": "elbuho",
+        "score": 88
+      },
+      {
+        "title": "Resultados oficiales de la ONPE: Sigue AQUÍ las actas contabilizadas de las Elecciones Generales 2026",
+        "source": "correo",
         "score": 85
       },
       {
-        "title": "Dirección Anticorrupción y Fiscalía realizaron diligencias a ONPE",
-        "source": "canaln",
+        "title": "Transparencia pide al JNE y ONPE no publicar resultados: \"Que se suspenda hasta mañana a las 6 pm\"",
+        "source": "larepublica",
         "score": 85
       },
       {
-        "title": "Grave DENUNCIA: Perú21 revela que en cédulas en braille aparece el apellido Belmont (VIDEO)",
-        "source": "peru21",
+        "title": "PNP detuvo en flagrancia a gerente de Gestión Electoral de la ONPE por presunta omisión de funciones",
+        "source": "rpp",
+        "score": 85
+      },
+      {
+        "title": "Conteo rápido de Datum arroja segunda vuelta entre Fujimori y López Aliaga, Ipsos decidió no publicar aun sus resultados",
+        "source": "elbuho",
+        "score": 85
+      },
+      {
+        "title": "Boca de urna: Fujimori lidera y el segundo lugar se define voto a voto",
+        "source": "caretas",
         "score": 82
       },
       {
-        "title": "Policía y Fiscalía fueron a Galaga por líos en reparto electoral",
-        "source": "canaln",
+        "title": "Trujillo: detienen a fiscalizadora del JNE tras romper 18 cédulas de votación válidas durante conteo de votos",
+        "source": "rpp",
         "score": 82
       },
       {
-        "title": "Fiscalía y Dircocor intervienen sede de la ONPE por irregularidades en la entrega de material electoral",
+        "title": "Elecciones 2026: así quedaría conformado el Senado según boca de urna de Datum",
         "source": "correo",
         "score": 80
       },
       {
-        "title": "Más de 63 mil sin votar: ONPE admite fallas y pide disculpas por jornada electoral",
-        "source": "caretas",
+        "title": "Rafael López Aliaga se pronuncia tras el flash electoral: no reconoce resultados preliminares y convoca a una protesta",
+        "source": "larepublica",
         "score": 80
-      },
-      {
-        "title": "¡Atención, Lima! Corte de agua HOY, domingo 12 de abril: Zonas, distritos y hora según Sedapal",
-        "source": "elcomercio",
-        "score": 78
-      },
-      {
-        "title": "Rafael López Aliaga: \"Estamos pidiendo la detención en flagrancia del señor Corvetto\"",
-        "source": "peru21",
-        "score": 78
-      },
-      {
-        "title": "Fujimori exige ampliar votación por fallas de la ONPE",
-        "source": "caretas",
-        "score": 78
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Empresas industriales golpeadas por crisis del gas: 25% fueron afectadas significativamente",
-        "source": "gestion",
-        "score": 55
-      },
-      {
-        "title": "Minería ilegal domina el oro en Piura: superaría el 90% de la producción",
-        "source": "gestion",
+        "title": "Seis de cada 10 empresarios industriales no invertirá en los próximos tres meses: ¿cuáles son sus mayores preocupaciones?",
+        "source": "larepublica",
         "score": 45
       },
       {
-        "title": "Taxistas en paro por alza del combustible en la ciudad de Arequipa",
-        "source": "correo",
+        "title": "Leslie Pierce, empresario y economista: “Cuando el panorama es incierto, sea por la política o por tensión internacional, la empresa espera”",
+        "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Hay cuatro iniciativas para otro retiro de AFP",
-        "source": "correo",
-        "score": 35
-      },
-      {
-        "title": "Expectativas de inflación suben a 2.5%: así cerraría el 2026",
-        "source": "gestion",
+        "title": "Indecopi impone derechos antidumping definitivos a las importaciones de alambrón de acero originario de China",
+        "source": "elcomercio",
         "score": 25
       },
       {
-        "title": "Sunass supervisa desabastecimiento de agua en balnearios del sur y exhorta a Sedapal a garantizar el suministro",
+        "title": "Revisa AQUÍ el precio del combustible en Arequipa hoy 13 de abril",
+        "source": "correo",
+        "score": 25
+      },
+      {
+        "title": "Perú impulsa cartera de proyectos de gas natural por US$ 2,900 millones para 2026-2027",
+        "source": "andina",
+        "score": 25
+      },
+      {
+        "title": "Decisiones financieras tras la primera vuelta",
         "source": "elcomercio",
+        "score": 20
+      },
+      {
+        "title": "Luz del Sur: ¿hay fecha definida para la ejecución del proyecto hidroeléctrico Santa Teresa II?",
+        "source": "gestion",
+        "score": 20
+      },
+      {
+        "title": "Presentarán informe sobre contaminación de agua en cuencas de La Libertad",
+        "source": "correo",
+        "score": 20
+      },
+      {
+        "title": "Diez municipios de Lambayeque sin planes ni capacidad para atender desastres por lluvias, alerta Contraloría",
+        "source": "larepublica",
+        "score": 20
+      },
+      {
+        "title": "Buscan establecer el teletrabajo como un derecho obligatorio para poblaciones vulnerables",
+        "source": "andina",
         "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Empresas industriales golpeadas por crisis del gas: 25% fueron afectadas significativamente",
-      "Minería ilegal domina el oro en Piura: superaría el 90% de la producción",
-      "Taxistas en paro por alza del combustible en la ciudad de Arequipa",
-      "Hay cuatro iniciativas para otro retiro de AFP",
-      "Piura: Las extorsiones aumentan, pero el presupuesto baja",
-      "Expectativas de inflación suben a 2.5%: así cerraría el 2026",
-      "Elmer Cuba, economista socio de Macroconsult: “Se necesita un presidente y un ministro de Economía que duren 5 años”"
+      "Certeza en medio de la incertidumbre: esto esperan los gremios empresariales del próximo gobierno, ¿qué riesgos observan y cómo crecer?",
+      "Seis de cada 10 empresarios industriales no invertirá en los próximos tres meses: ¿cuáles son sus mayores preocupaciones?",
+      "Leslie Pierce, empresario y economista: “Cuando el panorama es incierto, sea por la política o por tensión internacional, la empresa espera”",
+      "Dólar: ¿Cómo cerró el tipo de cambio tras los primeros resultados de las elecciones en Perú?",
+      "Indecopi impone derechos antidumping definitivos a las importaciones de alambrón de acero originario de China",
+      "Elecciones generales 2026: ¿Cuál será la situación económica y social que encontrará el próximo presidente del Perú?",
+      "ONPE: gerente de gestión electoral renuncia y es detenido tras fallas en comicios",
+      "Revisa AQUÍ el precio del combustible en Arequipa hoy 13 de abril",
+      "Gobernador de Cusco anuncia recurso de nulidad de laudo que favorece a Belmond por hotel Sanctuary Lodge de Machu Picchu",
+      "Dólar a la baja: tipo de cambio reacciona sin sobresaltos el conteo rápido de la primera vuelta electoral y cotiza en S/3,3725",
+      "Perú impulsa cartera de proyectos de gas natural por US$ 2,900 millones para 2026-2027"
     ],
-    "justification": "Perú enfrenta una crisis electoral sin precedentes. Las denuncias masivas de fraude, irregularidades en la ONPE, problemas con material electoral y miles de ciudadanos impedidos de votar generan desconfianza institucional severa. La legitimidad del proceso electoral está comprometida, alimentando polarización política extrema.",
+    "justification": "La situación electoral presenta características de crisis institucional: denuncias de fraude, detenciones de funcionarios electorales, destrucción de actas y rechazo de resultados por candidatos. La polarización extrema y deslegitimación simultánea de autoridades electorales generan riesgo de escalada de conflictividad y movilización social descontrolada.",
     "top_drivers": [
       {
-        "title": "Lopez Aliaga señala la presencia de fraude en las elecciones",
-        "source": "caretas",
+        "title": "Fujimori lidera con 17.1% y hay triple empate técnico en el segundo lugar, según conteo rápido integral de Transparencia-Ipsos al 95.7%",
+        "source": "rpp",
         "score": 88
       },
       {
-        "title": "EN VIVO Elecciones 2026 en Perú: así se vive la jornada electoral de la primera vuelta",
-        "source": "gestion",
+        "title": "López Aliaga denuncia fraude | Asegura que le robaron más de 100 mil votos y pide salgan a protestar (VIDEO)",
+        "source": "elbuho",
+        "score": 88
+      },
+      {
+        "title": "Resultados oficiales de la ONPE: Sigue AQUÍ las actas contabilizadas de las Elecciones Generales 2026",
+        "source": "correo",
         "score": 85
       },
       {
-        "title": "Dirección Anticorrupción y Fiscalía realizaron diligencias a ONPE",
-        "source": "canaln",
+        "title": "Transparencia pide al JNE y ONPE no publicar resultados: \"Que se suspenda hasta mañana a las 6 pm\"",
+        "source": "larepublica",
         "score": 85
       },
       {
-        "title": "Grave DENUNCIA: Perú21 revela que en cédulas en braille aparece el apellido Belmont (VIDEO)",
-        "source": "peru21",
+        "title": "PNP detuvo en flagrancia a gerente de Gestión Electoral de la ONPE por presunta omisión de funciones",
+        "source": "rpp",
+        "score": 85
+      },
+      {
+        "title": "Conteo rápido de Datum arroja segunda vuelta entre Fujimori y López Aliaga, Ipsos decidió no publicar aun sus resultados",
+        "source": "elbuho",
+        "score": 85
+      },
+      {
+        "title": "Boca de urna: Fujimori lidera y el segundo lugar se define voto a voto",
+        "source": "caretas",
         "score": 82
       },
       {
-        "title": "Policía y Fiscalía fueron a Galaga por líos en reparto electoral",
-        "source": "canaln",
+        "title": "Trujillo: detienen a fiscalizadora del JNE tras romper 18 cédulas de votación válidas durante conteo de votos",
+        "source": "rpp",
         "score": 82
       },
       {
-        "title": "Fiscalía y Dircocor intervienen sede de la ONPE por irregularidades en la entrega de material electoral",
+        "title": "Elecciones 2026: así quedaría conformado el Senado según boca de urna de Datum",
         "source": "correo",
         "score": 80
       },
       {
-        "title": "Más de 63 mil sin votar: ONPE admite fallas y pide disculpas por jornada electoral",
-        "source": "caretas",
+        "title": "Rafael López Aliaga se pronuncia tras el flash electoral: no reconoce resultados preliminares y convoca a una protesta",
+        "source": "larepublica",
         "score": 80
-      },
-      {
-        "title": "¡Atención, Lima! Corte de agua HOY, domingo 12 de abril: Zonas, distritos y hora según Sedapal",
-        "source": "elcomercio",
-        "score": 78
-      },
-      {
-        "title": "Rafael López Aliaga: \"Estamos pidiendo la detención en flagrancia del señor Corvetto\"",
-        "source": "peru21",
-        "score": 78
-      },
-      {
-        "title": "Fujimori exige ampliar votación por fallas de la ONPE",
-        "source": "caretas",
-        "score": 78
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 103.1,
-    "political_30d_avg": 107.2,
-    "economic_7d_avg": 63.1,
-    "economic_30d_avg": 124.8,
-    "year_max": 225.9,
-    "year_max_date": "2026-02-18"
+    "political_7d_avg": 129.3,
+    "political_30d_avg": 113.1,
+    "economic_7d_avg": 63.6,
+    "economic_30d_avg": 118.6,
+    "year_max": 255.7,
+    "year_max_date": "2026-04-13"
   },
   "major_events": [
     {
+      "date": "2026-04-13",
+      "score": 255.7,
+      "level": "CRITICO",
+      "n_articles": 623,
+      "summary": "Falta de material electoral impide votación normal.",
+      "report_url": "/political/daily-reports/2026-04-13.html"
+    },
+    {
       "date": "2026-04-12",
-      "score": 187.3,
+      "score": 189.2,
       "level": "ALTO",
-      "n_articles": 546,
-      "summary": "Desorden operativo del ONPE en día de elecciones.",
+      "n_articles": 554,
+      "summary": "Retrasos y errores en la organización electoral generan desconfianza ciudadana.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -196,7 +228,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales insostenibles comprometiendo la estabilidad económica.",
+      "summary": "Leyes fiscales del gobierno generan preocupación económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -204,7 +236,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera tensión política electoral en Perú.",
+      "summary": "Sucesión presidencial genera incertidumbre política nacional.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -212,7 +244,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial oficial.",
+      "summary": "Candidato prófugo Cerrón participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     },
     {
@@ -220,7 +252,7 @@
       "score": 130.8,
       "level": "ELEVADO",
       "n_articles": 648,
-      "summary": "Incertidumbre electoral por competencia presidencial fragmentada.",
+      "summary": "Fragmentación política con múltiples candidatos presidenciales.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -228,7 +260,7 @@
       "score": 122.1,
       "level": "ELEVADO",
       "n_articles": 469,
-      "summary": "Inseguridad ciudadana versus crecimiento económico.",
+      "summary": "Inseguridad ciudadana versus estabilidad económica del país.",
       "report_url": "/political/daily-reports/2026-03-21.html"
     },
     {
@@ -236,7 +268,7 @@
       "score": 143.3,
       "level": "ELEVADO",
       "n_articles": 823,
-      "summary": "Falta de apoyo parlamentario al nuevo gabinete ministerial.",
+      "summary": "Nuevo gabinete enfrenta rechazo de seis bancadas parlamentarias.",
       "report_url": "/political/daily-reports/2026-03-20.html"
     },
     {
@@ -244,7 +276,7 @@
       "score": 141.6,
       "level": "ELEVADO",
       "n_articles": 584,
-      "summary": "Conflictto político entre poderes del Estado peruano.",
+      "summary": "Conflicto político entre poderes del Estado peruano.",
       "report_url": "/political/daily-reports/2026-03-19.html"
     },
     {
@@ -252,16 +284,8 @@
       "score": 132.3,
       "level": "ELEVADO",
       "n_articles": 935,
-      "summary": "No puedo generar un resumen válido. Las noticias proporcionadas no son del Perú, sino de OTAN/EE.UU., propuestas internas peruanas, y El Salvador.",
+      "summary": "No puedo responder esta solicitud porque no tengo acceso a noticias del 18 de marzo de 2026. Esa es una fecha futura y no tengo información sobre eventos que ocurran después de",
       "report_url": "/political/daily-reports/2026-03-18.html"
-    },
-    {
-      "date": "2026-02-22",
-      "score": 134.1,
-      "level": "ELEVADO",
-      "n_articles": 63,
-      "summary": "Irregularidades financieras y falta de transparencia electoral preocupan.",
-      "report_url": "/political/daily-reports/2026-02-22.html"
     }
   ],
   "peak_events": [
@@ -6349,40 +6373,53 @@
     },
     {
       "date": "2026-04-10",
-      "political_raw": 117.9,
+      "political_raw": 117.7,
       "political_7d": 98.3,
-      "economic_raw": 108.4,
-      "economic_7d": 79.7,
+      "economic_raw": 108.3,
+      "economic_7d": 79.6,
       "score": 98.3,
-      "prr": 117.9,
+      "prr": 117.7,
       "prr_7d": 98.3,
-      "n_articles": 464,
+      "n_articles": 466,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-11",
       "political_raw": 100.7,
-      "political_7d": 99.1,
+      "political_7d": 99.0,
       "economic_raw": 49.8,
       "economic_7d": 70.7,
-      "score": 99.1,
+      "score": 99.0,
       "prr": 100.7,
-      "prr_7d": 99.1,
+      "prr_7d": 99.0,
       "n_articles": 538,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-12",
-      "political_raw": 393.3,
-      "political_7d": 187.3,
-      "economic_raw": 22.4,
+      "political_raw": 399.7,
+      "political_7d": 189.2,
+      "economic_raw": 22.6,
       "economic_7d": 56.2,
-      "score": 187.3,
-      "prr": 393.3,
-      "prr_7d": 187.3,
-      "n_articles": 546,
+      "score": 189.2,
+      "prr": 399.7,
+      "prr_7d": 189.2,
+      "n_articles": 554,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-13",
+      "political_raw": 410.7,
+      "political_7d": 255.7,
+      "economic_raw": 40.1,
+      "economic_7d": 51.4,
+      "score": 255.7,
+      "prr": 410.7,
+      "prr_7d": 255.7,
+      "n_articles": 623,
       "low_coverage": false,
       "provisional": true
     }
@@ -7647,6 +7684,10 @@
     {
       "date": "2026-04-09",
       "fx": 3.3821
+    },
+    {
+      "date": "2026-04-10",
+      "fx": 3.388
     }
   ],
   "monthly_series": [
@@ -7772,9 +7813,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 97.0,
-      "economic_avg": 68.2,
-      "n_articles": 6418,
+      "political_avg": 109.3,
+      "economic_avg": 66.9,
+      "n_articles": 7051,
       "fx_level": null,
       "fx_yoy": null
     }

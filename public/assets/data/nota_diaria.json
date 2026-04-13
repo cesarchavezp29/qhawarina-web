@@ -1,24 +1,24 @@
 {
-  "date": "2026-04-12",
-  "headline_es": "Precios supermercado -0.31% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.31% MTD · GDP nowcast +2.81%",
+  "date": "2026-04-13",
+  "headline_es": "Precios supermercado -0.36% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.36% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.31% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.31% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.36% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.36% month-to-date."
     },
     {
-      "icon": "📈",
-      "text_es": "Frutas: +0.3% en el mes.",
-      "text_en": "Fruits: +0.3% this month."
+      "icon": "📉",
+      "text_es": "Frutas: -0.8% en el mes.",
+      "text_en": "Fruits: -0.8% this month."
     },
     {
-      "icon": "📈",
-      "text_es": "Verduras: +0.2% en el mes.",
-      "text_en": "Vegetables: +0.2% this month."
+      "icon": "📉",
+      "text_es": "Pan y Harinas: -0.1% en el mes.",
+      "text_en": "Bread & Flour: -0.1% this month."
     },
     {
       "icon": "📊",
@@ -27,14 +27,14 @@
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +2.79% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +2.79% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +2.78% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +2.78% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 187 — nivel alto.",
-      "text_en": "Political risk: IRP 187 — high level."
+      "text_es": "Riesgo político: IRP 256 — nivel crítico.",
+      "text_en": "Political risk: IRP 256 — critical level."
     }
   ],
-  "updated_at": "2026-04-13T01:52:30.916347+00:00"
+  "updated_at": "2026-04-13T20:52:09.076201+00:00"
 }

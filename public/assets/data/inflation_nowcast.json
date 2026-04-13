@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-04-12T21:43:44.504708",
+    "generated_at": "2026-04-13T16:45:02.607317",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -14,21 +14,21 @@
   },
   "nowcast": {
     "target_period": "2026-04",
-    "value": 2.785,
+    "value": 2.783,
     "unit": "percent_monthly_var",
     "bridge_r2": 0.804,
     "gnv_shock_active": false,
-    "gnv_scarcity_score": 0.786
+    "gnv_scarcity_score": 0.74
   },
   "model_breakdown": {
-    "bottom_up": 2.99,
+    "bottom_up": 2.988,
     "dfm_nowcast": 2.354,
     "ml_lasso": 2.307,
     "ml_elastic_net": 2.309,
     "ml_gbm": 2.647,
     "ar1_nowcast": 0.92,
     "phillips_nowcast": 1.445,
-    "fuel_shock_zscore": 0.962
+    "fuel_shock_zscore": 0.908
   },
   "forecasts": [
     {
@@ -1674,7 +1674,7 @@
     {
       "month": "2026-04",
       "official": null,
-      "nowcast": 2.785,
+      "nowcast": 2.783,
       "error": null
     }
   ],
@@ -1988,7 +1988,7 @@
     {
       "month": "2026-04",
       "official": null,
-      "nowcast": 2.785,
+      "nowcast": 2.783,
       "error": null
     }
   ],
