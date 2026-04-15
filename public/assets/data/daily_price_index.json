@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-13",
-    "n_days": 63,
+    "last_date": "2026-04-14",
+    "n_days": 64,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-13"
+    "updated": "2026-04-14"
   },
   "categories": {
     "arroz_cereales": {
@@ -1792,87 +1792,114 @@
       "index_limpieza": 99.6987,
       "index_cuidado_personal": 98.9359,
       "index_other": 99.0031
+    },
+    {
+      "date": "2026-04-14",
+      "index_all": 100.4699,
+      "index_all_unweighted": 100.4991,
+      "index_food": 100.6028,
+      "index_nonfood": 100.102,
+      "var_all": 0.8365,
+      "var_food": 0.7185,
+      "cum_pct": 0.4699,
+      "yoy_inflation": null,
+      "mom_inflation": -0.1756,
+      "interpolated": false,
+      "n_matched": 34806,
+      "index_arroz_cereales": 100.201,
+      "index_pan_harinas": 100.056,
+      "index_carnes": 100.902,
+      "index_pescados_mariscos": 101.1875,
+      "index_lacteos": 101.3976,
+      "index_frutas": 102.503,
+      "index_verduras": 100.4613,
+      "index_aceites_grasas": 98.8734,
+      "index_azucar_dulces": 96.9033,
+      "index_bebidas": 100.0451,
+      "index_limpieza": 100.3131,
+      "index_cuidado_personal": 99.8783,
+      "index_other": 99.6969
     }
   ],
   "latest": {
-    "date": "2026-04-13",
-    "index_all": 99.6364,
-    "index_food": 99.8851,
-    "cum_pct": -0.3636,
-    "var_all": -0.0553,
+    "date": "2026-04-14",
+    "index_all": 100.4699,
+    "index_food": 100.6028,
+    "cum_pct": 0.4699,
+    "var_all": 0.8365,
     "yoy_inflation": null,
-    "mom_inflation": -0.2291,
-    "n_products_today": 34044,
+    "mom_inflation": -0.1756,
+    "n_products_today": 34806,
     "top_movers": [
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 1.74
+      },
+      {
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 1.14
+      },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.8
+        "var": 1.13
       },
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.14
-      },
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 0.1
-      },
-      {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": 0.09
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 1.12
       }
     ],
     "product_movers": [
       {
-        "name": "Chifón Marmoleado Metro 850g",
+        "name": "Chifón de Naranja Metro 850g",
         "store": "metro",
         "category": "pan_harinas",
         "var": 99.13
       },
       {
-        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
-        "store": "metro",
-        "category": "carnes",
-        "var": 80.0
-      },
-      {
-        "name": "Bebida Vegetal de Avena y Fubra ORASI...",
+        "name": "Base Repostera Tres Leches GLORIA Lat...",
         "store": "plazavea",
-        "category": "arroz_cereales",
-        "var": 55.96
+        "category": "pan_harinas",
+        "var": 97.14
       },
       {
-        "name": "Trucha Entera Extra Eviscerada x kg",
-        "store": "wong",
-        "category": "carnes",
-        "var": 45.23
+        "name": "Fideos Instantáneos Nissin Cup Noodle...",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": 88.24
+      },
+      {
+        "name": "Chocolate KINDER JOY Niña Caja 40g",
+        "store": "plazavea",
+        "category": "azucar_dulces",
+        "var": 83.5
       }
     ],
     "stores_coverage": {
-      "metro": 11060,
-      "plazavea": 11738,
-      "wong": 12422
+      "metro": 11015,
+      "plazavea": 11698,
+      "wong": 12404
     },
     "categories_coverage": {
-      "aceites_grasas": 710,
-      "arroz_cereales": 1387,
-      "azucar_dulces": 1044,
-      "bebidas": 1037,
-      "carnes": 9211,
-      "cuidado_personal": 2865,
-      "frutas": 1907,
-      "lacteos": 2867,
-      "limpieza": 2999,
-      "pan_harinas": 6506,
-      "pescados_mariscos": 239,
-      "verduras": 311
+      "aceites_grasas": 709,
+      "arroz_cereales": 1390,
+      "azucar_dulces": 1037,
+      "bebidas": 1042,
+      "carnes": 9189,
+      "cuidado_personal": 2871,
+      "frutas": 1881,
+      "lacteos": 2851,
+      "limpieza": 2985,
+      "pan_harinas": 6483,
+      "pescados_mariscos": 242,
+      "verduras": 306
     }
   }
 }
