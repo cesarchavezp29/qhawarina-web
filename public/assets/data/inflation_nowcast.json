@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-04-14T21:09:48.229249",
+    "generated_at": "2026-04-15T21:10:15.317186",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -14,58 +14,58 @@
   },
   "nowcast": {
     "target_period": "2026-04",
-    "value": 2.782,
+    "value": 2.734,
     "unit": "percent_monthly_var",
     "bridge_r2": 0.804,
     "gnv_shock_active": false,
-    "gnv_scarcity_score": 0.682
+    "gnv_scarcity_score": 0.611
   },
   "model_breakdown": {
-    "bottom_up": 2.985,
-    "dfm_nowcast": 2.354,
+    "bottom_up": 3.038,
+    "dfm_nowcast": 1.323,
     "ml_lasso": 2.307,
     "ml_elastic_net": 2.309,
-    "ml_gbm": 2.647,
+    "ml_gbm": 2.738,
     "ar1_nowcast": 0.92,
     "phillips_nowcast": 1.445,
-    "fuel_shock_zscore": 0.81
+    "fuel_shock_zscore": 0.757
   },
   "forecasts": [
     {
       "month": "2026-04",
-      "value": 0.795,
-      "lower": 0.224,
-      "upper": 1.365
+      "value": 0.554,
+      "lower": -0.045,
+      "upper": 1.154
     },
     {
       "month": "2026-05",
-      "value": 0.713,
-      "lower": 0.142,
-      "upper": 1.283
+      "value": 0.398,
+      "lower": -0.201,
+      "upper": 0.997
     },
     {
       "month": "2026-06",
-      "value": 0.727,
-      "lower": 0.156,
-      "upper": 1.297
+      "value": 0.397,
+      "lower": -0.203,
+      "upper": 0.996
     },
     {
       "month": "2026-07",
-      "value": 0.743,
-      "lower": 0.172,
-      "upper": 1.313
+      "value": 0.409,
+      "lower": -0.19,
+      "upper": 1.008
     },
     {
       "month": "2026-08",
-      "value": 0.755,
-      "lower": 0.184,
-      "upper": 1.325
+      "value": 0.421,
+      "lower": -0.179,
+      "upper": 1.02
     },
     {
       "month": "2026-09",
-      "value": 0.762,
-      "lower": 0.192,
-      "upper": 1.333
+      "value": 0.431,
+      "lower": -0.168,
+      "upper": 1.03
     }
   ],
   "monthly_series": [
@@ -1674,7 +1674,7 @@
     {
       "month": "2026-04",
       "official": null,
-      "nowcast": 2.782,
+      "nowcast": 2.734,
       "error": null
     }
   ],
@@ -1988,7 +1988,7 @@
     {
       "month": "2026-04",
       "official": null,
-      "nowcast": 2.782,
+      "nowcast": 2.734,
       "error": null
     }
   ],

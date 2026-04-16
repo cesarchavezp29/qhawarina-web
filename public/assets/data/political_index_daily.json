@@ -1,227 +1,256 @@
 {
   "metadata": {
-    "generated_at": "2026-04-14T21:10:27.765430",
-    "coverage_days": 469,
+    "generated_at": "2026-04-15T21:10:59.354890",
+    "coverage_days": 470,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-14",
-    "political_raw": 153.9,
+    "date": "2026-04-15",
+    "political_raw": 165.9,
     "political_raw_level": "ALTO",
-    "political_7d": 232.9,
+    "political_7d": 213.5,
     "political_level": "CRITICO",
-    "political_multiplier": 2.33,
-    "economic_raw": 43.3,
-    "economic_raw_level": "MINIMO",
-    "economic_7d": 49.8,
-    "economic_level": "MINIMO",
-    "economic_multiplier": 0.5,
-    "score": 232.9,
-    "prr_7d": 232.9,
-    "prr_raw": 153.9,
+    "political_multiplier": 2.13,
+    "economic_raw": 93.7,
+    "economic_raw_level": "NORMAL",
+    "economic_7d": 63.3,
+    "economic_level": "BAJO",
+    "economic_multiplier": 0.63,
+    "score": 213.5,
+    "prr_7d": 213.5,
+    "prr_raw": 165.9,
     "level": "CRITICO",
-    "articles_total": 511,
-    "articles_political_relevant": 260,
-    "articles_economic_relevant": 83,
-    "political_justification": "La crisis electoral ha alcanzado dimensiones críticas con denuncias penales contra autoridades electorales clave, irregularidades documentadas en la distribución de material de votación y cuestionamientos internacionales sobre la integridad del proceso. La convergencia de investigaciones judiciales, movilizaciones políticas y erosión institucional genera un entorno de inestabilidad política significativa.",
-    "economic_justification": "La economía peruana enfrenta presiones críticas: riesgo de pérdida del grado de inversión, crisis en instituciones financieras rurales, caída histórica de producción petrolera e incertidumbre sobre capacidad empresarial ante shocks energéticos. Estos factores confluyen en un escenario de vulnerabilidad económica estructural que demanda intervención urgente.",
+    "articles_total": 607,
+    "articles_political_relevant": 265,
+    "articles_economic_relevant": 121,
+    "political_justification": "El país enfrenta una crisis de legitimidad electoral sin precedentes. La convergencia de denuncias de fraude, movilizaciones convocadas, cuestionamientos institucionales y presión gremial genera un escenario de polarización extrema que amenaza la gobernabilidad y la estabilidad democrática.",
+    "economic_justification": "La economía enfrenta presiones fiscales moderadas por aumentos de gasto en pensiones y bonificaciones militares, contrarrestadas parcialmente por iniciativas de inversión minera. Incertidumbre electoral, volatilidad en combustibles y riesgos de disrupciones logísticas mantienen la estabilidad en zona normal, aunque con vulnerabilidades crecientes.",
     "top_political_drivers": [
       {
-        "title": "JNE denuncia penalmente a Piero Corvetto por presunto delito contra el derecho de sufragio: estos son sus argumentos",
+        "title": "Rafael López Aliaga denuncia “fraude” y pide que se declaren nulas las elecciones",
         "source": "elcomercio",
-        "score": 82
+        "score": 88
       },
       {
-        "title": "Misión de Observación de la UE califica de “grave” la no apertura de locales de votación en las elecciones peruanas",
+        "title": "El caso Galaga: las extrañas denuncias policiales del propietario de la empresa y la responsabilidad del funcionario de la ONPE",
         "source": "elcomercio",
-        "score": 82
+        "score": 85
       },
       {
-        "title": "Factura electoral: Detienen a gerente de ONPE mientras el país exige la cabeza de Corvetto (VIDEO)",
-        "source": "elbuho",
-        "score": 82
-      },
-      {
-        "title": "Videos evidencian que material electoral no salió de Lurín, pese a anuncio de la ONPE",
+        "title": "Rafael López Aliaga presenta documento al JNE para exigir la suspensión de resultados de la primera vuelta",
         "source": "larepublica",
+        "score": 85
+      },
+      {
+        "title": "López Aliaga advierte marcha multitudinaria e “insurgencia civil”, tras cuestionar proceso electoral",
+        "source": "gestion",
+        "score": 82
+      },
+      {
+        "title": "Presentan pedidos de nulidad de elecciones por ampliación de votación y fallas en instalación de mesas",
+        "source": "larepublica",
+        "score": 82
+      },
+      {
+        "title": "Gremios empresariales exigen la destitución inmediata del jefe de la ONPE",
+        "source": "rpp",
+        "score": 82
+      },
+      {
+        "title": "La inédita segunda jornada electoral: largas colas, mesas incompletas y nuevas denuncias",
+        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "Ni Corvetto ni Burneo",
-        "source": "elcomercio",
-        "score": 78
+        "title": "El problema no es cuánto invertimos, sino cómo lo hacemos",
+        "source": "gestion",
+        "score": 80
       },
       {
-        "title": "Corvetto en la mira: Denuncian a jefe de ONPE por supuestamente impedir el voto de miles de ciudadanos (VIDEO)",
-        "source": "elbuho",
-        "score": 78
-      },
-      {
-        "title": "JNE y JNJ ponen la mira en Piero Corvetto",
+        "title": "Rafael López Aliaga convocó plantón en exteriores del JNE para denunciar presunto fraude en proceso electoral (FOTOS)",
         "source": "correo",
-        "score": 75
+        "score": 80
       },
       {
-        "title": "Rafael López Aliaga convoca a plantón tras denuncia de falso fraude electoral por incremento de Roberto Sánchez",
+        "title": "Gabinete Arroyo acude mañana al Congreso para solicitar voto de confianza en medio del contexto electoral",
         "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "JNE: detienen a fiscalizadora tras romper cédulas de votación en Trujillo",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "APP, Podemos, Perú Libre y Avanza País: la lista de los partidos que no pasaron la valla electoral",
-        "source": "larepublica",
-        "score": 72
+        "score": 80
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "La herencia y los retos económicos",
+        "title": "Congreso promulga ley que aumenta a S/3.500 la pensión a maestros jubilados, pese a alertas del MEF y Consejo Fiscal",
+        "source": "rpp",
+        "score": 65
+      },
+      {
+        "title": "Minem impulsa incremento en la producción de minerales críticos a través de la expansión del Proyecto Toromocho",
         "source": "elcomercio",
         "score": 55
       },
       {
-        "title": "IIMP: Perú perdería su grado de inversión por persistencia de las economía ilegales",
-        "source": "correo",
+        "title": "PBI crece en febrero, pero incertidumbre electoral y problemas en el suministro de gas amenazan el crecimiento económico",
+        "source": "elcomercio",
         "score": 55
       },
       {
-        "title": "SBS interviene a la Caja Rural Del Centro y a la Cooperativa Kuria por insolvencia",
-        "source": "elcomercio",
-        "score": 45
+        "title": "Petroperú hace su tercer ajuste a precios de combustibles en abril: ¿a cuánto sube?",
+        "source": "gestion",
+        "score": 55
       },
       {
-        "title": "¿Las empresas peruanas están preparadas para un shock energético? El diagnóstico desde Marsh",
+        "title": "¿Habrá paro de transportistas este 15 de abril en Lima y Callao por subsidio? Esto indicaron los gremios sobre movilización",
+        "source": "larepublica",
+        "score": 55
+      },
+      {
+        "title": "Aprueban aumento de pensión para docentes cesantes y jubilados: revisa el monto y beneficiarios de la ley 32581",
+        "source": "larepublica",
+        "score": 40
+      },
+      {
+        "title": "Gobierno promulga ley que otorga bonificación excepcional a militares que prestaron servicio entre los años 1980 y 2000",
+        "source": "rpp",
+        "score": 40
+      },
+      {
+        "title": "Oficializan pensión de S/3,500 para docentes jubilados y cesantes: esto dice la Ley 32581",
+        "source": "caretas",
+        "score": 40
+      },
+      {
+        "title": "Martín Naranjo, de la Asociación de Bancos del Perú: “Entre querer invertir y ejecutar la inversión, hay un paso que depende del entorno”",
         "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Dólar: así cerró el tipo de cambio y la Bolsa tras la jornada electoral en Perú, ¿pesó más el factor local o el contexto internacional?",
-        "source": "elcomercio",
-        "score": 25
-      },
-      {
-        "title": "Pescadores de Chorrillos alertan que cambios en el oleaje afectan producción: \"Salimos porque si no, ¿qué llevamos a casa?\"",
-        "source": "rpp",
-        "score": 25
-      },
-      {
-        "title": "Municipalidad de Ica se compromete a saldar deuda del 2025 con trabajadores del SOMUN",
+        "title": "Trabajadores CAS: MEF carece de presupuesto para pagar CTS y gratificación",
         "source": "correo",
-        "score": 22
-      },
-      {
-        "title": "Huancayo: protestan contra empresas de transporte por alza de pasajes y maltrato a usuarios",
-        "source": "correo",
-        "score": 22
-      },
-      {
-        "title": "La producción de petróleo registró la mayor caída de la historia en marzo, dice la AIE",
-        "source": "elcomercio",
-        "score": 20
-      },
-      {
-        "title": "BCR mantiene sin cambios su tasa de referencia en un contexto de riesgo inflacionario, indica Scotiabank",
-        "source": "elcomercio",
-        "score": 20
+        "score": 35
       }
     ],
     "eco_sector_titles": [
-      "La herencia y los retos económicos",
-      "IIMP: Perú perdería su grado de inversión por persistencia de las economía ilegales",
-      "SBS interviene a la Caja Rural Del Centro y a la Cooperativa Kuria por insolvencia",
-      "¿Las empresas peruanas están preparadas para un shock energético? El diagnóstico desde Marsh",
-      "Rescate en Pataz: liberan a 20 mineros tras violento ataque criminal",
-      "La incertidumbre política y debilidad institucional elevan cautela en agentes económicos, indican gremios empresariales ante las elecciones",
-      "Dólar acentúa volatilidad por incertidumbre sobre resultados, ¿qué picos puede tocar?",
-      "La Libertad: Rescatan a 20 mineros secuestrados en Pataz",
-      "Dólar: así cerró el tipo de cambio y la Bolsa tras la jornada electoral en Perú, ¿pesó más el factor local o el contexto internacional?",
-      "Pescadores de Chorrillos alertan que cambios en el oleaje afectan producción: \"Salimos porque si no, ¿qué llevamos a casa?\"",
-      "Municipalidad de Ica se compromete a saldar deuda del 2025 con trabajadores del SOMUN",
-      "Huancayo: protestan contra empresas de transporte por alza de pasajes y maltrato a usuarios"
+      "Paro nacional en Colombia: miles de docentes protestan por crisis en salud y salarios atrasados",
+      "Congreso promulga ley que aumenta a S/3.500 la pensión a maestros jubilados, pese a alertas del MEF y Consejo Fiscal",
+      "Minem impulsa incremento en la producción de minerales críticos a través de la expansión del Proyecto Toromocho",
+      "PBI crece en febrero, pero incertidumbre electoral y problemas en el suministro de gas amenazan el crecimiento económico",
+      "Ascenso en votos del candidato de izquierda golpea al mercado: La mirada de Bloomberg",
+      "Petroperú hace su tercer ajuste a precios de combustibles en abril: ¿a cuánto sube?",
+      "¿Habrá paro de transportistas este 15 de abril en Lima y Callao por subsidio? Esto indicaron los gremios sobre movilización",
+      "¿Fin de una era? El demoledor mensaje de Roberto Sánchez contra Julio Velarde si gana la presidencia",
+      "BCRP interviene para frenar alza de dólar en tensión electoral: así se moverá con flash de ONPE",
+      "Bolsa de Valores de Lima: cierra con perdidas cercanas al 5% por resultados electorales",
+      "Aprueban aumento de pensión para docentes cesantes y jubilados: revisa el monto y beneficiarios de la ley 32581",
+      "Gobierno promulga ley que otorga bonificación excepcional a militares que prestaron servicio entre los años 1980 y 2000",
+      "Oficializan pensión de S/3,500 para docentes jubilados y cesantes: esto dice la Ley 32581",
+      "Martín Naranjo, de la Asociación de Bancos del Perú: “Entre querer invertir y ejecutar la inversión, hay un paso que depende del entorno”",
+      "Rescatan a 20 mineros secuestrados en Pataz",
+      "Trabajadores CAS: MEF carece de presupuesto para pagar CTS y gratificación",
+      "Promulgan ley de pensiones para maestros jubilados y cesantes: conoce los detalles de la ley 32581",
+      "Dólar se eleva a S/3,39: ¿Cómo influyó la coyuntural electoral en el tipo de cambio?",
+      "Gobierno promulga ley a favor de bono de S/ 1.130 mensuales para veteranos de las Fuerzas Armadas",
+      "Optimismo para contratar se empieza a “marchitar”: ¿qué se ve para los próximos meses?",
+      "Dólar sumó dos días al alza por efecto de conteo de la ONPE sobre elección presidencial",
+      "El impacto político y económico de las fallas del proceso electoral",
+      "Proyecto de drenaje pluvial en El Tambo queda en riesgo por falta de presupuesto",
+      "Cambio en posible segunda vuelta pone \"nervioso\" al dólar: sube por segundo día consecutivo y llega a S/ 3.44",
+      "Turismo en feriados de Semana Santa generó un impacto económico de US$228,5 millones a la economía total",
+      "Tipo de cambio: dólar abre S/3,44 para este miércoles 15 de abril del 2026",
+      "Acciones reaccionan a la baja ante conteo de ONPE en que avanza candidato izquierdista",
+      "Comerciantes sin ventas por demoras en el techado del Mercado San Camilo",
+      "La Pampa: atacan camionetas de la Policía durante operativo contra la minería ilegal en Madre de Dios",
+      "Minería ilegal en Madre de Dios: atacan a policías y queman patrullero durante operativo en La Pampa",
+      "El calvario en EsSalud de Arequipa: 300 enfermos autoinmunes llevan un mes sin su medicina",
+      "Precio del dólar sube a S/ 3.428 frente al sol en medio de volatilidad regional",
+      "Arequipa: Sólo inician 11 de 80 proyectos previstos en último año en el GRA"
     ],
-    "justification": "La crisis electoral ha alcanzado dimensiones críticas con denuncias penales contra autoridades electorales clave, irregularidades documentadas en la distribución de material de votación y cuestionamientos internacionales sobre la integridad del proceso. La convergencia de investigaciones judiciales, movilizaciones políticas y erosión institucional genera un entorno de inestabilidad política significativa.",
+    "justification": "El país enfrenta una crisis de legitimidad electoral sin precedentes. La convergencia de denuncias de fraude, movilizaciones convocadas, cuestionamientos institucionales y presión gremial genera un escenario de polarización extrema que amenaza la gobernabilidad y la estabilidad democrática.",
     "top_drivers": [
       {
-        "title": "JNE denuncia penalmente a Piero Corvetto por presunto delito contra el derecho de sufragio: estos son sus argumentos",
+        "title": "Rafael López Aliaga denuncia “fraude” y pide que se declaren nulas las elecciones",
         "source": "elcomercio",
-        "score": 82
+        "score": 88
       },
       {
-        "title": "Misión de Observación de la UE califica de “grave” la no apertura de locales de votación en las elecciones peruanas",
+        "title": "El caso Galaga: las extrañas denuncias policiales del propietario de la empresa y la responsabilidad del funcionario de la ONPE",
         "source": "elcomercio",
-        "score": 82
+        "score": 85
       },
       {
-        "title": "Factura electoral: Detienen a gerente de ONPE mientras el país exige la cabeza de Corvetto (VIDEO)",
-        "source": "elbuho",
-        "score": 82
-      },
-      {
-        "title": "Videos evidencian que material electoral no salió de Lurín, pese a anuncio de la ONPE",
+        "title": "Rafael López Aliaga presenta documento al JNE para exigir la suspensión de resultados de la primera vuelta",
         "source": "larepublica",
+        "score": 85
+      },
+      {
+        "title": "López Aliaga advierte marcha multitudinaria e “insurgencia civil”, tras cuestionar proceso electoral",
+        "source": "gestion",
+        "score": 82
+      },
+      {
+        "title": "Presentan pedidos de nulidad de elecciones por ampliación de votación y fallas en instalación de mesas",
+        "source": "larepublica",
+        "score": 82
+      },
+      {
+        "title": "Gremios empresariales exigen la destitución inmediata del jefe de la ONPE",
+        "source": "rpp",
+        "score": 82
+      },
+      {
+        "title": "La inédita segunda jornada electoral: largas colas, mesas incompletas y nuevas denuncias",
+        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "Ni Corvetto ni Burneo",
-        "source": "elcomercio",
-        "score": 78
+        "title": "El problema no es cuánto invertimos, sino cómo lo hacemos",
+        "source": "gestion",
+        "score": 80
       },
       {
-        "title": "Corvetto en la mira: Denuncian a jefe de ONPE por supuestamente impedir el voto de miles de ciudadanos (VIDEO)",
-        "source": "elbuho",
-        "score": 78
-      },
-      {
-        "title": "JNE y JNJ ponen la mira en Piero Corvetto",
+        "title": "Rafael López Aliaga convocó plantón en exteriores del JNE para denunciar presunto fraude en proceso electoral (FOTOS)",
         "source": "correo",
-        "score": 75
+        "score": 80
       },
       {
-        "title": "Rafael López Aliaga convoca a plantón tras denuncia de falso fraude electoral por incremento de Roberto Sánchez",
+        "title": "Gabinete Arroyo acude mañana al Congreso para solicitar voto de confianza en medio del contexto electoral",
         "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "JNE: detienen a fiscalizadora tras romper cédulas de votación en Trujillo",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "APP, Podemos, Perú Libre y Avanza País: la lista de los partidos que no pasaron la valla electoral",
-        "source": "larepublica",
-        "score": 72
+        "score": 80
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 152.9,
-    "political_30d_avg": 119.1,
-    "economic_7d_avg": 64.0,
-    "economic_30d_avg": 114.6,
-    "year_max": 266.7,
+    "political_7d_avg": 170.6,
+    "political_30d_avg": 123.6,
+    "economic_7d_avg": 63.4,
+    "economic_30d_avg": 111.0,
+    "year_max": 266.6,
     "year_max_date": "2026-04-13"
   },
   "major_events": [
     {
-      "date": "2026-04-14",
-      "score": 232.9,
+      "date": "2026-04-15",
+      "score": 213.5,
       "level": "CRITICO",
-      "n_articles": 511,
-      "summary": "Incertidumbre electoral y volatilidad económica en elecciones presidenciales.",
+      "n_articles": 607,
+      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
+      "report_url": "/political/daily-reports/2026-04-15.html"
+    },
+    {
+      "date": "2026-04-14",
+      "score": 234.0,
+      "level": "CRITICO",
+      "n_articles": 517,
+      "summary": "Elecciones presidenciales generan tensión política y económica.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
       "date": "2026-04-13",
-      "score": 266.7,
+      "score": 266.6,
       "level": "CRITICO",
-      "n_articles": 765,
-      "summary": "Falta de material electoral impide votación masiva.",
+      "n_articles": 766,
+      "summary": "Falta de material electoral impide votación en Perú.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -229,7 +258,7 @@
       "score": 190.0,
       "level": "ALTO",
       "n_articles": 554,
-      "summary": "Desorganización electoral compromete credibilidad del proceso votación.",
+      "summary": "Desorganización electoral y retrasos en instalación de mesas.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -237,7 +266,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno generan preocupación económica.",
+      "summary": "Políticas fiscales del gobierno generan crisis económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -245,7 +274,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tensión electoral por tercera jornada de debates presidenciales.",
+      "summary": "Debate presidencial genera incertidumbre sobre candidatos.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -261,7 +290,7 @@
       "score": 130.8,
       "level": "ELEVADO",
       "n_articles": 648,
-      "summary": "Incertidumbre electoral ante primer debate presidencial 2026.",
+      "summary": "Incertidumbre electoral ante primer debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-24.html"
     },
     {
@@ -269,7 +298,7 @@
       "score": 122.1,
       "level": "ELEVADO",
       "n_articles": 469,
-      "summary": "Inseguridad ciudadana y debilitamiento económico por gasto público.",
+      "summary": "Inseguridad y violencia comprometen estabilidad económica.",
       "report_url": "/political/daily-reports/2026-03-21.html"
     },
     {
@@ -277,16 +306,8 @@
       "score": 143.3,
       "level": "ELEVADO",
       "n_articles": 823,
-      "summary": "Nuevo gabinete sin apoyo parlamentario suficiente.",
+      "summary": "Nuevo gabinete carece de apoyo parlamentario mayoritario.",
       "report_url": "/political/daily-reports/2026-03-20.html"
-    },
-    {
-      "date": "2026-03-19",
-      "score": 141.6,
-      "level": "ELEVADO",
-      "n_articles": 584,
-      "summary": "Conflicto entre poderes del Estado y corrupción política.",
-      "report_url": "/political/daily-reports/2026-03-19.html"
     }
   ],
   "peak_events": [
@@ -341,7 +362,7 @@
     {
       "date": "2026-04-13",
       "dimension": "political",
-      "value": 266.7,
+      "value": 266.6,
       "label": "Elecciones Cuestionadas"
     }
   ],
@@ -6402,7 +6423,7 @@
       "prr_7d": 100.4,
       "n_articles": 541,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-12",
@@ -6419,27 +6440,40 @@
     },
     {
       "date": "2026-04-13",
-      "political_raw": 445.7,
-      "political_7d": 266.7,
+      "political_raw": 445.4,
+      "political_7d": 266.6,
       "economic_raw": 42.7,
       "economic_7d": 52.5,
-      "score": 266.7,
-      "prr": 445.7,
-      "prr_7d": 266.7,
-      "n_articles": 765,
+      "score": 266.6,
+      "prr": 445.4,
+      "prr_7d": 266.6,
+      "n_articles": 766,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-14",
-      "political_raw": 153.9,
-      "political_7d": 232.9,
-      "economic_raw": 43.3,
-      "economic_7d": 49.8,
-      "score": 232.9,
-      "prr": 153.9,
-      "prr_7d": 232.9,
-      "n_articles": 511,
+      "political_raw": 157.7,
+      "political_7d": 234.0,
+      "economic_raw": 44.9,
+      "economic_7d": 50.3,
+      "score": 234.0,
+      "prr": 157.7,
+      "prr_7d": 234.0,
+      "n_articles": 517,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-15",
+      "political_raw": 165.9,
+      "political_7d": 213.5,
+      "economic_raw": 93.7,
+      "economic_7d": 63.3,
+      "score": 213.5,
+      "prr": 165.9,
+      "prr_7d": 213.5,
+      "n_articles": 607,
       "low_coverage": false,
       "provisional": true
     }
@@ -7712,6 +7746,10 @@
     {
       "date": "2026-04-13",
       "fx": 3.3709
+    },
+    {
+      "date": "2026-04-14",
+      "fx": 3.3919
     }
   ],
   "monthly_series": [
@@ -7837,9 +7875,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 119.2,
-      "economic_avg": 66.3,
-      "n_articles": 7716,
+      "political_avg": 125.6,
+      "economic_avg": 66.1,
+      "n_articles": 8330,
       "fx_level": null,
       "fx_yoy": null
     }

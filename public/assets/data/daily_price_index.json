@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-14",
-    "n_days": 64,
+    "last_date": "2026-04-15",
+    "n_days": 65,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-14"
+    "updated": "2026-04-15"
   },
   "categories": {
     "arroz_cereales": {
@@ -1819,87 +1819,114 @@
       "index_limpieza": 100.3131,
       "index_cuidado_personal": 99.8783,
       "index_other": 99.6969
+    },
+    {
+      "date": "2026-04-15",
+      "index_all": 99.7614,
+      "index_all_unweighted": 99.9387,
+      "index_food": 100.037,
+      "index_nonfood": 99.5561,
+      "var_all": -0.7052,
+      "var_food": -0.5624,
+      "cum_pct": -0.2386,
+      "yoy_inflation": null,
+      "mom_inflation": -0.1565,
+      "interpolated": false,
+      "n_matched": 34791,
+      "index_arroz_cereales": 99.0353,
+      "index_pan_harinas": 99.5871,
+      "index_carnes": 100.4852,
+      "index_pescados_mariscos": 100.4771,
+      "index_lacteos": 100.7141,
+      "index_frutas": 101.7634,
+      "index_verduras": 99.1998,
+      "index_aceites_grasas": 98.6727,
+      "index_azucar_dulces": 95.9192,
+      "index_bebidas": 99.4322,
+      "index_limpieza": 99.8591,
+      "index_cuidado_personal": 99.0591,
+      "index_other": 99.2753
     }
   ],
   "latest": {
-    "date": "2026-04-14",
-    "index_all": 100.4699,
-    "index_food": 100.6028,
-    "cum_pct": 0.4699,
-    "var_all": 0.8365,
+    "date": "2026-04-15",
+    "index_all": 99.7614,
+    "index_food": 100.037,
+    "cum_pct": -0.2386,
+    "var_all": -0.7052,
     "yoy_inflation": null,
-    "mom_inflation": -0.1756,
-    "n_products_today": 34806,
+    "mom_inflation": -0.1565,
+    "n_products_today": 34791,
     "top_movers": [
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 1.74
+        "var": -1.26
+      },
+      {
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -1.16
       },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": 1.14
+        "var": -1.02
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 1.13
-      },
-      {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 1.12
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -0.82
       }
     ],
     "product_movers": [
       {
-        "name": "Chifón de Naranja Metro 850g",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 99.13
-      },
-      {
-        "name": "Base Repostera Tres Leches GLORIA Lat...",
+        "name": "Repuesto de Cabezal Eléctrico ORAL-B ...",
         "store": "plazavea",
-        "category": "pan_harinas",
-        "var": 97.14
+        "category": "cuidado_personal",
+        "var": 99.6
       },
       {
-        "name": "Fideos Instantáneos Nissin Cup Noodle...",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 88.24
-      },
-      {
-        "name": "Chocolate KINDER JOY Niña Caja 40g",
+        "name": "Gaseosa Uva FANTA Botella 300ml",
         "store": "plazavea",
-        "category": "azucar_dulces",
-        "var": 83.5
+        "category": "frutas",
+        "var": 83.33
+      },
+      {
+        "name": "Set Mini Escoba y Recogedor Home Care...",
+        "store": "metro",
+        "category": "limpieza",
+        "var": 76.92
+      },
+      {
+        "name": "Papa Canchán Procesada x kg",
+        "store": "metro",
+        "category": "frutas",
+        "var": 57.35
       }
     ],
     "stores_coverage": {
-      "metro": 11015,
-      "plazavea": 11698,
-      "wong": 12404
+      "metro": 12309,
+      "plazavea": 13413,
+      "wong": 14906
     },
     "categories_coverage": {
-      "aceites_grasas": 709,
-      "arroz_cereales": 1390,
-      "azucar_dulces": 1037,
+      "aceites_grasas": 713,
+      "arroz_cereales": 1401,
+      "azucar_dulces": 1038,
       "bebidas": 1042,
-      "carnes": 9189,
-      "cuidado_personal": 2871,
-      "frutas": 1881,
-      "lacteos": 2851,
-      "limpieza": 2985,
-      "pan_harinas": 6483,
+      "carnes": 14631,
+      "cuidado_personal": 2873,
+      "frutas": 1896,
+      "lacteos": 2852,
+      "limpieza": 2995,
+      "pan_harinas": 6510,
       "pescados_mariscos": 242,
-      "verduras": 306
+      "verduras": 304
     }
   }
 }
