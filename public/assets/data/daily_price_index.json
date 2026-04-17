@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-15",
-    "n_days": 65,
+    "last_date": "2026-04-16",
+    "n_days": 66,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-15"
+    "updated": "2026-04-16"
   },
   "categories": {
     "arroz_cereales": {
@@ -1846,87 +1846,114 @@
       "index_limpieza": 99.8591,
       "index_cuidado_personal": 99.0591,
       "index_other": 99.2753
+    },
+    {
+      "date": "2026-04-16",
+      "index_all": 99.903,
+      "index_all_unweighted": 99.9628,
+      "index_food": 100.0393,
+      "index_nonfood": 99.6462,
+      "var_all": 0.1419,
+      "var_food": 0.0023,
+      "cum_pct": -0.097,
+      "yoy_inflation": null,
+      "mom_inflation": -0.1192,
+      "interpolated": false,
+      "n_matched": 40317,
+      "index_arroz_cereales": 99.7994,
+      "index_pan_harinas": 99.6415,
+      "index_carnes": 100.4314,
+      "index_pescados_mariscos": 101.6098,
+      "index_lacteos": 100.6197,
+      "index_frutas": 102.0219,
+      "index_verduras": 99.2639,
+      "index_aceites_grasas": 98.9104,
+      "index_azucar_dulces": 95.0322,
+      "index_bebidas": 99.1574,
+      "index_limpieza": 99.8197,
+      "index_cuidado_personal": 99.1661,
+      "index_other": 99.4466
     }
   ],
   "latest": {
-    "date": "2026-04-15",
-    "index_all": 99.7614,
-    "index_food": 100.037,
-    "cum_pct": -0.2386,
-    "var_all": -0.7052,
+    "date": "2026-04-16",
+    "index_all": 99.903,
+    "index_food": 100.0393,
+    "cum_pct": -0.097,
+    "var_all": 0.1419,
     "yoy_inflation": null,
-    "mom_inflation": -0.1565,
-    "n_products_today": 34791,
+    "mom_inflation": -0.1192,
+    "n_products_today": 40317,
     "top_movers": [
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -1.26
-      },
-      {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -1.16
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 1.13
       },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": -1.02
+        "var": -0.92
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -0.82
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": 0.77
+      },
+      {
+        "category": "bebidas",
+        "label_es": "Bebidas",
+        "label_en": "Beverages",
+        "var": -0.28
       }
     ],
     "product_movers": [
       {
-        "name": "Repuesto de Cabezal Eléctrico ORAL-B ...",
-        "store": "plazavea",
-        "category": "cuidado_personal",
-        "var": 99.6
+        "name": "Salsa de Rocoto Wong Pote 250 g",
+        "store": "wong",
+        "category": "lacteos",
+        "var": 100.0
       },
       {
-        "name": "Gaseosa Uva FANTA Botella 300ml",
-        "store": "plazavea",
-        "category": "frutas",
-        "var": 83.33
-      },
-      {
-        "name": "Set Mini Escoba y Recogedor Home Care...",
+        "name": "Repuesto Schick Xtreme Pivot Ball Rep...",
         "store": "metro",
-        "category": "limpieza",
-        "var": 76.92
+        "category": "other",
+        "var": 99.53
       },
       {
-        "name": "Papa Canchán Procesada x kg",
+        "name": "Repuesto Schick Xtreme Pivot Ball Rep...",
+        "store": "wong",
+        "category": "other",
+        "var": 99.53
+      },
+      {
+        "name": "Espinaca Hidropónica de Invernadero E...",
         "store": "metro",
         "category": "frutas",
-        "var": 57.35
+        "var": 88.1
       }
     ],
     "stores_coverage": {
-      "metro": 12309,
-      "plazavea": 13413,
-      "wong": 14906
+      "metro": 12369,
+      "plazavea": 13483,
+      "wong": 14929
     },
     "categories_coverage": {
-      "aceites_grasas": 713,
-      "arroz_cereales": 1401,
-      "azucar_dulces": 1038,
-      "bebidas": 1042,
-      "carnes": 14631,
-      "cuidado_personal": 2873,
-      "frutas": 1896,
-      "lacteos": 2852,
-      "limpieza": 2995,
-      "pan_harinas": 6510,
+      "aceites_grasas": 705,
+      "arroz_cereales": 1406,
+      "azucar_dulces": 1041,
+      "bebidas": 1048,
+      "carnes": 14714,
+      "cuidado_personal": 2872,
+      "frutas": 1904,
+      "lacteos": 2844,
+      "limpieza": 3004,
+      "pan_harinas": 6559,
       "pescados_mariscos": 242,
-      "verduras": 304
+      "verduras": 306
     }
   }
 }
