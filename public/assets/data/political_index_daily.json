@@ -1,245 +1,238 @@
 {
   "metadata": {
-    "generated_at": "2026-04-16T21:11:01.191407",
-    "coverage_days": 471,
+    "generated_at": "2026-04-17T21:12:19.504596",
+    "coverage_days": 472,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-16",
-    "political_raw": 141.4,
+    "date": "2026-04-17",
+    "political_raw": 139.7,
     "political_raw_level": "ELEVADO",
-    "political_7d": 191.9,
+    "political_7d": 175.6,
     "political_level": "ALTO",
-    "political_multiplier": 1.92,
-    "economic_raw": 76.6,
-    "economic_raw_level": "BAJO",
-    "economic_7d": 67.3,
+    "political_multiplier": 1.76,
+    "economic_raw": 46.2,
+    "economic_raw_level": "MINIMO",
+    "economic_7d": 61.2,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.67,
-    "score": 191.9,
-    "prr_7d": 191.9,
-    "prr_raw": 141.4,
+    "economic_multiplier": 0.61,
+    "score": 175.6,
+    "prr_7d": 175.6,
+    "prr_raw": 139.7,
     "level": "ALTO",
-    "articles_total": 608,
-    "articles_political_relevant": 282,
-    "articles_economic_relevant": 95,
-    "political_justification": "El país enfrenta un contexto de riesgo político elevado marcado por la incertidumbre electoral post-2026. La disputa sobre actas observadas, denuncias penales contra candidatos y cuestionamientos a la integridad del proceso generan tensiones institucionales significativas que requieren resolución urgente.",
-    "economic_justification": "La economía peruana enfrenta un riesgo económico bajo, aunque con tensiones crecientes. Las presiones sobre Petroperú, el cierre de instituciones financieras y el estancamiento de megaproyectos generan incertidumbre sectorial. Sin embargo, los esfuerzos por mantener el grado de inversión y la estabilidad macroeconómica contienen mayores deterioros.",
+    "articles_total": 605,
+    "articles_political_relevant": 265,
+    "articles_economic_relevant": 105,
+    "political_justification": "La integridad del proceso electoral enfrenta cuestionamientos críticos por pérdidas sistemáticas de material de votación y actas. Las denuncias de candidatos y organismos supervisores erosionan la confianza institucional. Esta convergencia de irregularidades documentadas genera presión política significativa sobre la legitimidad electoral.",
+    "economic_justification": "La economía peruana enfrenta un riesgo mínimo, pero con tensiones crecientes. Los aumentos de gasto público en pensiones y subsidios generan presiones fiscales, mientras que retrasos en proyectos de inversión y conflictos laborales limitan el crecimiento. La migración juvenil agrava la contracción de capacidades productivas regionales.",
     "top_political_drivers": [
       {
-        "title": "Resultados ONPE al 91.75%: sigue el conteo de votos oficial tras las elecciones 2026 en el Perú",
+        "title": "ONPE admite en comunicado pérdida de 4 cajas con cédulas de votación que aparecieron en la vía pública",
+        "source": "elcomercio",
+        "score": 88
+      },
+      {
+        "title": "Funcionarios de ONPE denuncian en comisaría la pérdida de ocho actas de votación en colegio de SJL",
         "source": "elcomercio",
         "score": 85
       },
       {
-        "title": "Chile expulsa a extranjeros irregulares bajo el plan de Kast",
-        "source": "canaln",
+        "title": "Elecciones 2026: Denuncian hallazgo de cédulas de votación abandonadas en Surquillo",
+        "source": "elcomercio",
         "score": 85
       },
       {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 93.051%",
-        "source": "canaln",
+        "title": "López Aliaga ofrece S/ 20 mil por pruebas de fraude y presenta nulidades en pleno conteo de votos: así continúa la contienda electoral",
+        "source": "elcomercio",
+        "score": 82
+      },
+      {
+        "title": "Defensoría del Pueblo exige separar a responsables por material electoral hallado en la vía pública",
+        "source": "elcomercio",
+        "score": 82
+      },
+      {
+        "title": "Rafael López Aliaga: “No hay ningún personero de Fuerza Popular trabajando para nosotros”",
+        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "Denuncian penalmente a Rafael López Aliaga por incitar a la insurgencia",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Roberto Sánchez o López Aliaga: JEE revisará más de 4.000 actas observadas que definirán el pase a segunda vuelta",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "Pleno del Congreso otorga el voto de confianza al Gabinete Arroyo",
+        "title": "Policía Anticorrupción realiza diligencias por hallazgo de ánforas electorales en Surco",
         "source": "elcomercio",
-        "score": 75
+        "score": 80
       },
       {
-        "title": "Candidatos presidenciales piden la nulidad de las elecciones",
+        "title": "Lurín: Fiscalía interviene almacén de la ONPE desde el mediodía en busca de cédulas de votación extraviadas",
         "source": "correo",
-        "score": 75
+        "score": 80
       },
       {
-        "title": "Resultados ONPE al 93.063% EN VIVO: el conteo oficial de las actas de Elecciones 2026",
-        "source": "rpp",
-        "score": 75
+        "title": "Jefe del JNE desmiente a la ONPE y asegura que cédulas abandonadas no fueron resguardadas",
+        "source": "larepublica",
+        "score": 80
       },
       {
-        "title": "Experta en derecho electoral: Actas observadas superan el 5% y retrasan resultados",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Tomás Gálvez pide que la JNJ separe al jefe de la ONPE para la segunda vuelta",
-        "source": "correo",
-        "score": 72
+        "title": "Denuncian pérdida de ocho actas electorales de la ODPE SJL luego de tres días de las elecciones",
+        "source": "caretas",
+        "score": 80
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Premier Arroyo confirma que Petro-Perú recibirá un apoyo financiero excepcional para asegurar el abastecimiento de combustibles",
-        "source": "elcomercio",
-        "score": 75
-      },
-      {
-        "title": "Salvar el grado de inversión: la prioridad económica del próximo gobierno",
-        "source": "gestion",
-        "score": 60
-      },
-      {
-        "title": "Protector solar gratis en Nueva York el 17 de abril en plena ola de calor: dónde exactamente y a qué hora",
-        "source": "elcomercio",
-        "score": 55
-      },
-      {
-        "title": "Petroperú: premier Arroyo asegura no habrá salvataje irrestricto a la petrolera",
+        "title": "Congreso abre la puerta para más aumentos: 13 proyectos tras alza de pensiones a maestros",
         "source": "gestion",
         "score": 55
       },
       {
-        "title": "Petroperú: Gobierno dice que no la privatizará, pero ralentiza su financiamiento y continúa con el decreto de Jerí",
-        "source": "larepublica",
-        "score": 55
-      },
-      {
-        "title": "SBS ordena el cierre y liquidación de Caja Centro: Perdió más del 56% de su patrimonio por mala gestión",
-        "source": "elbuho",
-        "score": 55
-      },
-      {
-        "title": "Zafranal se posterga sin “norte claro”, ¿cuánto perdería la economía de Arequipa?",
-        "source": "gestion",
-        "score": 45
-      },
-      {
-        "title": "Megaproyectos en Perú enfrentan trabas que ponen en riesgo su ejecución, señala Capeco",
-        "source": "elcomercio",
-        "score": 45
-      },
-      {
-        "title": "Caja del Centro entra en liquidación: SBS dispone el cierre definitivo de la entidad",
-        "source": "elcomercio",
-        "score": 45
-      },
-      {
-        "title": "FMI alerta riesgo de una recesión global por la guerra en Irán",
+        "title": "David Tuesta advierte que eliminar aportes afectará pensiones futuras",
         "source": "canaln",
-        "score": 40
+        "score": 45
+      },
+      {
+        "title": "Presidente Balcázar: “Probablemente esta semana estaremos destrabando el gasoducto sur”",
+        "source": "gestion",
+        "score": 35
+      },
+      {
+        "title": "Puerto San Juan de Marcona: ProInversión señala a Shougang por retraso en avance del proyecto",
+        "source": "gestion",
+        "score": 35
+      },
+      {
+        "title": "Doe Run Perú: trabajadores reclaman que proceso concursal está entrampado por demora del Indecopi en resolver una apelación",
+        "source": "rpp",
+        "score": 35
+      },
+      {
+        "title": "Gobierno subsidiará aportes de AFP, ONP y EsSalud de trabajadores de mypes: ¿desde cuándo?",
+        "source": "rpp",
+        "score": 30
+      },
+      {
+        "title": "Buenaventura: San Gabriel produce por debajo de lo previsto durante el primer trimestre",
+        "source": "gestion",
+        "score": 25
+      },
+      {
+        "title": "EsSalud: falta de clavos quirúrgicos impide operar de la pierna a padre de familia",
+        "source": "rpp",
+        "score": 25
+      },
+      {
+        "title": "Migración juvenil pone en riesgo a comunidades campesinas de la región Arequipa",
+        "source": "correo",
+        "score": 22
+      },
+      {
+        "title": "Loreto: anemia y pobreza es el duro diagnóstico de la región (VIDEO)",
+        "source": "elbuho",
+        "score": 22
       }
     ],
     "eco_sector_titles": [
-      "Premier Arroyo confirma que Petro-Perú recibirá un apoyo financiero excepcional para asegurar el abastecimiento de combustibles",
-      "Salvar el grado de inversión: la prioridad económica del próximo gobierno",
-      "Protector solar gratis en Nueva York el 17 de abril en plena ola de calor: dónde exactamente y a qué hora",
-      "Petroperú: premier Arroyo asegura no habrá salvataje irrestricto a la petrolera",
-      "Crash en bolsa y sol por temor a pase de Sánchez a segunda vuelta, ¿lo peor está por venir?",
-      "El triple golpe a la economía: incertidumbre, inversión paralizada y más pobreza",
-      "Petroperú: Gobierno dice que no la privatizará, pero ralentiza su financiamiento y continúa con el decreto de Jerí",
-      "SBS ordena el cierre y liquidación de Caja Centro: Perdió más del 56% de su patrimonio por mala gestión",
-      "Zafranal se posterga sin “norte claro”, ¿cuánto perdería la economía de Arequipa?",
-      "Megaproyectos en Perú enfrentan trabas que ponen en riesgo su ejecución, señala Capeco",
-      "Caja del Centro entra en liquidación: SBS dispone el cierre definitivo de la entidad",
-      "Inversión con cautela por segunda vuelta: mercado ya diferencia riesgos según el candidato",
-      "Roberto Sánchez pelea por segunda vuelta: “pase” a minería ilegal, control de precios y más",
-      "Premier Arroyo: “El Poder Ejecutivo respalda la prórroga del Reinfo hasta diciembre”",
-      "FMI alerta riesgo de una recesión global por la guerra en Irán",
-      "SBS interviene a caja rural Del Centro, ¿qué pasará con miles de depositantes?",
-      "Agroexportaciones podrían alejarse del millonario récord estimado para este año: los riesgos",
-      "Doe Run Perú: demora del Indecopi entrampa proceso concursal y retrasa pago a trabajadores",
-      "Dólar en alza tras elecciones: tipo de cambio sube desde el 12 de abril",
-      "Luis Arroyo: Petroperú no se privatizará y será reestructurada",
-      "La Pampa: Operativo contra minería ilegal desató protestas, bloqueos y enfrentamientos con la Policía",
-      "La Libertad registró uno de los desempeños económicos más bajos del país en 2025",
-      "Roberto Sánchez y Keiko Fujimori: dos modelos económicos en disputa, ¿qué proponen en sueldos, impuestos, minería y empleo?",
-      "Julio Velarde, presidente del BCR, señala que es prematuro subir las tasas de interés por la guerra en Medio Oriente",
-      "Empleos de “baja calidad” aumentan en Lima tras casi un año y medio: los más perjudicados",
-      "Importadoras quiebran a emprendedores de Arequipa por precios bajos",
-      "Transportistas de carga y de pasajeros acuerdan subsidio de S/ 4 por galón de diésel",
-      "Nueva Carretera Central: MTC pidió crédito suplementario por más de S/400 millones para la ejecución del megaproyecto vial",
-      "Tres atentados al transporte en una noche dejan dos choferes y un pasajero asesinados en Lima: ''La gente ya se cansó''",
-      "Pangoa aislado por derrumbe: exigen intervención urgente en carretera al valle del Ene"
+      "Paro nacional de transportistas: Gremio exige subsidio por alza del precio del combustible y advierte medidas",
+      "Congreso abre la puerta para más aumentos: 13 proyectos tras alza de pensiones a maestros",
+      "David Tuesta advierte que eliminar aportes afectará pensiones futuras",
+      "EE.UU. advierte represalias a Perú “si negocia con mala fe”, en medio de compra de aviones",
+      "Presidente Balcázar: “Probablemente esta semana estaremos destrabando el gasoducto sur”",
+      "Puerto San Juan de Marcona: ProInversión señala a Shougang por retraso en avance del proyecto",
+      "Doe Run Perú: trabajadores reclaman que proceso concursal está entrampado por demora del Indecopi en resolver una apelación",
+      "Gobierno subsidiará aportes de AFP, ONP y EsSalud de trabajadores de mypes: ¿desde cuándo?",
+      "Buenaventura: San Gabriel produce por debajo de lo previsto durante el primer trimestre",
+      "Embajador de EE.UU se enoja por cancelación de la compra de los cazas F-16 Block 70",
+      "Julio Velarde afirma que \"en principio no\" continuaría en el BCRP: \"la autonomía se mantiene\"",
+      "EsSalud: falta de clavos quirúrgicos impide operar de la pierna a padre de familia",
+      "Exviceministro de Economía: Incertidumbre electoral golpea mercados y eleva presión sobre el dólar",
+      "Migración juvenil pone en riesgo a comunidades campesinas de la región Arequipa",
+      "Loreto: anemia y pobreza es el duro diagnóstico de la región (VIDEO)"
     ],
-    "justification": "El país enfrenta un contexto de riesgo político elevado marcado por la incertidumbre electoral post-2026. La disputa sobre actas observadas, denuncias penales contra candidatos y cuestionamientos a la integridad del proceso generan tensiones institucionales significativas que requieren resolución urgente.",
+    "justification": "La integridad del proceso electoral enfrenta cuestionamientos críticos por pérdidas sistemáticas de material de votación y actas. Las denuncias de candidatos y organismos supervisores erosionan la confianza institucional. Esta convergencia de irregularidades documentadas genera presión política significativa sobre la legitimidad electoral.",
     "top_drivers": [
       {
-        "title": "Resultados ONPE al 91.75%: sigue el conteo de votos oficial tras las elecciones 2026 en el Perú",
+        "title": "ONPE admite en comunicado pérdida de 4 cajas con cédulas de votación que aparecieron en la vía pública",
+        "source": "elcomercio",
+        "score": 88
+      },
+      {
+        "title": "Funcionarios de ONPE denuncian en comisaría la pérdida de ocho actas de votación en colegio de SJL",
         "source": "elcomercio",
         "score": 85
       },
       {
-        "title": "Chile expulsa a extranjeros irregulares bajo el plan de Kast",
-        "source": "canaln",
+        "title": "Elecciones 2026: Denuncian hallazgo de cédulas de votación abandonadas en Surquillo",
+        "source": "elcomercio",
         "score": 85
       },
       {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 93.051%",
-        "source": "canaln",
+        "title": "López Aliaga ofrece S/ 20 mil por pruebas de fraude y presenta nulidades en pleno conteo de votos: así continúa la contienda electoral",
+        "source": "elcomercio",
+        "score": 82
+      },
+      {
+        "title": "Defensoría del Pueblo exige separar a responsables por material electoral hallado en la vía pública",
+        "source": "elcomercio",
+        "score": 82
+      },
+      {
+        "title": "Rafael López Aliaga: “No hay ningún personero de Fuerza Popular trabajando para nosotros”",
+        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "Denuncian penalmente a Rafael López Aliaga por incitar a la insurgencia",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Roberto Sánchez o López Aliaga: JEE revisará más de 4.000 actas observadas que definirán el pase a segunda vuelta",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "Pleno del Congreso otorga el voto de confianza al Gabinete Arroyo",
+        "title": "Policía Anticorrupción realiza diligencias por hallazgo de ánforas electorales en Surco",
         "source": "elcomercio",
-        "score": 75
+        "score": 80
       },
       {
-        "title": "Candidatos presidenciales piden la nulidad de las elecciones",
+        "title": "Lurín: Fiscalía interviene almacén de la ONPE desde el mediodía en busca de cédulas de votación extraviadas",
         "source": "correo",
-        "score": 75
+        "score": 80
       },
       {
-        "title": "Resultados ONPE al 93.063% EN VIVO: el conteo oficial de las actas de Elecciones 2026",
-        "source": "rpp",
-        "score": 75
+        "title": "Jefe del JNE desmiente a la ONPE y asegura que cédulas abandonadas no fueron resguardadas",
+        "source": "larepublica",
+        "score": 80
       },
       {
-        "title": "Experta en derecho electoral: Actas observadas superan el 5% y retrasan resultados",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Tomás Gálvez pide que la JNJ separe al jefe de la ONPE para la segunda vuelta",
-        "source": "correo",
-        "score": 72
+        "title": "Denuncian pérdida de ocho actas electorales de la ODPE SJL luego de tres días de las elecciones",
+        "source": "caretas",
+        "score": 80
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 185.1,
-    "political_30d_avg": 126.3,
-    "economic_7d_avg": 63.2,
-    "economic_30d_avg": 108.0,
+    "political_7d_avg": 195.9,
+    "political_30d_avg": 127.7,
+    "economic_7d_avg": 60.4,
+    "economic_30d_avg": 104.8,
     "year_max": 266.6,
     "year_max_date": "2026-04-13"
   },
   "major_events": [
     {
-      "date": "2026-04-16",
-      "score": 191.9,
+      "date": "2026-04-17",
+      "score": 175.6,
       "level": "ALTO",
-      "n_articles": 608,
-      "summary": "Conteo electoral prolongado genera incertidumbre política nacional.",
+      "n_articles": 605,
+      "summary": "Resultados electorales generan incertidumbre política y económica.",
+      "report_url": "/political/daily-reports/2026-04-17.html"
+    },
+    {
+      "date": "2026-04-16",
+      "score": 191.0,
+      "level": "ALTO",
+      "n_articles": 634,
+      "summary": "Conteo de votos oficial continúa sin resultados definitivos.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
       "date": "2026-04-15",
       "score": 213.5,
       "level": "CRITICO",
-      "n_articles": 607,
-      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
+      "n_articles": 608,
+      "summary": "Incertidumbre electoral genera volatilidad económica y desconfianza política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -247,7 +240,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Conflicto electoral y volatilidad económica en proceso de elecciones.",
+      "summary": "Proceso electoral conflictivo con denuncias penales y volatilidad económica.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -255,7 +248,7 @@
       "score": 266.6,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Graves problemas en instalación de mesas electorales.",
+      "summary": "Falta de material electoral compromete participación ciudadana.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -263,7 +256,7 @@
       "score": 190.0,
       "level": "ALTO",
       "n_articles": 554,
-      "summary": "Problemas operativos en la instalación de mesas electorales.",
+      "summary": "Retrasos y desorganización en la instalación electoral.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -271,7 +264,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Crisis fiscal y sanitaria debilitan gobierno Balcázar.",
+      "summary": "Políticas fiscales del gobierno generan preocupación económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -279,7 +272,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera tensión electoral en Perú.",
+      "summary": "Debate presidencial genera tensión política entre candidatos.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -295,16 +288,8 @@
       "score": 130.8,
       "level": "ELEVADO",
       "n_articles": 648,
-      "summary": "Competencia electoral presidencial genera incertidumbre política.",
+      "summary": "Incertidumbre electoral por primer debate presidencial 2026.",
       "report_url": "/political/daily-reports/2026-03-24.html"
-    },
-    {
-      "date": "2026-03-21",
-      "score": 122.1,
-      "level": "ELEVADO",
-      "n_articles": 469,
-      "summary": "La inseguridad ciudadana amenaza el crecimiento económico.",
-      "report_url": "/political/daily-reports/2026-03-21.html"
     }
   ],
   "peak_events": [
@@ -6446,7 +6431,7 @@
       "prr_7d": 266.6,
       "n_articles": 766,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-14",
@@ -6463,27 +6448,40 @@
     },
     {
       "date": "2026-04-15",
-      "political_raw": 165.9,
+      "political_raw": 165.7,
       "political_7d": 213.5,
-      "economic_raw": 93.7,
+      "economic_raw": 93.6,
       "economic_7d": 63.3,
       "score": 213.5,
-      "prr": 165.9,
+      "prr": 165.7,
       "prr_7d": 213.5,
-      "n_articles": 607,
+      "n_articles": 608,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-16",
-      "political_raw": 141.4,
-      "political_7d": 191.9,
-      "economic_raw": 76.6,
-      "economic_7d": 67.3,
-      "score": 191.9,
-      "prr": 141.4,
-      "prr_7d": 191.9,
-      "n_articles": 608,
+      "political_raw": 138.6,
+      "political_7d": 191.0,
+      "economic_raw": 77.7,
+      "economic_7d": 67.6,
+      "score": 191.0,
+      "prr": 138.6,
+      "prr_7d": 191.0,
+      "n_articles": 634,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-17",
+      "political_raw": 139.7,
+      "political_7d": 175.6,
+      "economic_raw": 46.2,
+      "economic_7d": 61.2,
+      "score": 175.6,
+      "prr": 139.7,
+      "prr_7d": 175.6,
+      "n_articles": 605,
       "low_coverage": false,
       "provisional": true
     }
@@ -7764,6 +7762,10 @@
     {
       "date": "2026-04-15",
       "fx": 3.439
+    },
+    {
+      "date": "2026-04-16",
+      "fx": 3.436
     }
   ],
   "monthly_series": [
@@ -7889,9 +7891,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 129.7,
-      "economic_avg": 66.2,
-      "n_articles": 8938,
+      "political_avg": 132.4,
+      "economic_avg": 65.9,
+      "n_articles": 9570,
       "fx_level": null,
       "fx_yoy": null
     }
