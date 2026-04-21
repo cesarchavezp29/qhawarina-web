@@ -1,174 +1,43 @@
 {
   "metadata": {
-    "generated_at": "2026-04-19T21:08:56.065425",
-    "coverage_days": 474,
+    "generated_at": "2026-04-20T21:08:29.942108",
+    "coverage_days": 475,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-19",
-    "political_raw": 50.5,
-    "political_raw_level": "BAJO",
-    "political_7d": 117.1,
-    "political_level": "ELEVADO",
-    "political_multiplier": 1.17,
-    "economic_raw": 18.9,
+    "date": "2026-04-20",
+    "political_raw": 12.2,
+    "political_raw_level": "MINIMO",
+    "political_7d": 85.6,
+    "political_level": "BAJO",
+    "political_multiplier": 0.86,
+    "economic_raw": 5.5,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 43.2,
+    "economic_7d": 31.9,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.43,
-    "score": 117.1,
-    "prr_7d": 117.1,
-    "prr_raw": 50.5,
-    "level": "ELEVADO",
-    "articles_total": 396,
-    "articles_political_relevant": 139,
-    "articles_economic_relevant": 53,
-    "political_justification": "El panorama político peruano presenta tensiones moderadas concentradas en la gestión electoral y posibles irregularidades en el conteo de votos. Aunque existe presión sobre autoridades electorales y especulación sobre candidatos, no hay indicadores de inestabilidad sistémica inmediata que amenace instituciones fundamentales.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero controladas. Aunque persisten desafíos estructurales como la brecha de empleo técnico y tensiones comerciales internacionales, la ejecución ineficiente de recursos y posibles evasiones tributarias representan riesgos internos manejables. La volatilidad geopolítica global requiere vigilancia, pero no genera alarma inmediata.",
-    "top_political_drivers": [
-      {
-        "title": "ONPE al 93.48%: Keiko Fujimori lidera conteo presidencial seguida por Sánchez y López Aliaga",
-        "source": "correo",
-        "score": 85
-      },
-      {
-        "title": "Policía activa alerta ante posible salida de Piero Corvetto del Perú",
-        "source": "elcomercio",
-        "score": 80
-      },
-      {
-        "title": "El ‘plan Morrocoy’ de López Aliaga para anular las elecciones",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Resultados Elecciones 2026 EN VIVO: Roberto Sánchez toma ventaja sobre López Aliaga y se perfila para disputar la segunda vuelta",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "Días de caos en ONPE: La ruta de las irregularidades y los actores que ponen en jaque la gestión de Corvetto",
-        "source": "elcomercio",
-        "score": 75
-      },
-      {
-        "title": "Resultados ONPE al 93.479%: sigue el conteo oficial de votos con miras a la segunda vuelta electoral",
-        "source": "elcomercio",
-        "score": 72
-      },
-      {
-        "title": "Corvetto se aferra al cargo y JNJ podría abrirle en mayo un procedimiento disciplinario",
-        "source": "elcomercio",
-        "score": 72
-      },
-      {
-        "title": "Policía Nacional activa medidas preventivas para evitar posible fuga de jefe de la ONPE",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Elecciones del 12 de abril se desarrollaron entre falta de material electoral y campaña contra Piero Corvetto",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Suicidio y asesinato",
-        "source": "elcomercio",
-        "score": 70
-      }
-    ],
-    "top_economic_drivers": [
-      {
-        "title": "Cusco y el distrito de Megantoni reciben más dinero por canon gasífero, pero no logran ejecutar con eficiencia",
-        "source": "inforegion",
-        "score": 25
-      },
-      {
-        "title": "Indecopi inicia examen por posible elusión en importación de tejidos con mezcla de origen chino",
-        "source": "gestion",
-        "score": 20
-      },
-      {
-        "title": "Compradores incógnitos de la Sunat fiscalizarán entrega de comprobantes en ventas digitales",
-        "source": "gestion",
-        "score": 20
-      },
-      {
-        "title": "El Fondo Monetario Internacional advierte: “Debemos prepararnos para tiempos difíciles si sigue la guerra”",
-        "source": "larepublica",
-        "score": 20
-      }
-    ],
-    "eco_sector_titles": [
-      "Tía María: Minem autoriza a Southern a iniciar primera etapa tras anulación previa",
-      "Loreto: Secuestran convoy petrolero y exigen millonario rescate",
-      "Southern ahora con “luz verde” para iniciar primera etapa de Tía María: Gobierno lo autoriza",
-      "La Libertad: La agitación electoral golpea a la economía local",
-      "AmCham Perú cuestiona suspensión de compra de aviones F-16 y advierte impacto en la credibilidad del país",
-      "¿Cuáles son las perspectivas económicas que afronta el próximo gobierno?",
-      "Cusco y el distrito de Megantoni reciben más dinero por canon gasífero, pero no logran ejecutar con eficiencia"
-    ],
-    "justification": "El panorama político peruano presenta tensiones moderadas concentradas en la gestión electoral y posibles irregularidades en el conteo de votos. Aunque existe presión sobre autoridades electorales y especulación sobre candidatos, no hay indicadores de inestabilidad sistémica inmediata que amenace instituciones fundamentales.",
-    "top_drivers": [
-      {
-        "title": "ONPE al 93.48%: Keiko Fujimori lidera conteo presidencial seguida por Sánchez y López Aliaga",
-        "source": "correo",
-        "score": 85
-      },
-      {
-        "title": "Policía activa alerta ante posible salida de Piero Corvetto del Perú",
-        "source": "elcomercio",
-        "score": 80
-      },
-      {
-        "title": "El ‘plan Morrocoy’ de López Aliaga para anular las elecciones",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Resultados Elecciones 2026 EN VIVO: Roberto Sánchez toma ventaja sobre López Aliaga y se perfila para disputar la segunda vuelta",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "Días de caos en ONPE: La ruta de las irregularidades y los actores que ponen en jaque la gestión de Corvetto",
-        "source": "elcomercio",
-        "score": 75
-      },
-      {
-        "title": "Resultados ONPE al 93.479%: sigue el conteo oficial de votos con miras a la segunda vuelta electoral",
-        "source": "elcomercio",
-        "score": 72
-      },
-      {
-        "title": "Corvetto se aferra al cargo y JNJ podría abrirle en mayo un procedimiento disciplinario",
-        "source": "elcomercio",
-        "score": 72
-      },
-      {
-        "title": "Policía Nacional activa medidas preventivas para evitar posible fuga de jefe de la ONPE",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Elecciones del 12 de abril se desarrollaron entre falta de material electoral y campaña contra Piero Corvetto",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Suicidio y asesinato",
-        "source": "elcomercio",
-        "score": 70
-      }
-    ]
+    "economic_multiplier": 0.32,
+    "score": 85.6,
+    "prr_7d": 85.6,
+    "prr_raw": 12.2,
+    "level": "BAJO",
+    "articles_total": 52,
+    "articles_political_relevant": 19,
+    "articles_economic_relevant": 11,
+    "political_justification": null,
+    "economic_justification": null,
+    "top_political_drivers": [],
+    "top_economic_drivers": [],
+    "eco_sector_titles": [],
+    "justification": null,
+    "top_drivers": []
   },
   "aggregates": {
-    "political_7d_avg": 191.8,
-    "political_30d_avg": 127.0,
-    "economic_7d_avg": 55.9,
-    "economic_30d_avg": 93.5,
+    "political_7d_avg": 166.0,
+    "political_30d_avg": 125.7,
+    "economic_7d_avg": 53.0,
+    "economic_30d_avg": 88.1,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -178,7 +47,7 @@
       "score": 145.6,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictividad institucional y crisis electoral en el sistema político.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -186,7 +55,7 @@
       "score": 175.5,
       "level": "ALTO",
       "n_articles": 607,
-      "summary": "Resultados electorales generan incertidumbre política institucional nacional.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -194,7 +63,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Incertidumbre por conteo de votos electoral incompleto en Perú.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -202,7 +71,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "La incertidumbre electoral genera volatilidad en mercados financieros.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -210,7 +79,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Elecciones presidenciales generan tensión política y económica.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -218,7 +87,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral afecta proceso electoral.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -226,7 +95,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Desorganización electoral causa retrasos y suspicacias sobre transparencia.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -234,7 +103,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno comprometen estabilidad económica.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -242,7 +111,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera tensión política en Perú.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -250,7 +119,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -6472,6 +6341,19 @@
       "n_articles": 396,
       "low_coverage": false,
       "provisional": true
+    },
+    {
+      "date": "2026-04-20",
+      "political_raw": 12.2,
+      "political_7d": 85.6,
+      "economic_raw": 5.5,
+      "economic_7d": 31.9,
+      "score": 85.6,
+      "prr": 12.2,
+      "prr_7d": 85.6,
+      "n_articles": 52,
+      "low_coverage": false,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -7754,6 +7636,10 @@
     {
       "date": "2026-04-16",
       "fx": 3.436
+    },
+    {
+      "date": "2026-04-17",
+      "fx": 3.4372
     }
   ],
   "monthly_series": [
@@ -7879,9 +7765,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 132.2,
-      "economic_avg": 64.1,
-      "n_articles": 10426,
+      "political_avg": 129.9,
+      "economic_avg": 62.5,
+      "n_articles": 10478,
       "fx_level": null,
       "fx_yoy": null
     }
