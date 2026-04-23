@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-21",
-    "n_days": 71,
+    "last_date": "2026-04-22",
+    "n_days": 72,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-21"
+    "updated": "2026-04-22"
   },
   "categories": {
     "arroz_cereales": {
@@ -2008,87 +2008,114 @@
       "index_limpieza": 99.0839,
       "index_cuidado_personal": 98.4912,
       "index_other": 97.6394
+    },
+    {
+      "date": "2026-04-22",
+      "index_all": 98.7569,
+      "index_all_unweighted": 98.5795,
+      "index_food": 98.7779,
+      "index_nonfood": 97.8883,
+      "var_all": -0.7147,
+      "var_food": -0.6457,
+      "cum_pct": -1.2431,
+      "yoy_inflation": null,
+      "mom_inflation": 0.0843,
+      "interpolated": false,
+      "n_matched": 40422,
+      "index_arroz_cereales": 99.1777,
+      "index_pan_harinas": 97.9065,
+      "index_carnes": 99.2725,
+      "index_pescados_mariscos": 101.414,
+      "index_lacteos": 99.1325,
+      "index_frutas": 100.7619,
+      "index_verduras": 97.9876,
+      "index_aceites_grasas": 97.3933,
+      "index_azucar_dulces": 94.3728,
+      "index_bebidas": 98.5245,
+      "index_limpieza": 98.662,
+      "index_cuidado_personal": 97.55,
+      "index_other": 97.1682
     }
   ],
   "latest": {
-    "date": "2026-04-21",
-    "index_all": 99.4678,
-    "index_food": 99.4199,
-    "cum_pct": -0.5322,
-    "var_all": 0.5046,
+    "date": "2026-04-22",
+    "index_all": 98.7569,
+    "index_food": 98.7779,
+    "cum_pct": -1.2431,
+    "var_all": -0.7147,
     "yoy_inflation": null,
-    "mom_inflation": 0.0712,
-    "n_products_today": 40359,
+    "mom_inflation": 0.0843,
+    "n_products_today": 40422,
     "top_movers": [
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 1.43
+        "var": -1.13
       },
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 1.03
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -1.0
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": 0.88
+        "category": "bebidas",
+        "label_es": "Bebidas",
+        "label_en": "Beverages",
+        "var": -0.97
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.84
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -0.96
       }
     ],
     "product_movers": [
       {
-        "name": "Papa Blanca Yungay x kg",
-        "store": "plazavea",
+        "name": "Choclo Imperial x unid",
+        "store": "wong",
         "category": "frutas",
-        "var": 97.46
+        "var": 66.67
       },
       {
-        "name": "Lechón Entero Congelado Redondos x kg",
-        "store": "metro",
-        "category": "carnes",
-        "var": 84.94
+        "name": "Difusor de Esencias Elegante en Mader...",
+        "store": "plazavea",
+        "category": "limpieza",
+        "var": 66.33
       },
       {
-        "name": "Crema Avellanas con Cacao Cuisine & C...",
-        "store": "metro",
-        "category": "lacteos",
-        "var": 82.57
+        "name": "Difusor de Esencias Elegante en Mader...",
+        "store": "plazavea",
+        "category": "limpieza",
+        "var": 66.33
       },
       {
-        "name": "Panetón Sabor Trufado Cuisine & Co 400g",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 82.39
+        "name": "Choclo Serrano x unid",
+        "store": "wong",
+        "category": "frutas",
+        "var": 52.63
       }
     ],
     "stores_coverage": {
-      "metro": 12444,
-      "plazavea": 13422,
-      "wong": 14956
+      "metro": 12485,
+      "plazavea": 13468,
+      "wong": 14975
     },
     "categories_coverage": {
-      "aceites_grasas": 698,
-      "arroz_cereales": 1432,
-      "azucar_dulces": 936,
-      "bebidas": 1049,
-      "carnes": 14764,
-      "cuidado_personal": 2799,
-      "frutas": 1893,
-      "lacteos": 2891,
-      "limpieza": 3008,
-      "pan_harinas": 6652,
+      "aceites_grasas": 685,
+      "arroz_cereales": 1428,
+      "azucar_dulces": 943,
+      "bebidas": 1047,
+      "carnes": 14784,
+      "cuidado_personal": 2785,
+      "frutas": 1910,
+      "lacteos": 2921,
+      "limpieza": 3019,
+      "pan_harinas": 6691,
       "pescados_mariscos": 241,
-      "verduras": 319
+      "verduras": 321
     }
   }
 }
