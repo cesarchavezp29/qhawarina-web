@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-22",
-    "n_days": 72,
+    "last_date": "2026-04-23",
+    "n_days": 73,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-22"
+    "updated": "2026-04-23"
   },
   "categories": {
     "arroz_cereales": {
@@ -2035,87 +2035,114 @@
       "index_limpieza": 98.662,
       "index_cuidado_personal": 97.55,
       "index_other": 97.1682
+    },
+    {
+      "date": "2026-04-23",
+      "index_all": 98.6115,
+      "index_all_unweighted": 98.5142,
+      "index_food": 98.691,
+      "index_nonfood": 97.8938,
+      "var_all": -0.1472,
+      "var_food": -0.088,
+      "cum_pct": -1.3885,
+      "yoy_inflation": null,
+      "mom_inflation": 0.0906,
+      "interpolated": false,
+      "n_matched": 38671,
+      "index_arroz_cereales": 98.5693,
+      "index_pan_harinas": 97.8847,
+      "index_carnes": 99.1956,
+      "index_pescados_mariscos": 101.2465,
+      "index_lacteos": 99.0207,
+      "index_frutas": 101.1551,
+      "index_verduras": 97.8559,
+      "index_aceites_grasas": 97.4014,
+      "index_azucar_dulces": 93.2767,
+      "index_bebidas": 98.521,
+      "index_limpieza": 98.6221,
+      "index_cuidado_personal": 97.5256,
+      "index_other": 97.2245
     }
   ],
   "latest": {
-    "date": "2026-04-22",
-    "index_all": 98.7569,
-    "index_food": 98.7779,
-    "cum_pct": -1.2431,
-    "var_all": -0.7147,
+    "date": "2026-04-23",
+    "index_all": 98.6115,
+    "index_food": 98.691,
+    "cum_pct": -1.3885,
+    "var_all": -0.1472,
     "yoy_inflation": null,
-    "mom_inflation": 0.0843,
-    "n_products_today": 40422,
+    "mom_inflation": 0.0906,
+    "n_products_today": 38671,
     "top_movers": [
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -1.13
-      },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": -1.0
+        "var": -1.16
       },
       {
-        "category": "bebidas",
-        "label_es": "Bebidas",
-        "label_en": "Beverages",
-        "var": -0.97
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -0.61
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -0.96
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.39
+      },
+      {
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.17
       }
     ],
     "product_movers": [
       {
-        "name": "Choclo Imperial x unid",
+        "name": "Pasta Limpiadora Multiuso The Pink St...",
         "store": "wong",
-        "category": "frutas",
-        "var": 66.67
+        "category": "pan_harinas",
+        "var": 74.24
       },
       {
-        "name": "Difusor de Esencias Elegante en Mader...",
-        "store": "plazavea",
-        "category": "limpieza",
-        "var": 66.33
-      },
-      {
-        "name": "Difusor de Esencias Elegante en Mader...",
-        "store": "plazavea",
-        "category": "limpieza",
-        "var": 66.33
-      },
-      {
-        "name": "Choclo Serrano x unid",
+        "name": "Avena Maca Cuisine & Co 300g",
         "store": "wong",
-        "category": "frutas",
-        "var": 52.63
+        "category": "arroz_cereales",
+        "var": 68.57
+      },
+      {
+        "name": "Vino Tinto Blend Knock Knock Dulce Bo...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 66.89
+      },
+      {
+        "name": "Vino Tinto Blend Knock Knock Caperuci...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 66.89
       }
     ],
     "stores_coverage": {
-      "metro": 12485,
-      "plazavea": 13468,
-      "wong": 14975
+      "metro": 12508,
+      "plazavea": 12696,
+      "wong": 14997
     },
     "categories_coverage": {
-      "aceites_grasas": 685,
-      "arroz_cereales": 1428,
-      "azucar_dulces": 943,
-      "bebidas": 1047,
-      "carnes": 14784,
-      "cuidado_personal": 2785,
-      "frutas": 1910,
+      "aceites_grasas": 664,
+      "arroz_cereales": 1132,
+      "azucar_dulces": 862,
+      "bebidas": 1054,
+      "carnes": 14621,
+      "cuidado_personal": 2811,
+      "frutas": 1895,
       "lacteos": 2921,
-      "limpieza": 3019,
-      "pan_harinas": 6691,
-      "pescados_mariscos": 241,
-      "verduras": 321
+      "limpieza": 3108,
+      "pan_harinas": 6731,
+      "pescados_mariscos": 240,
+      "verduras": 312
     }
   }
 }

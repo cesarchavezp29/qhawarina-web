@@ -1,217 +1,232 @@
 {
   "metadata": {
-    "generated_at": "2026-04-22T21:10:15.769865",
-    "coverage_days": 477,
+    "generated_at": "2026-04-23T21:15:15.214678",
+    "coverage_days": 478,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-22",
-    "political_raw": 137.2,
+    "date": "2026-04-23",
+    "political_raw": 114.6,
     "political_raw_level": "ELEVADO",
-    "political_7d": 113.1,
+    "political_7d": 113.8,
     "political_level": "ELEVADO",
-    "political_multiplier": 1.13,
-    "economic_raw": 79.5,
+    "political_multiplier": 1.14,
+    "economic_raw": 83.7,
     "economic_raw_level": "BAJO",
-    "economic_7d": 63.8,
+    "economic_7d": 69.7,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.64,
-    "score": 113.1,
-    "prr_7d": 113.1,
-    "prr_raw": 137.2,
+    "economic_multiplier": 0.7,
+    "score": 113.8,
+    "prr_7d": 113.8,
+    "prr_raw": 114.6,
     "level": "ELEVADO",
-    "articles_total": 583,
-    "articles_political_relevant": 274,
-    "articles_economic_relevant": 156,
-    "political_justification": "El país enfrenta un riesgo político elevado debido a la convergencia de dos crisis simultáneas: investigaciones penales contra funcionarios electorales y una crisis ministerial por la compra de aviones de combate. Las renuncias de altos funcionarios y mociones de censura parlamentarias erosionan la estabilidad del Ejecutivo.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. Restricciones en minería formal, limitado pipeline de proyectos y deterioro de infraestructura crítica generan vulnerabilidades. Aunque los precios internacionales sostienen exportaciones, tensiones fiscales en salud y educación, junto a crisis de transporte regional, erosionan la estabilidad económica.",
+    "articles_total": 666,
+    "articles_political_relevant": 281,
+    "articles_economic_relevant": 142,
+    "political_justification": "El país enfrenta un riesgo político elevado caracterizado por crisis institucionales simultáneas: cuestionamientos a la integridad electoral, tensiones entre poderes ejecutivo y legislativo, y presiones para modificar reglas electorales en medio del proceso de segunda vuelta. La acumulación de estos conflictos genera inestabilidad sistémica.",
+    "economic_justification": "La economía peruana enfrenta presiones moderadas pero controladas. Los desafíos en empresas estatales, déficit fiscal persistente y caída de exportaciones agrícolas generan incertidumbre, aunque sin alcanzar niveles críticos. La estabilidad relativa permite margen para correcciones antes de escalar riesgos mayores.",
     "top_political_drivers": [
       {
-        "title": "Fiscalía solicita detención preliminar de Piero Corvetto y tres personas más involucradas en proceso electoral",
-        "source": "larepublica",
+        "title": "Renuncias, entretelones y el impacto de la nueva crisis desatada por la postura de Balcázar sobre compra de F-16 a EE.UU.",
+        "source": "elcomercio",
         "score": 85
       },
       {
-        "title": "JNJ declara la vacancia del cargo de jefe de la ONPE tras renuncia de Piero Corvetto",
-        "source": "rpp",
+        "title": "ONPE llega al 100% de actas procesadas: Fujimori y Sánchez disputarían la segunda vuelta",
+        "source": "caretas",
+        "score": 85
+      },
+      {
+        "title": "Ministros llaman mentiroso a Balcázar y Congreso aprovecha para lanzar la palabra vacancia (VIDEO)",
+        "source": "elbuho",
+        "score": 85
+      },
+      {
+        "title": "Fiscal de la Nación dice que hechos ocurridos en distribución de material electoral serían dolosos",
+        "source": "gestion",
         "score": 82
       },
       {
-        "title": "Hugo de Zela: “El señor Balcázar le ha mentido al país, él sabía que los dos contratos se habían firmado”",
+        "title": "¿Jaque a la ONPE? Jorge Montoya lanza propuesta para tomar el control del organismo electoral vía comisión reorganizadora",
+        "source": "caretas",
+        "score": 82
+      },
+      {
+        "title": "Peligra la segunda vuelta: advierten que cambiar las reglas rompe el proceso electoral (VIDEO)",
+        "source": "elbuho",
+        "score": 82
+      },
+      {
+        "title": "Fernando Rospigliosi afirma que tramitará eventual moción de censura contra Balcázar: “Cumplo la ley, la Constitución y el Reglamento”",
         "source": "elcomercio",
-        "score": 82
-      },
-      {
-        "title": "Balcázar posterga compra de aviones, dos ministros renuncian y lo acusan de mentir: cronología de la polémica que afecta al Ejecutivo",
-        "source": "rpp",
-        "score": 82
-      },
-      {
-        "title": "Bancadas del Congreso plantean censurar a José María Balcázar por compra de aviones estadounidenses",
-        "source": "larepublica",
         "score": 80
       },
       {
-        "title": "Piero Corvetto: Fiscalía pide detención preliminar del exjefe de la ONPE",
-        "source": "caretas",
+        "title": "ONPE: Fiscalía realiza diligencias en almacén de Lurín para constatar material electoral",
+        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "Hugo de Zela renuncia a la Cancillería por caso de aviones F-16",
-        "source": "elcomercio",
-        "score": 78
+        "title": "“Están quitando al árbitro en medio del partido”: Quito advierte que renuncia de Corvetto beneficia a Keiko y López Aliaga",
+        "source": "elbuho",
+        "score": 80
       },
       {
-        "title": "Crisis en el Gobierno de Balcázar: Canciller renuncia y ministro de Defensa es despedido por polémica en compra de aviones",
+        "title": "Contra la decisión de Balcázar, MEF pagó US$462 millones por los F-16",
         "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Ilich López impulsa moción de censura contra José Balcázar: \"Se está dejando en desprotección a la defensa nacional\"",
-        "source": "rpp",
-        "score": 78
-      },
-      {
-        "title": "Carlos Díaz dimite como ministro de Defensa y critica a Balcázar por retrasar F-16",
-        "source": "caretas",
         "score": 78
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Minería formal cada vez más restringida, pero la ilegal va sin freno: el territorio ocupado",
-        "source": "gestion",
-        "score": 50
+        "title": "Petro-Perú: las nuevas movidas gerenciales que causan alarma, ¿buscan hacer fracasar la reorganización? Esto es lo que se sabe",
+        "source": "elcomercio",
+        "score": 65
       },
       {
-        "title": "¿Buscar oro en Perú? Solo hay 5 nuevos proyectos con “luz verde” para arrancar",
+        "title": "Déficit fiscal: MEF mantiene expectativas para 2026, pero con dudas para el próximo año",
+        "source": "gestion",
+        "score": 45
+      },
+      {
+        "title": "Casi la mitad de empresas industriales golpeadas por comercio ilícito: así les afecta",
         "source": "gestion",
         "score": 40
       },
       {
-        "title": "Trabajadores de salud protestan frente al Minsa por falta de presupuesto y pagos pendientes: ''Años sin beneficios''",
+        "title": "¿Aumento de pensiones para docentes universitarios? Esto dice el nuevo proyecto del Congreso",
+        "source": "gestion",
+        "score": 35
+      },
+      {
+        "title": "Cacao peruano cayó 45% en inicio de 2026 por problemas en cosechas y precios, según ADEX",
         "source": "larepublica",
-        "score": 40
+        "score": 35
       },
       {
-        "title": "Producción de oro no levanta, ¿boom de exportación puede “tambalear” pese a altos precios?",
+        "title": "Pobreza en Perú: aún faltarían 5 años para “borrar” secuelas de la crisis",
         "source": "gestion",
-        "score": 35
-      },
-      {
-        "title": "Bonos a trabajadores del Minedu: Gobierno observa proyecto y alerta sobre su costo",
-        "source": "gestion",
-        "score": 35
-      },
-      {
-        "title": "Advierten deterioro de la carretera Federico Basadre que pone en riesgo transporte y economía en Ucayali y Huánuco",
-        "source": "inforegion",
-        "score": 35
-      },
-      {
-        "title": "Huánuco: Carreteras colapsadas dejan comunidades aisladas y dificultan llegada de ayuda",
-        "source": "inforegion",
         "score": 30
       },
       {
-        "title": "¿Soles o dólares? La decisión que evalúan miles de peruanos cuando deben ahorrar",
-        "source": "elcomercio",
-        "score": 20
-      },
-      {
-        "title": "Tensión electoral en el trabajo: qué puede y qué no puede hacer la empresa",
+        "title": "Déficit fiscal no se “movió” en marzo: aún está fuera de la meta para el 2026",
         "source": "gestion",
-        "score": 20
+        "score": 30
       },
       {
-        "title": "Loreto: OEFA ordena entrega de agua tras confirmar derrame de petróleo en el río Amazonas",
-        "source": "andina",
-        "score": 20
+        "title": "Elecciones presidenciales: el dólar, la bolsa y la izquierda",
+        "source": "gestion",
+        "score": 30
+      },
+      {
+        "title": "Cámara de Comercio Americana respalda compra de aviones F-16 y la califica como decisión estratégica para el país",
+        "source": "elcomercio",
+        "score": 25
+      },
+      {
+        "title": "El impacto de las elecciones en el mercado financiero",
+        "source": "gestion",
+        "score": 25
       }
     ],
     "eco_sector_titles": [
-      "Paro nacional por medio pasaje: más de 40 universidades se suman a movilización este 22 de abril",
-      "Aviones F-16 en Perú: MEF realizó el primer pago de US$462 millones",
-      "Minería formal cada vez más restringida, pero la ilegal va sin freno: el territorio ocupado",
-      "¿Buscar oro en Perú? Solo hay 5 nuevos proyectos con “luz verde” para arrancar",
-      "La salida de Corvetto ayuda, pero no cierra la crisis: los pendientes",
-      "Trabajadores de salud protestan frente al Minsa por falta de presupuesto y pagos pendientes: ''Años sin beneficios''",
-      "Producción de oro no levanta, ¿boom de exportación puede “tambalear” pese a altos precios?",
-      "Bonos a trabajadores del Minedu: Gobierno observa proyecto y alerta sobre su costo",
-      "Fernando Rospigliosi aseguró que hoy el MEF realizará el pago para la adquisición de aviones F-16",
-      "Secuestran barcaza petrolera con 10.500 barriles en río de Loreto y exigen S/2 millones por rescate",
-      "Advierten deterioro de la carretera Federico Basadre que pone en riesgo transporte y economía en Ucayali y Huánuco",
-      "MEF realiza primera transferencia de USD 462 millones para compra de aviones F-16",
-      "Velarde y la continuidad en debate",
-      "Huánuco: Carreteras colapsadas dejan comunidades aisladas y dificultan llegada de ayuda",
-      "Analistas piden transparencia: “Renuncia de Corvetto a la ONPE, no acaba con crisis electoral”",
-      "Aviones de guerra: MEF pagó US$462 millones a Estados Unidos",
-      "Aviones F16: Hoy vence el plazo y el MEF no ha autorizado el pago, según Hugo de Zela",
-      "Carlos Díaz dimite como ministro de Defensa y critica a Balcázar por retrasar F-16",
-      "Cusco: universitarios toman las calles por el alza del pasaje (VIDEO)",
-      "Arequipa: regidora presenta denuncia penal contra Víctor Hugo Rivera por alza del pasaje del SIT"
+      "Petro-Perú: las nuevas movidas gerenciales que causan alarma, ¿buscan hacer fracasar la reorganización? Esto es lo que se sabe",
+      "Exigen S/2 millones por barcaza petrolera con 10.500 barriles en río de Loreto",
+      "Déficit fiscal: MEF mantiene expectativas para 2026, pero con dudas para el próximo año",
+      "Casi la mitad de empresas industriales golpeadas por comercio ilícito: así les afecta",
+      "¿Aumento de pensiones para docentes universitarios? Esto dice el nuevo proyecto del Congreso",
+      "ONPE: Fiscalía realiza diligencias en almacén de Lurín para constatar material electoral",
+      "Estos son los virtuales parlamentarios que blindarían la minería ilegal en el nuevo Congreso",
+      "Contra la decisión de Balcázar, MEF pagó US$462 millones por los F-16",
+      "Cacao peruano cayó 45% en inicio de 2026 por problemas en cosechas y precios, según ADEX",
+      "AGAP advierte que la crisis por los F-16 afecta la credibilidad del Perú y sus exportaciones",
+      "Crisis en el Gobierno por compra de cazas F-16 EN VIVO: MEF habría ejecutado compra de aviones",
+      "Piura: Cajas con material electoral son encontradas en bus que se dirigía a Lima",
+      "Pobreza en Perú: aún faltarían 5 años para “borrar” secuelas de la crisis",
+      "Déficit fiscal no se “movió” en marzo: aún está fuera de la meta para el 2026",
+      "Elecciones presidenciales: el dólar, la bolsa y la izquierda",
+      "Autoridades hallan actas electorales en bus que iba de Piura a Lima",
+      "Lima también: Miles de universitarios rechazan el incremento del pasaje con protestas (VIDEO)",
+      "Primer ministro marca distancia de Balcázar y defiende compra de aviones: “Como militar, cumplo mi palabra”",
+      "Marcha por el medio pasaje HOY EN VIVO: últimas noticias, situación en las regiones, respuesta del gobierno sobre las peticiones de la comunidad universitaria y más",
+      "Beca Generación del Bicentenario en el limbo: las historias de los jóvenes afectados, el destino del presupuesto y la dejadez de las autoridades",
+      "Cámara de Comercio Americana respalda compra de aviones F-16 y la califica como decisión estratégica para el país",
+      "¡Por el medio pasaje! Estudiantes universitarios protestan ante el alza de la tarifa de transporte",
+      "Proyecto de ley para extraer gas dentro de áreas protegidas se debate nuevamente en el Congreso peruano",
+      "Inversiones en bolsa, fondos mutuos y AFP: las estrategias ‘defensivas’ debido a elecciones",
+      "El impacto de las elecciones en el mercado financiero",
+      "Recaudación minera se alista para romper récord este año, pero una “sombra” preocupa",
+      "Megapenal de Ica pasó de costar S/269 a más de S/877 millones y está paralizado desde el 2020",
+      "Río Tambo con coloración amarillenta genera preocupación a agricultores",
+      "Más del 70% de terreno sin sanear pone en jaque corredor vial en Huancayo",
+      "Publican reglamento que da luz verde para creación de Zona Económica Especial Privada",
+      "BVL: microfinanzas enfrentan escenario más complejo por tasas altas y cambio global",
+      "Presentan moción para realizar Pleno Extraordinario y llamar al presidente Balcázar a dar explicaciones",
+      "Leptospirosis, Chagas y más: la crisis sanitaria que preocupa en Ayacucho (VIDEO)",
+      "Tacna: Ratifican incremento del pasaje urbano ante el alza del diésel",
+      "Río Tambo se tiñe de amarillo: pobladores exigen acciones ante constante contaminación"
     ],
-    "justification": "El país enfrenta un riesgo político elevado debido a la convergencia de dos crisis simultáneas: investigaciones penales contra funcionarios electorales y una crisis ministerial por la compra de aviones de combate. Las renuncias de altos funcionarios y mociones de censura parlamentarias erosionan la estabilidad del Ejecutivo.",
+    "justification": "El país enfrenta un riesgo político elevado caracterizado por crisis institucionales simultáneas: cuestionamientos a la integridad electoral, tensiones entre poderes ejecutivo y legislativo, y presiones para modificar reglas electorales en medio del proceso de segunda vuelta. La acumulación de estos conflictos genera inestabilidad sistémica.",
     "top_drivers": [
       {
-        "title": "Fiscalía solicita detención preliminar de Piero Corvetto y tres personas más involucradas en proceso electoral",
-        "source": "larepublica",
+        "title": "Renuncias, entretelones y el impacto de la nueva crisis desatada por la postura de Balcázar sobre compra de F-16 a EE.UU.",
+        "source": "elcomercio",
         "score": 85
       },
       {
-        "title": "JNJ declara la vacancia del cargo de jefe de la ONPE tras renuncia de Piero Corvetto",
-        "source": "rpp",
+        "title": "ONPE llega al 100% de actas procesadas: Fujimori y Sánchez disputarían la segunda vuelta",
+        "source": "caretas",
+        "score": 85
+      },
+      {
+        "title": "Ministros llaman mentiroso a Balcázar y Congreso aprovecha para lanzar la palabra vacancia (VIDEO)",
+        "source": "elbuho",
+        "score": 85
+      },
+      {
+        "title": "Fiscal de la Nación dice que hechos ocurridos en distribución de material electoral serían dolosos",
+        "source": "gestion",
         "score": 82
       },
       {
-        "title": "Hugo de Zela: “El señor Balcázar le ha mentido al país, él sabía que los dos contratos se habían firmado”",
+        "title": "¿Jaque a la ONPE? Jorge Montoya lanza propuesta para tomar el control del organismo electoral vía comisión reorganizadora",
+        "source": "caretas",
+        "score": 82
+      },
+      {
+        "title": "Peligra la segunda vuelta: advierten que cambiar las reglas rompe el proceso electoral (VIDEO)",
+        "source": "elbuho",
+        "score": 82
+      },
+      {
+        "title": "Fernando Rospigliosi afirma que tramitará eventual moción de censura contra Balcázar: “Cumplo la ley, la Constitución y el Reglamento”",
         "source": "elcomercio",
-        "score": 82
-      },
-      {
-        "title": "Balcázar posterga compra de aviones, dos ministros renuncian y lo acusan de mentir: cronología de la polémica que afecta al Ejecutivo",
-        "source": "rpp",
-        "score": 82
-      },
-      {
-        "title": "Bancadas del Congreso plantean censurar a José María Balcázar por compra de aviones estadounidenses",
-        "source": "larepublica",
         "score": 80
       },
       {
-        "title": "Piero Corvetto: Fiscalía pide detención preliminar del exjefe de la ONPE",
-        "source": "caretas",
+        "title": "ONPE: Fiscalía realiza diligencias en almacén de Lurín para constatar material electoral",
+        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "Hugo de Zela renuncia a la Cancillería por caso de aviones F-16",
-        "source": "elcomercio",
-        "score": 78
+        "title": "“Están quitando al árbitro en medio del partido”: Quito advierte que renuncia de Corvetto beneficia a Keiko y López Aliaga",
+        "source": "elbuho",
+        "score": 80
       },
       {
-        "title": "Crisis en el Gobierno de Balcázar: Canciller renuncia y ministro de Defensa es despedido por polémica en compra de aviones",
+        "title": "Contra la decisión de Balcázar, MEF pagó US$462 millones por los F-16",
         "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Ilich López impulsa moción de censura contra José Balcázar: \"Se está dejando en desprotección a la defensa nacional\"",
-        "source": "rpp",
-        "score": 78
-      },
-      {
-        "title": "Carlos Díaz dimite como ministro de Defensa y critica a Balcázar por retrasar F-16",
-        "source": "caretas",
         "score": 78
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 136.3,
-    "political_30d_avg": 126.4,
-    "economic_7d_avg": 56.1,
-    "economic_30d_avg": 82.4,
+    "political_7d_avg": 125.6,
+    "political_30d_avg": 125.9,
+    "economic_7d_avg": 56.4,
+    "economic_30d_avg": 79.3,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -221,7 +236,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictos diplomáticos y debilidad institucional electoral generan inestabilidad.",
+      "summary": "Debilidad institucional y conflictos entre poderes del Estado.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -229,7 +244,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Resultados electorales generan incertidumbre política en el país.",
+      "summary": "Resultados electorales generan incertidumbre política institucional.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -237,7 +252,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Conteo electoral lento genera incertidumbre política nacional.",
+      "summary": "Proceso electoral en curso sin resultados finales definidos.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -245,7 +260,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
+      "summary": "Incertidumbre electoral genera volatilidad económica y política nacional.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -253,7 +268,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Elecciones presidenciales generan tensión política y económica.",
+      "summary": "Elecciones presidenciales generan incertidumbre política y económica.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -261,7 +276,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral afecta instalación de mesas.",
+      "summary": "Falta de material electoral impide votación masiva.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -269,7 +284,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Desorden electoral por fallas en instalación de mesas.",
+      "summary": "Retrasos e irregularidades comprometen la credibilidad electoral.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -277,7 +292,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno comprometen la economía peruana.",
+      "summary": "Políticas fiscales contradictorias comprometiendo estabilidad económica peruana.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -285,7 +300,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial intenso genera incertidumbre política.",
+      "summary": "Tensión electoral por debate presidencial en curso.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -293,7 +308,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Participación de prófugo Cerrón genera controversia electoral.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -6514,44 +6529,57 @@
       "prr_7d": 116.9,
       "n_articles": 401,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-20",
-      "political_raw": 91.6,
-      "political_7d": 109.3,
-      "economic_raw": 55.3,
-      "economic_7d": 46.8,
-      "score": 109.3,
-      "prr": 91.6,
-      "prr_7d": 109.3,
-      "n_articles": 539,
+      "political_raw": 95.2,
+      "political_7d": 110.4,
+      "economic_raw": 55.1,
+      "economic_7d": 46.7,
+      "score": 110.4,
+      "prr": 95.2,
+      "prr_7d": 110.4,
+      "n_articles": 544,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-21",
-      "political_raw": 87.6,
-      "political_7d": 102.8,
+      "political_raw": 87.5,
+      "political_7d": 103.5,
       "economic_raw": 81.2,
       "economic_7d": 57.1,
-      "score": 102.8,
-      "prr": 87.6,
-      "prr_7d": 102.8,
-      "n_articles": 590,
+      "score": 103.5,
+      "prr": 87.5,
+      "prr_7d": 103.5,
+      "n_articles": 591,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-22",
-      "political_raw": 137.2,
-      "political_7d": 113.1,
-      "economic_raw": 79.5,
+      "political_raw": 136.8,
+      "political_7d": 113.5,
+      "economic_raw": 79.4,
       "economic_7d": 63.8,
-      "score": 113.1,
-      "prr": 137.2,
-      "prr_7d": 113.1,
-      "n_articles": 583,
+      "score": 113.5,
+      "prr": 136.8,
+      "prr_7d": 113.5,
+      "n_articles": 586,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-23",
+      "political_raw": 114.6,
+      "political_7d": 113.8,
+      "economic_raw": 83.7,
+      "economic_7d": 69.7,
+      "score": 113.8,
+      "prr": 114.6,
+      "prr_7d": 113.8,
+      "n_articles": 666,
       "low_coverage": false,
       "provisional": true
     }
@@ -7848,6 +7876,10 @@
     {
       "date": "2026-04-21",
       "fx": 3.4381
+    },
+    {
+      "date": "2026-04-22",
+      "fx": 3.4421
     }
   ],
   "monthly_series": [
@@ -7973,9 +8005,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 129.0,
-      "economic_avg": 62.9,
-      "n_articles": 12146,
+      "political_avg": 128.4,
+      "economic_avg": 63.2,
+      "n_articles": 12821,
       "fx_level": null,
       "fx_yoy": null
     }
