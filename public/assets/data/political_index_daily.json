@@ -1,232 +1,206 @@
 {
   "metadata": {
-    "generated_at": "2026-04-23T21:15:15.214678",
-    "coverage_days": 478,
+    "generated_at": "2026-04-24T21:12:45.003073",
+    "coverage_days": 479,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-23",
-    "political_raw": 114.6,
-    "political_raw_level": "ELEVADO",
-    "political_7d": 113.8,
-    "political_level": "ELEVADO",
-    "political_multiplier": 1.14,
-    "economic_raw": 83.7,
-    "economic_raw_level": "BAJO",
-    "economic_7d": 69.7,
+    "date": "2026-04-24",
+    "political_raw": 83.9,
+    "political_raw_level": "BAJO",
+    "political_7d": 104.9,
+    "political_level": "NORMAL",
+    "political_multiplier": 1.05,
+    "economic_raw": 28.4,
+    "economic_raw_level": "MINIMO",
+    "economic_7d": 57.3,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.7,
-    "score": 113.8,
-    "prr_7d": 113.8,
-    "prr_raw": 114.6,
-    "level": "ELEVADO",
-    "articles_total": 666,
-    "articles_political_relevant": 281,
-    "articles_economic_relevant": 142,
-    "political_justification": "El país enfrenta un riesgo político elevado caracterizado por crisis institucionales simultáneas: cuestionamientos a la integridad electoral, tensiones entre poderes ejecutivo y legislativo, y presiones para modificar reglas electorales en medio del proceso de segunda vuelta. La acumulación de estos conflictos genera inestabilidad sistémica.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero controladas. Los desafíos en empresas estatales, déficit fiscal persistente y caída de exportaciones agrícolas generan incertidumbre, aunque sin alcanzar niveles críticos. La estabilidad relativa permite margen para correcciones antes de escalar riesgos mayores.",
+    "economic_multiplier": 0.57,
+    "score": 104.9,
+    "prr_7d": 104.9,
+    "prr_raw": 83.9,
+    "level": "NORMAL",
+    "articles_total": 531,
+    "articles_political_relevant": 212,
+    "articles_economic_relevant": 73,
+    "political_justification": "El país enfrenta tensiones electorales contenidas pero significativas. Las denuncias de irregularidades en actas, investigaciones contra funcionarios de la ONPE y disputas sobre resultados generan desconfianza institucional. Sin embargo, los mecanismos de control funcionan y no hay polarización crítica que amenace la gobernabilidad inmediata.",
+    "economic_justification": "La economía peruana enfrenta un riesgo mínimo, reflejando estabilidad relativa en indicadores macroeconómicos. Sin embargo, persisten vulnerabilidades institucionales, presiones fiscales por demandas de gasto público y amenazas climáticas como El Niño que podrían deteriorar las condiciones en mediano plazo.",
     "top_political_drivers": [
       {
-        "title": "Renuncias, entretelones y el impacto de la nueva crisis desatada por la postura de Balcázar sobre compra de F-16 a EE.UU.",
-        "source": "elcomercio",
-        "score": 85
-      },
-      {
-        "title": "ONPE llega al 100% de actas procesadas: Fujimori y Sánchez disputarían la segunda vuelta",
+        "title": "Oscar Arriola cuestiona demora de Fiscalía tras alerta 27 casos de actas rotas y robadas",
         "source": "caretas",
-        "score": 85
-      },
-      {
-        "title": "Ministros llaman mentiroso a Balcázar y Congreso aprovecha para lanzar la palabra vacancia (VIDEO)",
-        "source": "elbuho",
-        "score": 85
-      },
-      {
-        "title": "Fiscal de la Nación dice que hechos ocurridos en distribución de material electoral serían dolosos",
-        "source": "gestion",
-        "score": 82
-      },
-      {
-        "title": "¿Jaque a la ONPE? Jorge Montoya lanza propuesta para tomar el control del organismo electoral vía comisión reorganizadora",
-        "source": "caretas",
-        "score": 82
-      },
-      {
-        "title": "Peligra la segunda vuelta: advierten que cambiar las reglas rompe el proceso electoral (VIDEO)",
-        "source": "elbuho",
-        "score": 82
-      },
-      {
-        "title": "Fernando Rospigliosi afirma que tramitará eventual moción de censura contra Balcázar: “Cumplo la ley, la Constitución y el Reglamento”",
-        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "ONPE: Fiscalía realiza diligencias en almacén de Lurín para constatar material electoral",
-        "source": "elcomercio",
-        "score": 80
-      },
-      {
-        "title": "“Están quitando al árbitro en medio del partido”: Quito advierte que renuncia de Corvetto beneficia a Keiko y López Aliaga",
-        "source": "elbuho",
-        "score": 80
-      },
-      {
-        "title": "Contra la decisión de Balcázar, MEF pagó US$462 millones por los F-16",
-        "source": "larepublica",
+        "title": "ONPE al 95.118%: Roberto Sánchez supera a Rafael López Aliaga por 20,301 votos",
+        "source": "correo",
         "score": 78
+      },
+      {
+        "title": "Caso ONPE: estos son los funcionarios investigados por presunta colusión agravada tras problemas logísticos el 12 de abril",
+        "source": "caretas",
+        "score": 78
+      },
+      {
+        "title": "Oscar Arriola: “Tenemos por lo menos 27 eventos de actas rotas, destruidas (...) de personal de ONPE que hurtó actas”",
+        "source": "elcomercio",
+        "score": 75
+      },
+      {
+        "title": "La crisis sin fin",
+        "source": "elcomercio",
+        "score": 75
+      },
+      {
+        "title": "Rafael López Aliaga denuncia sabotaje electoral: “Hay una injerencia clarísima\"",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "ONPE: Fiscalía incluye a Juan Phang en investigación por presuntas irregulares en proceso electoral",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "Rospigliosi asegura que actuará conforme a la Constitución y el Reglamento del Congreso",
+        "source": "andina",
+        "score": 72
+      },
+      {
+        "title": "Piero Corvetto pasa a calidad de investigado por presuntas irregularidades en elecciones",
+        "source": "correo",
+        "score": 72
+      },
+      {
+        "title": "SJL: Fiscalía interviene sede de Galaga en Canto Grande por retrasos durante las elecciones generales",
+        "source": "correo",
+        "score": 72
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Petro-Perú: las nuevas movidas gerenciales que causan alarma, ¿buscan hacer fracasar la reorganización? Esto es lo que se sabe",
+        "title": "“Grati” y CTS para los CAS: ahora Congreso quiere “forzar” al MEF a priorizar pagos del 2026",
+        "source": "gestion",
+        "score": 55
+      },
+      {
+        "title": "¿Completará “The Culling Game”? Qué arcos del manga adaptará ”Jujutsu Kaisen” - Temporada 4",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "Déficit fiscal: MEF mantiene expectativas para 2026, pero con dudas para el próximo año",
-        "source": "gestion",
-        "score": 45
-      },
-      {
-        "title": "Casi la mitad de empresas industriales golpeadas por comercio ilícito: así les afecta",
-        "source": "gestion",
-        "score": 40
-      },
-      {
-        "title": "¿Aumento de pensiones para docentes universitarios? Esto dice el nuevo proyecto del Congreso",
-        "source": "gestion",
         "score": 35
       },
       {
-        "title": "Cacao peruano cayó 45% en inicio de 2026 por problemas en cosechas y precios, según ADEX",
+        "title": "ONU prevé evento El Niño desde mediados del 2026 con lluvias intensas y mayor temperatura",
+        "source": "gestion",
+        "score": 30
+      },
+      {
+        "title": "Radiografía de nuestra  crisis institucional",
+        "source": "gestion",
+        "score": 25
+      },
+      {
+        "title": "Tres años de espera: ahorristas de cooperativa en incertidumbre por devolución de sus fondos en Arequipa",
+        "source": "correo",
+        "score": 25
+      },
+      {
+        "title": "Retiro AFP: Ya van cinco proyectos de ley presentados por el Congreso ¿Cómo sería el cronograma para acceder a más de S/20.000?",
         "source": "larepublica",
-        "score": 35
-      },
-      {
-        "title": "Pobreza en Perú: aún faltarían 5 años para “borrar” secuelas de la crisis",
-        "source": "gestion",
-        "score": 30
-      },
-      {
-        "title": "Déficit fiscal no se “movió” en marzo: aún está fuera de la meta para el 2026",
-        "source": "gestion",
-        "score": 30
-      },
-      {
-        "title": "Elecciones presidenciales: el dólar, la bolsa y la izquierda",
-        "source": "gestion",
-        "score": 30
-      },
-      {
-        "title": "Cámara de Comercio Americana respalda compra de aviones F-16 y la califica como decisión estratégica para el país",
-        "source": "elcomercio",
         "score": 25
       },
       {
-        "title": "El impacto de las elecciones en el mercado financiero",
-        "source": "gestion",
+        "title": "El fenómeno El Niño podría regresar en el mes de mayo, según OMM",
+        "source": "canaln",
         "score": 25
+      },
+      {
+        "title": "Una mejor pregunta",
+        "source": "gestion",
+        "score": 20
+      },
+      {
+        "title": "A ajustarse los cinturones, la factura de la crisis de Irán",
+        "source": "gestion",
+        "score": 20
+      },
+      {
+        "title": "No hay fecha de reinicio de la obra del estadio de Piura",
+        "source": "correo",
+        "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Petro-Perú: las nuevas movidas gerenciales que causan alarma, ¿buscan hacer fracasar la reorganización? Esto es lo que se sabe",
-      "Exigen S/2 millones por barcaza petrolera con 10.500 barriles en río de Loreto",
-      "Déficit fiscal: MEF mantiene expectativas para 2026, pero con dudas para el próximo año",
-      "Casi la mitad de empresas industriales golpeadas por comercio ilícito: así les afecta",
-      "¿Aumento de pensiones para docentes universitarios? Esto dice el nuevo proyecto del Congreso",
-      "ONPE: Fiscalía realiza diligencias en almacén de Lurín para constatar material electoral",
-      "Estos son los virtuales parlamentarios que blindarían la minería ilegal en el nuevo Congreso",
-      "Contra la decisión de Balcázar, MEF pagó US$462 millones por los F-16",
-      "Cacao peruano cayó 45% en inicio de 2026 por problemas en cosechas y precios, según ADEX",
-      "AGAP advierte que la crisis por los F-16 afecta la credibilidad del Perú y sus exportaciones",
-      "Crisis en el Gobierno por compra de cazas F-16 EN VIVO: MEF habría ejecutado compra de aviones",
-      "Piura: Cajas con material electoral son encontradas en bus que se dirigía a Lima",
-      "Pobreza en Perú: aún faltarían 5 años para “borrar” secuelas de la crisis",
-      "Déficit fiscal no se “movió” en marzo: aún está fuera de la meta para el 2026",
-      "Elecciones presidenciales: el dólar, la bolsa y la izquierda",
-      "Autoridades hallan actas electorales en bus que iba de Piura a Lima",
-      "Lima también: Miles de universitarios rechazan el incremento del pasaje con protestas (VIDEO)",
-      "Primer ministro marca distancia de Balcázar y defiende compra de aviones: “Como militar, cumplo mi palabra”",
-      "Marcha por el medio pasaje HOY EN VIVO: últimas noticias, situación en las regiones, respuesta del gobierno sobre las peticiones de la comunidad universitaria y más",
-      "Beca Generación del Bicentenario en el limbo: las historias de los jóvenes afectados, el destino del presupuesto y la dejadez de las autoridades",
-      "Cámara de Comercio Americana respalda compra de aviones F-16 y la califica como decisión estratégica para el país",
-      "¡Por el medio pasaje! Estudiantes universitarios protestan ante el alza de la tarifa de transporte",
-      "Proyecto de ley para extraer gas dentro de áreas protegidas se debate nuevamente en el Congreso peruano",
-      "Inversiones en bolsa, fondos mutuos y AFP: las estrategias ‘defensivas’ debido a elecciones",
-      "El impacto de las elecciones en el mercado financiero",
-      "Recaudación minera se alista para romper récord este año, pero una “sombra” preocupa",
-      "Megapenal de Ica pasó de costar S/269 a más de S/877 millones y está paralizado desde el 2020",
-      "Río Tambo con coloración amarillenta genera preocupación a agricultores",
-      "Más del 70% de terreno sin sanear pone en jaque corredor vial en Huancayo",
-      "Publican reglamento que da luz verde para creación de Zona Económica Especial Privada",
-      "BVL: microfinanzas enfrentan escenario más complejo por tasas altas y cambio global",
-      "Presentan moción para realizar Pleno Extraordinario y llamar al presidente Balcázar a dar explicaciones",
-      "Leptospirosis, Chagas y más: la crisis sanitaria que preocupa en Ayacucho (VIDEO)",
-      "Tacna: Ratifican incremento del pasaje urbano ante el alza del diésel",
-      "Río Tambo se tiñe de amarillo: pobladores exigen acciones ante constante contaminación"
+      "“Grati” y CTS para los CAS: ahora Congreso quiere “forzar” al MEF a priorizar pagos del 2026",
+      "¿Completará “The Culling Game”? Qué arcos del manga adaptará ”Jujutsu Kaisen” - Temporada 4",
+      "Incertidumbre por elecciones empieza a afectar venta de viviendas, ¿de qué precios?",
+      "ONU prevé evento El Niño desde mediados del 2026 con lluvias intensas y mayor temperatura",
+      "Radiografía de nuestra  crisis institucional",
+      "Tres años de espera: ahorristas de cooperativa en incertidumbre por devolución de sus fondos en Arequipa",
+      "Retiro AFP: Ya van cinco proyectos de ley presentados por el Congreso ¿Cómo sería el cronograma para acceder a más de S/20.000?",
+      "Proyecto de ley propone explotar gas en áreas protegidas del Perú: ¿qué zonas están en riesgo y por qué genera controversia?",
+      "El fenómeno El Niño podría regresar en el mes de mayo, según OMM"
     ],
-    "justification": "El país enfrenta un riesgo político elevado caracterizado por crisis institucionales simultáneas: cuestionamientos a la integridad electoral, tensiones entre poderes ejecutivo y legislativo, y presiones para modificar reglas electorales en medio del proceso de segunda vuelta. La acumulación de estos conflictos genera inestabilidad sistémica.",
+    "justification": "El país enfrenta tensiones electorales contenidas pero significativas. Las denuncias de irregularidades en actas, investigaciones contra funcionarios de la ONPE y disputas sobre resultados generan desconfianza institucional. Sin embargo, los mecanismos de control funcionan y no hay polarización crítica que amenace la gobernabilidad inmediata.",
     "top_drivers": [
       {
-        "title": "Renuncias, entretelones y el impacto de la nueva crisis desatada por la postura de Balcázar sobre compra de F-16 a EE.UU.",
-        "source": "elcomercio",
-        "score": 85
-      },
-      {
-        "title": "ONPE llega al 100% de actas procesadas: Fujimori y Sánchez disputarían la segunda vuelta",
+        "title": "Oscar Arriola cuestiona demora de Fiscalía tras alerta 27 casos de actas rotas y robadas",
         "source": "caretas",
-        "score": 85
-      },
-      {
-        "title": "Ministros llaman mentiroso a Balcázar y Congreso aprovecha para lanzar la palabra vacancia (VIDEO)",
-        "source": "elbuho",
-        "score": 85
-      },
-      {
-        "title": "Fiscal de la Nación dice que hechos ocurridos en distribución de material electoral serían dolosos",
-        "source": "gestion",
-        "score": 82
-      },
-      {
-        "title": "¿Jaque a la ONPE? Jorge Montoya lanza propuesta para tomar el control del organismo electoral vía comisión reorganizadora",
-        "source": "caretas",
-        "score": 82
-      },
-      {
-        "title": "Peligra la segunda vuelta: advierten que cambiar las reglas rompe el proceso electoral (VIDEO)",
-        "source": "elbuho",
-        "score": 82
-      },
-      {
-        "title": "Fernando Rospigliosi afirma que tramitará eventual moción de censura contra Balcázar: “Cumplo la ley, la Constitución y el Reglamento”",
-        "source": "elcomercio",
         "score": 80
       },
       {
-        "title": "ONPE: Fiscalía realiza diligencias en almacén de Lurín para constatar material electoral",
-        "source": "elcomercio",
-        "score": 80
-      },
-      {
-        "title": "“Están quitando al árbitro en medio del partido”: Quito advierte que renuncia de Corvetto beneficia a Keiko y López Aliaga",
-        "source": "elbuho",
-        "score": 80
-      },
-      {
-        "title": "Contra la decisión de Balcázar, MEF pagó US$462 millones por los F-16",
-        "source": "larepublica",
+        "title": "ONPE al 95.118%: Roberto Sánchez supera a Rafael López Aliaga por 20,301 votos",
+        "source": "correo",
         "score": 78
+      },
+      {
+        "title": "Caso ONPE: estos son los funcionarios investigados por presunta colusión agravada tras problemas logísticos el 12 de abril",
+        "source": "caretas",
+        "score": 78
+      },
+      {
+        "title": "Oscar Arriola: “Tenemos por lo menos 27 eventos de actas rotas, destruidas (...) de personal de ONPE que hurtó actas”",
+        "source": "elcomercio",
+        "score": 75
+      },
+      {
+        "title": "La crisis sin fin",
+        "source": "elcomercio",
+        "score": 75
+      },
+      {
+        "title": "Rafael López Aliaga denuncia sabotaje electoral: “Hay una injerencia clarísima\"",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "ONPE: Fiscalía incluye a Juan Phang en investigación por presuntas irregulares en proceso electoral",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "Rospigliosi asegura que actuará conforme a la Constitución y el Reglamento del Congreso",
+        "source": "andina",
+        "score": 72
+      },
+      {
+        "title": "Piero Corvetto pasa a calidad de investigado por presuntas irregularidades en elecciones",
+        "source": "correo",
+        "score": 72
+      },
+      {
+        "title": "SJL: Fiscalía interviene sede de Galaga en Canto Grande por retrasos durante las elecciones generales",
+        "source": "correo",
+        "score": 72
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 125.6,
-    "political_30d_avg": 125.9,
-    "economic_7d_avg": 56.4,
-    "economic_30d_avg": 79.3,
+    "political_7d_avg": 115.5,
+    "political_30d_avg": 124.3,
+    "economic_7d_avg": 55.9,
+    "economic_30d_avg": 75.6,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -236,7 +210,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Debilidad institucional y conflictos entre poderes del Estado.",
+      "summary": "Conflictos institucionales y tensiones internacionales debilitan gobernanza.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -244,7 +218,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Resultados electorales generan incertidumbre política institucional.",
+      "summary": "Incertidumbre electoral y conflictividad institucional erosionan gobernanza.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -252,7 +226,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Proceso electoral en curso sin resultados finales definidos.",
+      "summary": "Belmont eliminado del proceso electoral presidencial peruano.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -260,7 +234,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral genera volatilidad económica y política nacional.",
+      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -268,7 +242,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Elecciones presidenciales generan incertidumbre política y económica.",
+      "summary": "Elecciones presidenciales generan inestabilidad política y económica.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -276,7 +250,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral impide votación masiva.",
+      "summary": "Falta de material electoral afecta proceso democrático.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -284,7 +258,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Retrasos e irregularidades comprometen la credibilidad electoral.",
+      "summary": "Problemas operativos en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -292,7 +266,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales contradictorias comprometiendo estabilidad económica peruana.",
+      "summary": "Políticas fiscales irresponsables comprometen estabilidad económica peruana.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -300,7 +274,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tensión electoral por debate presidencial en curso.",
+      "summary": "Debate presidencial genera tensión política entre candidatos.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -308,7 +282,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Participación de prófugo Cerrón genera controversia electoral.",
+      "summary": "Candidato prófugo participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -352,7 +326,7 @@
     {
       "date": "2026-03-13",
       "dimension": "economic",
-      "value": 289.9,
+      "value": 289.8,
       "label": "Crisis GNV Perú"
     },
     {
@@ -5623,26 +5597,26 @@
     },
     {
       "date": "2026-02-09",
-      "political_raw": 42.8,
-      "political_7d": 60.9,
-      "economic_raw": 54.8,
-      "economic_7d": 46.1,
-      "score": 60.9,
-      "prr": 42.8,
-      "prr_7d": 60.9,
-      "n_articles": 73,
+      "political_raw": 43.3,
+      "political_7d": 61.0,
+      "economic_raw": 57.5,
+      "economic_7d": 47.0,
+      "score": 61.0,
+      "prr": 43.3,
+      "prr_7d": 61.0,
+      "n_articles": 74,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-02-10",
       "political_raw": 63.9,
-      "political_7d": 61.8,
+      "political_7d": 61.9,
       "economic_raw": 26.6,
-      "economic_7d": 40.3,
-      "score": 61.8,
+      "economic_7d": 40.9,
+      "score": 61.9,
       "prr": 63.9,
-      "prr_7d": 61.8,
+      "prr_7d": 61.9,
       "n_articles": 98,
       "low_coverage": false,
       "provisional": false
@@ -5652,7 +5626,7 @@
       "political_raw": 84.6,
       "political_7d": 68.7,
       "economic_raw": 64.7,
-      "economic_7d": 47.6,
+      "economic_7d": 48.0,
       "score": 68.7,
       "prr": 84.6,
       "prr_7d": 68.7,
@@ -5662,13 +5636,13 @@
     },
     {
       "date": "2026-02-12",
-      "political_raw": 60.6,
-      "political_7d": 66.2,
+      "political_raw": 60.5,
+      "political_7d": 66.3,
       "economic_raw": 46.0,
-      "economic_7d": 47.1,
-      "score": 66.2,
-      "prr": 60.6,
-      "prr_7d": 66.2,
+      "economic_7d": 47.4,
+      "score": 66.3,
+      "prr": 60.5,
+      "prr_7d": 66.3,
       "n_articles": 96,
       "low_coverage": false,
       "provisional": false
@@ -5678,7 +5652,7 @@
       "political_raw": 80.7,
       "political_7d": 70.6,
       "economic_raw": 40.9,
-      "economic_7d": 45.3,
+      "economic_7d": 45.4,
       "score": 70.6,
       "prr": 80.7,
       "prr_7d": 70.6,
@@ -5690,8 +5664,8 @@
       "date": "2026-02-14",
       "political_raw": 74.6,
       "political_7d": 71.8,
-      "economic_raw": 19.7,
-      "economic_7d": 37.6,
+      "economic_raw": 19.6,
+      "economic_7d": 37.7,
       "score": 71.8,
       "prr": 74.6,
       "prr_7d": 71.8,
@@ -5704,7 +5678,7 @@
       "political_raw": 105.4,
       "political_7d": 81.9,
       "economic_raw": 42.7,
-      "economic_7d": 39.1,
+      "economic_7d": 39.2,
       "score": 81.9,
       "prr": 105.4,
       "prr_7d": 81.9,
@@ -5727,12 +5701,12 @@
     },
     {
       "date": "2026-02-17",
-      "political_raw": 324.7,
+      "political_raw": 324.6,
       "political_7d": 185.7,
-      "economic_raw": 57.2,
+      "economic_raw": 57.1,
       "economic_7d": 60.4,
       "score": 185.7,
-      "prr": 324.7,
+      "prr": 324.6,
       "prr_7d": 185.7,
       "n_articles": 136,
       "low_coverage": false,
@@ -5742,7 +5716,7 @@
       "date": "2026-02-18",
       "political_raw": 319.6,
       "political_7d": 225.9,
-      "economic_raw": 81.7,
+      "economic_raw": 81.6,
       "economic_7d": 66.8,
       "score": 225.9,
       "prr": 319.6,
@@ -5755,7 +5729,7 @@
       "date": "2026-02-19",
       "political_raw": 180.6,
       "political_7d": 212.3,
-      "economic_raw": 81.3,
+      "economic_raw": 81.2,
       "economic_7d": 71.1,
       "score": 212.3,
       "prr": 180.6,
@@ -5766,13 +5740,13 @@
     },
     {
       "date": "2026-02-20",
-      "political_raw": 118.9,
-      "political_7d": 184.3,
-      "economic_raw": 80.0,
+      "political_raw": 118.8,
+      "political_7d": 184.2,
+      "economic_raw": 79.9,
       "economic_7d": 73.8,
-      "score": 184.3,
-      "prr": 118.9,
-      "prr_7d": 184.3,
+      "score": 184.2,
+      "prr": 118.8,
+      "prr_7d": 184.2,
       "n_articles": 130,
       "low_coverage": false,
       "provisional": false
@@ -5781,8 +5755,8 @@
       "date": "2026-02-21",
       "political_raw": 93.6,
       "political_7d": 157.1,
-      "economic_raw": 84.0,
-      "economic_7d": 76.9,
+      "economic_raw": 83.9,
+      "economic_7d": 76.8,
       "score": 157.1,
       "prr": 93.6,
       "prr_7d": 157.1,
@@ -5793,12 +5767,12 @@
     {
       "date": "2026-02-22",
       "political_raw": 80.3,
-      "political_7d": 134.1,
+      "political_7d": 134.0,
       "economic_raw": 47.1,
       "economic_7d": 67.9,
-      "score": 134.1,
+      "score": 134.0,
       "prr": 80.3,
-      "prr_7d": 134.1,
+      "prr_7d": 134.0,
       "n_articles": 63,
       "low_coverage": false,
       "provisional": false
@@ -5821,7 +5795,7 @@
       "political_raw": 49.6,
       "political_7d": 96.2,
       "economic_raw": 72.3,
-      "economic_7d": 71.9,
+      "economic_7d": 71.8,
       "score": 96.2,
       "prr": 49.6,
       "prr_7d": 96.2,
@@ -5834,7 +5808,7 @@
       "political_raw": 114.6,
       "political_7d": 101.8,
       "economic_raw": 47.6,
-      "economic_7d": 64.6,
+      "economic_7d": 64.5,
       "score": 101.8,
       "prr": 114.6,
       "prr_7d": 101.8,
@@ -5846,7 +5820,7 @@
       "date": "2026-02-26",
       "political_raw": 60.3,
       "political_7d": 89.3,
-      "economic_raw": 62.4,
+      "economic_raw": 62.3,
       "economic_7d": 63.9,
       "score": 89.3,
       "prr": 60.3,
@@ -5859,8 +5833,8 @@
       "date": "2026-02-27",
       "political_raw": 53.5,
       "political_7d": 78.6,
-      "economic_raw": 133.1,
-      "economic_7d": 84.7,
+      "economic_raw": 133.0,
+      "economic_7d": 84.6,
       "score": 78.6,
       "prr": 53.5,
       "prr_7d": 78.6,
@@ -5885,8 +5859,8 @@
       "date": "2026-03-01",
       "political_raw": 37.2,
       "political_7d": 56.3,
-      "economic_raw": 49.9,
-      "economic_7d": 64.1,
+      "economic_raw": 49.8,
+      "economic_7d": 64.0,
       "score": 56.3,
       "prr": 37.2,
       "prr_7d": 56.3,
@@ -5898,8 +5872,8 @@
       "date": "2026-03-02",
       "political_raw": 61.1,
       "political_7d": 57.7,
-      "economic_raw": 293.5,
-      "economic_7d": 132.9,
+      "economic_raw": 293.3,
+      "economic_7d": 132.8,
       "score": 57.7,
       "prr": 61.1,
       "prr_7d": 57.7,
@@ -5911,8 +5885,8 @@
       "date": "2026-03-03",
       "political_raw": 76.1,
       "political_7d": 63.2,
-      "economic_raw": 417.9,
-      "economic_7d": 218.4,
+      "economic_raw": 417.7,
+      "economic_7d": 218.3,
       "score": 63.2,
       "prr": 76.1,
       "prr_7d": 63.2,
@@ -5924,8 +5898,8 @@
       "date": "2026-03-04",
       "political_raw": 62.5,
       "political_7d": 63.0,
-      "economic_raw": 337.9,
-      "economic_7d": 254.2,
+      "economic_raw": 337.7,
+      "economic_7d": 254.1,
       "score": 63.0,
       "prr": 62.5,
       "prr_7d": 63.0,
@@ -5937,8 +5911,8 @@
       "date": "2026-03-05",
       "political_raw": 86.7,
       "political_7d": 70.1,
-      "economic_raw": 240.1,
-      "economic_7d": 250.0,
+      "economic_raw": 240.0,
+      "economic_7d": 249.9,
       "score": 70.1,
       "prr": 86.7,
       "prr_7d": 70.1,
@@ -5950,8 +5924,8 @@
       "date": "2026-03-06",
       "political_raw": 69.9,
       "political_7d": 70.0,
-      "economic_raw": 312.1,
-      "economic_7d": 268.6,
+      "economic_raw": 311.9,
+      "economic_7d": 268.5,
       "score": 70.0,
       "prr": 69.9,
       "prr_7d": 70.0,
@@ -5963,8 +5937,8 @@
       "date": "2026-03-07",
       "political_raw": 38.5,
       "political_7d": 60.6,
-      "economic_raw": 254.0,
-      "economic_7d": 264.2,
+      "economic_raw": 253.9,
+      "economic_7d": 264.1,
       "score": 60.6,
       "prr": 38.5,
       "prr_7d": 60.6,
@@ -5977,7 +5951,7 @@
       "political_raw": 30.7,
       "political_7d": 51.6,
       "economic_raw": 141.8,
-      "economic_7d": 227.5,
+      "economic_7d": 227.4,
       "score": 51.6,
       "prr": 30.7,
       "prr_7d": 51.6,
@@ -5989,8 +5963,8 @@
       "date": "2026-03-09",
       "political_raw": 91.9,
       "political_7d": 63.7,
-      "economic_raw": 343.4,
-      "economic_7d": 262.3,
+      "economic_raw": 343.2,
+      "economic_7d": 262.2,
       "score": 63.7,
       "prr": 91.9,
       "prr_7d": 63.7,
@@ -6001,12 +5975,12 @@
     {
       "date": "2026-03-10",
       "political_raw": 61.9,
-      "political_7d": 63.2,
-      "economic_raw": 157.0,
-      "economic_7d": 230.7,
-      "score": 63.2,
+      "political_7d": 63.1,
+      "economic_raw": 156.9,
+      "economic_7d": 230.6,
+      "score": 63.1,
       "prr": 61.9,
-      "prr_7d": 63.2,
+      "prr_7d": 63.1,
       "n_articles": 168,
       "low_coverage": false,
       "provisional": false
@@ -6015,8 +5989,8 @@
       "date": "2026-03-11",
       "political_raw": 65.2,
       "political_7d": 63.8,
-      "economic_raw": 258.1,
-      "economic_7d": 238.9,
+      "economic_raw": 258.0,
+      "economic_7d": 238.8,
       "score": 63.8,
       "prr": 65.2,
       "prr_7d": 63.8,
@@ -6028,8 +6002,8 @@
       "date": "2026-03-12",
       "political_raw": 128.5,
       "political_7d": 83.2,
-      "economic_raw": 309.1,
-      "economic_7d": 260.0,
+      "economic_raw": 309.0,
+      "economic_7d": 259.9,
       "score": 83.2,
       "prr": 128.5,
       "prr_7d": 83.2,
@@ -6041,8 +6015,8 @@
       "date": "2026-03-13",
       "political_raw": 107.1,
       "political_7d": 90.4,
-      "economic_raw": 359.8,
-      "economic_7d": 289.9,
+      "economic_raw": 359.6,
+      "economic_7d": 289.8,
       "score": 90.4,
       "prr": 107.1,
       "prr_7d": 90.4,
@@ -6055,7 +6029,7 @@
       "political_raw": 58.4,
       "political_7d": 80.8,
       "economic_raw": 120.6,
-      "economic_7d": 239.1,
+      "economic_7d": 239.0,
       "score": 80.8,
       "prr": 58.4,
       "prr_7d": 80.8,
@@ -6080,8 +6054,8 @@
       "date": "2026-03-16",
       "political_raw": 112.7,
       "political_7d": 80.5,
-      "economic_raw": 167.0,
-      "economic_7d": 173.4,
+      "economic_raw": 166.9,
+      "economic_7d": 173.3,
       "score": 80.5,
       "prr": 112.7,
       "prr_7d": 80.5,
@@ -6094,7 +6068,7 @@
       "political_raw": 180.9,
       "political_7d": 110.6,
       "economic_raw": 118.9,
-      "economic_7d": 157.1,
+      "economic_7d": 157.0,
       "score": 110.6,
       "prr": 180.9,
       "prr_7d": 110.6,
@@ -6106,8 +6080,8 @@
       "date": "2026-03-18",
       "political_raw": 182.8,
       "political_7d": 132.3,
-      "economic_raw": 157.9,
-      "economic_7d": 157.3,
+      "economic_raw": 157.8,
+      "economic_7d": 157.2,
       "score": 132.3,
       "prr": 182.8,
       "prr_7d": 132.3,
@@ -6119,8 +6093,8 @@
       "date": "2026-03-19",
       "political_raw": 163.1,
       "political_7d": 141.5,
-      "economic_raw": 309.2,
-      "economic_7d": 202.9,
+      "economic_raw": 309.1,
+      "economic_7d": 202.8,
       "score": 141.5,
       "prr": 163.1,
       "prr_7d": 141.5,
@@ -6146,7 +6120,7 @@
       "political_raw": 72.8,
       "political_7d": 122.1,
       "economic_raw": 105.8,
-      "economic_7d": 194.1,
+      "economic_7d": 194.0,
       "score": 122.1,
       "prr": 72.8,
       "prr_7d": 122.1,
@@ -6156,12 +6130,12 @@
     },
     {
       "date": "2026-03-22",
-      "political_raw": 62.4,
+      "political_raw": 62.3,
       "political_7d": 104.2,
       "economic_raw": 71.0,
-      "economic_7d": 157.2,
+      "economic_7d": 157.1,
       "score": 104.2,
-      "prr": 62.4,
+      "prr": 62.3,
       "prr_7d": 104.2,
       "n_articles": 468,
       "low_coverage": false,
@@ -6172,7 +6146,7 @@
       "political_raw": 139.4,
       "political_7d": 114.8,
       "economic_raw": 131.8,
-      "economic_7d": 149.6,
+      "economic_7d": 149.5,
       "score": 114.8,
       "prr": 139.4,
       "prr_7d": 114.8,
@@ -6184,7 +6158,7 @@
       "date": "2026-03-24",
       "political_raw": 168.2,
       "political_7d": 130.8,
-      "economic_raw": 191.9,
+      "economic_raw": 191.8,
       "economic_7d": 162.2,
       "score": 130.8,
       "prr": 168.2,
@@ -6224,7 +6198,7 @@
       "political_raw": 83.3,
       "political_7d": 135.3,
       "economic_raw": 122.7,
-      "economic_7d": 157.5,
+      "economic_7d": 157.4,
       "score": 135.3,
       "prr": 83.3,
       "prr_7d": 135.3,
@@ -6275,7 +6249,7 @@
       "date": "2026-03-31",
       "political_raw": 127.3,
       "political_7d": 96.1,
-      "economic_raw": 109.4,
+      "economic_raw": 109.3,
       "economic_7d": 106.3,
       "score": 96.1,
       "prr": 127.3,
@@ -6379,7 +6353,7 @@
       "date": "2026-04-08",
       "political_raw": 110.9,
       "political_7d": 90.9,
-      "economic_raw": 96.0,
+      "economic_raw": 95.9,
       "economic_7d": 67.6,
       "score": 90.9,
       "prr": 110.9,
@@ -6418,8 +6392,8 @@
       "date": "2026-04-11",
       "political_raw": 102.1,
       "political_7d": 100.4,
-      "economic_raw": 49.6,
-      "economic_7d": 71.4,
+      "economic_raw": 49.5,
+      "economic_7d": 71.3,
       "score": 100.4,
       "prr": 102.1,
       "prr_7d": 100.4,
@@ -6483,7 +6457,7 @@
       "date": "2026-04-16",
       "political_raw": 138.4,
       "political_7d": 190.9,
-      "economic_raw": 77.7,
+      "economic_raw": 77.6,
       "economic_7d": 67.6,
       "score": 190.9,
       "prr": 138.4,
@@ -6520,14 +6494,14 @@
     },
     {
       "date": "2026-04-19",
-      "political_raw": 50.2,
+      "political_raw": 50.1,
       "political_7d": 116.9,
       "economic_raw": 18.8,
       "economic_7d": 43.1,
       "score": 116.9,
-      "prr": 50.2,
+      "prr": 50.1,
       "prr_7d": 116.9,
-      "n_articles": 401,
+      "n_articles": 402,
       "low_coverage": false,
       "provisional": false
     },
@@ -6542,44 +6516,57 @@
       "prr_7d": 110.4,
       "n_articles": 544,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-21",
-      "political_raw": 87.5,
-      "political_7d": 103.5,
-      "economic_raw": 81.2,
-      "economic_7d": 57.1,
-      "score": 103.5,
-      "prr": 87.5,
-      "prr_7d": 103.5,
-      "n_articles": 591,
+      "political_raw": 88.1,
+      "political_7d": 103.7,
+      "economic_raw": 81.1,
+      "economic_7d": 57.0,
+      "score": 103.7,
+      "prr": 88.1,
+      "prr_7d": 103.7,
+      "n_articles": 592,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-22",
-      "political_raw": 136.8,
-      "political_7d": 113.5,
+      "political_raw": 136.7,
+      "political_7d": 113.6,
       "economic_raw": 79.4,
-      "economic_7d": 63.8,
-      "score": 113.5,
-      "prr": 136.8,
-      "prr_7d": 113.5,
+      "economic_7d": 63.7,
+      "score": 113.6,
+      "prr": 136.7,
+      "prr_7d": 113.6,
       "n_articles": 586,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-23",
-      "political_raw": 114.6,
+      "political_raw": 114.4,
       "political_7d": 113.8,
-      "economic_raw": 83.7,
+      "economic_raw": 83.6,
       "economic_7d": 69.7,
       "score": 113.8,
-      "prr": 114.6,
+      "prr": 114.4,
       "prr_7d": 113.8,
-      "n_articles": 666,
+      "n_articles": 668,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-24",
+      "political_raw": 83.9,
+      "political_7d": 104.9,
+      "economic_raw": 28.4,
+      "economic_7d": 57.3,
+      "score": 104.9,
+      "prr": 83.9,
+      "prr_7d": 104.9,
+      "n_articles": 531,
       "low_coverage": false,
       "provisional": true
     }
@@ -7880,6 +7867,10 @@
     {
       "date": "2026-04-22",
       "fx": 3.4421
+    },
+    {
+      "date": "2026-04-23",
+      "fx": 3.4619
     }
   ],
   "monthly_series": [
@@ -7990,8 +7981,8 @@
     {
       "month": "2026-02",
       "political_avg": 100.2,
-      "economic_avg": 55.6,
-      "n_articles": 2765,
+      "economic_avg": 55.7,
+      "n_articles": 2766,
       "fx_level": 3.357,
       "fx_yoy": -9.21
     },
@@ -8005,9 +7996,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 128.4,
-      "economic_avg": 63.2,
-      "n_articles": 12821,
+      "political_avg": 127.4,
+      "economic_avg": 63.0,
+      "n_articles": 13356,
       "fx_level": null,
       "fx_yoy": null
     }

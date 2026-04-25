@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-04-23",
-    "n_days": 73,
+    "last_date": "2026-04-24",
+    "n_days": 74,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-04-23"
+    "updated": "2026-04-24"
   },
   "categories": {
     "arroz_cereales": {
@@ -2062,87 +2062,114 @@
       "index_limpieza": 98.6221,
       "index_cuidado_personal": 97.5256,
       "index_other": 97.2245
+    },
+    {
+      "date": "2026-04-24",
+      "index_all": 98.634,
+      "index_all_unweighted": 98.4782,
+      "index_food": 98.7277,
+      "index_nonfood": 97.6319,
+      "var_all": 0.0228,
+      "var_food": 0.0372,
+      "cum_pct": -1.366,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1018,
+      "interpolated": false,
+      "n_matched": 39687,
+      "index_arroz_cereales": 98.6456,
+      "index_pan_harinas": 97.7621,
+      "index_carnes": 99.3646,
+      "index_pescados_mariscos": 101.337,
+      "index_lacteos": 98.6196,
+      "index_frutas": 101.1849,
+      "index_verduras": 99.1252,
+      "index_aceites_grasas": 97.6862,
+      "index_azucar_dulces": 93.2392,
+      "index_bebidas": 98.476,
+      "index_limpieza": 98.6235,
+      "index_cuidado_personal": 96.7782,
+      "index_other": 97.1071
     }
   ],
   "latest": {
-    "date": "2026-04-23",
-    "index_all": 98.6115,
-    "index_food": 98.691,
-    "cum_pct": -1.3885,
-    "var_all": -0.1472,
+    "date": "2026-04-24",
+    "index_all": 98.634,
+    "index_food": 98.7277,
+    "cum_pct": -1.366,
+    "var_all": 0.0228,
     "yoy_inflation": null,
-    "mom_inflation": 0.0906,
-    "n_products_today": 38671,
+    "mom_inflation": 0.1018,
+    "n_products_today": 39687,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -1.16
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 1.3
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.61
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -0.77
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.39
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.41
       },
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.17
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": 0.29
       }
     ],
     "product_movers": [
       {
-        "name": "Pasta Limpiadora Multiuso The Pink St...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 74.24
+        "name": "Snack de Maíz CHEETOS Queso Picante B...",
+        "store": "plazavea",
+        "category": "lacteos",
+        "var": 90.48
       },
       {
-        "name": "Avena Maca Cuisine & Co 300g",
-        "store": "wong",
-        "category": "arroz_cereales",
-        "var": 68.57
+        "name": "Paños de Microfibra VIRUTEX Color Ver...",
+        "store": "plazavea",
+        "category": "limpieza",
+        "var": 89.89
       },
       {
-        "name": "Vino Tinto Blend Knock Knock Dulce Bo...",
-        "store": "metro",
+        "name": "Enjuague Bucal LISTERINE Cuidado Tota...",
+        "store": "plazavea",
         "category": "carnes",
-        "var": 66.89
+        "var": 78.44
       },
       {
-        "name": "Vino Tinto Blend Knock Knock Caperuci...",
-        "store": "metro",
-        "category": "carnes",
-        "var": 66.89
+        "name": "Enjuague Bucal LISTERINE Control Calc...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 78.44
       }
     ],
     "stores_coverage": {
-      "metro": 12508,
-      "plazavea": 12696,
-      "wong": 14997
+      "metro": 12539,
+      "plazavea": 13567,
+      "wong": 15016
     },
     "categories_coverage": {
-      "aceites_grasas": 664,
-      "arroz_cereales": 1132,
-      "azucar_dulces": 862,
-      "bebidas": 1054,
-      "carnes": 14621,
-      "cuidado_personal": 2811,
-      "frutas": 1895,
-      "lacteos": 2921,
-      "limpieza": 3108,
-      "pan_harinas": 6731,
+      "aceites_grasas": 645,
+      "arroz_cereales": 1409,
+      "azucar_dulces": 946,
+      "bebidas": 1067,
+      "carnes": 14706,
+      "cuidado_personal": 2809,
+      "frutas": 1928,
+      "lacteos": 2925,
+      "limpieza": 3205,
+      "pan_harinas": 6766,
       "pescados_mariscos": 240,
-      "verduras": 312
+      "verduras": 313
     }
   }
 }
