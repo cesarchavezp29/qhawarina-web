@@ -1,206 +1,178 @@
 {
   "metadata": {
-    "generated_at": "2026-04-24T21:12:45.003073",
-    "coverage_days": 479,
+    "generated_at": "2026-04-25T21:14:05.158608",
+    "coverage_days": 480,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-24",
-    "political_raw": 83.9,
-    "political_raw_level": "BAJO",
-    "political_7d": 104.9,
-    "political_level": "NORMAL",
-    "political_multiplier": 1.05,
-    "economic_raw": 28.4,
+    "date": "2026-04-25",
+    "political_raw": 31.0,
+    "political_raw_level": "MINIMO",
+    "political_7d": 83.2,
+    "political_level": "BAJO",
+    "political_multiplier": 0.83,
+    "economic_raw": 19.0,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 57.3,
-    "economic_level": "BAJO",
-    "economic_multiplier": 0.57,
-    "score": 104.9,
-    "prr_7d": 104.9,
-    "prr_raw": 83.9,
-    "level": "NORMAL",
-    "articles_total": 531,
-    "articles_political_relevant": 212,
-    "articles_economic_relevant": 73,
-    "political_justification": "El país enfrenta tensiones electorales contenidas pero significativas. Las denuncias de irregularidades en actas, investigaciones contra funcionarios de la ONPE y disputas sobre resultados generan desconfianza institucional. Sin embargo, los mecanismos de control funcionan y no hay polarización crítica que amenace la gobernabilidad inmediata.",
-    "economic_justification": "La economía peruana enfrenta un riesgo mínimo, reflejando estabilidad relativa en indicadores macroeconómicos. Sin embargo, persisten vulnerabilidades institucionales, presiones fiscales por demandas de gasto público y amenazas climáticas como El Niño que podrían deteriorar las condiciones en mediano plazo.",
+    "economic_7d": 46.5,
+    "economic_level": "MINIMO",
+    "economic_multiplier": 0.47,
+    "score": 83.2,
+    "prr_7d": 83.2,
+    "prr_raw": 31.0,
+    "level": "BAJO",
+    "articles_total": 469,
+    "articles_political_relevant": 151,
+    "articles_economic_relevant": 52,
+    "political_justification": "El panorama político presenta estabilidad relativa con tensiones contenidas. Los conflictos electorales, cuestionamientos institucionales y fricciones entre poderes del Estado generan fricción, pero sin alcanzar magnitudes de crisis sistémica. La gobernanza mantiene capacidad operativa pese a desafíos de legitimidad.",
+    "economic_justification": "La economía peruana atraviesa un período de estabilidad relativa, aunque enfrenta vulnerabilidades estructurales críticas. La crisis del sector gasífero y el agotamiento proyectado de Camisea representan amenazas de mediano plazo para ingresos fiscales e inversión. El acceso limitado al crédito y la fragilidad de infraestructura complementan un panorama de riesgos contenidos pero latentes.",
     "top_political_drivers": [
       {
-        "title": "Oscar Arriola cuestiona demora de Fiscalía tras alerta 27 casos de actas rotas y robadas",
-        "source": "caretas",
+        "title": "Cinco muertos tras intervención militar en Huancavelica",
+        "source": "correo",
+        "score": 85
+      },
+      {
+        "title": "Reportan “27 eventos de actas rotas o robadas” en comicios",
+        "source": "correo",
         "score": 80
       },
       {
-        "title": "ONPE al 95.118%: Roberto Sánchez supera a Rafael López Aliaga por 20,301 votos",
+        "title": "¿Retorna la sombra de la vacancia? Esto dice un gremio de empresarios sobre el impacto",
+        "source": "gestion",
+        "score": 78
+      },
+      {
+        "title": "López-Aliaga pide anular actas de “serie 900,000”",
         "source": "correo",
         "score": 78
       },
       {
-        "title": "Caso ONPE: estos son los funcionarios investigados por presunta colusión agravada tras problemas logísticos el 12 de abril",
-        "source": "caretas",
-        "score": 78
-      },
-      {
-        "title": "Oscar Arriola: “Tenemos por lo menos 27 eventos de actas rotas, destruidas (...) de personal de ONPE que hurtó actas”",
-        "source": "elcomercio",
+        "title": "Constitucionalista Ernesto Blume emplaza al JNE a hacer respetar el derecho al sufragio",
+        "source": "correo",
         "score": 75
       },
       {
-        "title": "La crisis sin fin",
-        "source": "elcomercio",
+        "title": "Elecciones complementarias no van",
+        "source": "correo",
         "score": 75
       },
       {
-        "title": "Rafael López Aliaga denuncia sabotaje electoral: “Hay una injerencia clarísima\"",
-        "source": "caretas",
+        "title": "Moción de censura a José María Balcázar responde a disputa política por el control del Ejecutivo",
+        "source": "larepublica",
         "score": 75
       },
       {
-        "title": "ONPE: Fiscalía incluye a Juan Phang en investigación por presuntas irregulares en proceso electoral",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "Rospigliosi asegura que actuará conforme a la Constitución y el Reglamento del Congreso",
-        "source": "andina",
-        "score": 72
-      },
-      {
-        "title": "Piero Corvetto pasa a calidad de investigado por presuntas irregularidades en elecciones",
+        "title": "Policía allana vivienda de Corvetto y otros 11 por Caso ONPE",
         "source": "correo",
         "score": 72
       },
       {
-        "title": "SJL: Fiscalía interviene sede de Galaga en Canto Grande por retrasos durante las elecciones generales",
-        "source": "correo",
+        "title": "Allanamientos a funcionarios de ONPE fue por colusión agravada",
+        "source": "larepublica",
         "score": 72
+      },
+      {
+        "title": "ONPE descarta el STAE y vuelve al conteo manual en el balotaje",
+        "source": "correo",
+        "score": 70
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "“Grati” y CTS para los CAS: ahora Congreso quiere “forzar” al MEF a priorizar pagos del 2026",
-        "source": "gestion",
+        "title": "Crisis del gas: Osinergmin ha detectado “varios incumplimientos” de TGP",
+        "source": "elcomercio",
+        "score": 72
+      },
+      {
+        "title": "“El gas de Camisea se agotará en 12 años”: la lección de Noruega que Perú no puede ignorar, advierte experto",
+        "source": "larepublica",
         "score": 55
       },
       {
-        "title": "¿Completará “The Culling Game”? Qué arcos del manga adaptará ”Jujutsu Kaisen” - Temporada 4",
-        "source": "elcomercio",
+        "title": "Gasoducto: Desde el 2005 a la fecha las reguladoras han registrado 13 fallas",
+        "source": "correo",
         "score": 35
       },
       {
-        "title": "ONU prevé evento El Niño desde mediados del 2026 con lluvias intensas y mayor temperatura",
-        "source": "gestion",
-        "score": 30
-      },
-      {
-        "title": "Radiografía de nuestra  crisis institucional",
-        "source": "gestion",
-        "score": 25
-      },
-      {
-        "title": "Tres años de espera: ahorristas de cooperativa en incertidumbre por devolución de sus fondos en Arequipa",
+        "title": "Tacna: Incendio en el histórico Mercado Central destruye 16 puestos y productos",
         "source": "correo",
-        "score": 25
-      },
-      {
-        "title": "Retiro AFP: Ya van cinco proyectos de ley presentados por el Congreso ¿Cómo sería el cronograma para acceder a más de S/20.000?",
-        "source": "larepublica",
-        "score": 25
-      },
-      {
-        "title": "El fenómeno El Niño podría regresar en el mes de mayo, según OMM",
-        "source": "canaln",
-        "score": 25
-      },
-      {
-        "title": "Una mejor pregunta",
-        "source": "gestion",
         "score": 20
       },
       {
-        "title": "A ajustarse los cinturones, la factura de la crisis de Irán",
-        "source": "gestion",
-        "score": 20
-      },
-      {
-        "title": "No hay fecha de reinicio de la obra del estadio de Piura",
-        "source": "correo",
+        "title": "Crédito mype no alcanza a más de 5.4 millones de emprendedores, según Equifax",
+        "source": "peru21",
         "score": 20
       }
     ],
     "eco_sector_titles": [
-      "“Grati” y CTS para los CAS: ahora Congreso quiere “forzar” al MEF a priorizar pagos del 2026",
-      "¿Completará “The Culling Game”? Qué arcos del manga adaptará ”Jujutsu Kaisen” - Temporada 4",
-      "Incertidumbre por elecciones empieza a afectar venta de viviendas, ¿de qué precios?",
-      "ONU prevé evento El Niño desde mediados del 2026 con lluvias intensas y mayor temperatura",
-      "Radiografía de nuestra  crisis institucional",
-      "Tres años de espera: ahorristas de cooperativa en incertidumbre por devolución de sus fondos en Arequipa",
-      "Retiro AFP: Ya van cinco proyectos de ley presentados por el Congreso ¿Cómo sería el cronograma para acceder a más de S/20.000?",
-      "Proyecto de ley propone explotar gas en áreas protegidas del Perú: ¿qué zonas están en riesgo y por qué genera controversia?",
-      "El fenómeno El Niño podría regresar en el mes de mayo, según OMM"
+      "Crisis del gas: Osinergmin ha detectado “varios incumplimientos” de TGP",
+      "“El gas de Camisea se agotará en 12 años”: la lección de Noruega que Perú no puede ignorar, advierte experto",
+      "¿Retorna la sombra de la vacancia? Esto dice un gremio de empresarios sobre el impacto",
+      "Gasoducto: Desde el 2005 a la fecha las reguladoras han registrado 13 fallas",
+      "Junín: Gremios advierten reinicio de paro por la Nueva Carretera Central",
+      "Elecciones 2026 evidencian deterioro institucional, según Confiep"
     ],
-    "justification": "El país enfrenta tensiones electorales contenidas pero significativas. Las denuncias de irregularidades en actas, investigaciones contra funcionarios de la ONPE y disputas sobre resultados generan desconfianza institucional. Sin embargo, los mecanismos de control funcionan y no hay polarización crítica que amenace la gobernabilidad inmediata.",
+    "justification": "El panorama político presenta estabilidad relativa con tensiones contenidas. Los conflictos electorales, cuestionamientos institucionales y fricciones entre poderes del Estado generan fricción, pero sin alcanzar magnitudes de crisis sistémica. La gobernanza mantiene capacidad operativa pese a desafíos de legitimidad.",
     "top_drivers": [
       {
-        "title": "Oscar Arriola cuestiona demora de Fiscalía tras alerta 27 casos de actas rotas y robadas",
-        "source": "caretas",
+        "title": "Cinco muertos tras intervención militar en Huancavelica",
+        "source": "correo",
+        "score": 85
+      },
+      {
+        "title": "Reportan “27 eventos de actas rotas o robadas” en comicios",
+        "source": "correo",
         "score": 80
       },
       {
-        "title": "ONPE al 95.118%: Roberto Sánchez supera a Rafael López Aliaga por 20,301 votos",
+        "title": "¿Retorna la sombra de la vacancia? Esto dice un gremio de empresarios sobre el impacto",
+        "source": "gestion",
+        "score": 78
+      },
+      {
+        "title": "López-Aliaga pide anular actas de “serie 900,000”",
         "source": "correo",
         "score": 78
       },
       {
-        "title": "Caso ONPE: estos son los funcionarios investigados por presunta colusión agravada tras problemas logísticos el 12 de abril",
-        "source": "caretas",
-        "score": 78
-      },
-      {
-        "title": "Oscar Arriola: “Tenemos por lo menos 27 eventos de actas rotas, destruidas (...) de personal de ONPE que hurtó actas”",
-        "source": "elcomercio",
+        "title": "Constitucionalista Ernesto Blume emplaza al JNE a hacer respetar el derecho al sufragio",
+        "source": "correo",
         "score": 75
       },
       {
-        "title": "La crisis sin fin",
-        "source": "elcomercio",
+        "title": "Elecciones complementarias no van",
+        "source": "correo",
         "score": 75
       },
       {
-        "title": "Rafael López Aliaga denuncia sabotaje electoral: “Hay una injerencia clarísima\"",
-        "source": "caretas",
+        "title": "Moción de censura a José María Balcázar responde a disputa política por el control del Ejecutivo",
+        "source": "larepublica",
         "score": 75
       },
       {
-        "title": "ONPE: Fiscalía incluye a Juan Phang en investigación por presuntas irregulares en proceso electoral",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "Rospigliosi asegura que actuará conforme a la Constitución y el Reglamento del Congreso",
-        "source": "andina",
-        "score": 72
-      },
-      {
-        "title": "Piero Corvetto pasa a calidad de investigado por presuntas irregularidades en elecciones",
+        "title": "Policía allana vivienda de Corvetto y otros 11 por Caso ONPE",
         "source": "correo",
         "score": 72
       },
       {
-        "title": "SJL: Fiscalía interviene sede de Galaga en Canto Grande por retrasos durante las elecciones generales",
-        "source": "correo",
+        "title": "Allanamientos a funcionarios de ONPE fue por colusión agravada",
+        "source": "larepublica",
         "score": 72
+      },
+      {
+        "title": "ONPE descarta el STAE y vuelve al conteo manual en el balotaje",
+        "source": "correo",
+        "score": 70
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 115.5,
-    "political_30d_avg": 124.3,
-    "economic_7d_avg": 55.9,
-    "economic_30d_avg": 75.6,
+    "political_7d_avg": 106.7,
+    "political_30d_avg": 121.8,
+    "economic_7d_avg": 55.0,
+    "economic_30d_avg": 71.4,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -210,7 +182,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictos institucionales y tensiones internacionales debilitan gobernanza.",
+      "summary": "Debilidad institucional del sistema electoral peruano.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -218,7 +190,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral y conflictividad institucional erosionan gobernanza.",
+      "summary": "Incertidumbre electoral por resultados de elecciones 2026.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -226,7 +198,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Belmont eliminado del proceso electoral presidencial peruano.",
+      "summary": "No puedo proporcionar un resumen de inestabilidad política basado en estas noticias, ya que los titulares mostrados (conteo de votos en curso, resultado electoral y un partido de fútbol)",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -234,7 +206,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
+      "summary": "Incertidumbre electoral genera inestabilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -242,7 +214,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Elecciones presidenciales generan inestabilidad política y económica.",
+      "summary": "Conflicto electoral y volatilidad económica durante elecciones presidenciales.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -250,7 +222,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral afecta proceso democrático.",
+      "summary": "Falta de material electoral impide votación normal.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -258,7 +230,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Problemas operativos en instalación de mesas electorales.",
+      "summary": "Problemas operativos en instalaciones electorales generan sospechas.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -266,7 +238,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales irresponsables comprometen estabilidad económica peruana.",
+      "summary": "Políticas fiscales comprometiendo la estabilidad económica futura.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -274,7 +246,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera tensión política entre candidatos.",
+      "summary": "Debate presidencial genera tensión política en Perú actualmente.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -282,7 +254,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Candidato prófugo participa en debate presidencial peruano.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -6529,7 +6501,7 @@
       "prr_7d": 103.7,
       "n_articles": 592,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-22",
@@ -6546,27 +6518,40 @@
     },
     {
       "date": "2026-04-23",
-      "political_raw": 114.4,
+      "political_raw": 114.3,
       "political_7d": 113.8,
       "economic_raw": 83.6,
       "economic_7d": 69.7,
       "score": 113.8,
-      "prr": 114.4,
+      "prr": 114.3,
       "prr_7d": 113.8,
-      "n_articles": 668,
+      "n_articles": 669,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-04-24",
-      "political_raw": 83.9,
-      "political_7d": 104.9,
-      "economic_raw": 28.4,
-      "economic_7d": 57.3,
-      "score": 104.9,
-      "prr": 83.9,
-      "prr_7d": 104.9,
-      "n_articles": 531,
+      "political_raw": 86.4,
+      "political_7d": 105.6,
+      "economic_raw": 31.9,
+      "economic_7d": 58.4,
+      "score": 105.6,
+      "prr": 86.4,
+      "prr_7d": 105.6,
+      "n_articles": 551,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-04-25",
+      "political_raw": 31.0,
+      "political_7d": 83.2,
+      "economic_raw": 19.0,
+      "economic_7d": 46.5,
+      "score": 83.2,
+      "prr": 31.0,
+      "prr_7d": 83.2,
+      "n_articles": 469,
       "low_coverage": false,
       "provisional": true
     }
@@ -7996,9 +7981,9 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 127.4,
-      "economic_avg": 63.0,
-      "n_articles": 13356,
+      "political_avg": 125.7,
+      "economic_avg": 62.4,
+      "n_articles": 13846,
       "fx_level": null,
       "fx_yoy": null
     }
