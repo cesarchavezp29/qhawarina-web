@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T01:14:05.202890Z",
+  "generated_at": "2026-05-04T01:25:50.510389Z",
   "months": [
     {
       "month": "2025-01",
@@ -276,6 +276,17 @@
       "ire_7d_peak": 289.8,
       "ire_peak_date": "2026-03-13",
       "ire_event": "Crisis GNV Perú",
+      "ire_top_articles": []
+    },
+    {
+      "month": "2026-04",
+      "irp_7d_peak": 266.5,
+      "irp_peak_date": "2026-04-13",
+      "irp_event": "Elecciones Cuestionadas",
+      "irp_top_articles": [],
+      "ire_7d_peak": 98.9,
+      "ire_peak_date": "2026-04-02",
+      "ire_event": "",
       "ire_top_articles": []
     }
   ]

@@ -1,178 +1,209 @@
 {
   "metadata": {
-    "generated_at": "2026-04-25T21:14:05.158608",
-    "coverage_days": 480,
+    "generated_at": "2026-05-03T21:25:50.464165",
+    "coverage_days": 488,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-04-25",
-    "political_raw": 31.0,
+    "date": "2026-05-03",
+    "political_raw": 38.2,
     "political_raw_level": "MINIMO",
-    "political_7d": 83.2,
-    "political_level": "BAJO",
-    "political_multiplier": 0.83,
-    "economic_raw": 19.0,
+    "political_7d": 25.3,
+    "political_level": "MINIMO",
+    "political_multiplier": 0.25,
+    "economic_raw": 32.4,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 46.5,
+    "economic_7d": 19.8,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.47,
-    "score": 83.2,
-    "prr_7d": 83.2,
-    "prr_raw": 31.0,
-    "level": "BAJO",
-    "articles_total": 469,
-    "articles_political_relevant": 151,
-    "articles_economic_relevant": 52,
-    "political_justification": "El panorama político presenta estabilidad relativa con tensiones contenidas. Los conflictos electorales, cuestionamientos institucionales y fricciones entre poderes del Estado generan fricción, pero sin alcanzar magnitudes de crisis sistémica. La gobernanza mantiene capacidad operativa pese a desafíos de legitimidad.",
-    "economic_justification": "La economía peruana atraviesa un período de estabilidad relativa, aunque enfrenta vulnerabilidades estructurales críticas. La crisis del sector gasífero y el agotamiento proyectado de Camisea representan amenazas de mediano plazo para ingresos fiscales e inversión. El acceso limitado al crédito y la fragilidad de infraestructura complementan un panorama de riesgos contenidos pero latentes.",
+    "economic_multiplier": 0.2,
+    "score": 25.3,
+    "prr_7d": 25.3,
+    "prr_raw": 38.2,
+    "level": "MINIMO",
+    "articles_total": 400,
+    "articles_political_relevant": 132,
+    "articles_economic_relevant": 53,
+    "political_justification": "El país experimenta un nivel mínimo de riesgo político, reflejando estabilidad institucional a pesar de tensiones electorales. Las disputas sobre resultados y auditorías, aunque significativas, se canalizan mediante instituciones establecidas sin indicios de ruptura sistémica o violencia política generalizada.",
+    "economic_justification": "La economía peruana enfrenta un riesgo mínimo, pero con vulnerabilidades críticas concentradas en el sector energético. La crisis de gobernanza en Petroperú y la paralización de producción de combustibles generan presiones inflacionarias que podrían escalar rápidamente si no se resuelven. La dependencia de financiamiento privado amplifica la fragilidad estructural.",
     "top_political_drivers": [
       {
-        "title": "Cinco muertos tras intervención militar en Huancavelica",
-        "source": "correo",
-        "score": 85
+        "title": "Roberto Burneo: “Corvetto nos mintió no solo a nosotros, sino a todo el mundo, al decir que todo estaba garantizado”",
+        "source": "elcomercio",
+        "score": 82
       },
       {
-        "title": "Reportan “27 eventos de actas rotas o robadas” en comicios",
-        "source": "correo",
+        "title": "Resultados ONPE EN VIVO al 97.691%: Roberto Sánchez saca ventaja por 26 mil 907 votos sobre López Aliaga",
+        "source": "larepublica",
         "score": 80
       },
       {
-        "title": "¿Retorna la sombra de la vacancia? Esto dice un gremio de empresarios sobre el impacto",
-        "source": "gestion",
-        "score": 78
-      },
-      {
-        "title": "López-Aliaga pide anular actas de “serie 900,000”",
-        "source": "correo",
-        "score": 78
-      },
-      {
-        "title": "Constitucionalista Ernesto Blume emplaza al JNE a hacer respetar el derecho al sufragio",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "Elecciones complementarias no van",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "Moción de censura a José María Balcázar responde a disputa política por el control del Ejecutivo",
+        "title": "Elecciones 2026: más de 2 mil actas presidenciales pendientes y conteo en regiones para senadores y diputados avanza lento",
         "source": "larepublica",
         "score": 75
       },
       {
-        "title": "Policía allana vivienda de Corvetto y otros 11 por Caso ONPE",
-        "source": "correo",
+        "title": "López Aliaga exige a JNE no proclamar resultados de elecciones",
+        "source": "canaln",
         "score": 72
       },
       {
-        "title": "Allanamientos a funcionarios de ONPE fue por colusión agravada",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "ONPE descarta el STAE y vuelve al conteo manual en el balotaje",
+        "title": "El JNE ordena una auditoría al conteo informático de ONPE",
         "source": "correo",
         "score": 70
+      },
+      {
+        "title": "JNE dispone auditoría informática integral al conteo de elecciones generales 2026",
+        "source": "elbuho",
+        "score": 70
+      },
+      {
+        "title": "Provías Nacional no descarta acciones legales tras detención del hermano de congresista Elvis Vergara en camioneta del MTC",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "José Domingo Pérez: \"Pedro Castillo fue sentenciado por leer una proclama de lo que creía que era correcto para el pueblo\"",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Colegio de Ingenieros desmiente comunicado de Rafael López Aliaga sobre conteo de votos",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Persecución política: aprueban ley de contrabando para apartar a Delia Espinoza del Colegio de Abogados de Lima",
+        "source": "elbuho",
+        "score": 65
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Crisis del gas: Osinergmin ha detectado “varios incumplimientos” de TGP",
-        "source": "elcomercio",
-        "score": 72
+        "title": "Petroperú: Edmundo Lizarzaburu asume como presidente, en medio del riesgo de paralización de producción de combustibles",
+        "source": "rpp",
+        "score": 78
       },
       {
-        "title": "“El gas de Camisea se agotará en 12 años”: la lección de Noruega que Perú no puede ignorar, advierte experto",
+        "title": "Petroperú con nuevo presidente, a la espera de financiamiento privado de US$2.000 millones",
         "source": "larepublica",
+        "score": 70
+      },
+      {
+        "title": "Petroperú: Edmundo Lizarzaburu es el nuevo presidente del Directorio tras remoción de Roger Arévalo",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Crisis en Petroperú: Edmundo Lizarzaburu asume tras otra salida en el directorio",
+        "source": "caretas",
+        "score": 65
+      },
+      {
+        "title": "Transportistas de Piura exigen medidas ante el alza de combustible",
+        "source": "correo",
+        "score": 60
+      },
+      {
+        "title": "Enzo Difilippi, ex viceministro de Economía: “Es un crimen que Petroperú siga operando” (ENTREVISTA)",
+        "source": "correo",
         "score": 55
       },
       {
-        "title": "Gasoducto: Desde el 2005 a la fecha las reguladoras han registrado 13 fallas",
-        "source": "correo",
+        "title": "Candidatos evitan discutir sobre costos de la contratación: ¿qué proponen para combatir la informalidad?",
+        "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Tacna: Incendio en el histórico Mercado Central destruye 16 puestos y productos",
+        "title": "Irán estudia la respuesta de EE.UU. a su propuesta de 14 puntos para poner fin a la guerra",
+        "source": "elcomercio",
+        "score": 25
+      },
+      {
+        "title": "Diresa Junín advierte de metales pesados en 16 puntos de parques de Huancayo",
         "source": "correo",
         "score": 20
       },
       {
-        "title": "Crédito mype no alcanza a más de 5.4 millones de emprendedores, según Equifax",
-        "source": "peru21",
+        "title": "Trujillo: Municipalidades lentas para invertir en prevención",
+        "source": "correo",
         "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Crisis del gas: Osinergmin ha detectado “varios incumplimientos” de TGP",
-      "“El gas de Camisea se agotará en 12 años”: la lección de Noruega que Perú no puede ignorar, advierte experto",
-      "¿Retorna la sombra de la vacancia? Esto dice un gremio de empresarios sobre el impacto",
-      "Gasoducto: Desde el 2005 a la fecha las reguladoras han registrado 13 fallas",
-      "Junín: Gremios advierten reinicio de paro por la Nueva Carretera Central",
-      "Elecciones 2026 evidencian deterioro institucional, según Confiep"
+      "Petroperú: Edmundo Lizarzaburu asume como presidente, en medio del riesgo de paralización de producción de combustibles",
+      "Petroperú con nuevo presidente, a la espera de financiamiento privado de US$2.000 millones",
+      "Petroperú: Edmundo Lizarzaburu es el nuevo presidente del Directorio tras remoción de Roger Arévalo",
+      "Crisis en Petroperú: Edmundo Lizarzaburu asume tras otra salida en el directorio",
+      "Transportistas de Piura exigen medidas ante el alza de combustible",
+      "Enzo Difilippi, ex viceministro de Economía: “Es un crimen que Petroperú siga operando” (ENTREVISTA)",
+      "Comisión de Educación recibirá a la titular del Minedu por crisis de Pronabec",
+      "Candidatos evitan discutir sobre costos de la contratación: ¿qué proponen para combatir la informalidad?",
+      "Irán estudia la respuesta de EE.UU. a su propuesta de 14 puntos para poner fin a la guerra",
+      "Pataz: incautan armamento de guerra y detienen a 68 personas en operación contra minería ilegal",
+      "La Libertad: Detienen a 68 personas e incautan arsenal de guerra en Pataz",
+      "Junta Nacional del Café: Cooperativas agrarias exigen derogar norma que anula su derecho a representar a miles de socios"
     ],
-    "justification": "El panorama político presenta estabilidad relativa con tensiones contenidas. Los conflictos electorales, cuestionamientos institucionales y fricciones entre poderes del Estado generan fricción, pero sin alcanzar magnitudes de crisis sistémica. La gobernanza mantiene capacidad operativa pese a desafíos de legitimidad.",
+    "justification": "El país experimenta un nivel mínimo de riesgo político, reflejando estabilidad institucional a pesar de tensiones electorales. Las disputas sobre resultados y auditorías, aunque significativas, se canalizan mediante instituciones establecidas sin indicios de ruptura sistémica o violencia política generalizada.",
     "top_drivers": [
       {
-        "title": "Cinco muertos tras intervención militar en Huancavelica",
-        "source": "correo",
-        "score": 85
+        "title": "Roberto Burneo: “Corvetto nos mintió no solo a nosotros, sino a todo el mundo, al decir que todo estaba garantizado”",
+        "source": "elcomercio",
+        "score": 82
       },
       {
-        "title": "Reportan “27 eventos de actas rotas o robadas” en comicios",
-        "source": "correo",
+        "title": "Resultados ONPE EN VIVO al 97.691%: Roberto Sánchez saca ventaja por 26 mil 907 votos sobre López Aliaga",
+        "source": "larepublica",
         "score": 80
       },
       {
-        "title": "¿Retorna la sombra de la vacancia? Esto dice un gremio de empresarios sobre el impacto",
-        "source": "gestion",
-        "score": 78
-      },
-      {
-        "title": "López-Aliaga pide anular actas de “serie 900,000”",
-        "source": "correo",
-        "score": 78
-      },
-      {
-        "title": "Constitucionalista Ernesto Blume emplaza al JNE a hacer respetar el derecho al sufragio",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "Elecciones complementarias no van",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "Moción de censura a José María Balcázar responde a disputa política por el control del Ejecutivo",
+        "title": "Elecciones 2026: más de 2 mil actas presidenciales pendientes y conteo en regiones para senadores y diputados avanza lento",
         "source": "larepublica",
         "score": 75
       },
       {
-        "title": "Policía allana vivienda de Corvetto y otros 11 por Caso ONPE",
-        "source": "correo",
+        "title": "López Aliaga exige a JNE no proclamar resultados de elecciones",
+        "source": "canaln",
         "score": 72
       },
       {
-        "title": "Allanamientos a funcionarios de ONPE fue por colusión agravada",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "ONPE descarta el STAE y vuelve al conteo manual en el balotaje",
+        "title": "El JNE ordena una auditoría al conteo informático de ONPE",
         "source": "correo",
         "score": 70
+      },
+      {
+        "title": "JNE dispone auditoría informática integral al conteo de elecciones generales 2026",
+        "source": "elbuho",
+        "score": 70
+      },
+      {
+        "title": "Provías Nacional no descarta acciones legales tras detención del hermano de congresista Elvis Vergara en camioneta del MTC",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "José Domingo Pérez: \"Pedro Castillo fue sentenciado por leer una proclama de lo que creía que era correcto para el pueblo\"",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Colegio de Ingenieros desmiente comunicado de Rafael López Aliaga sobre conteo de votos",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Persecución política: aprueban ley de contrabando para apartar a Delia Espinoza del Colegio de Abogados de Lima",
+        "source": "elbuho",
+        "score": 65
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 106.7,
-    "political_30d_avg": 121.8,
-    "economic_7d_avg": 55.0,
-    "economic_30d_avg": 71.4,
+    "political_7d_avg": 23.9,
+    "political_30d_avg": 102.2,
+    "economic_7d_avg": 14.3,
+    "economic_30d_avg": 47.3,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -182,7 +213,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Debilidad institucional del sistema electoral peruano.",
+      "summary": "Tensión diplomática y debilidad institucional electoral generan inestabilidad.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -190,7 +221,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral por resultados de elecciones 2026.",
+      "summary": "Incertidumbre electoral y debilidad institucional en fuerzas armadas.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -198,7 +229,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "No puedo proporcionar un resumen de inestabilidad política basado en estas noticias, ya que los titulares mostrados (conteo de votos en curso, resultado electoral y un partido de fútbol)",
+      "summary": "Incertidumbre por resultado electoral aún en proceso de conteo.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -206,7 +237,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral genera inestabilidad económica y política.",
+      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -214,7 +245,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Conflicto electoral y volatilidad económica durante elecciones presidenciales.",
+      "summary": "Tensión electoral y volatilidad económica en Perú.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -222,7 +253,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral impide votación normal.",
+      "summary": "Falta de material electoral dificulta proceso votación.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -230,7 +261,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Problemas operativos en instalaciones electorales generan sospechas.",
+      "summary": "Problemas operativos y desorganización en el proceso electoral.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -238,7 +269,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales comprometiendo la estabilidad económica futura.",
+      "summary": "Políticas fiscales irresponsables generan crisis económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -246,7 +277,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera tensión política en Perú actualmente.",
+      "summary": "Debate presidencial genera incertidumbre sobre el futuro político.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -254,7 +285,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial peruano.",
+      "summary": "Candidato prófugo participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -6514,7 +6545,7 @@
       "prr_7d": 113.6,
       "n_articles": 586,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-23",
@@ -6527,7 +6558,7 @@
       "prr_7d": 113.8,
       "n_articles": 669,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-24",
@@ -6540,7 +6571,7 @@
       "prr_7d": 105.6,
       "n_articles": 551,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-04-25",
@@ -6552,6 +6583,110 @@
       "prr": 31.0,
       "prr_7d": 83.2,
       "n_articles": 469,
+      "low_coverage": false,
+      "provisional": false
+    },
+    {
+      "date": "2026-04-26",
+      "political_raw": 3.3,
+      "political_7d": 59.2,
+      "economic_raw": 1.6,
+      "economic_7d": 33.1,
+      "score": 59.2,
+      "prr": 3.3,
+      "prr_7d": 59.2,
+      "n_articles": 44,
+      "low_coverage": false,
+      "provisional": false
+    },
+    {
+      "date": "2026-04-27",
+      "political_raw": 4.7,
+      "political_7d": 41.5,
+      "economic_raw": 1.7,
+      "economic_7d": 23.1,
+      "score": 41.5,
+      "prr": 4.7,
+      "prr_7d": 41.5,
+      "n_articles": 1,
+      "low_coverage": true,
+      "provisional": false
+    },
+    {
+      "date": "2026-04-28",
+      "political_raw": 6.1,
+      "political_7d": 29.0,
+      "economic_raw": 1.8,
+      "economic_7d": 16.2,
+      "score": 29.0,
+      "prr": 6.1,
+      "prr_7d": 29.0,
+      "n_articles": 0,
+      "low_coverage": true,
+      "provisional": false
+    },
+    {
+      "date": "2026-04-29",
+      "political_raw": 7.5,
+      "political_7d": 20.3,
+      "economic_raw": 1.9,
+      "economic_7d": 11.3,
+      "score": 20.3,
+      "prr": 7.5,
+      "prr_7d": 20.3,
+      "n_articles": 0,
+      "low_coverage": true,
+      "provisional": false
+    },
+    {
+      "date": "2026-04-30",
+      "political_raw": 8.8,
+      "political_7d": 16.9,
+      "economic_raw": 2.1,
+      "economic_7d": 8.6,
+      "score": 16.9,
+      "prr": 8.8,
+      "prr_7d": 16.9,
+      "n_articles": 41,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-01",
+      "political_raw": 9.6,
+      "political_7d": 14.7,
+      "economic_raw": 2.3,
+      "economic_7d": 6.7,
+      "score": 14.7,
+      "prr": 9.6,
+      "prr_7d": 14.7,
+      "n_articles": 26,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-02",
+      "political_raw": 31.6,
+      "political_7d": 19.8,
+      "economic_raw": 32.5,
+      "economic_7d": 14.4,
+      "score": 19.8,
+      "prr": 31.6,
+      "prr_7d": 19.8,
+      "n_articles": 187,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-03",
+      "political_raw": 38.2,
+      "political_7d": 25.3,
+      "economic_raw": 32.4,
+      "economic_7d": 19.8,
+      "score": 25.3,
+      "prr": 38.2,
+      "prr_7d": 25.3,
+      "n_articles": 400,
       "low_coverage": false,
       "provisional": true
     }
@@ -7856,6 +7991,22 @@
     {
       "date": "2026-04-23",
       "fx": 3.4619
+    },
+    {
+      "date": "2026-04-24",
+      "fx": 3.4775
+    },
+    {
+      "date": "2026-04-27",
+      "fx": 3.5077
+    },
+    {
+      "date": "2026-04-28",
+      "fx": 3.5196
+    },
+    {
+      "date": "2026-04-29",
+      "fx": 3.53
     }
   ],
   "monthly_series": [
@@ -7981,9 +8132,17 @@
     },
     {
       "month": "2026-04",
-      "political_avg": 125.7,
-      "economic_avg": 62.4,
-      "n_articles": 13846,
+      "political_avg": 110.3,
+      "economic_avg": 55.0,
+      "n_articles": 13932,
+      "fx_level": null,
+      "fx_yoy": null
+    },
+    {
+      "month": "2026-05",
+      "political_avg": 19.9,
+      "economic_avg": 13.6,
+      "n_articles": 613,
       "fx_level": null,
       "fx_yoy": null
     }
