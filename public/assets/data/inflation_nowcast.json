@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-03T21:25:04.443401",
+    "generated_at": "2026-05-04T21:07:33.045199",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -28,7 +28,7 @@
     "ml_gbm": 2.738,
     "ar1_nowcast": 0.92,
     "phillips_nowcast": 1.445,
-    "fuel_shock_zscore": 2.014
+    "fuel_shock_zscore": 1.078
   },
   "forecasts": [
     {

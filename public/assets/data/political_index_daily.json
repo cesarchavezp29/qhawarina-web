@@ -1,209 +1,228 @@
 {
   "metadata": {
-    "generated_at": "2026-05-03T21:25:50.464165",
-    "coverage_days": 488,
+    "generated_at": "2026-05-04T21:08:17.141524",
+    "coverage_days": 489,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-03",
-    "political_raw": 38.2,
-    "political_raw_level": "MINIMO",
-    "political_7d": 25.3,
+    "date": "2026-05-04",
+    "political_raw": 82.9,
+    "political_raw_level": "BAJO",
+    "political_7d": 42.6,
     "political_level": "MINIMO",
-    "political_multiplier": 0.25,
-    "economic_raw": 32.4,
-    "economic_raw_level": "MINIMO",
-    "economic_7d": 19.8,
+    "political_multiplier": 0.43,
+    "economic_raw": 76.1,
+    "economic_raw_level": "BAJO",
+    "economic_7d": 36.7,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.2,
-    "score": 25.3,
-    "prr_7d": 25.3,
-    "prr_raw": 38.2,
+    "economic_multiplier": 0.37,
+    "score": 42.6,
+    "prr_7d": 42.6,
+    "prr_raw": 82.9,
     "level": "MINIMO",
-    "articles_total": 400,
-    "articles_political_relevant": 132,
-    "articles_economic_relevant": 53,
-    "political_justification": "El país experimenta un nivel mínimo de riesgo político, reflejando estabilidad institucional a pesar de tensiones electorales. Las disputas sobre resultados y auditorías, aunque significativas, se canalizan mediante instituciones establecidas sin indicios de ruptura sistémica o violencia política generalizada.",
-    "economic_justification": "La economía peruana enfrenta un riesgo mínimo, pero con vulnerabilidades críticas concentradas en el sector energético. La crisis de gobernanza en Petroperú y la paralización de producción de combustibles generan presiones inflacionarias que podrían escalar rápidamente si no se resuelven. La dependencia de financiamiento privado amplifica la fragilidad estructural.",
+    "articles_total": 643,
+    "articles_political_relevant": 252,
+    "articles_economic_relevant": 122,
+    "political_justification": "El país enfrenta tensiones institucionales moderadas concentradas en la integridad electoral y civiles-militares. Aunque persisten cuestionamientos sobre organismos electorales y denuncias de violencia estatal, la fragmentación política y ausencia de movilización masiva contienen la escalada. El riesgo permanece controlado pero requiere vigilancia en gobernanza institucional.",
+    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. Los desafíos fiscales del Estado, la viabilidad comprometida de Petroperú y la incertidumbre electoral generan cautela en el sector financiero. Aunque el riesgo actual permanece controlado, la acumulación de vulnerabilidades requiere atención inmediata para evitar deterioro.",
     "top_political_drivers": [
       {
-        "title": "Roberto Burneo: “Corvetto nos mintió no solo a nosotros, sino a todo el mundo, al decir que todo estaba garantizado”",
+        "title": "Elecciones 2026: nuevos chats comprometen a funcionarios de la ONPE por favorecimiento a Gálaga",
         "source": "elcomercio",
-        "score": 82
+        "score": 75
       },
       {
-        "title": "Resultados ONPE EN VIVO al 97.691%: Roberto Sánchez saca ventaja por 26 mil 907 votos sobre López Aliaga",
-        "source": "larepublica",
-        "score": 80
+        "title": "Presidente Balcázar admite que habló con el prófugo Vladimir Cerrón",
+        "source": "correo",
+        "score": 75
       },
       {
-        "title": "Elecciones 2026: más de 2 mil actas presidenciales pendientes y conteo en regiones para senadores y diputados avanza lento",
+        "title": "Congreso busca remodelar su complejo deportivo: cambiarán el césped de fútbol, arcos, tribunas y reflectores",
         "source": "larepublica",
         "score": 75
       },
       {
-        "title": "López Aliaga exige a JNE no proclamar resultados de elecciones",
-        "source": "canaln",
+        "title": "Rafael López Aliaga oficializó su pedido al JNE de no proclamar resultados",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "\"Hay que meterle bala\" El escalofriante testimonio del sobreviviente de la masacre en Colcabamba que revela cómo fue el ataque militar contra civiles",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "JNE detectó riesgos en ciberseguridad del sistema STAE de la ONPE un mes antes de las elecciones",
+        "source": "elcomercio",
         "score": 72
       },
       {
-        "title": "El JNE ordena una auditoría al conteo informático de ONPE",
+        "title": "Elecciones 2026: nuevos chats revelan presunto favoritismo de ONPE hacia la empresa Galaga",
         "source": "correo",
-        "score": 70
+        "score": 72
       },
       {
-        "title": "JNE dispone auditoría informática integral al conteo de elecciones generales 2026",
+        "title": "Habla el sobreviviente de la masacre de Colcabamba: Denuncia que militares sembraron pruebas (VIDEO)",
         "source": "elbuho",
-        "score": 70
+        "score": 72
       },
       {
-        "title": "Provías Nacional no descarta acciones legales tras detención del hermano de congresista Elvis Vergara en camioneta del MTC",
+        "title": "Masacre de Colcabamba: Sobreviviente escuchó a militar cuando ordenó “meterles bala” a jóvenes",
+        "source": "elbuho",
+        "score": 72
+      },
+      {
+        "title": "JNJ recibió más de 2.600 denuncias sobre hechos ocurridos durante la jornada electoral del 12 de abril",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "José Domingo Pérez: \"Pedro Castillo fue sentenciado por leer una proclama de lo que creía que era correcto para el pueblo\"",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Colegio de Ingenieros desmiente comunicado de Rafael López Aliaga sobre conteo de votos",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Persecución política: aprueban ley de contrabando para apartar a Delia Espinoza del Colegio de Abogados de Lima",
-        "source": "elbuho",
-        "score": 65
+        "score": 70
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Petroperú: Edmundo Lizarzaburu asume como presidente, en medio del riesgo de paralización de producción de combustibles",
-        "source": "rpp",
-        "score": 78
+        "title": "Petroperú: el rescate que igual terminaríamos pagando",
+        "source": "gestion",
+        "score": 82
       },
       {
-        "title": "Petroperú con nuevo presidente, a la espera de financiamiento privado de US$2.000 millones",
+        "title": "Petroperú: Fenpetrol exige aval estatal pendiente para viabilizar financiamiento de US$2.000 millones y continuar con operaciones",
         "source": "larepublica",
         "score": 70
       },
       {
-        "title": "Petroperú: Edmundo Lizarzaburu es el nuevo presidente del Directorio tras remoción de Roger Arévalo",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Crisis en Petroperú: Edmundo Lizarzaburu asume tras otra salida en el directorio",
-        "source": "caretas",
-        "score": 65
-      },
-      {
-        "title": "Transportistas de Piura exigen medidas ante el alza de combustible",
-        "source": "correo",
+        "title": "Presidente del Consejo Fiscal advierte que el MEF reconoce inviabilidad para el presupuesto del 2027",
+        "source": "elcomercio",
         "score": 60
       },
       {
-        "title": "Enzo Difilippi, ex viceministro de Economía: “Es un crimen que Petroperú siga operando” (ENTREVISTA)",
-        "source": "correo",
-        "score": 55
+        "title": "Consejo Fiscal advierte de falta de dinero en el Estado para promesas de candidatos presidenciales",
+        "source": "gestion",
+        "score": 60
       },
       {
-        "title": "Candidatos evitan discutir sobre costos de la contratación: ¿qué proponen para combatir la informalidad?",
+        "title": "Bancos ponen en revisión a empresas por inflación y riesgo electoral, ¿qué exigirán?",
+        "source": "gestion",
+        "score": 45
+      },
+      {
+        "title": "Petroperú: expresidente promovió la contratación de allegados con sueldos elevados",
+        "source": "gestion",
+        "score": 45
+      },
+      {
+        "title": "Pausa temporal de USCIS para Green Cards, permisos de trabajo, DACA y TPS: qué significa para inmigrantes y trámites afectados",
         "source": "elcomercio",
         "score": 35
       },
       {
-        "title": "Irán estudia la respuesta de EE.UU. a su propuesta de 14 puntos para poner fin a la guerra",
-        "source": "elcomercio",
-        "score": 25
+        "title": "Crisis en Beca 18 y Beca Bicentenario: lo que perdería Perú por la falta de presupuesto",
+        "source": "gestion",
+        "score": 35
       },
       {
-        "title": "Diresa Junín advierte de metales pesados en 16 puntos de parques de Huancayo",
-        "source": "correo",
-        "score": 20
+        "title": "Cuando se juega con la moneda, el costo llega",
+        "source": "gestion",
+        "score": 35
       },
       {
-        "title": "Trujillo: Municipalidades lentas para invertir en prevención",
-        "source": "correo",
-        "score": 20
+        "title": "Agua en Ica: sobreexplotación pone en riesgo acuíferos",
+        "source": "caretas",
+        "score": 35
       }
     ],
     "eco_sector_titles": [
-      "Petroperú: Edmundo Lizarzaburu asume como presidente, en medio del riesgo de paralización de producción de combustibles",
-      "Petroperú con nuevo presidente, a la espera de financiamiento privado de US$2.000 millones",
-      "Petroperú: Edmundo Lizarzaburu es el nuevo presidente del Directorio tras remoción de Roger Arévalo",
-      "Crisis en Petroperú: Edmundo Lizarzaburu asume tras otra salida en el directorio",
-      "Transportistas de Piura exigen medidas ante el alza de combustible",
-      "Enzo Difilippi, ex viceministro de Economía: “Es un crimen que Petroperú siga operando” (ENTREVISTA)",
-      "Comisión de Educación recibirá a la titular del Minedu por crisis de Pronabec",
-      "Candidatos evitan discutir sobre costos de la contratación: ¿qué proponen para combatir la informalidad?",
-      "Irán estudia la respuesta de EE.UU. a su propuesta de 14 puntos para poner fin a la guerra",
-      "Pataz: incautan armamento de guerra y detienen a 68 personas en operación contra minería ilegal",
-      "La Libertad: Detienen a 68 personas e incautan arsenal de guerra en Pataz",
-      "Junta Nacional del Café: Cooperativas agrarias exigen derogar norma que anula su derecho a representar a miles de socios"
+      "Petroperú: el rescate que igual terminaríamos pagando",
+      "Petroperú: Fenpetrol exige aval estatal pendiente para viabilizar financiamiento de US$2.000 millones y continuar con operaciones",
+      "Presidente del Consejo Fiscal advierte que el MEF reconoce inviabilidad para el presupuesto del 2027",
+      "Consejo Fiscal advierte de falta de dinero en el Estado para promesas de candidatos presidenciales",
+      "Bancos ponen en revisión a empresas por inflación y riesgo electoral, ¿qué exigirán?",
+      "Petroperú: expresidente promovió la contratación de allegados con sueldos elevados",
+      "Pausa temporal de USCIS para Green Cards, permisos de trabajo, DACA y TPS: qué significa para inmigrantes y trámites afectados",
+      "Minedu sobre Becas Bicentenario: Son las más caras y no están acorde al mercado laboral",
+      "Crisis en Beca 18 y Beca Bicentenario: lo que perdería Perú por la falta de presupuesto",
+      "Cuando se juega con la moneda, el costo llega",
+      "Presidente Balcázar denuncia compra secreta de aviones F-16 sin control del MEF ni licitación",
+      "Beca 18 en crisis: ministra de Educación advierte que el sistema enfrenta un déficit que obliga a replantear su estructura",
+      "Agua en Ica: sobreexplotación pone en riesgo acuíferos",
+      "Guido Bellido propone nuevo retiro AFP de hasta S/ 22,000",
+      "Exviceministro de Economía cuestiona contrataciones en Petroperú",
+      "Congreso: proponen autorizar el retiro extraordinario de S/ 22,000 de la AFP",
+      "Una cosa es con guitarra y otra con cajón",
+      "Contraloría advierte sobrecostos y riesgos legales en obra del Túnel 9 de Autodema",
+      "Congreso: presentan proyecto de ley para retirar hasta 22 mil soles de la AFP",
+      "Dólar hoy: Sol se deprecia y tipo de cambio cotiza al alza",
+      "Pronabec: No hubo convocatoria de beca Bicentenario por falta de presupuesto",
+      "Balcázar denuncia ‘compra secreta’ de aviones y que no respondió a embajador para no rebajarse",
+      "Pronabec: Contamos con el presupuesto los becarios, pero no para nuevos",
+      "China desafía sanciones de EE.UU. y sacude a bancos",
+      "Callao: dueño de panadería Kenko’s anuncia cierre indefinido por extorsión",
+      "Siete piscigranjas afectadas en Junín registran pérdidas por más de S/ 7.1 millones",
+      "Día del Trabajador: ONP alerta de que más de 157.000 empresas mantienen deudas previsionales y pide regularizar aportes al SNP",
+      "Aviones F-16: Comisión de Defensa evalúa compra este lunes 4",
+      "Congreso: PCM y dos ministros citados por compra de cazas F-16",
+      "Minedu confirma que no habrá nuevas becas Bicentenario en 2026",
+      "Arequipa: Eralma Constructora será investigada por millonarias obras inconclusas en la región"
     ],
-    "justification": "El país experimenta un nivel mínimo de riesgo político, reflejando estabilidad institucional a pesar de tensiones electorales. Las disputas sobre resultados y auditorías, aunque significativas, se canalizan mediante instituciones establecidas sin indicios de ruptura sistémica o violencia política generalizada.",
+    "justification": "El país enfrenta tensiones institucionales moderadas concentradas en la integridad electoral y civiles-militares. Aunque persisten cuestionamientos sobre organismos electorales y denuncias de violencia estatal, la fragmentación política y ausencia de movilización masiva contienen la escalada. El riesgo permanece controlado pero requiere vigilancia en gobernanza institucional.",
     "top_drivers": [
       {
-        "title": "Roberto Burneo: “Corvetto nos mintió no solo a nosotros, sino a todo el mundo, al decir que todo estaba garantizado”",
+        "title": "Elecciones 2026: nuevos chats comprometen a funcionarios de la ONPE por favorecimiento a Gálaga",
         "source": "elcomercio",
-        "score": 82
+        "score": 75
       },
       {
-        "title": "Resultados ONPE EN VIVO al 97.691%: Roberto Sánchez saca ventaja por 26 mil 907 votos sobre López Aliaga",
-        "source": "larepublica",
-        "score": 80
+        "title": "Presidente Balcázar admite que habló con el prófugo Vladimir Cerrón",
+        "source": "correo",
+        "score": 75
       },
       {
-        "title": "Elecciones 2026: más de 2 mil actas presidenciales pendientes y conteo en regiones para senadores y diputados avanza lento",
+        "title": "Congreso busca remodelar su complejo deportivo: cambiarán el césped de fútbol, arcos, tribunas y reflectores",
         "source": "larepublica",
         "score": 75
       },
       {
-        "title": "López Aliaga exige a JNE no proclamar resultados de elecciones",
-        "source": "canaln",
+        "title": "Rafael López Aliaga oficializó su pedido al JNE de no proclamar resultados",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "\"Hay que meterle bala\" El escalofriante testimonio del sobreviviente de la masacre en Colcabamba que revela cómo fue el ataque militar contra civiles",
+        "source": "caretas",
+        "score": 75
+      },
+      {
+        "title": "JNE detectó riesgos en ciberseguridad del sistema STAE de la ONPE un mes antes de las elecciones",
+        "source": "elcomercio",
         "score": 72
       },
       {
-        "title": "El JNE ordena una auditoría al conteo informático de ONPE",
+        "title": "Elecciones 2026: nuevos chats revelan presunto favoritismo de ONPE hacia la empresa Galaga",
         "source": "correo",
-        "score": 70
+        "score": 72
       },
       {
-        "title": "JNE dispone auditoría informática integral al conteo de elecciones generales 2026",
+        "title": "Habla el sobreviviente de la masacre de Colcabamba: Denuncia que militares sembraron pruebas (VIDEO)",
         "source": "elbuho",
-        "score": 70
+        "score": 72
       },
       {
-        "title": "Provías Nacional no descarta acciones legales tras detención del hermano de congresista Elvis Vergara en camioneta del MTC",
+        "title": "Masacre de Colcabamba: Sobreviviente escuchó a militar cuando ordenó “meterles bala” a jóvenes",
+        "source": "elbuho",
+        "score": 72
+      },
+      {
+        "title": "JNJ recibió más de 2.600 denuncias sobre hechos ocurridos durante la jornada electoral del 12 de abril",
         "source": "elcomercio",
-        "score": 65
-      },
-      {
-        "title": "José Domingo Pérez: \"Pedro Castillo fue sentenciado por leer una proclama de lo que creía que era correcto para el pueblo\"",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Colegio de Ingenieros desmiente comunicado de Rafael López Aliaga sobre conteo de votos",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Persecución política: aprueban ley de contrabando para apartar a Delia Espinoza del Colegio de Abogados de Lima",
-        "source": "elbuho",
-        "score": 65
+        "score": 70
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 23.9,
-    "political_30d_avg": 102.2,
-    "economic_7d_avg": 14.3,
-    "economic_30d_avg": 47.3,
+    "political_7d_avg": 24.1,
+    "political_30d_avg": 101.3,
+    "economic_7d_avg": 16.2,
+    "economic_30d_avg": 46.6,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -213,7 +232,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Tensión diplomática y debilidad institucional electoral generan inestabilidad.",
+      "summary": "Conflictos internacionales y debilidad institucional electoral generan tensión.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -221,7 +240,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral y debilidad institucional en fuerzas armadas.",
+      "summary": "Incertidumbre electoral y crisis institucional militar simultánea.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -229,7 +248,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Incertidumbre por resultado electoral aún en proceso de conteo.",
+      "summary": "Incertidumbre sobre resultado electoral con conteo aún incompleto.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -245,7 +264,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Tensión electoral y volatilidad económica en Perú.",
+      "summary": "Tensión electoral y volatilidad económica durante comicios presidenciales.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -253,7 +272,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral dificulta proceso votación.",
+      "summary": "Graves problemas en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -261,7 +280,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Problemas operativos y desorganización en el proceso electoral.",
+      "summary": "Retrasos y errores en la organización electoral generan desconfianza.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -269,7 +288,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales irresponsables generan crisis económica.",
+      "summary": "Políticas fiscales insostenibles generan crisis económica futura.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -277,7 +296,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera incertidumbre sobre el futuro político.",
+      "summary": "Celebración de debate presidencial como proceso electoral en curso.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -6640,39 +6659,39 @@
     },
     {
       "date": "2026-04-30",
-      "political_raw": 8.8,
+      "political_raw": 8.9,
       "political_7d": 16.9,
-      "economic_raw": 2.1,
-      "economic_7d": 8.6,
+      "economic_raw": 2.0,
+      "economic_7d": 8.5,
       "score": 16.9,
-      "prr": 8.8,
+      "prr": 8.9,
       "prr_7d": 16.9,
-      "n_articles": 41,
+      "n_articles": 42,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-05-01",
-      "political_raw": 9.6,
-      "political_7d": 14.7,
-      "economic_raw": 2.3,
+      "political_raw": 10.2,
+      "political_7d": 14.9,
+      "economic_raw": 2.2,
       "economic_7d": 6.7,
-      "score": 14.7,
-      "prr": 9.6,
-      "prr_7d": 14.7,
-      "n_articles": 26,
+      "score": 14.9,
+      "prr": 10.2,
+      "prr_7d": 14.9,
+      "n_articles": 27,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-05-02",
       "political_raw": 31.6,
-      "political_7d": 19.8,
+      "political_7d": 19.9,
       "economic_raw": 32.5,
       "economic_7d": 14.4,
-      "score": 19.8,
+      "score": 19.9,
       "prr": 31.6,
-      "prr_7d": 19.8,
+      "prr_7d": 19.9,
       "n_articles": 187,
       "low_coverage": false,
       "provisional": true
@@ -6680,13 +6699,26 @@
     {
       "date": "2026-05-03",
       "political_raw": 38.2,
-      "political_7d": 25.3,
+      "political_7d": 25.4,
       "economic_raw": 32.4,
       "economic_7d": 19.8,
-      "score": 25.3,
+      "score": 25.4,
       "prr": 38.2,
-      "prr_7d": 25.3,
-      "n_articles": 400,
+      "prr_7d": 25.4,
+      "n_articles": 401,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-04",
+      "political_raw": 82.9,
+      "political_7d": 42.6,
+      "economic_raw": 76.1,
+      "economic_7d": 36.7,
+      "score": 42.6,
+      "prr": 82.9,
+      "prr_7d": 42.6,
+      "n_articles": 643,
       "low_coverage": false,
       "provisional": true
     }
@@ -8007,6 +8039,10 @@
     {
       "date": "2026-04-29",
       "fx": 3.53
+    },
+    {
+      "date": "2026-04-30",
+      "fx": 3.518
     }
   ],
   "monthly_series": [
@@ -8134,15 +8170,15 @@
       "month": "2026-04",
       "political_avg": 110.3,
       "economic_avg": 55.0,
-      "n_articles": 13932,
+      "n_articles": 13933,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-05",
-      "political_avg": 19.9,
-      "economic_avg": 13.6,
-      "n_articles": 613,
+      "political_avg": 25.7,
+      "economic_avg": 19.4,
+      "n_articles": 1258,
       "fx_level": null,
       "fx_yoy": null
     }

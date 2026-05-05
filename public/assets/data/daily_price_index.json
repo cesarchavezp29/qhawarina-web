@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-03",
-    "n_days": 83,
+    "last_date": "2026-05-04",
+    "n_days": 84,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-03"
+    "updated": "2026-05-04"
   },
   "categories": {
     "arroz_cereales": {
@@ -2332,86 +2332,113 @@
       "index_limpieza": 100.6565,
       "index_cuidado_personal": 99.4715,
       "index_other": 99.5915
+    },
+    {
+      "date": "2026-05-04",
+      "index_all": 100.3482,
+      "index_all_unweighted": 100.3601,
+      "index_food": 100.4338,
+      "index_nonfood": 100.059,
+      "var_all": 0.2606,
+      "var_food": 0.3969,
+      "cum_pct": 0.3482,
+      "yoy_inflation": null,
+      "mom_inflation": 0.4312,
+      "interpolated": false,
+      "n_matched": 40704,
+      "index_arroz_cereales": 100.6148,
+      "index_pan_harinas": 100.4623,
+      "index_carnes": 100.7817,
+      "index_pescados_mariscos": 101.8043,
+      "index_lacteos": 100.0504,
+      "index_frutas": 102.8431,
+      "index_verduras": 100.4692,
+      "index_aceites_grasas": 99.281,
+      "index_azucar_dulces": 94.3705,
+      "index_bebidas": 99.5833,
+      "index_limpieza": 100.6797,
+      "index_cuidado_personal": 99.4858,
+      "index_other": 99.6227
     }
   ],
   "latest": {
-    "date": "2026-05-03",
-    "index_all": 100.0874,
-    "index_food": 100.0368,
-    "cum_pct": 0.0874,
-    "var_all": 0.0489,
+    "date": "2026-05-04",
+    "index_all": 100.3482,
+    "index_food": 100.4338,
+    "cum_pct": 0.3482,
+    "var_all": 0.2606,
     "yoy_inflation": null,
-    "mom_inflation": 0.4164,
-    "n_products_today": 40536,
+    "mom_inflation": 0.4312,
+    "n_products_today": 40704,
     "top_movers": [
       {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 0.36
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": 0.69
       },
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": 0.1
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.47
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": 0.06
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.38
       },
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": 0.04
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": 0.26
       }
     ],
     "product_movers": [
       {
-        "name": "Brownie Tipo Trufa Delisha x Unid",
+        "name": "Bife Angosto Argentino Tierra del Fue...",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 89.66
-      },
-      {
-        "name": "Paños Húmedos Desinfectantes Home Car...",
-        "store": "metro",
-        "category": "limpieza",
-        "var": 80.81
-      },
-      {
-        "name": "Paños Húmedos Desinfectantes Home Car...",
-        "store": "metro",
         "category": "carnes",
-        "var": 80.81
+        "var": 100.0
       },
       {
-        "name": "Twopack Body Spray Family Care for Me...",
+        "name": "Queso Blando Brie Président Tajada x kg",
         "store": "metro",
+        "category": "lacteos",
+        "var": 96.46
+      },
+      {
+        "name": "Queso Blando Brie Président Tajada x kg",
+        "store": "wong",
+        "category": "lacteos",
+        "var": 87.83
+      },
+      {
+        "name": "Filete de Tollo KLIPFISH Seco Salado ...",
+        "store": "plazavea",
         "category": "carnes",
-        "var": 77.52
+        "var": 85.63
       }
     ],
     "stores_coverage": {
-      "metro": 12446,
-      "plazavea": 13487,
-      "wong": 14965
+      "metro": 12423,
+      "plazavea": 13480,
+      "wong": 14951
     },
     "categories_coverage": {
-      "aceites_grasas": 606,
-      "arroz_cereales": 1394,
-      "azucar_dulces": 1187,
-      "bebidas": 1036,
-      "carnes": 14535,
-      "cuidado_personal": 2765,
-      "frutas": 1993,
-      "lacteos": 2878,
-      "limpieza": 3146,
-      "pan_harinas": 6695,
-      "pescados_mariscos": 234,
+      "aceites_grasas": 614,
+      "arroz_cereales": 1397,
+      "azucar_dulces": 1185,
+      "bebidas": 1034,
+      "carnes": 14513,
+      "cuidado_personal": 2770,
+      "frutas": 1988,
+      "lacteos": 2875,
+      "limpieza": 3154,
+      "pan_harinas": 6660,
+      "pescados_mariscos": 233,
       "verduras": 311
     }
   }
