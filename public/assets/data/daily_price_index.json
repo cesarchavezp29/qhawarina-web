@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-04",
-    "n_days": 84,
+    "last_date": "2026-05-05",
+    "n_days": 85,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-04"
+    "updated": "2026-05-05"
   },
   "categories": {
     "arroz_cereales": {
@@ -2359,87 +2359,114 @@
       "index_limpieza": 100.6797,
       "index_cuidado_personal": 99.4858,
       "index_other": 99.6227
+    },
+    {
+      "date": "2026-05-05",
+      "index_all": 100.8783,
+      "index_all_unweighted": 100.6927,
+      "index_food": 100.8626,
+      "index_nonfood": 100.0985,
+      "var_all": 0.5283,
+      "var_food": 0.4269,
+      "cum_pct": 0.8783,
+      "yoy_inflation": null,
+      "mom_inflation": 0.4621,
+      "interpolated": false,
+      "n_matched": 40444,
+      "index_arroz_cereales": 101.3837,
+      "index_pan_harinas": 100.4993,
+      "index_carnes": 101.2688,
+      "index_pescados_mariscos": 102.5423,
+      "index_lacteos": 100.4126,
+      "index_frutas": 103.3976,
+      "index_verduras": 101.7343,
+      "index_aceites_grasas": 100.0861,
+      "index_azucar_dulces": 94.9533,
+      "index_bebidas": 100.4623,
+      "index_limpieza": 100.5451,
+      "index_cuidado_personal": 99.9474,
+      "index_other": 99.5115
     }
   ],
   "latest": {
-    "date": "2026-05-04",
-    "index_all": 100.3482,
-    "index_food": 100.4338,
-    "cum_pct": 0.3482,
-    "var_all": 0.2606,
+    "date": "2026-05-05",
+    "index_all": 100.8783,
+    "index_food": 100.8626,
+    "cum_pct": 0.8783,
+    "var_all": 0.5283,
     "yoy_inflation": null,
-    "mom_inflation": 0.4312,
-    "n_products_today": 40704,
+    "mom_inflation": 0.4621,
+    "n_products_today": 40444,
     "top_movers": [
-      {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.69
-      },
-      {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 0.47
-      },
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 0.38
+        "var": 1.26
       },
       {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": 0.26
+        "category": "bebidas",
+        "label_es": "Bebidas",
+        "label_en": "Beverages",
+        "var": 0.88
+      },
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": 0.81
+      },
+      {
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": 0.76
       }
     ],
     "product_movers": [
       {
-        "name": "Bife Angosto Argentino Tierra del Fue...",
+        "name": "Sixpack Cerveza Estrella Damm Lata 330ml",
         "store": "wong",
         "category": "carnes",
-        "var": 100.0
+        "var": 96.07
       },
       {
-        "name": "Queso Blando Brie Président Tajada x kg",
+        "name": "Sixpack Cerveza Estrella Damm Lata 330ml",
         "store": "metro",
-        "category": "lacteos",
-        "var": 96.46
-      },
-      {
-        "name": "Queso Blando Brie Président Tajada x kg",
-        "store": "wong",
-        "category": "lacteos",
-        "var": 87.83
-      },
-      {
-        "name": "Filete de Tollo KLIPFISH Seco Salado ...",
-        "store": "plazavea",
         "category": "carnes",
-        "var": 85.63
+        "var": 96.07
+      },
+      {
+        "name": "Vino Blanco Chardonnay De Bortoli Win...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 94.71
+      },
+      {
+        "name": "Vino Tinto Syrah De Bortoli Winemaker...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 94.71
       }
     ],
     "stores_coverage": {
-      "metro": 12423,
-      "plazavea": 13480,
-      "wong": 14951
+      "metro": 12408,
+      "plazavea": 13424,
+      "wong": 14949
     },
     "categories_coverage": {
-      "aceites_grasas": 614,
-      "arroz_cereales": 1397,
-      "azucar_dulces": 1185,
-      "bebidas": 1034,
-      "carnes": 14513,
-      "cuidado_personal": 2770,
-      "frutas": 1988,
-      "lacteos": 2875,
-      "limpieza": 3154,
-      "pan_harinas": 6660,
-      "pescados_mariscos": 233,
-      "verduras": 311
+      "aceites_grasas": 615,
+      "arroz_cereales": 1395,
+      "azucar_dulces": 1190,
+      "bebidas": 1037,
+      "carnes": 14489,
+      "cuidado_personal": 2776,
+      "frutas": 1955,
+      "lacteos": 2870,
+      "limpieza": 3163,
+      "pan_harinas": 6628,
+      "pescados_mariscos": 230,
+      "verduras": 315
     }
   }
 }

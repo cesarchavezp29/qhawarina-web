@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-05T01:08:17.175449Z",
+  "generated_at": "2026-05-06T01:12:13.675704Z",
   "months": [
     {
       "month": "2025-01",
@@ -155,7 +155,7 @@
     },
     {
       "month": "2025-09",
-      "irp_7d_peak": 90.2,
+      "irp_7d_peak": 90.4,
       "irp_peak_date": "2025-09-11",
       "irp_event": "",
       "irp_top_articles": [
