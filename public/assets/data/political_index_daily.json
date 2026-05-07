@@ -1,227 +1,230 @@
 {
   "metadata": {
-    "generated_at": "2026-05-05T21:12:13.634540",
-    "coverage_days": 490,
+    "generated_at": "2026-05-06T21:11:34.596344",
+    "coverage_days": 491,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-05",
-    "political_raw": 70.1,
+    "date": "2026-05-06",
+    "political_raw": 59.3,
     "political_raw_level": "BAJO",
-    "political_7d": 50.9,
+    "political_7d": 53.4,
     "political_level": "BAJO",
-    "political_multiplier": 0.51,
-    "economic_raw": 78.2,
+    "political_multiplier": 0.53,
+    "economic_raw": 78.7,
     "economic_raw_level": "BAJO",
-    "economic_7d": 49.4,
-    "economic_level": "MINIMO",
-    "economic_multiplier": 0.49,
-    "score": 50.9,
-    "prr_7d": 50.9,
-    "prr_raw": 70.1,
+    "economic_7d": 58.3,
+    "economic_level": "BAJO",
+    "economic_multiplier": 0.58,
+    "score": 53.4,
+    "prr_7d": 53.4,
+    "prr_raw": 59.3,
     "level": "BAJO",
-    "articles_total": 604,
-    "articles_political_relevant": 250,
-    "articles_economic_relevant": 131,
-    "political_justification": "El panorama político muestra tensiones moderadas concentradas en cuestionamientos electorales y presiones para remover autoridades. Aunque existen narrativas de fraude y movimientos de censura parlamentaria, estos se mantienen dentro de canales institucionales sin indicios de escalada inmediata. El riesgo permanece controlado pero requiere monitoreo cercano.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. La inestabilidad en empresas estratégicas como Petroperú, combinada con interrupciones en infraestructura energética y tensiones regulatorias en minería, genera incertidumbre. Sin embargo, la inflación controlada y déficit fiscal manejable mantienen el riesgo en niveles contenidos.",
+    "articles_total": 627,
+    "articles_political_relevant": 251,
+    "articles_economic_relevant": 123,
+    "political_justification": "El panorama político actual refleja una estabilidad relativa, aunque con tensiones subyacentes. La cercanía en resultados electorales y debates sobre reformas legales generan fricción institucional, pero sin alcanzar niveles de crisis. Los desafíos de gobernanza persisten sin comprometer la continuidad democrática inmediata.",
+    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. Crisis sectoriales en energía y petróleo, combinadas con deterioro del poder adquisitivo y debilidad en inversión pública, generan vulnerabilidades. Sin embargo, los indicadores aún no alcanzan niveles críticos, permitiendo margen para correcciones de política económica.",
     "top_political_drivers": [
       {
-        "title": "Illich López asegura que tiene los votos para plantear censura contra Balcázar: “La dificultad es quién lo debe suceder”",
-        "source": "elcomercio",
-        "score": 82
+        "title": "ONPE al 98.218%: segundo y tercer lugar presidencial se separan por 23.688 votos",
+        "source": "correo",
+        "score": 85
       },
       {
-        "title": "Censura contra Balcázar: Illich López asegura que ya cuenta con votos para remover al presidente",
-        "source": "caretas",
-        "score": 82
-      },
-      {
-        "title": "Narrativa de fraude continúa: exoficial Chavín de Huántar promueve \"golpe de Estado democrático\"",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "Jefe ONPE: “Lo sucedido el día 12 de abril nos afectó a todos. Fue un error garrafal\"",
-        "source": "rpp",
-        "score": 72
-      },
-      {
-        "title": "“Ya hay los votos para plantear la censura contra Balcázar”, afirma Illich López",
-        "source": "elbuho",
-        "score": 72
-      },
-      {
-        "title": "Congreso cita a jefes del JNE y ONPE por cuestionamientos al desarrollo del proceso electoral",
-        "source": "elcomercio",
+        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 98.218 %",
+        "source": "canaln",
         "score": 70
       },
       {
-        "title": "Transparencia en su segundo informe por elecciones: “Se registraron graves incidencias (...) en lugares específicos de Lima”",
+        "title": "Congreso alista más cambios a Ley de Extinción de Dominio: ¿Qué busca y a quiénes podría beneficiar el dictamen impulsado por Perú Libre y Podemos?",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Caso Piero Corvetto: PJ autoriza extraer información del celular incautado a José Samamé, exfuncionario clave de ONPE",
+        "title": "De “ladronzuelo” a “imbécil”: Antauro Humala descalificó en más de una oportunidad a su ahora aliado Pedro Castillo",
         "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Hugo de Zela muestra chat de WhatsApp con Balcázar y asegura que presidente aprobó compra de aviones F-16",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Conteo ONPE al 98.22 %: Sánchez disminuye distancia con López Aliaga",
+        "source": "elbuho",
+        "score": 65
+      },
+      {
+        "title": "Capitán Vallejos depositó en sus cuentas S/9.8 millones en efectivo",
+        "source": "larepublica",
         "score": 62
       },
       {
-        "title": "Moquegua: Sentencian a alcalde por agresión a trabajadora municipal",
-        "source": "correo",
-        "score": 62
+        "title": "Renzo Reggiardo: 11 Juzgado Constitucional declara que no tiene competencia para evaluar demanda",
+        "source": "elcomercio",
+        "score": 60
       },
       {
-        "title": "JNJ recibe más de 2,600 denuncias y continúa investigación contra Piero Corvetto",
+        "title": "Elecciones 2026: Contraloría alerta fallas en manejo de equipos, cédulas con votos y USB",
         "source": "gestion",
+        "score": 60
+      },
+      {
+        "title": "Miembros del JNE temen ataques por aquellos que cruzan la línea del acoso",
+        "source": "peru21",
         "score": 60
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Petro-Perú suma cuatro presidentes en menos de 3 meses en un contexto de problemas de liquidez: así está la petrolera estatal",
-        "source": "elcomercio",
-        "score": 75
+        "title": "Si este nuevo rescate a Petroperú no es un crimen económico, no sé qué lo sería",
+        "source": "gestion",
+        "score": 80
       },
       {
-        "title": "Engie Energía Perú: Ebitda al primer trimestre del 2026 es de US$34.4 millones un 49% menos debido a la interrupción del gaseoducto de TGP",
-        "source": "elcomercio",
-        "score": 75
-      },
-      {
-        "title": "Scotiabank: inflación general en Perú llega 4,0% en abril de 2026",
-        "source": "elcomercio",
+        "title": "Crisis del gas sigue afectando a generadoras: Orygen reduce utilidad en 51.5% y eleva costos",
+        "source": "gestion",
         "score": 72
       },
       {
-        "title": "Petroperú: Congreso debatirá mañana martes la derogatoria de decreto que privatiza a la petrolera",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Congreso da hoy el primer paso para derogar decreto que privatiza Petroperú",
-        "source": "larepublica",
-        "score": 65
-      },
-      {
-        "title": "Congreso daría “duro golpe” a minería: el abrupto cambio en concesiones que “ayudaría” a ilegalidad",
+        "title": "Engie reportó caída de 49% en ebitda en primer trimestre debido a crisis del gas",
         "source": "gestion",
-        "score": 60
+        "score": 72
       },
       {
-        "title": "Consejo Fiscal advierte que sería inviable elaborar el presupuesto público para 2027",
+        "title": "Canasta básica sube en Perú: un hogar necesita S/1.848 al mes para no ser pobre, según el INEI",
+        "source": "larepublica",
+        "score": 55
+      },
+      {
+        "title": "Siderperu suspende millonario proyecto en Chimbote por incertidumbre ante iniciativa china",
+        "source": "gestion",
+        "score": 55
+      },
+      {
+        "title": "Menos inversión pública, más gasto rígido",
+        "source": "gestion",
+        "score": 55
+      },
+      {
+        "title": "Buscan evitar reestructuración de Petroperú",
         "source": "correo",
-        "score": 60
+        "score": 55
       },
       {
-        "title": "Déficit fiscal: MEF no modifica trayectoria pese a presiones de gasto, pero expertos dudan que se cumpla",
+        "title": "Congreso: proponen autorizar nuevo retiro extraordinario de S/ 22,000 de la AFP",
+        "source": "gestion",
+        "score": 50
+      },
+      {
+        "title": "Estudio de la Universidad del Pacífico advierte que más del 50% de peruanos se encuentra en inseguridad alimentaria",
         "source": "elcomercio",
-        "score": 55
+        "score": 45
       },
       {
-        "title": "Petroperú: Comisión de Congreso “pausa” debate para derogar su reestructuración, ¿qué dijeron?",
+        "title": "Minería ilegal restaría hasta 12% de crecimiento potencial al Perú, estima el IPE",
         "source": "gestion",
-        "score": 55
-      },
-      {
-        "title": "Anulan 7 concesiones mineras por no realizar consulta previa: los riesgos que se abren",
-        "source": "gestion",
-        "score": 55
+        "score": 45
       }
     ],
     "eco_sector_titles": [
-      "Petro-Perú suma cuatro presidentes en menos de 3 meses en un contexto de problemas de liquidez: así está la petrolera estatal",
-      "Engie Energía Perú: Ebitda al primer trimestre del 2026 es de US$34.4 millones un 49% menos debido a la interrupción del gaseoducto de TGP",
-      "Scotiabank: inflación general en Perú llega 4,0% en abril de 2026",
-      "Petroperú: Congreso debatirá mañana martes la derogatoria de decreto que privatiza a la petrolera",
-      "Congreso da hoy el primer paso para derogar decreto que privatiza Petroperú",
-      "Congreso daría “duro golpe” a minería: el abrupto cambio en concesiones que “ayudaría” a ilegalidad",
-      "Consejo Fiscal advierte que sería inviable elaborar el presupuesto público para 2027",
-      "Déficit fiscal: MEF no modifica trayectoria pese a presiones de gasto, pero expertos dudan que se cumpla",
-      "Petroperú: Comisión de Congreso “pausa” debate para derogar su reestructuración, ¿qué dijeron?",
-      "Anulan 7 concesiones mineras por no realizar consulta previa: los riesgos que se abren",
-      "Producción petrolera habría registrado su menor volumen en 5 años, ¿seguirá tendencia?",
-      "Petroperú: Congreso aprueba cuestión previa y posterga derogación de decreto de privatización",
-      "¿CTS aumentará? Congreso quiere cambiar el cálculo para los trabajadores del Estado",
-      "Minería ilegal movilizó alrededor de US$12.000 millones en el 2025, 10 veces más que el tráfico ilícito de drogas",
-      "Más de 8.8 millones de peruanos son pobres: el golpe a la cuarta parte del país",
-      "Dólar toca máximo del año por escalada en Irán y tensión electoral, ¿en qué conviene refugiarse?",
-      "Pobreza golpea a 8,8 millones de peruanos: baja a 25,7%, pero no logra romper el rezago de hace seis años",
-      "Alto comisionado de PCM: “La minería ilegal supera en 10 veces al narcotráfico, pero estaba siendo enfrentada con un presupuesto 10 veces menor”",
-      "Minedu solicita S/119.5 millones para ampliar becas en medio de crisis financiera en Pronabec",
-      "Inversión privada: detrás del PBI",
-      "PCM: minería ilegal obliga a elevar en más de 100% el número de interdicciones en menos de dos años",
-      "Aumenta población en riesgo de caer en pobreza: 1 de cada 3 peruanos son vulnerables",
-      "INEI: más de 1,6 millones de peruanos son pobres extremos, sus ingresos no alcanzan los S/260 mensuales en alimentos",
-      "Dólar sube 4.28% en primer cuatrimestre del 2026 por tensión bélica en Medio Oriente",
-      "Pobreza monetaria en Perú disminuyó en el 2025, pero se mantiene 5,5 puntos porcentuales por encima de las cifras prepandemia",
-      "Ecuador vuelve a mercados globales de deuda en medio del alza del petróleo",
-      "INEI: la pobreza retrocede, pero el riesgo crece en Perú",
-      "Emergencia ambiental en Pariahuanca sin atención pese a millonarias pérdidas por muerte masiva de truchas",
-      "Más de 27.000 escolares en Lima se quedan sin alimentos por fallas en programa del Midis, alerta Contraloría",
-      "Combustible caro obliga a mototricis de Juliaca a trabajar con mínimas ganancias"
+      "Si este nuevo rescate a Petroperú no es un crimen económico, no sé qué lo sería",
+      "Crisis del gas sigue afectando a generadoras: Orygen reduce utilidad en 51.5% y eleva costos",
+      "Engie reportó caída de 49% en ebitda en primer trimestre debido a crisis del gas",
+      "Canasta básica sube en Perú: un hogar necesita S/1.848 al mes para no ser pobre, según el INEI",
+      "Siderperu suspende millonario proyecto en Chimbote por incertidumbre ante iniciativa china",
+      "Menos inversión pública, más gasto rígido",
+      "Buscan evitar reestructuración de Petroperú",
+      "Congreso: proponen autorizar nuevo retiro extraordinario de S/ 22,000 de la AFP",
+      "Estudio de la Universidad del Pacífico advierte que más del 50% de peruanos se encuentra en inseguridad alimentaria",
+      "Minería ilegal restaría hasta 12% de crecimiento potencial al Perú, estima el IPE",
+      "Comisión de Energía y Minas citará al MEF y Proinversión por debate sobre futuro de Petroperú",
+      "Inflación en Huancayo crece en abril por el aumento del precio de combustibles",
+      "IPE: minería ilegal reduce hasta 12% el crecimiento del Perú y 1.7 millones no habrían salido de la pobreza en los últimos 15 años",
+      "SPH: producción de petróleo en Perú cae 33% interanual en abril del 2026",
+      "Capeco: Construcción creció 13,2% en el primer trimestre, pero se prevé fuerte desaceleración para el resto del 2026",
+      "5 proyectos clave esperan en “puerta del horno” del Congreso: ¿qué sector está preocupado?",
+      "Gobierno alista crédito suplementario para obras públicas sujeto a “disponibilidad de recursos”",
+      "El precio de no saber",
+      "Alcaldes de la Remurpe protestan cerca de Palacio de Gobierno y exigen presupuesto para obras paralizadas",
+      "“Es ahora o nunca”: experto Jesús Capcha llama al Congreso aprobar ley para la nueva carretera Central",
+      "Presentarán primer estudio sobre el impacto de la minería ilegal en los derechos humanos",
+      "MEF anuncia que presentará crédito suplementario al Congreso",
+      "Elevarían sueldos de casi 200,000 trabajadores CAS, ¿quiénes serían los beneficiados?",
+      "Avanza proyecto para que Paracas tenga zona especial “sin impuestos”",
+      "Alcaldes de diversos distritos del Perú exigen aumento de presupuesto",
+      "JNJ inicia proceso disciplinario contra Piero Corvetto por Elecciones 2026",
+      "¿Más empresas de agua en Perú? Congreso quiere ir tras nuevo régimen para municipalidades",
+      "Contraloría: solo el 17% de alertas en obras es atendido por el Gobierno Regional de Cusco",
+      "Alcaldes exigen al MEF un aumento de presupuesto para culminar obras",
+      "Cajamarca “cumple” 17 años seguidos en el grupo de mayor pobreza extrema",
+      "Congreso: Aprueban dictámenes para incorporar a trabajadores CAS de Procuraduría e IRTP al régimen 728",
+      "Madre de Dios: Caen 6 mineros ilegales con armamento, dragas y campamentos en la RN Tambopata",
+      "Gobierno Regional de Arequipa solo adjudicó la tercera parte de proyectos en obra por impuesto"
     ],
-    "justification": "El panorama político muestra tensiones moderadas concentradas en cuestionamientos electorales y presiones para remover autoridades. Aunque existen narrativas de fraude y movimientos de censura parlamentaria, estos se mantienen dentro de canales institucionales sin indicios de escalada inmediata. El riesgo permanece controlado pero requiere monitoreo cercano.",
+    "justification": "El panorama político actual refleja una estabilidad relativa, aunque con tensiones subyacentes. La cercanía en resultados electorales y debates sobre reformas legales generan fricción institucional, pero sin alcanzar niveles de crisis. Los desafíos de gobernanza persisten sin comprometer la continuidad democrática inmediata.",
     "top_drivers": [
       {
-        "title": "Illich López asegura que tiene los votos para plantear censura contra Balcázar: “La dificultad es quién lo debe suceder”",
-        "source": "elcomercio",
-        "score": 82
+        "title": "ONPE al 98.218%: segundo y tercer lugar presidencial se separan por 23.688 votos",
+        "source": "correo",
+        "score": 85
       },
       {
-        "title": "Censura contra Balcázar: Illich López asegura que ya cuenta con votos para remover al presidente",
-        "source": "caretas",
-        "score": 82
-      },
-      {
-        "title": "Narrativa de fraude continúa: exoficial Chavín de Huántar promueve \"golpe de Estado democrático\"",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "Jefe ONPE: “Lo sucedido el día 12 de abril nos afectó a todos. Fue un error garrafal\"",
-        "source": "rpp",
-        "score": 72
-      },
-      {
-        "title": "“Ya hay los votos para plantear la censura contra Balcázar”, afirma Illich López",
-        "source": "elbuho",
-        "score": 72
-      },
-      {
-        "title": "Congreso cita a jefes del JNE y ONPE por cuestionamientos al desarrollo del proceso electoral",
-        "source": "elcomercio",
+        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 98.218 %",
+        "source": "canaln",
         "score": 70
       },
       {
-        "title": "Transparencia en su segundo informe por elecciones: “Se registraron graves incidencias (...) en lugares específicos de Lima”",
+        "title": "Congreso alista más cambios a Ley de Extinción de Dominio: ¿Qué busca y a quiénes podría beneficiar el dictamen impulsado por Perú Libre y Podemos?",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Caso Piero Corvetto: PJ autoriza extraer información del celular incautado a José Samamé, exfuncionario clave de ONPE",
+        "title": "De “ladronzuelo” a “imbécil”: Antauro Humala descalificó en más de una oportunidad a su ahora aliado Pedro Castillo",
         "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Hugo de Zela muestra chat de WhatsApp con Balcázar y asegura que presidente aprobó compra de aviones F-16",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Conteo ONPE al 98.22 %: Sánchez disminuye distancia con López Aliaga",
+        "source": "elbuho",
+        "score": 65
+      },
+      {
+        "title": "Capitán Vallejos depositó en sus cuentas S/9.8 millones en efectivo",
+        "source": "larepublica",
         "score": 62
       },
       {
-        "title": "Moquegua: Sentencian a alcalde por agresión a trabajadora municipal",
-        "source": "correo",
-        "score": 62
+        "title": "Renzo Reggiardo: 11 Juzgado Constitucional declara que no tiene competencia para evaluar demanda",
+        "source": "elcomercio",
+        "score": 60
       },
       {
-        "title": "JNJ recibe más de 2,600 denuncias y continúa investigación contra Piero Corvetto",
+        "title": "Elecciones 2026: Contraloría alerta fallas en manejo de equipos, cédulas con votos y USB",
         "source": "gestion",
+        "score": 60
+      },
+      {
+        "title": "Miembros del JNE temen ataques por aquellos que cruzan la línea del acoso",
+        "source": "peru21",
         "score": 60
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 27.3,
-    "political_30d_avg": 100.7,
-    "economic_7d_avg": 21.3,
-    "economic_30d_avg": 46.8,
+    "political_7d_avg": 32.1,
+    "political_30d_avg": 100.0,
+    "economic_7d_avg": 28.4,
+    "economic_30d_avg": 47.2,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -231,7 +234,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictos institucionales y tensiones diplomáticas debilitan gobernanza.",
+      "summary": "Conflictividad en instituciones electorales y diplomáticas genera desorden.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -239,7 +242,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Conflictos internos y transiciones electorales generan tensión política.",
+      "summary": "Disputas electorales y conflictos internos institucionales generan incertidumbre.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -247,7 +250,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "No puedo generar un resumen basado en estas noticias porque no contienen información sobre inestabilidad política. Las noticias mencionan resultados electorales en curso y un evento deportivo, que son proc",
+      "summary": "No puedo completar esta tarea porque las noticias proporcionadas no revelan un factor de inestabilidad política claro. Las dos primeras noticias son procedimientos electorales normales, y la tercera",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -255,7 +258,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral y volatilidad económica generan inestabilidad política.",
+      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -263,7 +266,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Tensión electoral y volatilidad económica en Perú.",
+      "summary": "Tensión política y volatilidad económica en elecciones presidenciales.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -271,7 +274,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral afecta instalación de mesas.",
+      "summary": "Graves incidencias en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -279,7 +282,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Desorganización electoral y retrasos en instalación de mesas.",
+      "summary": "Retrasos y desorganización en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -287,7 +290,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno hipotecan el futuro económico.",
+      "summary": "Políticas fiscales del gobierno generan preocupación económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -295,7 +298,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tensión electoral por debates presidenciales en curso.",
+      "summary": "Debate presidencial genera tensión política en curso.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -6621,7 +6624,7 @@
       "date": "2026-04-27",
       "political_raw": 4.6,
       "political_7d": 41.5,
-      "economic_raw": 1.7,
+      "economic_raw": 2.1,
       "economic_7d": 23.1,
       "score": 41.5,
       "prr": 4.6,
@@ -6634,7 +6637,7 @@
       "date": "2026-04-28",
       "political_raw": 6.0,
       "political_7d": 29.0,
-      "economic_raw": 1.9,
+      "economic_raw": 2.6,
       "economic_7d": 16.2,
       "score": 29.0,
       "prr": 6.0,
@@ -6647,7 +6650,7 @@
       "date": "2026-04-29",
       "political_raw": 7.3,
       "political_7d": 20.3,
-      "economic_raw": 2.0,
+      "economic_raw": 3.1,
       "economic_7d": 11.3,
       "score": 20.3,
       "prr": 7.3,
@@ -6660,50 +6663,50 @@
       "date": "2026-04-30",
       "political_raw": 8.7,
       "political_7d": 16.8,
-      "economic_raw": 2.2,
-      "economic_7d": 8.6,
+      "economic_raw": 3.6,
+      "economic_7d": 9.0,
       "score": 16.8,
       "prr": 8.7,
       "prr_7d": 16.8,
-      "n_articles": 45,
+      "n_articles": 47,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-05-01",
-      "political_raw": 10.8,
-      "political_7d": 15.0,
-      "economic_raw": 5.1,
-      "economic_7d": 7.6,
-      "score": 15.0,
-      "prr": 10.8,
-      "prr_7d": 15.0,
-      "n_articles": 32,
+      "political_raw": 11.2,
+      "political_7d": 15.1,
+      "economic_raw": 6.9,
+      "economic_7d": 8.4,
+      "score": 15.1,
+      "prr": 11.2,
+      "prr_7d": 15.1,
+      "n_articles": 35,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-05-02",
       "political_raw": 31.5,
-      "political_7d": 20.0,
+      "political_7d": 20.1,
       "economic_raw": 32.4,
-      "economic_7d": 15.0,
-      "score": 20.0,
+      "economic_7d": 15.6,
+      "score": 20.1,
       "prr": 31.5,
-      "prr_7d": 20.0,
+      "prr_7d": 20.1,
       "n_articles": 188,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-05-03",
       "political_raw": 38.1,
-      "political_7d": 25.4,
+      "political_7d": 25.5,
       "economic_raw": 32.6,
-      "economic_7d": 20.3,
-      "score": 25.4,
+      "economic_7d": 20.7,
+      "score": 25.5,
       "prr": 38.1,
-      "prr_7d": 25.4,
+      "prr_7d": 25.5,
       "n_articles": 404,
       "low_coverage": false,
       "provisional": true
@@ -6711,26 +6714,39 @@
     {
       "date": "2026-05-04",
       "political_raw": 82.8,
-      "political_7d": 42.6,
-      "economic_raw": 76.0,
-      "economic_7d": 37.0,
-      "score": 42.6,
+      "political_7d": 42.7,
+      "economic_raw": 75.9,
+      "economic_7d": 37.3,
+      "score": 42.7,
       "prr": 82.8,
-      "prr_7d": 42.6,
+      "prr_7d": 42.7,
       "n_articles": 645,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-05-05",
-      "political_raw": 70.1,
-      "political_7d": 50.9,
-      "economic_raw": 78.2,
-      "economic_7d": 49.4,
-      "score": 50.9,
-      "prr": 70.1,
-      "prr_7d": 50.9,
-      "n_articles": 604,
+      "political_raw": 69.9,
+      "political_7d": 50.8,
+      "economic_raw": 78.1,
+      "economic_7d": 49.5,
+      "score": 50.8,
+      "prr": 69.9,
+      "prr_7d": 50.8,
+      "n_articles": 607,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-06",
+      "political_raw": 59.3,
+      "political_7d": 53.4,
+      "economic_raw": 78.7,
+      "economic_7d": 58.3,
+      "score": 53.4,
+      "prr": 59.3,
+      "prr_7d": 53.4,
+      "n_articles": 627,
       "low_coverage": false,
       "provisional": true
     }
@@ -8059,6 +8075,10 @@
     {
       "date": "2026-05-04",
       "fx": 3.5174
+    },
+    {
+      "date": "2026-05-05",
+      "fx": 3.4926
     }
   ],
   "monthly_series": [
@@ -8185,16 +8205,16 @@
     {
       "month": "2026-04",
       "political_avg": 110.3,
-      "economic_avg": 55.0,
-      "n_articles": 13936,
+      "economic_avg": 55.1,
+      "n_articles": 13938,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-05",
-      "political_avg": 30.8,
-      "economic_avg": 25.9,
-      "n_articles": 1873,
+      "political_avg": 34.6,
+      "economic_avg": 31.6,
+      "n_articles": 2506,
       "fx_level": null,
       "fx_yoy": null
     }

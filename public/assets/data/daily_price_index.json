@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-05",
-    "n_days": 85,
+    "last_date": "2026-05-06",
+    "n_days": 86,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-05"
+    "updated": "2026-05-06"
   },
   "categories": {
     "arroz_cereales": {
@@ -2386,87 +2386,114 @@
       "index_limpieza": 100.5451,
       "index_cuidado_personal": 99.9474,
       "index_other": 99.5115
+    },
+    {
+      "date": "2026-05-06",
+      "index_all": 100.0283,
+      "index_all_unweighted": 99.91,
+      "index_food": 100.0569,
+      "index_nonfood": 99.3866,
+      "var_all": -0.8426,
+      "var_food": -0.7988,
+      "cum_pct": 0.0283,
+      "yoy_inflation": null,
+      "mom_inflation": 0.4492,
+      "interpolated": false,
+      "n_matched": 40198,
+      "index_arroz_cereales": 100.2655,
+      "index_pan_harinas": 99.9934,
+      "index_carnes": 100.2454,
+      "index_pescados_mariscos": 101.6695,
+      "index_lacteos": 99.5874,
+      "index_frutas": 103.5967,
+      "index_verduras": 100.4865,
+      "index_aceites_grasas": 99.7874,
+      "index_azucar_dulces": 93.6565,
+      "index_bebidas": 99.8815,
+      "index_limpieza": 99.9237,
+      "index_cuidado_personal": 98.6238,
+      "index_other": 99.1425
     }
   ],
   "latest": {
-    "date": "2026-05-05",
-    "index_all": 100.8783,
-    "index_food": 100.8626,
-    "cum_pct": 0.8783,
-    "var_all": 0.5283,
+    "date": "2026-05-06",
+    "index_all": 100.0283,
+    "index_food": 100.0569,
+    "cum_pct": 0.0283,
+    "var_all": -0.8426,
     "yoy_inflation": null,
-    "mom_inflation": 0.4621,
-    "n_products_today": 40444,
+    "mom_inflation": 0.4492,
+    "n_products_today": 40198,
     "top_movers": [
+      {
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -1.37
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -1.32
+      },
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 1.26
-      },
-      {
-        "category": "bebidas",
-        "label_es": "Bebidas",
-        "label_en": "Beverages",
-        "var": 0.88
-      },
-      {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": 0.81
+        "var": -1.23
       },
       {
         "category": "arroz_cereales",
         "label_es": "Arroz y Cereales",
         "label_en": "Rice & Cereals",
-        "var": 0.76
+        "var": -1.1
       }
     ],
     "product_movers": [
       {
-        "name": "Sixpack Cerveza Estrella Damm Lata 330ml",
-        "store": "wong",
-        "category": "carnes",
-        "var": 96.07
+        "name": "Berenjena x un",
+        "store": "metro",
+        "category": "frutas",
+        "var": 75.47
       },
       {
-        "name": "Sixpack Cerveza Estrella Damm Lata 330ml",
+        "name": "Cebolla Blanca x kg",
+        "store": "wong",
+        "category": "frutas",
+        "var": 75.38
+      },
+      {
+        "name": "Crema Untable Untadeli Sabor Pizza 140g",
+        "store": "metro",
+        "category": "lacteos",
+        "var": 62.22
+      },
+      {
+        "name": "Lechuga Crespa Cuisine & Co",
         "store": "metro",
         "category": "carnes",
-        "var": 96.07
-      },
-      {
-        "name": "Vino Blanco Chardonnay De Bortoli Win...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 94.71
-      },
-      {
-        "name": "Vino Tinto Syrah De Bortoli Winemaker...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 94.71
+        "var": 60.3
       }
     ],
     "stores_coverage": {
-      "metro": 12408,
-      "plazavea": 13424,
-      "wong": 14949
+      "metro": 12422,
+      "plazavea": 13331,
+      "wong": 14944
     },
     "categories_coverage": {
-      "aceites_grasas": 615,
-      "arroz_cereales": 1395,
-      "azucar_dulces": 1190,
-      "bebidas": 1037,
-      "carnes": 14489,
-      "cuidado_personal": 2776,
-      "frutas": 1955,
+      "aceites_grasas": 617,
+      "arroz_cereales": 1396,
+      "azucar_dulces": 1191,
+      "bebidas": 1038,
+      "carnes": 14504,
+      "cuidado_personal": 2769,
+      "frutas": 1962,
       "lacteos": 2870,
-      "limpieza": 3163,
-      "pan_harinas": 6628,
-      "pescados_mariscos": 230,
-      "verduras": 315
+      "limpieza": 3071,
+      "pan_harinas": 6602,
+      "pescados_mariscos": 231,
+      "verduras": 317
     }
   }
 }
