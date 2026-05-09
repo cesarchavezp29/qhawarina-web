@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-06",
-    "n_days": 86,
+    "last_date": "2026-05-08",
+    "n_days": 88,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-06"
+    "updated": "2026-05-08"
   },
   "categories": {
     "arroz_cereales": {
@@ -2413,87 +2413,141 @@
       "index_limpieza": 99.9237,
       "index_cuidado_personal": 98.6238,
       "index_other": 99.1425
+    },
+    {
+      "date": "2026-05-07",
+      "index_all": 99.834,
+      "index_all_unweighted": 99.718,
+      "index_food": 99.8421,
+      "index_nonfood": 99.2653,
+      "var_all": -0.1942,
+      "var_food": -0.2147,
+      "cum_pct": -0.166,
+      "yoy_inflation": null,
+      "mom_inflation": 0.3777,
+      "interpolated": false,
+      "n_matched": 39949,
+      "index_arroz_cereales": 100.1593,
+      "index_pan_harinas": 99.8291,
+      "index_carnes": 100.0011,
+      "index_pescados_mariscos": 101.5056,
+      "index_lacteos": 99.5537,
+      "index_frutas": 102.889,
+      "index_verduras": 100.1963,
+      "index_aceites_grasas": 99.8659,
+      "index_azucar_dulces": 93.5031,
+      "index_bebidas": 99.7629,
+      "index_limpieza": 99.7544,
+      "index_cuidado_personal": 98.4005,
+      "index_other": 99.1227
+    },
+    {
+      "date": "2026-05-08",
+      "index_all": 99.4981,
+      "index_all_unweighted": 99.3294,
+      "index_food": 99.3443,
+      "index_nonfood": 99.1805,
+      "var_all": -0.3365,
+      "var_food": -0.4986,
+      "cum_pct": -0.5019,
+      "yoy_inflation": null,
+      "mom_inflation": 0.3422,
+      "interpolated": false,
+      "n_matched": 35789,
+      "index_arroz_cereales": 99.862,
+      "index_pan_harinas": 99.4646,
+      "index_carnes": 99.2855,
+      "index_pescados_mariscos": 101.1986,
+      "index_lacteos": 99.1458,
+      "index_frutas": 102.6957,
+      "index_verduras": 99.8815,
+      "index_aceites_grasas": 99.3765,
+      "index_azucar_dulces": 93.3225,
+      "index_bebidas": 99.6743,
+      "index_limpieza": 99.6969,
+      "index_cuidado_personal": 98.3616,
+      "index_other": 98.987
     }
   ],
   "latest": {
-    "date": "2026-05-06",
-    "index_all": 100.0283,
-    "index_food": 100.0569,
-    "cum_pct": 0.0283,
-    "var_all": -0.8426,
+    "date": "2026-05-08",
+    "index_all": 99.4981,
+    "index_food": 99.3443,
+    "cum_pct": -0.5019,
+    "var_all": -0.3365,
     "yoy_inflation": null,
-    "mom_inflation": 0.4492,
-    "n_products_today": 40198,
+    "mom_inflation": 0.3422,
+    "n_products_today": 35789,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -1.37
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.72
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -1.32
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.49
       },
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -1.23
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.41
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -1.1
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": -0.37
       }
     ],
     "product_movers": [
       {
-        "name": "Berenjena x un",
+        "name": "Albahaca Ecologic 120g",
         "store": "metro",
         "category": "frutas",
-        "var": 75.47
+        "var": 84.44
       },
       {
-        "name": "Cebolla Blanca x kg",
-        "store": "wong",
-        "category": "frutas",
-        "var": 75.38
-      },
-      {
-        "name": "Crema Untable Untadeli Sabor Pizza 140g",
-        "store": "metro",
-        "category": "lacteos",
-        "var": 62.22
-      },
-      {
-        "name": "Lechuga Crespa Cuisine & Co",
+        "name": "Lechuga de Seda Frescas 130g",
         "store": "metro",
         "category": "carnes",
-        "var": 60.3
+        "var": 82.35
+      },
+      {
+        "name": "Lechuga Hidropónica Verde Puro x un.",
+        "store": "metro",
+        "category": "frutas",
+        "var": 72.34
+      },
+      {
+        "name": "Palta Hass x kg",
+        "store": "metro",
+        "category": "frutas",
+        "var": 52.72
       }
     ],
     "stores_coverage": {
-      "metro": 12422,
-      "plazavea": 13331,
-      "wong": 14944
+      "metro": 10416,
+      "plazavea": 11499,
+      "wong": 15136
     },
     "categories_coverage": {
-      "aceites_grasas": 617,
-      "arroz_cereales": 1396,
-      "azucar_dulces": 1191,
-      "bebidas": 1038,
-      "carnes": 14504,
-      "cuidado_personal": 2769,
-      "frutas": 1962,
-      "lacteos": 2870,
-      "limpieza": 3071,
-      "pan_harinas": 6602,
-      "pescados_mariscos": 231,
-      "verduras": 317
+      "aceites_grasas": 531,
+      "arroz_cereales": 1302,
+      "azucar_dulces": 1022,
+      "bebidas": 1080,
+      "carnes": 12570,
+      "cuidado_personal": 2739,
+      "frutas": 1950,
+      "lacteos": 2775,
+      "limpieza": 3110,
+      "pan_harinas": 5649,
+      "pescados_mariscos": 136,
+      "verduras": 237
     }
   }
 }

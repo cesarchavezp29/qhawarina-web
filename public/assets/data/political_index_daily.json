@@ -1,230 +1,225 @@
 {
   "metadata": {
-    "generated_at": "2026-05-06T21:11:34.596344",
-    "coverage_days": 491,
+    "generated_at": "2026-05-08T21:11:49.772285",
+    "coverage_days": 493,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-06",
-    "political_raw": 59.3,
+    "date": "2026-05-08",
+    "political_raw": 61.5,
     "political_raw_level": "BAJO",
-    "political_7d": 53.4,
+    "political_7d": 56.3,
     "political_level": "BAJO",
-    "political_multiplier": 0.53,
-    "economic_raw": 78.7,
+    "political_multiplier": 0.56,
+    "economic_raw": 70.9,
     "economic_raw_level": "BAJO",
-    "economic_7d": 58.3,
+    "economic_7d": 57.2,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.58,
-    "score": 53.4,
-    "prr_7d": 53.4,
-    "prr_raw": 59.3,
+    "economic_multiplier": 0.57,
+    "score": 56.3,
+    "prr_7d": 56.3,
+    "prr_raw": 61.5,
     "level": "BAJO",
-    "articles_total": 627,
-    "articles_political_relevant": 251,
-    "articles_economic_relevant": 123,
-    "political_justification": "El panorama político actual refleja una estabilidad relativa, aunque con tensiones subyacentes. La cercanía en resultados electorales y debates sobre reformas legales generan fricción institucional, pero sin alcanzar niveles de crisis. Los desafíos de gobernanza persisten sin comprometer la continuidad democrática inmediata.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero crecientes. Crisis sectoriales en energía y petróleo, combinadas con deterioro del poder adquisitivo y debilidad en inversión pública, generan vulnerabilidades. Sin embargo, los indicadores aún no alcanzan niveles críticos, permitiendo margen para correcciones de política económica.",
+    "articles_total": 564,
+    "articles_political_relevant": 224,
+    "articles_economic_relevant": 110,
+    "political_justification": "El panorama político muestra estabilidad relativa, dominado por debates institucionales sobre procedimientos legales y posibles indultos. Aunque hay tensiones entre actores políticos, no se evidencian crisis sistémicas inmediatas. Las discusiones se mantienen dentro de marcos institucionales, reflejando funcionamiento democrático básico.",
+    "economic_justification": "La economía peruana enfrenta presiones moderadas concentradas en sectores clave. La crisis de gobernanza en Petroperú, paralización de inversión pública y deterioro del empleo generan vulnerabilidades, aunque sin alcanzar niveles críticos. El contexto requiere acciones correctivas inmediatas para evitar escalada de riesgos.",
     "top_political_drivers": [
       {
-        "title": "ONPE al 98.218%: segundo y tercer lugar presidencial se separan por 23.688 votos",
-        "source": "correo",
-        "score": 85
-      },
-      {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 98.218 %",
-        "source": "canaln",
+        "title": "Funcionario clave de ONPE activó número de celular incautado en otro equipo: los nuevos elementos presentados por la fiscalía",
+        "source": "elcomercio",
         "score": 70
       },
       {
-        "title": "Congreso alista más cambios a Ley de Extinción de Dominio: ¿Qué busca y a quiénes podría beneficiar el dictamen impulsado por Perú Libre y Podemos?",
+        "title": "Pedro Castillo: Ministerio de Justicia afirma que pedido de indulto a golpista fue declarado inadmisible el 30 de abril",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "De “ladronzuelo” a “imbécil”: Antauro Humala descalificó en más de una oportunidad a su ahora aliado Pedro Castillo",
+        "title": "Lady Camones: “Hay que exhortar al presidente Balcázar que de ninguna manera otorgue el indulto” a Pedro Castillo",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Hugo de Zela muestra chat de WhatsApp con Balcázar y asegura que presidente aprobó compra de aviones F-16",
+        "title": "Secretario general de Juntos por el Perú sobre posible indulto a Pedro Castillo: “Se puede hacer respetando la institucionalidad”",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Conteo ONPE al 98.22 %: Sánchez disminuye distancia con López Aliaga",
-        "source": "elbuho",
-        "score": 65
-      },
-      {
-        "title": "Capitán Vallejos depositó en sus cuentas S/9.8 millones en efectivo",
-        "source": "larepublica",
-        "score": 62
-      },
-      {
-        "title": "Renzo Reggiardo: 11 Juzgado Constitucional declara que no tiene competencia para evaluar demanda",
-        "source": "elcomercio",
-        "score": 60
-      },
-      {
-        "title": "Elecciones 2026: Contraloría alerta fallas en manejo de equipos, cédulas con votos y USB",
+        "title": "Pedido de indulto a Pedro Castillo fue declarado inadmisible, anunció el Ministerio de Justicia",
         "source": "gestion",
-        "score": 60
+        "score": 65
       },
       {
-        "title": "Miembros del JNE temen ataques por aquellos que cruzan la línea del acoso",
-        "source": "peru21",
-        "score": 60
+        "title": "Lady Camones rechaza posible indulto a Pedro Castillo y pide transparencia por compra de chalecos",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo seguirá en Barbadillo: Ministerio de Justicia descarta indulto al expresidente",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Ministerio de Justicia consideró “falsa y tendenciosa” la versión sobre supuesto indulto a Pedro Castillo",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Elecciones 2026: López Aliaga, López Chau y el hermano de Pedro Castillo entre los senadores más votados",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Ministerio de Justicia rechaza supuesto indulto a Pedro Castillo: \"Esa información es falsa y tendenciosa\"",
+        "source": "larepublica",
+        "score": 65
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Si este nuevo rescate a Petroperú no es un crimen económico, no sé qué lo sería",
+        "title": "Contraloría busca “entrar con todo” a supervisar Petroperú: esto fiscalizarían",
         "source": "gestion",
-        "score": 80
+        "score": 82
       },
       {
-        "title": "Crisis del gas sigue afectando a generadoras: Orygen reduce utilidad en 51.5% y eleva costos",
-        "source": "gestion",
-        "score": 72
+        "title": "Petro-Perú: Nuevo presidente aprueba masivos cambios gerenciales que hacen tambalear la reorganización de la estatal",
+        "source": "elcomercio",
+        "score": 65
       },
       {
-        "title": "Engie reportó caída de 49% en ebitda en primer trimestre debido a crisis del gas",
-        "source": "gestion",
-        "score": 72
-      },
-      {
-        "title": "Canasta básica sube en Perú: un hogar necesita S/1.848 al mes para no ser pobre, según el INEI",
+        "title": "Lote Z-69 de Petroperú al borde de paralizarse y advierten golpe a la petrolera, empleo y canon petrolero en Piura",
         "source": "larepublica",
-        "score": 55
+        "score": 65
       },
       {
-        "title": "Siderperu suspende millonario proyecto en Chimbote por incertidumbre ante iniciativa china",
-        "source": "gestion",
-        "score": 55
+        "title": "Petroperú posterga pago de utilidades de sus trabajadores",
+        "source": "peru21",
+        "score": 65
       },
       {
-        "title": "Menos inversión pública, más gasto rígido",
-        "source": "gestion",
-        "score": 55
-      },
-      {
-        "title": "Buscan evitar reestructuración de Petroperú",
-        "source": "correo",
-        "score": 55
-      },
-      {
-        "title": "Congreso: proponen autorizar nuevo retiro extraordinario de S/ 22,000 de la AFP",
-        "source": "gestion",
-        "score": 50
-      },
-      {
-        "title": "Estudio de la Universidad del Pacífico advierte que más del 50% de peruanos se encuentra en inseguridad alimentaria",
+        "title": "Capeco y la SNCI muestran su preocupación por paralización de obras públicas: “Solicitamos al MEF y PCM un shock reactivador en obras o públicas”",
         "source": "elcomercio",
         "score": 45
       },
       {
-        "title": "Minería ilegal restaría hasta 12% de crecimiento potencial al Perú, estima el IPE",
+        "title": "El hambre en el Perú alcanza su peor nivel de los últimos 15 años: ¿Peligra el objetivo de Hambre Cero para el 2030?",
+        "source": "elcomercio",
+        "score": 45
+      },
+      {
+        "title": "Mientras Perú sigue rezagado en proyectos, Chile y Argentina “jalan” más inversiones",
         "source": "gestion",
         "score": 45
+      },
+      {
+        "title": "El populismo fiscal tiene víctimas reales",
+        "source": "gestion",
+        "score": 45
+      },
+      {
+        "title": "Gremios de construcción exigen “shock reactivador” ante paralización de obras públicas en el Perú",
+        "source": "larepublica",
+        "score": 45
+      },
+      {
+        "title": "Por primera vez en 2 años, expectativas sobre la economía peruana son pesimistas",
+        "source": "gestion",
+        "score": 35
       }
     ],
     "eco_sector_titles": [
-      "Si este nuevo rescate a Petroperú no es un crimen económico, no sé qué lo sería",
-      "Crisis del gas sigue afectando a generadoras: Orygen reduce utilidad en 51.5% y eleva costos",
-      "Engie reportó caída de 49% en ebitda en primer trimestre debido a crisis del gas",
-      "Canasta básica sube en Perú: un hogar necesita S/1.848 al mes para no ser pobre, según el INEI",
-      "Siderperu suspende millonario proyecto en Chimbote por incertidumbre ante iniciativa china",
-      "Menos inversión pública, más gasto rígido",
-      "Buscan evitar reestructuración de Petroperú",
-      "Congreso: proponen autorizar nuevo retiro extraordinario de S/ 22,000 de la AFP",
-      "Estudio de la Universidad del Pacífico advierte que más del 50% de peruanos se encuentra en inseguridad alimentaria",
-      "Minería ilegal restaría hasta 12% de crecimiento potencial al Perú, estima el IPE",
-      "Comisión de Energía y Minas citará al MEF y Proinversión por debate sobre futuro de Petroperú",
-      "Inflación en Huancayo crece en abril por el aumento del precio de combustibles",
-      "IPE: minería ilegal reduce hasta 12% el crecimiento del Perú y 1.7 millones no habrían salido de la pobreza en los últimos 15 años",
-      "SPH: producción de petróleo en Perú cae 33% interanual en abril del 2026",
-      "Capeco: Construcción creció 13,2% en el primer trimestre, pero se prevé fuerte desaceleración para el resto del 2026",
-      "5 proyectos clave esperan en “puerta del horno” del Congreso: ¿qué sector está preocupado?",
-      "Gobierno alista crédito suplementario para obras públicas sujeto a “disponibilidad de recursos”",
-      "El precio de no saber",
-      "Alcaldes de la Remurpe protestan cerca de Palacio de Gobierno y exigen presupuesto para obras paralizadas",
-      "“Es ahora o nunca”: experto Jesús Capcha llama al Congreso aprobar ley para la nueva carretera Central",
-      "Presentarán primer estudio sobre el impacto de la minería ilegal en los derechos humanos",
-      "MEF anuncia que presentará crédito suplementario al Congreso",
-      "Elevarían sueldos de casi 200,000 trabajadores CAS, ¿quiénes serían los beneficiados?",
-      "Avanza proyecto para que Paracas tenga zona especial “sin impuestos”",
-      "Alcaldes de diversos distritos del Perú exigen aumento de presupuesto",
-      "JNJ inicia proceso disciplinario contra Piero Corvetto por Elecciones 2026",
-      "¿Más empresas de agua en Perú? Congreso quiere ir tras nuevo régimen para municipalidades",
-      "Contraloría: solo el 17% de alertas en obras es atendido por el Gobierno Regional de Cusco",
-      "Alcaldes exigen al MEF un aumento de presupuesto para culminar obras",
-      "Cajamarca “cumple” 17 años seguidos en el grupo de mayor pobreza extrema",
-      "Congreso: Aprueban dictámenes para incorporar a trabajadores CAS de Procuraduría e IRTP al régimen 728",
-      "Madre de Dios: Caen 6 mineros ilegales con armamento, dragas y campamentos en la RN Tambopata",
-      "Gobierno Regional de Arequipa solo adjudicó la tercera parte de proyectos en obra por impuesto"
+      "Contraloría busca “entrar con todo” a supervisar Petroperú: esto fiscalizarían",
+      "Petro-Perú: Nuevo presidente aprueba masivos cambios gerenciales que hacen tambalear la reorganización de la estatal",
+      "Lote Z-69 de Petroperú al borde de paralizarse y advierten golpe a la petrolera, empleo y canon petrolero en Piura",
+      "Petroperú posterga pago de utilidades de sus trabajadores",
+      "Capeco y la SNCI muestran su preocupación por paralización de obras públicas: “Solicitamos al MEF y PCM un shock reactivador en obras o públicas”",
+      "El hambre en el Perú alcanza su peor nivel de los últimos 15 años: ¿Peligra el objetivo de Hambre Cero para el 2030?",
+      "Mientras Perú sigue rezagado en proyectos, Chile y Argentina “jalan” más inversiones",
+      "El populismo fiscal tiene víctimas reales",
+      "Gremios de construcción exigen “shock reactivador” ante paralización de obras públicas en el Perú",
+      "Por primera vez en 2 años, expectativas sobre la economía peruana son pesimistas",
+      "Contraloría iría al Tribunal Constitucional por “culpa” del Congreso: la norma en cuestión",
+      "Operativo en Pataz permite rescatar a ocho trabajadores secuestrados en bocamina",
+      "Extranjeros piden prima mayor para entrar a proyectos mineros en Perú, ¿qué les perturba?",
+      "Expectativas macreconómicas cayeron tras primera vuelta electoral",
+      "Minería ilegal ya deja más muertos que guerra Rusia-Ucrania",
+      "Congreso aprobó creación de más universidades nacionales, ¿dónde se encontrarán?",
+      "Combustibles alcanzan su segunda alza en mayo: ¿a cuánto llegó este mes?",
+      "Aeropuerto Jorge Chávez: Aerolíneas van a la vía judicial contra Ositran por el cobro de tarifa extra a pasajeros",
+      "Fuerzas Armadas rescatan a ocho trabajadores secuestrados en la provincia de Pataz",
+      "Gobierno amplía estado de emergencia por lluvias",
+      "“Se agotó la vía administrativa”: Gremios de aerolíneas inician proceso judicial contra la TUUA de transferencia y cuestionan Adenda 9 del Jorge Chávez",
+      "¿Es un buen momento para ahorrar en dólares ante incertidumbre por elecciones en Perú?",
+      "Barreras burocráticas: se da un paso más para eliminar trabas en Perú, ¿qué cambia?",
+      "Congreso propone subsidiar sueldos para la primera chamba, ¿hasta por cuánto?",
+      "MEF pide más tiempo al TC para publicar el reglamento que permitirá pagar los bonos de la deuda agraria",
+      "Aquafondo advierte crisis hídrica y pide más inversión",
+      "AETAI advierte impacto de la TUUA de transferencia: “Lima pierde competitividad”",
+      "Puno tiene el 37.5% de pobres y es la tercera región más pobre monetariamente"
     ],
-    "justification": "El panorama político actual refleja una estabilidad relativa, aunque con tensiones subyacentes. La cercanía en resultados electorales y debates sobre reformas legales generan fricción institucional, pero sin alcanzar niveles de crisis. Los desafíos de gobernanza persisten sin comprometer la continuidad democrática inmediata.",
+    "justification": "El panorama político muestra estabilidad relativa, dominado por debates institucionales sobre procedimientos legales y posibles indultos. Aunque hay tensiones entre actores políticos, no se evidencian crisis sistémicas inmediatas. Las discusiones se mantienen dentro de marcos institucionales, reflejando funcionamiento democrático básico.",
     "top_drivers": [
       {
-        "title": "ONPE al 98.218%: segundo y tercer lugar presidencial se separan por 23.688 votos",
-        "source": "correo",
-        "score": 85
-      },
-      {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 98.218 %",
-        "source": "canaln",
+        "title": "Funcionario clave de ONPE activó número de celular incautado en otro equipo: los nuevos elementos presentados por la fiscalía",
+        "source": "elcomercio",
         "score": 70
       },
       {
-        "title": "Congreso alista más cambios a Ley de Extinción de Dominio: ¿Qué busca y a quiénes podría beneficiar el dictamen impulsado por Perú Libre y Podemos?",
+        "title": "Pedro Castillo: Ministerio de Justicia afirma que pedido de indulto a golpista fue declarado inadmisible el 30 de abril",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "De “ladronzuelo” a “imbécil”: Antauro Humala descalificó en más de una oportunidad a su ahora aliado Pedro Castillo",
+        "title": "Lady Camones: “Hay que exhortar al presidente Balcázar que de ninguna manera otorgue el indulto” a Pedro Castillo",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Hugo de Zela muestra chat de WhatsApp con Balcázar y asegura que presidente aprobó compra de aviones F-16",
+        "title": "Secretario general de Juntos por el Perú sobre posible indulto a Pedro Castillo: “Se puede hacer respetando la institucionalidad”",
         "source": "elcomercio",
         "score": 65
       },
       {
-        "title": "Conteo ONPE al 98.22 %: Sánchez disminuye distancia con López Aliaga",
-        "source": "elbuho",
-        "score": 65
-      },
-      {
-        "title": "Capitán Vallejos depositó en sus cuentas S/9.8 millones en efectivo",
-        "source": "larepublica",
-        "score": 62
-      },
-      {
-        "title": "Renzo Reggiardo: 11 Juzgado Constitucional declara que no tiene competencia para evaluar demanda",
-        "source": "elcomercio",
-        "score": 60
-      },
-      {
-        "title": "Elecciones 2026: Contraloría alerta fallas en manejo de equipos, cédulas con votos y USB",
+        "title": "Pedido de indulto a Pedro Castillo fue declarado inadmisible, anunció el Ministerio de Justicia",
         "source": "gestion",
-        "score": 60
+        "score": 65
       },
       {
-        "title": "Miembros del JNE temen ataques por aquellos que cruzan la línea del acoso",
-        "source": "peru21",
-        "score": 60
+        "title": "Lady Camones rechaza posible indulto a Pedro Castillo y pide transparencia por compra de chalecos",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Pedro Castillo seguirá en Barbadillo: Ministerio de Justicia descarta indulto al expresidente",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Ministerio de Justicia consideró “falsa y tendenciosa” la versión sobre supuesto indulto a Pedro Castillo",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Elecciones 2026: López Aliaga, López Chau y el hermano de Pedro Castillo entre los senadores más votados",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "Ministerio de Justicia rechaza supuesto indulto a Pedro Castillo: \"Esa información es falsa y tendenciosa\"",
+        "source": "larepublica",
+        "score": 65
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 32.1,
-    "political_30d_avg": 100.0,
-    "economic_7d_avg": 28.4,
-    "economic_30d_avg": 47.2,
+    "political_7d_avg": 43.4,
+    "political_30d_avg": 98.0,
+    "economic_7d_avg": 41.4,
+    "economic_30d_avg": 46.7,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -234,7 +229,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictividad en instituciones electorales y diplomáticas genera desorden.",
+      "summary": "Conflictos institucionales y crisis de gobernanza electoral debilitan el Estado.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -242,7 +237,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Disputas electorales y conflictos internos institucionales generan incertidumbre.",
+      "summary": "Crisis electoral y robo de armamento en instituciones militares.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -250,7 +245,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "No puedo completar esta tarea porque las noticias proporcionadas no revelan un factor de inestabilidad política claro. Las dos primeras noticias son procedimientos electorales normales, y la tercera",
+      "summary": "Conteo electoral prolongado genera incertidumbre política nacional.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -258,7 +253,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
+      "summary": "La incertidumbre electoral genera volatilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -266,7 +261,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Tensión política y volatilidad económica en elecciones presidenciales.",
+      "summary": "Elecciones presidenciales con irregularidades y volatilidad económica.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -274,7 +269,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Graves incidencias en instalación de mesas electorales.",
+      "summary": "Graves problemas en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -282,7 +277,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Retrasos y desorganización en instalación de mesas electorales.",
+      "summary": "Problemas operativos en la organización electoral generan desconfianza.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -290,7 +285,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno generan preocupación económica.",
+      "summary": "Políticas fiscales que comprometen la estabilidad económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -298,7 +293,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera tensión política en curso.",
+      "summary": "Continuidad de debate presidencial genera incertidumbre política.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -6629,7 +6624,7 @@
       "score": 41.5,
       "prr": 4.6,
       "prr_7d": 41.5,
-      "n_articles": 1,
+      "n_articles": 2,
       "low_coverage": true,
       "provisional": false
     },
@@ -6709,44 +6704,70 @@
       "prr_7d": 25.5,
       "n_articles": 404,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-05-04",
-      "political_raw": 82.8,
-      "political_7d": 42.7,
-      "economic_raw": 75.9,
+      "political_raw": 84.3,
+      "political_7d": 43.1,
+      "economic_raw": 76.2,
       "economic_7d": 37.3,
-      "score": 42.7,
-      "prr": 82.8,
-      "prr_7d": 42.7,
-      "n_articles": 645,
+      "score": 43.1,
+      "prr": 84.3,
+      "prr_7d": 43.1,
+      "n_articles": 647,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-05-05",
-      "political_raw": 69.9,
-      "political_7d": 50.8,
-      "economic_raw": 78.1,
+      "political_raw": 69.7,
+      "political_7d": 51.1,
+      "economic_raw": 78.0,
       "economic_7d": 49.5,
-      "score": 50.8,
-      "prr": 69.9,
-      "prr_7d": 50.8,
-      "n_articles": 607,
+      "score": 51.1,
+      "prr": 69.7,
+      "prr_7d": 51.1,
+      "n_articles": 609,
       "low_coverage": false,
       "provisional": true
     },
     {
       "date": "2026-05-06",
       "political_raw": 59.3,
-      "political_7d": 53.4,
-      "economic_raw": 78.7,
+      "political_7d": 53.6,
+      "economic_raw": 78.6,
       "economic_7d": 58.3,
-      "score": 53.4,
+      "score": 53.6,
       "prr": 59.3,
-      "prr_7d": 53.4,
-      "n_articles": 627,
+      "prr_7d": 53.6,
+      "n_articles": 628,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-07",
+      "political_raw": 55.1,
+      "political_7d": 54.0,
+      "economic_raw": 35.3,
+      "economic_7d": 51.4,
+      "score": 54.0,
+      "prr": 55.1,
+      "prr_7d": 54.0,
+      "n_articles": 304,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-08",
+      "political_raw": 61.5,
+      "political_7d": 56.3,
+      "economic_raw": 70.9,
+      "economic_7d": 57.2,
+      "score": 56.3,
+      "prr": 61.5,
+      "prr_7d": 56.3,
+      "n_articles": 564,
       "low_coverage": false,
       "provisional": true
     }
@@ -8079,6 +8100,14 @@
     {
       "date": "2026-05-05",
       "fx": 3.4926
+    },
+    {
+      "date": "2026-05-06",
+      "fx": 3.4676
+    },
+    {
+      "date": "2026-05-07",
+      "fx": 3.4603
     }
   ],
   "monthly_series": [
@@ -8206,15 +8235,15 @@
       "month": "2026-04",
       "political_avg": 110.3,
       "economic_avg": 55.1,
-      "n_articles": 13938,
+      "n_articles": 13939,
       "fx_level": null,
       "fx_yoy": null
     },
     {
       "month": "2026-05",
-      "political_avg": 34.6,
-      "economic_avg": 31.6,
-      "n_articles": 2506,
+      "political_avg": 39.9,
+      "economic_avg": 37.3,
+      "n_articles": 3379,
       "fx_level": null,
       "fx_yoy": null
     }
