@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-08",
-    "n_days": 88,
+    "last_date": "2026-05-09",
+    "n_days": 89,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-08"
+    "updated": "2026-05-09"
   },
   "categories": {
     "arroz_cereales": {
@@ -2467,87 +2467,114 @@
       "index_limpieza": 99.6969,
       "index_cuidado_personal": 98.3616,
       "index_other": 98.987
+    },
+    {
+      "date": "2026-05-09",
+      "index_all": 99.5122,
+      "index_all_unweighted": 99.3083,
+      "index_food": 99.3172,
+      "index_nonfood": 99.176,
+      "var_all": 0.0142,
+      "var_food": -0.0273,
+      "cum_pct": -0.4878,
+      "yoy_inflation": null,
+      "mom_inflation": 0.3195,
+      "interpolated": false,
+      "n_matched": 36300,
+      "index_arroz_cereales": 99.9087,
+      "index_pan_harinas": 99.537,
+      "index_carnes": 99.1727,
+      "index_pescados_mariscos": 101.1986,
+      "index_lacteos": 99.1334,
+      "index_frutas": 102.7737,
+      "index_verduras": 100.1017,
+      "index_aceites_grasas": 99.4413,
+      "index_azucar_dulces": 93.3225,
+      "index_bebidas": 99.6799,
+      "index_limpieza": 99.7176,
+      "index_cuidado_personal": 98.3388,
+      "index_other": 98.9757
     }
   ],
   "latest": {
-    "date": "2026-05-08",
-    "index_all": 99.4981,
-    "index_food": 99.3443,
-    "cum_pct": -0.5019,
-    "var_all": -0.3365,
+    "date": "2026-05-09",
+    "index_all": 99.5122,
+    "index_food": 99.3172,
+    "cum_pct": -0.4878,
+    "var_all": 0.0142,
     "yoy_inflation": null,
-    "mom_inflation": 0.3422,
-    "n_products_today": 35789,
+    "mom_inflation": 0.3195,
+    "n_products_today": 36300,
     "top_movers": [
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.22
+      },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.72
+        "var": -0.11
       },
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.49
-      },
-      {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.41
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.08
       },
       {
         "category": "pan_harinas",
         "label_es": "Pan y Harinas",
         "label_en": "Bread & Flour",
-        "var": -0.37
+        "var": 0.07
       }
     ],
     "product_movers": [
       {
-        "name": "Albahaca Ecologic 120g",
+        "name": "Champiñón Mixtura Gourmet Cuisine & C...",
         "store": "metro",
         "category": "frutas",
-        "var": 84.44
+        "var": 73.97
       },
       {
-        "name": "Lechuga de Seda Frescas 130g",
-        "store": "metro",
-        "category": "carnes",
-        "var": 82.35
-      },
-      {
-        "name": "Lechuga Hidropónica Verde Puro x un.",
-        "store": "metro",
+        "name": "Lechuga La Caserita",
+        "store": "wong",
         "category": "frutas",
-        "var": 72.34
+        "var": 68.18
       },
       {
-        "name": "Palta Hass x kg",
+        "name": "Queque de Frutos Secos Momenti 500g",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 66.0
+      },
+      {
+        "name": "Queque Marmoleado Momenti 500g",
         "store": "metro",
-        "category": "frutas",
-        "var": 52.72
+        "category": "pan_harinas",
+        "var": 66.0
       }
     ],
     "stores_coverage": {
-      "metro": 10416,
-      "plazavea": 11499,
-      "wong": 15136
+      "metro": 13007,
+      "plazavea": 13013,
+      "wong": 15133
     },
     "categories_coverage": {
-      "aceites_grasas": 531,
-      "arroz_cereales": 1302,
-      "azucar_dulces": 1022,
-      "bebidas": 1080,
-      "carnes": 12570,
-      "cuidado_personal": 2739,
-      "frutas": 1950,
-      "lacteos": 2775,
-      "limpieza": 3110,
-      "pan_harinas": 5649,
-      "pescados_mariscos": 136,
-      "verduras": 237
+      "aceites_grasas": 606,
+      "arroz_cereales": 1443,
+      "azucar_dulces": 1127,
+      "bebidas": 1084,
+      "carnes": 14721,
+      "cuidado_personal": 2741,
+      "frutas": 1982,
+      "lacteos": 2928,
+      "limpieza": 3076,
+      "pan_harinas": 6780,
+      "pescados_mariscos": 233,
+      "verduras": 312
     }
   }
 }
