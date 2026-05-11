@@ -1,195 +1,207 @@
 {
   "metadata": {
-    "generated_at": "2026-05-09T21:09:09.951257",
-    "coverage_days": 494,
+    "generated_at": "2026-05-10T21:08:45.300755",
+    "coverage_days": 495,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-09",
-    "political_raw": 27.4,
+    "date": "2026-05-10",
+    "political_raw": 21.9,
     "political_raw_level": "MINIMO",
-    "political_7d": 47.4,
+    "political_7d": 39.8,
     "political_level": "MINIMO",
-    "political_multiplier": 0.47,
-    "economic_raw": 16.4,
+    "political_multiplier": 0.4,
+    "economic_raw": 23.5,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 45.2,
+    "economic_7d": 38.7,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.45,
-    "score": 47.4,
-    "prr_7d": 47.4,
-    "prr_raw": 27.4,
+    "economic_multiplier": 0.39,
+    "score": 39.8,
+    "prr_7d": 39.8,
+    "prr_raw": 21.9,
     "level": "MINIMO",
-    "articles_total": 452,
-    "articles_political_relevant": 150,
-    "articles_economic_relevant": 45,
-    "political_justification": "A pesar de la cercanía electoral y denuncias de irregularidades en el conteo, el contexto político mantiene estabilidad institucional. Las disputas se canalizan por vías legales (auditorías del JNE, peritajes) sin escalada de confrontación. El rechazo al indulto de Castillo refuerza marcos democráticos.",
-    "economic_justification": "La economía peruana atraviesa una fase de estabilidad mínima con iniciativas puntuales en sectores clave como hidrocarburos y aviación. Sin embargo, persisten desafíos estructurales: pobreza regional, dependencia de crecimiento económico para desarrollo humano y presiones inflacionarias. El panorama requiere consolidar estas medidas para evitar deterioro.",
+    "articles_total": 464,
+    "articles_political_relevant": 131,
+    "articles_economic_relevant": 66,
+    "political_justification": "El panorama electoral muestra tensiones contenidas alrededor de resultados cerrados entre candidatos, con disputas institucionales sobre neutralidad electoral. Aunque persisten conflictos de seguridad (minería ilegal), la competencia se canaliza por vías democráticas. El riesgo permanece controlado sin indicadores de desestabilización inmediata.",
+    "economic_justification": "La economía atraviesa una fase de estabilidad relativa, aunque con señales de debilidad estructural. El pesimismo empresarial y la presión sobre ingresos familiares (ollas comunes, desempleo) contrastan con la ausencia de shocks inmediatos. Persisten vulnerabilidades en minería ilegal y exportaciones que requieren vigilancia.",
     "top_political_drivers": [
       {
-        "title": "ONPE al 99.42%: diferencia entre Sánchez y López Aliaga se reduce a menos de 15,000 votos",
-        "source": "gestion",
+        "title": "Resultados ONPE al 99%: Roberto Sánchez y López Aliaga se disputan voto a voto el pase a la segunda vuelta",
+        "source": "larepublica",
         "score": 75
       },
       {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 99.329 %",
-        "source": "canaln",
+        "title": "Keiko Fujimori y Roberto Sánchez pasarían a segunda vuelta con resultados ONPE al 99,562%",
+        "source": "larepublica",
         "score": 75
       },
       {
-        "title": "Renovación Popular denuncia pérdida de 94 actas presidenciales y exige conteo físico de votos",
-        "source": "correo",
+        "title": "ONPE al 99,549% de votos contabilizados: Roberto Sánchez se perfila como ganador en 11 regiones del Perú",
+        "source": "larepublica",
         "score": 72
       },
       {
-        "title": "Elecciones 2026: Renovación Popular denuncia que presuntamente 94 actas presidenciales se perdieron o siniestraron",
-        "source": "rpp",
+        "title": "Militares y policías se enfrentan por el control de la minería ilegal en Pataz",
+        "source": "larepublica",
         "score": 72
       },
       {
-        "title": "Rafael López Aliaga exige peritaje forense extranjero en lugar de la anunciada auditoría del JNE",
-        "source": "elcomercio",
+        "title": "LINK oficial de la ONPE para ver los resultados finales de las Elecciones 2026: Roberto Sánchez vs. López Aliaga",
+        "source": "larepublica",
         "score": 70
       },
       {
-        "title": "Minjus declara inadmisible pedido de indulto presentado por expresidente Pedro Castillo",
+        "title": "Elecciones 2026: Más de 13.000 votos separan a Roberto Sánchez y Rafael López Aliaga",
+        "source": "larepublica",
+        "score": 68
+      },
+      {
+        "title": "José Domingo Pérez: exfiscal y abogado de golpista Pedro Castillo confirma que se suma al equipo de Roberto Sánchez",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "José Domingo Pérez insiste en indulto a Pedro Castillo: “Hay voluntad política”",
         "source": "correo",
         "score": 65
       },
       {
-        "title": "Elecciones 2026: Una semana y el JNE no inicia la auditoría",
-        "source": "correo",
-        "score": 65
+        "title": "Quiroga señala que recurso de la MML contra el JNE no tiene fundamento: “claramente participa en favor de uno de los candidatos”",
+        "source": "rpp",
+        "score": 60
       },
       {
-        "title": "Vuelve el fantasma del indulto a Pedro Castillo",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Periodista Fernando del Rincón cuestiona a López Aliaga sobre sus presuntas pruebas de fraude electoral",
-        "source": "peru21",
-        "score": 65
-      },
-      {
-        "title": "Descartan posibilidad de indulto para Pedro Castillo | Al Vuelo",
-        "source": "elbuho",
-        "score": 65
+        "title": "Abogado de la MML defiende medida cautelar ante el TC sobre Elecciones 2026 y niega vulneración de neutralidad electoral",
+        "source": "rpp",
+        "score": 58
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Perupetro y Petroperú acuerdan ampliar por un año operación del lote Z-69 para evitar paralización",
-        "source": "larepublica",
+        "title": "💝 20 imágenes con frases de amor por el Día de las Madres 2026 gratis para imprimir en tarjetas",
+        "source": "gestion",
+        "score": 50
+      },
+      {
+        "title": "California lanzará Golden State Start: todo sobre la iniciativa que entregará 400 pañales gratis para cada recién nacido",
+        "source": "gestion",
         "score": 45
       },
       {
-        "title": "Waldo Mendoza: “No hay manera que los índices de desarrollo humano mejoren sin crecimiento económico”",
+        "title": "Uno más a la lista: ingresa al Congreso otra propuesta para un noveno retiro de AFP",
+        "source": "gestion",
+        "score": 40
+      },
+      {
+        "title": "Minería ilegal deforesta 500 hectáreas en Tambopata: la alarmante reducción de operativos y los efectos de las ampliaciones del Reinfo desde el Congreso",
+        "source": "elcomercio",
+        "score": 35
+      },
+      {
+        "title": "Pesimismo empresarial se acentuó: los sectores con menor expectativa sobre la economía",
+        "source": "gestion",
+        "score": 35
+      },
+      {
+        "title": "Alertan que ollas comunes no reciben el presupuesto suficiente para cobertura: \"Los productos de primera necesidad cada día suben\"",
+        "source": "rpp",
+        "score": 30
+      },
+      {
+        "title": "La independencia del BCR y la nostalgia de la maquinita",
         "source": "elcomercio",
         "score": 25
       },
       {
-        "title": "Ahora Congreso apunta a que aporte a AFP no sea obligatorio: ¿cuál sería el mecanismo?",
-        "source": "gestion",
+        "title": "Pobreza en Perú: por qué el crecimiento económico no logra reducir las brechas en las regiones más golpeadas",
+        "source": "larepublica",
         "score": 25
       },
       {
-        "title": "Mincetur sobre demanda por alza de TUUA: juez tomará “la decisión más acorde”",
-        "source": "gestion",
-        "score": 25
-      },
-      {
-        "title": "La región Cajamarca hundida en la pobreza (EDITORIAL)",
-        "source": "correo",
-        "score": 25
-      },
-      {
-        "title": "“La Adenda 9 es legal y la TUUA no afecta la competitividad”: LAP y MTC responden a gremios de aerolíneas tras proceso contencioso - administrativo",
+        "title": "Prioridades revueltas",
         "source": "elcomercio",
         "score": 20
       },
       {
-        "title": "Perupetro alista extensión por 12 meses del Lote Z-69 ante vencimiento de contrato",
-        "source": "gestion",
-        "score": 20
-      },
-      {
-        "title": "Advierten que el Perú necesita “más agua” para sostener su crecimiento",
+        "title": "Exportaciones de limón sufren “ajuste” en lo que va del 2026: las caídas en volumen y precio",
         "source": "gestion",
         "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Perupetro y Petroperú acuerdan ampliar por un año operación del lote Z-69 para evitar paralización",
-      "Efecto de incertidumbre de elecciones: La confianza empresarial se enfrió en abril",
-      "Comando Unificado libera a ocho trabajadores secuestrados en Pataz con operación Impacto",
-      "Waldo Mendoza: “No hay manera que los índices de desarrollo humano mejoren sin crecimiento económico”",
-      "Ahora Congreso apunta a que aporte a AFP no sea obligatorio: ¿cuál sería el mecanismo?",
-      "Mincetur sobre demanda por alza de TUUA: juez tomará “la decisión más acorde”",
-      "La región Cajamarca hundida en la pobreza (EDITORIAL)",
-      "Alertan muerte de más de 60 niños indígenas por tos ferina en Loreto y exigen declarar emergencia sanitaria"
+      "💝 20 imágenes con frases de amor por el Día de las Madres 2026 gratis para imprimir en tarjetas",
+      "California lanzará Golden State Start: todo sobre la iniciativa que entregará 400 pañales gratis para cada recién nacido",
+      "Uno más a la lista: ingresa al Congreso otra propuesta para un noveno retiro de AFP",
+      "Minería ilegal deforesta 500 hectáreas en Tambopata: la alarmante reducción de operativos y los efectos de las ampliaciones del Reinfo desde el Congreso",
+      "Pesimismo empresarial se acentuó: los sectores con menor expectativa sobre la economía",
+      "Militares y policías se enfrentan por el control de la minería ilegal en Pataz",
+      "Alertan que ollas comunes no reciben el presupuesto suficiente para cobertura: \"Los productos de primera necesidad cada día suben\"",
+      "Perú toca fondo: indicadores económicos, sociales y de gobernabilidad alcanzan su peor nivel en cinco años",
+      "La independencia del BCR y la nostalgia de la maquinita",
+      "Pobreza en Perú: por qué el crecimiento económico no logra reducir las brechas en las regiones más golpeadas"
     ],
-    "justification": "A pesar de la cercanía electoral y denuncias de irregularidades en el conteo, el contexto político mantiene estabilidad institucional. Las disputas se canalizan por vías legales (auditorías del JNE, peritajes) sin escalada de confrontación. El rechazo al indulto de Castillo refuerza marcos democráticos.",
+    "justification": "El panorama electoral muestra tensiones contenidas alrededor de resultados cerrados entre candidatos, con disputas institucionales sobre neutralidad electoral. Aunque persisten conflictos de seguridad (minería ilegal), la competencia se canaliza por vías democráticas. El riesgo permanece controlado sin indicadores de desestabilización inmediata.",
     "top_drivers": [
       {
-        "title": "ONPE al 99.42%: diferencia entre Sánchez y López Aliaga se reduce a menos de 15,000 votos",
-        "source": "gestion",
+        "title": "Resultados ONPE al 99%: Roberto Sánchez y López Aliaga se disputan voto a voto el pase a la segunda vuelta",
+        "source": "larepublica",
         "score": 75
       },
       {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 99.329 %",
-        "source": "canaln",
+        "title": "Keiko Fujimori y Roberto Sánchez pasarían a segunda vuelta con resultados ONPE al 99,562%",
+        "source": "larepublica",
         "score": 75
       },
       {
-        "title": "Renovación Popular denuncia pérdida de 94 actas presidenciales y exige conteo físico de votos",
-        "source": "correo",
+        "title": "ONPE al 99,549% de votos contabilizados: Roberto Sánchez se perfila como ganador en 11 regiones del Perú",
+        "source": "larepublica",
         "score": 72
       },
       {
-        "title": "Elecciones 2026: Renovación Popular denuncia que presuntamente 94 actas presidenciales se perdieron o siniestraron",
-        "source": "rpp",
+        "title": "Militares y policías se enfrentan por el control de la minería ilegal en Pataz",
+        "source": "larepublica",
         "score": 72
       },
       {
-        "title": "Rafael López Aliaga exige peritaje forense extranjero en lugar de la anunciada auditoría del JNE",
-        "source": "elcomercio",
+        "title": "LINK oficial de la ONPE para ver los resultados finales de las Elecciones 2026: Roberto Sánchez vs. López Aliaga",
+        "source": "larepublica",
         "score": 70
       },
       {
-        "title": "Minjus declara inadmisible pedido de indulto presentado por expresidente Pedro Castillo",
+        "title": "Elecciones 2026: Más de 13.000 votos separan a Roberto Sánchez y Rafael López Aliaga",
+        "source": "larepublica",
+        "score": 68
+      },
+      {
+        "title": "José Domingo Pérez: exfiscal y abogado de golpista Pedro Castillo confirma que se suma al equipo de Roberto Sánchez",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "José Domingo Pérez insiste en indulto a Pedro Castillo: “Hay voluntad política”",
         "source": "correo",
         "score": 65
       },
       {
-        "title": "Elecciones 2026: Una semana y el JNE no inicia la auditoría",
-        "source": "correo",
-        "score": 65
+        "title": "Quiroga señala que recurso de la MML contra el JNE no tiene fundamento: “claramente participa en favor de uno de los candidatos”",
+        "source": "rpp",
+        "score": 60
       },
       {
-        "title": "Vuelve el fantasma del indulto a Pedro Castillo",
-        "source": "correo",
-        "score": 65
-      },
-      {
-        "title": "Periodista Fernando del Rincón cuestiona a López Aliaga sobre sus presuntas pruebas de fraude electoral",
-        "source": "peru21",
-        "score": 65
-      },
-      {
-        "title": "Descartan posibilidad de indulto para Pedro Castillo | Al Vuelo",
-        "source": "elbuho",
-        "score": 65
+        "title": "Abogado de la MML defiende medida cautelar ante el TC sobre Elecciones 2026 y niega vulneración de neutralidad electoral",
+        "source": "rpp",
+        "score": 58
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 47.2,
-    "political_30d_avg": 96.5,
-    "economic_7d_avg": 45.7,
-    "economic_30d_avg": 45.9,
+    "political_7d_avg": 49.3,
+    "political_30d_avg": 94.5,
+    "economic_7d_avg": 48.2,
+    "economic_30d_avg": 44.5,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -199,7 +211,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictos institucionales debilitan legitimidad de autoridades electorales.",
+      "summary": "Conflictos institucionales debilitan gobernanza democrática y electoral peruana.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -207,7 +219,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Resultados electorales generan incertidumbre política institucional en Perú.",
+      "summary": "Resultados electorales generan incertidumbre política en Perú.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -215,7 +227,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Incertidumbre por resultados electorales aún no finalizados.",
+      "summary": "Incertidumbre electoral durante conteo de votos oficial.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -231,7 +243,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Tensión política y electoral con inestabilidad económica simultánea.",
+      "summary": "Elecciones presidenciales generan incertidumbre económica y política.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -239,7 +251,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral afecta instalación de mesas.",
+      "summary": "Falta de material electoral afecta proceso electoral.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -247,7 +259,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Retrasos y errores en la organización electoral generan desconfianza ciudadana.",
+      "summary": "Inconvenientes logísticos y desorganización en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -255,7 +267,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno comprometen estabilidad económica.",
+      "summary": "Políticas fiscales del gobierno Balcázar comprometen futuro económico.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -263,7 +275,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Continuidad del proceso electoral presidencial genera tensión política.",
+      "summary": "Tensión política por disputas en debate presidencial del 2026.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -271,7 +283,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Vladimir Cerrón prófugo participa en debates presidenciales.",
+      "summary": "Candidato prófugo participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -6713,18 +6725,18 @@
       "prr_7d": 53.5,
       "n_articles": 629,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-05-07",
-      "political_raw": 54.8,
+      "political_raw": 54.7,
       "political_7d": 53.9,
       "economic_raw": 35.4,
       "economic_7d": 51.4,
       "score": 53.9,
-      "prr": 54.8,
+      "prr": 54.7,
       "prr_7d": 53.9,
-      "n_articles": 307,
+      "n_articles": 308,
       "low_coverage": false,
       "provisional": true
     },
@@ -6746,11 +6758,24 @@
       "political_raw": 27.4,
       "political_7d": 47.4,
       "economic_raw": 16.4,
-      "economic_7d": 45.2,
+      "economic_7d": 45.1,
       "score": 47.4,
       "prr": 27.4,
       "prr_7d": 47.4,
       "n_articles": 452,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-10",
+      "political_raw": 21.9,
+      "political_7d": 39.8,
+      "economic_raw": 23.5,
+      "economic_7d": 38.7,
+      "score": 39.8,
+      "prr": 21.9,
+      "prr_7d": 39.8,
+      "n_articles": 464,
       "low_coverage": false,
       "provisional": true
     }
@@ -8224,9 +8249,9 @@
     },
     {
       "month": "2026-05",
-      "political_avg": 40.6,
+      "political_avg": 40.5,
       "economic_avg": 38.2,
-      "n_articles": 3859,
+      "n_articles": 4324,
       "fx_level": null,
       "fx_yoy": null
     }

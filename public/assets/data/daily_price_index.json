@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-09",
-    "n_days": 89,
+    "last_date": "2026-05-10",
+    "n_days": 90,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-09"
+    "updated": "2026-05-10"
   },
   "categories": {
     "arroz_cereales": {
@@ -2494,87 +2494,114 @@
       "index_limpieza": 99.7176,
       "index_cuidado_personal": 98.3388,
       "index_other": 98.9757
+    },
+    {
+      "date": "2026-05-10",
+      "index_all": 99.4471,
+      "index_all_unweighted": 99.2413,
+      "index_food": 99.2362,
+      "index_nonfood": 99.1537,
+      "var_all": -0.0654,
+      "var_food": -0.0816,
+      "cum_pct": -0.5529,
+      "yoy_inflation": null,
+      "mom_inflation": 0.298,
+      "interpolated": false,
+      "n_matched": 40362,
+      "index_arroz_cereales": 99.8893,
+      "index_pan_harinas": 99.5044,
+      "index_carnes": 99.1199,
+      "index_pescados_mariscos": 101.1986,
+      "index_lacteos": 99.0873,
+      "index_frutas": 102.1849,
+      "index_verduras": 100.1017,
+      "index_aceites_grasas": 99.4399,
+      "index_azucar_dulces": 93.1159,
+      "index_bebidas": 99.6799,
+      "index_limpieza": 99.7018,
+      "index_cuidado_personal": 98.3501,
+      "index_other": 98.9272
     }
   ],
   "latest": {
-    "date": "2026-05-09",
-    "index_all": 99.5122,
-    "index_food": 99.3172,
-    "cum_pct": -0.4878,
-    "var_all": 0.0142,
+    "date": "2026-05-10",
+    "index_all": 99.4471,
+    "index_food": 99.2362,
+    "cum_pct": -0.5529,
+    "var_all": -0.0654,
     "yoy_inflation": null,
-    "mom_inflation": 0.3195,
-    "n_products_today": 36300,
+    "mom_inflation": 0.298,
+    "n_products_today": 40362,
     "top_movers": [
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 0.22
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": -0.57
+      },
+      {
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -0.22
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.11
+        "var": -0.05
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.08
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": 0.07
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.05
       }
     ],
     "product_movers": [
       {
-        "name": "Champiñón Mixtura Gourmet Cuisine & C...",
-        "store": "metro",
-        "category": "frutas",
-        "var": 73.97
-      },
-      {
-        "name": "Lechuga La Caserita",
-        "store": "wong",
-        "category": "frutas",
-        "var": 68.18
-      },
-      {
-        "name": "Queque de Frutos Secos Momenti 500g",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 66.0
-      },
-      {
-        "name": "Queque Marmoleado Momenti 500g",
+        "name": "Pan para Hot Dog 6un",
         "store": "metro",
         "category": "pan_harinas",
-        "var": 66.0
+        "var": 94.58
+      },
+      {
+        "name": "Coliflor Entera x un",
+        "store": "metro",
+        "category": "frutas",
+        "var": 55.27
+      },
+      {
+        "name": "Lechuga de Seda Hidropónica Frescas x un",
+        "store": "metro",
+        "category": "carnes",
+        "var": -43.18
+      },
+      {
+        "name": "Aguaymanto Fresco Pelado 200g",
+        "store": "metro",
+        "category": "carnes",
+        "var": -40.57
       }
     ],
     "stores_coverage": {
-      "metro": 13007,
-      "plazavea": 13013,
-      "wong": 15133
+      "metro": 13019,
+      "plazavea": 12967,
+      "wong": 15112
     },
     "categories_coverage": {
-      "aceites_grasas": 606,
-      "arroz_cereales": 1443,
-      "azucar_dulces": 1127,
-      "bebidas": 1084,
-      "carnes": 14721,
-      "cuidado_personal": 2741,
-      "frutas": 1982,
-      "lacteos": 2928,
-      "limpieza": 3076,
-      "pan_harinas": 6780,
+      "aceites_grasas": 602,
+      "arroz_cereales": 1451,
+      "azucar_dulces": 1123,
+      "bebidas": 1079,
+      "carnes": 14618,
+      "cuidado_personal": 2760,
+      "frutas": 1971,
+      "lacteos": 2918,
+      "limpieza": 3117,
+      "pan_harinas": 6784,
       "pescados_mariscos": 233,
-      "verduras": 312
+      "verduras": 309
     }
   }
 }
