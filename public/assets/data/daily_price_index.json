@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-10",
-    "n_days": 90,
+    "last_date": "2026-05-11",
+    "n_days": 91,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-10"
+    "updated": "2026-05-11"
   },
   "categories": {
     "arroz_cereales": {
@@ -2521,87 +2521,114 @@
       "index_limpieza": 99.7018,
       "index_cuidado_personal": 98.3501,
       "index_other": 98.9272
+    },
+    {
+      "date": "2026-05-11",
+      "index_all": 99.6663,
+      "index_all_unweighted": 99.546,
+      "index_food": 99.5785,
+      "index_nonfood": 99.3402,
+      "var_all": 0.2204,
+      "var_food": 0.3449,
+      "cum_pct": -0.3337,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2864,
+      "interpolated": false,
+      "n_matched": 40475,
+      "index_arroz_cereales": 99.8541,
+      "index_pan_harinas": 99.6753,
+      "index_carnes": 99.6673,
+      "index_pescados_mariscos": 101.3732,
+      "index_lacteos": 99.2835,
+      "index_frutas": 102.5099,
+      "index_verduras": 100.1442,
+      "index_aceites_grasas": 99.4282,
+      "index_azucar_dulces": 93.2894,
+      "index_bebidas": 99.7572,
+      "index_limpieza": 99.7863,
+      "index_cuidado_personal": 98.7621,
+      "index_other": 99.0412
     }
   ],
   "latest": {
-    "date": "2026-05-10",
-    "index_all": 99.4471,
-    "index_food": 99.2362,
-    "cum_pct": -0.5529,
-    "var_all": -0.0654,
+    "date": "2026-05-11",
+    "index_all": 99.6663,
+    "index_food": 99.5785,
+    "cum_pct": -0.3337,
+    "var_all": 0.2204,
     "yoy_inflation": null,
-    "mom_inflation": 0.298,
-    "n_products_today": 40362,
+    "mom_inflation": 0.2864,
+    "n_products_today": 40475,
     "top_movers": [
-      {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.57
-      },
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -0.22
-      },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.05
+        "var": 0.55
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.42
+      },
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.32
       },
       {
         "category": "lacteos",
         "label_es": "Lácteos y Huevos",
         "label_en": "Dairy & Eggs",
-        "var": -0.05
+        "var": 0.2
       }
     ],
     "product_movers": [
       {
-        "name": "Pan para Hot Dog 6un",
+        "name": "Mini Hamburguesas Angus Bon Beef 8un",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 93.47
+      },
+      {
+        "name": "Mini Hamburguesas Angus Bon Beef 8un",
         "store": "metro",
         "category": "pan_harinas",
-        "var": 94.58
+        "var": 86.93
       },
       {
-        "name": "Coliflor Entera x un",
+        "name": "Hamburguesa Angus Rellena de Cheddar ...",
         "store": "metro",
-        "category": "frutas",
-        "var": 55.27
+        "category": "pan_harinas",
+        "var": 83.51
       },
       {
-        "name": "Lechuga de Seda Hidropónica Frescas x un",
-        "store": "metro",
-        "category": "carnes",
-        "var": -43.18
-      },
-      {
-        "name": "Aguaymanto Fresco Pelado 200g",
+        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
         "store": "metro",
         "category": "carnes",
-        "var": -40.57
+        "var": 80.0
       }
     ],
     "stores_coverage": {
-      "metro": 13019,
-      "plazavea": 12967,
-      "wong": 15112
+      "metro": 13003,
+      "plazavea": 13039,
+      "wong": 15069
     },
     "categories_coverage": {
-      "aceites_grasas": 602,
-      "arroz_cereales": 1451,
-      "azucar_dulces": 1123,
+      "aceites_grasas": 604,
+      "arroz_cereales": 1443,
+      "azucar_dulces": 1133,
       "bebidas": 1079,
-      "carnes": 14618,
-      "cuidado_personal": 2760,
-      "frutas": 1971,
-      "lacteos": 2918,
-      "limpieza": 3117,
-      "pan_harinas": 6784,
+      "carnes": 14649,
+      "cuidado_personal": 2789,
+      "frutas": 1967,
+      "lacteos": 2916,
+      "limpieza": 3139,
+      "pan_harinas": 6730,
       "pescados_mariscos": 233,
-      "verduras": 309
+      "verduras": 306
     }
   }
 }
