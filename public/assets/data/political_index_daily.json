@@ -1,237 +1,238 @@
 {
   "metadata": {
-    "generated_at": "2026-05-11T21:09:56.687877",
-    "coverage_days": 496,
+    "generated_at": "2026-05-12T21:10:17.577535",
+    "coverage_days": 497,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-11",
-    "political_raw": 66.6,
+    "date": "2026-05-12",
+    "political_raw": 70.1,
     "political_raw_level": "BAJO",
-    "political_7d": 47.8,
-    "political_level": "MINIMO",
-    "political_multiplier": 0.48,
-    "economic_raw": 99.8,
+    "political_7d": 54.5,
+    "political_level": "BAJO",
+    "political_multiplier": 0.55,
+    "economic_raw": 93.7,
     "economic_raw_level": "NORMAL",
-    "economic_7d": 57.0,
+    "economic_7d": 68.1,
     "economic_level": "BAJO",
-    "economic_multiplier": 0.57,
-    "score": 47.8,
-    "prr_7d": 47.8,
-    "prr_raw": 66.6,
-    "level": "MINIMO",
-    "articles_total": 553,
-    "articles_political_relevant": 205,
-    "articles_economic_relevant": 113,
-    "political_justification": "El panorama político muestra tensiones moderadas concentradas en la legitimidad electoral. Aunque el conteo de votos avanza, persisten denuncias de irregularidades en la ONPE y cuestionamientos institucionales que generan desconfianza, sin alcanzar aún niveles de crisis sistémica.",
-    "economic_justification": "La economía enfrenta presiones estructurales por crisis política que afecta principalmente a sectores vulnerables. El rescate de Petroperú por US$2,000 millones refleja fragilidad en infraestructura energética crítica. Estos factores mantienen el riesgo en niveles normales, aunque requieren monitoreo cercano de implementación y recuperación institucional.",
+    "economic_multiplier": 0.68,
+    "score": 54.5,
+    "prr_7d": 54.5,
+    "prr_raw": 70.1,
+    "level": "BAJO",
+    "articles_total": 543,
+    "articles_political_relevant": 242,
+    "articles_economic_relevant": 114,
+    "political_justification": "El panorama político mantiene una estabilidad relativa con tensiones controladas. Los focos de atención se concentran en procesos electorales en curso, investigaciones de corrupción y la persistente presión sobre indultos, sin que estos generen inestabilidad sistémica inmediata.",
+    "economic_justification": "La economía peruana mantiene estabilidad relativa, aunque enfrenta presiones significativas por el rescate repetido a Petroperú, que compromete recursos fiscales y genera incertidumbre sobre sostenibilidad estatal. La cautela empresarial crece ante el contexto político, limitando dinamismo económico en el corto plazo.",
     "top_political_drivers": [
       {
-        "title": "Resultados ONPE al 99.66%: 14,544 votos separan a Sánchez y López Aliaga",
-        "source": "gestion",
-        "score": 85
-      },
-      {
-        "title": "\"Me siento más cómoda en el set\": ex Miss Perú Karla Bacigalupo se sincera tras nominación en festival de cine en España [ENTREVISTA]",
-        "source": "rpp",
-        "score": 85
-      },
-      {
-        "title": "ONPE en la mira: 76 denuncias, documentos alterados, firmas falsas y otras irregularidades en las elecciones",
+        "title": "EN VIVO resultados ONPE al 99.778 % hoy: así avanza el conteo de las elecciones 2026",
         "source": "correo",
-        "score": 78
+        "score": 70
       },
       {
-        "title": "Conteo ONPE al 100% EN VIVO: JNE inicia proclamación descentralizada de los resultados de la primera vuelta",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "JEE proclaman resultados de las elecciones presidenciales 2026: sigue transmisión EN VIVO de la audiencia pública",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 99.663 %",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Municipalidad de Lima insiste al TC frenar proclamación de resultados de las elecciones",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Jorge Nieto: “No descartaría corrupción en la ONPE” y pide auditoría internacional",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Resultados ONPE: sigue minuto a minuto el conteo oficial",
+        "title": "Fiscalía solicita más de 5 años de prisión contra Roberto Sánchez por aportes a Juntos por el Perú",
         "source": "larepublica",
         "score": 70
       },
       {
-        "title": "Defensa de Pedro Castillo anuncia que presentará un nuevo pedido de indulto",
-        "source": "rpp",
+        "title": "Petro decreta luto nacional por el asesinato del periodista Mateo Pérez",
+        "source": "caretas",
+        "score": 70
+      },
+      {
+        "title": "Óscar Arriola niega injerencia política en captura de Vladimir Cerrón",
+        "source": "canaln",
+        "score": 70
+      },
+      {
+        "title": "La Victoria: Fiscalía allana casa del alcalde por presuntos vínculos con extorsionadores",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Premier Arroyo remarca que liberar a Pedro Castillo no está en agenda del Gobierno",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Candidata a diputada de Juntos por el Perú es investigada por caso “Los Pulpos de La Victoria”",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Premier insiste en que indulto a Pedro Castillo “no está en agenda”",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Comisión de Constitución aprueba nueva ley de impunidad para prescribir crímenes de lesa humanidad y casos de violación de DD.HH",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "PCM asegura que el Gobierno de Balcázar no tiene en agenda indultar a Pedro Castillo",
+        "source": "larepublica",
         "score": 65
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Javier Herrera, economista de la PUCP: “Quienes están pagando la factura de la crisis política son los pobres”",
-        "source": "elcomercio",
-        "score": 90
-      },
-      {
-        "title": "Petroperú: Gobierno autoriza “salvavidas” de hasta US$ 2,000 millones para la petrolera",
-        "source": "gestion",
-        "score": 85
-      },
-      {
-        "title": "Gobierno autoriza respaldo de hasta US$2.000 millones para garantizar operaciones de Petroperú",
+        "title": "Petroperú recibirá $ 2,000 millones y el Ejecutivo afirma que no es salvataje",
         "source": "correo",
-        "score": 85
+        "score": 88
       },
       {
-        "title": "Petroperú recibirá respaldo financiero de hasta US$2.000 millones para asegurar abastecimiento de hidrocarburos a nivel nacional",
-        "source": "caretas",
-        "score": 85
+        "title": "Gobierno autoriza nuevo rescate para Petro-Perú hasta por US$2.000 millones: esto contemplará la línea de crédito para la petrolera",
+        "source": "elcomercio",
+        "score": 80
       },
       {
-        "title": "Gobierno autoriza respaldo a Petroperú para acceder a financiamiento de hasta US$2.000 millones ante crisis energética",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Petroperú: Gobierno da luz verde a “salvavidas”, ¿cuáles son los siguientes pasos?",
+        "title": "Petroperú: El rescate continúa",
         "source": "gestion",
         "score": 75
       },
       {
-        "title": "Roberto Chiabra exige al Gobierno explicar respaldo financiero de US$2 mil millones para Petroperú",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "Petro-Perú: ¿otro salvataje sin cambio de rumbo?",
-        "source": "elcomercio",
-        "score": 70
-      },
-      {
-        "title": "Petro-Perú: Rescate financiero se devolvería después de 7 años, según Proinversión",
-        "source": "elcomercio",
-        "score": 70
-      },
-      {
-        "title": "María del Carmen Alva rechaza nuevo esquema financiero anunciado por el Ejecutivo para Petroperú",
+        "title": "IPE advierte que rescate a Petroperú sí compromete recursos del Estado",
         "source": "canaln",
+        "score": 75
+      },
+      {
+        "title": "Gobierno lanza “salvavidas” a Petroperú, ¿cuál es el riesgo si la petrolera no paga?",
+        "source": "gestion",
+        "score": 72
+      },
+      {
+        "title": "Proinversión: “Petro-Perú debe pagar por adelantado la compra de crudo para funcionar y eso limita sus operaciones”",
+        "source": "elcomercio",
+        "score": 70
+      },
+      {
+        "title": "ProInversión: sin “salvavidas” a Petroperú se dejaría “bomba de tiempo” al próximo Gobierno",
+        "source": "gestion",
+        "score": 68
+      },
+      {
+        "title": "Manco Zaconetti: \"Petroperú asume costos que el Estado nunca le reconoce; los US$2.000 millones son un respiro para la privatización\"",
+        "source": "larepublica",
         "score": 65
+      },
+      {
+        "title": "Cautela empresarial crece en medio de la segunda vuelta y marzo mostraría menor dinamismo: acá te explicamos por qué",
+        "source": "elcomercio",
+        "score": 55
+      },
+      {
+        "title": "Keiko Fujimori critica nuevo apoyo financiero a Petroperú",
+        "source": "correo",
+        "score": 55
       }
     ],
     "eco_sector_titles": [
-      "Javier Herrera, economista de la PUCP: “Quienes están pagando la factura de la crisis política son los pobres”",
-      "Petroperú: Gobierno autoriza “salvavidas” de hasta US$ 2,000 millones para la petrolera",
-      "Gobierno autoriza respaldo de hasta US$2.000 millones para garantizar operaciones de Petroperú",
-      "Petroperú recibirá respaldo financiero de hasta US$2.000 millones para asegurar abastecimiento de hidrocarburos a nivel nacional",
-      "Gobierno autoriza respaldo a Petroperú para acceder a financiamiento de hasta US$2.000 millones ante crisis energética",
-      "Petroperú: Gobierno da luz verde a “salvavidas”, ¿cuáles son los siguientes pasos?",
-      "Roberto Chiabra exige al Gobierno explicar respaldo financiero de US$2 mil millones para Petroperú",
-      "Petro-Perú: ¿otro salvataje sin cambio de rumbo?",
-      "Petro-Perú: Rescate financiero se devolvería después de 7 años, según Proinversión",
-      "María del Carmen Alva rechaza nuevo esquema financiero anunciado por el Ejecutivo para Petroperú",
-      "Conoce los denominados activos alternativos que pueden marcar diferencia en inversiones",
-      "Roberto Chiabra cuestiona millonario respaldo financiero a Petroperú",
-      "Defensor del Pueblo: La Constitución establece que es “prerrogativa” del mandatario otorgar las gracias presidenciales",
-      "Fernando Rospigliosi sobre recursos del Gobierno a Petroperú: “Hace años se financia a un barril sin fondo”",
-      "La campaña prometió más de lo que el Estado puede pagar",
-      "Tayacaja acata tercer día de paro indefinido contra minera Cobriza",
-      "ProInversión: banca internacional confía en el Perú y financiará operatividad de Petroperú",
-      "Crisis energética mantiene a Loreto “aislado”",
-      "Contraloría advierte que contratista pretende aplazar ejecución del Aeropuerto de Chinchero sin sustento hasta 2028",
-      "Luis Arroyo descarta uso de dinero público en nuevo esquema financiero para Petroperú",
-      "MEF aún no define cómo destrabar más de 12.000 obras paralizadas en Perú, advierte gremio de construcción",
-      "Petroperú será financiada por banca privada, asegura Luis Arroyo",
-      "¿Llegará un gasoducto a Cusco? Fijar junio como meta “pone a prueba” al Perú",
-      "Piura en alerta por avance de la minería ilegal que pone en peligro su agricultura y agua",
-      "¡Aeropuerto de Chinchero en peligro! Las irregularidades halladas por la Contraloría que podrían paralizar el proyecto",
-      "Hay mayor riesgo de “sacrificar” inversión, para mantener cuentas: la advertencia de Moody’s",
-      "Bolivia activa vuelos humanitarios para evacuar a peruanos varados por bloqueos de carreteras",
-      "Este aeropuerto de Perú que debía terminar en 2026 se retrasaría dos años y costaría más, alerta Contraloría",
-      "Exportaciones de oro ilegal superaron los US$11,500 millones",
-      "Hospitales de Quillabamba y Espinar continúan pendientes y con costos en aumento",
-      "Presidente de la Cámara de Comercio de Huancayo: “Virtual diputado de JP no nos representa”",
-      "“Solamente existe un médico en la comunidad”: pueblos urarinas denuncian 58 muertes de niños por tos ferina en Loreto",
-      "Contraloría advierte retraso en aeropuerto de Chinchero",
-      "Sindicatos anuncian evento político en sede de Petro-Perú: ¿puede usarse un local estatal para actividades ideológicas?",
-      "Congreso avanza al Pleno proyecto para impulsar Zona Económica Especial Privada en Paracas",
-      "Sedapar no entregó agua gratuita a población vulnerable de Arequipa y devolvió S/6 millones al Ministerio de Vivienda",
-      "Dólar cae en el Perú pese a una mayor tensión geopolítica global",
-      "Más de 400 peruanos serán evacuados desde Bolivia en aeronaves de la Fuerza Aérea tras cierre de rutas fronterizas",
-      "Pese a operativos del Estado, la minería ilegal se extiende por Tambopata: 500 hectáreas deforestadas, 67 campamentos y 183 infraestructuras detectadas",
-      "Juez que benefició a Chinalco para desalojo de pobladores, ahora denuncia a la minera por desacato"
+      "Petroperú recibirá $ 2,000 millones y el Ejecutivo afirma que no es salvataje",
+      "Gobierno autoriza nuevo rescate para Petro-Perú hasta por US$2.000 millones: esto contemplará la línea de crédito para la petrolera",
+      "Petroperú: El rescate continúa",
+      "IPE advierte que rescate a Petroperú sí compromete recursos del Estado",
+      "Gobierno lanza “salvavidas” a Petroperú, ¿cuál es el riesgo si la petrolera no paga?",
+      "Proinversión: “Petro-Perú debe pagar por adelantado la compra de crudo para funcionar y eso limita sus operaciones”",
+      "ProInversión: sin “salvavidas” a Petroperú se dejaría “bomba de tiempo” al próximo Gobierno",
+      "Manco Zaconetti: \"Petroperú asume costos que el Estado nunca le reconoce; los US$2.000 millones son un respiro para la privatización\"",
+      "Cautela empresarial crece en medio de la segunda vuelta y marzo mostraría menor dinamismo: acá te explicamos por qué",
+      "Keiko Fujimori critica nuevo apoyo financiero a Petroperú",
+      "NUEVAMENTE PETROPERÚ, columna de Paola Lazarte",
+      "Ex ministro de Economía, David Tuesta: “La seguridad energética es la excusa perfecta”",
+      "MEF evalúa llevar al Tribunal Constitucional leyes del Congreso con gasto fiscal tras segunda vuelta electoral",
+      "Empresas se apuran en levantar fondos antes de segunda vuelta, ¿vuelve fantasma del sombrero?",
+      "IIMP advierte que reducción de concesiones mineras afectaría inversión minera formal y favorecería avance de actividad ilegal",
+      "Huancayo: Cianuro acabó con 2 millones truchas y ahora pone en riesgo 90 hectáreas de palta de exportación, advierte alcalde",
+      "Aeropuerto de Chinchero: Contraloría advierte que contratista pretende aplazarlo hasta 2028",
+      "Precio del dólar: ¿el ruido electoral le gana a los fundamentos?",
+      "La Victoria: allanan casa del alcalde y detienen a funcionarios por presunta red de extorsión en Gamarra",
+      "Abraham Levy alerta: “El Niño 2026 tiene características muy similares al del desastre del 97” en La Voz del 21",
+      "Trump abre posibilidad de diálogo con Cuba previo a viaje a China",
+      "Loreto debe conectarse al SEIN para frenar apagones: Solo en 2024 se registraron 530 apagones",
+      "Palta hass: Perú, el segundo exportador mundial, teme perder dinamismo",
+      "Deslizamientos en Siguas ponen en riesgo a 300 hectáreas en valle de Quilca, Camaná",
+      "Cae banda presuntamente vinculada al alcalde de La Victoria: habrían recaudado S/75 millones cobrando cupos a ambulantes en Gamarra",
+      "Jaén: transportistas y mototaxistas expresan preocupación por alza de combustibles que afecta su economía",
+      "Minería ilegal e informal deja una preocupante racha de mineros muertos en socavones del Perú",
+      "Más retraso en Aeropuerto de Chinchero en Cusco: Contratista pretende ampliar plazo de culminación por dos años más",
+      "Pese al alza de precios, familias peruanas no dejaron de gastar: ¿qué compras priorizaron?",
+      "Deudas en dólares: qué revisar si ganas en soles y tienes pagos expuestos al tipo de cambio",
+      "¿CTS “en jaque”? Avanza proyecto para impulsar un seguro de desempleo en Perú",
+      "¿Llegar a Cusco sin la certeza de ver Machu Picchu? Riesgos en plena temporada alta",
+      "Gastos de exploración y desarrollo minero: se redefinen los límites",
+      "Cusco: Contratista pretendería ampliar sin sustento plazo de culminación de Aeropuerto de Chinchero",
+      "Manuel Irigoyen, gerente general de la EPS Grau: “La empresa pierde S/ 4 millones al mes”",
+      "Minería ilegal en el Perú: ¿qué dicen lo planes de gobierno de Fuerza Popular y Juntos por el Perú?",
+      "Junín: Policía confirma presencia de cianuro en el río Yuracyacu tras la muerte masiva de truchas",
+      "Piura enfrenta crisis sanitaria por brote de leptospirosis que ya deja seis fallecidos",
+      "Iván Arenas: “La minería ilegal avanza por corrupción y falta de fiscalización”",
+      "Agroindustrias AIB acumula producción ante menor venta de congelados y reporta pérdidas",
+      "Sunass alerta que obra de saneamiento en Chiclayo-Pomalca permanece solo al 40% de avance"
     ],
-    "justification": "El panorama político muestra tensiones moderadas concentradas en la legitimidad electoral. Aunque el conteo de votos avanza, persisten denuncias de irregularidades en la ONPE y cuestionamientos institucionales que generan desconfianza, sin alcanzar aún niveles de crisis sistémica.",
+    "justification": "El panorama político mantiene una estabilidad relativa con tensiones controladas. Los focos de atención se concentran en procesos electorales en curso, investigaciones de corrupción y la persistente presión sobre indultos, sin que estos generen inestabilidad sistémica inmediata.",
     "top_drivers": [
       {
-        "title": "Resultados ONPE al 99.66%: 14,544 votos separan a Sánchez y López Aliaga",
-        "source": "gestion",
-        "score": 85
-      },
-      {
-        "title": "\"Me siento más cómoda en el set\": ex Miss Perú Karla Bacigalupo se sincera tras nominación en festival de cine en España [ENTREVISTA]",
-        "source": "rpp",
-        "score": 85
-      },
-      {
-        "title": "ONPE en la mira: 76 denuncias, documentos alterados, firmas falsas y otras irregularidades en las elecciones",
+        "title": "EN VIVO resultados ONPE al 99.778 % hoy: así avanza el conteo de las elecciones 2026",
         "source": "correo",
-        "score": 78
+        "score": 70
       },
       {
-        "title": "Conteo ONPE al 100% EN VIVO: JNE inicia proclamación descentralizada de los resultados de la primera vuelta",
-        "source": "larepublica",
-        "score": 75
-      },
-      {
-        "title": "JEE proclaman resultados de las elecciones presidenciales 2026: sigue transmisión EN VIVO de la audiencia pública",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 99.663 %",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Municipalidad de Lima insiste al TC frenar proclamación de resultados de las elecciones",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Jorge Nieto: “No descartaría corrupción en la ONPE” y pide auditoría internacional",
-        "source": "correo",
-        "score": 72
-      },
-      {
-        "title": "Resultados ONPE: sigue minuto a minuto el conteo oficial",
+        "title": "Fiscalía solicita más de 5 años de prisión contra Roberto Sánchez por aportes a Juntos por el Perú",
         "source": "larepublica",
         "score": 70
       },
       {
-        "title": "Defensa de Pedro Castillo anuncia que presentará un nuevo pedido de indulto",
-        "source": "rpp",
+        "title": "Petro decreta luto nacional por el asesinato del periodista Mateo Pérez",
+        "source": "caretas",
+        "score": 70
+      },
+      {
+        "title": "Óscar Arriola niega injerencia política en captura de Vladimir Cerrón",
+        "source": "canaln",
+        "score": 70
+      },
+      {
+        "title": "La Victoria: Fiscalía allana casa del alcalde por presuntos vínculos con extorsionadores",
+        "source": "elcomercio",
+        "score": 65
+      },
+      {
+        "title": "Premier Arroyo remarca que liberar a Pedro Castillo no está en agenda del Gobierno",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Candidata a diputada de Juntos por el Perú es investigada por caso “Los Pulpos de La Victoria”",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Premier insiste en que indulto a Pedro Castillo “no está en agenda”",
+        "source": "correo",
+        "score": 65
+      },
+      {
+        "title": "Comisión de Constitución aprueba nueva ley de impunidad para prescribir crímenes de lesa humanidad y casos de violación de DD.HH",
+        "source": "larepublica",
+        "score": 65
+      },
+      {
+        "title": "PCM asegura que el Gobierno de Balcázar no tiene en agenda indultar a Pedro Castillo",
+        "source": "larepublica",
         "score": 65
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 49.9,
-    "political_30d_avg": 92.8,
-    "economic_7d_avg": 51.1,
-    "economic_30d_avg": 44.1,
+    "political_7d_avg": 50.4,
+    "political_30d_avg": 88.2,
+    "economic_7d_avg": 53.8,
+    "economic_30d_avg": 44.5,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -241,7 +242,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictos institucionales y presiones internacionales debilitan gobierno.",
+      "summary": "Conflictos diplomáticos y debilidad institucional electoral generan incertidumbre.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -249,7 +250,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Tensiones electorales con irregularidades en proceso democrático.",
+      "summary": "Incertidumbre electoral y conflictividad en instituciones militares peruanas.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -257,7 +258,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Indefinición de ganador en proceso electoral en curso.",
+      "summary": "Uncertainty in electoral process with incomplete official vote count.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -265,7 +266,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral sobre resultados y estabilidad económica.",
+      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -273,7 +274,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Elecciones presidenciales generan inestabilidad política y económica.",
+      "summary": "Conflicto electoral y volatilidad económica durante comicios presidenciales.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -281,7 +282,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral afecta instalación de mesas.",
+      "summary": "Deficiencias en instalación de mesas electorales causan incidencias.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -289,7 +290,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Problemas organizativos en instalación de mesas electorales.",
+      "summary": "Retrasos y desorganización en instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -297,7 +298,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales insostenibles comprometiendo la economía peruana.",
+      "summary": "Políticas fiscales del gobierno generan inestabilidad económica.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -305,7 +306,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial intenso con múltiples candidatos participantes hoy.",
+      "summary": "Continuos debates presidenciales generan incertidumbre electoral.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -313,7 +314,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participando en debate presidencial genera controversia.",
+      "summary": "Candidato prófugo participa en debate presidencial nacional.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -2846,26 +2847,26 @@
     },
     {
       "date": "2025-07-10",
-      "political_raw": 112.2,
-      "political_7d": 91.4,
-      "economic_raw": 178.8,
-      "economic_7d": 99.3,
-      "score": 91.4,
-      "prr": 112.2,
-      "prr_7d": 91.4,
-      "n_articles": 59,
+      "political_raw": 111.3,
+      "political_7d": 91.1,
+      "economic_raw": 177.9,
+      "economic_7d": 99.0,
+      "score": 91.1,
+      "prr": 111.3,
+      "prr_7d": 91.1,
+      "n_articles": 60,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2025-07-11",
       "political_raw": 55.3,
-      "political_7d": 80.6,
+      "political_7d": 80.4,
       "economic_raw": 187.8,
-      "economic_7d": 125.8,
-      "score": 80.6,
+      "economic_7d": 125.7,
+      "score": 80.4,
       "prr": 55.3,
-      "prr_7d": 80.6,
+      "prr_7d": 80.4,
       "n_articles": 40,
       "low_coverage": false,
       "provisional": false
@@ -2873,12 +2874,12 @@
     {
       "date": "2025-07-12",
       "political_raw": 59.3,
-      "political_7d": 60.2,
+      "political_7d": 60.0,
       "economic_raw": 206.7,
-      "economic_7d": 95.8,
-      "score": 60.2,
+      "economic_7d": 95.6,
+      "score": 60.0,
       "prr": 59.3,
-      "prr_7d": 60.2,
+      "prr_7d": 60.0,
       "n_articles": 18,
       "low_coverage": false,
       "provisional": false
@@ -2886,12 +2887,12 @@
     {
       "date": "2025-07-13",
       "political_raw": 63.4,
-      "political_7d": 61.1,
+      "political_7d": 61.0,
       "economic_raw": 225.5,
-      "economic_7d": 134.7,
-      "score": 61.1,
+      "economic_7d": 134.6,
+      "score": 61.0,
       "prr": 63.4,
-      "prr_7d": 61.1,
+      "prr_7d": 61.0,
       "n_articles": 30,
       "low_coverage": false,
       "provisional": false
@@ -2901,7 +2902,7 @@
       "political_raw": 35.5,
       "political_7d": 53.4,
       "economic_raw": 23.3,
-      "economic_7d": 101.3,
+      "economic_7d": 101.2,
       "score": 53.4,
       "prr": 35.5,
       "prr_7d": 53.4,
@@ -2912,12 +2913,12 @@
     {
       "date": "2025-07-15",
       "political_raw": 64.9,
-      "political_7d": 56.9,
+      "political_7d": 56.8,
       "economic_raw": 0.0,
-      "economic_7d": 70.9,
-      "score": 56.9,
+      "economic_7d": 70.8,
+      "score": 56.8,
       "prr": 64.9,
-      "prr_7d": 56.9,
+      "prr_7d": 56.8,
       "n_articles": 50,
       "low_coverage": false,
       "provisional": false
@@ -2927,7 +2928,7 @@
       "political_raw": 51.3,
       "political_7d": 55.2,
       "economic_raw": 90.5,
-      "economic_7d": 76.8,
+      "economic_7d": 76.7,
       "score": 55.2,
       "prr": 51.3,
       "prr_7d": 55.2,
@@ -2951,12 +2952,12 @@
     {
       "date": "2025-07-18",
       "political_raw": 84.6,
-      "political_7d": 71.1,
+      "political_7d": 71.0,
       "economic_raw": 105.8,
       "economic_7d": 89.1,
-      "score": 71.1,
+      "score": 71.0,
       "prr": 84.6,
-      "prr_7d": 71.1,
+      "prr_7d": 71.0,
       "n_articles": 37,
       "low_coverage": false,
       "provisional": false
@@ -2979,7 +2980,7 @@
       "political_raw": 90.1,
       "political_7d": 59.0,
       "economic_raw": 35.3,
-      "economic_7d": 63.7,
+      "economic_7d": 63.6,
       "score": 59.0,
       "prr": 90.1,
       "prr_7d": 59.0,
@@ -3574,26 +3575,26 @@
     },
     {
       "date": "2025-09-04",
-      "political_raw": 99.1,
-      "political_7d": 88.6,
-      "economic_raw": 24.3,
+      "political_raw": 98.1,
+      "political_7d": 88.3,
+      "economic_raw": 24.1,
       "economic_7d": 33.2,
-      "score": 88.6,
-      "prr": 99.1,
-      "prr_7d": 88.6,
-      "n_articles": 50,
+      "score": 88.3,
+      "prr": 98.1,
+      "prr_7d": 88.3,
+      "n_articles": 51,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2025-09-05",
       "political_raw": 61.3,
-      "political_7d": 80.4,
+      "political_7d": 80.2,
       "economic_raw": 61.2,
       "economic_7d": 41.6,
-      "score": 80.4,
+      "score": 80.2,
       "prr": 61.3,
-      "prr_7d": 80.4,
+      "prr_7d": 80.2,
       "n_articles": 30,
       "low_coverage": false,
       "provisional": false
@@ -3601,12 +3602,12 @@
     {
       "date": "2025-09-06",
       "political_raw": 73.3,
-      "political_7d": 70.0,
+      "political_7d": 69.8,
       "economic_raw": 40.4,
-      "economic_7d": 35.2,
-      "score": 70.0,
+      "economic_7d": 35.1,
+      "score": 69.8,
       "prr": 73.3,
-      "prr_7d": 70.0,
+      "prr_7d": 69.8,
       "n_articles": 18,
       "low_coverage": false,
       "provisional": false
@@ -3614,12 +3615,12 @@
     {
       "date": "2025-09-07",
       "political_raw": 85.4,
-      "political_7d": 74.6,
+      "political_7d": 74.5,
       "economic_raw": 19.6,
       "economic_7d": 30.5,
-      "score": 74.6,
+      "score": 74.5,
       "prr": 85.4,
-      "prr_7d": 74.6,
+      "prr_7d": 74.5,
       "n_articles": 29,
       "low_coverage": false,
       "provisional": false
@@ -3627,12 +3628,12 @@
     {
       "date": "2025-09-08",
       "political_raw": 121.6,
-      "political_7d": 88.7,
+      "political_7d": 88.6,
       "economic_raw": 27.6,
       "economic_7d": 29.6,
-      "score": 88.7,
+      "score": 88.6,
       "prr": 121.6,
-      "prr_7d": 88.7,
+      "prr_7d": 88.6,
       "n_articles": 51,
       "low_coverage": false,
       "provisional": false
@@ -3705,12 +3706,12 @@
     {
       "date": "2025-09-14",
       "political_raw": 43.3,
-      "political_7d": 57.7,
+      "political_7d": 57.6,
       "economic_raw": 42.5,
       "economic_7d": 36.8,
-      "score": 57.7,
+      "score": 57.6,
       "prr": 43.3,
-      "prr_7d": 57.7,
+      "prr_7d": 57.6,
       "n_articles": 28,
       "low_coverage": false,
       "provisional": false
@@ -6781,7 +6782,7 @@
       "prr_7d": 56.0,
       "n_articles": 587,
       "low_coverage": false,
-      "provisional": true
+      "provisional": false
     },
     {
       "date": "2026-05-09",
@@ -6811,14 +6812,27 @@
     },
     {
       "date": "2026-05-11",
-      "political_raw": 66.6,
+      "political_raw": 66.5,
       "political_7d": 47.8,
-      "economic_raw": 99.8,
-      "economic_7d": 57.0,
+      "economic_raw": 100.0,
+      "economic_7d": 57.1,
       "score": 47.8,
-      "prr": 66.6,
+      "prr": 66.5,
       "prr_7d": 47.8,
-      "n_articles": 553,
+      "n_articles": 554,
+      "low_coverage": false,
+      "provisional": true
+    },
+    {
+      "date": "2026-05-12",
+      "political_raw": 70.1,
+      "political_7d": 54.5,
+      "economic_raw": 93.7,
+      "economic_7d": 68.1,
+      "score": 54.5,
+      "prr": 70.1,
+      "prr_7d": 54.5,
+      "n_articles": 543,
       "low_coverage": false,
       "provisional": true
     }
@@ -8163,6 +8177,10 @@
     {
       "date": "2026-05-08",
       "fx": 3.4448
+    },
+    {
+      "date": "2026-05-11",
+      "fx": 3.4326
     }
   ],
   "monthly_series": [
@@ -8216,9 +8234,9 @@
     },
     {
       "month": "2025-07",
-      "political_avg": 78.0,
+      "political_avg": 77.9,
       "economic_avg": 49.4,
-      "n_articles": 1224,
+      "n_articles": 1225,
       "fx_level": 3.5562,
       "fx_yoy": -5.53
     },
@@ -8234,7 +8252,7 @@
       "month": "2025-09",
       "political_avg": 66.6,
       "economic_avg": 79.5,
-      "n_articles": 1433,
+      "n_articles": 1434,
       "fx_level": 3.5028,
       "fx_yoy": -7.04
     },
@@ -8296,9 +8314,9 @@
     },
     {
       "month": "2026-05",
-      "political_avg": 41.2,
-      "economic_avg": 40.1,
-      "n_articles": 4879,
+      "political_avg": 42.3,
+      "economic_avg": 42.5,
+      "n_articles": 5423,
       "fx_level": null,
       "fx_yoy": null
     }

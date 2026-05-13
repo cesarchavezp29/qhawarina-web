@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-11",
-    "n_days": 91,
+    "last_date": "2026-05-12",
+    "n_days": 92,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-11"
+    "updated": "2026-05-12"
   },
   "categories": {
     "arroz_cereales": {
@@ -2548,87 +2548,114 @@
       "index_limpieza": 99.7863,
       "index_cuidado_personal": 98.7621,
       "index_other": 99.0412
+    },
+    {
+      "date": "2026-05-12",
+      "index_all": 100.5395,
+      "index_all_unweighted": 100.3368,
+      "index_food": 100.3123,
+      "index_nonfood": 100.309,
+      "var_all": 0.8761,
+      "var_food": 0.7369,
+      "cum_pct": 0.5395,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2995,
+      "interpolated": false,
+      "n_matched": 40192,
+      "index_arroz_cereales": 100.4675,
+      "index_pan_harinas": 100.2644,
+      "index_carnes": 100.209,
+      "index_pescados_mariscos": 101.8121,
+      "index_lacteos": 100.5769,
+      "index_frutas": 102.838,
+      "index_verduras": 101.5724,
+      "index_aceites_grasas": 100.0268,
+      "index_azucar_dulces": 96.8008,
+      "index_bebidas": 100.2982,
+      "index_limpieza": 100.3328,
+      "index_cuidado_personal": 100.2471,
+      "index_other": 99.9795
     }
   ],
   "latest": {
-    "date": "2026-05-11",
-    "index_all": 99.6663,
-    "index_food": 99.5785,
-    "cum_pct": -0.3337,
-    "var_all": 0.2204,
+    "date": "2026-05-12",
+    "index_all": 100.5395,
+    "index_food": 100.3123,
+    "cum_pct": 0.5395,
+    "var_all": 0.8761,
     "yoy_inflation": null,
-    "mom_inflation": 0.2864,
-    "n_products_today": 40475,
+    "mom_inflation": 0.2995,
+    "n_products_today": 40192,
     "top_movers": [
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.55
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 3.76
       },
       {
         "category": "cuidado_personal",
         "label_es": "Cuidado Personal",
         "label_en": "Personal Care",
-        "var": 0.42
+        "var": 1.5
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.32
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 1.43
       },
       {
         "category": "lacteos",
         "label_es": "Lácteos y Huevos",
         "label_en": "Dairy & Eggs",
-        "var": 0.2
+        "var": 1.3
       }
     ],
     "product_movers": [
       {
-        "name": "Mini Hamburguesas Angus Bon Beef 8un",
+        "name": "Bombones con Relleno de Crema de Maní...",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 93.47
+        "category": "lacteos",
+        "var": 93.53
       },
       {
-        "name": "Mini Hamburguesas Angus Bon Beef 8un",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 86.93
-      },
-      {
-        "name": "Hamburguesa Angus Rellena de Cheddar ...",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 83.51
-      },
-      {
-        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
-        "store": "metro",
+        "name": "Sopa Instántanea NISSIN- CUP Noodles ...",
+        "store": "plazavea",
         "category": "carnes",
-        "var": 80.0
+        "var": 91.18
+      },
+      {
+        "name": "Sopa Instántanea NISSIN- CUP Noodles ...",
+        "store": "plazavea",
+        "category": "verduras",
+        "var": 91.18
+      },
+      {
+        "name": "Sopa Instántanea NISSIN- CUP Noodles ...",
+        "store": "plazavea",
+        "category": "carnes",
+        "var": 91.18
       }
     ],
     "stores_coverage": {
-      "metro": 13003,
-      "plazavea": 13039,
-      "wong": 15069
+      "metro": 12856,
+      "plazavea": 13077,
+      "wong": 15085
     },
     "categories_coverage": {
-      "aceites_grasas": 604,
-      "arroz_cereales": 1443,
-      "azucar_dulces": 1133,
-      "bebidas": 1079,
-      "carnes": 14649,
-      "cuidado_personal": 2789,
-      "frutas": 1967,
-      "lacteos": 2916,
-      "limpieza": 3139,
-      "pan_harinas": 6730,
-      "pescados_mariscos": 233,
-      "verduras": 306
+      "aceites_grasas": 609,
+      "arroz_cereales": 1422,
+      "azucar_dulces": 1140,
+      "bebidas": 1080,
+      "carnes": 14622,
+      "cuidado_personal": 2813,
+      "frutas": 1954,
+      "lacteos": 2894,
+      "limpieza": 3125,
+      "pan_harinas": 6758,
+      "pescados_mariscos": 236,
+      "verduras": 299
     }
   }
 }

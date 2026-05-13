@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-11T21:09:06.355977",
+    "generated_at": "2026-05-12T21:09:19.746360",
     "methodology": "Dynamic Factor Model with Ridge bridge equation (Baker 2023, Aruoba 2020)",
     "model": "DynamicFactorModel",
     "model_params": {
