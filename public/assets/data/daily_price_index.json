@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-12",
-    "n_days": 92,
+    "last_date": "2026-05-13",
+    "n_days": 93,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-12"
+    "updated": "2026-05-13"
   },
   "categories": {
     "arroz_cereales": {
@@ -2575,87 +2575,114 @@
       "index_limpieza": 100.3328,
       "index_cuidado_personal": 100.2471,
       "index_other": 99.9795
+    },
+    {
+      "date": "2026-05-13",
+      "index_all": 99.9681,
+      "index_all_unweighted": 99.9125,
+      "index_food": 99.9178,
+      "index_nonfood": 99.7936,
+      "var_all": -0.5683,
+      "var_food": -0.3933,
+      "cum_pct": -0.0319,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2954,
+      "interpolated": false,
+      "n_matched": 39988,
+      "index_arroz_cereales": 99.7635,
+      "index_pan_harinas": 99.879,
+      "index_carnes": 99.91,
+      "index_pescados_mariscos": 101.2208,
+      "index_lacteos": 99.9474,
+      "index_frutas": 102.8941,
+      "index_verduras": 100.5647,
+      "index_aceites_grasas": 99.7723,
+      "index_azucar_dulces": 95.6685,
+      "index_bebidas": 99.7622,
+      "index_limpieza": 99.8921,
+      "index_cuidado_personal": 99.0675,
+      "index_other": 99.8586
     }
   ],
   "latest": {
-    "date": "2026-05-12",
-    "index_all": 100.5395,
-    "index_food": 100.3123,
-    "cum_pct": 0.5395,
-    "var_all": 0.8761,
+    "date": "2026-05-13",
+    "index_all": 99.9681,
+    "index_food": 99.9178,
+    "cum_pct": -0.0319,
+    "var_all": -0.5683,
     "yoy_inflation": null,
-    "mom_inflation": 0.2995,
-    "n_products_today": 40192,
+    "mom_inflation": 0.2954,
+    "n_products_today": 39988,
     "top_movers": [
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 3.76
-      },
       {
         "category": "cuidado_personal",
         "label_es": "Cuidado Personal",
         "label_en": "Personal Care",
-        "var": 1.5
+        "var": -1.18
+      },
+      {
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -1.17
       },
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 1.43
+        "var": -0.99
       },
       {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": 1.3
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -0.7
       }
     ],
     "product_movers": [
       {
-        "name": "Bombones con Relleno de Crema de Maní...",
+        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 97.49
+      },
+      {
+        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
         "store": "wong",
-        "category": "lacteos",
-        "var": 93.53
-      },
-      {
-        "name": "Sopa Instántanea NISSIN- CUP Noodles ...",
-        "store": "plazavea",
         "category": "carnes",
-        "var": 91.18
+        "var": 97.49
       },
       {
-        "name": "Sopa Instántanea NISSIN- CUP Noodles ...",
-        "store": "plazavea",
-        "category": "verduras",
-        "var": 91.18
-      },
-      {
-        "name": "Sopa Instántanea NISSIN- CUP Noodles ...",
-        "store": "plazavea",
+        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
+        "store": "wong",
         "category": "carnes",
-        "var": 91.18
+        "var": 97.49
+      },
+      {
+        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 97.49
       }
     ],
     "stores_coverage": {
-      "metro": 12856,
-      "plazavea": 13077,
-      "wong": 15085
+      "metro": 12640,
+      "plazavea": 13380,
+      "wong": 14974
     },
     "categories_coverage": {
-      "aceites_grasas": 609,
-      "arroz_cereales": 1422,
-      "azucar_dulces": 1140,
-      "bebidas": 1080,
-      "carnes": 14622,
-      "cuidado_personal": 2813,
-      "frutas": 1954,
-      "lacteos": 2894,
-      "limpieza": 3125,
-      "pan_harinas": 6758,
-      "pescados_mariscos": 236,
-      "verduras": 299
+      "aceites_grasas": 606,
+      "arroz_cereales": 1419,
+      "azucar_dulces": 1151,
+      "bebidas": 1044,
+      "carnes": 14544,
+      "cuidado_personal": 2900,
+      "frutas": 1969,
+      "lacteos": 2888,
+      "limpieza": 3215,
+      "pan_harinas": 6675,
+      "pescados_mariscos": 235,
+      "verduras": 297
     }
   }
 }
