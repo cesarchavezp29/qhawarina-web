@@ -1,227 +1,169 @@
 {
   "metadata": {
-    "generated_at": "2026-05-13T21:10:50.066434",
-    "coverage_days": 498,
+    "generated_at": "2026-05-14T21:09:07.751214",
+    "coverage_days": 499,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-13",
-    "political_raw": 61.1,
-    "political_raw_level": "BAJO",
-    "political_7d": 56.4,
-    "political_level": "BAJO",
-    "political_multiplier": 0.56,
-    "economic_raw": 67.4,
-    "economic_raw_level": "BAJO",
-    "economic_7d": 67.9,
-    "economic_level": "BAJO",
-    "economic_multiplier": 0.68,
-    "score": 56.4,
-    "prr_7d": 56.4,
-    "prr_raw": 61.1,
-    "level": "BAJO",
-    "articles_total": 544,
-    "articles_political_relevant": 204,
-    "articles_economic_relevant": 96,
-    "political_justification": "El panorama político actual refleja estabilidad relativa en los procesos electorales, con resultados consolidados en segunda vuelta. Sin embargo, persisten tensiones moderadas por denuncias de irregularidades, casos de corrupción vinculados a candidatos y presiones sobre decisiones presidenciales sensibles que requieren monitoreo continuo.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas concentradas en el sector energético. La crisis de Petroperú, con demandas de financiamiento y debates sobre su reorganización, genera incertidumbre empresarial. Sin embargo, la ausencia de shocks sistémicos mantiene el riesgo en niveles controlables, aunque requiere atención inmediata en política fiscal.",
+    "date": "2026-05-14",
+    "political_raw": 2.2,
+    "political_raw_level": "MINIMO",
+    "political_7d": 40.2,
+    "political_level": "MINIMO",
+    "political_multiplier": 0.4,
+    "economic_raw": 5.5,
+    "economic_raw_level": "MINIMO",
+    "economic_7d": 49.2,
+    "economic_level": "MINIMO",
+    "economic_multiplier": 0.49,
+    "score": 40.2,
+    "prr_7d": 40.2,
+    "prr_raw": 2.2,
+    "level": "MINIMO",
+    "articles_total": 58,
+    "articles_political_relevant": 19,
+    "articles_economic_relevant": 6,
+    "political_justification": "El panorama político se mantiene estable con enfoque en procesos electorales ordenados. La contabilización de actas avanza sin incidentes mayores, mientras candidatos participan en debates y campañas dentro de marcos institucionales. La presencia de organismos electorales y compromisos de respeto institucional contienen tensiones potenciales.",
+    "economic_justification": "La economía peruana enfrenta presiones estructurales moderadas. Aunque el entorno actual es estable, persisten vulnerabilidades en empresas estatales y dependencia fiscal, mientras que la informalidad comercial y demandas regulatorias generan incertidumbre. Sin embargo, no hay señales de crisis inmediata.",
     "top_political_drivers": [
       {
-        "title": "ONPE al 99.931%: Keiko Fujimori y Roberto Sánchez se mantienen en los primeros lugares del conteo",
-        "source": "correo",
-        "score": 85
+        "title": "ONPE se acerca al 100% de actas contabilizadas: ¿Cómo va el conteo por región y qué falta para que se proclamen los resultados presidenciales?",
+        "source": "elcomercio",
+        "score": 35
       },
       {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 99.941 %",
-        "source": "canaln",
-        "score": 80
+        "title": "Keiko Fujimori propone que se realicen tres debates con miras a la segunda vuelta presidencial",
+        "source": "elcomercio",
+        "score": 30
       },
       {
-        "title": "Al 99,9% de actas contabilizadas, Keiko Fujimori y Roberto Sánchez competirán en la segunda vuelta",
+        "title": "Keiko realiza campaña en Piura y Roberto Sánchez no sale de Lima a puertas de oficializarse la segunda vuelta",
         "source": "larepublica",
-        "score": 75
+        "score": 28
       },
       {
-        "title": "Renovación Popular pide recuento de votos verificando las ánforas",
-        "source": "canaln",
-        "score": 75
+        "title": "Elecciones 2026: Keiko Fujimori propone tres debates para la segunda vuelta electoral",
+        "source": "andina",
+        "score": 20
       },
       {
-        "title": "El expediente ‘Los Pulpos’: Este es el rastro financiero que delató a la candidata de Juntos por el Perú que dirigía las extorsiones en Gamarra",
+        "title": "Mininter y UE se unen para prevenir la corrupción vinculada al crimen en puertos peruanos",
+        "source": "andina",
+        "score": 15
+      },
+      {
+        "title": "Elecciones 2026: Roberto Sánchez pide respeto al sistema electoral y a sus procedimientos",
+        "source": "andina",
+        "score": 15
+      },
+      {
+        "title": "Protestas en la PUCP: alumnos entran a la fuerza a Rectorado en protesta por nuevo sistema de pensiones",
         "source": "elcomercio",
-        "score": 72
+        "score": 10
       },
       {
-        "title": "Presidente Balcázar abre la puerta a un eventual indulto a Pedro Castillo",
-        "source": "peru21",
-        "score": 72
+        "title": "Presidente Balcázar reitera compromiso de respeto a la autonomía del JNE",
+        "source": "andina",
+        "score": 10
       },
       {
-        "title": "Renovación Popular reiteró denuncia sobre actas supuestamente extraviadas o siniestradas",
+        "title": "Puno: Delincuentes desmantelan camioneta tras maniatar y abandonar al chofer",
         "source": "correo",
-        "score": 70
+        "score": 5
       },
       {
-        "title": "Detienen a candidata Jhuliana Carbonel por nexos con Los Pulpos",
-        "source": "canaln",
-        "score": 70
-      },
-      {
-        "title": "Caso Los Pulpos de La Victoria: los movimientos financieros que habrían puesto en jaque a candidata de Juntos por el Perú",
-        "source": "caretas",
-        "score": 68
-      },
-      {
-        "title": "Pedro Castillo: Renuncia integrante de la Comisión de Gracias Presidenciales tras cuestionamientos",
-        "source": "elcomercio",
-        "score": 65
+        "title": "Condenan a más de 30 años de prisión a sujeto que asesinó a su expareja en Huánuco",
+        "source": "correo",
+        "score": 5
       }
     ],
     "top_economic_drivers": [
       {
-        "title": "Rodolfo Acuña sobre los US$2.000 millones destinados a Petroperú: “La empresa no puede dejar de operar”",
-        "source": "correo",
+        "title": "MEF defiende “salvavidas” para Petroperú: “Si tenemos que ir al Congreso a batallar, lo haremos”",
+        "source": "gestion",
         "score": 78
       },
       {
-        "title": "Congreso busca derogar reorganización de Petroperú: la “alerta” de ProInversión si insisten",
+        "title": "Mypes piden que el ISC solo pueda modificarse por el Congreso: Las demandas",
         "source": "gestion",
-        "score": 75
+        "score": 25
       },
       {
-        "title": "Petroperú: esto son los activos “no estratégicos” que se venderían desde julio",
+        "title": "Organismos reguladores: Avanza la incorporación de su personal CAS indeterminado al régimen 728",
         "source": "gestion",
-        "score": 72
+        "score": 22
       },
       {
-        "title": "Petro-Perú: Su presidente dice no a la auditoría forense de la refinería de Talara, ¿por qué se estarían negando los nuevos funcionarios?",
-        "source": "elcomercio",
-        "score": 55
-      },
-      {
-        "title": "Expectativas empresariales: la sombra del 2021 reaparece",
-        "source": "gestion",
-        "score": 55
-      },
-      {
-        "title": "Insisten en prolongar la vida de Petroperú (EDITORIAL)",
+        "title": "Emprendedores responsabilizan a exalcalde de Arequipa por crecimiento del comercio ambulatorio",
         "source": "correo",
-        "score": 55
-      },
-      {
-        "title": "Minería ilegal: Exportaciones de oro ilegal superaron los US$ 11,500 millones en 2025",
-        "source": "inforegion",
-        "score": 55
-      },
-      {
-        "title": "MEF: financiamiento privado para Petroperú garantizará continuidad operativa",
-        "source": "andina",
-        "score": 45
-      },
-      {
-        "title": "MEF: Crédito suplementario no podrá cubrir demanda de S/11.000 millones para culminar obras en ejecución",
-        "source": "rpp",
-        "score": 45
-      },
-      {
-        "title": "Nexa informa de incendio en la Refinería Cajamarquilla",
-        "source": "elcomercio",
-        "score": 45
+        "score": 20
       }
     ],
     "eco_sector_titles": [
-      "Rodolfo Acuña sobre los US$2.000 millones destinados a Petroperú: “La empresa no puede dejar de operar”",
-      "Congreso busca derogar reorganización de Petroperú: la “alerta” de ProInversión si insisten",
-      "Petroperú: esto son los activos “no estratégicos” que se venderían desde julio",
-      "Petro-Perú: Su presidente dice no a la auditoría forense de la refinería de Talara, ¿por qué se estarían negando los nuevos funcionarios?",
-      "Expectativas empresariales: la sombra del 2021 reaparece",
-      "Insisten en prolongar la vida de Petroperú (EDITORIAL)",
-      "Minería ilegal: Exportaciones de oro ilegal superaron los US$ 11,500 millones en 2025",
-      "MEF: financiamiento privado para Petroperú garantizará continuidad operativa",
-      "MEF: Crédito suplementario no podrá cubrir demanda de S/11.000 millones para culminar obras en ejecución",
-      "Nexa informa de incendio en la Refinería Cajamarquilla",
-      "MEF aún evalúa acudir al TC por leyes del Congreso que elevan el gasto público",
-      "Cajamarquilla, la única refinería de zinc en Perú, registró incendio: afectados e investigación",
-      "Empresas enfrentan mayores costos y trasladan impacto a los peruanos: ¿en qué actividades se siente más?",
-      "Diana Gonzáles acusa a la izquierda de frenar reestructuración de Petroperú",
-      "Los factores detrás de las decisiones de escritorio ante la incertidumbre política",
-      "Gobierno todavía tiene intenciones de elevar leyes ante el TC, ¿qué dijo el MEF?",
-      "¿Viajar se vuelve más caro? Crisis de combustible afecta vuelos y turismo en Perú",
-      "Desastre ambiental: contaminación con cianuro en río Yuracyacu provoca la muerte masiva de truchas en Junín",
-      "Congreso busca nuevos nombramientos de trabajadores CAS al régimen 728 de ocho entidades públicas: ¿cuáles son?",
-      "Bomberos controlan incendio en refinería en Lurigancho-Chosica",
-      "Congreso busca “quitarle” la Línea Amarilla a la MML y dársela a ProInversión",
-      "Lurigancho: incendio en refinería de zinc dejó cuatro trabajadores heridos",
-      "Nexa confirma cuatro afectados tras incendio en refinería Cajamarquilla",
-      "Precio del cobre registra máximo histórico frente a presiones de una menor oferta: oportunidades y riesgos ante el alza del metal rojo",
-      "Malls y tiendas impactadas por Elecciones 2026: este es el rubro más afectado",
-      "Pese a observación del Gobierno, Congreso avanza con ley para reubicar aeropuerto",
-      "Incendio en refinería de Cajamarquilla deja cuatro trabajadores heridos en Lurigancho-Chosica",
-      "Fiscalizan más de 10 concesiones mineras cerca al Yuracyacu en Pariahuanca",
-      "Feroz incendio en refinería de Cajamarquilla en Chosica: cuatro personas resultaron afectadas",
-      "Susana Saldaña advierte que mafias siguen operando en zonas de Gamarra",
-      "Congreso asháninka reafirma rechazo a proyecto hidroeléctrico Pakitzapango y exige mayores servicios para la cuenca del Ene"
+      "MEF defiende “salvavidas” para Petroperú: “Si tenemos que ir al Congreso a batallar, lo haremos”",
+      "Mypes piden que el ISC solo pueda modificarse por el Congreso: Las demandas",
+      "Organismos reguladores: Avanza la incorporación de su personal CAS indeterminado al régimen 728"
     ],
-    "justification": "El panorama político actual refleja estabilidad relativa en los procesos electorales, con resultados consolidados en segunda vuelta. Sin embargo, persisten tensiones moderadas por denuncias de irregularidades, casos de corrupción vinculados a candidatos y presiones sobre decisiones presidenciales sensibles que requieren monitoreo continuo.",
+    "justification": "El panorama político se mantiene estable con enfoque en procesos electorales ordenados. La contabilización de actas avanza sin incidentes mayores, mientras candidatos participan en debates y campañas dentro de marcos institucionales. La presencia de organismos electorales y compromisos de respeto institucional contienen tensiones potenciales.",
     "top_drivers": [
       {
-        "title": "ONPE al 99.931%: Keiko Fujimori y Roberto Sánchez se mantienen en los primeros lugares del conteo",
-        "source": "correo",
-        "score": 85
+        "title": "ONPE se acerca al 100% de actas contabilizadas: ¿Cómo va el conteo por región y qué falta para que se proclamen los resultados presidenciales?",
+        "source": "elcomercio",
+        "score": 35
       },
       {
-        "title": "ONPE: Keiko Fujimori y Roberto Sánchez lideran conteo al 99.941 %",
-        "source": "canaln",
-        "score": 80
+        "title": "Keiko Fujimori propone que se realicen tres debates con miras a la segunda vuelta presidencial",
+        "source": "elcomercio",
+        "score": 30
       },
       {
-        "title": "Al 99,9% de actas contabilizadas, Keiko Fujimori y Roberto Sánchez competirán en la segunda vuelta",
+        "title": "Keiko realiza campaña en Piura y Roberto Sánchez no sale de Lima a puertas de oficializarse la segunda vuelta",
         "source": "larepublica",
-        "score": 75
+        "score": 28
       },
       {
-        "title": "Renovación Popular pide recuento de votos verificando las ánforas",
-        "source": "canaln",
-        "score": 75
+        "title": "Elecciones 2026: Keiko Fujimori propone tres debates para la segunda vuelta electoral",
+        "source": "andina",
+        "score": 20
       },
       {
-        "title": "El expediente ‘Los Pulpos’: Este es el rastro financiero que delató a la candidata de Juntos por el Perú que dirigía las extorsiones en Gamarra",
+        "title": "Mininter y UE se unen para prevenir la corrupción vinculada al crimen en puertos peruanos",
+        "source": "andina",
+        "score": 15
+      },
+      {
+        "title": "Elecciones 2026: Roberto Sánchez pide respeto al sistema electoral y a sus procedimientos",
+        "source": "andina",
+        "score": 15
+      },
+      {
+        "title": "Protestas en la PUCP: alumnos entran a la fuerza a Rectorado en protesta por nuevo sistema de pensiones",
         "source": "elcomercio",
-        "score": 72
+        "score": 10
       },
       {
-        "title": "Presidente Balcázar abre la puerta a un eventual indulto a Pedro Castillo",
-        "source": "peru21",
-        "score": 72
+        "title": "Presidente Balcázar reitera compromiso de respeto a la autonomía del JNE",
+        "source": "andina",
+        "score": 10
       },
       {
-        "title": "Renovación Popular reiteró denuncia sobre actas supuestamente extraviadas o siniestradas",
+        "title": "Puno: Delincuentes desmantelan camioneta tras maniatar y abandonar al chofer",
         "source": "correo",
-        "score": 70
+        "score": 5
       },
       {
-        "title": "Detienen a candidata Jhuliana Carbonel por nexos con Los Pulpos",
-        "source": "canaln",
-        "score": 70
-      },
-      {
-        "title": "Caso Los Pulpos de La Victoria: los movimientos financieros que habrían puesto en jaque a candidata de Juntos por el Perú",
-        "source": "caretas",
-        "score": 68
-      },
-      {
-        "title": "Pedro Castillo: Renuncia integrante de la Comisión de Gracias Presidenciales tras cuestionamientos",
-        "source": "elcomercio",
-        "score": 65
+        "title": "Condenan a más de 30 años de prisión a sujeto que asesinó a su expareja en Huánuco",
+        "source": "correo",
+        "score": 5
       }
     ]
   },
   "aggregates": {
-    "political_7d_avg": 50.8,
-    "political_30d_avg": 81.2,
-    "economic_7d_avg": 55.1,
+    "political_7d_avg": 48.9,
+    "political_30d_avg": 74.8,
+    "economic_7d_avg": 54.8,
     "economic_30d_avg": 45.0,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
@@ -232,7 +174,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Conflictos institucionales y gestión electoral deficiente generan inestabilidad.",
+      "summary": "Conflictos entre poderes del Estado y gestión electoral comprometida.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -240,7 +182,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral y debilidad institucional militar en Perú.",
+      "summary": "Resultados electorales generan incertidumbre política en Perú.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -248,7 +190,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Incertidumbre electoral por conteo de votos incompleto aún.",
+      "summary": "Incertidumbre por resultados electorales aún en conteo.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -256,7 +198,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral afecta estabilidad económica y política.",
+      "summary": "Incertidumbre electoral genera volatilidad económica y política.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -264,7 +206,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Conflicto electoral y volatilidad económica en proceso presidencial.",
+      "summary": "Tensión electoral y volatilidad económica durante comicios presidenciales.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -272,7 +214,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral genera problemas en votación.",
+      "summary": "Falta de material electoral genera incidencias en mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -280,7 +222,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Problemas logísticos y desconfianza en la organización electoral.",
+      "summary": "Problemas operativos en la instalación de mesas electorales.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -288,7 +230,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales del gobierno generan preocupación económica grave.",
+      "summary": "Desajustes fiscales y crisis sanitaria debilitan estabilidad nacional.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -296,7 +238,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Tensión política por debates presidenciales en proceso electoral.",
+      "summary": "Sucesión presidencial incierta genera tensión política.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -304,7 +246,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Prófugo Cerrón participa en debate presidencial.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -6838,6 +6780,19 @@
       "n_articles": 544,
       "low_coverage": false,
       "provisional": true
+    },
+    {
+      "date": "2026-05-14",
+      "political_raw": 2.2,
+      "political_7d": 40.2,
+      "economic_raw": 5.5,
+      "economic_7d": 49.2,
+      "score": 40.2,
+      "prr": 2.2,
+      "prr_7d": 40.2,
+      "n_articles": 58,
+      "low_coverage": false,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -8188,6 +8143,10 @@
     {
       "date": "2026-05-12",
       "fx": 3.4328
+    },
+    {
+      "date": "2026-05-13",
+      "fx": 3.4237
     }
   ],
   "monthly_series": [
@@ -8321,9 +8280,9 @@
     },
     {
       "month": "2026-05",
-      "political_avg": 43.4,
-      "economic_avg": 44.4,
-      "n_articles": 5969,
+      "political_avg": 43.2,
+      "economic_avg": 44.8,
+      "n_articles": 6027,
       "fx_level": null,
       "fx_yoy": null
     }

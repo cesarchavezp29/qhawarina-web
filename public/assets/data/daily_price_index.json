@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-13",
-    "n_days": 93,
+    "last_date": "2026-05-14",
+    "n_days": 94,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-13"
+    "updated": "2026-05-14"
   },
   "categories": {
     "arroz_cereales": {
@@ -2602,87 +2602,114 @@
       "index_limpieza": 99.8921,
       "index_cuidado_personal": 99.0675,
       "index_other": 99.8586
+    },
+    {
+      "date": "2026-05-14",
+      "index_all": 99.8701,
+      "index_all_unweighted": 99.8087,
+      "index_food": 99.7991,
+      "index_nonfood": 99.7355,
+      "var_all": -0.098,
+      "var_food": -0.1188,
+      "cum_pct": -0.1299,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2322,
+      "interpolated": false,
+      "n_matched": 40628,
+      "index_arroz_cereales": 99.7552,
+      "index_pan_harinas": 99.7104,
+      "index_carnes": 99.8349,
+      "index_pescados_mariscos": 101.1111,
+      "index_lacteos": 100.0635,
+      "index_frutas": 102.6439,
+      "index_verduras": 100.4633,
+      "index_aceites_grasas": 99.1627,
+      "index_azucar_dulces": 94.9112,
+      "index_bebidas": 99.8047,
+      "index_limpieza": 99.8673,
+      "index_cuidado_personal": 99.0624,
+      "index_other": 99.7369
     }
   ],
   "latest": {
-    "date": "2026-05-13",
-    "index_all": 99.9681,
-    "index_food": 99.9178,
-    "cum_pct": -0.0319,
-    "var_all": -0.5683,
+    "date": "2026-05-14",
+    "index_all": 99.8701,
+    "index_food": 99.7991,
+    "cum_pct": -0.1299,
+    "var_all": -0.098,
     "yoy_inflation": null,
-    "mom_inflation": 0.2954,
-    "n_products_today": 39988,
+    "mom_inflation": 0.2322,
+    "n_products_today": 40628,
     "top_movers": [
-      {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -1.18
-      },
       {
         "category": "azucar_dulces",
         "label_es": "Azúcar y Dulces",
         "label_en": "Sugar & Sweets",
-        "var": -1.17
+        "var": -0.79
       },
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -0.99
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.61
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.7
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": -0.24
+      },
+      {
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": -0.17
       }
     ],
     "product_movers": [
       {
-        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
-        "store": "metro",
-        "category": "carnes",
-        "var": 97.49
+        "name": "Papa Amarilla Peruanita Agro Selecto 2kg",
+        "store": "wong",
+        "category": "frutas",
+        "var": 76.77
       },
       {
-        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
+        "name": "Vino Tinto Blend Knock Knock Caperuci...",
         "store": "wong",
         "category": "carnes",
-        "var": 97.49
+        "var": 66.89
       },
       {
-        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
+        "name": "Vino Blanco Blend Knock Knock Botella...",
         "store": "wong",
         "category": "carnes",
-        "var": 97.49
+        "var": 66.89
       },
       {
-        "name": "Liz Irish Cream Cuisine & Co 700ml + ...",
+        "name": "Vino Tinto Blend Knock Knock Dulce Bo...",
         "store": "metro",
         "category": "carnes",
-        "var": 97.49
+        "var": 66.89
       }
     ],
     "stores_coverage": {
-      "metro": 12640,
-      "plazavea": 13380,
-      "wong": 14974
+      "metro": 12669,
+      "plazavea": 13461,
+      "wong": 14977
     },
     "categories_coverage": {
-      "aceites_grasas": 606,
-      "arroz_cereales": 1419,
-      "azucar_dulces": 1151,
-      "bebidas": 1044,
-      "carnes": 14544,
-      "cuidado_personal": 2900,
-      "frutas": 1969,
-      "lacteos": 2888,
-      "limpieza": 3215,
-      "pan_harinas": 6675,
-      "pescados_mariscos": 235,
-      "verduras": 297
+      "aceites_grasas": 633,
+      "arroz_cereales": 1413,
+      "azucar_dulces": 1150,
+      "bebidas": 1045,
+      "carnes": 14554,
+      "cuidado_personal": 2926,
+      "frutas": 1963,
+      "lacteos": 2910,
+      "limpieza": 3206,
+      "pan_harinas": 6716,
+      "pescados_mariscos": 233,
+      "verduras": 298
     }
   }
 }
