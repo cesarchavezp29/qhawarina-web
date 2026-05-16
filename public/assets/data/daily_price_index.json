@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-14",
-    "n_days": 94,
+    "last_date": "2026-05-15",
+    "n_days": 95,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-14"
+    "updated": "2026-05-15"
   },
   "categories": {
     "arroz_cereales": {
@@ -2629,87 +2629,114 @@
       "index_limpieza": 99.8673,
       "index_cuidado_personal": 99.0624,
       "index_other": 99.7369
+    },
+    {
+      "date": "2026-05-15",
+      "index_all": 99.5394,
+      "index_all_unweighted": 99.4814,
+      "index_food": 99.4639,
+      "index_nonfood": 99.4322,
+      "var_all": -0.3311,
+      "var_food": -0.3359,
+      "cum_pct": -0.4606,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2107,
+      "interpolated": false,
+      "n_matched": 40781,
+      "index_arroz_cereales": 99.6794,
+      "index_pan_harinas": 99.3228,
+      "index_carnes": 99.4549,
+      "index_pescados_mariscos": 100.4491,
+      "index_lacteos": 99.7645,
+      "index_frutas": 102.5877,
+      "index_verduras": 100.1726,
+      "index_aceites_grasas": 98.6115,
+      "index_azucar_dulces": 94.8,
+      "index_bebidas": 99.4003,
+      "index_limpieza": 99.4407,
+      "index_cuidado_personal": 98.606,
+      "index_other": 99.6425
     }
   ],
   "latest": {
-    "date": "2026-05-14",
-    "index_all": 99.8701,
-    "index_food": 99.7991,
-    "cum_pct": -0.1299,
-    "var_all": -0.098,
+    "date": "2026-05-15",
+    "index_all": 99.5394,
+    "index_food": 99.4639,
+    "cum_pct": -0.4606,
+    "var_all": -0.3311,
     "yoy_inflation": null,
-    "mom_inflation": 0.2322,
-    "n_products_today": 40628,
+    "mom_inflation": 0.2107,
+    "n_products_today": 40781,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -0.79
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.65
       },
       {
         "category": "aceites_grasas",
         "label_es": "Aceites y Grasas",
         "label_en": "Oils & Fats",
-        "var": -0.61
+        "var": -0.56
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.24
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -0.46
       },
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.17
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": -0.43
       }
     ],
     "product_movers": [
       {
-        "name": "Papa Amarilla Peruanita Agro Selecto 2kg",
-        "store": "wong",
-        "category": "frutas",
-        "var": 76.77
-      },
-      {
-        "name": "Vino Tinto Blend Knock Knock Caperuci...",
+        "name": "Vino Tinto Blend Sin Reglas Assemblag...",
         "store": "wong",
         "category": "carnes",
-        "var": 66.89
+        "var": 78.98
       },
       {
-        "name": "Vino Blanco Blend Knock Knock Botella...",
+        "name": "Vino Tinto Cabernet Sauvignon Sin Reg...",
         "store": "wong",
         "category": "carnes",
-        "var": 66.89
+        "var": 78.98
       },
       {
-        "name": "Vino Tinto Blend Knock Knock Dulce Bo...",
+        "name": "Vino Tinto Malbec Sin Reglas El Peral...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 78.98
+      },
+      {
+        "name": "Huevo de Pascua Sorpresa Barbie 155g",
         "store": "metro",
         "category": "carnes",
-        "var": 66.89
+        "var": 76.19
       }
     ],
     "stores_coverage": {
-      "metro": 12669,
-      "plazavea": 13461,
-      "wong": 14977
+      "metro": 12647,
+      "plazavea": 13505,
+      "wong": 14965
     },
     "categories_coverage": {
-      "aceites_grasas": 633,
-      "arroz_cereales": 1413,
-      "azucar_dulces": 1150,
-      "bebidas": 1045,
-      "carnes": 14554,
-      "cuidado_personal": 2926,
-      "frutas": 1963,
-      "lacteos": 2910,
-      "limpieza": 3206,
-      "pan_harinas": 6716,
-      "pescados_mariscos": 233,
-      "verduras": 298
+      "aceites_grasas": 627,
+      "arroz_cereales": 1407,
+      "azucar_dulces": 1145,
+      "bebidas": 1035,
+      "carnes": 14524,
+      "cuidado_personal": 2940,
+      "frutas": 1970,
+      "lacteos": 2911,
+      "limpieza": 3222,
+      "pan_harinas": 6739,
+      "pescados_mariscos": 230,
+      "verduras": 297
     }
   }
 }
