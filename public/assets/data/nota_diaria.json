@@ -1,24 +1,24 @@
 {
-  "date": "2026-05-15",
-  "headline_es": "Precios supermercado -0.46% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.46% MTD · GDP nowcast +2.81%",
+  "date": "2026-05-17",
+  "headline_es": "Precios supermercado -0.43% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.43% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.46% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.46% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.43% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.43% month-to-date."
     },
     {
       "icon": "📉",
-      "text_es": "Pescados y Mariscos: -0.7% en el mes.",
-      "text_en": "Fish & Seafood: -0.7% this month."
+      "text_es": "Frutas: -0.3% en el mes.",
+      "text_en": "Fruits: -0.3% this month."
     },
     {
-      "icon": "📉",
-      "text_es": "Aceites y Grasas: -0.6% en el mes.",
-      "text_en": "Oils & Fats: -0.6% this month."
+      "icon": "📈",
+      "text_es": "Limpieza: +0.1% en el mes.",
+      "text_en": "Cleaning: +0.1% this month."
     },
     {
       "icon": "📊",
@@ -32,9 +32,9 @@
     },
     {
       "icon": "🏛️",
-      "text_es": "Riesgo político: IRP 64 — nivel bajo.",
-      "text_en": "Political risk: IRP 64 — low level."
+      "text_es": "Riesgo político: IRP 40 — nivel mínimo.",
+      "text_en": "Political risk: IRP 40 — minimal level."
     }
   ],
-  "updated_at": "2026-05-16T01:23:37.316906+00:00"
+  "updated_at": "2026-05-18T01:17:49.754462+00:00"
 }

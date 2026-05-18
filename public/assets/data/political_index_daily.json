@@ -1,223 +1,43 @@
 {
   "metadata": {
-    "generated_at": "2026-05-15T21:13:21.090852",
-    "coverage_days": 500,
+    "generated_at": "2026-05-17T21:07:30.941683",
+    "coverage_days": 502,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-15",
-    "political_raw": 74.7,
-    "political_raw_level": "BAJO",
-    "political_7d": 64.0,
-    "political_level": "BAJO",
-    "political_multiplier": 0.64,
-    "economic_raw": 54.9,
-    "economic_raw_level": "BAJO",
-    "economic_7d": 63.2,
-    "economic_level": "BAJO",
-    "economic_multiplier": 0.63,
-    "score": 64.0,
-    "prr_7d": 64.0,
-    "prr_raw": 74.7,
-    "level": "BAJO",
-    "articles_total": 562,
-    "articles_political_relevant": 247,
-    "articles_economic_relevant": 94,
-    "political_justification": "El panorama político muestra estabilidad institucional con procesos electorales en curso y transiciones ordenadas. Sin embargo, persisten tensiones parlamentarias reflejadas en mociones de censura y desafíos de seguridad en zonas mineras que requieren atención. El contexto general permanece dentro de parámetros normales.",
-    "economic_justification": "La economía peruana enfrenta presiones moderadas pero contenidas. Aunque Petroperú atraviesa una crisis estructural que requiere soluciones técnicas urgentes, el crecimiento se mantiene estable y la política monetaria permanece prudente. Los riesgos climáticos y fiscales merecen vigilancia cercana.",
-    "top_political_drivers": [
-      {
-        "title": "Wilson Soto confirma respaldo a moción para censurar a José María Balcázar",
-        "source": "correo",
-        "score": 78
-      },
-      {
-        "title": "Resultados ONPE al 100%: Roberto Sánchez y Keiko Fujimori pasan oficialmente a segunda vuelta",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Keiko Fujimori vs. Roberto Sánchez en la segunda vuelta: ¿quién será el próximo presidente del Perú?",
-        "source": "elcomercio",
-        "score": 75
-      },
-      {
-        "title": "ONPE al 100 %: Keiko Fujimori y Roberto Sánchez pasan a la segunda vuelta presidencial",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "ONPE al 100 %: Keiko Fujimori y Roberto Sánchez pasan a la segunda vuelta",
-        "source": "rpp",
-        "score": 75
-      },
-      {
-        "title": "Resultados ONPE 2026: estos serían los virtuales senadores y diputados del próximo Congreso",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "Keiko Fujimori y Roberto Sánchez encabezan los resultados ONPE al 100 %",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Criminales con fusiles retienen a 33 trabajadores en mina La Joya, Pataz",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Congresista Málaga impulsa moción de censura contra presidente Balcázar: estas son las razones",
-        "source": "caretas",
-        "score": 72
-      },
-      {
-        "title": "JNE proclamará este domingo a los candidatos que irán a la segunda vuelta: todas las medidas anunciadas",
-        "source": "elcomercio",
-        "score": 70
-      }
-    ],
-    "top_economic_drivers": [
-      {
-        "title": "Reorganización patrimonial de Petro-Perú: ProInversión pone en venta 55 propiedades para frenar la crisis",
-        "source": "elcomercio",
-        "score": 55
-      },
-      {
-        "title": "BCG sobre crisis de Petro-Perú: “Una solución financiera pura, sin una solución técnica, es insostenible”",
-        "source": "elcomercio",
-        "score": 55
-      },
-      {
-        "title": "La factura del Congreso saliente sigue creciendo",
-        "source": "gestion",
-        "score": 55
-      },
-      {
-        "title": "Arequipa: ¿por qué aumentó el precio del GLP en la Ciudad Blanca y cuál es su impacto?",
-        "source": "rpp",
-        "score": 45
-      },
-      {
-        "title": "BCR mantiene su tasa de interés en 4,25% por octavo mes consecutivo",
-        "source": "elcomercio",
-        "score": 35
-      },
-      {
-        "title": "El Niño fuerte a la vista: ¿qué tan vulnerable es la economía de Perú? Esto dice el BCRP",
-        "source": "gestion",
-        "score": 35
-      },
-      {
-        "title": "Economía peruana creció 3,2% en marzo: construcción se disparó, pero minería retrocedió ante crisis del gas",
-        "source": "larepublica",
-        "score": 35
-      },
-      {
-        "title": "BCR: \"Petroperú ha implicado un costo fiscal importante\"",
-        "source": "peru21",
-        "score": 35
-      },
-      {
-        "title": "Gamarra prevé pérdidas de S/ 600 millones por El Niño Costero",
-        "source": "canaln",
-        "score": 35
-      },
-      {
-        "title": "Directora del Senamhi: Hay un 80% de que ocurra el fenómeno del Niño Global",
-        "source": "canaln",
-        "score": 35
-      }
-    ],
-    "eco_sector_titles": [
-      "Reorganización patrimonial de Petro-Perú: ProInversión pone en venta 55 propiedades para frenar la crisis",
-      "BCG sobre crisis de Petro-Perú: “Una solución financiera pura, sin una solución técnica, es insostenible”",
-      "La factura del Congreso saliente sigue creciendo",
-      "Criminales con fusiles retienen a 33 trabajadores en mina La Joya, Pataz",
-      "Arequipa: ¿por qué aumentó el precio del GLP en la Ciudad Blanca y cuál es su impacto?",
-      "Rescate en Pataz: Fuerzas Armadas liberan con vida a 33 trabajadores secuestrados por organización criminal",
-      "Congreso debatirá interpelación contra ministro de Comercio Exterior: ¿cuáles son los cuestionamientos en su contra?",
-      "BCR mantiene su tasa de interés en 4,25% por octavo mes consecutivo",
-      "El Niño fuerte a la vista: ¿qué tan vulnerable es la economía de Perú? Esto dice el BCRP",
-      "Economía peruana creció 3,2% en marzo: construcción se disparó, pero minería retrocedió ante crisis del gas",
-      "BCRP sobre segunda vuelta electoral: \"estamos atentos para actuar en caso de turbulencia en los mercados financieros\"",
-      "BCR: \"Petroperú ha implicado un costo fiscal importante\"",
-      "Gamarra prevé pérdidas de S/ 600 millones por El Niño Costero",
-      "Directora del Senamhi: Hay un 80% de que ocurra el fenómeno del Niño Global",
-      "Los retos de la exploración minera: tramitología, demora en plazos y problemas institucionales",
-      "¿Qué dice el último proyecto de ley para el retiro de hasta 22,000 soles de tu AFP en el 2026?",
-      "Cerveza: ¿la inflación frenará su consumo en Perú?",
-      "Perú vuelve al top 10 mundial de países más complejos para hacer negocios, según TMF Group: ¿a qué países supera?",
-      "Fuerzas Armadas rescatan con vida a 33 trabajadores mineros secuestrados en Pataz",
-      "Tipo de cambio: dólar avanza y se acerca a S/3,44 tras nuevos indicadores económicos en EE.UU.",
-      "Pataz: Comando Unificado rescata a 33 trabajadores secuestrados en mina",
-      "Dólar cerró al alza tras conteo al 100% de la ONPE de primera vuelta presidencial",
-      "Liberan a 33 mineros retenidos en socavón tras operativo en Pataz",
-      "Rescatan a 33 trabajadores secuestrados en mina de Pataz tras operativo del Comando Unificado",
-      "Minería ilegal avanza en la Amazonía: Solo en abril se detectaron alertas en dos comunidades nativas, Ucayali y Reserva Tambopata",
-      "Tacna: Consejero revela que Gobierno Regional atraviesa crisis presupuestal"
-    ],
-    "justification": "El panorama político muestra estabilidad institucional con procesos electorales en curso y transiciones ordenadas. Sin embargo, persisten tensiones parlamentarias reflejadas en mociones de censura y desafíos de seguridad en zonas mineras que requieren atención. El contexto general permanece dentro de parámetros normales.",
-    "top_drivers": [
-      {
-        "title": "Wilson Soto confirma respaldo a moción para censurar a José María Balcázar",
-        "source": "correo",
-        "score": 78
-      },
-      {
-        "title": "Resultados ONPE al 100%: Roberto Sánchez y Keiko Fujimori pasan oficialmente a segunda vuelta",
-        "source": "larepublica",
-        "score": 78
-      },
-      {
-        "title": "Keiko Fujimori vs. Roberto Sánchez en la segunda vuelta: ¿quién será el próximo presidente del Perú?",
-        "source": "elcomercio",
-        "score": 75
-      },
-      {
-        "title": "ONPE al 100 %: Keiko Fujimori y Roberto Sánchez pasan a la segunda vuelta presidencial",
-        "source": "correo",
-        "score": 75
-      },
-      {
-        "title": "ONPE al 100 %: Keiko Fujimori y Roberto Sánchez pasan a la segunda vuelta",
-        "source": "rpp",
-        "score": 75
-      },
-      {
-        "title": "Resultados ONPE 2026: estos serían los virtuales senadores y diputados del próximo Congreso",
-        "source": "caretas",
-        "score": 75
-      },
-      {
-        "title": "Keiko Fujimori y Roberto Sánchez encabezan los resultados ONPE al 100 %",
-        "source": "canaln",
-        "score": 75
-      },
-      {
-        "title": "Criminales con fusiles retienen a 33 trabajadores en mina La Joya, Pataz",
-        "source": "larepublica",
-        "score": 72
-      },
-      {
-        "title": "Congresista Málaga impulsa moción de censura contra presidente Balcázar: estas son las razones",
-        "source": "caretas",
-        "score": 72
-      },
-      {
-        "title": "JNE proclamará este domingo a los candidatos que irán a la segunda vuelta: todas las medidas anunciadas",
-        "source": "elcomercio",
-        "score": 70
-      }
-    ]
+    "date": "2026-05-17",
+    "political_raw": 2.0,
+    "political_raw_level": "MINIMO",
+    "political_7d": 39.8,
+    "political_level": "MINIMO",
+    "political_multiplier": 0.4,
+    "economic_raw": 0.8,
+    "economic_raw_level": "MINIMO",
+    "economic_7d": 38.0,
+    "economic_level": "MINIMO",
+    "economic_multiplier": 0.38,
+    "score": 39.8,
+    "prr_7d": 39.8,
+    "prr_raw": 2.0,
+    "level": "MINIMO",
+    "articles_total": 37,
+    "articles_political_relevant": 8,
+    "articles_economic_relevant": 2,
+    "political_justification": null,
+    "economic_justification": null,
+    "top_political_drivers": [],
+    "top_economic_drivers": [],
+    "eco_sector_titles": [],
+    "justification": null,
+    "top_drivers": []
   },
   "aggregates": {
-    "political_7d_avg": 52.9,
-    "political_30d_avg": 70.5,
-    "economic_7d_avg": 58.4,
-    "economic_30d_avg": 45.6,
+    "political_7d_avg": 54.5,
+    "political_30d_avg": 61.5,
+    "economic_7d_avg": 59.7,
+    "economic_30d_avg": 44.5,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -227,7 +47,7 @@
       "score": 145.5,
       "level": "ELEVADO",
       "n_articles": 453,
-      "summary": "Debilidad institucional y conflictos diplomáticos internacionales erosionan gobernanza.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-18.html"
     },
     {
@@ -235,7 +55,7 @@
       "score": 175.4,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Resultados electorales generan incertidumbre política nacional.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-17.html"
     },
     {
@@ -243,7 +63,7 @@
       "score": 190.9,
       "level": "ALTO",
       "n_articles": 635,
-      "summary": "Proceso electoral incompleto genera incertidumbre política nacional.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-16.html"
     },
     {
@@ -251,7 +71,7 @@
       "score": 213.4,
       "level": "CRITICO",
       "n_articles": 609,
-      "summary": "Incertidumbre electoral genera volatilidad económica en el país.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-15.html"
     },
     {
@@ -259,7 +79,7 @@
       "score": 233.9,
       "level": "CRITICO",
       "n_articles": 517,
-      "summary": "Elecciones presidenciales generan inestabilidad política y económica.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-14.html"
     },
     {
@@ -267,7 +87,7 @@
       "score": 266.5,
       "level": "CRITICO",
       "n_articles": 766,
-      "summary": "Falta de material electoral genera incidencias en mesas electorales.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-13.html"
     },
     {
@@ -275,7 +95,7 @@
       "score": 189.9,
       "level": "ALTO",
       "n_articles": 555,
-      "summary": "Problemas operativos en la instalación de mesas electorales.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-04-12.html"
     },
     {
@@ -283,7 +103,7 @@
       "score": 135.3,
       "level": "ELEVADO",
       "n_articles": 607,
-      "summary": "Políticas fiscales que comprometen la estabilidad económica futura.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-27.html"
     },
     {
@@ -291,7 +111,7 @@
       "score": 157.6,
       "level": "ALTO",
       "n_articles": 689,
-      "summary": "Debate presidencial genera incertidumbre sobre liderazgo futuro del país.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-26.html"
     },
     {
@@ -299,7 +119,7 @@
       "score": 155.1,
       "level": "ALTO",
       "n_articles": 609,
-      "summary": "Candidato prófugo participa en debate presidencial.",
+      "summary": "Alta inestabilidad política registrada.",
       "report_url": "/political/daily-reports/2026-03-25.html"
     }
   ],
@@ -5042,14 +4862,14 @@
     },
     {
       "date": "2025-12-27",
-      "political_raw": 27.0,
-      "political_7d": 30.9,
-      "economic_raw": 17.4,
+      "political_raw": 26.6,
+      "political_7d": 30.7,
+      "economic_raw": 17.3,
       "economic_7d": 22.3,
-      "score": 30.9,
-      "prr": 27.0,
-      "prr_7d": 30.9,
-      "n_articles": 34,
+      "score": 30.7,
+      "prr": 26.6,
+      "prr_7d": 30.7,
+      "n_articles": 35,
       "low_coverage": false,
       "provisional": false
     },
@@ -5069,12 +4889,12 @@
     {
       "date": "2025-12-29",
       "political_raw": 29.7,
-      "political_7d": 27.5,
+      "political_7d": 27.4,
       "economic_raw": 122.8,
       "economic_7d": 53.2,
-      "score": 27.5,
+      "score": 27.4,
       "prr": 29.7,
-      "prr_7d": 27.5,
+      "prr_7d": 27.4,
       "n_articles": 76,
       "low_coverage": false,
       "provisional": false
@@ -5084,7 +4904,7 @@
       "political_raw": 15.3,
       "political_7d": 23.8,
       "economic_raw": 39.3,
-      "economic_7d": 49.1,
+      "economic_7d": 49.0,
       "score": 23.8,
       "prr": 15.3,
       "prr_7d": 23.8,
@@ -5097,7 +4917,7 @@
       "political_raw": 26.1,
       "political_7d": 24.5,
       "economic_raw": 72.4,
-      "economic_7d": 56.1,
+      "economic_7d": 56.0,
       "score": 24.5,
       "prr": 26.1,
       "prr_7d": 24.5,
@@ -6823,42 +6643,68 @@
     },
     {
       "date": "2026-05-13",
-      "political_raw": 63.8,
-      "political_7d": 57.3,
-      "economic_raw": 67.3,
-      "economic_7d": 68.2,
-      "score": 57.3,
-      "prr": 63.8,
-      "prr_7d": 57.3,
-      "n_articles": 556,
+      "political_raw": 65.1,
+      "political_7d": 57.7,
+      "economic_raw": 69.0,
+      "economic_7d": 68.7,
+      "score": 57.7,
+      "prr": 65.1,
+      "prr_7d": 57.7,
+      "n_articles": 561,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-05-14",
       "political_raw": 64.3,
-      "political_7d": 59.4,
+      "political_7d": 59.7,
       "economic_raw": 63.6,
-      "economic_7d": 66.8,
-      "score": 59.4,
+      "economic_7d": 67.2,
+      "score": 59.7,
       "prr": 64.3,
-      "prr_7d": 59.4,
+      "prr_7d": 59.7,
       "n_articles": 594,
       "low_coverage": false,
       "provisional": false
     },
     {
       "date": "2026-05-15",
-      "political_raw": 74.7,
-      "political_7d": 64.0,
+      "political_raw": 80.4,
+      "political_7d": 65.9,
       "economic_raw": 54.9,
-      "economic_7d": 63.2,
-      "score": 64.0,
-      "prr": 74.7,
-      "prr_7d": 64.0,
-      "n_articles": 562,
+      "economic_7d": 63.5,
+      "score": 65.9,
+      "prr": 80.4,
+      "prr_7d": 65.9,
+      "n_articles": 583,
       "low_coverage": false,
       "provisional": false
+    },
+    {
+      "date": "2026-05-16",
+      "political_raw": 33.0,
+      "political_7d": 56.0,
+      "economic_raw": 31.7,
+      "economic_7d": 54.0,
+      "score": 56.0,
+      "prr": 33.0,
+      "prr_7d": 56.0,
+      "n_articles": 479,
+      "low_coverage": false,
+      "provisional": false
+    },
+    {
+      "date": "2026-05-17",
+      "political_raw": 2.0,
+      "political_7d": 39.8,
+      "economic_raw": 0.8,
+      "economic_7d": 38.0,
+      "score": 39.8,
+      "prr": 2.0,
+      "prr_7d": 39.8,
+      "n_articles": 37,
+      "low_coverage": false,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -8312,7 +8158,7 @@
       "month": "2025-12",
       "political_avg": 53.8,
       "economic_avg": 36.3,
-      "n_articles": 2090,
+      "n_articles": 2091,
       "fx_level": 3.3667,
       "fx_yoy": -9.86
     },
@@ -8350,9 +8196,9 @@
     },
     {
       "month": "2026-05",
-      "political_avg": 45.9,
-      "economic_avg": 47.3,
-      "n_articles": 7144,
+      "political_avg": 46.3,
+      "economic_avg": 47.2,
+      "n_articles": 7686,
       "fx_level": null,
       "fx_yoy": null
     }
