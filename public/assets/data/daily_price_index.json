@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-17",
-    "n_days": 97,
+    "last_date": "2026-05-18",
+    "n_days": 98,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-17"
+    "updated": "2026-05-18"
   },
   "categories": {
     "arroz_cereales": {
@@ -2710,87 +2710,114 @@
       "index_limpieza": 99.7313,
       "index_cuidado_personal": 98.654,
       "index_other": 99.6233
+    },
+    {
+      "date": "2026-05-18",
+      "index_all": 99.7374,
+      "index_all_unweighted": 99.7283,
+      "index_food": 99.7165,
+      "index_nonfood": 99.662,
+      "var_all": 0.1723,
+      "var_food": 0.2689,
+      "cum_pct": -0.2626,
+      "yoy_inflation": null,
+      "mom_inflation": 0.124,
+      "interpolated": false,
+      "n_matched": 40860,
+      "index_arroz_cereales": 99.8592,
+      "index_pan_harinas": 99.579,
+      "index_carnes": 99.7424,
+      "index_pescados_mariscos": 100.295,
+      "index_lacteos": 100.1651,
+      "index_frutas": 102.1724,
+      "index_verduras": 99.9991,
+      "index_aceites_grasas": 98.4983,
+      "index_azucar_dulces": 95.8429,
+      "index_bebidas": 99.5886,
+      "index_limpieza": 99.8675,
+      "index_cuidado_personal": 98.9176,
+      "index_other": 99.6564
     }
   ],
   "latest": {
-    "date": "2026-05-17",
-    "index_all": 99.5658,
-    "index_food": 99.4491,
-    "cum_pct": -0.4342,
-    "var_all": -0.0089,
+    "date": "2026-05-18",
+    "index_all": 99.7374,
+    "index_food": 99.7165,
+    "cum_pct": -0.2626,
+    "var_all": 0.1723,
     "yoy_inflation": null,
-    "mom_inflation": 0.1454,
-    "n_products_today": 40937,
+    "mom_inflation": 0.124,
+    "n_products_today": 40860,
     "top_movers": [
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.3
-      },
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 0.11
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.03
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": 1.13
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": 0.03
+        "var": 0.32
+      },
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.32
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.27
       }
     ],
     "product_movers": [
       {
-        "name": "Cebolla Roja Metro x kg",
-        "store": "metro",
-        "category": "frutas",
-        "var": 84.34
-      },
-      {
-        "name": "Espinaca Hidropónica de Invernadero E...",
-        "store": "metro",
-        "category": "frutas",
-        "var": 61.22
-      },
-      {
-        "name": "Coliflor Entera x un",
-        "store": "metro",
-        "category": "frutas",
-        "var": 55.27
-      },
-      {
-        "name": "Espumoso La Gioiosa Prosecco 750ml",
+        "name": "Galletas RipVan Leos Cookies & Cream ...",
         "store": "wong",
-        "category": "carnes",
-        "var": 50.96
+        "category": "pan_harinas",
+        "var": 100.0
+      },
+      {
+        "name": "Chocolates HERSHEY'S Kisses Bastón Pa...",
+        "store": "plazavea",
+        "category": "azucar_dulces",
+        "var": 97.25
+      },
+      {
+        "name": "Chocolates LINDT Lindor Heart Milk La...",
+        "store": "plazavea",
+        "category": "azucar_dulces",
+        "var": 93.96
+      },
+      {
+        "name": "Bombones Surtidos de Chocolate BON O ...",
+        "store": "plazavea",
+        "category": "azucar_dulces",
+        "var": 80.81
       }
     ],
     "stores_coverage": {
-      "metro": 12657,
-      "plazavea": 13544,
-      "wong": 15020
+      "metro": 12622,
+      "plazavea": 13432,
+      "wong": 15019
     },
     "categories_coverage": {
-      "aceites_grasas": 622,
-      "arroz_cereales": 1414,
-      "azucar_dulces": 1136,
-      "bebidas": 1033,
-      "carnes": 14550,
-      "cuidado_personal": 2940,
-      "frutas": 1992,
-      "lacteos": 2927,
-      "limpieza": 3223,
-      "pan_harinas": 6775,
+      "aceites_grasas": 618,
+      "arroz_cereales": 1412,
+      "azucar_dulces": 1134,
+      "bebidas": 1028,
+      "carnes": 14507,
+      "cuidado_personal": 2941,
+      "frutas": 1971,
+      "lacteos": 2913,
+      "limpieza": 3224,
+      "pan_harinas": 6729,
       "pescados_mariscos": 233,
-      "verduras": 302
+      "verduras": 296
     }
   }
 }

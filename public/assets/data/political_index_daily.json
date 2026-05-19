@@ -1,30 +1,30 @@
 {
   "metadata": {
-    "generated_at": "2026-05-17T21:07:30.941683",
-    "coverage_days": 502,
+    "generated_at": "2026-05-18T21:07:17.972421",
+    "coverage_days": 503,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-17",
+    "date": "2026-05-18",
     "political_raw": 2.0,
     "political_raw_level": "MINIMO",
-    "political_7d": 39.8,
+    "political_7d": 27.9,
     "political_level": "MINIMO",
-    "political_multiplier": 0.4,
+    "political_multiplier": 0.28,
     "economic_raw": 0.8,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 38.0,
+    "economic_7d": 26.6,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.38,
-    "score": 39.8,
-    "prr_7d": 39.8,
+    "economic_multiplier": 0.27,
+    "score": 27.9,
+    "prr_7d": 27.9,
     "prr_raw": 2.0,
     "level": "MINIMO",
-    "articles_total": 37,
-    "articles_political_relevant": 8,
-    "articles_economic_relevant": 2,
+    "articles_total": 0,
+    "articles_political_relevant": 0,
+    "articles_economic_relevant": 0,
     "political_justification": null,
     "economic_justification": null,
     "top_political_drivers": [],
@@ -34,10 +34,10 @@
     "top_drivers": []
   },
   "aggregates": {
-    "political_7d_avg": 54.5,
-    "political_30d_avg": 61.5,
-    "economic_7d_avg": 59.7,
-    "economic_30d_avg": 44.5,
+    "political_7d_avg": 51.7,
+    "political_30d_avg": 57.6,
+    "economic_7d_avg": 55.2,
+    "economic_30d_avg": 43.6,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -6705,6 +6705,19 @@
       "n_articles": 37,
       "low_coverage": false,
       "provisional": true
+    },
+    {
+      "date": "2026-05-18",
+      "political_raw": 2.0,
+      "political_7d": 27.9,
+      "economic_raw": 0.8,
+      "economic_7d": 26.6,
+      "score": 27.9,
+      "prr": 2.0,
+      "prr_7d": 27.9,
+      "n_articles": 0,
+      "low_coverage": true,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -8063,6 +8076,10 @@
     {
       "date": "2026-05-14",
       "fx": 3.4174
+    },
+    {
+      "date": "2026-05-15",
+      "fx": 3.4343
     }
   ],
   "monthly_series": [
@@ -8196,8 +8213,8 @@
     },
     {
       "month": "2026-05",
-      "political_avg": 46.3,
-      "economic_avg": 47.2,
+      "political_avg": 45.3,
+      "economic_avg": 46.1,
       "n_articles": 7686,
       "fx_level": null,
       "fx_yoy": null

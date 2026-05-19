@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-17T21:07:10.023054",
+    "generated_at": "2026-05-18T21:06:56.969241",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
