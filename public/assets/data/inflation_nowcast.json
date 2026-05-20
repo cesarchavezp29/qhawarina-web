@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-18T21:06:56.969241",
+    "generated_at": "2026-05-19T21:09:05.883255",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -14,14 +14,14 @@
   },
   "nowcast": {
     "target_period": "2026-05",
-    "value": 3.12,
+    "value": 3.119,
     "unit": "percent_monthly_var",
     "bridge_r2": 0.805,
     "gnv_shock_active": false,
     "gnv_scarcity_score": 0.656
   },
   "model_breakdown": {
-    "bottom_up": 3.633,
+    "bottom_up": 3.631,
     "dfm_nowcast": 1.323,
     "ml_lasso": 2.307,
     "ml_elastic_net": 2.309,
@@ -1680,7 +1680,7 @@
     {
       "month": "2026-05",
       "official": null,
-      "nowcast": 3.12,
+      "nowcast": 3.119,
       "error": null
     }
   ],
@@ -2000,7 +2000,7 @@
     {
       "month": "2026-05",
       "official": null,
-      "nowcast": 3.12,
+      "nowcast": 3.119,
       "error": null
     }
   ],

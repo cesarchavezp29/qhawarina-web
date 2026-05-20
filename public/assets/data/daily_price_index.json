@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-18",
-    "n_days": 98,
+    "last_date": "2026-05-19",
+    "n_days": 99,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-18"
+    "updated": "2026-05-19"
   },
   "categories": {
     "arroz_cereales": {
@@ -2737,87 +2737,114 @@
       "index_limpieza": 99.8675,
       "index_cuidado_personal": 98.9176,
       "index_other": 99.6564
+    },
+    {
+      "date": "2026-05-19",
+      "index_all": 100.2938,
+      "index_all_unweighted": 100.1375,
+      "index_food": 100.1875,
+      "index_nonfood": 99.8885,
+      "var_all": 0.5579,
+      "var_food": 0.4723,
+      "cum_pct": 0.2938,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1174,
+      "interpolated": false,
+      "n_matched": 40199,
+      "index_arroz_cereales": 100.7034,
+      "index_pan_harinas": 100.6078,
+      "index_carnes": 99.9287,
+      "index_pescados_mariscos": 101.2289,
+      "index_lacteos": 100.7186,
+      "index_frutas": 102.4653,
+      "index_verduras": 101.2448,
+      "index_aceites_grasas": 99.0628,
+      "index_azucar_dulces": 95.8209,
+      "index_bebidas": 100.1013,
+      "index_limpieza": 100.0316,
+      "index_cuidado_personal": 99.2754,
+      "index_other": 99.8357
     }
   ],
   "latest": {
-    "date": "2026-05-18",
-    "index_all": 99.7374,
-    "index_food": 99.7165,
-    "cum_pct": -0.2626,
-    "var_all": 0.1723,
+    "date": "2026-05-19",
+    "index_all": 100.2938,
+    "index_food": 100.1875,
+    "cum_pct": 0.2938,
+    "var_all": 0.5579,
     "yoy_inflation": null,
-    "mom_inflation": 0.124,
-    "n_products_today": 40860,
+    "mom_inflation": 0.1174,
+    "n_products_today": 40199,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 1.13
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 1.25
       },
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.32
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 1.03
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 0.32
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.93
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": 0.27
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": 0.85
       }
     ],
     "product_movers": [
       {
-        "name": "Galletas RipVan Leos Cookies & Cream ...",
+        "name": "Vino Tinto Cabernet Sauvignon De Bort...",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 100.0
+        "category": "carnes",
+        "var": 94.71
       },
       {
-        "name": "Chocolates HERSHEY'S Kisses Bastón Pa...",
-        "store": "plazavea",
-        "category": "azucar_dulces",
-        "var": 97.25
+        "name": "Vino Tinto Syrah De Bortoli Winemaker...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 94.71
       },
       {
-        "name": "Chocolates LINDT Lindor Heart Milk La...",
-        "store": "plazavea",
-        "category": "azucar_dulces",
-        "var": 93.96
+        "name": "Vino Blanco Chardonnay De Bortoli Win...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 94.71
       },
       {
-        "name": "Bombones Surtidos de Chocolate BON O ...",
-        "store": "plazavea",
-        "category": "azucar_dulces",
-        "var": 80.81
+        "name": "Perejil x atado",
+        "store": "metro",
+        "category": "frutas",
+        "var": 92.44
       }
     ],
     "stores_coverage": {
-      "metro": 12622,
-      "plazavea": 13432,
-      "wong": 15019
+      "metro": 12574,
+      "plazavea": 13077,
+      "wong": 14967
     },
     "categories_coverage": {
-      "aceites_grasas": 618,
-      "arroz_cereales": 1412,
-      "azucar_dulces": 1134,
-      "bebidas": 1028,
-      "carnes": 14507,
-      "cuidado_personal": 2941,
-      "frutas": 1971,
-      "lacteos": 2913,
-      "limpieza": 3224,
-      "pan_harinas": 6729,
-      "pescados_mariscos": 233,
-      "verduras": 296
+      "aceites_grasas": 622,
+      "arroz_cereales": 1408,
+      "azucar_dulces": 1124,
+      "bebidas": 1027,
+      "carnes": 14022,
+      "cuidado_personal": 2966,
+      "frutas": 1960,
+      "lacteos": 2930,
+      "limpieza": 3234,
+      "pan_harinas": 6715,
+      "pescados_mariscos": 234,
+      "verduras": 300
     }
   }
 }
