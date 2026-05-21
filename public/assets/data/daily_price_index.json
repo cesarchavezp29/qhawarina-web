@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-19",
-    "n_days": 99,
+    "last_date": "2026-05-20",
+    "n_days": 100,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-19"
+    "updated": "2026-05-20"
   },
   "categories": {
     "arroz_cereales": {
@@ -2764,87 +2764,114 @@
       "index_limpieza": 100.0316,
       "index_cuidado_personal": 99.2754,
       "index_other": 99.8357
+    },
+    {
+      "date": "2026-05-20",
+      "index_all": 99.9692,
+      "index_all_unweighted": 99.8962,
+      "index_food": 99.9621,
+      "index_nonfood": 99.6004,
+      "var_all": -0.3236,
+      "var_food": -0.225,
+      "cum_pct": -0.0308,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1516,
+      "interpolated": false,
+      "n_matched": 40084,
+      "index_arroz_cereales": 100.0931,
+      "index_pan_harinas": 100.5309,
+      "index_carnes": 99.6875,
+      "index_pescados_mariscos": 100.5929,
+      "index_lacteos": 100.3315,
+      "index_frutas": 102.6326,
+      "index_verduras": 100.7727,
+      "index_aceites_grasas": 99.3156,
+      "index_azucar_dulces": 95.2432,
+      "index_bebidas": 99.6603,
+      "index_limpieza": 99.7705,
+      "index_cuidado_personal": 98.8564,
+      "index_other": 99.6188
     }
   ],
   "latest": {
-    "date": "2026-05-19",
-    "index_all": 100.2938,
-    "index_food": 100.1875,
-    "cum_pct": 0.2938,
-    "var_all": 0.5579,
+    "date": "2026-05-20",
+    "index_all": 99.9692,
+    "index_food": 99.9621,
+    "cum_pct": -0.0308,
+    "var_all": -0.3236,
     "yoy_inflation": null,
-    "mom_inflation": 0.1174,
-    "n_products_today": 40199,
+    "mom_inflation": 0.1516,
+    "n_products_today": 40084,
     "top_movers": [
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 1.25
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": 1.03
-      },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": 0.93
+        "var": -0.63
       },
       {
         "category": "arroz_cereales",
         "label_es": "Arroz y Cereales",
         "label_en": "Rice & Cereals",
-        "var": 0.85
+        "var": -0.61
+      },
+      {
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -0.6
+      },
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": -0.47
       }
     ],
     "product_movers": [
       {
-        "name": "Vino Tinto Cabernet Sauvignon De Bort...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 94.71
-      },
-      {
-        "name": "Vino Tinto Syrah De Bortoli Winemaker...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 94.71
-      },
-      {
-        "name": "Vino Blanco Chardonnay De Bortoli Win...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 94.71
-      },
-      {
-        "name": "Perejil x atado",
+        "name": "Penne Rigate Bronzo La Molisana 500g",
         "store": "metro",
-        "category": "frutas",
-        "var": 92.44
+        "category": "pan_harinas",
+        "var": 81.63
+      },
+      {
+        "name": "Fusilli Bronzo La Molisana Contenido ...",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": 81.63
+      },
+      {
+        "name": "Fettucine La Molisana Paquete 500 g",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 81.63
+      },
+      {
+        "name": "Spaguetti Quadratto La Molisana Paque...",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 81.63
       }
     ],
     "stores_coverage": {
-      "metro": 12574,
-      "plazavea": 13077,
-      "wong": 14967
+      "metro": 12597,
+      "plazavea": 13483,
+      "wong": 14986
     },
     "categories_coverage": {
-      "aceites_grasas": 622,
-      "arroz_cereales": 1408,
-      "azucar_dulces": 1124,
-      "bebidas": 1027,
-      "carnes": 14022,
-      "cuidado_personal": 2966,
-      "frutas": 1960,
-      "lacteos": 2930,
-      "limpieza": 3234,
-      "pan_harinas": 6715,
+      "aceites_grasas": 624,
+      "arroz_cereales": 1416,
+      "azucar_dulces": 1080,
+      "bebidas": 1034,
+      "carnes": 14502,
+      "cuidado_personal": 3007,
+      "frutas": 1946,
+      "lacteos": 2921,
+      "limpieza": 3226,
+      "pan_harinas": 6712,
       "pescados_mariscos": 234,
-      "verduras": 300
+      "verduras": 298
     }
   }
 }

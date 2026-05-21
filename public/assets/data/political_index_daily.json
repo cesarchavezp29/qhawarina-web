@@ -1,25 +1,25 @@
 {
   "metadata": {
-    "generated_at": "2026-05-19T21:09:33.694569",
-    "coverage_days": 504,
+    "generated_at": "2026-05-20T21:07:53.662127",
+    "coverage_days": 505,
     "rss_feeds": 35,
     "rss_sources": 16,
     "methodology": "AI-GPR dual index (Iacoviello & Tong 2026): IRP + IRE, mean=100 over 2025 baseline"
   },
   "current": {
-    "date": "2026-05-19",
+    "date": "2026-05-20",
     "political_raw": 2.0,
     "political_raw_level": "MINIMO",
-    "political_7d": 19.5,
+    "political_7d": 13.7,
     "political_level": "MINIMO",
-    "political_multiplier": 0.2,
+    "political_multiplier": 0.14,
     "economic_raw": 0.8,
     "economic_raw_level": "MINIMO",
-    "economic_7d": 18.6,
+    "economic_7d": 13.0,
     "economic_level": "MINIMO",
-    "economic_multiplier": 0.19,
-    "score": 19.5,
-    "prr_7d": 19.5,
+    "economic_multiplier": 0.13,
+    "score": 13.7,
+    "prr_7d": 13.7,
     "prr_raw": 2.0,
     "level": "MINIMO",
     "articles_total": 0,
@@ -34,10 +34,10 @@
     "top_drivers": []
   },
   "aggregates": {
-    "political_7d_avg": 46.6,
-    "political_30d_avg": 54.4,
-    "economic_7d_avg": 48.1,
-    "economic_30d_avg": 42.7,
+    "political_7d_avg": 40.4,
+    "political_30d_avg": 51.2,
+    "economic_7d_avg": 40.1,
+    "economic_30d_avg": 41.6,
     "year_max": 266.5,
     "year_max_date": "2026-04-13"
   },
@@ -6731,6 +6731,19 @@
       "n_articles": 0,
       "low_coverage": true,
       "provisional": true
+    },
+    {
+      "date": "2026-05-20",
+      "political_raw": 2.0,
+      "political_7d": 13.7,
+      "economic_raw": 0.8,
+      "economic_7d": 13.0,
+      "score": 13.7,
+      "prr": 2.0,
+      "prr_7d": 13.7,
+      "n_articles": 0,
+      "low_coverage": true,
+      "provisional": true
     }
   ],
   "daily_fx_series": [
@@ -8097,6 +8110,10 @@
     {
       "date": "2026-05-18",
       "fx": 3.4293
+    },
+    {
+      "date": "2026-05-19",
+      "fx": 3.4271
     }
   ],
   "monthly_series": [
@@ -8230,8 +8247,8 @@
     },
     {
       "month": "2026-05",
-      "political_avg": 43.9,
-      "economic_avg": 44.6,
+      "political_avg": 42.4,
+      "economic_avg": 43.0,
       "n_articles": 7686,
       "fx_level": null,
       "fx_yoy": null
