@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-20",
-    "n_days": 100,
+    "last_date": "2026-05-21",
+    "n_days": 101,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-20"
+    "updated": "2026-05-21"
   },
   "categories": {
     "arroz_cereales": {
@@ -2791,87 +2791,114 @@
       "index_limpieza": 99.7705,
       "index_cuidado_personal": 98.8564,
       "index_other": 99.6188
+    },
+    {
+      "date": "2026-05-21",
+      "index_all": 99.7265,
+      "index_all_unweighted": 99.6108,
+      "index_food": 99.5707,
+      "index_nonfood": 99.6323,
+      "var_all": -0.2428,
+      "var_food": -0.3915,
+      "cum_pct": -0.2735,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1449,
+      "interpolated": false,
+      "n_matched": 40670,
+      "index_arroz_cereales": 99.7267,
+      "index_pan_harinas": 100.4069,
+      "index_carnes": 99.089,
+      "index_pescados_mariscos": 100.4343,
+      "index_lacteos": 99.8863,
+      "index_frutas": 102.5633,
+      "index_verduras": 100.6475,
+      "index_aceites_grasas": 98.9133,
+      "index_azucar_dulces": 95.1955,
+      "index_bebidas": 99.5095,
+      "index_limpieza": 99.6855,
+      "index_cuidado_personal": 99.1456,
+      "index_other": 99.5551
     }
   ],
   "latest": {
-    "date": "2026-05-20",
-    "index_all": 99.9692,
-    "index_food": 99.9621,
-    "cum_pct": -0.0308,
-    "var_all": -0.3236,
+    "date": "2026-05-21",
+    "index_all": 99.7265,
+    "index_food": 99.5707,
+    "cum_pct": -0.2735,
+    "var_all": -0.2428,
     "yoy_inflation": null,
-    "mom_inflation": 0.1516,
-    "n_products_today": 40084,
+    "mom_inflation": 0.1449,
+    "n_products_today": 40670,
     "top_movers": [
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.63
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.6
+      },
+      {
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.44
+      },
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.41
       },
       {
         "category": "arroz_cereales",
         "label_es": "Arroz y Cereales",
         "label_en": "Rice & Cereals",
-        "var": -0.61
-      },
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -0.6
-      },
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": -0.47
+        "var": -0.37
       }
     ],
     "product_movers": [
       {
-        "name": "Penne Rigate Bronzo La Molisana 500g",
+        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
         "store": "metro",
-        "category": "pan_harinas",
-        "var": 81.63
+        "category": "carnes",
+        "var": 80.0
       },
       {
-        "name": "Fusilli Bronzo La Molisana Contenido ...",
+        "name": "Vino Tinto Zinfandel 1000 Stories Bou...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 78.71
+      },
+      {
+        "name": "Kiwi x kg",
         "store": "metro",
-        "category": "pan_harinas",
-        "var": 81.63
+        "category": "frutas",
+        "var": 66.71
       },
       {
-        "name": "Fettucine La Molisana Paquete 500 g",
+        "name": "Exfoliante Eucerin Dermo Pure Oil Con...",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 81.63
-      },
-      {
-        "name": "Spaguetti Quadratto La Molisana Paque...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 81.63
+        "category": "cuidado_personal",
+        "var": 66.67
       }
     ],
     "stores_coverage": {
-      "metro": 12597,
-      "plazavea": 13483,
-      "wong": 14986
+      "metro": 12618,
+      "plazavea": 13529,
+      "wong": 15001
     },
     "categories_coverage": {
       "aceites_grasas": 624,
-      "arroz_cereales": 1416,
-      "azucar_dulces": 1080,
-      "bebidas": 1034,
-      "carnes": 14502,
-      "cuidado_personal": 3007,
-      "frutas": 1946,
-      "lacteos": 2921,
-      "limpieza": 3226,
-      "pan_harinas": 6712,
-      "pescados_mariscos": 234,
-      "verduras": 298
+      "arroz_cereales": 1411,
+      "azucar_dulces": 1053,
+      "bebidas": 1033,
+      "carnes": 14555,
+      "cuidado_personal": 3031,
+      "frutas": 1972,
+      "lacteos": 2913,
+      "limpieza": 3225,
+      "pan_harinas": 6732,
+      "pescados_mariscos": 233,
+      "verduras": 300
     }
   }
 }
