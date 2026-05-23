@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-21T21:10:53.563993",
+    "generated_at": "2026-05-22T21:09:33.529394",
     "coverage_days": 506,
     "rss_feeds": 35,
     "rss_sources": 16,
@@ -8131,6 +8131,10 @@
     {
       "date": "2026-05-20",
       "fx": 3.4109
+    },
+    {
+      "date": "2026-05-21",
+      "fx": 3.4151
     }
   ],
   "monthly_series": [

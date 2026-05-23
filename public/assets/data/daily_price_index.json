@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-21",
-    "n_days": 101,
+    "last_date": "2026-05-22",
+    "n_days": 102,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-21"
+    "updated": "2026-05-22"
   },
   "categories": {
     "arroz_cereales": {
@@ -2818,87 +2818,114 @@
       "index_limpieza": 99.6855,
       "index_cuidado_personal": 99.1456,
       "index_other": 99.5551
+    },
+    {
+      "date": "2026-05-22",
+      "index_all": 99.67,
+      "index_all_unweighted": 99.544,
+      "index_food": 99.4506,
+      "index_nonfood": 99.727,
+      "var_all": -0.0567,
+      "var_food": -0.1206,
+      "cum_pct": -0.33,
+      "yoy_inflation": null,
+      "mom_inflation": 0.18,
+      "interpolated": false,
+      "n_matched": 40583,
+      "index_arroz_cereales": 99.827,
+      "index_pan_harinas": 100.2626,
+      "index_carnes": 98.9021,
+      "index_pescados_mariscos": 100.3936,
+      "index_lacteos": 99.7803,
+      "index_frutas": 102.6357,
+      "index_verduras": 99.9678,
+      "index_aceites_grasas": 99.2292,
+      "index_azucar_dulces": 95.1872,
+      "index_bebidas": 99.5557,
+      "index_limpieza": 99.7571,
+      "index_cuidado_personal": 99.3209,
+      "index_other": 99.6094
     }
   ],
   "latest": {
-    "date": "2026-05-21",
-    "index_all": 99.7265,
-    "index_food": 99.5707,
-    "cum_pct": -0.2735,
-    "var_all": -0.2428,
+    "date": "2026-05-22",
+    "index_all": 99.67,
+    "index_food": 99.4506,
+    "cum_pct": -0.33,
+    "var_all": -0.0567,
     "yoy_inflation": null,
-    "mom_inflation": 0.1449,
-    "n_products_today": 40670,
+    "mom_inflation": 0.18,
+    "n_products_today": 40583,
     "top_movers": [
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.6
-      },
-      {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.44
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": -0.68
       },
       {
         "category": "aceites_grasas",
         "label_es": "Aceites y Grasas",
         "label_en": "Oils & Fats",
-        "var": -0.41
+        "var": 0.32
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.37
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.19
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.18
       }
     ],
     "product_movers": [
       {
-        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
+        "name": "Avena Precocida 3 Ositos 500g",
         "store": "metro",
-        "category": "carnes",
-        "var": 80.0
+        "category": "arroz_cereales",
+        "var": 89.8
       },
       {
-        "name": "Vino Tinto Zinfandel 1000 Stories Bou...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 78.71
-      },
-      {
-        "name": "Kiwi x kg",
+        "name": "Frijol Canario Costeño 500g",
         "store": "metro",
-        "category": "frutas",
-        "var": 66.71
+        "category": "other",
+        "var": 83.67
       },
       {
-        "name": "Exfoliante Eucerin Dermo Pure Oil Con...",
-        "store": "wong",
-        "category": "cuidado_personal",
+        "name": "Aceite De Canola Borges Botella 1 Litro",
+        "store": "metro",
+        "category": "aceites_grasas",
         "var": 66.67
+      },
+      {
+        "name": "Chocolates Rellenos Baci Perugina Mil...",
+        "store": "wong",
+        "category": "lacteos",
+        "var": 64.27
       }
     ],
     "stores_coverage": {
-      "metro": 12618,
-      "plazavea": 13529,
+      "metro": 12666,
+      "plazavea": 13480,
       "wong": 15001
     },
     "categories_coverage": {
-      "aceites_grasas": 624,
-      "arroz_cereales": 1411,
-      "azucar_dulces": 1053,
-      "bebidas": 1033,
-      "carnes": 14555,
-      "cuidado_personal": 3031,
-      "frutas": 1972,
-      "lacteos": 2913,
-      "limpieza": 3225,
-      "pan_harinas": 6732,
-      "pescados_mariscos": 233,
-      "verduras": 300
+      "aceites_grasas": 628,
+      "arroz_cereales": 1420,
+      "azucar_dulces": 1013,
+      "bebidas": 1037,
+      "carnes": 14542,
+      "cuidado_personal": 3063,
+      "frutas": 1968,
+      "lacteos": 2926,
+      "limpieza": 3171,
+      "pan_harinas": 6757,
+      "pescados_mariscos": 236,
+      "verduras": 301
     }
   }
 }
