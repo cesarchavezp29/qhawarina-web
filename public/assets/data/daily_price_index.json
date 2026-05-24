@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-22",
-    "n_days": 102,
+    "last_date": "2026-05-23",
+    "n_days": 103,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-22"
+    "updated": "2026-05-23"
   },
   "categories": {
     "arroz_cereales": {
@@ -2845,87 +2845,114 @@
       "index_limpieza": 99.7571,
       "index_cuidado_personal": 99.3209,
       "index_other": 99.6094
+    },
+    {
+      "date": "2026-05-23",
+      "index_all": 99.6486,
+      "index_all_unweighted": 99.5203,
+      "index_food": 99.413,
+      "index_nonfood": 99.746,
+      "var_all": -0.0215,
+      "var_food": -0.0378,
+      "cum_pct": -0.3514,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2256,
+      "interpolated": false,
+      "n_matched": 40444,
+      "index_arroz_cereales": 99.8462,
+      "index_pan_harinas": 100.3132,
+      "index_carnes": 98.8566,
+      "index_pescados_mariscos": 100.3936,
+      "index_lacteos": 99.7594,
+      "index_frutas": 102.2045,
+      "index_verduras": 100.0439,
+      "index_aceites_grasas": 99.2414,
+      "index_azucar_dulces": 95.1872,
+      "index_bebidas": 99.5473,
+      "index_limpieza": 99.8638,
+      "index_cuidado_personal": 99.2738,
+      "index_other": 99.6082
     }
   ],
   "latest": {
-    "date": "2026-05-22",
-    "index_all": 99.67,
-    "index_food": 99.4506,
-    "cum_pct": -0.33,
-    "var_all": -0.0567,
+    "date": "2026-05-23",
+    "index_all": 99.6486,
+    "index_food": 99.413,
+    "cum_pct": -0.3514,
+    "var_all": -0.0215,
     "yoy_inflation": null,
-    "mom_inflation": 0.18,
-    "n_products_today": 40583,
+    "mom_inflation": 0.2256,
+    "n_products_today": 40444,
     "top_movers": [
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": -0.42
+      },
+      {
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": 0.11
+      },
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": -0.68
+        "var": 0.08
       },
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": 0.32
-      },
-      {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.19
-      },
-      {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": 0.18
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 0.05
       }
     ],
     "product_movers": [
       {
-        "name": "Avena Precocida 3 Ositos 500g",
-        "store": "metro",
-        "category": "arroz_cereales",
-        "var": 89.8
-      },
-      {
-        "name": "Frijol Canario Costeño 500g",
-        "store": "metro",
-        "category": "other",
-        "var": 83.67
-      },
-      {
-        "name": "Aceite De Canola Borges Botella 1 Litro",
-        "store": "metro",
-        "category": "aceites_grasas",
-        "var": 66.67
-      },
-      {
-        "name": "Chocolates Rellenos Baci Perugina Mil...",
+        "name": "Romero en Hojas Secas Cuisine & Co 4g",
         "store": "wong",
-        "category": "lacteos",
-        "var": 64.27
+        "category": "carnes",
+        "var": 84.21
+      },
+      {
+        "name": "Pack Duo Shampoo para Autos Galonera ...",
+        "store": "plazavea",
+        "category": "limpieza",
+        "var": 76.99
+      },
+      {
+        "name": "Lasagna de Carne Wong Caja 250 g",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 73.97
+      },
+      {
+        "name": "Pack Alcohol 96  Litro 3 und",
+        "store": "plazavea",
+        "category": "limpieza",
+        "var": 69.09
       }
     ],
     "stores_coverage": {
-      "metro": 12666,
-      "plazavea": 13480,
-      "wong": 15001
+      "metro": 12654,
+      "plazavea": 13484,
+      "wong": 14994
     },
     "categories_coverage": {
-      "aceites_grasas": 628,
-      "arroz_cereales": 1420,
-      "azucar_dulces": 1013,
-      "bebidas": 1037,
-      "carnes": 14542,
-      "cuidado_personal": 3063,
-      "frutas": 1968,
-      "lacteos": 2926,
-      "limpieza": 3171,
-      "pan_harinas": 6757,
-      "pescados_mariscos": 236,
-      "verduras": 301
+      "aceites_grasas": 632,
+      "arroz_cereales": 1424,
+      "azucar_dulces": 954,
+      "bebidas": 1029,
+      "carnes": 14508,
+      "cuidado_personal": 3123,
+      "frutas": 1956,
+      "lacteos": 2929,
+      "limpieza": 3177,
+      "pan_harinas": 6779,
+      "pescados_mariscos": 238,
+      "verduras": 299
     }
   }
 }
