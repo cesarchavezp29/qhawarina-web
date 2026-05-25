@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-23",
-    "n_days": 103,
+    "last_date": "2026-05-24",
+    "n_days": 104,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-23"
+    "updated": "2026-05-24"
   },
   "categories": {
     "arroz_cereales": {
@@ -2872,87 +2872,114 @@
       "index_limpieza": 99.8638,
       "index_cuidado_personal": 99.2738,
       "index_other": 99.6082
+    },
+    {
+      "date": "2026-05-24",
+      "index_all": 99.6249,
+      "index_all_unweighted": 99.4889,
+      "index_food": 99.3735,
+      "index_nonfood": 99.7432,
+      "var_all": -0.0238,
+      "var_food": -0.0397,
+      "cum_pct": -0.3751,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2675,
+      "interpolated": false,
+      "n_matched": 38462,
+      "index_arroz_cereales": 99.8462,
+      "index_pan_harinas": 100.2316,
+      "index_carnes": 98.8364,
+      "index_pescados_mariscos": 100.3936,
+      "index_lacteos": 99.7322,
+      "index_frutas": 102.052,
+      "index_verduras": 100.0439,
+      "index_aceites_grasas": 99.2414,
+      "index_azucar_dulces": 95.1872,
+      "index_bebidas": 99.5473,
+      "index_limpieza": 99.8638,
+      "index_cuidado_personal": 99.2779,
+      "index_other": 99.6011
     }
   ],
   "latest": {
-    "date": "2026-05-23",
-    "index_all": 99.6486,
-    "index_food": 99.413,
-    "cum_pct": -0.3514,
-    "var_all": -0.0215,
+    "date": "2026-05-24",
+    "index_all": 99.6249,
+    "index_food": 99.3735,
+    "cum_pct": -0.3751,
+    "var_all": -0.0238,
     "yoy_inflation": null,
-    "mom_inflation": 0.2256,
-    "n_products_today": 40444,
+    "mom_inflation": 0.2675,
+    "n_products_today": 38462,
     "top_movers": [
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.42
-      },
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 0.11
-      },
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 0.08
+        "var": -0.15
       },
       {
         "category": "pan_harinas",
         "label_es": "Pan y Harinas",
         "label_en": "Bread & Flour",
-        "var": 0.05
+        "var": -0.08
+      },
+      {
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.03
+      },
+      {
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.02
       }
     ],
     "product_movers": [
       {
-        "name": "Romero en Hojas Secas Cuisine & Co 4g",
-        "store": "wong",
+        "name": "Lechuga Crespa Hidropónica de Inverna...",
+        "store": "metro",
         "category": "carnes",
-        "var": 84.21
+        "var": 95.0
       },
       {
-        "name": "Pack Duo Shampoo para Autos Galonera ...",
-        "store": "plazavea",
-        "category": "limpieza",
-        "var": 76.99
-      },
-      {
-        "name": "Lasagna de Carne Wong Caja 250 g",
-        "store": "wong",
+        "name": "Pan para Hot Dog 6un",
+        "store": "metro",
         "category": "pan_harinas",
-        "var": 73.97
+        "var": 94.58
       },
       {
-        "name": "Pack Alcohol 96  Litro 3 und",
-        "store": "plazavea",
-        "category": "limpieza",
-        "var": 69.09
+        "name": "Espinaca Viva x atado",
+        "store": "wong",
+        "category": "frutas",
+        "var": 88.89
+      },
+      {
+        "name": "Lechuga de Invernadero Oakleaf Don Mi...",
+        "store": "metro",
+        "category": "frutas",
+        "var": 66.67
       }
     ],
     "stores_coverage": {
-      "metro": 12654,
-      "plazavea": 13484,
+      "metro": 12671,
+      "plazavea": 11148,
       "wong": 14994
     },
     "categories_coverage": {
-      "aceites_grasas": 632,
-      "arroz_cereales": 1424,
-      "azucar_dulces": 954,
-      "bebidas": 1029,
-      "carnes": 14508,
-      "cuidado_personal": 3123,
-      "frutas": 1956,
-      "lacteos": 2929,
-      "limpieza": 3177,
-      "pan_harinas": 6779,
-      "pescados_mariscos": 238,
-      "verduras": 299
+      "aceites_grasas": 614,
+      "arroz_cereales": 1397,
+      "azucar_dulces": 919,
+      "bebidas": 1011,
+      "carnes": 14324,
+      "cuidado_personal": 1333,
+      "frutas": 1937,
+      "lacteos": 2854,
+      "limpieza": 3133,
+      "pan_harinas": 6677,
+      "pescados_mariscos": 235,
+      "verduras": 301
     }
   }
 }
