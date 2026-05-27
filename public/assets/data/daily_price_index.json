@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-25",
-    "n_days": 105,
+    "last_date": "2026-05-26",
+    "n_days": 106,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-25"
+    "updated": "2026-05-26"
   },
   "categories": {
     "arroz_cereales": {
@@ -2926,86 +2926,113 @@
       "index_limpieza": 99.8238,
       "index_cuidado_personal": 99.2059,
       "index_other": 99.6611
+    },
+    {
+      "date": "2026-05-26",
+      "index_all": 100.0417,
+      "index_all_unweighted": 99.9148,
+      "index_food": 100.0333,
+      "index_nonfood": 99.274,
+      "var_all": 0.2678,
+      "var_food": 0.2379,
+      "cum_pct": 0.0417,
+      "yoy_inflation": null,
+      "mom_inflation": 0.3603,
+      "interpolated": false,
+      "n_matched": 36625,
+      "index_arroz_cereales": 100.5083,
+      "index_pan_harinas": 100.4893,
+      "index_carnes": 99.8396,
+      "index_pescados_mariscos": 101.339,
+      "index_lacteos": 100.1601,
+      "index_frutas": 102.1637,
+      "index_verduras": 101.1006,
+      "index_aceites_grasas": 99.9252,
+      "index_azucar_dulces": 95.4729,
+      "index_bebidas": 100.0628,
+      "index_limpieza": 98.9405,
+      "index_cuidado_personal": 98.6902,
+      "index_other": 99.4174
     }
   ],
   "latest": {
-    "date": "2026-05-25",
-    "index_all": 99.7745,
-    "index_food": 99.7959,
-    "cum_pct": -0.2255,
-    "var_all": 0.1502,
+    "date": "2026-05-26",
+    "index_all": 100.0417,
+    "index_food": 100.0333,
+    "cum_pct": 0.0417,
+    "var_all": 0.2678,
     "yoy_inflation": null,
-    "mom_inflation": 0.3108,
-    "n_products_today": 36689,
+    "mom_inflation": 0.3603,
+    "n_products_today": 36625,
     "top_movers": [
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 0.9
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 1.02
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.69
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": -0.88
       },
       {
         "category": "verduras",
         "label_es": "Verduras",
         "label_en": "Vegetables",
-        "var": 0.21
+        "var": 0.85
       },
       {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": 0.19
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.81
       }
     ],
     "product_movers": [
       {
-        "name": "Muffin Cuisine & Co Choco Chip",
+        "name": "Repelente en Aerosol Family & Care Ki...",
         "store": "metro",
-        "category": "pan_harinas",
-        "var": 100.0
+        "category": "other",
+        "var": 84.0
       },
       {
-        "name": "Enrollado de Cerdo con Jamón y Piña A...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 99.53
-      },
-      {
-        "name": "Espárragos Atado 250g",
+        "name": "Camote Amarillo Especial Metro x kg",
         "store": "metro",
         "category": "frutas",
-        "var": 87.18
+        "var": 75.47
       },
       {
-        "name": "Chicharron de Prensa Cuisine & Co 200g",
-        "store": "wong",
-        "category": "carnes",
-        "var": 86.27
+        "name": "Pepinillo Pickles Hidropónico de Inve...",
+        "store": "metro",
+        "category": "frutas",
+        "var": 73.53
+      },
+      {
+        "name": "Pepinillo Hidropónico Ecologic x un",
+        "store": "metro",
+        "category": "frutas",
+        "var": 72.73
       }
     ],
     "stores_coverage": {
-      "metro": 12643,
-      "plazavea": 9347,
-      "wong": 14975
+      "metro": 12599,
+      "plazavea": 13325,
+      "wong": 14959
     },
     "categories_coverage": {
-      "aceites_grasas": 581,
-      "arroz_cereales": 1397,
-      "azucar_dulces": 923,
-      "bebidas": 1011,
-      "carnes": 13476,
-      "cuidado_personal": 1398,
-      "frutas": 1912,
-      "lacteos": 2844,
-      "limpieza": 2181,
-      "pan_harinas": 6640,
-      "pescados_mariscos": 233,
+      "aceites_grasas": 636,
+      "arroz_cereales": 1415,
+      "azucar_dulces": 955,
+      "bebidas": 1027,
+      "carnes": 14372,
+      "cuidado_personal": 3140,
+      "frutas": 1930,
+      "lacteos": 2926,
+      "limpieza": 3144,
+      "pan_harinas": 6753,
+      "pescados_mariscos": 235,
       "verduras": 297
     }
   }

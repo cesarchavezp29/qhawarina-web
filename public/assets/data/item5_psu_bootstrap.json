@@ -1,0 +1,86 @@
+{
+  "A": {
+    "mw_old": 750,
+    "mw_new": 850,
+    "year_pre": 2015,
+    "year_post": 2017,
+    "n_pre_obs": 10059,
+    "n_post_obs": 10895,
+    "n_pre_psu": 3329,
+    "n_post_psu": 3602,
+    "baseline_R": 0.7082151020401988,
+    "baseline_missing_pp": 6.7068883525143415,
+    "baseline_excess_pp": 4.749919618948165,
+    "psu_bootstrap": {
+      "lo_2.5": 0.5502440680513913,
+      "median": 0.738547075694268,
+      "hi_97.5": 0.9437754269876777,
+      "width": 0.39353135893628644
+    },
+    "person_bootstrap": {
+      "lo_2.5": 0.5713930421759025,
+      "median": 0.7271753115538835,
+      "hi_97.5": 0.896121222237695,
+      "width": 0.3247281800617925
+    },
+    "widening_pct": 21.18792981299049,
+    "psu_ci_includes_1": false,
+    "person_ci_includes_1": false
+  },
+  "B": {
+    "mw_old": 850,
+    "mw_new": 930,
+    "year_pre": 2017,
+    "year_post": 2019,
+    "n_pre_obs": 10895,
+    "n_post_obs": 10922,
+    "n_pre_psu": 3602,
+    "n_post_psu": 3619,
+    "baseline_R": 0.8416270850448516,
+    "baseline_missing_pp": 7.888837644280831,
+    "baseline_excess_pp": 6.639459430948171,
+    "psu_bootstrap": {
+      "lo_2.5": 0.705512671996153,
+      "median": 0.8621461832486905,
+      "hi_97.5": 1.051812341336242,
+      "width": 0.34629966934008893
+    },
+    "person_bootstrap": {
+      "lo_2.5": 0.7255824185701445,
+      "median": 0.8580061850979015,
+      "hi_97.5": 1.031629435817481,
+      "width": 0.3060470172473364
+    },
+    "widening_pct": 13.152440580795389,
+    "psu_ci_includes_1": true,
+    "person_ci_includes_1": true
+  },
+  "C": {
+    "mw_old": 930,
+    "mw_new": 1025,
+    "year_pre": 2021,
+    "year_post": 2023,
+    "n_pre_obs": 8946,
+    "n_post_obs": 9838,
+    "n_pre_psu": 3462,
+    "n_post_psu": 3607,
+    "baseline_R": 0.832846132298942,
+    "baseline_missing_pp": 12.924976045002682,
+    "baseline_excess_pp": 10.76451630913696,
+    "psu_bootstrap": {
+      "lo_2.5": 0.710881858032725,
+      "median": 0.8318438008882529,
+      "hi_97.5": 0.9653654042282227,
+      "width": 0.25448354619549773
+    },
+    "person_bootstrap": {
+      "lo_2.5": 0.721288308634773,
+      "median": 0.8310921730893779,
+      "hi_97.5": 0.9583947710746545,
+      "width": 0.23710646243988154
+    },
+    "widening_pct": 7.328810685631204,
+    "psu_ci_includes_1": false,
+    "person_ci_includes_1": false
+  }
+}

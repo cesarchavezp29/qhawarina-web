@@ -1,0 +1,158 @@
+{
+  "employed": {
+    "outcome": "employed",
+    "label": "Employment-to-workforce ratio",
+    "n": 88124,
+    "f_test_pseudo_treatment": {
+      "F": 0.07744936463773433,
+      "p": 0.7831678241525829,
+      "tests": [
+        "Fd_y2015"
+      ],
+      "description": "joint F-test on Fd x year interactions (pseudo-treatment)"
+    },
+    "coefs": {
+      "Fd_y2015": {
+        "beta": -0.0019113409135693873,
+        "se": 0.006867983238841905,
+        "p": 0.7807841796719639
+      },
+      "F_d_level": {
+        "beta": -0.014245473892332187,
+        "se": 0.0033406434150501907,
+        "p": 2.005384233284131e-05
+      }
+    },
+    "median_share": 0.017230372718138365
+  },
+  "formal": {
+    "outcome": "formal",
+    "label": "Formality rate (formal/employed)",
+    "n": 66202,
+    "f_test_pseudo_treatment": {
+      "F": 0.7642941570603844,
+      "p": 0.39065258609967396,
+      "tests": [
+        "Fd_y2015"
+      ],
+      "description": "joint F-test on Fd x year interactions (pseudo-treatment)"
+    },
+    "coefs": {
+      "Fd_y2015": {
+        "beta": 0.007808617998373185,
+        "se": 0.008931901142745051,
+        "p": 0.38198800914224285
+      },
+      "F_d_level": {
+        "beta": 0.025057877175416944,
+        "se": 0.00542114797641676,
+        "p": 3.7960827198215064e-06
+      }
+    },
+    "median_share": 0.017230372718138365
+  },
+  "is_self_emp": {
+    "outcome": "is_self_emp",
+    "label": "Self-employment rate (SE/employed)",
+    "n": 66202,
+    "f_test_pseudo_treatment": {
+      "F": 0.19762630201815432,
+      "p": 0.6606268010888747,
+      "tests": [
+        "Fd_y2015"
+      ],
+      "description": "joint F-test on Fd x year interactions (pseudo-treatment)"
+    },
+    "coefs": {
+      "Fd_y2015": {
+        "beta": 0.0034800592958687524,
+        "se": 0.007828242520861518,
+        "p": 0.656643687406409
+      },
+      "F_d_level": {
+        "beta": -0.016989487022155754,
+        "se": 0.0038894674902575075,
+        "p": 1.2534625818693827e-05
+      }
+    },
+    "median_share": 0.017230372718138365
+  },
+  "ORIG_employed": {
+    "outcome": "employed",
+    "label": "ORIG-Employment-to-workforce ratio",
+    "n": 88124,
+    "f_test_pseudo_treatment": {
+      "F": 0.39429954269352263,
+      "p": 0.5359778761155849,
+      "tests": [
+        "Fd_y2015"
+      ],
+      "description": "joint F-test on Fd x year interactions (pseudo-treatment)"
+    },
+    "coefs": {
+      "Fd_y2015": {
+        "beta": 0.004749703325807923,
+        "se": 0.007564031818194519,
+        "p": 0.5300479935136551
+      },
+      "F_d_level": {
+        "beta": -0.015580271838415526,
+        "se": 0.0035933563150978352,
+        "p": 1.4519465624829667e-05
+      }
+    },
+    "median_share": 0.0768373351461902
+  },
+  "ORIG_formal": {
+    "outcome": "formal",
+    "label": "ORIG-Formality rate",
+    "n": 66202,
+    "f_test_pseudo_treatment": {
+      "F": 1.3130403373968231,
+      "p": 0.2631424491724739,
+      "tests": [
+        "Fd_y2015"
+      ],
+      "description": "joint F-test on Fd x year interactions (pseudo-treatment)"
+    },
+    "coefs": {
+      "Fd_y2015": {
+        "beta": 0.00998019181610542,
+        "se": 0.008709632978130735,
+        "p": 0.25184492268276504
+      },
+      "F_d_level": {
+        "beta": 0.03481978536727608,
+        "se": 0.005040482495683958,
+        "p": 4.914430796677537e-12
+      }
+    },
+    "median_share": 0.0768373351461902
+  },
+  "ORIG_is_self_emp": {
+    "outcome": "is_self_emp",
+    "label": "ORIG-Self-employment rate",
+    "n": 66202,
+    "f_test_pseudo_treatment": {
+      "F": 0.0828241642468842,
+      "p": 0.7759766117028338,
+      "tests": [
+        "Fd_y2015"
+      ],
+      "description": "joint F-test on Fd x year interactions (pseudo-treatment)"
+    },
+    "coefs": {
+      "Fd_y2015": {
+        "beta": -0.002429546561764715,
+        "se": 0.00844202619727108,
+        "p": 0.7735060559494294
+      },
+      "F_d_level": {
+        "beta": -0.022682013787257146,
+        "se": 0.004134773120907148,
+        "p": 4.1189793110563036e-08
+      }
+    },
+    "median_share": 0.0768373351461902
+  }
+}

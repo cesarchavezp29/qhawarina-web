@@ -1,0 +1,22 @@
+{
+  "Full ENAHO (national)": {
+    "missing_mass_pp": 6.779657363891602,
+    "excess_mass_pp": 4.720787525177002,
+    "ratio": 0.6963165402412415
+  },
+  "Lima dept only (15)": {
+    "missing_mass_pp": 7.573295593261719,
+    "excess_mass_pp": 5.386009216308594,
+    "ratio": 0.7111843228340149
+  },
+  "Lima Metro (15+07)": {
+    "missing_mass_pp": 7.710418701171875,
+    "excess_mass_pp": 5.029891014099121,
+    "ratio": 0.6523498892784119
+  },
+  "Rest of country (~Lima Metro)": {
+    "missing_mass_pp": 5.812607765197754,
+    "excess_mass_pp": 4.769738674163818,
+    "ratio": 0.8205850124359131
+  }
+}

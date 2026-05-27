@@ -1,0 +1,16 @@
+{
+  "description": "Event C COVID bounding: project 2019-2021 trajectory to 2023, compare to observed",
+  "formal_employment_growth": {
+    "observed_2019_2023": 0.023677717321867235,
+    "covid_projected_2019_2023": -0.2948656259634996,
+    "residual_mw_attributable_pp": 31.85433432853668
+  },
+  "affected_zone_share": {
+    "2019": 0.14244519889472088,
+    "2021": 0.1613577159984662,
+    "2023_observed": 0.03828253968992396,
+    "2023_covid_projected": 0.1802702331022115,
+    "residual": -0.14198769341228754,
+    "fraction_explained_by_covid": -0.3631342987617264
+  }
+}
