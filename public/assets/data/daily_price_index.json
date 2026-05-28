@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-26",
-    "n_days": 106,
+    "last_date": "2026-05-27",
+    "n_days": 107,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-26"
+    "updated": "2026-05-27"
   },
   "categories": {
     "arroz_cereales": {
@@ -2953,87 +2953,114 @@
       "index_limpieza": 98.9405,
       "index_cuidado_personal": 98.6902,
       "index_other": 99.4174
+    },
+    {
+      "date": "2026-05-27",
+      "index_all": 99.5533,
+      "index_all_unweighted": 99.5207,
+      "index_food": 99.6447,
+      "index_nonfood": 98.8632,
+      "var_all": -0.4882,
+      "var_food": -0.3885,
+      "cum_pct": -0.4467,
+      "yoy_inflation": null,
+      "mom_inflation": 0.3798,
+      "interpolated": false,
+      "n_matched": 39162,
+      "index_arroz_cereales": 99.7983,
+      "index_pan_harinas": 100.1123,
+      "index_carnes": 99.584,
+      "index_pescados_mariscos": 100.8082,
+      "index_lacteos": 99.6685,
+      "index_frutas": 101.5452,
+      "index_verduras": 100.6034,
+      "index_aceites_grasas": 99.3629,
+      "index_azucar_dulces": 94.4107,
+      "index_bebidas": 99.7676,
+      "index_limpieza": 98.5531,
+      "index_cuidado_personal": 98.1241,
+      "index_other": 99.1135
     }
   ],
   "latest": {
-    "date": "2026-05-26",
-    "index_all": 100.0417,
-    "index_food": 100.0333,
-    "cum_pct": 0.0417,
-    "var_all": 0.2678,
+    "date": "2026-05-27",
+    "index_all": 99.5533,
+    "index_food": 99.6447,
+    "cum_pct": -0.4467,
+    "var_all": -0.4882,
     "yoy_inflation": null,
-    "mom_inflation": 0.3603,
-    "n_products_today": 36625,
+    "mom_inflation": 0.3798,
+    "n_products_today": 39162,
     "top_movers": [
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 1.02
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -1.11
       },
       {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": -0.88
-      },
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 0.85
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -0.71
       },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": 0.81
+        "var": -0.61
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": -0.57
       }
     ],
     "product_movers": [
       {
-        "name": "Repelente en Aerosol Family & Care Ki...",
+        "name": "Perejil Hidropónico 60g",
+        "store": "wong",
+        "category": "frutas",
+        "var": 91.67
+      },
+      {
+        "name": "Helado Halo Top Sea Salt Caramel 473ml",
         "store": "metro",
         "category": "other",
-        "var": 84.0
+        "var": 80.32
       },
       {
-        "name": "Camote Amarillo Especial Metro x kg",
+        "name": "Helado Halo Top Peanut Butter 473ml",
         "store": "metro",
-        "category": "frutas",
-        "var": 75.47
+        "category": "other",
+        "var": 80.32
       },
       {
-        "name": "Pepinillo Pickles Hidropónico de Inve...",
+        "name": "Helado Halo Top Vainilla Bean 473ml",
         "store": "metro",
-        "category": "frutas",
-        "var": 73.53
-      },
-      {
-        "name": "Pepinillo Hidropónico Ecologic x un",
-        "store": "metro",
-        "category": "frutas",
-        "var": 72.73
+        "category": "other",
+        "var": 80.32
       }
     ],
     "stores_coverage": {
-      "metro": 12599,
-      "plazavea": 13325,
-      "wong": 14959
+      "metro": 11426,
+      "plazavea": 13354,
+      "wong": 14966
     },
     "categories_coverage": {
-      "aceites_grasas": 636,
-      "arroz_cereales": 1415,
-      "azucar_dulces": 955,
-      "bebidas": 1027,
-      "carnes": 14372,
-      "cuidado_personal": 3140,
-      "frutas": 1930,
-      "lacteos": 2926,
-      "limpieza": 3144,
-      "pan_harinas": 6753,
-      "pescados_mariscos": 235,
-      "verduras": 297
+      "aceites_grasas": 619,
+      "arroz_cereales": 1409,
+      "azucar_dulces": 959,
+      "bebidas": 1028,
+      "carnes": 14042,
+      "cuidado_personal": 3126,
+      "frutas": 1918,
+      "lacteos": 2919,
+      "limpieza": 2405,
+      "pan_harinas": 6741,
+      "pescados_mariscos": 237,
+      "verduras": 298
     }
   }
 }
