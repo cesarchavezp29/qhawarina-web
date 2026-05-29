@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-27",
-    "n_days": 107,
+    "last_date": "2026-05-28",
+    "n_days": 108,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-27"
+    "updated": "2026-05-28"
   },
   "categories": {
     "arroz_cereales": {
@@ -2980,87 +2980,114 @@
       "index_limpieza": 98.5531,
       "index_cuidado_personal": 98.1241,
       "index_other": 99.1135
+    },
+    {
+      "date": "2026-05-28",
+      "index_all": 99.6115,
+      "index_all_unweighted": 99.5023,
+      "index_food": 99.5976,
+      "index_nonfood": 98.9336,
+      "var_all": 0.0585,
+      "var_food": -0.0473,
+      "cum_pct": -0.3885,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2933,
+      "interpolated": false,
+      "n_matched": 38843,
+      "index_arroz_cereales": 99.9824,
+      "index_pan_harinas": 100.0182,
+      "index_carnes": 99.4607,
+      "index_pescados_mariscos": 101.1048,
+      "index_lacteos": 99.4322,
+      "index_frutas": 102.1613,
+      "index_verduras": 100.7955,
+      "index_aceites_grasas": 99.5262,
+      "index_azucar_dulces": 94.4304,
+      "index_bebidas": 99.7778,
+      "index_limpieza": 98.7011,
+      "index_cuidado_personal": 98.1446,
+      "index_other": 99.1755
     }
   ],
   "latest": {
-    "date": "2026-05-27",
-    "index_all": 99.5533,
-    "index_food": 99.6447,
-    "cum_pct": -0.4467,
-    "var_all": -0.4882,
+    "date": "2026-05-28",
+    "index_all": 99.6115,
+    "index_food": 99.5976,
+    "cum_pct": -0.3885,
+    "var_all": 0.0585,
     "yoy_inflation": null,
-    "mom_inflation": 0.3798,
-    "n_products_today": 39162,
+    "mom_inflation": 0.2933,
+    "n_products_today": 38843,
     "top_movers": [
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -1.11
-      },
-      {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.71
-      },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.61
+        "var": 0.61
       },
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -0.57
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.29
+      },
+      {
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.24
+      },
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.19
       }
     ],
     "product_movers": [
       {
-        "name": "Perejil Hidropónico 60g",
+        "name": "Aceite de Oliva Puro Cuisine & Co Bot...",
+        "store": "metro",
+        "category": "aceites_grasas",
+        "var": 88.61
+      },
+      {
+        "name": "Suavizante Libre Enjuague BOREAL Lava...",
+        "store": "plazavea",
+        "category": "limpieza",
+        "var": 87.55
+      },
+      {
+        "name": "Repuesto de Cabezal Eléctrico ORAL-B ...",
+        "store": "plazavea",
+        "category": "cuidado_personal",
+        "var": 85.5
+      },
+      {
+        "name": "Relleno Criollo Cuisine & Co 280g",
         "store": "wong",
-        "category": "frutas",
-        "var": 91.67
-      },
-      {
-        "name": "Helado Halo Top Sea Salt Caramel 473ml",
-        "store": "metro",
-        "category": "other",
-        "var": 80.32
-      },
-      {
-        "name": "Helado Halo Top Peanut Butter 473ml",
-        "store": "metro",
-        "category": "other",
-        "var": 80.32
-      },
-      {
-        "name": "Helado Halo Top Vainilla Bean 473ml",
-        "store": "metro",
-        "category": "other",
-        "var": 80.32
+        "category": "carnes",
+        "var": 69.29
       }
     ],
     "stores_coverage": {
-      "metro": 11426,
-      "plazavea": 13354,
-      "wong": 14966
+      "metro": 12621,
+      "plazavea": 13071,
+      "wong": 14958
     },
     "categories_coverage": {
-      "aceites_grasas": 619,
-      "arroz_cereales": 1409,
-      "azucar_dulces": 959,
-      "bebidas": 1028,
-      "carnes": 14042,
-      "cuidado_personal": 3126,
-      "frutas": 1918,
-      "lacteos": 2919,
-      "limpieza": 2405,
-      "pan_harinas": 6741,
-      "pescados_mariscos": 237,
-      "verduras": 298
+      "aceites_grasas": 636,
+      "arroz_cereales": 1411,
+      "azucar_dulces": 950,
+      "bebidas": 779,
+      "carnes": 14327,
+      "cuidado_personal": 3132,
+      "frutas": 1893,
+      "lacteos": 2933,
+      "limpieza": 3243,
+      "pan_harinas": 6790,
+      "pescados_mariscos": 234,
+      "verduras": 302
     }
   }
 }

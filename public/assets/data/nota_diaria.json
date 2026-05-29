@@ -1,24 +1,24 @@
 {
-  "date": "2026-05-27",
-  "headline_es": "Precios supermercado -0.45% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.45% MTD · GDP nowcast +2.81%",
+  "date": "2026-05-28",
+  "headline_es": "Precios supermercado -0.39% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.39% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.45% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.45% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.39% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.39% month-to-date."
     },
     {
-      "icon": "📉",
-      "text_es": "Azúcar y Dulces: -1.1% en el mes.",
-      "text_en": "Sugar & Sweets: -1.1% this month."
+      "icon": "📈",
+      "text_es": "Frutas: +0.6% en el mes.",
+      "text_en": "Fruits: +0.6% this month."
     },
     {
-      "icon": "📉",
-      "text_es": "Arroz y Cereales: -0.7% en el mes.",
-      "text_en": "Rice & Cereals: -0.7% this month."
+      "icon": "📈",
+      "text_es": "Pescados y Mariscos: +0.3% en el mes.",
+      "text_en": "Fish & Seafood: +0.3% this month."
     },
     {
       "icon": "📊",
@@ -36,5 +36,5 @@
       "text_en": "Political risk: IRP 10 — minimal level."
     }
   ],
-  "updated_at": "2026-05-28T01:26:18.597177+00:00"
+  "updated_at": "2026-05-29T01:23:29.320010+00:00"
 }
