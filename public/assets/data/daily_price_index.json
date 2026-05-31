@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-29",
-    "n_days": 109,
+    "last_date": "2026-05-30",
+    "n_days": 110,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-29"
+    "updated": "2026-05-30"
   },
   "categories": {
     "arroz_cereales": {
@@ -3034,87 +3034,114 @@
       "index_limpieza": 98.652,
       "index_cuidado_personal": 98.0608,
       "index_other": 99.1399
+    },
+    {
+      "date": "2026-05-30",
+      "index_all": 99.513,
+      "index_all_unweighted": 99.3443,
+      "index_food": 99.4194,
+      "index_nonfood": 98.8383,
+      "var_all": -0.0155,
+      "var_food": -0.0451,
+      "cum_pct": -0.487,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2093,
+      "interpolated": false,
+      "n_matched": 37185,
+      "index_arroz_cereales": 99.896,
+      "index_pan_harinas": 99.913,
+      "index_carnes": 99.1688,
+      "index_pescados_mariscos": 101.0852,
+      "index_lacteos": 99.3948,
+      "index_frutas": 101.9741,
+      "index_verduras": 100.9898,
+      "index_aceites_grasas": 99.4386,
+      "index_azucar_dulces": 94.5231,
+      "index_bebidas": 99.725,
+      "index_limpieza": 98.607,
+      "index_cuidado_personal": 98.0212,
+      "index_other": 99.1001
     }
   ],
   "latest": {
-    "date": "2026-05-29",
-    "index_all": 99.5284,
-    "index_food": 99.4643,
-    "cum_pct": -0.4716,
-    "var_all": -0.0834,
+    "date": "2026-05-30",
+    "index_all": 99.513,
+    "index_food": 99.4194,
+    "cum_pct": -0.487,
+    "var_all": -0.0155,
     "yoy_inflation": null,
-    "mom_inflation": 0.2509,
-    "n_products_today": 39136,
+    "mom_inflation": 0.2093,
+    "n_products_today": 37185,
     "top_movers": [
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.3
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.26
       },
       {
-        "category": "bebidas",
-        "label_es": "Bebidas",
-        "label_en": "Beverages",
-        "var": -0.12
-      },
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 0.1
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": -0.17
       },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.09
+        "var": -0.1
+      },
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.07
       }
     ],
     "product_movers": [
       {
-        "name": "Chocolates Surtidos Corazón M&M Snick...",
+        "name": "Fondos de Alcachofas Pequeñas 6un",
+        "store": "metro",
+        "category": "frutas",
+        "var": 93.33
+      },
+      {
+        "name": "Vodka Absolut Original 1L + Sixpack P...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 70.8
+      },
+      {
+        "name": "Vodka Absolut Original 1L + Sixpack P...",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 90.91
+        "category": "carnes",
+        "var": 70.8
       },
       {
-        "name": "Chocolates Surtidos Corazón M&M Snick...",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 90.91
-      },
-      {
-        "name": "Pak Choi x un",
-        "store": "metro",
-        "category": "frutas",
-        "var": 87.77
-      },
-      {
-        "name": "Lavavajilla líquido BOREAL Manzana Bo...",
-        "store": "plazavea",
-        "category": "frutas",
-        "var": 81.63
+        "name": "Whisky Chivas Regal XV 15 Años 700ml ...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 69.2
       }
     ],
     "stores_coverage": {
-      "metro": 12668,
-      "plazavea": 13582,
-      "wong": 13764
+      "metro": 12667,
+      "plazavea": 11118,
+      "wong": 14980
     },
     "categories_coverage": {
-      "aceites_grasas": 613,
-      "arroz_cereales": 1412,
-      "azucar_dulces": 952,
-      "bebidas": 1036,
-      "carnes": 14110,
-      "cuidado_personal": 3125,
-      "frutas": 1926,
-      "lacteos": 2934,
-      "limpieza": 2513,
-      "pan_harinas": 6776,
-      "pescados_mariscos": 232,
-      "verduras": 300
+      "aceites_grasas": 580,
+      "arroz_cereales": 1421,
+      "azucar_dulces": 953,
+      "bebidas": 1022,
+      "carnes": 13547,
+      "cuidado_personal": 3112,
+      "frutas": 1934,
+      "lacteos": 2944,
+      "limpieza": 1866,
+      "pan_harinas": 6767,
+      "pescados_mariscos": 231,
+      "verduras": 297
     }
   }
 }
