@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-05-30",
-    "n_days": 110,
+    "last_date": "2026-05-31",
+    "n_days": 111,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-05-30"
+    "updated": "2026-05-31"
   },
   "categories": {
     "arroz_cereales": {
@@ -3061,87 +3061,114 @@
       "index_limpieza": 98.607,
       "index_cuidado_personal": 98.0212,
       "index_other": 99.1001
+    },
+    {
+      "date": "2026-05-31",
+      "index_all": 99.4873,
+      "index_all_unweighted": 99.3008,
+      "index_food": 99.3623,
+      "index_nonfood": 98.8391,
+      "var_all": -0.0258,
+      "var_food": -0.0574,
+      "cum_pct": -0.5127,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1895,
+      "interpolated": false,
+      "n_matched": 38434,
+      "index_arroz_cereales": 99.9466,
+      "index_pan_harinas": 99.9228,
+      "index_carnes": 99.076,
+      "index_pescados_mariscos": 101.0852,
+      "index_lacteos": 99.4984,
+      "index_frutas": 101.5092,
+      "index_verduras": 100.9898,
+      "index_aceites_grasas": 99.4386,
+      "index_azucar_dulces": 94.5231,
+      "index_bebidas": 99.7232,
+      "index_limpieza": 98.6214,
+      "index_cuidado_personal": 98.0359,
+      "index_other": 99.0842
     }
   ],
   "latest": {
-    "date": "2026-05-30",
-    "index_all": 99.513,
-    "index_food": 99.4194,
-    "cum_pct": -0.487,
-    "var_all": -0.0155,
+    "date": "2026-05-31",
+    "index_all": 99.4873,
+    "index_food": 99.3623,
+    "cum_pct": -0.5127,
+    "var_all": -0.0258,
     "yoy_inflation": null,
-    "mom_inflation": 0.2093,
-    "n_products_today": 37185,
+    "mom_inflation": 0.1895,
+    "n_products_today": 38434,
     "top_movers": [
-      {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 0.26
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": -0.17
-      },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.1
+        "var": -0.46
       },
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.07
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": 0.1
+      },
+      {
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.09
+      },
+      {
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": 0.05
       }
     ],
     "product_movers": [
       {
-        "name": "Fondos de Alcachofas Pequeñas 6un",
+        "name": "Mini Tostadas con Finas Hierbas Wong ...",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 66.67
+      },
+      {
+        "name": "Tipo Mozzarella Delichizz 250g",
+        "store": "metro",
+        "category": "carnes",
+        "var": 57.97
+      },
+      {
+        "name": "Queso Fresco Cuisine & Co x kg",
+        "store": "metro",
+        "category": "carnes",
+        "var": 57.79
+      },
+      {
+        "name": "Coliflor Entera x un",
         "store": "metro",
         "category": "frutas",
-        "var": 93.33
-      },
-      {
-        "name": "Vodka Absolut Original 1L + Sixpack P...",
-        "store": "metro",
-        "category": "carnes",
-        "var": 70.8
-      },
-      {
-        "name": "Vodka Absolut Original 1L + Sixpack P...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 70.8
-      },
-      {
-        "name": "Whisky Chivas Regal XV 15 Años 700ml ...",
-        "store": "wong",
-        "category": "carnes",
-        "var": 69.2
+        "var": 55.27
       }
     ],
     "stores_coverage": {
-      "metro": 12667,
-      "plazavea": 11118,
-      "wong": 14980
+      "metro": 12650,
+      "plazavea": 13593,
+      "wong": 14951
     },
     "categories_coverage": {
-      "aceites_grasas": 580,
-      "arroz_cereales": 1421,
-      "azucar_dulces": 953,
-      "bebidas": 1022,
-      "carnes": 13547,
-      "cuidado_personal": 3112,
-      "frutas": 1934,
-      "lacteos": 2944,
-      "limpieza": 1866,
-      "pan_harinas": 6767,
-      "pescados_mariscos": 231,
-      "verduras": 297
+      "aceites_grasas": 639,
+      "arroz_cereales": 1418,
+      "azucar_dulces": 951,
+      "bebidas": 1023,
+      "carnes": 14541,
+      "cuidado_personal": 3108,
+      "frutas": 1944,
+      "lacteos": 2947,
+      "limpieza": 3240,
+      "pan_harinas": 6773,
+      "pescados_mariscos": 233,
+      "verduras": 298
     }
   }
 }
