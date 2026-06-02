@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T01:07:14.415588Z",
+  "generated_at": "2026-06-02T01:06:15.662976Z",
   "months": [
     {
       "month": "2025-01",
@@ -286,6 +286,17 @@
       "irp_top_articles": [],
       "ire_7d_peak": 98.9,
       "ire_peak_date": "2026-04-02",
+      "ire_event": "",
+      "ire_top_articles": []
+    },
+    {
+      "month": "2026-05",
+      "irp_7d_peak": 65.9,
+      "irp_peak_date": "2026-05-15",
+      "irp_event": "",
+      "irp_top_articles": [],
+      "ire_7d_peak": 68.7,
+      "ire_peak_date": "2026-05-13",
       "ire_event": "",
       "ire_top_articles": []
     }

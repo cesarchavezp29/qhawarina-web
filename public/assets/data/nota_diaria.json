@@ -1,24 +1,24 @@
 {
-  "date": "2026-05-31",
-  "headline_es": "Precios supermercado -0.51% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.51% MTD · GDP nowcast +2.81%",
+  "date": "2026-06-01",
+  "headline_es": "Precios supermercado +0.66% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices +0.66% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.51% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.51% month-to-date."
-    },
-    {
-      "icon": "📉",
-      "text_es": "Frutas: -0.5% en el mes.",
-      "text_en": "Fruits: -0.5% this month."
+      "text_es": "Precios de supermercado subió 0.66% en lo que va del mes.",
+      "text_en": "Supermarket prices rose 0.66% month-to-date."
     },
     {
       "icon": "📈",
-      "text_es": "Lácteos y Huevos: +0.1% en el mes.",
-      "text_en": "Dairy & Eggs: +0.1% this month."
+      "text_es": "Pescados y Mariscos: +2.5% en el mes.",
+      "text_en": "Fish & Seafood: +2.5% this month."
+    },
+    {
+      "icon": "📈",
+      "text_es": "Azúcar y Dulces: +2.4% en el mes.",
+      "text_en": "Sugar & Sweets: +2.4% this month."
     },
     {
       "icon": "📊",
@@ -27,8 +27,8 @@
     },
     {
       "icon": "💹",
-      "text_es": "Nowcast inflación mensual: +3.11% (IPC mensual estimado).",
-      "text_en": "Monthly inflation nowcast: +3.11% (estimated monthly CPI)."
+      "text_es": "Nowcast inflación mensual: +2.42% (IPC mensual estimado).",
+      "text_en": "Monthly inflation nowcast: +2.42% (estimated monthly CPI)."
     },
     {
       "icon": "🏛️",
@@ -36,5 +36,5 @@
       "text_en": "Political risk: IRP 10 — minimal level."
     }
   ],
-  "updated_at": "2026-06-01T01:18:50.650701+00:00"
+  "updated_at": "2026-06-02T01:15:48.987659+00:00"
 }

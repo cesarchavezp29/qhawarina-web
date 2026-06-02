@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-31T21:06:52.882539",
+    "generated_at": "2026-06-01T21:05:56.998952",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -9,19 +9,19 @@
       "target": "ipc_monthly_var (raw monthly CPI, not 3m-MA)",
       "ragged_edge": "forward-fill 2 months (no truncation for primary model)"
     },
-    "data_vintage": "2026-05",
+    "data_vintage": "2026-06",
     "series_coverage": "36/26"
   },
   "nowcast": {
-    "target_period": "2026-05",
-    "value": 3.111,
+    "target_period": "2026-06",
+    "value": 2.417,
     "unit": "percent_monthly_var",
     "bridge_r2": 0.805,
     "gnv_shock_active": false,
     "gnv_scarcity_score": 0.656
   },
   "model_breakdown": {
-    "bottom_up": 3.619,
+    "bottom_up": 2.551,
     "dfm_nowcast": 1.323,
     "ml_lasso": 2.307,
     "ml_elastic_net": 2.309,
@@ -1680,7 +1680,13 @@
     {
       "month": "2026-05",
       "official": null,
-      "nowcast": 3.111,
+      "nowcast": 0.398,
+      "error": null
+    },
+    {
+      "month": "2026-06",
+      "official": null,
+      "nowcast": 2.417,
       "error": null
     }
   ],
@@ -2000,7 +2006,13 @@
     {
       "month": "2026-05",
       "official": null,
-      "nowcast": 3.111,
+      "nowcast": 0.398,
+      "error": null
+    },
+    {
+      "month": "2026-06",
+      "official": null,
+      "nowcast": 2.417,
       "error": null
     }
   ],
