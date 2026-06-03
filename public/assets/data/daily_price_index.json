@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-01",
-    "n_days": 112,
+    "last_date": "2026-06-02",
+    "n_days": 113,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-01"
+    "updated": "2026-06-02"
   },
   "categories": {
     "arroz_cereales": {
@@ -3115,87 +3115,114 @@
       "index_limpieza": 99.4838,
       "index_cuidado_personal": 99.3144,
       "index_other": 100.313
+    },
+    {
+      "date": "2026-06-02",
+      "index_all": 100.9051,
+      "index_all_unweighted": 100.7204,
+      "index_food": 100.666,
+      "index_nonfood": 100.589,
+      "var_all": 0.2482,
+      "var_food": 0.0194,
+      "cum_pct": 0.9051,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2212,
+      "interpolated": false,
+      "n_matched": 37997,
+      "index_arroz_cereales": 101.4031,
+      "index_pan_harinas": 101.0245,
+      "index_carnes": 100.3965,
+      "index_pescados_mariscos": 104.0455,
+      "index_lacteos": 101.3761,
+      "index_frutas": 102.6488,
+      "index_verduras": 100.701,
+      "index_aceites_grasas": 100.2246,
+      "index_azucar_dulces": 96.4619,
+      "index_bebidas": 100.5886,
+      "index_limpieza": 100.5572,
+      "index_cuidado_personal": 99.9073,
+      "index_other": 100.5547
     }
   ],
   "latest": {
-    "date": "2026-06-01",
-    "index_all": 100.6553,
-    "index_food": 100.6465,
-    "cum_pct": 0.6553,
-    "var_all": 1.174,
+    "date": "2026-06-02",
+    "index_all": 100.9051,
+    "index_food": 100.666,
+    "cum_pct": 0.9051,
+    "var_all": 0.2482,
     "yoy_inflation": null,
-    "mom_inflation": 0.2043,
-    "n_products_today": 38299,
+    "mom_inflation": 0.2212,
+    "n_products_today": 37997,
     "top_movers": [
+      {
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": 1.08
+      },
+      {
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 1.0
+      },
+      {
+        "category": "cuidado_personal",
+        "label_es": "Cuidado Personal",
+        "label_en": "Personal Care",
+        "var": 0.6
+      },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": 2.47
-      },
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": 2.4
-      },
-      {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": 1.5
-      },
-      {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": 1.46
+        "var": 0.44
       }
     ],
     "product_movers": [
       {
-        "name": "Vino Tinto TANDEM Botella 750ml",
-        "store": "plazavea",
-        "category": "carnes",
-        "var": 99.67
-      },
-      {
-        "name": "Agua Micelar Beauty Care Aroma Rosas ...",
+        "name": "Limpiador Espumoso Beauty Care 300ml",
         "store": "wong",
-        "category": "bebidas",
-        "var": 94.64
+        "category": "limpieza",
+        "var": 89.46
       },
       {
-        "name": "Agua Micelar Beauty Care Aroma Rosas ...",
+        "name": "Limpiador Espumoso Beauty Care 300ml",
         "store": "metro",
-        "category": "bebidas",
-        "var": 94.64
+        "category": "limpieza",
+        "var": 89.46
       },
       {
-        "name": "Sopa Instantánea Sabor a Carne Nissin...",
+        "name": "Jabón en Espuma Family Care Bluey Fra...",
+        "store": "wong",
+        "category": "limpieza",
+        "var": 88.84
+      },
+      {
+        "name": "Jabón en Espuma Family Care Bluey Fra...",
         "store": "metro",
-        "category": "carnes",
-        "var": 91.18
+        "category": "limpieza",
+        "var": 88.84
       }
     ],
     "stores_coverage": {
-      "metro": 12625,
-      "plazavea": 11018,
-      "wong": 14936
+      "metro": 12597,
+      "plazavea": 13540,
+      "wong": 14948
     },
     "categories_coverage": {
-      "aceites_grasas": 518,
-      "arroz_cereales": 1305,
-      "azucar_dulces": 662,
-      "bebidas": 1022,
-      "carnes": 14358,
-      "cuidado_personal": 3096,
-      "frutas": 1902,
-      "lacteos": 2402,
-      "limpieza": 3235,
-      "pan_harinas": 6096,
-      "pescados_mariscos": 173,
-      "verduras": 166
+      "aceites_grasas": 635,
+      "arroz_cereales": 1415,
+      "azucar_dulces": 954,
+      "bebidas": 1040,
+      "carnes": 14457,
+      "cuidado_personal": 3104,
+      "frutas": 1938,
+      "lacteos": 2953,
+      "limpieza": 3285,
+      "pan_harinas": 6702,
+      "pescados_mariscos": 235,
+      "verduras": 295
     }
   }
 }
