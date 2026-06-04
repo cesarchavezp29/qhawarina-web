@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-02",
-    "n_days": 113,
+    "last_date": "2026-06-03",
+    "n_days": 114,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-02"
+    "updated": "2026-06-03"
   },
   "categories": {
     "arroz_cereales": {
@@ -3142,87 +3142,114 @@
       "index_limpieza": 100.5572,
       "index_cuidado_personal": 99.9073,
       "index_other": 100.5547
+    },
+    {
+      "date": "2026-06-03",
+      "index_all": 100.2554,
+      "index_all_unweighted": 100.1206,
+      "index_food": 100.1051,
+      "index_nonfood": 99.8719,
+      "var_all": -0.6439,
+      "var_food": -0.5572,
+      "cum_pct": 0.2554,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2005,
+      "interpolated": false,
+      "n_matched": 39511,
+      "index_arroz_cereales": 100.4591,
+      "index_pan_harinas": 100.4992,
+      "index_carnes": 99.8432,
+      "index_pescados_mariscos": 103.197,
+      "index_lacteos": 101.0391,
+      "index_frutas": 102.0239,
+      "index_verduras": 100.0235,
+      "index_aceites_grasas": 99.8772,
+      "index_azucar_dulces": 95.8114,
+      "index_bebidas": 99.7443,
+      "index_limpieza": 100.0949,
+      "index_cuidado_personal": 98.9671,
+      "index_other": 99.8411
     }
   ],
   "latest": {
-    "date": "2026-06-02",
-    "index_all": 100.9051,
-    "index_food": 100.666,
-    "cum_pct": 0.9051,
-    "var_all": 0.2482,
+    "date": "2026-06-03",
+    "index_all": 100.2554,
+    "index_food": 100.1051,
+    "cum_pct": 0.2554,
+    "var_all": -0.6439,
     "yoy_inflation": null,
-    "mom_inflation": 0.2212,
-    "n_products_today": 37997,
+    "mom_inflation": 0.2005,
+    "n_products_today": 39511,
     "top_movers": [
-      {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": 1.08
-      },
-      {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": 1.0
-      },
       {
         "category": "cuidado_personal",
         "label_es": "Cuidado Personal",
         "label_en": "Personal Care",
-        "var": 0.6
+        "var": -0.94
+      },
+      {
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -0.93
+      },
+      {
+        "category": "bebidas",
+        "label_es": "Bebidas",
+        "label_en": "Beverages",
+        "var": -0.84
       },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": 0.44
+        "var": -0.82
       }
     ],
     "product_movers": [
       {
-        "name": "Limpiador Espumoso Beauty Care 300ml",
+        "name": "Pack Mini Triples: Pollo, Aceituna y ...",
         "store": "wong",
-        "category": "limpieza",
-        "var": 89.46
+        "category": "pan_harinas",
+        "var": 99.05
       },
       {
-        "name": "Limpiador Espumoso Beauty Care 300ml",
+        "name": "Pak Choi x un",
         "store": "metro",
-        "category": "limpieza",
-        "var": 89.46
+        "category": "frutas",
+        "var": 87.77
       },
       {
-        "name": "Jabón en Espuma Family Care Bluey Fra...",
+        "name": "Tripack Vino Tinto Blend Canallas Bot...",
         "store": "wong",
-        "category": "limpieza",
-        "var": 88.84
+        "category": "carnes",
+        "var": 73.88
       },
       {
-        "name": "Jabón en Espuma Family Care Bluey Fra...",
-        "store": "metro",
-        "category": "limpieza",
-        "var": 88.84
+        "name": "Tripack Vino Blanco Blend Canallas Bo...",
+        "store": "wong",
+        "category": "carnes",
+        "var": 73.88
       }
     ],
     "stores_coverage": {
-      "metro": 12597,
-      "plazavea": 13540,
-      "wong": 14948
+      "metro": 12619,
+      "plazavea": 13478,
+      "wong": 14946
     },
     "categories_coverage": {
-      "aceites_grasas": 635,
-      "arroz_cereales": 1415,
-      "azucar_dulces": 954,
-      "bebidas": 1040,
-      "carnes": 14457,
-      "cuidado_personal": 3104,
-      "frutas": 1938,
-      "lacteos": 2953,
-      "limpieza": 3285,
-      "pan_harinas": 6702,
-      "pescados_mariscos": 235,
-      "verduras": 295
+      "aceites_grasas": 674,
+      "arroz_cereales": 1411,
+      "azucar_dulces": 947,
+      "bebidas": 1043,
+      "carnes": 14538,
+      "cuidado_personal": 3091,
+      "frutas": 1968,
+      "lacteos": 2956,
+      "limpieza": 3110,
+      "pan_harinas": 6700,
+      "pescados_mariscos": 232,
+      "verduras": 296
     }
   }
 }
