@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-03",
-    "n_days": 114,
+    "last_date": "2026-06-04",
+    "n_days": 115,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-03"
+    "updated": "2026-06-04"
   },
   "categories": {
     "arroz_cereales": {
@@ -3169,87 +3169,114 @@
       "index_limpieza": 100.0949,
       "index_cuidado_personal": 98.9671,
       "index_other": 99.8411
+    },
+    {
+      "date": "2026-06-04",
+      "index_all": 99.9498,
+      "index_all_unweighted": 99.7439,
+      "index_food": 99.6982,
+      "index_nonfood": 99.5876,
+      "var_all": -0.3048,
+      "var_food": -0.4065,
+      "cum_pct": -0.0502,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1312,
+      "interpolated": false,
+      "n_matched": 40543,
+      "index_arroz_cereales": 99.8887,
+      "index_pan_harinas": 100.1825,
+      "index_carnes": 99.2199,
+      "index_pescados_mariscos": 102.6193,
+      "index_lacteos": 100.9154,
+      "index_frutas": 102.3701,
+      "index_verduras": 100.0755,
+      "index_aceites_grasas": 99.2192,
+      "index_azucar_dulces": 95.728,
+      "index_bebidas": 99.689,
+      "index_limpieza": 99.7908,
+      "index_cuidado_personal": 98.8113,
+      "index_other": 99.4778
     }
   ],
   "latest": {
-    "date": "2026-06-03",
-    "index_all": 100.2554,
-    "index_food": 100.1051,
-    "cum_pct": 0.2554,
-    "var_all": -0.6439,
+    "date": "2026-06-04",
+    "index_all": 99.9498,
+    "index_food": 99.6982,
+    "cum_pct": -0.0502,
+    "var_all": -0.3048,
     "yoy_inflation": null,
-    "mom_inflation": 0.2005,
-    "n_products_today": 39511,
+    "mom_inflation": 0.1312,
+    "n_products_today": 40543,
     "top_movers": [
       {
-        "category": "cuidado_personal",
-        "label_es": "Cuidado Personal",
-        "label_en": "Personal Care",
-        "var": -0.94
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.66
+      },
+      {
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.62
       },
       {
         "category": "arroz_cereales",
         "label_es": "Arroz y Cereales",
         "label_en": "Rice & Cereals",
-        "var": -0.93
-      },
-      {
-        "category": "bebidas",
-        "label_es": "Bebidas",
-        "label_en": "Beverages",
-        "var": -0.84
+        "var": -0.57
       },
       {
         "category": "pescados_mariscos",
         "label_es": "Pescados y Mariscos",
         "label_en": "Fish & Seafood",
-        "var": -0.82
+        "var": -0.56
       }
     ],
     "product_movers": [
       {
-        "name": "Pack Mini Triples: Pollo, Aceituna y ...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 99.05
-      },
-      {
-        "name": "Pak Choi x un",
+        "name": "Pan para Hot Dog 6un",
         "store": "metro",
-        "category": "frutas",
-        "var": 87.77
+        "category": "pan_harinas",
+        "var": 94.58
       },
       {
-        "name": "Tripack Vino Tinto Blend Canallas Bot...",
-        "store": "wong",
+        "name": "Pisco Santiago Queirolo Italia 750ml",
+        "store": "metro",
         "category": "carnes",
-        "var": 73.88
+        "var": 58.82
       },
       {
-        "name": "Tripack Vino Blanco Blend Canallas Bo...",
+        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
+        "store": "metro",
+        "category": "carnes",
+        "var": 50.0
+      },
+      {
+        "name": "Fourpack Cerveza Duff Lata 330ml",
         "store": "wong",
         "category": "carnes",
-        "var": 73.88
+        "var": -48.2
       }
     ],
     "stores_coverage": {
-      "metro": 12619,
-      "plazavea": 13478,
-      "wong": 14946
+      "metro": 12661,
+      "plazavea": 13577,
+      "wong": 14924
     },
     "categories_coverage": {
-      "aceites_grasas": 674,
-      "arroz_cereales": 1411,
-      "azucar_dulces": 947,
-      "bebidas": 1043,
-      "carnes": 14538,
-      "cuidado_personal": 3091,
-      "frutas": 1968,
-      "lacteos": 2956,
-      "limpieza": 3110,
-      "pan_harinas": 6700,
-      "pescados_mariscos": 232,
-      "verduras": 296
+      "aceites_grasas": 680,
+      "arroz_cereales": 1420,
+      "azucar_dulces": 956,
+      "bebidas": 1009,
+      "carnes": 14589,
+      "cuidado_personal": 3098,
+      "frutas": 1978,
+      "lacteos": 2962,
+      "limpieza": 3121,
+      "pan_harinas": 6740,
+      "pescados_mariscos": 231,
+      "verduras": 298
     }
   }
 }
