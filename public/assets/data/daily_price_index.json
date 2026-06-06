@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-04",
-    "n_days": 115,
+    "last_date": "2026-06-05",
+    "n_days": 116,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-04"
+    "updated": "2026-06-05"
   },
   "categories": {
     "arroz_cereales": {
@@ -3196,87 +3196,114 @@
       "index_limpieza": 99.7908,
       "index_cuidado_personal": 98.8113,
       "index_other": 99.4778
+    },
+    {
+      "date": "2026-06-05",
+      "index_all": 99.6966,
+      "index_all_unweighted": 99.4743,
+      "index_food": 99.3918,
+      "index_nonfood": 99.4291,
+      "var_all": -0.2533,
+      "var_food": -0.3073,
+      "cum_pct": -0.3034,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1166,
+      "interpolated": false,
+      "n_matched": 40826,
+      "index_arroz_cereales": 99.6673,
+      "index_pan_harinas": 99.9643,
+      "index_carnes": 98.8638,
+      "index_pescados_mariscos": 102.4919,
+      "index_lacteos": 100.5438,
+      "index_frutas": 102.1113,
+      "index_verduras": 99.8706,
+      "index_aceites_grasas": 98.9156,
+      "index_azucar_dulces": 95.2092,
+      "index_bebidas": 99.6315,
+      "index_limpieza": 99.5794,
+      "index_cuidado_personal": 98.6737,
+      "index_other": 99.3448
     }
   ],
   "latest": {
-    "date": "2026-06-04",
-    "index_all": 99.9498,
-    "index_food": 99.6982,
-    "cum_pct": -0.0502,
-    "var_all": -0.3048,
+    "date": "2026-06-05",
+    "index_all": 99.6966,
+    "index_food": 99.3918,
+    "cum_pct": -0.3034,
+    "var_all": -0.2533,
     "yoy_inflation": null,
-    "mom_inflation": 0.1312,
-    "n_products_today": 40543,
+    "mom_inflation": 0.1166,
+    "n_products_today": 40826,
     "top_movers": [
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.66
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -0.54
+      },
+      {
+        "category": "lacteos",
+        "label_es": "Lácteos y Huevos",
+        "label_en": "Dairy & Eggs",
+        "var": -0.37
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.62
+        "var": -0.36
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.57
-      },
-      {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.56
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -0.31
       }
     ],
     "product_movers": [
       {
-        "name": "Pan para Hot Dog 6un",
-        "store": "metro",
-        "category": "pan_harinas",
-        "var": 94.58
-      },
-      {
-        "name": "Pisco Santiago Queirolo Italia 750ml",
+        "name": "Ajo Molido Sibarita Ajo Siba 250g",
         "store": "metro",
         "category": "carnes",
-        "var": 58.82
+        "var": -46.7
       },
       {
-        "name": "Yogurt Yopi Laive Fresa Vaso 80 g",
-        "store": "metro",
-        "category": "carnes",
-        "var": 50.0
-      },
-      {
-        "name": "Fourpack Cerveza Duff Lata 330ml",
+        "name": "Ajo Molido Sibarita Ajo Siba 250g",
         "store": "wong",
         "category": "carnes",
-        "var": -48.2
+        "var": -46.43
+      },
+      {
+        "name": "Fusilli Bronzo La Molisana Contenido ...",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": -44.94
+      },
+      {
+        "name": "Penne Rigate Bronzo La Molisana 500g",
+        "store": "metro",
+        "category": "pan_harinas",
+        "var": -44.94
       }
     ],
     "stores_coverage": {
-      "metro": 12661,
-      "plazavea": 13577,
-      "wong": 14924
+      "metro": 12670,
+      "plazavea": 13633,
+      "wong": 14905
     },
     "categories_coverage": {
       "aceites_grasas": 680,
-      "arroz_cereales": 1420,
-      "azucar_dulces": 956,
-      "bebidas": 1009,
-      "carnes": 14589,
-      "cuidado_personal": 3098,
-      "frutas": 1978,
-      "lacteos": 2962,
-      "limpieza": 3121,
-      "pan_harinas": 6740,
-      "pescados_mariscos": 231,
-      "verduras": 298
+      "arroz_cereales": 1424,
+      "azucar_dulces": 953,
+      "bebidas": 1018,
+      "carnes": 14586,
+      "cuidado_personal": 3102,
+      "frutas": 1990,
+      "lacteos": 2965,
+      "limpieza": 3130,
+      "pan_harinas": 6747,
+      "pescados_mariscos": 233,
+      "verduras": 299
     }
   }
 }
