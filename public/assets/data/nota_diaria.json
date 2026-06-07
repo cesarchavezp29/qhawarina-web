@@ -1,24 +1,24 @@
 {
-  "date": "2026-06-05",
-  "headline_es": "Precios supermercado -0.30% MTD · Nowcast PBI +2.81%",
-  "headline_en": "Supermarket prices -0.30% MTD · GDP nowcast +2.81%",
+  "date": "2026-06-06",
+  "headline_es": "Precios supermercado -0.29% MTD · Nowcast PBI +2.81%",
+  "headline_en": "Supermarket prices -0.29% MTD · GDP nowcast +2.81%",
   "body_es": "Datos de alta frecuencia actualizados. Revisa las páginas de estadísticas para el detalle completo.",
   "body_en": "High-frequency data updated. Visit the statistics pages for full detail.",
   "highlights": [
     {
       "icon": "🛒",
-      "text_es": "Precios de supermercado bajó 0.30% en lo que va del mes.",
-      "text_en": "Supermarket prices fell 0.30% month-to-date."
+      "text_es": "Precios de supermercado bajó 0.29% en lo que va del mes.",
+      "text_en": "Supermarket prices fell 0.29% month-to-date."
     },
     {
-      "icon": "📉",
-      "text_es": "Azúcar y Dulces: -0.5% en el mes.",
-      "text_en": "Sugar & Sweets: -0.5% this month."
+      "icon": "📈",
+      "text_es": "Pan y Harinas: +0.2% en el mes.",
+      "text_en": "Bread & Flour: +0.2% this month."
     },
     {
-      "icon": "📉",
-      "text_es": "Lácteos y Huevos: -0.4% en el mes.",
-      "text_en": "Dairy & Eggs: -0.4% this month."
+      "icon": "📈",
+      "text_es": "Frutas: +0.1% en el mes.",
+      "text_en": "Fruits: +0.1% this month."
     },
     {
       "icon": "📊",
@@ -36,5 +36,5 @@
       "text_en": "Political risk: IRP 10 — minimal level."
     }
   ],
-  "updated_at": "2026-06-06T01:23:13.064152+00:00"
+  "updated_at": "2026-06-07T01:18:27.377905+00:00"
 }

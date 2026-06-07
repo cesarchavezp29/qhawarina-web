@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-05",
-    "n_days": 116,
+    "last_date": "2026-06-06",
+    "n_days": 117,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-05"
+    "updated": "2026-06-06"
   },
   "categories": {
     "arroz_cereales": {
@@ -3223,87 +3223,114 @@
       "index_limpieza": 99.5794,
       "index_cuidado_personal": 98.6737,
       "index_other": 99.3448
+    },
+    {
+      "date": "2026-06-06",
+      "index_all": 99.7074,
+      "index_all_unweighted": 99.4809,
+      "index_food": 99.4152,
+      "index_nonfood": 99.3936,
+      "var_all": 0.0108,
+      "var_food": 0.0235,
+      "cum_pct": -0.2926,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1414,
+      "interpolated": false,
+      "n_matched": 35346,
+      "index_arroz_cereales": 99.7486,
+      "index_pan_harinas": 100.1213,
+      "index_carnes": 98.7855,
+      "index_pescados_mariscos": 102.4919,
+      "index_lacteos": 100.5033,
+      "index_frutas": 102.2555,
+      "index_verduras": 99.8118,
+      "index_aceites_grasas": 98.9102,
+      "index_azucar_dulces": 95.1492,
+      "index_bebidas": 99.7124,
+      "index_limpieza": 99.4887,
+      "index_cuidado_personal": 98.709,
+      "index_other": 99.2999
     }
   ],
   "latest": {
-    "date": "2026-06-05",
-    "index_all": 99.6966,
-    "index_food": 99.3918,
-    "cum_pct": -0.3034,
-    "var_all": -0.2533,
+    "date": "2026-06-06",
+    "index_all": 99.7074,
+    "index_food": 99.4152,
+    "cum_pct": -0.2926,
+    "var_all": 0.0108,
     "yoy_inflation": null,
-    "mom_inflation": 0.1166,
-    "n_products_today": 40826,
+    "mom_inflation": 0.1414,
+    "n_products_today": 35346,
     "top_movers": [
       {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -0.54
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": 0.16
       },
       {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.37
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
+        "var": 0.14
       },
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.36
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": -0.09
       },
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": -0.31
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": 0.08
       }
     ],
     "product_movers": [
       {
-        "name": "Ajo Molido Sibarita Ajo Siba 250g",
+        "name": "Beterraga x atado",
         "store": "metro",
-        "category": "carnes",
-        "var": -46.7
+        "category": "frutas",
+        "var": 86.96
       },
       {
-        "name": "Ajo Molido Sibarita Ajo Siba 250g",
+        "name": "Mango en Trozos El Frutero 1kg",
         "store": "wong",
-        "category": "carnes",
-        "var": -46.43
+        "category": "frutas",
+        "var": 57.81
       },
       {
-        "name": "Fusilli Bronzo La Molisana Contenido ...",
+        "name": "Ensalada de Zanahoria y Beterraga La ...",
         "store": "metro",
-        "category": "pan_harinas",
-        "var": -44.94
+        "category": "frutas",
+        "var": 56.57
       },
       {
-        "name": "Penne Rigate Bronzo La Molisana 500g",
-        "store": "metro",
+        "name": "Pan Hamburguesa LA FLORENCIA Bolsa 6un",
+        "store": "plazavea",
         "category": "pan_harinas",
-        "var": -44.94
+        "var": 51.28
       }
     ],
     "stores_coverage": {
-      "metro": 12670,
-      "plazavea": 13633,
-      "wong": 14905
+      "metro": 11342,
+      "plazavea": 11977,
+      "wong": 12522
     },
     "categories_coverage": {
-      "aceites_grasas": 680,
-      "arroz_cereales": 1424,
-      "azucar_dulces": 953,
-      "bebidas": 1018,
-      "carnes": 14586,
-      "cuidado_personal": 3102,
-      "frutas": 1990,
-      "lacteos": 2965,
-      "limpieza": 3130,
-      "pan_harinas": 6747,
-      "pescados_mariscos": 233,
-      "verduras": 299
+      "aceites_grasas": 677,
+      "arroz_cereales": 1414,
+      "azucar_dulces": 951,
+      "bebidas": 1062,
+      "carnes": 9282,
+      "cuidado_personal": 3035,
+      "frutas": 1969,
+      "lacteos": 2955,
+      "limpieza": 3128,
+      "pan_harinas": 6741,
+      "pescados_mariscos": 235,
+      "verduras": 298
     }
   }
 }
