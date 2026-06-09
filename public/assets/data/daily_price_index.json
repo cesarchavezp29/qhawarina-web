@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-07",
-    "n_days": 118,
+    "last_date": "2026-06-08",
+    "n_days": 119,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-07"
+    "updated": "2026-06-08"
   },
   "categories": {
     "arroz_cereales": {
@@ -3277,87 +3277,114 @@
       "index_limpieza": 99.4997,
       "index_cuidado_personal": 98.7137,
       "index_other": 99.2989
+    },
+    {
+      "date": "2026-06-08",
+      "index_all": 99.8562,
+      "index_all_unweighted": 99.6048,
+      "index_food": 99.5678,
+      "index_nonfood": 99.4258,
+      "var_all": 0.1865,
+      "var_food": 0.2248,
+      "cum_pct": -0.1438,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1863,
+      "interpolated": false,
+      "n_matched": 30266,
+      "index_arroz_cereales": 99.6772,
+      "index_pan_harinas": 100.4972,
+      "index_carnes": 98.921,
+      "index_pescados_mariscos": 103.1144,
+      "index_lacteos": 100.6172,
+      "index_frutas": 101.6294,
+      "index_verduras": 100.3277,
+      "index_aceites_grasas": 100.3946,
+      "index_azucar_dulces": 95.1492,
+      "index_bebidas": 99.7674,
+      "index_limpieza": 99.5778,
+      "index_cuidado_personal": 98.5775,
+      "index_other": 99.3428
     }
   ],
   "latest": {
-    "date": "2026-06-07",
-    "index_all": 99.6703,
-    "index_food": 99.3445,
-    "cum_pct": -0.3297,
-    "var_all": -0.0372,
+    "date": "2026-06-08",
+    "index_all": 99.8562,
+    "index_food": 99.5678,
+    "cum_pct": -0.1438,
+    "var_all": 0.1865,
     "yoy_inflation": null,
-    "mom_inflation": 0.1632,
-    "n_products_today": 33016,
+    "mom_inflation": 0.1863,
+    "n_products_today": 30266,
     "top_movers": [
       {
-        "category": "carnes",
-        "label_es": "Carnes",
-        "label_en": "Meat",
-        "var": -0.17
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": 1.5
+      },
+      {
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": 0.61
+      },
+      {
+        "category": "verduras",
+        "label_es": "Verduras",
+        "label_en": "Vegetables",
+        "var": 0.52
       },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.14
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
-        "var": 0.03
-      },
-      {
-        "category": "lacteos",
-        "label_es": "Lácteos y Huevos",
-        "label_en": "Dairy & Eggs",
-        "var": -0.02
+        "var": -0.47
       }
     ],
     "product_movers": [
       {
-        "name": "Pan para Hot Dog 6un",
+        "name": "Frankfurter Cuisine & Co 250g",
+        "store": "wong",
+        "category": "carnes",
+        "var": 83.7
+      },
+      {
+        "name": "Penne Rigate Bronzo La Molisana 500g",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 81.63
+      },
+      {
+        "name": "Spaguetti Quadratto La Molisana Paque...",
         "store": "metro",
         "category": "pan_harinas",
-        "var": 94.58
+        "var": 81.63
       },
       {
-        "name": "Lechuga de Seda Ecologic",
-        "store": "metro",
-        "category": "frutas",
-        "var": 87.29
-      },
-      {
-        "name": "Champiñón Entero Cuisine & Co 200g",
+        "name": "Spaguetti Quadratto La Molisana Paque...",
         "store": "wong",
-        "category": "frutas",
-        "var": 59.52
-      },
-      {
-        "name": "Hierba Luisa x atado",
-        "store": "metro",
-        "category": "frutas",
-        "var": 50.42
+        "category": "pan_harinas",
+        "var": 81.63
       }
     ],
     "stores_coverage": {
-      "metro": 11374,
-      "plazavea": 9409,
-      "wong": 12505
+      "metro": 11326,
+      "plazavea": 9141,
+      "wong": 12464
     },
     "categories_coverage": {
-      "aceites_grasas": 555,
-      "arroz_cereales": 1299,
-      "azucar_dulces": 662,
-      "bebidas": 1061,
-      "carnes": 9123,
-      "cuidado_personal": 3035,
-      "frutas": 1952,
-      "lacteos": 2406,
-      "limpieza": 3109,
-      "pan_harinas": 6094,
-      "pescados_mariscos": 173,
-      "verduras": 168
+      "aceites_grasas": 648,
+      "arroz_cereales": 1341,
+      "azucar_dulces": 918,
+      "bebidas": 990,
+      "carnes": 8992,
+      "cuidado_personal": 1268,
+      "frutas": 1930,
+      "lacteos": 2687,
+      "limpieza": 3013,
+      "pan_harinas": 6524,
+      "pescados_mariscos": 231,
+      "verduras": 298
     }
   }
 }
