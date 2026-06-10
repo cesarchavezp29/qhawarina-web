@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-08",
-    "n_days": 119,
+    "last_date": "2026-06-09",
+    "n_days": 120,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   "categories": {
     "arroz_cereales": {
@@ -3304,87 +3304,114 @@
       "index_limpieza": 99.5778,
       "index_cuidado_personal": 98.5775,
       "index_other": 99.3428
+    },
+    {
+      "date": "2026-06-09",
+      "index_all": 99.7463,
+      "index_all_unweighted": 99.4557,
+      "index_food": 99.4405,
+      "index_nonfood": 99.2132,
+      "var_all": -0.1101,
+      "var_food": -0.1279,
+      "cum_pct": -0.2537,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2053,
+      "interpolated": false,
+      "n_matched": 32102,
+      "index_arroz_cereales": 99.7958,
+      "index_pan_harinas": 100.1191,
+      "index_carnes": 98.9749,
+      "index_pescados_mariscos": 103.2421,
+      "index_lacteos": 100.3836,
+      "index_frutas": 101.8347,
+      "index_verduras": 100.5378,
+      "index_aceites_grasas": 100.2616,
+      "index_azucar_dulces": 94.6699,
+      "index_bebidas": 99.1024,
+      "index_limpieza": 99.2512,
+      "index_cuidado_personal": 98.2934,
+      "index_other": 99.2357
     }
   ],
   "latest": {
-    "date": "2026-06-08",
-    "index_all": 99.8562,
-    "index_food": 99.5678,
-    "cum_pct": -0.1438,
-    "var_all": 0.1865,
+    "date": "2026-06-09",
+    "index_all": 99.7463,
+    "index_food": 99.4405,
+    "cum_pct": -0.2537,
+    "var_all": -0.1101,
     "yoy_inflation": null,
-    "mom_inflation": 0.1863,
-    "n_products_today": 30266,
+    "mom_inflation": 0.2053,
+    "n_products_today": 32102,
     "top_movers": [
       {
-        "category": "aceites_grasas",
-        "label_es": "Aceites y Grasas",
-        "label_en": "Oils & Fats",
-        "var": 1.5
+        "category": "bebidas",
+        "label_es": "Bebidas",
+        "label_en": "Beverages",
+        "var": -0.67
       },
       {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": 0.61
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -0.5
       },
       {
-        "category": "verduras",
-        "label_es": "Verduras",
-        "label_en": "Vegetables",
-        "var": 0.52
+        "category": "pan_harinas",
+        "label_es": "Pan y Harinas",
+        "label_en": "Bread & Flour",
+        "var": -0.38
       },
       {
-        "category": "frutas",
-        "label_es": "Frutas",
-        "label_en": "Fruits",
-        "var": -0.47
+        "category": "limpieza",
+        "label_es": "Limpieza",
+        "label_en": "Cleaning",
+        "var": -0.33
       }
     ],
     "product_movers": [
       {
-        "name": "Frankfurter Cuisine & Co 250g",
-        "store": "wong",
-        "category": "carnes",
-        "var": 83.7
-      },
-      {
-        "name": "Penne Rigate Bronzo La Molisana 500g",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 81.63
-      },
-      {
-        "name": "Spaguetti Quadratto La Molisana Paque...",
+        "name": "Camote Amarillo Especial Metro x kg",
         "store": "metro",
-        "category": "pan_harinas",
-        "var": 81.63
+        "category": "frutas",
+        "var": 75.47
       },
       {
-        "name": "Spaguetti Quadratto La Molisana Paque...",
+        "name": "Mango Kent Wong x kg",
         "store": "wong",
-        "category": "pan_harinas",
-        "var": 81.63
+        "category": "frutas",
+        "var": 70.07
+      },
+      {
+        "name": "Papa Blanca x kg",
+        "store": "metro",
+        "category": "frutas",
+        "var": 60.24
+      },
+      {
+        "name": "Lechuga Crespa Hidropónica de Inverna...",
+        "store": "metro",
+        "category": "carnes",
+        "var": 59.09
       }
     ],
     "stores_coverage": {
-      "metro": 11326,
-      "plazavea": 9141,
-      "wong": 12464
+      "metro": 12441,
+      "plazavea": 13508,
+      "wong": 14785
     },
     "categories_coverage": {
-      "aceites_grasas": 648,
-      "arroz_cereales": 1341,
-      "azucar_dulces": 918,
-      "bebidas": 990,
-      "carnes": 8992,
-      "cuidado_personal": 1268,
-      "frutas": 1930,
-      "lacteos": 2687,
-      "limpieza": 3013,
-      "pan_harinas": 6524,
-      "pescados_mariscos": 231,
-      "verduras": 298
+      "aceites_grasas": 683,
+      "arroz_cereales": 1376,
+      "azucar_dulces": 928,
+      "bebidas": 1035,
+      "carnes": 14453,
+      "cuidado_personal": 2989,
+      "frutas": 1973,
+      "lacteos": 2915,
+      "limpieza": 3085,
+      "pan_harinas": 6688,
+      "pescados_mariscos": 228,
+      "verduras": 296
     }
   }
 }
