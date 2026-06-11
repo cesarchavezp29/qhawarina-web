@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-09",
-    "n_days": 120,
+    "last_date": "2026-06-10",
+    "n_days": 121,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-09"
+    "updated": "2026-06-10"
   },
   "categories": {
     "arroz_cereales": {
@@ -3331,87 +3331,114 @@
       "index_limpieza": 99.2512,
       "index_cuidado_personal": 98.2934,
       "index_other": 99.2357
+    },
+    {
+      "date": "2026-06-10",
+      "index_all": 99.6489,
+      "index_all_unweighted": 99.3324,
+      "index_food": 99.3006,
+      "index_nonfood": 99.1398,
+      "var_all": -0.0976,
+      "var_food": -0.1407,
+      "cum_pct": -0.3511,
+      "yoy_inflation": null,
+      "mom_inflation": 0.2041,
+      "interpolated": false,
+      "n_matched": 40573,
+      "index_arroz_cereales": 99.6667,
+      "index_pan_harinas": 100.1455,
+      "index_carnes": 98.7509,
+      "index_pescados_mariscos": 103.1462,
+      "index_lacteos": 100.3172,
+      "index_frutas": 101.4524,
+      "index_verduras": 100.4946,
+      "index_aceites_grasas": 100.271,
+      "index_azucar_dulces": 94.5871,
+      "index_bebidas": 99.1211,
+      "index_limpieza": 99.3319,
+      "index_cuidado_personal": 98.2176,
+      "index_other": 99.0488
     }
   ],
   "latest": {
-    "date": "2026-06-09",
-    "index_all": 99.7463,
-    "index_food": 99.4405,
-    "cum_pct": -0.2537,
-    "var_all": -0.1101,
+    "date": "2026-06-10",
+    "index_all": 99.6489,
+    "index_food": 99.3006,
+    "cum_pct": -0.3511,
+    "var_all": -0.0976,
     "yoy_inflation": null,
-    "mom_inflation": 0.2053,
-    "n_products_today": 32102,
+    "mom_inflation": 0.2041,
+    "n_products_today": 40573,
     "top_movers": [
       {
-        "category": "bebidas",
-        "label_es": "Bebidas",
-        "label_en": "Beverages",
-        "var": -0.67
-      },
-      {
-        "category": "azucar_dulces",
-        "label_es": "Azúcar y Dulces",
-        "label_en": "Sugar & Sweets",
-        "var": -0.5
-      },
-      {
-        "category": "pan_harinas",
-        "label_es": "Pan y Harinas",
-        "label_en": "Bread & Flour",
+        "category": "frutas",
+        "label_es": "Frutas",
+        "label_en": "Fruits",
         "var": -0.38
       },
       {
-        "category": "limpieza",
-        "label_es": "Limpieza",
-        "label_en": "Cleaning",
-        "var": -0.33
+        "category": "carnes",
+        "label_es": "Carnes",
+        "label_en": "Meat",
+        "var": -0.23
+      },
+      {
+        "category": "arroz_cereales",
+        "label_es": "Arroz y Cereales",
+        "label_en": "Rice & Cereals",
+        "var": -0.13
+      },
+      {
+        "category": "pescados_mariscos",
+        "label_es": "Pescados y Mariscos",
+        "label_en": "Fish & Seafood",
+        "var": -0.09
       }
     ],
     "product_movers": [
       {
-        "name": "Camote Amarillo Especial Metro x kg",
-        "store": "metro",
-        "category": "frutas",
-        "var": 75.47
+        "name": "Spray Capilar Pantene PRO-Tector Mole...",
+        "store": "wong",
+        "category": "pan_harinas",
+        "var": 79.9
       },
       {
-        "name": "Mango Kent Wong x kg",
+        "name": "Perejil Hidropónico 60g",
+        "store": "metro",
+        "category": "frutas",
+        "var": 76.92
+      },
+      {
+        "name": "Ensalada de Zanahoria y Beterraga La ...",
         "store": "wong",
         "category": "frutas",
-        "var": 70.07
+        "var": 56.57
       },
       {
-        "name": "Papa Blanca x kg",
+        "name": "Lechuga Americana Metro x unid",
         "store": "metro",
         "category": "frutas",
-        "var": 60.24
-      },
-      {
-        "name": "Lechuga Crespa Hidropónica de Inverna...",
-        "store": "metro",
-        "category": "carnes",
-        "var": 59.09
+        "var": 50.17
       }
     ],
     "stores_coverage": {
-      "metro": 12441,
-      "plazavea": 13508,
-      "wong": 14785
+      "metro": 12439,
+      "plazavea": 13524,
+      "wong": 14770
     },
     "categories_coverage": {
-      "aceites_grasas": 683,
-      "arroz_cereales": 1376,
-      "azucar_dulces": 928,
-      "bebidas": 1035,
-      "carnes": 14453,
-      "cuidado_personal": 2989,
-      "frutas": 1973,
-      "lacteos": 2915,
-      "limpieza": 3085,
-      "pan_harinas": 6688,
+      "aceites_grasas": 682,
+      "arroz_cereales": 1377,
+      "azucar_dulces": 922,
+      "bebidas": 1036,
+      "carnes": 14457,
+      "cuidado_personal": 2983,
+      "frutas": 1964,
+      "lacteos": 2922,
+      "limpieza": 3093,
+      "pan_harinas": 6671,
       "pescados_mariscos": 228,
-      "verduras": 296
+      "verduras": 297
     }
   }
 }
