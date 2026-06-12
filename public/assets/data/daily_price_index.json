@@ -4,8 +4,8 @@
     "methodology_note": "index_all uses INEI IPC expenditure weights via weighted geometric mean of category-level Jevons ratios. index_all_unweighted is the simple geometric mean across all matched products.",
     "base_date": "2026-02-10",
     "base_value": 100,
-    "last_date": "2026-06-10",
-    "n_days": 121,
+    "last_date": "2026-06-11",
+    "n_days": 122,
     "stores": [
       "Plaza Vea",
       "Metro",
@@ -15,7 +15,7 @@
     "ratio_filter": "0.5 < ratio < 2.0",
     "inflation_window": "30-day rolling average (yoy_inflation, mom_inflation)",
     "reference": "Cavallo & Rigobon (2016), Billion Prices Project, MIT",
-    "updated": "2026-06-10"
+    "updated": "2026-06-11"
   },
   "categories": {
     "arroz_cereales": {
@@ -3358,87 +3358,114 @@
       "index_limpieza": 99.3319,
       "index_cuidado_personal": 98.2176,
       "index_other": 99.0488
+    },
+    {
+      "date": "2026-06-11",
+      "index_all": 99.5075,
+      "index_all_unweighted": 99.125,
+      "index_food": 99.0464,
+      "index_nonfood": 99.1025,
+      "var_all": -0.1419,
+      "var_food": -0.256,
+      "cum_pct": -0.4925,
+      "yoy_inflation": null,
+      "mom_inflation": 0.1411,
+      "interpolated": false,
+      "n_matched": 35958,
+      "index_arroz_cereales": 99.6518,
+      "index_pan_harinas": 99.9009,
+      "index_carnes": 98.3444,
+      "index_pescados_mariscos": 103.2645,
+      "index_lacteos": 100.217,
+      "index_frutas": 101.9007,
+      "index_verduras": 100.4071,
+      "index_aceites_grasas": 99.2299,
+      "index_azucar_dulces": 94.345,
+      "index_bebidas": 99.1271,
+      "index_limpieza": 99.1726,
+      "index_cuidado_personal": 98.1996,
+      "index_other": 99.0785
     }
   ],
   "latest": {
-    "date": "2026-06-10",
-    "index_all": 99.6489,
-    "index_food": 99.3006,
-    "cum_pct": -0.3511,
-    "var_all": -0.0976,
+    "date": "2026-06-11",
+    "index_all": 99.5075,
+    "index_food": 99.0464,
+    "cum_pct": -0.4925,
+    "var_all": -0.1419,
     "yoy_inflation": null,
-    "mom_inflation": 0.2041,
-    "n_products_today": 40573,
+    "mom_inflation": 0.1411,
+    "n_products_today": 35958,
     "top_movers": [
+      {
+        "category": "aceites_grasas",
+        "label_es": "Aceites y Grasas",
+        "label_en": "Oils & Fats",
+        "var": -1.04
+      },
       {
         "category": "frutas",
         "label_es": "Frutas",
         "label_en": "Fruits",
-        "var": -0.38
+        "var": 0.44
       },
       {
         "category": "carnes",
         "label_es": "Carnes",
         "label_en": "Meat",
-        "var": -0.23
+        "var": -0.41
       },
       {
-        "category": "arroz_cereales",
-        "label_es": "Arroz y Cereales",
-        "label_en": "Rice & Cereals",
-        "var": -0.13
-      },
-      {
-        "category": "pescados_mariscos",
-        "label_es": "Pescados y Mariscos",
-        "label_en": "Fish & Seafood",
-        "var": -0.09
+        "category": "azucar_dulces",
+        "label_es": "Azúcar y Dulces",
+        "label_en": "Sugar & Sweets",
+        "var": -0.26
       }
     ],
     "product_movers": [
       {
-        "name": "Spray Capilar Pantene PRO-Tector Mole...",
-        "store": "wong",
-        "category": "pan_harinas",
-        "var": 79.9
-      },
-      {
-        "name": "Perejil Hidropónico 60g",
+        "name": "Choclo Especial x unid",
         "store": "metro",
         "category": "frutas",
-        "var": 76.92
+        "var": 93.33
       },
       {
-        "name": "Ensalada de Zanahoria y Beterraga La ...",
+        "name": "Infusión de Jengibre y Naranja Sunka ...",
         "store": "wong",
         "category": "frutas",
-        "var": 56.57
+        "var": 67.8
       },
       {
-        "name": "Lechuga Americana Metro x unid",
-        "store": "metro",
-        "category": "frutas",
-        "var": 50.17
+        "name": "Infusión de Jengibre y Menta Sunka de...",
+        "store": "wong",
+        "category": "other",
+        "var": 67.8
+      },
+      {
+        "name": "Infusión Herbal Tea Moringa Caja 20un",
+        "store": "wong",
+        "category": "other",
+        "var": 67.8
       }
     ],
     "stores_coverage": {
-      "metro": 12439,
-      "plazavea": 13524,
-      "wong": 14770
+      "metro": 9731,
+      "plazavea": 11858,
+      "wong": 14761
     },
     "categories_coverage": {
-      "aceites_grasas": 682,
-      "arroz_cereales": 1377,
-      "azucar_dulces": 922,
-      "bebidas": 1036,
-      "carnes": 14457,
-      "cuidado_personal": 2983,
-      "frutas": 1964,
-      "lacteos": 2922,
-      "limpieza": 3093,
-      "pan_harinas": 6671,
-      "pescados_mariscos": 228,
-      "verduras": 297
+      "aceites_grasas": 602,
+      "arroz_cereales": 1349,
+      "azucar_dulces": 900,
+      "bebidas": 1009,
+      "carnes": 13447,
+      "cuidado_personal": 2456,
+      "frutas": 1947,
+      "lacteos": 2715,
+      "limpieza": 2172,
+      "pan_harinas": 5976,
+      "pescados_mariscos": 230,
+      "verduras": 289
     }
   }
 }

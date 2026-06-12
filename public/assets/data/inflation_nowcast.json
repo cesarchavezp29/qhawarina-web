@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-06-10T23:00:01.513204",
+    "generated_at": "2026-06-11T21:08:57.500766",
     "model": "BottomUpInflationNowcaster+Ensemble",
     "model_params": {
       "primary": "BottomUpInflationNowcaster (Ridge, block-structured features)",
@@ -21,7 +21,7 @@
     "gnv_scarcity_score": 0.656
   },
   "model_breakdown": {
-    "bottom_up": 2.511,
+    "bottom_up": 2.512,
     "dfm_nowcast": 1.323,
     "ml_lasso": 2.307,
     "ml_elastic_net": 2.309,
