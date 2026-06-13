@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-06-11T21:08:57.818226",
+    "generated_at": "2026-06-12T21:08:02.571682",
     "method": "Temporal disaggregation (NTL + CPI)",
     "smoothing": "3-month moving average",
     "frequency": "monthly"
