@@ -1,0 +1,589 @@
+{
+  "gate1_validity": {
+    "A": {
+      "pre_period_baseline": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": 1.7763568394002505e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 2.6645352591003757e-15,
+        "proj_delta_M_plus_pp": -2.220446049250313e-15,
+        "M_minus_pp": 6.540343350530346,
+        "M_plus_pp": 3.461558580300229,
+        "M_other_pp": 3.078784770230119
+      },
+      "A_ridge_0.0": {
+        "sum_shares": 1.0000000000000002,
+        "sum_error": 2.220446049250313e-16,
+        "min_share": -0.0011181246280493281,
+        "n_negative": 47,
+        "total_negative_mass_pp": 1.2461063180732166,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.6645352591003757e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -0.0012847542171314785,
+        "proj_delta_M_plus_pp": -0.09076472664905388,
+        "M_minus_pp": 2.8120196281510945,
+        "M_plus_pp": 6.604744568882778,
+        "M_other_pp": -3.7927249407316865
+      },
+      "A_ridge_0.1": {
+        "sum_shares": 0.9999999999999999,
+        "sum_error": 1.1102230246251565e-16,
+        "min_share": -0.0009756718484266592,
+        "n_negative": 55,
+        "total_negative_mass_pp": 1.055740174061396,
+        "n_above_one": 0,
+        "identity_residual_pp": -4.440892098500626e-16,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -0.044890314756247385,
+        "proj_delta_M_plus_pp": -0.060426779467340985,
+        "M_minus_pp": 3.0636842466735934,
+        "M_plus_pp": 6.403625964854473,
+        "M_other_pp": -3.3399417181808797
+      },
+      "A_ridge_1.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.0005359941638696811,
+        "n_negative": 43,
+        "total_negative_mass_pp": 0.44261585790215213,
+        "n_above_one": 0,
+        "identity_residual_pp": -5.551115123125783e-16,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -0.020845378366685985,
+        "proj_delta_M_plus_pp": 0.02316153151853939,
+        "M_minus_pp": 4.573671957808583,
+        "M_plus_pp": 5.196914340684629,
+        "M_other_pp": -0.6232423828760473
+      },
+      "A_ridge_10.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -1.807003620809174e-20,
+        "n_negative": 12,
+        "total_negative_mass_pp": 2.168404344971009e-17,
+        "n_above_one": 0,
+        "identity_residual_pp": 0.0,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -4.440892098500626e-15,
+        "proj_delta_M_plus_pp": 3.1086244689504383e-15,
+        "M_minus_pp": 7.216150452294815,
+        "M_plus_pp": 3.0851689983874033,
+        "M_other_pp": 4.1309814539074114
+      },
+      "A_ridge_100.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -2.1258866127166756e-20,
+        "n_negative": 12,
+        "total_negative_mass_pp": 2.551063935260011e-17,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.6645352591003757e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 2.6645352591003757e-15,
+        "proj_delta_M_plus_pp": -4.440892098500626e-15,
+        "M_minus_pp": 7.993350009496648,
+        "M_plus_pp": 2.4640674271235135,
+        "M_other_pp": 5.529282582373132
+      },
+      "B_factors_1": {
+        "sum_shares": 1.0465816843030378,
+        "sum_error": 0.046581684303037774,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -4.6581684303037765,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": -0.24644447202599196,
+        "proj_delta_M_plus_pp": 0.27382719113999254,
+        "M_minus_pp": 4.65831034228551,
+        "M_plus_pp": 5.1641352123490805,
+        "M_other_pp": -5.163993300367347
+      },
+      "B_factors_2": {
+        "sum_shares": 1.0464357178973789,
+        "sum_error": 0.04643571789737888,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -4.643571789737896,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": -0.24470527376483453,
+        "proj_delta_M_plus_pp": 0.2712489478449793,
+        "M_minus_pp": 4.457576548287494,
+        "M_plus_pp": 5.55903356281411,
+        "M_other_pp": -5.745028804264512
+      },
+      "B_factors_3": {
+        "sum_shares": 1.0464357178973789,
+        "sum_error": 0.04643571789737888,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -4.643571789737896,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": -0.24470527376483453,
+        "proj_delta_M_plus_pp": 0.2712489478449793,
+        "M_minus_pp": 4.457576548287494,
+        "M_plus_pp": 5.55903356281411,
+        "M_other_pp": -5.745028804264512
+      },
+      "C_independent_trend": {
+        "sum_shares": 1.0000000000000002,
+        "sum_error": 2.220446049250313e-16,
+        "min_share": -0.0011181246280493281,
+        "n_negative": 47,
+        "total_negative_mass_pp": 1.2461063180732166,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.6645352591003757e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -0.0012847542171314785,
+        "proj_delta_M_plus_pp": -0.09076472664905388,
+        "M_minus_pp": 2.8120196281510945,
+        "M_plus_pp": 6.604744568882778,
+        "M_other_pp": -3.7927249407316865
+      }
+    },
+    "B": {
+      "pre_period_baseline": {
+        "sum_shares": 0.9999999999999999,
+        "sum_error": 1.1102230246251565e-16,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -1.3322676295501878e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 1.7763568394002505e-15,
+        "proj_delta_M_plus_pp": -1.7763568394002505e-15,
+        "M_minus_pp": 7.703019710539552,
+        "M_plus_pp": 5.41451964653672,
+        "M_other_pp": 2.288500064002831
+      },
+      "A_ridge_0.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.01341432191158911,
+        "n_negative": 41,
+        "total_negative_mass_pp": 2.895134050825789,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.220446049250313e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 2.4422721226822133,
+        "proj_delta_M_plus_pp": 0.15874838927440482,
+        "M_minus_pp": 3.9352889413731362,
+        "M_plus_pp": 7.344562825869355,
+        "M_other_pp": -3.409273884496221
+      },
+      "A_ridge_0.1": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.012916725018410506,
+        "n_negative": 40,
+        "total_negative_mass_pp": 2.7903652087759427,
+        "n_above_one": 0,
+        "identity_residual_pp": -4.884981308350689e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 2.3492920026056066,
+        "proj_delta_M_plus_pp": 0.15525489378175994,
+        "M_minus_pp": 4.005246415183411,
+        "M_plus_pp": 7.32176675820594,
+        "M_other_pp": -3.316520343022534
+      },
+      "A_ridge_1.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.00884547771058554,
+        "n_negative": 39,
+        "total_negative_mass_pp": 1.9449461529876713,
+        "n_above_one": 0,
+        "identity_residual_pp": -5.773159728050814e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 1.6109276388150908,
+        "proj_delta_M_plus_pp": 0.10931286758634151,
+        "M_minus_pp": 4.577625746358384,
+        "M_plus_pp": 7.135253477323461,
+        "M_other_pp": -2.557627730965083
+      },
+      "A_ridge_10.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -6.0900542980670574e-05,
+        "n_negative": 9,
+        "total_negative_mass_pp": 0.022872597097296603,
+        "n_above_one": 0,
+        "identity_residual_pp": -3.774758283725532e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -0.0008279673157378653,
+        "proj_delta_M_plus_pp": 0.0010349591446718875,
+        "M_minus_pp": 7.468141368791984,
+        "M_plus_pp": 6.193361408866931,
+        "M_other_pp": 1.274779959925049
+      },
+      "A_ridge_100.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": 1.0513475611980649e-19,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -5.329070518200751e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 0.0,
+        "proj_delta_M_plus_pp": 0.0,
+        "M_minus_pp": 10.358656991225585,
+        "M_plus_pp": 5.2514693404104,
+        "M_other_pp": 5.10718765081518
+      },
+      "B_factors_1": {
+        "sum_shares": 1.0283257231897736,
+        "sum_error": 0.028325723189773555,
+        "min_share": -0.00924805845537044,
+        "n_negative": 6,
+        "total_negative_mass_pp": 1.728238406374915,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.832572318977369,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": 1.5371794209863152,
+        "proj_delta_M_plus_pp": 0.26498393782146046,
+        "M_minus_pp": 4.6218854860976215,
+        "M_plus_pp": 7.091470937017083,
+        "M_other_pp": -5.30215776989683
+      },
+      "B_factors_2": {
+        "sum_shares": 1.0296955445990734,
+        "sum_error": 0.02969554459907342,
+        "min_share": -0.011976171867922374,
+        "n_negative": 7,
+        "total_negative_mass_pp": 2.021596083542445,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.9695544599073287,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": 1.8003188153349718,
+        "proj_delta_M_plus_pp": 0.296874121175259,
+        "M_minus_pp": 5.0649536773852635,
+        "M_plus_pp": 6.278959553309182,
+        "M_other_pp": -4.183560335831247
+      },
+      "B_factors_3": {
+        "sum_shares": 1.023666690157249,
+        "sum_error": 0.023666690157249093,
+        "min_share": -0.010365856108955879,
+        "n_negative": 8,
+        "total_negative_mass_pp": 2.16618741592783,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.366669015724903,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": 1.9487006739816701,
+        "proj_delta_M_plus_pp": 0.2661658748034368,
+        "M_minus_pp": 4.964596926848849,
+        "M_plus_pp": 6.4882684630912735,
+        "M_other_pp": -3.890340551967328
+      },
+      "C_independent_trend": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.01341432191158911,
+        "n_negative": 41,
+        "total_negative_mass_pp": 2.895134050825789,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.220446049250313e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 2.4422721226822133,
+        "proj_delta_M_plus_pp": 0.15874838927440482,
+        "M_minus_pp": 3.9352889413731362,
+        "M_plus_pp": 7.344562825869355,
+        "M_other_pp": -3.409273884496221
+      }
+    },
+    "C": {
+      "pre_period_baseline": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": 3.552713678800501e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 0.0,
+        "proj_delta_M_plus_pp": 0.0,
+        "M_minus_pp": 12.768454265842271,
+        "M_plus_pp": 7.326768690906242,
+        "M_other_pp": 5.441685574936033
+      },
+      "A_ridge_0.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.025849843424799165,
+        "n_negative": 30,
+        "total_negative_mass_pp": 4.806842138399789,
+        "n_above_one": 0,
+        "identity_residual_pp": -1.3322676295501878e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 1.5433259571876086,
+        "proj_delta_M_plus_pp": 0.28365081534808034,
+        "M_minus_pp": 10.957621767392919,
+        "M_plus_pp": 9.318554307568299,
+        "M_other_pp": 1.6390674598246187
+      },
+      "A_ridge_0.1": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.025749135291613136,
+        "n_negative": 30,
+        "total_negative_mass_pp": 4.7814462892727185,
+        "n_above_one": 0,
+        "identity_residual_pp": -2.220446049250313e-16,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 1.5322080628745152,
+        "proj_delta_M_plus_pp": 0.28222454811880837,
+        "M_minus_pp": 10.960662493605769,
+        "M_plus_pp": 9.313206134899294,
+        "M_other_pp": 1.6474563587064741
+      },
+      "A_ridge_1.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.024860577782347668,
+        "n_negative": 30,
+        "total_negative_mass_pp": 4.557376278915685,
+        "n_above_one": 0,
+        "identity_residual_pp": 6.661338147750939e-16,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 1.4340169024239469,
+        "proj_delta_M_plus_pp": 0.26978913237721613,
+        "M_minus_pp": 10.987491112353537,
+        "M_plus_pp": 9.26601869496222,
+        "M_other_pp": 1.7214724173913172
+      },
+      "A_ridge_10.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.017444183373071437,
+        "n_negative": 24,
+        "total_negative_mass_pp": 2.820512984104895,
+        "n_above_one": 0,
+        "identity_residual_pp": -3.9968028886505635e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 0.7003220383013407,
+        "proj_delta_M_plus_pp": 0.15275120632496098,
+        "M_minus_pp": 11.21141766298734,
+        "M_plus_pp": 8.872166116948787,
+        "M_other_pp": 2.33925154603855
+      },
+      "A_ridge_100.0": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -7.0328346151096185e-06,
+        "n_negative": 2,
+        "total_negative_mass_pp": 0.0007786878481807265,
+        "n_above_one": 0,
+        "identity_residual_pp": -5.329070518200751e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": -2.957042461737558e-05,
+        "proj_delta_M_plus_pp": 3.2856027355698814e-05,
+        "M_minus_pp": 11.971535311927772,
+        "M_plus_pp": 7.535235347545396,
+        "M_other_pp": 4.43629996438237
+      },
+      "B_factors_1": {
+        "sum_shares": 1.0745816873410268,
+        "sum_error": 0.07458168734102677,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -7.458168734102676,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": -0.3373780234812038,
+        "proj_delta_M_plus_pp": 0.37486447053466954,
+        "M_minus_pp": 11.967104487800526,
+        "M_plus_pp": 7.457174679659445,
+        "M_other_pp": -2.9482389259615953
+      },
+      "B_factors_2": {
+        "sum_shares": 1.0745874681846783,
+        "sum_error": 0.07458746818467832,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -7.458746818467834,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": -0.3378813290355662,
+        "proj_delta_M_plus_pp": 0.3754236989284099,
+        "M_minus_pp": 11.48025129913511,
+        "M_plus_pp": 8.127469560168937,
+        "M_other_pp": -4.10596507950166
+      },
+      "B_factors_3": {
+        "sum_shares": 1.0748869214867225,
+        "sum_error": 0.07488692148672249,
+        "min_share": 0.0,
+        "n_negative": 0,
+        "total_negative_mass_pp": 0.0,
+        "n_above_one": 0,
+        "identity_residual_pp": -7.488692148672251,
+        "identity_holds": false,
+        "proj_delta_M_minus_pp": -0.3392648303125352,
+        "proj_delta_M_plus_pp": 0.37696092256948255,
+        "M_minus_pp": 11.459673467454676,
+        "M_plus_pp": 8.122652910320845,
+        "M_other_pp": -4.1516715915384195
+      },
+      "C_independent_trend": {
+        "sum_shares": 1.0,
+        "sum_error": 0.0,
+        "min_share": -0.025849843424799165,
+        "n_negative": 30,
+        "total_negative_mass_pp": 4.806842138399789,
+        "n_above_one": 0,
+        "identity_residual_pp": -1.3322676295501878e-15,
+        "identity_holds": true,
+        "proj_delta_M_minus_pp": 1.5433259571876086,
+        "proj_delta_M_plus_pp": 0.28365081534808034,
+        "M_minus_pp": 10.957621767392919,
+        "M_plus_pp": 9.318554307568299,
+        "M_other_pp": 1.6390674598246187
+      }
+    }
+  },
+  "gate2_legacy_label": {
+    "A": {
+      "signed_aggregation": {
+        "M_minus_pp": 6.540343350530346,
+        "M_plus_pp": 3.461558580300229
+      },
+      "positive_negative_parts": {
+        "M_minus_pp": 6.706875432345153,
+        "M_plus_pp": 4.749932539117352
+      },
+      "package1a_locked": {
+        "M_minus_pp": 6.7069,
+        "M_plus_pp": 4.7499
+      },
+      "parts_reproduce_1A": true
+    },
+    "B": {
+      "signed_aggregation": {
+        "M_minus_pp": 7.703019710539552,
+        "M_plus_pp": 5.41451964653672
+      },
+      "positive_negative_parts": {
+        "M_minus_pp": 7.888824163962989,
+        "M_plus_pp": 6.639472911266009
+      },
+      "package1a_locked": {
+        "M_minus_pp": 7.8888,
+        "M_plus_pp": 6.6395
+      },
+      "parts_reproduce_1A": true
+    },
+    "C": {
+      "signed_aggregation": {
+        "M_minus_pp": 12.768454265842271,
+        "M_plus_pp": 7.326768690906242
+      },
+      "positive_negative_parts": {
+        "M_minus_pp": 12.924881875270927,
+        "M_plus_pp": 10.764610478868716
+      },
+      "package1a_locked": {
+        "M_minus_pp": 12.925,
+        "M_plus_pp": 10.7645
+      },
+      "parts_reproduce_1A": true
+    }
+  },
+  "gate3_admissibility": {
+    "pre_period_baseline": {
+      "valid_distribution": true,
+      "max_sum_error": 1.1102230246251565e-16,
+      "max_negative_mass_pp": 0.0,
+      "identity_holds_all": true,
+      "classification": "diagnostic benchmark",
+      "reason": "assumes a static counterfactual; the legacy assumption"
+    },
+    "A_ridge_0.0": {
+      "valid_distribution": false,
+      "max_sum_error": 2.220446049250313e-16,
+      "max_negative_mass_pp": 4.806842138399789,
+      "identity_holds_all": true,
+      "classification": "INADMISSIBLE",
+      "reason": "material negative predicted probability mass"
+    },
+    "A_ridge_0.1": {
+      "valid_distribution": false,
+      "max_sum_error": 1.1102230246251565e-16,
+      "max_negative_mass_pp": 4.7814462892727185,
+      "identity_holds_all": true,
+      "classification": "INADMISSIBLE",
+      "reason": "material negative predicted probability mass"
+    },
+    "A_ridge_1.0": {
+      "valid_distribution": false,
+      "max_sum_error": 0.0,
+      "max_negative_mass_pp": 4.557376278915685,
+      "identity_holds_all": true,
+      "classification": "INADMISSIBLE",
+      "reason": "material negative predicted probability mass"
+    },
+    "A_ridge_10.0": {
+      "valid_distribution": false,
+      "max_sum_error": 0.0,
+      "max_negative_mass_pp": 2.820512984104895,
+      "identity_holds_all": true,
+      "classification": "INADMISSIBLE",
+      "reason": "material negative predicted probability mass"
+    },
+    "A_ridge_100.0": {
+      "valid_distribution": false,
+      "max_sum_error": 0.0,
+      "max_negative_mass_pp": 0.0007786878481807265,
+      "identity_holds_all": true,
+      "classification": "credible counterfactual",
+      "reason": "negligible negative mass; simplex projection immaterial"
+    },
+    "B_factors_1": {
+      "valid_distribution": false,
+      "max_sum_error": 0.07458168734102677,
+      "max_negative_mass_pp": 1.728238406374915,
+      "identity_holds_all": false,
+      "classification": "INADMISSIBLE",
+      "reason": "predicted shares do not sum to one; accounting identity fails"
+    },
+    "B_factors_2": {
+      "valid_distribution": false,
+      "max_sum_error": 0.07458746818467832,
+      "max_negative_mass_pp": 2.021596083542445,
+      "identity_holds_all": false,
+      "classification": "INADMISSIBLE",
+      "reason": "predicted shares do not sum to one; accounting identity fails"
+    },
+    "B_factors_3": {
+      "valid_distribution": false,
+      "max_sum_error": 0.07488692148672249,
+      "max_negative_mass_pp": 2.16618741592783,
+      "identity_holds_all": false,
+      "classification": "INADMISSIBLE",
+      "reason": "predicted shares do not sum to one; accounting identity fails"
+    },
+    "C_independent_trend": {
+      "valid_distribution": false,
+      "max_sum_error": 2.220446049250313e-16,
+      "max_negative_mass_pp": 4.806842138399789,
+      "identity_holds_all": true,
+      "classification": "INADMISSIBLE",
+      "reason": "material negative predicted probability mass"
+    }
+  }
+}

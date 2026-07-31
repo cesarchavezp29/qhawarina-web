@@ -1,0 +1,14 @@
+{
+  "archival_raw": {
+    "file": "ARCHIVE_pkg1b_TARGETED_DIAGNOSTIC_raw.json",
+    "sha256": "289d01ccba88432563f418b23877f7c1def90a1bfd9dfcee7a8f92fe418ae655"
+  },
+  "canonical_relabelled": {
+    "file": "pkg1b_TARGETED_DIAGNOSTIC.json",
+    "sha256": "9a794dd88cdebba4b1a12a0b1f3bfb19d5adb8a34a74b16de36eb4700b7ff70d"
+  },
+  "change_scope": "metadata key names and interpretation wording only",
+  "non_reproducibility_content_identical": true,
+  "reproducibility_numeric_values_unchanged": true,
+  "rationale": "matching a median and two percentile endpoints is strong evidence that the replicate stream reproduced, but is not proof of draw-by-draw identity"
+}

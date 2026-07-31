@@ -1,0 +1,2292 @@
+{
+  "checks": {
+    "c1_point_reproduction": {
+      "A|static_1A": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "A|A1_clr_trend_l100": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "A|B1_clr_factor_1": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "B|static_1A": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "B|A1_clr_trend_l100": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "B|B1_clr_factor_1": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "C|static_1A": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "C|A1_clr_trend_l100": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      },
+      "C|B1_clr_factor_1": {
+        "d_gross_M_minus": 0.0,
+        "d_gross_M_plus": 0.0,
+        "match": true
+      }
+    },
+    "c2_completeness": {
+      "primary_withrep|A|static_1A": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|A|A1_clr_trend_l100": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|A|B1_clr_factor_1": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|B|static_1A": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|B|A1_clr_trend_l100": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|B|B1_clr_factor_1": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|C|static_1A": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|C|A1_clr_trend_l100": {
+        "issues": [],
+        "clean": true
+      },
+      "primary_withrep|C|B1_clr_factor_1": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|A|static_1A": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|B|static_1A": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|C|static_1A": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100": {
+        "issues": [],
+        "clean": true
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1": {
+        "issues": [],
+        "clean": true
+      }
+    },
+    "c3_centering": {
+      "primary_withrep|A|static_1A|Delta_A": {
+        "point": -6.540343350530346,
+        "median": -6.534071355448661,
+        "median_displacement_in_percentile_scale": 0.013277822937091937,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0143207287547629,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|static_1A|Delta_E": {
+        "point": 3.461558580300229,
+        "median": 3.4606788473024106,
+        "median_displacement_in_percentile_scale": 0.0012343837192380837,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0060681746596476,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|static_1A|Delta_O": {
+        "point": 3.078784770230119,
+        "median": 3.0702976747689803,
+        "median_displacement_in_percentile_scale": 0.01043526203283366,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0437972763609884,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|static_1A|gross_M_minus": {
+        "point": 6.706875432345153,
+        "median": 6.779026247775202,
+        "median_displacement_in_percentile_scale": 0.1618656947238425,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2142639790708698,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|static_1A|gross_M_plus": {
+        "point": 4.749932539117352,
+        "median": 4.9661397398466445,
+        "median_displacement_in_percentile_scale": 0.37480703370124346,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.7568532359347868,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|static_1A|gross_R": {
+        "point": 0.7082183927570683,
+        "median": 0.7335403525663732,
+        "median_displacement_in_percentile_scale": 0.26912438816735107,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.680890641572107,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|A1_clr_trend_l100|Delta_A": {
+        "point": -7.997675402710741,
+        "median": -8.03181378050485,
+        "median_displacement_in_percentile_scale": 0.10195117208232339,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.160965145969214,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|A1_clr_trend_l100|Delta_E": {
+        "point": 2.3190364420537524,
+        "median": 2.2268415015355822,
+        "median_displacement_in_percentile_scale": 0.14798881707667155,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.074612846543474,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|A1_clr_trend_l100|Delta_O": {
+        "point": 5.678638960656985,
+        "median": 5.811214610737117,
+        "median_displacement_in_percentile_scale": 0.19642618287533947,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.159024928107986,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|A1_clr_trend_l100|gross_M_minus": {
+        "point": 8.031988773194424,
+        "median": 8.108721190452387,
+        "median_displacement_in_percentile_scale": 0.23561071639219605,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3372780478878052,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|A1_clr_trend_l100|gross_M_plus": {
+        "point": 4.403339566729763,
+        "median": 4.494018123049658,
+        "median_displacement_in_percentile_scale": 0.19032943723203677,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3847670169219097,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|A1_clr_trend_l100|gross_R": {
+        "point": 0.5482253139378453,
+        "median": 0.5542355660211719,
+        "median_displacement_in_percentile_scale": 0.09832779328775709,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2795556596803226,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|B1_clr_factor_1|Delta_A": {
+        "point": -8.206707201797002,
+        "median": -8.10109788641048,
+        "median_displacement_in_percentile_scale": 0.2791854330888767,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.454322901919721,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|B1_clr_factor_1|Delta_E": {
+        "point": 2.1153083163800974,
+        "median": 2.1577444563528303,
+        "median_displacement_in_percentile_scale": 0.06668880115715867,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.182604248707805,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|B1_clr_factor_1|Delta_O": {
+        "point": 6.091398885416899,
+        "median": 5.946088845255856,
+        "median_displacement_in_percentile_scale": 0.19246438894400605,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.346786795094903,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|B1_clr_factor_1|gross_M_minus": {
+        "point": 8.236098953672867,
+        "median": 8.171283291972005,
+        "median_displacement_in_percentile_scale": 0.17586707234688867,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2629134329324134,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|B1_clr_factor_1|gross_M_plus": {
+        "point": 4.328954139034838,
+        "median": 4.457600154957767,
+        "median_displacement_in_percentile_scale": 0.2698363990889668,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.519575865973113,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|A|B1_clr_factor_1|gross_R": {
+        "point": 0.5256073492298623,
+        "median": 0.5458957195077757,
+        "median_displacement_in_percentile_scale": 0.3220764598113007,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.588790349583854,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|static_1A|Delta_A": {
+        "point": -7.703019710539552,
+        "median": -7.70321710346563,
+        "median_displacement_in_percentile_scale": 0.0003931484320017653,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0108141622415503,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|static_1A|Delta_E": {
+        "point": 5.41451964653672,
+        "median": 5.42714253489097,
+        "median_displacement_in_percentile_scale": 0.016902250790081865,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0282128773900105,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|static_1A|Delta_O": {
+        "point": 2.288500064002831,
+        "median": 2.2837646659190867,
+        "median_displacement_in_percentile_scale": 0.005456780793471548,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0083453037293122,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|static_1A|gross_M_minus": {
+        "point": 7.888824163962989,
+        "median": 7.914020685383451,
+        "median_displacement_in_percentile_scale": 0.05091473069658718,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.070240589748337,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|static_1A|gross_M_plus": {
+        "point": 6.639472911266011,
+        "median": 6.821733699899296,
+        "median_displacement_in_percentile_scale": 0.32959381411926064,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.4785482909465095,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|static_1A|gross_R": {
+        "point": 0.8416302319927282,
+        "median": 0.8609316561173145,
+        "median_displacement_in_percentile_scale": 0.22690615089248536,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.4686411299266136,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|A1_clr_trend_l100|Delta_A": {
+        "point": -9.07837462896563,
+        "median": -9.16337457494848,
+        "median_displacement_in_percentile_scale": 0.263991196174412,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3680552362561236,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|A1_clr_trend_l100|Delta_E": {
+        "point": 4.898865321732373,
+        "median": 4.821411540025554,
+        "median_displacement_in_percentile_scale": 0.1194712946099876,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0690570822710843,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|A1_clr_trend_l100|Delta_O": {
+        "point": 4.179509307233261,
+        "median": 4.345806444925167,
+        "median_displacement_in_percentile_scale": 0.2308474209773515,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2554151442605286,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|A1_clr_trend_l100|gross_M_minus": {
+        "point": 9.147528625496944,
+        "median": 9.253463957198383,
+        "median_displacement_in_percentile_scale": 0.33595660332675664,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.390727272630849,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|A1_clr_trend_l100|gross_M_plus": {
+        "point": 6.4659741183233495,
+        "median": 6.554981063656561,
+        "median_displacement_in_percentile_scale": 0.1872933522944783,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2385997915222526,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|A1_clr_trend_l100|gross_R": {
+        "point": 0.7068547564093665,
+        "median": 0.7089229469526543,
+        "median_displacement_in_percentile_scale": 0.037296306687753494,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1712853191135628,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|B1_clr_factor_1|Delta_A": {
+        "point": -9.550667056789969,
+        "median": -9.774806668426425,
+        "median_displacement_in_percentile_scale": 0.5110087089252715,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.4916826149221871,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|B1_clr_factor_1|Delta_E": {
+        "point": 4.630746570584064,
+        "median": 4.6159802546084086,
+        "median_displacement_in_percentile_scale": 0.02267145456205574,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.047061629652723,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|B1_clr_factor_1|Delta_O": {
+        "point": 4.919920486205921,
+        "median": 5.137261854471613,
+        "median_displacement_in_percentile_scale": 0.2749552575225008,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2808257542800041,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|B1_clr_factor_1|gross_M_minus": {
+        "point": 9.609564595276298,
+        "median": 9.848559186852393,
+        "median_displacement_in_percentile_scale": 0.5637490325573904,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.5789622734784645,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|B1_clr_factor_1|gross_M_plus": {
+        "point": 6.413356785754335,
+        "median": 6.515605238256349,
+        "median_displacement_in_percentile_scale": 0.21511282728404824,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2948679365299136,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|B|B1_clr_factor_1|gross_R": {
+        "point": 0.667393066789613,
+        "median": 0.6634659844853666,
+        "median_displacement_in_percentile_scale": 0.07064003400658016,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.086585701143497,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|static_1A|Delta_A": {
+        "point": -12.768454265842271,
+        "median": -12.75106005025887,
+        "median_displacement_in_percentile_scale": 0.025053251015167186,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0305584404115724,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|static_1A|Delta_E": {
+        "point": 7.326768690906242,
+        "median": 7.301545879026096,
+        "median_displacement_in_percentile_scale": 0.02733281309323919,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0427468979629502,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|static_1A|Delta_O": {
+        "point": 5.441685574936033,
+        "median": 5.454753639115709,
+        "median_displacement_in_percentile_scale": 0.011600140746483299,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0133662434353803,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|static_1A|gross_M_minus": {
+        "point": 12.924881875270927,
+        "median": 12.965852509716056,
+        "median_displacement_in_percentile_scale": 0.06044911243268385,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1547272813007408,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|static_1A|gross_M_plus": {
+        "point": 10.764610478868716,
+        "median": 10.803111439597256,
+        "median_displacement_in_percentile_scale": 0.05938353847373009,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.092789711848204,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|static_1A|gross_R": {
+        "point": 0.8328594862800688,
+        "median": 0.8303903351395767,
+        "median_displacement_in_percentile_scale": 0.03755173240462851,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0803055397944707,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|A1_clr_trend_l100|Delta_A": {
+        "point": -9.239887806586523,
+        "median": -9.31012105503363,
+        "median_displacement_in_percentile_scale": 0.17853559953835998,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1913446634420437,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|A1_clr_trend_l100|Delta_E": {
+        "point": 6.842512279547283,
+        "median": 6.749117707799675,
+        "median_displacement_in_percentile_scale": 0.12614128480121187,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1555770207284648,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|A1_clr_trend_l100|Delta_O": {
+        "point": 2.397375527039241,
+        "median": 2.5340168701978447,
+        "median_displacement_in_percentile_scale": 0.16586541629650986,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2736010154091877,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|A1_clr_trend_l100|gross_M_minus": {
+        "point": 9.242953497316863,
+        "median": 9.367586454556815,
+        "median_displacement_in_percentile_scale": 0.3300090664244073,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3773377182315298,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|A1_clr_trend_l100|gross_M_plus": {
+        "point": 10.56653052464648,
+        "median": 10.607393787151807,
+        "median_displacement_in_percentile_scale": 0.067775008354027,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1473152315534874,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|A1_clr_trend_l100|gross_R": {
+        "point": 1.143198494692615,
+        "median": 1.1323250211607507,
+        "median_displacement_in_percentile_scale": 0.14219875143379365,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0428398606985443,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|B1_clr_factor_1|Delta_A": {
+        "point": -9.538819059620929,
+        "median": -10.170419502323853,
+        "median_displacement_in_percentile_scale": 1.3967910563566868,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 7.729546130385263,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|B1_clr_factor_1|Delta_E": {
+        "point": 6.267680795469784,
+        "median": 5.697707860425481,
+        "median_displacement_in_percentile_scale": 0.7607900211242374,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 2.3006944052857916,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": true,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|B1_clr_factor_1|Delta_O": {
+        "point": 3.2711382641511513,
+        "median": 4.489511271601882,
+        "median_displacement_in_percentile_scale": 1.3789031412323054,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 6.354732385662822,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|B1_clr_factor_1|gross_M_minus": {
+        "point": 9.538819059620929,
+        "median": 10.18081595820266,
+        "median_displacement_in_percentile_scale": 1.4352367133460866,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 9.068089227108707,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|B1_clr_factor_1|gross_M_plus": {
+        "point": 10.29147871567039,
+        "median": 10.103514678376643,
+        "median_displacement_in_percentile_scale": 0.30917850431988503,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.32973395087722,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "primary_withrep|C|B1_clr_factor_1|gross_R": {
+        "point": 1.0789049096481522,
+        "median": 0.9917349103387586,
+        "median_displacement_in_percentile_scale": 1.1739284179684157,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 3.719864824717753,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": true
+      },
+      "sensitivity_raowu|A|static_1A|Delta_A": {
+        "point": -6.540343350530346,
+        "median": -6.539314817586868,
+        "median_displacement_in_percentile_scale": 0.002164759516113509,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0207799589170974,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|static_1A|Delta_E": {
+        "point": 3.461558580300229,
+        "median": 3.4098299018313925,
+        "median_displacement_in_percentile_scale": 0.06961814581308325,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0286734516191012,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|static_1A|Delta_O": {
+        "point": 3.078784770230119,
+        "median": 3.104943654000281,
+        "median_displacement_in_percentile_scale": 0.030274953064400506,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.008611049188403,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|static_1A|gross_M_minus": {
+        "point": 6.706875432345153,
+        "median": 6.778155981512535,
+        "median_displacement_in_percentile_scale": 0.15979575610617974,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1789143465016694,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|static_1A|gross_M_plus": {
+        "point": 4.749932539117352,
+        "median": 4.954643046292026,
+        "median_displacement_in_percentile_scale": 0.3427458929186103,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.6389784073356524,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|static_1A|gross_R": {
+        "point": 0.7082183927570683,
+        "median": 0.7336295130260401,
+        "median_displacement_in_percentile_scale": 0.26001261169794315,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.6079751352354963,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100|Delta_A": {
+        "point": -7.997675402710741,
+        "median": -8.050973616152241,
+        "median_displacement_in_percentile_scale": 0.15811166718328035,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1680369726860977,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100|Delta_E": {
+        "point": 2.3190364420537524,
+        "median": 2.2219524132348303,
+        "median_displacement_in_percentile_scale": 0.14987899795933865,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1800398090647737,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100|Delta_O": {
+        "point": 5.678638960656985,
+        "median": 5.82303207442765,
+        "median_displacement_in_percentile_scale": 0.20931231970908568,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1980299010147861,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100|gross_M_minus": {
+        "point": 8.031988773194424,
+        "median": 8.114433555555669,
+        "median_displacement_in_percentile_scale": 0.2557748394892235,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.307463398752432,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100|gross_M_plus": {
+        "point": 4.403339566729763,
+        "median": 4.497908508084166,
+        "median_displacement_in_percentile_scale": 0.20228310234174254,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.279731537766393,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100|gross_R": {
+        "point": 0.5482253139378453,
+        "median": 0.5540261227679064,
+        "median_displacement_in_percentile_scale": 0.09494474192472373,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1846403043829787,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1|Delta_A": {
+        "point": -8.206707201797002,
+        "median": -8.103222671240529,
+        "median_displacement_in_percentile_scale": 0.2658478527528148,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3560096345019907,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1|Delta_E": {
+        "point": 2.1153083163800974,
+        "median": 2.146547852518008,
+        "median_displacement_in_percentile_scale": 0.04749623568458116,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0364727979629869,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1|Delta_O": {
+        "point": 6.091398885416899,
+        "median": 5.960178268912046,
+        "median_displacement_in_percentile_scale": 0.1713798808000698,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1337830932020618,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1|gross_M_minus": {
+        "point": 8.236098953672867,
+        "median": 8.17583486250464,
+        "median_displacement_in_percentile_scale": 0.1605924711202672,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.208674785237987,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1|gross_M_plus": {
+        "point": 4.328954139034838,
+        "median": 4.455307841881254,
+        "median_displacement_in_percentile_scale": 0.26780615721168194,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.4169249997245816,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1|gross_R": {
+        "point": 0.5256073492298623,
+        "median": 0.5460855806278179,
+        "median_displacement_in_percentile_scale": 0.3189914738896735,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.564838691762298,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|static_1A|Delta_A": {
+        "point": -7.703019710539552,
+        "median": -7.693699321651672,
+        "median_displacement_in_percentile_scale": 0.018613583544512324,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0644566411048242,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|static_1A|Delta_E": {
+        "point": 5.41451964653672,
+        "median": 5.427842733674504,
+        "median_displacement_in_percentile_scale": 0.016769224676300983,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.039616329984761,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|static_1A|Delta_O": {
+        "point": 2.288500064002831,
+        "median": 2.2559266003235283,
+        "median_displacement_in_percentile_scale": 0.03761566079540115,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0802374910539077,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|static_1A|gross_M_minus": {
+        "point": 7.888824163962989,
+        "median": 7.917161739845008,
+        "median_displacement_in_percentile_scale": 0.057553853411334545,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1397882395383838,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|static_1A|gross_M_plus": {
+        "point": 6.639472911266011,
+        "median": 6.837962815947003,
+        "median_displacement_in_percentile_scale": 0.34876745622905686,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.5052070932699508,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|static_1A|gross_R": {
+        "point": 0.8416302319927282,
+        "median": 0.8614853663726288,
+        "median_displacement_in_percentile_scale": 0.22297899589597275,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.547478375008411,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100|Delta_A": {
+        "point": -9.07837462896563,
+        "median": -9.154516041830728,
+        "median_displacement_in_percentile_scale": 0.2290048847282826,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3742801848402577,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100|Delta_E": {
+        "point": 4.898865321732373,
+        "median": 4.841694255885611,
+        "median_displacement_in_percentile_scale": 0.0885373895135991,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1224846042860284,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100|Delta_O": {
+        "point": 4.179509307233261,
+        "median": 4.308899093392717,
+        "median_displacement_in_percentile_scale": 0.17857181097508423,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1981438932463389,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100|gross_M_minus": {
+        "point": 9.147528625496944,
+        "median": 9.23592183314602,
+        "median_displacement_in_percentile_scale": 0.2779694634153584,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.4972832078424336,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100|gross_M_plus": {
+        "point": 6.4659741183233495,
+        "median": 6.564732882878177,
+        "median_displacement_in_percentile_scale": 0.20091336668033616,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2388596887323515,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100|gross_R": {
+        "point": 0.7068547564093665,
+        "median": 0.7097240024053105,
+        "median_displacement_in_percentile_scale": 0.04932907417112929,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2013874067859376,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1|Delta_A": {
+        "point": -9.550667056789969,
+        "median": -9.768192452582156,
+        "median_displacement_in_percentile_scale": 0.49800251374277676,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.5129982502930688,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1|Delta_E": {
+        "point": 4.630746570584064,
+        "median": 4.646760462018958,
+        "median_displacement_in_percentile_scale": 0.024566275079263542,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0024909261302433,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1|Delta_O": {
+        "point": 4.919920486205921,
+        "median": 5.105618607299964,
+        "median_displacement_in_percentile_scale": 0.23389948269829405,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.2445411213500994,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1|gross_M_minus": {
+        "point": 9.609564595276298,
+        "median": 9.84139489808043,
+        "median_displacement_in_percentile_scale": 0.5497450837864679,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.5785656454292458,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1|gross_M_plus": {
+        "point": 6.413356785754335,
+        "median": 6.530446321601414,
+        "median_displacement_in_percentile_scale": 0.24284848513516724,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.295568071498264,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1|gross_R": {
+        "point": 0.667393066789613,
+        "median": 0.6640291605558168,
+        "median_displacement_in_percentile_scale": 0.05893112513523389,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.069717093479025,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|static_1A|Delta_A": {
+        "point": -12.768454265842271,
+        "median": -12.748754732925931,
+        "median_displacement_in_percentile_scale": 0.027540284183988063,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0283136912586988,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|static_1A|Delta_E": {
+        "point": 7.326768690906242,
+        "median": 7.345492870205907,
+        "median_displacement_in_percentile_scale": 0.019787264720978668,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0153041958008187,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|static_1A|Delta_O": {
+        "point": 5.441685574936033,
+        "median": 5.40591312237568,
+        "median_displacement_in_percentile_scale": 0.03182949671580068,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0027406624792226,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|static_1A|gross_M_minus": {
+        "point": 12.924881875270927,
+        "median": 12.975323934153227,
+        "median_displacement_in_percentile_scale": 0.07221476734724794,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0918505059985077,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|static_1A|gross_M_plus": {
+        "point": 10.764610478868716,
+        "median": 10.787294163378888,
+        "median_displacement_in_percentile_scale": 0.03521843991899186,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0014439976139582,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|static_1A|gross_R": {
+        "point": 0.8328594862800688,
+        "median": 0.8317555869016506,
+        "median_displacement_in_percentile_scale": 0.017120837346878533,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1026566472625081,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100|Delta_A": {
+        "point": -9.239887806586523,
+        "median": -9.305792874424014,
+        "median_displacement_in_percentile_scale": 0.1659600024630519,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1008769368710662,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100|Delta_E": {
+        "point": 6.842512279547283,
+        "median": 6.740745951541291,
+        "median_displacement_in_percentile_scale": 0.13548466598586023,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1412316529354867,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100|Delta_O": {
+        "point": 2.397375527039241,
+        "median": 2.5385333731473176,
+        "median_displacement_in_percentile_scale": 0.17499166643068972,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.1794295378166242,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100|gross_M_minus": {
+        "point": 9.242953497316863,
+        "median": 9.351726098116266,
+        "median_displacement_in_percentile_scale": 0.28325608231562566,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.3053530298073799,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100|gross_M_plus": {
+        "point": 10.56653052464648,
+        "median": 10.609344618427963,
+        "median_displacement_in_percentile_scale": 0.0732620770326099,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0596623887079104,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100|gross_R": {
+        "point": 1.143198494692615,
+        "median": 1.1341540467113491,
+        "median_displacement_in_percentile_scale": 0.11679773545681327,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.0199059794820988,
+        "point_inside_interval": true,
+        "flag_median": false,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1|Delta_A": {
+        "point": -9.538819059620929,
+        "median": -10.167408051107722,
+        "median_displacement_in_percentile_scale": 1.4798696397220807,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 5.9491256034042,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1|Delta_E": {
+        "point": 6.267680795469784,
+        "median": 5.68245029235945,
+        "median_displacement_in_percentile_scale": 0.788423793412335,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 2.2569386813280055,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": true,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1|Delta_O": {
+        "point": 3.2711382641511513,
+        "median": 4.468964102158656,
+        "median_displacement_in_percentile_scale": 1.4024770569544436,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 5.440418136626486,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1|gross_M_minus": {
+        "point": 9.538819059620929,
+        "median": 10.17502329294585,
+        "median_displacement_in_percentile_scale": 1.5067554854562861,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 6.205485212296706,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1|gross_M_plus": {
+        "point": 10.29147871567039,
+        "median": 10.098003596756536,
+        "median_displacement_in_percentile_scale": 0.33091893722377086,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 1.382107434047353,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": false,
+        "sign_boundary_failure": false,
+        "is_ratio": false,
+        "ratio_only_diagnostic": false
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1|gross_R": {
+        "point": 1.0789049096481522,
+        "median": 0.9909894132688519,
+        "median_displacement_in_percentile_scale": 1.1982575876928165,
+        "scale_basis": "percentile-interval width / 3.92, NOT the replicate standard deviation",
+        "asymmetry_ratio": 3.2756680790786965,
+        "point_inside_interval": true,
+        "flag_median": true,
+        "asym_inspect_2to3": false,
+        "asym_targeted_diagnostic_gt3": true,
+        "sign_boundary_failure": false,
+        "is_ratio": true,
+        "ratio_only_diagnostic": true
+      }
+    },
+    "c4_direction": {
+      "primary_withrep|A|static_1A": {
+        "Delta_A_ci": [
+          -7.472763354274896,
+          -5.621087756799908
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          2.0689114900545014,
+          4.8626564963288175
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          1.450538325753474,
+          4.638710707336636
+        ],
+        "Delta_O_point": 3.078784770230119,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|A|A1_clr_trend_l100": {
+        "Delta_A_ci": [
+          -8.70286864795159,
+          -7.390255578188681
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          1.0540693662152874,
+          3.496173938508658
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          4.453196854788325,
+          7.098956909311909
+        ],
+        "Delta_O_point": 5.678638960656985,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|A|B1_clr_factor_1": {
+        "Delta_A_ci": [
+          -8.810883716889084,
+          -7.328039459096542
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          0.9724456823566192,
+          3.466862523065656
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          4.392934211974393,
+          7.352522531437516
+        ],
+        "Delta_O_point": 6.091398885416899,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|B|static_1A": {
+        "Delta_A_ci": [
+          -8.69239369579793,
+          -6.724230510490778
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          3.9711195469482488,
+          6.898642216159609
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          0.5805430031231127,
+          3.9823216691245378
+        ],
+        "Delta_O_point": 2.288500064002831,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|B|A1_clr_trend_l100": {
+        "Delta_A_ci": [
+          -9.807541749424239,
+          -8.5453792490027
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          3.5857781847795147,
+          6.127131949145159
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          2.9274660837359936,
+          5.751343331280501
+        ],
+        "Delta_O_point": 4.179509307233261,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|B|B1_clr_factor_1": {
+        "Delta_A_ci": [
+          -10.580009988316458,
+          -8.860612134094376
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          3.3835126264473727,
+          5.936677376690021
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          3.561374551552659,
+          6.659981107682219
+        ],
+        "Delta_O_point": 4.919920486205921,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|C|static_1A": {
+        "Delta_A_ci": [
+          -14.149741369522971,
+          -11.42812551832451
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          5.480225020410913,
+          9.097614208742478
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          3.248318680077058,
+          7.664369545654797
+        ],
+        "Delta_O_point": 5.441685574936033,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|C|A1_clr_trend_l100": {
+        "Delta_A_ci": [
+          -10.078248155976672,
+          -8.536178481219714
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          5.286597508556568,
+          8.188951974246198
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          0.977016643724487,
+          4.2063460430743715
+        ],
+        "Delta_O_point": 2.397375527039241,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "primary_withrep|C|B1_clr_factor_1": {
+        "Delta_A_ci": [
+          -11.108312035137223,
+          -9.335767942641818
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          4.2206276748782265,
+          7.157435260855756
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          2.800198133365156,
+          6.263836764965199
+        ],
+        "Delta_O_point": 3.2711382641511513,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|A|static_1A": {
+        "Delta_A_ci": [
+          -7.462013644200878,
+          -5.599520786022231
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          2.0257952656415577,
+          4.938490184898246
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          1.3779987761176204,
+          4.765050249357149
+        ],
+        "Delta_O_point": 3.078784770230119,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|A|A1_clr_trend_l100": {
+        "Delta_A_ci": [
+          -8.709584768523948,
+          -7.388183252666851
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          0.9445979445869875,
+          3.483775535522183
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          4.448358399687697,
+          7.152551859335437
+        ],
+        "Delta_O_point": 5.678638960656985,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0005002501250625312
+      },
+      "sensitivity_raowu|A|B1_clr_factor_1": {
+        "Delta_A_ci": [
+          -8.854373474846941,
+          -7.328465495599287
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          0.8492525393941494,
+          3.4275406899299266
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          4.496592333192309,
+          7.498022922930541
+        ],
+        "Delta_O_point": 6.091398885416899,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0005002501250625312
+      },
+      "sensitivity_raowu|B|static_1A": {
+        "Delta_A_ci": [
+          -8.715093825540134,
+          -6.75223028810697
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          3.887553279400459,
+          7.001978817149082
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          0.5257625798033868,
+          3.9203055686235526
+        ],
+        "Delta_O_point": 2.288500064002831,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|B|A1_clr_trend_l100": {
+        "Delta_A_ci": [
+          -9.83278138465186,
+          -8.529427795555586
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          3.560201620406476,
+          6.091455132064223
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          2.8873470825564636,
+          5.7277055858133705
+        ],
+        "Delta_O_point": 4.179509307233261,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|B|B1_clr_factor_1": {
+        "Delta_A_ci": [
+          -10.581553288209655,
+          -8.869313835647775
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          3.351502154546919,
+          5.906812400900563
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          3.5333666111651056,
+          6.645543800661543
+        ],
+        "Delta_O_point": 4.919920486205921,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|C|static_1A": {
+        "Delta_A_ci": [
+          -14.150869326192153,
+          -11.346897932282268
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          5.45798658860707,
+          9.167381691451537
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          3.2358714026642486,
+          7.641470878164912
+        ],
+        "Delta_O_point": 5.441685574936033,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|C|A1_clr_trend_l100": {
+        "Delta_A_ci": [
+          -10.055604980223949,
+          -8.498917452574137
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          5.273197083139821,
+          8.217618895606218
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          0.9464975437150996,
+          4.108583876339549
+        ],
+        "Delta_O_point": 2.397375527039241,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      },
+      "sensitivity_raowu|C|B1_clr_factor_1": {
+        "Delta_A_ci": [
+          -10.96427026050167,
+          -9.299212217219573
+        ],
+        "Delta_A_entirely_below_0": true,
+        "Delta_E_ci": [
+          4.25134213688008,
+          7.161076205487423
+        ],
+        "Delta_E_entirely_above_0": true,
+        "Delta_O_ci": [
+          2.7512980005713197,
+          6.09928666227956
+        ],
+        "Delta_O_point": 3.2711382641511513,
+        "P_Delta_A_ge_0": 0.0,
+        "P_Delta_E_le_0": 0.0
+      }
+    },
+    "c5_design_comparison": {
+      "A|static_1A|Delta_A": {
+        "width_primary": 1.8516755974749879,
+        "width_raowu": 1.8624928581786468,
+        "rel_width_diff": -0.005807947480795864,
+        "sign_conclusion_differs": false
+      },
+      "A|static_1A|Delta_E": {
+        "width_primary": 2.793745006274316,
+        "width_raowu": 2.912694919256688,
+        "rel_width_diff": -0.04083843872420659,
+        "sign_conclusion_differs": false
+      },
+      "A|static_1A|Delta_O": {
+        "width_primary": 3.188172381583162,
+        "width_raowu": 3.387051473239528,
+        "rel_width_diff": -0.0587174695240604,
+        "sign_conclusion_differs": false
+      },
+      "A|A1_clr_trend_l100|Delta_A": {
+        "width_primary": 1.312613069762909,
+        "width_raowu": 1.3214015158570973,
+        "rel_width_diff": -0.006650852135951915,
+        "sign_conclusion_differs": false
+      },
+      "A|A1_clr_trend_l100|Delta_E": {
+        "width_primary": 2.4421045722933705,
+        "width_raowu": 2.5391775909351955,
+        "rel_width_diff": -0.0382301021355786,
+        "sign_conclusion_differs": false
+      },
+      "A|A1_clr_trend_l100|Delta_O": {
+        "width_primary": 2.645760054523584,
+        "width_raowu": 2.7041934596477404,
+        "rel_width_diff": -0.02160844111048482,
+        "sign_conclusion_differs": false
+      },
+      "A|B1_clr_factor_1|Delta_A": {
+        "width_primary": 1.482844257792542,
+        "width_raowu": 1.5259079792476538,
+        "rel_width_diff": -0.028221702776824207,
+        "sign_conclusion_differs": false
+      },
+      "A|B1_clr_factor_1|Delta_E": {
+        "width_primary": 2.494416840709037,
+        "width_raowu": 2.5782881505357773,
+        "rel_width_diff": -0.03252984341929034,
+        "sign_conclusion_differs": false
+      },
+      "A|B1_clr_factor_1|Delta_O": {
+        "width_primary": 2.9595883194631227,
+        "width_raowu": 3.0014305897382316,
+        "rel_width_diff": -0.013940775581539652,
+        "sign_conclusion_differs": false
+      },
+      "B|static_1A|Delta_A": {
+        "width_primary": 1.9681631853071524,
+        "width_raowu": 1.9628635374331633,
+        "rel_width_diff": 0.0026999573698940965,
+        "sign_conclusion_differs": false
+      },
+      "B|static_1A|Delta_E": {
+        "width_primary": 2.9275226692113603,
+        "width_raowu": 3.114425537748623,
+        "rel_width_diff": -0.060011988173065293,
+        "sign_conclusion_differs": false
+      },
+      "B|static_1A|Delta_O": {
+        "width_primary": 3.401778666001425,
+        "width_raowu": 3.3945429888201657,
+        "rel_width_diff": 0.0021315615106627535,
+        "sign_conclusion_differs": false
+      },
+      "B|A1_clr_trend_l100|Delta_A": {
+        "width_primary": 1.2621625004215389,
+        "width_raowu": 1.3033535890962735,
+        "rel_width_diff": -0.03160392469037964,
+        "sign_conclusion_differs": false
+      },
+      "B|A1_clr_trend_l100|Delta_E": {
+        "width_primary": 2.5413537643656445,
+        "width_raowu": 2.5312535116577473,
+        "rel_width_diff": 0.0039902177562936006,
+        "sign_conclusion_differs": false
+      },
+      "B|A1_clr_trend_l100|Delta_O": {
+        "width_primary": 2.8238772475445075,
+        "width_raowu": 2.840358503256907,
+        "rel_width_diff": -0.005802526580183859,
+        "sign_conclusion_differs": false
+      },
+      "B|B1_clr_factor_1|Delta_A": {
+        "width_primary": 1.7193978542220822,
+        "width_raowu": 1.7122394525618798,
+        "rel_width_diff": 0.004180724634917105,
+        "sign_conclusion_differs": false
+      },
+      "B|B1_clr_factor_1|Delta_E": {
+        "width_primary": 2.553164750242648,
+        "width_raowu": 2.555310246353644,
+        "rel_width_diff": -0.0008396225523133507,
+        "sign_conclusion_differs": false
+      },
+      "B|B1_clr_factor_1|Delta_O": {
+        "width_primary": 3.09860655612956,
+        "width_raowu": 3.1121771894964376,
+        "rel_width_diff": -0.004360495094134879,
+        "sign_conclusion_differs": false
+      },
+      "C|static_1A|Delta_A": {
+        "width_primary": 2.721615851198461,
+        "width_raowu": 2.803971393909885,
+        "rel_width_diff": -0.029371035271721017,
+        "sign_conclusion_differs": false
+      },
+      "C|static_1A|Delta_E": {
+        "width_primary": 3.6173891883315648,
+        "width_raowu": 3.709395102844467,
+        "rel_width_diff": -0.024803481959187766,
+        "sign_conclusion_differs": false
+      },
+      "C|static_1A|Delta_O": {
+        "width_primary": 4.416050865577739,
+        "width_raowu": 4.405599475500663,
+        "rel_width_diff": 0.0023722969224040896,
+        "sign_conclusion_differs": false
+      },
+      "C|A1_clr_trend_l100|Delta_A": {
+        "width_primary": 1.5420696747569576,
+        "width_raowu": 1.556687527649812,
+        "rel_width_diff": -0.00939035781633296,
+        "sign_conclusion_differs": false
+      },
+      "C|A1_clr_trend_l100|Delta_E": {
+        "width_primary": 2.90235446568963,
+        "width_raowu": 2.9444218124663974,
+        "rel_width_diff": -0.014287133249271052,
+        "sign_conclusion_differs": false
+      },
+      "C|A1_clr_trend_l100|Delta_O": {
+        "width_primary": 3.2293293993498846,
+        "width_raowu": 3.1620863326244493,
+        "rel_width_diff": 0.02126541139363053,
+        "sign_conclusion_differs": false
+      },
+      "C|B1_clr_factor_1|Delta_A": {
+        "width_primary": 1.772544092495405,
+        "width_raowu": 1.665058043282098,
+        "rel_width_diff": 0.06455393530992747,
+        "sign_conclusion_differs": false
+      },
+      "C|B1_clr_factor_1|Delta_E": {
+        "width_primary": 2.9368075859775296,
+        "width_raowu": 2.909734068607343,
+        "rel_width_diff": 0.009304464508381792,
+        "sign_conclusion_differs": false
+      },
+      "C|B1_clr_factor_1|Delta_O": {
+        "width_primary": 3.463638631600043,
+        "width_raowu": 3.3479886617082406,
+        "rel_width_diff": 0.034543118743058814,
+        "sign_conclusion_differs": false
+      }
+    },
+    "c6_se_rerun": {
+      "2015|S2_affected_zone": {
+        "taylor": [
+          0.004349,
+          0.004348606866505295,
+          true
+        ],
+        "boot_withrep": [
+          0.004186,
+          0.004185555299656873,
+          true
+        ],
+        "boot_raowu": [
+          0.004408,
+          0.004407604715753237,
+          true
+        ],
+        "mc_error_withrep_context_only": 6.621255465555946e-05,
+        "reproduces_to_6dp": true,
+        "source": "recovered from preserved execution log"
+      },
+      "2019|S1_bin_1500": {
+        "taylor": [
+          0.003657,
+          0.0036574859192466157,
+          true
+        ],
+        "boot_withrep": [
+          0.003636,
+          0.0036364353499054756,
+          true
+        ],
+        "boot_raowu": [
+          0.003757,
+          0.0037570420566863036,
+          true
+        ],
+        "mc_error_withrep_context_only": 5.7525861473330316e-05,
+        "reproduces_to_6dp": true,
+        "source": "recovered from preserved execution log"
+      },
+      "2019|S2_affected_zone": {
+        "taylor": [
+          0.002192,
+          0.0021924262490370943,
+          true
+        ],
+        "boot_withrep": [
+          0.002227,
+          0.0022265805413686935,
+          true
+        ],
+        "boot_raowu": [
+          0.002152,
+          0.002151789542149693,
+          true
+        ],
+        "mc_error_withrep_context_only": 3.522294540045039e-05,
+        "reproduces_to_6dp": true,
+        "source": "recovered from preserved execution log"
+      },
+      "2022|S1_bin_1500": {
+        "taylor": [
+          0.003788,
+          0.0037877459866061474,
+          true
+        ],
+        "boot_withrep": [
+          0.00381,
+          0.0038098633290030316,
+          true
+        ],
+        "boot_raowu": [
+          0.003798,
+          0.0037983947291392595,
+          true
+        ],
+        "mc_error_withrep_context_only": 6.026937069079102e-05,
+        "reproduces_to_6dp": true,
+        "source": "recovered from preserved execution log"
+      },
+      "2022|S2_affected_zone": {
+        "taylor": [
+          0.005049,
+          0.005049005718121016,
+          true
+        ],
+        "boot_withrep": [
+          0.005086,
+          0.00508550136217386,
+          true
+        ],
+        "boot_raowu": [
+          0.005044,
+          0.005044242845647684,
+          true
+        ],
+        "mc_error_withrep_context_only": 8.044907133862575e-05,
+        "reproduces_to_6dp": true,
+        "source": "recovered from preserved execution log"
+      },
+      "_note": "pre-fix JSON overwritten by a smoke-test export; five statistics recovered from the execution log; the sixth is not reconstructed"
+    }
+  },
+  "verdict": {
+    "qualitative_gate_events_A_B": {
+      "A": true,
+      "B": true
+    },
+    "ratio_only_diagnostics": [
+      "primary_withrep C B1_clr_factor_1: disp=1.17 asym=3.72",
+      "sensitivity_raowu C B1_clr_factor_1: disp=1.20 asym=3.28"
+    ],
+    "all_checks_passed": false,
+    "failures": [
+      "check3 primary_withrep A static_1A gross_M_plus: disp=0.37 asym=1.76 inside=True signFail=False",
+      "check3 primary_withrep A B1_clr_factor_1 Delta_A: disp=0.28 asym=1.45 inside=True signFail=False",
+      "check3 primary_withrep A B1_clr_factor_1 gross_M_plus: disp=0.27 asym=1.52 inside=True signFail=False",
+      "check3 primary_withrep B static_1A gross_M_plus: disp=0.33 asym=1.48 inside=True signFail=False",
+      "check3 primary_withrep B A1_clr_trend_l100 Delta_A: disp=0.26 asym=1.37 inside=True signFail=False",
+      "check3 primary_withrep B A1_clr_trend_l100 gross_M_minus: disp=0.34 asym=1.39 inside=True signFail=False",
+      "check3 primary_withrep B B1_clr_factor_1 Delta_A: disp=0.51 asym=1.49 inside=True signFail=False",
+      "check3 primary_withrep B B1_clr_factor_1 Delta_O: disp=0.27 asym=1.28 inside=True signFail=False",
+      "check3 primary_withrep B B1_clr_factor_1 gross_M_minus: disp=0.56 asym=1.58 inside=True signFail=False",
+      "check3 primary_withrep C A1_clr_trend_l100 gross_M_minus: disp=0.33 asym=1.38 inside=True signFail=False",
+      "check3 primary_withrep C B1_clr_factor_1 Delta_A: disp=1.40 asym=7.73 inside=True signFail=False",
+      "check3 primary_withrep C B1_clr_factor_1 Delta_E: disp=0.76 asym=2.30 inside=True signFail=False",
+      "check3 primary_withrep C B1_clr_factor_1 Delta_O: disp=1.38 asym=6.35 inside=True signFail=False",
+      "check3 primary_withrep C B1_clr_factor_1 gross_M_minus: disp=1.44 asym=9.07 inside=True signFail=False",
+      "check3 primary_withrep C B1_clr_factor_1 gross_M_plus: disp=0.31 asym=1.33 inside=True signFail=False",
+      "check3 sensitivity_raowu A static_1A gross_M_plus: disp=0.34 asym=1.64 inside=True signFail=False",
+      "check3 sensitivity_raowu A A1_clr_trend_l100 gross_M_minus: disp=0.26 asym=1.31 inside=True signFail=False",
+      "check3 sensitivity_raowu A B1_clr_factor_1 Delta_A: disp=0.27 asym=1.36 inside=True signFail=False",
+      "check3 sensitivity_raowu A B1_clr_factor_1 gross_M_plus: disp=0.27 asym=1.42 inside=True signFail=False",
+      "check3 sensitivity_raowu B static_1A gross_M_plus: disp=0.35 asym=1.51 inside=True signFail=False",
+      "check3 sensitivity_raowu B A1_clr_trend_l100 gross_M_minus: disp=0.28 asym=1.50 inside=True signFail=False",
+      "check3 sensitivity_raowu B B1_clr_factor_1 Delta_A: disp=0.50 asym=1.51 inside=True signFail=False",
+      "check3 sensitivity_raowu B B1_clr_factor_1 gross_M_minus: disp=0.55 asym=1.58 inside=True signFail=False",
+      "check3 sensitivity_raowu C A1_clr_trend_l100 gross_M_minus: disp=0.28 asym=1.31 inside=True signFail=False",
+      "check3 sensitivity_raowu C B1_clr_factor_1 Delta_A: disp=1.48 asym=5.95 inside=True signFail=False",
+      "check3 sensitivity_raowu C B1_clr_factor_1 Delta_E: disp=0.79 asym=2.26 inside=True signFail=False",
+      "check3 sensitivity_raowu C B1_clr_factor_1 Delta_O: disp=1.40 asym=5.44 inside=True signFail=False",
+      "check3 sensitivity_raowu C B1_clr_factor_1 gross_M_minus: disp=1.51 asym=6.21 inside=True signFail=False",
+      "check3 sensitivity_raowu C B1_clr_factor_1 gross_M_plus: disp=0.33 asym=1.38 inside=True signFail=False"
+    ]
+  }
+}

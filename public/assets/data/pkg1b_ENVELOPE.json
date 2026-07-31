@@ -1,0 +1,447 @@
+{
+  "_meta": {
+    "aggregation": "SIGNED zone sums; legacy positive/negative-part figures reported alongside",
+    "R_rules": [
+      "R is secondary and descriptive",
+      "R undefined when M_minus <= 0",
+      "artificial-threshold percentile of R is NOT validation evidence",
+      "R is not a causal fraction of displaced workers"
+    ],
+    "model_selection": "NONE. Clean temporal validation infeasible (pkg1b_FOLDS.json).",
+    "ridge_grid": [
+      0.0,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "n_factors": [
+      1,
+      2,
+      3
+    ],
+    "training_windows": {
+      "A": [
+        2013,
+        2014,
+        2015
+      ],
+      "B": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "C": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ]
+    }
+  },
+  "events": {
+    "A": {
+      "train_years": [
+        2013,
+        2014,
+        2015
+      ],
+      "post": 2017,
+      "n_affected_bins": 9,
+      "n_excess_bins": 10,
+      "models": {
+        "legacy_pre_period": {
+          "M_minus_pp": 6.540343350530346,
+          "M_plus_pp": 3.461558580300229,
+          "M_other_pp": 3.078784770230119,
+          "R": 0.529262516473166,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 6.706875432345153,
+          "legacy_parts_M_plus_pp": 4.749932539117352,
+          "legacy_parts_R": 0.7082183927570683
+        },
+        "A_ridge_0.0": {
+          "M_minus_pp": 2.8120196281510945,
+          "M_plus_pp": 6.604744568882778,
+          "M_other_pp": -3.7927249407316865,
+          "R": 2.348754789178127,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 3.9964981359658203,
+          "legacy_parts_M_plus_pp": 7.354321476722834,
+          "legacy_parts_R": 1.8401913941955437
+        },
+        "A_ridge_0.1": {
+          "M_minus_pp": 3.0636842466735934,
+          "M_plus_pp": 6.403625964854473,
+          "M_other_pp": -3.3399417181808797,
+          "R": 2.090171652580462,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 4.151938377181409,
+          "legacy_parts_M_plus_pp": 7.179632851694262,
+          "legacy_parts_R": 1.729224328364969
+        },
+        "A_ridge_1.0": {
+          "M_minus_pp": 4.573671957808583,
+          "M_plus_pp": 5.196914340684629,
+          "M_other_pp": -0.6232423828760473,
+          "R": 1.1362673992855985,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 5.096566762582752,
+          "legacy_parts_M_plus_pp": 6.131691583346506,
+          "legacy_parts_R": 1.203102376361139
+        },
+        "A_ridge_10.0": {
+          "M_minus_pp": 7.216150452294815,
+          "M_plus_pp": 3.0851689983874033,
+          "M_other_pp": 4.1309814539074114,
+          "R": 0.427536678840487,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.284080533514799,
+          "legacy_parts_M_plus_pp": 4.712189816840942,
+          "legacy_parts_R": 0.6469162161455623
+        },
+        "A_ridge_100.0": {
+          "M_minus_pp": 7.993350009496648,
+          "M_plus_pp": 2.4640674271235135,
+          "M_other_pp": 5.529282582373132,
+          "R": 0.30826467303396354,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 8.019289017037359,
+          "legacy_parts_M_plus_pp": 4.468049204141535,
+          "legacy_parts_R": 0.5571627602707614
+        },
+        "B_factors_1": {
+          "M_minus_pp": 4.65831034228551,
+          "M_plus_pp": 5.1641352123490805,
+          "M_other_pp": -5.163993300367347,
+          "R": 1.1085854811930365,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 5.1398701514280445,
+          "legacy_parts_M_plus_pp": 6.127336773205042,
+          "legacy_parts_R": 1.1921189821308313
+        },
+        "B_factors_2": {
+          "M_minus_pp": 4.457576548287494,
+          "M_plus_pp": 5.55903356281411,
+          "M_other_pp": -5.745028804264512,
+          "R": 1.247097722853413,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 4.848670136671863,
+          "legacy_parts_M_plus_pp": 6.567734005269216,
+          "legacy_parts_R": 1.3545433737790464
+        },
+        "B_factors_3": {
+          "M_minus_pp": 4.457576548287494,
+          "M_plus_pp": 5.55903356281411,
+          "M_other_pp": -5.745028804264512,
+          "R": 1.247097722853413,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 4.848670136671863,
+          "legacy_parts_M_plus_pp": 6.567734005269216,
+          "legacy_parts_R": 1.3545433737790464
+        },
+        "C_independent_trend": {
+          "M_minus_pp": 2.8120196281510945,
+          "M_plus_pp": 6.604744568882778,
+          "M_other_pp": -3.7927249407316865,
+          "R": 2.348754789178127,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 3.9964981359658203,
+          "legacy_parts_M_plus_pp": 7.354321476722834,
+          "legacy_parts_R": 1.8401913941955437
+        }
+      },
+      "envelope": {
+        "M_minus_range": [
+          2.8120196281510945,
+          7.993350009496648
+        ],
+        "M_plus_range": [
+          2.4640674271235135,
+          6.604744568882778
+        ],
+        "R_range": [
+          0.30826467303396354,
+          2.348754789178127
+        ],
+        "n_models": 10,
+        "n_R_undefined": 0,
+        "all_M_minus_positive": true,
+        "all_M_plus_positive": true
+      }
+    },
+    "B": {
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "post": 2019,
+      "n_affected_bins": 8,
+      "n_excess_bins": 10,
+      "models": {
+        "legacy_pre_period": {
+          "M_minus_pp": 7.703019710539552,
+          "M_plus_pp": 5.41451964653672,
+          "M_other_pp": 2.288500064002831,
+          "R": 0.7029087098308182,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.888824163962989,
+          "legacy_parts_M_plus_pp": 6.639472911266009,
+          "legacy_parts_R": 0.841630231992728
+        },
+        "A_ridge_0.0": {
+          "M_minus_pp": 3.9352889413731362,
+          "M_plus_pp": 7.344562825869355,
+          "M_other_pp": -3.409273884496221,
+          "R": 1.8663338157087455,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.898285056303801,
+          "legacy_parts_M_plus_pp": 7.604285170271222,
+          "legacy_parts_R": 0.9627767440733314
+        },
+        "A_ridge_0.1": {
+          "M_minus_pp": 4.005246415183411,
+          "M_plus_pp": 7.32176675820594,
+          "M_other_pp": -3.316520343022534,
+          "R": 1.8280440200757677,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.873803091091984,
+          "legacy_parts_M_plus_pp": 7.588096562770816,
+          "legacy_parts_R": 0.9637142909194159
+        },
+        "A_ridge_1.0": {
+          "M_minus_pp": 4.577625746358384,
+          "M_plus_pp": 7.135253477323461,
+          "M_other_pp": -2.557627730965083,
+          "R": 1.5587236424908117,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.673496102995285,
+          "legacy_parts_M_plus_pp": 7.455644319585692,
+          "legacy_parts_R": 0.9716098398323866
+        },
+        "A_ridge_10.0": {
+          "M_minus_pp": 7.468141368791984,
+          "M_plus_pp": 6.193361408866931,
+          "M_other_pp": 1.274779959925049,
+          "R": 0.829304254301863,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.631516240845065,
+          "legacy_parts_M_plus_pp": 6.85763602603008,
+          "legacy_parts_R": 0.8985941731116213
+        },
+        "A_ridge_100.0": {
+          "M_minus_pp": 10.358656991225585,
+          "M_plus_pp": 5.2514693404104,
+          "M_other_pp": 5.10718765081518,
+          "R": 0.5069643048185412,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 10.408238090516289,
+          "legacy_parts_M_plus_pp": 6.540784867084587,
+          "legacy_parts_R": 0.6284238321800476
+        },
+        "B_factors_1": {
+          "M_minus_pp": 4.6218854860976215,
+          "M_plus_pp": 7.091470937017083,
+          "M_other_pp": -5.30215776989683,
+          "R": 1.5343242402581887,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.6820635584878145,
+          "legacy_parts_M_plus_pp": 7.426722225842809,
+          "legacy_parts_R": 0.966761361618405
+        },
+        "B_factors_2": {
+          "M_minus_pp": 5.0649536773852635,
+          "M_plus_pp": 6.278959553309182,
+          "M_other_pp": -4.183560335831247,
+          "R": 1.2396874588102134,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 8.411220863943576,
+          "legacy_parts_M_plus_pp": 7.185996046739125,
+          "legacy_parts_R": 0.8543344852045641
+        },
+        "B_factors_3": {
+          "M_minus_pp": 4.964596926848849,
+          "M_plus_pp": 6.4882684630912735,
+          "M_other_pp": -3.890340551967328,
+          "R": 1.3069074002770122,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 8.453104322779497,
+          "legacy_parts_M_plus_pp": 7.239913969676767,
+          "legacy_parts_R": 0.8564799029117132
+        },
+        "C_independent_trend": {
+          "M_minus_pp": 3.9352889413731362,
+          "M_plus_pp": 7.344562825869355,
+          "M_other_pp": -3.409273884496221,
+          "R": 1.8663338157087455,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 7.898285056303801,
+          "legacy_parts_M_plus_pp": 7.604285170271222,
+          "legacy_parts_R": 0.9627767440733314
+        }
+      },
+      "envelope": {
+        "M_minus_range": [
+          3.9352889413731362,
+          10.358656991225585
+        ],
+        "M_plus_range": [
+          5.2514693404104,
+          7.344562825869355
+        ],
+        "R_range": [
+          0.5069643048185412,
+          1.8663338157087455
+        ],
+        "n_models": 10,
+        "n_R_undefined": 0,
+        "all_M_minus_positive": true,
+        "all_M_plus_positive": true
+      }
+    },
+    "C": {
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ],
+      "post": 2023,
+      "n_affected_bins": 9,
+      "n_excess_bins": 10,
+      "models": {
+        "legacy_pre_period": {
+          "M_minus_pp": 12.768454265842271,
+          "M_plus_pp": 7.326768690906242,
+          "M_other_pp": 5.441685574936033,
+          "R": 0.5738179844138661,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 12.924881875270927,
+          "legacy_parts_M_plus_pp": 10.764610478868716,
+          "legacy_parts_R": 0.8328594862800688
+        },
+        "A_ridge_0.0": {
+          "M_minus_pp": 10.957621767392919,
+          "M_plus_pp": 9.318554307568299,
+          "M_other_pp": 1.6390674598246187,
+          "R": 0.8504175910960838,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 14.046652104702687,
+          "legacy_parts_M_plus_pp": 11.726462495959419,
+          "legacy_parts_R": 0.834822590361835
+        },
+        "A_ridge_0.1": {
+          "M_minus_pp": 10.960662493605769,
+          "M_plus_pp": 9.313206134899294,
+          "M_other_pp": 1.6474563587064741,
+          "R": 0.849693724291979,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 14.037628067145505,
+          "legacy_parts_M_plus_pp": 11.72337304349941,
+          "legacy_parts_R": 0.8351391693399747
+        },
+        "A_ridge_1.0": {
+          "M_minus_pp": 10.987491112353537,
+          "M_plus_pp": 9.26601869496222,
+          "M_other_pp": 1.7214724173913172,
+          "R": 0.8433243403987086,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 13.958008119067289,
+          "legacy_parts_M_plus_pp": 11.69611450840387,
+          "legacy_parts_R": 0.8379501149900058
+        },
+        "A_ridge_10.0": {
+          "M_minus_pp": 11.21141766298734,
+          "M_plus_pp": 8.872166116948787,
+          "M_other_pp": 2.33925154603855,
+          "R": 0.7913509587854166,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 13.293455817571035,
+          "legacy_parts_M_plus_pp": 11.468599637188891,
+          "legacy_parts_R": 0.8627252231906406
+        },
+        "A_ridge_100.0": {
+          "M_minus_pp": 11.971535311927772,
+          "M_plus_pp": 7.535235347545396,
+          "M_other_pp": 4.43629996438237,
+          "R": 0.6294293214035552,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 11.979795055261429,
+          "legacy_parts_M_plus_pp": 10.696301450495852,
+          "legacy_parts_R": 0.8928618061623786
+        },
+        "B_factors_1": {
+          "M_minus_pp": 11.967104487800526,
+          "M_plus_pp": 7.457174679659445,
+          "M_other_pp": -2.9482389259615953,
+          "R": 0.6231394308674599,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 11.967104487800526,
+          "legacy_parts_M_plus_pp": 10.639646914558263,
+          "legacy_parts_R": 0.8890744561814852
+        },
+        "B_factors_2": {
+          "M_minus_pp": 11.48025129913511,
+          "M_plus_pp": 8.127469560168937,
+          "M_other_pp": -4.10596507950166,
+          "R": 0.707952234528284,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 11.89110710826569,
+          "legacy_parts_M_plus_pp": 10.986476517442593,
+          "legacy_parts_R": 0.9239237707148165
+        },
+        "B_factors_3": {
+          "M_minus_pp": 11.459673467454676,
+          "M_plus_pp": 8.122652910320845,
+          "M_other_pp": -4.1516715915384195,
+          "R": 0.7088031725676193,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 11.89880487815556,
+          "legacy_parts_M_plus_pp": 11.010836099400736,
+          "legacy_parts_R": 0.925373280102693
+        },
+        "C_independent_trend": {
+          "M_minus_pp": 10.957621767392919,
+          "M_plus_pp": 9.318554307568299,
+          "M_other_pp": 1.6390674598246187,
+          "R": 0.8504175910960838,
+          "R_defined": true,
+          "legacy_parts_M_minus_pp": 14.046652104702687,
+          "legacy_parts_M_plus_pp": 11.726462495959419,
+          "legacy_parts_R": 0.834822590361835
+        }
+      },
+      "envelope": {
+        "M_minus_range": [
+          10.957621767392919,
+          12.768454265842271
+        ],
+        "M_plus_range": [
+          7.326768690906242,
+          9.318554307568299
+        ],
+        "R_range": [
+          0.5738179844138661,
+          0.8504175910960838
+        ],
+        "n_models": 10,
+        "n_R_undefined": 0,
+        "all_M_minus_positive": true,
+        "all_M_plus_positive": true
+      }
+    }
+  }
+}

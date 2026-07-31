@@ -1,0 +1,599 @@
+{
+  "_meta": {
+    "package": "Package 3 - Event B conditional on Event A exposure",
+    "window_broad": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019
+    ],
+    "omitted_year": 2017,
+    "matched_design": "pre 2017, post 2019 (exact Package 4 specification)",
+    "B_post_definition": "B x 1[year >= 2018]: spans BOTH 2018 and 2019, NOT the 2017-to-2019 two-period estimand",
+    "canonical_inference": "Stata boottest wild cluster bootstrap-t, Rademacher, null imposed, 9999 reps, clustered on department (25)",
+    "event_A_entered_as": "flexible year interactions, never a single level or post indicator",
+    "exposure_diagnostics": {
+      "corr_A_B": 0.5968907426101935,
+      "R2_A_on_B": 0.35627855861374824,
+      "VIF": 1.5534669745449268,
+      "n_dept": 25
+    },
+    "interpretation_limit": "Conditioning on Event A exposure increases the Event B estimate. The data do not identify why. Statistical suppression, reweighted cross-department variation and the joint dynamic specification are not distinguished.",
+    "leads_language": "Joint lead restrictions do not reject differential pre-policy trends. Non-rejection with 25 clusters is not evidence of parallel trends."
+  },
+  "gate1_matched": {
+    "is_informal_self_emp_continuous": {
+      "outcome": "is_informal_self_emp",
+      "dose": "continuous",
+      "label": "Informal self-employment rate, employed-worker denominator",
+      "pre_year": 2017,
+      "post_year": 2019,
+      "pkg4_replication": {
+        "beta": 0.21415440978641764,
+        "se_cr1": 0.1461023694683569,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "plus_A_exposure_x_post": {
+        "beta": 0.3809398551426568,
+        "se_cr1": 0.18054622147851454,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "dta": "D:/Nexus/nexus/exports/stata/pkg3_gate1/is_informal_self_emp_continuous.dta"
+    },
+    "is_informal_self_emp_binary": {
+      "outcome": "is_informal_self_emp",
+      "dose": "binary",
+      "label": "Informal self-employment rate, employed-worker denominator",
+      "pre_year": 2017,
+      "post_year": 2019,
+      "pkg4_replication": {
+        "beta": 0.023620451538284015,
+        "se_cr1": 0.006793835774848161,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "plus_A_exposure_x_post": {
+        "beta": 0.03162764456270817,
+        "se_cr1": 0.007584598136382297,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "dta": "D:/Nexus/nexus/exports/stata/pkg3_gate1/is_informal_self_emp_binary.dta"
+    },
+    "is_self_emp_continuous": {
+      "outcome": "is_self_emp",
+      "dose": "continuous",
+      "label": "Total self-employment rate, employed-worker denominator",
+      "pre_year": 2017,
+      "post_year": 2019,
+      "pkg4_replication": {
+        "beta": 0.23381525680322146,
+        "se_cr1": 0.12291208230767113,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "plus_A_exposure_x_post": {
+        "beta": 0.29911149107954316,
+        "se_cr1": 0.16324033086544742,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "dta": "D:/Nexus/nexus/exports/stata/pkg3_gate1/is_self_emp_continuous.dta"
+    },
+    "is_self_emp_binary": {
+      "outcome": "is_self_emp",
+      "dose": "binary",
+      "label": "Total self-employment rate, employed-worker denominator",
+      "pre_year": 2017,
+      "post_year": 2019,
+      "pkg4_replication": {
+        "beta": 0.02097331866748095,
+        "se_cr1": 0.0066883096767917415,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "plus_A_exposure_x_post": {
+        "beta": 0.02891720929837316,
+        "se_cr1": 0.00821568466629188,
+        "n": 71423,
+        "n_clusters": 25
+      },
+      "dta": "D:/Nexus/nexus/exports/stata/pkg3_gate1/is_self_emp_binary.dta"
+    }
+  },
+  "gate1_boot_p": {
+    "is_informal_self_emp_continuous": {
+      "p_pkg4repl": 0.2413,
+      "p_plusA": 0.1209
+    },
+    "is_informal_self_emp_binary": {
+      "p_pkg4repl": 0.0204,
+      "p_plusA": 0.0274
+    },
+    "is_self_emp_continuous": {
+      "p_pkg4repl": 0.1556,
+      "p_plusA": 0.165
+    },
+    "is_self_emp_binary": {
+      "p_pkg4repl": 0.0365,
+      "p_plusA": 0.0487
+    }
+  },
+  "broad_window": {
+    "is_informal_self_emp_emp_continuous": {
+      "M0_b2018": 0.39771619,
+      "M0_b2019": 0.21339954,
+      "joint_leads_uncond": 0.6058,
+      "pooled_uncond_beta": 0.21456931,
+      "pooled_uncond_se": 0.1546497,
+      "p_pooled_uncond": 0.2497,
+      "pooled_cond_beta": 0.40112543,
+      "pooled_cond_se": 0.17171521,
+      "p_pooled_cond": 0.1124,
+      "M3_b2018": 0.42992576,
+      "M3_b2019": 0.37967443,
+      "joint_leads_cond": 0.9911
+    },
+    "is_informal_self_emp_emp_binary": {
+      "M0_b2018": 0.02363081,
+      "M0_b2019": 0.02349174,
+      "joint_leads_uncond": 0.7671,
+      "pooled_uncond_beta": 0.0208153,
+      "pooled_uncond_se": 0.00796914,
+      "p_pooled_uncond": 0.0774,
+      "pooled_cond_beta": 0.02286826,
+      "pooled_cond_se": 0.00625521,
+      "p_pooled_cond": 0.0227,
+      "M3_b2018": 0.02738901,
+      "M3_b2019": 0.03158776,
+      "joint_leads_cond": 0.7688
+    },
+    "is_self_emp_emp_continuous": {
+      "M0_b2018": 0.37108258,
+      "M0_b2019": 0.2324498,
+      "joint_leads_uncond": 0.206,
+      "pooled_uncond_beta": 0.22334818,
+      "pooled_uncond_se": 0.1439025,
+      "p_pooled_uncond": 0.2303,
+      "pooled_cond_beta": 0.33144578,
+      "pooled_cond_se": 0.17180024,
+      "p_pooled_cond": 0.1694,
+      "M3_b2018": 0.39095484,
+      "M3_b2019": 0.29716291,
+      "joint_leads_cond": 0.3577
+    },
+    "is_self_emp_emp_binary": {
+      "M0_b2018": 0.01851424,
+      "M0_b2019": 0.02081812,
+      "joint_leads_uncond": 0.082,
+      "pooled_uncond_beta": 0.01942769,
+      "pooled_uncond_se": 0.0072197,
+      "p_pooled_uncond": 0.0574,
+      "pooled_cond_beta": 0.02154228,
+      "pooled_cond_se": 0.00767048,
+      "p_pooled_cond": 0.0326,
+      "M3_b2018": 0.02326005,
+      "M3_b2019": 0.02881361,
+      "joint_leads_cond": 0.2312
+    },
+    "formal_pop_continuous": {
+      "M0_b2018": 0.07522428,
+      "M0_b2019": -0.10379307,
+      "joint_leads_uncond": 0.5749,
+      "pooled_uncond_beta": 0.04654856,
+      "pooled_uncond_se": 0.1375954,
+      "p_pooled_uncond": 0.7542,
+      "pooled_cond_beta": -0.13403964,
+      "pooled_cond_se": 0.17625422,
+      "p_pooled_cond": 0.6122,
+      "M3_b2018": 0.00024054,
+      "M3_b2019": -0.11156252,
+      "joint_leads_cond": 0.0192
+    },
+    "formal_pop_binary": {
+      "M0_b2018": -0.00028049,
+      "M0_b2019": -0.01129906,
+      "joint_leads_uncond": 0.9473,
+      "pooled_uncond_beta": -0.00678849,
+      "pooled_uncond_se": 0.00764761,
+      "p_pooled_uncond": 0.6036,
+      "pooled_cond_beta": -0.00450475,
+      "pooled_cond_se": 0.00619114,
+      "p_pooled_cond": 0.5706,
+      "M3_b2018": -0.00145913,
+      "M3_b2019": -0.00669344,
+      "joint_leads_cond": 0.8148
+    },
+    "formal_emp_continuous": {
+      "M0_b2018": -0.02267094,
+      "M0_b2019": -0.13561528,
+      "joint_leads_uncond": 0.711,
+      "pooled_uncond_beta": -0.00505209,
+      "pooled_uncond_se": 0.14769248,
+      "p_pooled_uncond": 0.9757,
+      "pooled_cond_beta": -0.19165889,
+      "pooled_cond_se": 0.1929664,
+      "p_pooled_cond": 0.5074,
+      "M3_b2018": -0.11398615,
+      "M3_b2019": -0.0781627,
+      "joint_leads_cond": 0.015
+    },
+    "formal_emp_binary": {
+      "M0_b2018": -0.00128774,
+      "M0_b2019": -0.00970346,
+      "joint_leads_uncond": 0.9666,
+      "pooled_uncond_beta": -0.00702711,
+      "pooled_uncond_se": 0.0086733,
+      "p_pooled_uncond": 0.6813,
+      "pooled_cond_beta": -0.00352772,
+      "pooled_cond_se": 0.00666868,
+      "p_pooled_cond": 0.697,
+      "M3_b2018": -0.00299263,
+      "M3_b2019": -0.00354038,
+      "joint_leads_cond": 0.7793
+    },
+    "employed_pop_continuous": {
+      "M0_b2018": 0.25764493,
+      "M0_b2019": 0.07006988,
+      "joint_leads_uncond": 0.3401,
+      "pooled_uncond_beta": 0.17159945,
+      "pooled_uncond_se": 0.09756615,
+      "p_pooled_uncond": 0.1534,
+      "pooled_cond_beta": 0.02210911,
+      "pooled_cond_se": 0.1323663,
+      "p_pooled_cond": 0.8884,
+      "M3_b2018": 0.23880445,
+      "M3_b2019": -0.15493044,
+      "joint_leads_cond": 0.8554
+    },
+    "employed_pop_binary": {
+      "M0_b2018": 0.00240582,
+      "M0_b2019": -0.00788767,
+      "joint_leads_uncond": 0.939,
+      "pooled_uncond_beta": -0.00186447,
+      "pooled_uncond_se": 0.00615269,
+      "p_pooled_uncond": 0.7926,
+      "pooled_cond_beta": -0.00280314,
+      "pooled_cond_se": 0.00665543,
+      "p_pooled_cond": 0.7182,
+      "M3_b2018": 0.00576106,
+      "M3_b2019": -0.00643197,
+      "joint_leads_cond": 0.8586
+    }
+  },
+  "loo": {
+    "_diagnostics": {
+      "corr_A_B": 0.5968907426101935,
+      "R2_A_on_B": 0.35627855861374824,
+      "VIF": 1.5534669745449268,
+      "n_dept": 25,
+      "expA": {
+        "mean": 0.07673236600220462,
+        "sd": 0.030265660947838384,
+        "p25": 0.06319904739987967,
+        "p75": 0.0965851358568299,
+        "median": 0.0768373351461902
+      },
+      "expB": {
+        "mean": 0.08438224092675156,
+        "sd": 0.03225383628706517,
+        "p25": 0.05807310711152225,
+        "p75": 0.1087909526320424,
+        "median": 0.08665618685064316,
+        "iqr": 0.05071784552052015
+      },
+      "window": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "omitted_year": 2017,
+      "B_leads_jointly_tested": [
+        2014,
+        2015,
+        2016
+      ],
+      "B_post_years": [
+        2018,
+        2019
+      ]
+    },
+    "is_informal_self_emp_emp_continuous": {
+      "unconditional": {
+        "beta_full": 0.21456930839823807,
+        "se_cr1": 0.15464969876243,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.06156771738143463,
+        "loo_max": 0.3084353368125273,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 15,
+        "loo_dept_at_max": 14,
+        "scaled": {
+          "per_1pp": 0.0021456930839823807,
+          "per_1sd": 0.006920683345305568,
+          "per_iqr": 0.010882493036786685
+        }
+      },
+      "conditional": {
+        "beta_full": 0.40112543195881756,
+        "se_cr1": 0.17171520727774525,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.16453800501981042,
+        "loo_max": 0.4560535326184001,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 15,
+        "loo_dept_at_max": 21,
+        "scaled": {
+          "per_1pp": 0.004011254319588176,
+          "per_1sd": 0.012937834012978001,
+          "per_iqr": 0.020344217692439225
+        }
+      }
+    },
+    "is_informal_self_emp_emp_binary": {
+      "unconditional": {
+        "beta_full": 0.02081529872221098,
+        "se_cr1": 0.007969136018111264,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.00893867605701694,
+        "loo_max": 0.022760156682558944,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 15,
+        "loo_dept_at_max": 20
+      },
+      "conditional": {
+        "beta_full": 0.022868258143786457,
+        "se_cr1": 0.0062552061559000924,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.0139462253440637,
+        "loo_max": 0.024550580224734928,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 15,
+        "loo_dept_at_max": 25
+      }
+    },
+    "is_self_emp_emp_continuous": {
+      "unconditional": {
+        "beta_full": 0.22334818172473958,
+        "se_cr1": 0.1439024992964116,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.12112026479204308,
+        "loo_max": 0.2869306212599656,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 8,
+        "loo_dept_at_max": 14,
+        "scaled": {
+          "per_1pp": 0.002233481817247396,
+          "per_1sd": 0.007203835688363432,
+          "per_iqr": 0.011327738578004403
+        }
+      },
+      "conditional": {
+        "beta_full": 0.3314457869766443,
+        "se_cr1": 0.17180023548868206,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.18049464811641047,
+        "loo_max": 0.3919573928007627,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 15,
+        "loo_dept_at_max": 25,
+        "scaled": {
+          "per_1pp": 0.0033144578697664427,
+          "per_1sd": 0.010690398151182163,
+          "per_iqr": 0.016810216222308674
+        }
+      }
+    },
+    "is_self_emp_emp_binary": {
+      "unconditional": {
+        "beta_full": 0.019427690058543515,
+        "se_cr1": 0.007219702602127217,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.012420513573768874,
+        "loo_max": 0.02139852400469374,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 15,
+        "loo_dept_at_max": 1
+      },
+      "conditional": {
+        "beta_full": 0.021542276054686393,
+        "se_cr1": 0.007670476614670167,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": 0.01568396205081607,
+        "loo_max": 0.024361614744268845,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 8,
+        "loo_dept_at_max": 11
+      }
+    },
+    "formal_pop_continuous": {
+      "unconditional": {
+        "beta_full": 0.04654855497999877,
+        "se_cr1": 0.13759540401000822,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.01956876596404189,
+        "loo_max": 0.1983211867827014,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 14,
+        "loo_dept_at_max": 15,
+        "scaled": {
+          "per_1pp": 0.0004654855497999877,
+          "per_1sd": 0.0015013694717243326,
+          "per_iqr": 0.0023608424206790165
+        }
+      },
+      "conditional": {
+        "beta_full": -0.13403963627038706,
+        "se_cr1": 0.17625422266676463,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.20805364146939231,
+        "loo_max": 0.10588659139018453,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 10,
+        "loo_dept_at_max": 15,
+        "scaled": {
+          "per_1pp": -0.0013403963627038706,
+          "per_1sd": -0.0043232924842428275,
+          "per_iqr": -0.006798201565988201
+        }
+      }
+    },
+    "formal_pop_binary": {
+      "unconditional": {
+        "beta_full": -0.006788487413057084,
+        "se_cr1": 0.0076476064432233265,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.008946130348411213,
+        "loo_max": 0.005579598243707497,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 20,
+        "loo_dept_at_max": 15
+      },
+      "conditional": {
+        "beta_full": -0.00450474792391975,
+        "se_cr1": 0.006191136441439481,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.006289271818321618,
+        "loo_max": 0.003982072200726855,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 10,
+        "loo_dept_at_max": 15
+      }
+    },
+    "formal_emp_continuous": {
+      "unconditional": {
+        "beta_full": -0.005052088710427061,
+        "se_cr1": 0.14769248064428214,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": -0.0684778490124125,
+        "loo_max": 0.16709929088090947,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 13,
+        "loo_dept_at_max": 15,
+        "scaled": {
+          "per_1pp": -5.052088710427061e-05,
+          "per_1sd": -0.0001629492421738446,
+          "per_iqr": -0.00025623105477140355
+        }
+      },
+      "conditional": {
+        "beta_full": -0.19165888772606365,
+        "se_cr1": 0.19296639697055723,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": -0.2701909507533864,
+        "loo_max": 0.07740560031949295,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 10,
+        "loo_dept_at_max": 15,
+        "scaled": {
+          "per_1pp": -0.0019165888772606366,
+          "per_1sd": -0.006181734387677462,
+          "per_iqr": -0.009720525860325213
+        }
+      }
+    },
+    "formal_emp_binary": {
+      "unconditional": {
+        "beta_full": -0.00702711315660022,
+        "se_cr1": 0.008673303966913485,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": -0.009336080388949931,
+        "loo_max": 0.007468766894756652,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 20,
+        "loo_dept_at_max": 15
+      },
+      "conditional": {
+        "beta_full": -0.0035277193575378174,
+        "se_cr1": 0.006668684150029586,
+        "n": 213199,
+        "n_clusters": 25,
+        "loo_min": -0.005926402712517709,
+        "loo_max": 0.0062859155683580165,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 16,
+        "loo_dept_at_max": 15
+      }
+    },
+    "employed_pop_continuous": {
+      "unconditional": {
+        "beta_full": 0.17159944495466695,
+        "se_cr1": 0.0975661491223857,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": 0.11710658959546594,
+        "loo_max": 0.2618391195913272,
+        "loo_crosses_zero": false,
+        "loo_dept_at_min": 14,
+        "loo_dept_at_max": 15,
+        "scaled": {
+          "per_1pp": 0.0017159944495466694,
+          "per_1sd": 0.0055347404045190795,
+          "per_iqr": 0.0087031541406178
+        }
+      },
+      "conditional": {
+        "beta_full": 0.022109112519132168,
+        "se_cr1": 0.13236630443911554,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.07459801859850401,
+        "loo_max": 0.15824262465926608,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 8,
+        "loo_dept_at_max": 15,
+        "scaled": {
+          "per_1pp": 0.0002210911251913217,
+          "per_1sd": 0.000713103695644392,
+          "per_iqr": 0.0011213265533411435
+        }
+      }
+    },
+    "employed_pop_binary": {
+      "unconditional": {
+        "beta_full": -0.0018644651513608224,
+        "se_cr1": 0.006152691879675741,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.005472902171214017,
+        "loo_max": 0.00473525557862875,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 8,
+        "loo_dept_at_max": 15
+      },
+      "conditional": {
+        "beta_full": -0.002803143460215818,
+        "se_cr1": 0.00665543066783943,
+        "n": 282597,
+        "n_clusters": 25,
+        "loo_min": -0.008868467774676814,
+        "loo_max": 0.002088895257946366,
+        "loo_crosses_zero": true,
+        "loo_dept_at_min": 8,
+        "loo_dept_at_max": 15
+      }
+    }
+  }
+}

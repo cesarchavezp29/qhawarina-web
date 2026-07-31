@@ -1,0 +1,355 @@
+{
+  "_provenance": {
+    "table3": "mw_complete_margins.json / bunching_revised  (mw_complete_margins.py::cengiz_revised)",
+    "sensitivity_file": "item6_background_sensitivity.json (item6_background_sensitivity.py)",
+    "figure_generator": "mw_paper_figures.py (fig2_bunching_event*)",
+    "table7": "canonical row provenance not located in exports; tested against both wage rules",
+    "estimator_core_identical": "S/25 bins over S/0-6000, bin-centre zones, clean zone bc > 2*MW_new, inverse-abs background eps 1e-8, excess window 10 bins = S/250",
+    "difference_found": "wage variable construction",
+    "paper_documents": "Appendix variable mapping: \"Imputed wage | i524a1 | Imputed annual income / 12 (when p524a1 missing)\" -> ROW-level fallback"
+  },
+  "events": {
+    "A": {
+      "mw_old": 750.0,
+      "mw_new": 850.0,
+      "pre_year": 2015,
+      "post_year": 2017,
+      "variants": {
+        "full_range_column_priority": {
+          "n_bins": 240,
+          "wage_range": [
+            0.0,
+            6000.0
+          ],
+          "n_clean_bins": 172,
+          "affected_zone": [
+            637.5,
+            850.0
+          ],
+          "excess_zone": [
+            850.0,
+            1100.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 2.3956246457823547e-08,
+          "background_pp": 2.3956246457823547e-06,
+          "raw_missing_pp": 6.77967565444747,
+          "raw_excess_pp": 4.720722651870329,
+          "adj_missing_pp": 6.779690028195345,
+          "adj_excess_pp": 4.720710673747099,
+          "R_unrounded": 0.6963018447915212,
+          "n_pre": 9952,
+          "n_post": 10789,
+          "wage_rule": "column_priority",
+          "input_pre": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2015/enaho01a-2015-500.dta",
+            "bytes": 119531100,
+            "mtime": "2026-03-15T23:06:25.393414021",
+            "sha256_16": "8d6c6d7764556a9f"
+          },
+          "input_post": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2017/enaho01a-2017-500.dta",
+            "bytes": 129231878,
+            "mtime": "2026-03-15T23:10:00.865940809",
+            "sha256_16": "36b319a54ec60209"
+          }
+        },
+        "full_range_row_fallback": {
+          "n_bins": 240,
+          "wage_range": [
+            0.0,
+            6000.0
+          ],
+          "n_clean_bins": 172,
+          "affected_zone": [
+            637.5,
+            850.0
+          ],
+          "excess_zone": [
+            850.0,
+            1100.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 2.15336153133435e-08,
+          "background_pp": 2.15336153133435e-06,
+          "raw_missing_pp": 6.706875432345153,
+          "raw_excess_pp": 4.749932539117352,
+          "adj_missing_pp": 6.7068883525143415,
+          "adj_excess_pp": 4.749919618948165,
+          "R_unrounded": 0.7082151020401988,
+          "n_pre": 10059,
+          "n_post": 10895,
+          "wage_rule": "row_fallback",
+          "input_pre": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2015/enaho01a-2015-500.dta",
+            "bytes": 119531100,
+            "mtime": "2026-03-15T23:06:25.393414021",
+            "sha256_16": "8d6c6d7764556a9f"
+          },
+          "input_post": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2017/enaho01a-2017-500.dta",
+            "bytes": 129231878,
+            "mtime": "2026-03-15T23:10:00.865940809",
+            "sha256_16": "36b319a54ec60209"
+          }
+        },
+        "figure_window_300_2500": {
+          "n_bins": 88,
+          "wage_range": [
+            300.0,
+            2500.0
+          ],
+          "n_clean_bins": 32,
+          "affected_zone": [
+            637.5,
+            850.0
+          ],
+          "excess_zone": [
+            850.0,
+            1100.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 0.00010022802388811061,
+          "background_pp": 0.01002280238881106,
+          "raw_missing_pp": 7.97032892975102,
+          "raw_excess_pp": 6.1422316523719145,
+          "adj_missing_pp": 8.031654481065939,
+          "adj_excess_pp": 6.082094838039049,
+          "R_unrounded": 0.757265498955061,
+          "n_pre": 10059,
+          "n_post": 10895,
+          "wage_rule": "row_fallback",
+          "note": "figure generator normalises shares over S/300-2500 only, so all shares, the clean zone and the background differ in ESTIMAND, not merely units"
+        }
+      }
+    },
+    "B": {
+      "mw_old": 850.0,
+      "mw_new": 930.0,
+      "pre_year": 2017,
+      "post_year": 2019,
+      "variants": {
+        "full_range_column_priority": {
+          "n_bins": 240,
+          "wage_range": [
+            0.0,
+            6000.0
+          ],
+          "n_clean_bins": 166,
+          "affected_zone": [
+            722.5,
+            930.0
+          ],
+          "excess_zone": [
+            930.0,
+            1180.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 1.9377253006476665e-08,
+          "background_pp": 1.9377253006476664e-06,
+          "raw_missing_pp": 8.03173065529919,
+          "raw_excess_pp": 6.655121853779346,
+          "adj_missing_pp": 8.031742281650997,
+          "adj_excess_pp": 6.655110227427542,
+          "R_unrounded": 0.8286010673713405,
+          "n_pre": 10789,
+          "n_post": 10745,
+          "wage_rule": "column_priority",
+          "input_pre": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2017/enaho01a-2017-500.dta",
+            "bytes": 129231878,
+            "mtime": "2026-03-15T23:10:00.865940809",
+            "sha256_16": "36b319a54ec60209"
+          },
+          "input_post": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2019/enaho01a-2019-500.dta",
+            "bytes": 196254665,
+            "mtime": "2026-03-15T23:13:53.366859198",
+            "sha256_16": "19ded61e55674220"
+          }
+        },
+        "full_range_row_fallback": {
+          "n_bins": 240,
+          "wage_range": [
+            0.0,
+            6000.0
+          ],
+          "n_clean_bins": 166,
+          "affected_zone": [
+            722.5,
+            930.0
+          ],
+          "excess_zone": [
+            930.0,
+            1180.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 2.2467196404306926e-08,
+          "background_pp": 2.2467196404306927e-06,
+          "raw_missing_pp": 7.888824163962989,
+          "raw_excess_pp": 6.639472911266009,
+          "adj_missing_pp": 7.888837644280831,
+          "adj_excess_pp": 6.639459430948171,
+          "R_unrounded": 0.8416270850448517,
+          "n_pre": 10895,
+          "n_post": 10922,
+          "wage_rule": "row_fallback",
+          "input_pre": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2017/enaho01a-2017-500.dta",
+            "bytes": 129231878,
+            "mtime": "2026-03-15T23:10:00.865940809",
+            "sha256_16": "36b319a54ec60209"
+          },
+          "input_post": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2019/enaho01a-2019-500.dta",
+            "bytes": 196254665,
+            "mtime": "2026-03-15T23:13:53.366859198",
+            "sha256_16": "19ded61e55674220"
+          }
+        },
+        "figure_window_300_2500": {
+          "n_bins": 88,
+          "wage_range": [
+            300.0,
+            2500.0
+          ],
+          "n_clean_bins": 26,
+          "affected_zone": [
+            722.5,
+            930.0
+          ],
+          "excess_zone": [
+            930.0,
+            1180.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 0.0001368086930228338,
+          "background_pp": 0.013680869302283379,
+          "raw_missing_pp": 9.565529852699543,
+          "raw_excess_pp": 8.714069605791165,
+          "adj_missing_pp": 9.647615068513243,
+          "adj_excess_pp": 8.631984389977463,
+          "R_unrounded": 0.8947272801284872,
+          "n_pre": 10895,
+          "n_post": 10922,
+          "wage_rule": "row_fallback",
+          "note": "figure generator normalises shares over S/300-2500 only, so all shares, the clean zone and the background differ in ESTIMAND, not merely units"
+        }
+      }
+    },
+    "C": {
+      "mw_old": 930.0,
+      "mw_new": 1025.0,
+      "pre_year": 2021,
+      "post_year": 2023,
+      "variants": {
+        "full_range_column_priority": {
+          "n_bins": 240,
+          "wage_range": [
+            0.0,
+            6000.0
+          ],
+          "n_clean_bins": 158,
+          "affected_zone": [
+            790.5,
+            1025.0
+          ],
+          "excess_zone": [
+            1025.0,
+            1275.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 1.1770128526380535e-07,
+          "background_pp": 1.1770128526380535e-05,
+          "raw_missing_pp": 13.01903459903696,
+          "raw_excess_pp": 10.79988372166649,
+          "adj_missing_pp": 13.019128760065172,
+          "adj_excess_pp": 10.79978956063828,
+          "R_unrounded": 0.8295324333657037,
+          "n_pre": 8855,
+          "n_post": 9650,
+          "wage_rule": "column_priority",
+          "input_pre": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2021/enaho01a-2021-500.dta",
+            "bytes": 198779086,
+            "mtime": "2026-03-16T01:51:02.872714281",
+            "sha256_16": "41e7a31540648ba7"
+          },
+          "input_post": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2023/enaho01a-2023-500.dta",
+            "bytes": 187590515,
+            "mtime": "2026-03-16T01:52:28.666102409",
+            "sha256_16": "3a4b1d8e8f2d4c72"
+          }
+        },
+        "full_range_row_fallback": {
+          "n_bins": 240,
+          "wage_range": [
+            0.0,
+            6000.0
+          ],
+          "n_clean_bins": 158,
+          "affected_zone": [
+            790.5,
+            1025.0
+          ],
+          "excess_zone": [
+            1025.0,
+            1275.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 1.1771216469546875e-07,
+          "background_pp": 1.1771216469546875e-05,
+          "raw_missing_pp": 12.924881875270927,
+          "raw_excess_pp": 10.764610478868716,
+          "adj_missing_pp": 12.924976045002682,
+          "adj_excess_pp": 10.76451630913696,
+          "R_unrounded": 0.832846132298942,
+          "n_pre": 8946,
+          "n_post": 9838,
+          "wage_rule": "row_fallback",
+          "input_pre": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2021/enaho01a-2021-500.dta",
+            "bytes": 198779086,
+            "mtime": "2026-03-16T01:51:02.872714281",
+            "sha256_16": "41e7a31540648ba7"
+          },
+          "input_post": {
+            "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2023/enaho01a-2023-500.dta",
+            "bytes": 187590515,
+            "mtime": "2026-03-16T01:52:28.666102409",
+            "sha256_16": "3a4b1d8e8f2d4c72"
+          }
+        },
+        "figure_window_300_2500": {
+          "n_bins": 88,
+          "wage_range": [
+            300.0,
+            2500.0
+          ],
+          "n_clean_bins": 18,
+          "affected_zone": [
+            790.5,
+            1025.0
+          ],
+          "excess_zone": [
+            1025.0,
+            1275.0
+          ],
+          "zone_membership": "bin centre",
+          "background_share": 0.00017811479091205926,
+          "background_pp": 0.017811479091205926,
+          "raw_missing_pp": 16.234144881855205,
+          "raw_excess_pp": 14.848519648020442,
+          "adj_missing_pp": 16.36933001957189,
+          "adj_excess_pp": 14.706027815290796,
+          "R_unrounded": 0.8983891092492865,
+          "n_pre": 8946,
+          "n_post": 9838,
+          "wage_rule": "row_fallback",
+          "note": "figure generator normalises shares over S/300-2500 only, so all shares, the clean zone and the background differ in ESTIMAND, not merely units"
+        }
+      }
+    }
+  }
+}

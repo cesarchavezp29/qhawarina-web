@@ -1,0 +1,109 @@
+{
+  "by_year": {
+    "2013": {
+      "n_obs": 87982,
+      "n_strata": 51,
+      "n_psu": 4770,
+      "min_psu_per_stratum": 6,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2014": {
+      "n_obs": 87871,
+      "n_strata": 51,
+      "n_psu": 4770,
+      "min_psu_per_stratum": 4,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2015": {
+      "n_obs": 88084,
+      "n_strata": 51,
+      "n_psu": 5019,
+      "min_psu_per_stratum": 5,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2016": {
+      "n_obs": 97422,
+      "n_strata": 51,
+      "n_psu": 5606,
+      "min_psu_per_stratum": 7,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2017": {
+      "n_obs": 93185,
+      "n_strata": 51,
+      "n_psu": 5359,
+      "min_psu_per_stratum": 7,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2018": {
+      "n_obs": 99646,
+      "n_strata": 51,
+      "n_psu": 5752,
+      "min_psu_per_stratum": 7,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2019": {
+      "n_obs": 92094,
+      "n_strata": 51,
+      "n_psu": 5359,
+      "min_psu_per_stratum": 7,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2021": {
+      "n_obs": 86806,
+      "n_strata": 51,
+      "n_psu": 5359,
+      "min_psu_per_stratum": 3,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2022": {
+      "n_obs": 87661,
+      "n_strata": 51,
+      "n_psu": 5359,
+      "min_psu_per_stratum": 3,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    },
+    "2023": {
+      "n_obs": 86654,
+      "n_strata": 51,
+      "n_psu": 5359,
+      "min_psu_per_stratum": 6,
+      "n_singleton_strata": 0,
+      "singleton_ids": [],
+      "singleton_weighted_share_pct": 0.0,
+      "psus_spanning_multiple_strata": 0
+    }
+  },
+  "verdict": {
+    "any_singleton_strata_in_full_sample": false,
+    "conclusion": "singleton issue CLOSED: no design stratum contains a single PSU in any year under full-sample estimation",
+    "supersedes": "the earlier filtered-sample singleton counts, which were an artifact of deleting out-of-domain observations"
+  }
+}

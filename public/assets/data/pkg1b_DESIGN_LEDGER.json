@@ -1,0 +1,361 @@
+{
+  "by_year": {
+    "2013": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3243,
+        "psu_per_stratum_min": 81,
+        "psu_per_stratum_med": 336.5,
+        "psu_per_stratum_max": 836,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3243,
+        "psu_per_stratum_min": 3,
+        "psu_per_stratum_med": 35.0,
+        "psu_per_stratum_max": 652,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3243,
+        "psu_per_stratum_min": 20,
+        "psu_per_stratum_med": 127.0,
+        "psu_per_stratum_max": 652,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2014": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3219,
+        "psu_per_stratum_min": 81,
+        "psu_per_stratum_med": 316.5,
+        "psu_per_stratum_max": 835,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3219,
+        "psu_per_stratum_min": 3,
+        "psu_per_stratum_med": 37.0,
+        "psu_per_stratum_max": 660,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3219,
+        "psu_per_stratum_min": 19,
+        "psu_per_stratum_med": 130.0,
+        "psu_per_stratum_max": 660,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2015": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3329,
+        "psu_per_stratum_min": 81,
+        "psu_per_stratum_med": 331.0,
+        "psu_per_stratum_max": 838,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3329,
+        "psu_per_stratum_min": 2,
+        "psu_per_stratum_med": 34.0,
+        "psu_per_stratum_max": 658,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3329,
+        "psu_per_stratum_min": 16,
+        "psu_per_stratum_med": 141.0,
+        "psu_per_stratum_max": 658,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2016": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3750,
+        "psu_per_stratum_min": 83,
+        "psu_per_stratum_med": 392.0,
+        "psu_per_stratum_max": 993,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3750,
+        "psu_per_stratum_min": 3,
+        "psu_per_stratum_med": 45.0,
+        "psu_per_stratum_max": 673,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3750,
+        "psu_per_stratum_min": 21,
+        "psu_per_stratum_med": 154.0,
+        "psu_per_stratum_max": 673,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2017": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3602,
+        "psu_per_stratum_min": 85,
+        "psu_per_stratum_med": 367.0,
+        "psu_per_stratum_max": 904,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3602,
+        "psu_per_stratum_min": 5,
+        "psu_per_stratum_med": 46.0,
+        "psu_per_stratum_max": 665,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3602,
+        "psu_per_stratum_min": 19,
+        "psu_per_stratum_med": 124.0,
+        "psu_per_stratum_max": 665,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2018": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3826,
+        "psu_per_stratum_min": 107,
+        "psu_per_stratum_med": 392.0,
+        "psu_per_stratum_max": 943,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3826,
+        "psu_per_stratum_min": 5,
+        "psu_per_stratum_med": 52.0,
+        "psu_per_stratum_max": 664,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3826,
+        "psu_per_stratum_min": 32,
+        "psu_per_stratum_med": 144.0,
+        "psu_per_stratum_max": 664,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2019": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3619,
+        "psu_per_stratum_min": 95,
+        "psu_per_stratum_med": 368.5,
+        "psu_per_stratum_max": 907,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3619,
+        "psu_per_stratum_min": 5,
+        "psu_per_stratum_med": 48.0,
+        "psu_per_stratum_max": 664,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3619,
+        "psu_per_stratum_min": 23,
+        "psu_per_stratum_med": 121.0,
+        "psu_per_stratum_max": 664,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2021": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3462,
+        "psu_per_stratum_min": 91,
+        "psu_per_stratum_med": 363.0,
+        "psu_per_stratum_max": 904,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3462,
+        "psu_per_stratum_min": 1,
+        "psu_per_stratum_med": 43.0,
+        "psu_per_stratum_max": 635,
+        "n_singleton_strata": 1,
+        "singleton_weighted_share_pct": 0.011442552554269429,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3462,
+        "psu_per_stratum_min": 28,
+        "psu_per_stratum_med": 116.0,
+        "psu_per_stratum_max": 635,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2022": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3553,
+        "psu_per_stratum_min": 85,
+        "psu_per_stratum_med": 375.0,
+        "psu_per_stratum_max": 914,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3553,
+        "psu_per_stratum_min": 1,
+        "psu_per_stratum_med": 39.0,
+        "psu_per_stratum_max": 638,
+        "n_singleton_strata": 1,
+        "singleton_weighted_share_pct": 0.01727906371977115,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3553,
+        "psu_per_stratum_min": 25,
+        "psu_per_stratum_med": 121.0,
+        "psu_per_stratum_max": 638,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    },
+    "2023": {
+      "estrato": {
+        "n_strata": 8,
+        "n_psu": 3607,
+        "psu_per_stratum_min": 89,
+        "psu_per_stratum_med": 386.5,
+        "psu_per_stratum_max": 924,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x estrato": {
+        "n_strata": 51,
+        "n_psu": 3607,
+        "psu_per_stratum_min": 2,
+        "psu_per_stratum_med": 38.0,
+        "psu_per_stratum_max": 644,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "dominio x urban/rural": {
+        "n_strata": 15,
+        "n_psu": 3607,
+        "psu_per_stratum_min": 30,
+        "psu_per_stratum_med": 130.0,
+        "psu_per_stratum_max": 644,
+        "n_singleton_strata": 0,
+        "singleton_weighted_share_pct": 0.0,
+        "psus_spanning_multiple_strata": 0
+      },
+      "estrato_codes_reused_across_domains": 8,
+      "n_estrato_codes": 8,
+      "max_domains_per_estrato_code": 7
+    }
+  },
+  "verdict": {
+    "estrato_globally_unique": false,
+    "recommended_key": "dominio x estrato",
+    "reason": "estrato codes recur across domains in every year, so estrato alone is not a globally unique stratum identifier",
+    "current_bootstrap_key": "dominio x urban/rural",
+    "current_key_is_correct": false
+  }
+}

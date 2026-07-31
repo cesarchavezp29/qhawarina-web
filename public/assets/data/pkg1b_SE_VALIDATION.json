@@ -1,0 +1,212 @@
+{
+  "_meta": {
+    "design": "stratum = dominio x estrato, PSU = conglome, per year",
+    "domain_estimation": "FULL annual sample retained; x marks domain; nobody deleted",
+    "B": 1999,
+    "seed": 20260730,
+    "predeclared_bin": [
+      1500.0,
+      1525.0
+    ],
+    "implementation_check_years": [
+      2015,
+      2019
+    ],
+    "acceptance": {
+      "boot_mean_within_taylor_se": 0.1,
+      "se_relative_tolerance": 0.1,
+      "investigate_above": 0.15
+    }
+  },
+  "years": {
+    "2015": {
+      "n_obs_full": 88084,
+      "n_in_domain": 10059,
+      "n_psu_full": 5019,
+      "n_psu_with_domain_cases": 3329,
+      "n_strata": 51,
+      "singleton_strata": 0,
+      "psus_spanning_multiple_strata": 0,
+      "zone": [
+        637.5,
+        850.0
+      ],
+      "stats": {
+        "S1_bin_1500": {
+          "point": 0.07579684573741448,
+          "taylor_se": 0.003559454860857143,
+          "boot_withrep": {
+            "se": 0.0036006267478769817,
+            "mean": 0.07570808981092551,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 5.695939445779591e-05
+          },
+          "boot_raowu": {
+            "se": 0.0035909956117537375,
+            "mean": 0.07571034064104086,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 5.680703662680328e-05
+          },
+          "boot_mean_disp_in_taylor_se": -0.024935258335483348,
+          "rel_b1_vs_taylor": 0.011566908032069879,
+          "rel_b2_vs_taylor": 0.008861118381762331,
+          "rel_b1_vs_b2": 0.002682023918859813
+        },
+        "S2_affected_zone": {
+          "point": 0.09167782022791257,
+          "taylor_se": 0.004348606866505295,
+          "boot_withrep": {
+            "se": 0.004185555299656873,
+            "mean": 0.09168293124844612,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 6.621255465555946e-05
+          },
+          "boot_raowu": {
+            "se": 0.004407604715753237,
+            "mean": 0.09192110380965779,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 6.972522096789342e-05
+          },
+          "boot_mean_disp_in_taylor_se": 0.001175323658920812,
+          "rel_b1_vs_taylor": -0.0374951270266141,
+          "rel_b2_vs_taylor": 0.01356706896233062,
+          "rel_b1_vs_b2": -0.05037870462901006
+        }
+      }
+    },
+    "2019": {
+      "n_obs_full": 92094,
+      "n_in_domain": 10922,
+      "n_psu_full": 5359,
+      "n_psu_with_domain_cases": 3619,
+      "n_strata": 51,
+      "singleton_strata": 0,
+      "psus_spanning_multiple_strata": 0,
+      "zone": [
+        722.5,
+        930.0
+      ],
+      "stats": {
+        "S1_bin_1500": {
+          "point": 0.06857908483047905,
+          "taylor_se": 0.0036574859192466157,
+          "boot_withrep": {
+            "se": 0.0036364353499054756,
+            "mean": 0.06849767018155246,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 5.7525861473330316e-05
+          },
+          "boot_raowu": {
+            "se": 0.0037570420566863036,
+            "mean": 0.06849399445818578,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 5.943377514137031e-05
+          },
+          "boot_mean_disp_in_taylor_se": -0.022259729968653205,
+          "rel_b1_vs_taylor": -0.005755475155862303,
+          "rel_b2_vs_taylor": 0.027219827946786703,
+          "rel_b1_vs_b2": -0.032101505642234573
+        },
+        "S2_affected_zone": {
+          "point": 0.029852161316267514,
+          "taylor_se": 0.0021924262490370943,
+          "boot_withrep": {
+            "se": 0.0022265805413686935,
+            "mean": 0.02986239841108806,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 3.522294540045039e-05
+          },
+          "boot_raowu": {
+            "se": 0.002151789542149693,
+            "mean": 0.02986849834194717,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 3.403980415179984e-05
+          },
+          "boot_mean_disp_in_taylor_se": 0.004669299514655551,
+          "rel_b1_vs_taylor": 0.015578308436418187,
+          "rel_b2_vs_taylor": -0.018535039390834097,
+          "rel_b1_vs_b2": 0.03475758095946609
+        }
+      }
+    },
+    "2022": {
+      "n_obs_full": 87661,
+      "n_in_domain": 9554,
+      "n_psu_full": 5359,
+      "n_psu_with_domain_cases": 3553,
+      "n_strata": 51,
+      "singleton_strata": 0,
+      "psus_spanning_multiple_strata": 0,
+      "zone": [
+        790.5,
+        1025.0
+      ],
+      "stats": {
+        "S1_bin_1500": {
+          "point": 0.05975216907204274,
+          "taylor_se": 0.0037877459866061474,
+          "boot_withrep": {
+            "se": 0.0038098633290030316,
+            "mean": 0.059743517236996356,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 6.026937069079102e-05
+          },
+          "boot_raowu": {
+            "se": 0.0037983947291392595,
+            "mean": 0.0598343633200523,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 6.008794546977793e-05
+          },
+          "boot_mean_disp_in_taylor_se": -0.0022841645339941956,
+          "rel_b1_vs_taylor": 0.005839183111827806,
+          "rel_b2_vs_taylor": 0.002811366593949833,
+          "rel_b1_vs_b2": 0.0030193280797783093
+        },
+        "S2_affected_zone": {
+          "point": 0.09089355418996341,
+          "taylor_se": 0.005049005718121016,
+          "boot_withrep": {
+            "se": 0.00508550136217386,
+            "mean": 0.09086457119489288,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 8.044907133862575e-05
+          },
+          "boot_raowu": {
+            "se": 0.005044242845647684,
+            "mean": 0.09101219898892764,
+            "n_usable": 1999,
+            "n_requested": 1999,
+            "zero_denominator_draws": 0,
+            "mc_error_of_se": 7.979639049106397e-05
+          },
+          "boot_mean_disp_in_taylor_se": -0.005740337145292206,
+          "rel_b1_vs_taylor": 0.007228283367131137,
+          "rel_b2_vs_taylor": -0.0009433287936748395,
+          "rel_b1_vs_b2": 0.00817932795638014
+        }
+      }
+    }
+  }
+}

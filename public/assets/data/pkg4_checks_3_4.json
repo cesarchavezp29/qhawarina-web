@@ -1,0 +1,112 @@
+{
+  "A": {
+    "pre": {
+      "year": 2015,
+      "se_total_n": 10788,
+      "se_total_w": 3506606.4786076546,
+      "informal_n": 9115,
+      "formal_n": 1673,
+      "unknown_n": 0,
+      "unknown_pct": 0.0,
+      "identity_unweighted": true,
+      "identity_weighted": true
+    },
+    "post": {
+      "year": 2017,
+      "se_total_n": 12368,
+      "se_total_w": 3931377.2532827854,
+      "informal_n": 10161,
+      "formal_n": 2207,
+      "unknown_n": 0,
+      "unknown_pct": 0.0,
+      "identity_unweighted": true,
+      "identity_weighted": true
+    },
+    "dose": {
+      "n_dept": 25,
+      "min": 0.010420787006138575,
+      "max": 0.12958168573095916,
+      "mean": 0.07673236600220462,
+      "median": 0.0768373351461902,
+      "sd": 0.030265660947838384,
+      "p25": 0.06319904739987967,
+      "p75": 0.0965851358568299,
+      "invariant_to_employed_filter": true
+    }
+  },
+  "B": {
+    "pre": {
+      "year": 2017,
+      "se_total_n": 12368,
+      "se_total_w": 3931377.2532827854,
+      "informal_n": 10161,
+      "formal_n": 2207,
+      "unknown_n": 0,
+      "unknown_pct": 0.0,
+      "identity_unweighted": true,
+      "identity_weighted": true
+    },
+    "post": {
+      "year": 2019,
+      "se_total_n": 12125,
+      "se_total_w": 4146804.2594223022,
+      "informal_n": 10222,
+      "formal_n": 1903,
+      "unknown_n": 0,
+      "unknown_pct": 0.0,
+      "identity_unweighted": true,
+      "identity_weighted": true
+    },
+    "dose": {
+      "n_dept": 25,
+      "min": 0.026129829489261985,
+      "max": 0.13819708553971388,
+      "mean": 0.08438224092675156,
+      "median": 0.08665618685064316,
+      "sd": 0.03225383628706517,
+      "p25": 0.05807310711152225,
+      "p75": 0.1087909526320424,
+      "invariant_to_employed_filter": true
+    }
+  },
+  "C": {
+    "pre": {
+      "year": 2021,
+      "se_total_n": 11962,
+      "se_total_w": 4345142.545914799,
+      "informal_n": 10368,
+      "formal_n": 1594,
+      "unknown_n": 0,
+      "unknown_pct": 0.0,
+      "identity_unweighted": true,
+      "identity_weighted": true
+    },
+    "post": {
+      "year": 2023,
+      "se_total_n": 11909,
+      "se_total_w": 4453853.803425193,
+      "informal_n": 10342,
+      "formal_n": 1567,
+      "unknown_n": 0,
+      "unknown_pct": 0.0,
+      "identity_unweighted": true,
+      "identity_weighted": true
+    },
+    "dose": {
+      "n_dept": 25,
+      "min": 0.029787338412042227,
+      "max": 0.22721993071852414,
+      "mean": 0.11645591005283101,
+      "median": 0.11280826349331594,
+      "sd": 0.049517176004922225,
+      "p25": 0.09029434266018313,
+      "p75": 0.14055089179009578,
+      "invariant_to_employed_filter": true
+    }
+  },
+  "dose_correlations": {
+    "A_B": 0.5968907426101935,
+    "A_C": 0.3484644206260804,
+    "B_C": 0.37967799068113706
+  }
+}

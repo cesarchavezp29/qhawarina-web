@@ -1,0 +1,1691 @@
+{
+  "A": {
+    "dose_median": 0.0768373351461902,
+    "outcomes": {
+      "employed@pop": {
+        "label": "Employment (denom: working-age 18-65)",
+        "continuous": {
+          "coefs": {
+            "2013": {
+              "beta": -0.16579232136894434,
+              "se": 0.12592579333964032
+            },
+            "2014": {
+              "beta": -0.17923903648675188,
+              "se": 0.12087512116768173
+            },
+            "2016": {
+              "beta": 0.06065901574991261,
+              "se": 0.09494225253741403
+            },
+            "2017": {
+              "beta": -0.0019327590619352669,
+              "se": 0.0746792889737711
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 231182,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 2.460964849901868,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.29215160245613037,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "continuous",
+          "sample": "pop"
+        },
+        "binary": {
+          "coefs": {
+            "2013": {
+              "beta": -0.0049126026792333435,
+              "se": 0.007575687987880697
+            },
+            "2014": {
+              "beta": -0.01097647131563807,
+              "se": 0.007092283026557626
+            },
+            "2016": {
+              "beta": -0.006716076810210014,
+              "se": 0.007581842661246584
+            },
+            "2017": {
+              "beta": 0.002001622411592872,
+              "se": 0.005118454846063966
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 231182,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 2.525851168369727,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.28282538548642266,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "binary",
+          "sample": "pop"
+        }
+      },
+      "formal@pop": {
+        "label": "Formal employment (denom: working-age 18-65)",
+        "continuous": {
+          "coefs": {
+            "2013": {
+              "beta": 0.05114026439379575,
+              "se": 0.07007129685856975
+            },
+            "2014": {
+              "beta": -0.0433812004457807,
+              "se": 0.1348138621160581
+            },
+            "2016": {
+              "beta": 0.04564367038003226,
+              "se": 0.20727098181716386
+            },
+            "2017": {
+              "beta": 0.20633643817631642,
+              "se": 0.18478405360971326
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 231182,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.7267899362867205,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.6953117532654511,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "continuous",
+          "sample": "pop"
+        },
+        "binary": {
+          "coefs": {
+            "2013": {
+              "beta": -0.005605691999995527,
+              "se": 0.005889321592417599
+            },
+            "2014": {
+              "beta": -0.0004967144255902234,
+              "se": 0.00473313289399769
+            },
+            "2016": {
+              "beta": -0.0025716806256855323,
+              "se": 0.007545046760215716
+            },
+            "2017": {
+              "beta": -0.002906854463445401,
+              "se": 0.007826893094836853
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 231182,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.906674942454021,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.6355036332437158,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "binary",
+          "sample": "pop"
+        }
+      },
+      "formal@emp": {
+        "label": "Formality among employed (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2013": {
+              "beta": 0.04313809376651146,
+              "se": 0.09511754008202021
+            },
+            "2014": {
+              "beta": -0.006718969869615773,
+              "se": 0.15905546089518668
+            },
+            "2016": {
+              "beta": -0.0010018420829660342,
+              "se": 0.26111199193117013
+            },
+            "2017": {
+              "beta": 0.25340072564669375,
+              "se": 0.22755267250354103
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 173918,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.23494236749050665,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.8891661338151045,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2013": {
+              "beta": -0.009932951653124,
+              "se": 0.00873884317725392
+            },
+            "2014": {
+              "beta": 0.001714599942772398,
+              "se": 0.0058935367194023125
+            },
+            "2016": {
+              "beta": -0.002272912923084599,
+              "se": 0.010112946465592496
+            },
+            "2017": {
+              "beta": -0.003891816481734452,
+              "se": 0.010472500215227226
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 173918,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 1.6233874165252031,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.44410524415094144,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      },
+      "log_wage@fwage": {
+        "label": "Log wage (formal employees)",
+        "continuous": {
+          "coefs": {
+            "2013": {
+              "beta": -0.3085988119917138,
+              "se": 0.4065618140179861
+            },
+            "2014": {
+              "beta": -0.022560130663654865,
+              "se": 0.23142607407971638
+            },
+            "2016": {
+              "beta": -0.10470839816334052,
+              "se": 0.30081607127792664
+            },
+            "2017": {
+              "beta": 0.0065420474135465785,
+              "se": 0.27188313523304297
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 48146,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.5816207318833652,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.7476574458913532,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "continuous",
+          "sample": "fwage"
+        },
+        "binary": {
+          "coefs": {
+            "2013": {
+              "beta": -0.007271129765879976,
+              "se": 0.015582057374890245
+            },
+            "2014": {
+              "beta": 0.016290338265013995,
+              "se": 0.01708634118453247
+            },
+            "2016": {
+              "beta": 0.017511751812253555,
+              "se": 0.011128989865524607
+            },
+            "2017": {
+              "beta": 0.01696633730430979,
+              "se": 0.012431094736724813
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 48146,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 1.727707071080273,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.42153455008498475,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "binary",
+          "sample": "fwage"
+        }
+      },
+      "is_self_emp@emp": {
+        "label": "Total SE (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2013": {
+              "beta": 0.041072884239320706,
+              "se": 0.1646373767930006
+            },
+            "2014": {
+              "beta": 0.30007274696256653,
+              "se": 0.14521155150286147
+            },
+            "2016": {
+              "beta": 0.23076944242067327,
+              "se": 0.15501143865499373
+            },
+            "2017": {
+              "beta": 0.03747464999954388,
+              "se": 0.13660135924258465
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 173918,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 5.89819379266328,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.052386995479335625,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2013": {
+              "beta": 0.002307668334224636,
+              "se": 0.008457006407941909
+            },
+            "2014": {
+              "beta": 0.017028325065262456,
+              "se": 0.011033648278849813
+            },
+            "2016": {
+              "beta": 0.02130120086549828,
+              "se": 0.0080295452907737
+            },
+            "2017": {
+              "beta": 0.022433776560595146,
+              "se": 0.009075183243226977
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 173918,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 3.4337993803321605,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.1796221699256747,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      },
+      "is_informal_self_emp@emp": {
+        "label": "Informal SE (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2013": {
+              "beta": -0.04300749113514218,
+              "se": 0.1583820087947999
+            },
+            "2014": {
+              "beta": 0.19470650611009885,
+              "se": 0.1435860023174526
+            },
+            "2016": {
+              "beta": 0.2570724384175758,
+              "se": 0.15393311841419424
+            },
+            "2017": {
+              "beta": -0.02098526543547706,
+              "se": 0.12498688835979851
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 173918,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 5.259989363566431,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.07207884556867307,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2013": {
+              "beta": 0.001373459055245478,
+              "se": 0.007276723962692087
+            },
+            "2014": {
+              "beta": 0.013434813581409948,
+              "se": 0.009887643608364806
+            },
+            "2016": {
+              "beta": 0.01291159387140169,
+              "se": 0.008739444887422228
+            },
+            "2017": {
+              "beta": 0.01602488206500791,
+              "se": 0.007166947435393801
+            },
+            "2015": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 173918,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 2.25984130631921,
+          "pretrend_df_DIAGNOSTIC_ONLY": 2,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.32305888910741537,
+          "lead_coefficients_tested": [
+            "Dose x 2013",
+            "Dose x 2014"
+          ],
+          "lead_years_tested": [
+            2013,
+            2014
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2015,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      }
+    }
+  },
+  "B": {
+    "dose_median": 0.08665618685064316,
+    "outcomes": {
+      "employed@pop": {
+        "label": "Employment (denom: working-age 18-65)",
+        "continuous": {
+          "coefs": {
+            "2014": {
+              "beta": -0.09656328021931948,
+              "se": 0.15044584853819862
+            },
+            "2015": {
+              "beta": -0.06953878358600996,
+              "se": 0.09784654016915441
+            },
+            "2016": {
+              "beta": 0.12565632713502772,
+              "se": 0.15414308147288316
+            },
+            "2018": {
+              "beta": 0.2576449370964262,
+              "se": 0.17664249931563894
+            },
+            "2019": {
+              "beta": 0.07006989051612322,
+              "se": 0.1471638974197237
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 282597,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 6.040975482883251,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.10963360800983939,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "continuous",
+          "sample": "pop"
+        },
+        "binary": {
+          "coefs": {
+            "2014": {
+              "beta": -0.004841119497440927,
+              "se": 0.008696654119560766
+            },
+            "2015": {
+              "beta": 0.001588623947295753,
+              "se": 0.004985153553223828
+            },
+            "2016": {
+              "beta": -0.0006135746011930454,
+              "se": 0.009571623136640608
+            },
+            "2018": {
+              "beta": 0.002405816319642873,
+              "se": 0.010489116292516355
+            },
+            "2019": {
+              "beta": -0.007887667689066569,
+              "se": 0.009270504818739833
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 282597,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.5969633489196833,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.897127192090756,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "binary",
+          "sample": "pop"
+        }
+      },
+      "formal@pop": {
+        "label": "Formal employment (denom: working-age 18-65)",
+        "continuous": {
+          "coefs": {
+            "2014": {
+              "beta": -0.19640155931185888,
+              "se": 0.16238253652527718
+            },
+            "2015": {
+              "beta": -0.16093895218268228,
+              "se": 0.17379823668191058
+            },
+            "2016": {
+              "beta": 0.10027711367831849,
+              "se": 0.13421695830688227
+            },
+            "2018": {
+              "beta": 0.07522428115530833,
+              "se": 0.07769308606496816
+            },
+            "2019": {
+              "beta": -0.10379306798189392,
+              "se": 0.085996409489206
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 282597,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 3.780324152850816,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.28618307188980446,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "continuous",
+          "sample": "pop"
+        },
+        "binary": {
+          "coefs": {
+            "2014": {
+              "beta": -0.0016857941636765905,
+              "se": 0.009251056254221315
+            },
+            "2015": {
+              "beta": -0.00015516956753625077,
+              "se": 0.007868343060027618
+            },
+            "2016": {
+              "beta": 0.005483604106669371,
+              "se": 0.009279108907754918
+            },
+            "2018": {
+              "beta": -0.0002804895026432275,
+              "se": 0.0040132304148992526
+            },
+            "2019": {
+              "beta": -0.011299062305973745,
+              "se": 0.005510550455135318
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 282597,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.6355297034036067,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.8882526320951112,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "binary",
+          "sample": "pop"
+        }
+      },
+      "formal@emp": {
+        "label": "Formality among employed (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2014": {
+              "beta": -0.22766545244085457,
+              "se": 0.21091513059944253
+            },
+            "2015": {
+              "beta": -0.16764013390620836,
+              "se": 0.21786919176204594
+            },
+            "2016": {
+              "beta": 0.08379449088023794,
+              "se": 0.18991192665522158
+            },
+            "2018": {
+              "beta": -0.022670938967825016,
+              "se": 0.10953709272983227
+            },
+            "2019": {
+              "beta": -0.13561528332523043,
+              "se": 0.09158756663210577
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 213199,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 2.2493728534178263,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.5222890399240927,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2014": {
+              "beta": -0.0019217946230653538,
+              "se": 0.012650600509852361
+            },
+            "2015": {
+              "beta": 0.00023703633040911276,
+              "se": 0.010162644656842454
+            },
+            "2016": {
+              "beta": 0.007324299911539434,
+              "se": 0.01268289762135979
+            },
+            "2018": {
+              "beta": -0.0012877370602748517,
+              "se": 0.005313302250824623
+            },
+            "2019": {
+              "beta": -0.009703464055012823,
+              "se": 0.005454202731996166
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 213199,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 0.5270840023207533,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.9129021336466304,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      },
+      "log_wage@fwage": {
+        "label": "Log wage (formal employees)",
+        "continuous": {
+          "coefs": {
+            "2014": {
+              "beta": -0.6170804681981394,
+              "se": 0.32071851190212053
+            },
+            "2015": {
+              "beta": 0.1922117650877908,
+              "se": 0.25272379492252517
+            },
+            "2016": {
+              "beta": 0.07962090209818484,
+              "se": 0.14492184560125684
+            },
+            "2018": {
+              "beta": 0.010246891987620188,
+              "se": 0.20327722773551868
+            },
+            "2019": {
+              "beta": -0.3734888357613926,
+              "se": 0.25536769050284247
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 59660,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 7.139873573110678,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.06757066254947838,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "continuous",
+          "sample": "fwage"
+        },
+        "binary": {
+          "coefs": {
+            "2014": {
+              "beta": -0.04335222671631822,
+              "se": 0.017436893247453424
+            },
+            "2015": {
+              "beta": 0.0007562337485564896,
+              "se": 0.014925334662134417
+            },
+            "2016": {
+              "beta": 0.005405308617100424,
+              "se": 0.008314979172601556
+            },
+            "2018": {
+              "beta": -0.004842649776818142,
+              "se": 0.013932395926179753
+            },
+            "2019": {
+              "beta": -0.02308073839924507,
+              "se": 0.01412189203238578
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 59660,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 9.543775810093248,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.02287019063539569,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "binary",
+          "sample": "fwage"
+        }
+      },
+      "is_self_emp@emp": {
+        "label": "Total SE (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2014": {
+              "beta": 0.15819018861236156,
+              "se": 0.14347462998450014
+            },
+            "2015": {
+              "beta": -0.09952734757001025,
+              "se": 0.15634159042660514
+            },
+            "2016": {
+              "beta": 0.25365214948498505,
+              "se": 0.10974513816776157
+            },
+            "2018": {
+              "beta": 0.371082577365649,
+              "se": 0.12969748705876946
+            },
+            "2019": {
+              "beta": 0.23244979690986955,
+              "se": 0.12255060615716386
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 213199,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 8.32212152886042,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.03980303619120393,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2014": {
+              "beta": 0.002624402764558942,
+              "se": 0.007987849641240606
+            },
+            "2015": {
+              "beta": -0.013071461796689998,
+              "se": 0.010769131071337404
+            },
+            "2016": {
+              "beta": 0.011105845510884782,
+              "se": 0.005997920636288692
+            },
+            "2018": {
+              "beta": 0.0185142436875389,
+              "se": 0.009867250811501398
+            },
+            "2019": {
+              "beta": 0.02081811804770256,
+              "se": 0.0066976789137325465
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 213199,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 13.372919058244072,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.0038957808424845,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      },
+      "is_informal_self_emp@emp": {
+        "label": "Informal SE (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2014": {
+              "beta": 0.16533910346213165,
+              "se": 0.11414774309484825
+            },
+            "2015": {
+              "beta": 0.024289982109307218,
+              "se": 0.13582869021148844
+            },
+            "2016": {
+              "beta": 0.1736963436815646,
+              "se": 0.1696589702622823
+            },
+            "2018": {
+              "beta": 0.3977161948805037,
+              "se": 0.1438195427147857
+            },
+            "2019": {
+              "beta": 0.21339953764518782,
+              "se": 0.14638170793045266
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 213199,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 2.6822408239386837,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.4432537216238269,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2014": {
+              "beta": 0.006299307531203002,
+              "se": 0.007221752454949512
+            },
+            "2015": {
+              "beta": -0.003081643760602437,
+              "se": 0.008557462698797008
+            },
+            "2016": {
+              "beta": 0.007784767111448099,
+              "se": 0.01071399407324811
+            },
+            "2018": {
+              "beta": 0.023630807318813674,
+              "se": 0.00885021544703791
+            },
+            "2019": {
+              "beta": 0.02349173643242869,
+              "se": 0.006848418662996682
+            },
+            "2017": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 213199,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 1.6728720700263295,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.6429817003164116,
+          "lead_coefficients_tested": [
+            "Dose x 2014",
+            "Dose x 2015",
+            "Dose x 2016"
+          ],
+          "lead_years_tested": [
+            2014,
+            2015,
+            2016
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2017,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      }
+    }
+  },
+  "C": {
+    "dose_median": 0.11280826349331594,
+    "outcomes": {
+      "employed@pop": {
+        "label": "Employment (denom: working-age 18-65)",
+        "continuous": {
+          "coefs": {
+            "2017": {
+              "beta": 0.6048928906748188,
+              "se": 0.1397441724395124
+            },
+            "2018": {
+              "beta": 0.585535850503458,
+              "se": 0.08459772471033504
+            },
+            "2019": {
+              "beta": 0.4270170648687035,
+              "se": 0.09472563631082492
+            },
+            "2022": {
+              "beta": 0.3064336645459358,
+              "se": 0.06209491505404325
+            },
+            "2023": {
+              "beta": 0.4668783173240989,
+              "se": 0.11175966877399231
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 279161,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 56.65001421808867,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 3.0522399362722845e-12,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "continuous",
+          "sample": "pop"
+        },
+        "binary": {
+          "coefs": {
+            "2017": {
+              "beta": 0.05983049109479832,
+              "se": 0.01729387530737487
+            },
+            "2018": {
+              "beta": 0.058157675757851246,
+              "se": 0.014384092373783122
+            },
+            "2019": {
+              "beta": 0.043363607973359475,
+              "se": 0.013781478864264219
+            },
+            "2022": {
+              "beta": 0.030120641858842112,
+              "se": 0.01094600389510239
+            },
+            "2023": {
+              "beta": 0.05378569797021082,
+              "se": 0.01850910655546731
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 279161,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 17.512102355030805,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.0005544500684228938,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "binary",
+          "sample": "pop"
+        }
+      },
+      "formal@pop": {
+        "label": "Formal employment (denom: working-age 18-65)",
+        "continuous": {
+          "coefs": {
+            "2017": {
+              "beta": 0.1598729432337973,
+              "se": 0.07196074947264083
+            },
+            "2018": {
+              "beta": 0.14272183522740933,
+              "se": 0.06851142303543455
+            },
+            "2019": {
+              "beta": -0.007231465673118054,
+              "se": 0.06231281189300514
+            },
+            "2022": {
+              "beta": 0.08308659392759243,
+              "se": 0.03423834212538102
+            },
+            "2023": {
+              "beta": 0.05460110113449912,
+              "se": 0.05545638579729661
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 279161,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 52.60333536577248,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 2.2274609223208157e-11,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "continuous",
+          "sample": "pop"
+        },
+        "binary": {
+          "coefs": {
+            "2017": {
+              "beta": 0.012602232751367237,
+              "se": 0.008568616623427104
+            },
+            "2018": {
+              "beta": 0.011913398769310163,
+              "se": 0.00786911076173346
+            },
+            "2019": {
+              "beta": -0.004721293883833744,
+              "se": 0.007648576824956944
+            },
+            "2022": {
+              "beta": 0.0059903517890430025,
+              "se": 0.004741135907906103
+            },
+            "2023": {
+              "beta": 0.002999703157761213,
+              "se": 0.007255867224951894
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 279161,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 20.947430517311645,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.00010795601849030566,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "binary",
+          "sample": "pop"
+        }
+      },
+      "formal@emp": {
+        "label": "Formality among employed (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2017": {
+              "beta": -0.0070978565350188205,
+              "se": 0.06391017420300432
+            },
+            "2018": {
+              "beta": -0.02013055857666224,
+              "se": 0.07530170396491417
+            },
+            "2019": {
+              "beta": -0.14582132344760357,
+              "se": 0.05745170251365108
+            },
+            "2022": {
+              "beta": -0.02535067964788862,
+              "se": 0.05636600814609223
+            },
+            "2023": {
+              "beta": -0.10827126131054543,
+              "se": 0.060413783529115805
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 210072,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 25.663309885313993,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 1.1217820582478135e-05,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2017": {
+              "beta": -0.004292012124236244,
+              "se": 0.007468160386765121
+            },
+            "2018": {
+              "beta": -0.00409051397948812,
+              "se": 0.008274630078486746
+            },
+            "2019": {
+              "beta": -0.01804989283153291,
+              "se": 0.008192174897615484
+            },
+            "2022": {
+              "beta": -0.003025928367461239,
+              "se": 0.0061811558434959205
+            },
+            "2023": {
+              "beta": -0.013506396726777725,
+              "se": 0.007045305293978472
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 210072,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 8.955011925960392,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.0298950461203762,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      },
+      "log_wage@fwage": {
+        "label": "Log wage (formal employees)",
+        "continuous": {
+          "coefs": {
+            "2017": {
+              "beta": 0.88494752247626,
+              "se": 0.23720486462647977
+            },
+            "2018": {
+              "beta": 0.7059445028762426,
+              "se": 0.2186594579514503
+            },
+            "2019": {
+              "beta": 0.7035524440236358,
+              "se": 0.19621149507008812
+            },
+            "2022": {
+              "beta": 0.5080447069802574,
+              "se": 0.18175624522637188
+            },
+            "2023": {
+              "beta": 0.16617395086571918,
+              "se": 0.1943703516972842
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 56546,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 14.658757875653185,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.0021327520330030347,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "continuous",
+          "sample": "fwage"
+        },
+        "binary": {
+          "coefs": {
+            "2017": {
+              "beta": 0.07081448858250106,
+              "se": 0.037193817741717754
+            },
+            "2018": {
+              "beta": 0.050163426950962986,
+              "se": 0.03270745002879225
+            },
+            "2019": {
+              "beta": 0.06005408395877332,
+              "se": 0.033250291018495734
+            },
+            "2022": {
+              "beta": 0.02464352041291029,
+              "se": 0.028330652452712247
+            },
+            "2023": {
+              "beta": -0.011145055016692496,
+              "se": 0.029737632502422714
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 56546,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 4.400006716937765,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.2213847643741425,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "binary",
+          "sample": "fwage"
+        }
+      },
+      "is_self_emp@emp": {
+        "label": "Total SE (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2017": {
+              "beta": -0.0032324211273477843,
+              "se": 0.07804088587059192
+            },
+            "2018": {
+              "beta": 0.04355111394942668,
+              "se": 0.11370151526824034
+            },
+            "2019": {
+              "beta": 0.12055227647971067,
+              "se": 0.1038449475952884
+            },
+            "2022": {
+              "beta": 0.021212830226279067,
+              "se": 0.06151486581731667
+            },
+            "2023": {
+              "beta": -0.1202099205852476,
+              "se": 0.09323145216491427
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 210072,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 6.293281532156412,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.09818134602777295,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2017": {
+              "beta": -0.0018026296760120242,
+              "se": 0.010807196454719161
+            },
+            "2018": {
+              "beta": 0.0024561990184472915,
+              "se": 0.013304406713008341
+            },
+            "2019": {
+              "beta": 0.00678930568629843,
+              "se": 0.014614125551203064
+            },
+            "2022": {
+              "beta": -0.0004891086236075703,
+              "se": 0.008033972047243673
+            },
+            "2023": {
+              "beta": -0.01715061331294343,
+              "se": 0.011371394790886152
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 210072,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 1.0689095397067925,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.7845842432344026,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      },
+      "is_informal_self_emp@emp": {
+        "label": "Informal SE (denom: employed)",
+        "continuous": {
+          "coefs": {
+            "2017": {
+              "beta": -0.03073949153309563,
+              "se": 0.07733605232707773
+            },
+            "2018": {
+              "beta": 0.078470549795425,
+              "se": 0.10260141153300015
+            },
+            "2019": {
+              "beta": 0.1567220455699987,
+              "se": 0.09897094249459724
+            },
+            "2022": {
+              "beta": -0.0007686946916054538,
+              "se": 0.05975323662384115
+            },
+            "2023": {
+              "beta": -0.03879822779836317,
+              "se": 0.09522358385100266
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 210072,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 17.433147891336077,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.0005756024063475994,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "continuous",
+          "sample": "emp"
+        },
+        "binary": {
+          "coefs": {
+            "2017": {
+              "beta": -0.006090774048259917,
+              "se": 0.011442428925486792
+            },
+            "2018": {
+              "beta": 0.004419675314308424,
+              "se": 0.0124060857987728
+            },
+            "2019": {
+              "beta": 0.008423451858363185,
+              "se": 0.014555474044456748
+            },
+            "2022": {
+              "beta": -0.004888096393346475,
+              "se": 0.00814725132120213
+            },
+            "2023": {
+              "beta": -0.009870843825101394,
+              "se": 0.012040808944156274
+            },
+            "2021": {
+              "beta": 0.0,
+              "se": 0.0
+            }
+          },
+          "n": 210072,
+          "n_clusters": 25,
+          "pretrend_chi2_DIAGNOSTIC_ONLY": 2.5843748007041687,
+          "pretrend_df_DIAGNOSTIC_ONLY": 3,
+          "pretrend_p_DIAGNOSTIC_ONLY": 0.4602354333333002,
+          "lead_coefficients_tested": [
+            "Dose x 2017",
+            "Dose x 2018",
+            "Dose x 2019"
+          ],
+          "lead_years_tested": [
+            2017,
+            2018,
+            2019
+          ],
+          "inference_note": "chi-square is asymptotic CR1 and DIAGNOSTIC ONLY with 25 clusters; canonical joint lead p-values come from Stata boottest",
+          "base_year": 2021,
+          "dose": "binary",
+          "sample": "emp"
+        }
+      }
+    }
+  }
+}

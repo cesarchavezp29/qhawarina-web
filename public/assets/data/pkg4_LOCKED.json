@@ -1,0 +1,841 @@
+{
+  "_meta": {
+    "package": "Package 4",
+    "canonical_inference": "Stata boottest wild cluster bootstrap-t, Rademacher, null imposed, 9999 reps, clustered by department",
+    "numpy_role": "reproducibility cross-check only",
+    "chi_square_role": "DIAGNOSTIC ONLY; never reported as inference (25 clusters)",
+    "primary_specification": "continuous exposure",
+    "secondary_specification": "binary above-median exposure",
+    "spec": "y_idt = beta*(Dose_d x Post_t) + Post_t + X_i'gamma + dept FE. Dose level term omitted (absorbed by department FE). Dose built from the pre-period only, fixed across outcomes.",
+    "labels": {
+      "employed": "Employment rate, working-age population denominator",
+      "formal": "Formal employment rate, working-age population denominator",
+      "formal_emp": "Formality rate, employed-worker denominator",
+      "is_self_emp": "Total self-employment rate, employed-worker denominator",
+      "is_informal_self_emp": "Informal self-employment rate, employed-worker denominator",
+      "is_formal_self_emp": "Formal self-employment rate, employed-worker denominator"
+    },
+    "terminology_rule": "Never call the working-age-denominator outcome a \"formality rate\"; never call the employed-denominator outcome \"formal employment\".",
+    "sources": {
+      "stata_validation": "D:/Nexus/nexus/exports/stata/pkg4_boottest/boottest_validation.log",
+      "stata_joint_leads": "D:/Nexus/nexus/exports/stata/pkg4_joint_leads/joint_leads_FIXED.log",
+      "numpy_grid": "D:/Nexus/nexus/exports/data/rerun_pkg4_informal_se.json",
+      "dose": "D:/Nexus/nexus/exports/data/pkg4_checks_3_4.json"
+    }
+  },
+  "A": {
+    "dose": {
+      "n_dept": 25,
+      "min": 0.010420787006138575,
+      "max": 0.12958168573095916,
+      "mean": 0.07673236600220462,
+      "median": 0.0768373351461902,
+      "sd": 0.030265660947838384,
+      "p25": 0.06319904739987967,
+      "p75": 0.0965851358568299,
+      "invariant_to_employed_filter": true
+    },
+    "iqr": 0.033386088456950236,
+    "outcomes": {
+      "employed": {
+        "label": "Employment rate, working-age population denominator",
+        "continuous": {
+          "beta": 0.0002743108137099881,
+          "se_cr1": 0.07478647026178532,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.996,
+          "p_conventional_cluster": 0.9970734295709819,
+          "ci95_cr1": [
+            -0.14630717089938924,
+            0.14685579252680922
+          ],
+          "externally_validated": false,
+          "n": 91899,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 2.743108137099881e-06,
+            "per_1sd": 8.302198082072157e-06,
+            "per_p25_to_p75": 9.15816509121966e-06
+          }
+        },
+        "binary": {
+          "beta": 0.0021954137327497517,
+          "se_cr1": 0.005112575002092149,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.677,
+          "p_conventional_cluster": 0.667621618424109,
+          "ci95_cr1": [
+            -0.00782523327135086,
+            0.012216060736850363
+          ],
+          "externally_validated": false,
+          "n": 91899,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": -0.029370104196210445,
+          "max": 0.039767616169024356,
+          "crosses_zero": true
+        }
+      },
+      "formal": {
+        "label": "Formal employment rate, working-age population denominator",
+        "continuous": {
+          "beta": 0.2524934873448087,
+          "se_cr1": 0.22864191563658692,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.376,
+          "p_conventional_cluster": 0.2694550194081301,
+          "ci95_cr1": [
+            -0.19564466730290164,
+            0.700631641992519
+          ],
+          "externally_validated": false,
+          "n": 68831,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.0025249348734480872,
+            "per_1sd": 0.0076418822795153015,
+            "per_p25_to_p75": 0.008429769903297628
+          }
+        },
+        "binary": {
+          "beta": -0.003987202800790911,
+          "se_cr1": 0.010456528695857443,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.772,
+          "p_conventional_cluster": 0.702971542439619,
+          "ci95_cr1": [
+            -0.0244819990446715,
+            0.016507593443089677
+          ],
+          "externally_validated": false,
+          "n": 68831,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": 0.05611746076610458,
+          "max": 0.43675516161633177,
+          "crosses_zero": false
+        }
+      },
+      "is_self_emp": {
+        "label": "Total self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": 0.03859622,
+          "se_cr1": 0.13722832,
+          "p_CANONICAL_stata_boot": 0.7796,
+          "p_numpy_boot_crosscheck": 0.753,
+          "p_conventional_cluster": 0.778514426137911,
+          "ci95_cr1": [
+            -0.2303712856139482,
+            0.3075637298986014
+          ],
+          "externally_validated": true,
+          "n": 68831,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.0003859622,
+            "per_1sd": 0.0011681401083881789,
+            "per_p25_to_p75": 0.001288576815023912
+          },
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2013",
+              "DxY2014"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.0207,
+            "F": 2.9491,
+            "df": [
+              2,
+              24
+            ]
+          }
+        },
+        "binary": {
+          "beta": 0.02270578,
+          "se_cr1": 0.00905846,
+          "p_CANONICAL_stata_boot": 0.0702,
+          "p_numpy_boot_crosscheck": 0.073,
+          "p_conventional_cluster": 0.012190465477434579,
+          "ci95_cr1": [
+            0.0049511962208140005,
+            0.040460372305273495
+          ],
+          "externally_validated": true,
+          "n": 68831,
+          "n_clusters": 25,
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2013",
+              "DxY2014"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.2966,
+            "F": 1.7169,
+            "df": [
+              2,
+              24
+            ]
+          }
+        },
+        "loo_continuous": {
+          "min": -0.02594625891726854,
+          "max": 0.14266372214288658,
+          "crosses_zero": true
+        }
+      },
+      "is_informal_self_emp": {
+        "label": "Informal self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": -0.02103615,
+          "se_cr1": 0.12582726,
+          "p_CANONICAL_stata_boot": 0.874,
+          "p_numpy_boot_crosscheck": 0.866,
+          "p_conventional_cluster": 0.86722621716286,
+          "ci95_cr1": [
+            -0.2676575844753525,
+            0.22558527687844113
+          ],
+          "externally_validated": true,
+          "n": 68831,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": -0.0002103615,
+            "per_1sd": -0.0006366729835478704,
+            "per_p25_to_p75": -0.0007023147646936737
+          },
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2013",
+              "DxY2014"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.0317,
+            "F": 2.63,
+            "df": [
+              2,
+              24
+            ]
+          }
+        },
+        "binary": {
+          "beta": 0.01617509,
+          "se_cr1": 0.00716107,
+          "p_CANONICAL_stata_boot": 0.0898,
+          "p_numpy_boot_crosscheck": 0.075,
+          "p_conventional_cluster": 0.02389880101387307,
+          "ci95_cr1": [
+            0.002139386813667621,
+            0.030210795930463746
+          ],
+          "externally_validated": true,
+          "n": 68831,
+          "n_clusters": 25,
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2013",
+              "DxY2014"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.4311,
+            "F": 1.1299,
+            "df": [
+              2,
+              24
+            ]
+          }
+        },
+        "loo_continuous": {
+          "min": -0.05881303565024332,
+          "max": 0.08491036317256562,
+          "crosses_zero": true
+        }
+      },
+      "is_formal_self_emp": {
+        "label": "Formal self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": 0.05963237594080892,
+          "se_cr1": 0.061858842976183465,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.339,
+          "p_conventional_cluster": 0.3350422680773574,
+          "ci95_cr1": [
+            -0.06161095629251068,
+            0.1808757081741285
+          ],
+          "externally_validated": false,
+          "n": 68831,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.0005963237594080892,
+            "per_1sd": 0.0018048132717385576,
+            "per_p25_to_p75": 0.0019908917780579577
+          }
+        },
+        "binary": {
+          "beta": 0.006530692890977844,
+          "se_cr1": 0.004043605150238425,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.19,
+          "p_conventional_cluster": 0.1062962050182053,
+          "ci95_cr1": [
+            -0.0013947732034894677,
+            0.014456158985445156
+          ],
+          "externally_validated": false,
+          "n": 68831,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": 0.03286677673296769,
+          "max": 0.12132333744939457,
+          "crosses_zero": false
+        }
+      }
+    }
+  },
+  "B": {
+    "dose": {
+      "n_dept": 25,
+      "min": 0.026129829489261985,
+      "max": 0.13819708553971388,
+      "mean": 0.08438224092675156,
+      "median": 0.08665618685064316,
+      "sd": 0.03225383628706517,
+      "p25": 0.05807310711152225,
+      "p75": 0.1087909526320424,
+      "invariant_to_employed_filter": true
+    },
+    "iqr": 0.05071784552052015,
+    "outcomes": {
+      "employed": {
+        "label": "Employment rate, working-age population denominator",
+        "continuous": {
+          "beta": 0.06917922053402048,
+          "se_cr1": 0.14772287887519747,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.677,
+          "p_conventional_cluster": 0.6395671819005285,
+          "ci95_cr1": [
+            -0.22035762206136655,
+            0.3587160631294075
+          ],
+          "externally_validated": false,
+          "n": 94134,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.0006917922053402048,
+            "per_1sd": 0.0022312952535710738,
+            "per_p25_to_p75": 0.003508621020274446
+          }
+        },
+        "binary": {
+          "beta": -0.007963737611406507,
+          "se_cr1": 0.009319844863073794,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.523,
+          "p_conventional_cluster": 0.3928321587935405,
+          "ci95_cr1": [
+            -0.026230633543031144,
+            0.01030315832021813
+          ],
+          "externally_validated": false,
+          "n": 94134,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": -0.031758323939973465,
+          "max": 0.21820794231172025,
+          "crosses_zero": true
+        }
+      },
+      "formal": {
+        "label": "Formal employment rate, working-age population denominator",
+        "continuous": {
+          "beta": -0.1358941292533049,
+          "se_cr1": 0.09190898192571008,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.201,
+          "p_conventional_cluster": 0.13925450206809037,
+          "ci95_cr1": [
+            -0.3160357338276967,
+            0.04424747532108683
+          ],
+          "externally_validated": false,
+          "n": 71423,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": -0.001358941292533049,
+            "per_1sd": -0.004383106997309371,
+            "per_p25_to_p75": -0.006892257454614717
+          }
+        },
+        "binary": {
+          "beta": -0.009880969079448132,
+          "se_cr1": 0.005471410571864089,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.134,
+          "p_conventional_cluster": 0.07092971447598084,
+          "ci95_cr1": [
+            -0.020604933800301747,
+            0.0008429956414054834
+          ],
+          "externally_validated": false,
+          "n": 71423,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": -0.17299887907472056,
+          "max": -0.07161351976622898,
+          "crosses_zero": false
+        }
+      },
+      "is_self_emp": {
+        "label": "Total self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": 0.23381526,
+          "se_cr1": 0.12291208,
+          "p_CANONICAL_stata_boot": 0.1556,
+          "p_numpy_boot_crosscheck": 0.165,
+          "p_conventional_cluster": 0.05713236811186769,
+          "ci95_cr1": [
+            -0.007092424519813956,
+            0.4747229381262569
+          ],
+          "externally_validated": true,
+          "n": 71423,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.0023381526000000002,
+            "per_1sd": 0.007541439117457577,
+            "per_p25_to_p75": 0.011858606237020255
+          },
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2014",
+              "DxY2015",
+              "DxY2016"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.206,
+            "F": 2.774,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "binary": {
+          "beta": 0.02097332,
+          "se_cr1": 0.00668831,
+          "p_CANONICAL_stata_boot": 0.0365,
+          "p_numpy_boot_crosscheck": 0.041,
+          "p_conventional_cluster": 0.0017137580057853831,
+          "ci95_cr1": [
+            0.007864231700969138,
+            0.034082405633992764
+          ],
+          "externally_validated": true,
+          "n": 71423,
+          "n_clusters": 25,
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2014",
+              "DxY2015",
+              "DxY2016"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.082,
+            "F": 4.4576,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "loo_continuous": {
+          "min": 0.1325754086544404,
+          "max": 0.26455366806991876,
+          "crosses_zero": false
+        }
+      },
+      "is_informal_self_emp": {
+        "label": "Informal self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": 0.21415441,
+          "se_cr1": 0.14610237,
+          "p_CANONICAL_stata_boot": 0.2413,
+          "p_numpy_boot_crosscheck": 0.253,
+          "p_conventional_cluster": 0.14270733854105702,
+          "ci95_cr1": [
+            -0.07220623437156187,
+            0.5005150539443972
+          ],
+          "externally_validated": true,
+          "n": 71423,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.0021415441,
+            "per_1sd": 0.006907301280293032,
+            "per_p25_to_p75": 0.010861450283918135
+          },
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2014",
+              "DxY2015",
+              "DxY2016"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.6058,
+            "F": 0.8941,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "binary": {
+          "beta": 0.02362045,
+          "se_cr1": 0.00679384,
+          "p_CANONICAL_stata_boot": 0.0204,
+          "p_numpy_boot_crosscheck": 0.025,
+          "p_conventional_cluster": 0.0005075355515868561,
+          "ci95_cr1": [
+            0.010304533419581619,
+            0.03693636965698641
+          ],
+          "externally_validated": true,
+          "n": 71423,
+          "n_clusters": 25,
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2014",
+              "DxY2015",
+              "DxY2016"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.7671,
+            "F": 0.5576,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "loo_continuous": {
+          "min": 0.09170634295966162,
+          "max": 0.27212670391363725,
+          "crosses_zero": false
+        }
+      },
+      "is_formal_self_emp": {
+        "label": "Formal self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": 0.019660847016786165,
+          "se_cr1": 0.07617968803275042,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.819,
+          "p_conventional_cluster": 0.7963411838926846,
+          "ci95_cr1": [
+            -0.12965134152740465,
+            0.16897303556097698
+          ],
+          "externally_validated": false,
+          "n": 71423,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.00019660847016786165,
+            "per_1sd": 0.0006341377409444547,
+            "per_p25_to_p75": 0.0009971558017999402
+          }
+        },
+        "binary": {
+          "beta": -0.002647132870801615,
+          "se_cr1": 0.003928532324442351,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.617,
+          "p_conventional_cluster": 0.5004242657065474,
+          "ci95_cr1": [
+            -0.010347056226708621,
+            0.005052790485105392
+          ],
+          "externally_validated": false,
+          "n": 71423,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": -0.03993885640354655,
+          "max": 0.07758881236239881,
+          "crosses_zero": true
+        }
+      }
+    }
+  },
+  "C": {
+    "dose": {
+      "n_dept": 25,
+      "min": 0.029787338412042227,
+      "max": 0.22721993071852414,
+      "mean": 0.11645591005283101,
+      "median": 0.11280826349331594,
+      "sd": 0.049517176004922225,
+      "p25": 0.09029434266018313,
+      "p75": 0.14055089179009578,
+      "invariant_to_employed_filter": true
+    },
+    "iqr": 0.05025654912991265,
+    "outcomes": {
+      "employed": {
+        "label": "Employment rate, working-age population denominator",
+        "continuous": {
+          "beta": 0.4666655309228518,
+          "se_cr1": 0.11164858338781107,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.008,
+          "p_conventional_cluster": 2.918025645641555e-05,
+          "ci95_cr1": [
+            0.2478343074827421,
+            0.6854967543629615
+          ],
+          "externally_validated": false,
+          "n": 90216,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": 0.004666655309228518,
+            "per_1sd": 0.023107959230137327,
+            "per_p25_to_p75": 0.02345299918206107
+          }
+        },
+        "binary": {
+          "beta": 0.05387622246087559,
+          "se_cr1": 0.018480545361087092,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.018,
+          "p_conventional_cluster": 0.003553536476286121,
+          "ci95_cr1": [
+            0.01765435355314489,
+            0.09009809136860629
+          ],
+          "externally_validated": false,
+          "n": 90216,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": 0.36684517594362465,
+          "max": 0.5164170699990185,
+          "crosses_zero": false
+        }
+      },
+      "formal": {
+        "label": "Formal employment rate, working-age population denominator",
+        "continuous": {
+          "beta": -0.10940595176390011,
+          "se_cr1": 0.061269059266648336,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.161,
+          "p_conventional_cluster": 0.07415368204736836,
+          "ci95_cr1": [
+            -0.22949330792653083,
+            0.010681404398730623
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": -0.0010940595176390012,
+            "per_1sd": -0.005417473769479073,
+            "per_p25_to_p75": -0.0054983655899273
+          }
+        },
+        "binary": {
+          "beta": -0.013659408219263106,
+          "se_cr1": 0.00710854145993582,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.058,
+          "p_conventional_cluster": 0.054662575671553026,
+          "ci95_cr1": [
+            -0.027592149480737314,
+            0.00027333304221110154
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": -0.19011020219243324,
+          "max": -0.06076605143859615,
+          "crosses_zero": false
+        }
+      },
+      "is_self_emp": {
+        "label": "Total self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": -0.11990996405300769,
+          "se_cr1": 0.09303936321909465,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.428,
+          "p_conventional_cluster": 0.19746451364124182,
+          "ci95_cr1": [
+            -0.30226711596243316,
+            0.06244718785641781
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": -0.001199099640530077,
+            "per_1sd": -0.005937602794756679,
+            "per_p25_to_p75": -0.006026260999596041
+          },
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2017",
+              "DxY2018",
+              "DxY2019"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.2865,
+            "F": 2.0978,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "binary": {
+          "beta": -0.017031974777736852,
+          "se_cr1": 0.011368809886747003,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.215,
+          "p_conventional_cluster": 0.13409902972467286,
+          "ci95_cr1": [
+            -0.039314842155760976,
+            0.005250892600287271
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25,
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2017",
+              "DxY2018",
+              "DxY2019"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.8422,
+            "F": 0.3563,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "loo_continuous": {
+          "min": -0.18465446814783149,
+          "max": 0.03399759704737315,
+          "crosses_zero": true
+        }
+      },
+      "is_informal_self_emp": {
+        "label": "Informal self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": -0.03727052343480919,
+          "se_cr1": 0.0947444762772818,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.749,
+          "p_conventional_cluster": 0.6940392962303314,
+          "ci95_cr1": [
+            -0.22296969693828153,
+            0.14842865006866315
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": -0.0003727052343480919,
+            "per_1sd": -0.001845531068717025,
+            "per_p25_to_p75": -0.0018730878920990488
+          },
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2017",
+              "DxY2018",
+              "DxY2019"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.0695,
+            "F": 5.811,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "binary": {
+          "beta": -0.00963848,
+          "se_cr1": 0.01199396,
+          "p_CANONICAL_stata_boot": 0.4639,
+          "p_numpy_boot_crosscheck": 0.463,
+          "p_conventional_cluster": 0.42162127364731367,
+          "ci95_cr1": [
+            -0.033146641248668444,
+            0.013869672398847448
+          ],
+          "externally_validated": true,
+          "n": 66812,
+          "n_clusters": 25,
+          "joint_leads": {
+            "leads_tested": [
+              "DxY2017",
+              "DxY2018",
+              "DxY2019"
+            ],
+            "joint_p_CANONICAL_stata_boot": 0.6301,
+            "F": 0.8615,
+            "df": [
+              3,
+              24
+            ]
+          }
+        },
+        "loo_continuous": {
+          "min": -0.09654068797524218,
+          "max": 0.1149403140598797,
+          "crosses_zero": true
+        }
+      },
+      "is_formal_self_emp": {
+        "label": "Formal self-employment rate, employed-worker denominator",
+        "continuous": {
+          "beta": -0.08263944061819672,
+          "se_cr1": 0.02715129429090864,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.024,
+          "p_conventional_cluster": 0.0023371533726434792,
+          "ci95_cr1": [
+            -0.13585597742837766,
+            -0.029422903808015793
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25,
+          "rescaled": {
+            "per_1pp": -0.0008263944061819672,
+            "per_1sd": -0.004092071726039566,
+            "per_p25_to_p75": -0.0041531731074969025
+          }
+        },
+        "binary": {
+          "beta": -0.007393490352825979,
+          "se_cr1": 0.0040778212612938665,
+          "p_CANONICAL_stata_boot": null,
+          "p_numpy_boot_crosscheck": 0.129,
+          "p_conventional_cluster": 0.06981667812042837,
+          "ci95_cr1": [
+            -0.015386020024961958,
+            0.0005990393193099994
+          ],
+          "externally_validated": false,
+          "n": 66812,
+          "n_clusters": 25
+        },
+        "loo_continuous": {
+          "min": -0.10078794328359128,
+          "max": -0.06619501499224548,
+          "crosses_zero": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,355 @@
+{
+  "rules": {
+    "implementation_years": [
+      2016,
+      2018,
+      2022
+    ],
+    "adjustment_years": [
+      2017,
+      2019,
+      2023
+    ],
+    "pandemic_excluded": [
+      2020,
+      2021
+    ],
+    "min_train_years_for_trend": 3,
+    "min_train_years_for_modelB": 5
+  },
+  "folds": [
+    {
+      "horizon": 1,
+      "train_through": 2013,
+      "target": 2014,
+      "n_train_years": 1,
+      "train_years": [
+        2013
+      ],
+      "mw_origin": 750,
+      "mw_target": 750,
+      "clean_all_zones": true,
+      "exclusion_reasons": [],
+      "trend_identified": false,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 1,
+      "train_through": 2014,
+      "target": 2015,
+      "n_train_years": 2,
+      "train_years": [
+        2013,
+        2014
+      ],
+      "mw_origin": 750,
+      "mw_target": 750,
+      "clean_all_zones": true,
+      "exclusion_reasons": [],
+      "trend_identified": false,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 1,
+      "train_through": 2015,
+      "target": 2016,
+      "n_train_years": 3,
+      "train_years": [
+        2013,
+        2014,
+        2015
+      ],
+      "mw_origin": 750,
+      "mw_target": 850,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target is an MW implementation year",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 1,
+      "train_through": 2016,
+      "target": 2017,
+      "n_train_years": 4,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "mw_origin": 850,
+      "mw_target": 850,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target inside post-increase adjustment window"
+      ],
+      "trend_identified": true,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 1,
+      "train_through": 2017,
+      "target": 2018,
+      "n_train_years": 5,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "mw_origin": 850,
+      "mw_target": 930,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target is an MW implementation year",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    },
+    {
+      "horizon": 1,
+      "train_through": 2018,
+      "target": 2019,
+      "n_train_years": 6,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "mw_origin": 930,
+      "mw_target": 930,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target inside post-increase adjustment window"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    },
+    {
+      "horizon": 1,
+      "train_through": 2021,
+      "target": 2022,
+      "n_train_years": 8,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ],
+      "mw_origin": 930,
+      "mw_target": 1025,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target is an MW implementation year",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    },
+    {
+      "horizon": 1,
+      "train_through": 2022,
+      "target": 2023,
+      "n_train_years": 9,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022
+      ],
+      "mw_origin": 1025,
+      "mw_target": 1025,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target inside post-increase adjustment window"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    },
+    {
+      "horizon": 2,
+      "train_through": 2013,
+      "target": 2015,
+      "n_train_years": 1,
+      "train_years": [
+        2013
+      ],
+      "mw_origin": 750,
+      "mw_target": 750,
+      "clean_all_zones": true,
+      "exclusion_reasons": [],
+      "trend_identified": false,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 2,
+      "train_through": 2014,
+      "target": 2016,
+      "n_train_years": 2,
+      "train_years": [
+        2013,
+        2014
+      ],
+      "mw_origin": 750,
+      "mw_target": 850,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target is an MW implementation year",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": false,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 2,
+      "train_through": 2015,
+      "target": 2017,
+      "n_train_years": 3,
+      "train_years": [
+        2013,
+        2014,
+        2015
+      ],
+      "mw_origin": 750,
+      "mw_target": 850,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target inside post-increase adjustment window",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 2,
+      "train_through": 2016,
+      "target": 2018,
+      "n_train_years": 4,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "mw_origin": 850,
+      "mw_target": 930,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target is an MW implementation year",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": false
+    },
+    {
+      "horizon": 2,
+      "train_through": 2017,
+      "target": 2019,
+      "n_train_years": 5,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "mw_origin": 850,
+      "mw_target": 930,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target inside post-increase adjustment window",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    },
+    {
+      "horizon": 2,
+      "train_through": 2019,
+      "target": 2021,
+      "n_train_years": 7,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "mw_origin": 930,
+      "mw_target": 930,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "fold spans the pandemic / 2020 gap"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    },
+    {
+      "horizon": 2,
+      "train_through": 2021,
+      "target": 2023,
+      "n_train_years": 8,
+      "train_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ],
+      "mw_origin": 930,
+      "mw_target": 1025,
+      "clean_all_zones": false,
+      "exclusion_reasons": [
+        "target inside post-increase adjustment window",
+        "MW differs between origin and target"
+      ],
+      "trend_identified": true,
+      "modelB_identified": true
+    }
+  ],
+  "verdict": {
+    "n_clean_folds": 3,
+    "n_clean_folds_trend_identified": 0,
+    "n_clean_folds_modelB_identified": 0,
+    "h2_clean_folds": [
+      {
+        "horizon": 2,
+        "train_through": 2013,
+        "target": 2015,
+        "n_train_years": 1,
+        "train_years": [
+          2013
+        ],
+        "mw_origin": 750,
+        "mw_target": 750,
+        "clean_all_zones": true,
+        "exclusion_reasons": [],
+        "trend_identified": false,
+        "modelB_identified": false
+      }
+    ],
+    "temporal_selection_feasible": false
+  }
+}

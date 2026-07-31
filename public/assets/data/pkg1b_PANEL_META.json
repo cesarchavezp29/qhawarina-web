@@ -1,0 +1,133 @@
+{
+  "years": [
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2021,
+    2022,
+    2023
+  ],
+  "bin_width": 25,
+  "wage_max": 6000,
+  "n_bins": 240,
+  "mw_in_force": {
+    "2013": 750,
+    "2014": 750,
+    "2015": 750,
+    "2016": 850,
+    "2017": 850,
+    "2018": 930,
+    "2019": 930,
+    "2021": 930,
+    "2022": 1025,
+    "2023": 1025
+  },
+  "events": {
+    "A": {
+      "mw_old": 750.0,
+      "mw_new": 850.0,
+      "pre": 2015,
+      "post": 2017
+    },
+    "B": {
+      "mw_old": 850.0,
+      "mw_new": 930.0,
+      "pre": 2017,
+      "post": 2019
+    },
+    "C": {
+      "mw_old": 930.0,
+      "mw_new": 1025.0,
+      "pre": 2021,
+      "post": 2023
+    }
+  },
+  "per_year_checks": {
+    "2013": {
+      "n_unweighted": 10062,
+      "weighted_total": 3266836.580144882,
+      "sum_shares": 0.9999999999999999,
+      "sum_shares_err": 1.1102230246251565e-16,
+      "nonzero_bins": 205
+    },
+    "2014": {
+      "n_unweighted": 10243,
+      "weighted_total": 3357823.805234313,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 201
+    },
+    "2015": {
+      "n_unweighted": 10059,
+      "weighted_total": 3349577.5334973335,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 201
+    },
+    "2016": {
+      "n_unweighted": 11488,
+      "weighted_total": 3381006.6066600084,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 203
+    },
+    "2017": {
+      "n_unweighted": 10895,
+      "weighted_total": 3389514.915751457,
+      "sum_shares": 0.9999999999999999,
+      "sum_shares_err": 1.1102230246251565e-16,
+      "nonzero_bins": 205
+    },
+    "2018": {
+      "n_unweighted": 11723,
+      "weighted_total": 3554658.9456448555,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 205
+    },
+    "2019": {
+      "n_unweighted": 10922,
+      "weighted_total": 3586364.6844341755,
+      "sum_shares": 0.9999999999999999,
+      "sum_shares_err": 1.1102230246251565e-16,
+      "nonzero_bins": 212
+    },
+    "2021": {
+      "n_unweighted": 8946,
+      "weighted_total": 3066359.6286547333,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 203
+    },
+    "2022": {
+      "n_unweighted": 9554,
+      "weighted_total": 3337644.778434843,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 217
+    },
+    "2023": {
+      "n_unweighted": 9838,
+      "weighted_total": 3664159.043918282,
+      "sum_shares": 1.0,
+      "sum_shares_err": 0.0,
+      "nonzero_bins": 227
+    }
+  },
+  "frozen_from": "Package 1A canonical legacy definitions",
+  "panel_file": "D:/Nexus/nexus/exports/data/pkg1b_BIN_PANEL.parquet",
+  "feasible_time_placebos": [
+    [
+      2013,
+      2015
+    ],
+    [
+      2019,
+      2021
+    ]
+  ]
+}

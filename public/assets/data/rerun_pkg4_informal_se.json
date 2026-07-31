@@ -1,0 +1,599 @@
+{
+  "A": {
+    "dose_summary": {
+      "n_dept": 25,
+      "mean": 0.07673236600220462,
+      "min": 0.010420787006138575,
+      "max": 0.12958168573095916,
+      "median": 0.0768373351461902
+    },
+    "employed": {
+      "continuous": {
+        "beta": 0.0002743108137099881,
+        "se_cluster": 0.07478647026178532,
+        "p_cluster": 0.9970734295709819,
+        "t": 0.003667920317000928,
+        "p_wild_cluster": 0.996,
+        "n_boot_ok": 999,
+        "n": 91899,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.14630717089938924,
+          0.14685579252680922
+        ]
+      },
+      "binary": {
+        "beta": 0.0021954137327497517,
+        "se_cluster": 0.005112575002092149,
+        "p_cluster": 0.667621618424109,
+        "t": 0.4294144793673154,
+        "p_wild_cluster": 0.677,
+        "n_boot_ok": 999,
+        "n": 91899,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.00782523327135086,
+          0.012216060736850363
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.029370104196210445,
+        "max": 0.039767616169024356,
+        "n": 25,
+        "dept_at_min": "16",
+        "dept_at_max": "14"
+      },
+      "label": "Employment (denom: working-age urban 18-65)"
+    },
+    "formal": {
+      "continuous": {
+        "beta": 0.2524934873448087,
+        "se_cluster": 0.22864191563658692,
+        "p_cluster": 0.2694550194081301,
+        "t": 1.1043184564029478,
+        "p_wild_cluster": 0.376,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.19564466730290164,
+          0.700631641992519
+        ]
+      },
+      "binary": {
+        "beta": -0.003987202800790911,
+        "se_cluster": 0.010456528695857443,
+        "p_cluster": 0.702971542439619,
+        "t": -0.381312280276199,
+        "p_wild_cluster": 0.772,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.0244819990446715,
+          0.016507593443089677
+        ]
+      },
+      "loo_continuous": {
+        "min": 0.05611746076610458,
+        "max": 0.43675516161633177,
+        "n": 25,
+        "dept_at_min": "13",
+        "dept_at_max": "21"
+      },
+      "label": "Formality (denom: employed)"
+    },
+    "is_self_emp": {
+      "continuous": {
+        "beta": 0.03859622214232661,
+        "se_cluster": 0.13722832028381368,
+        "p_cluster": 0.778514426137911,
+        "t": 0.2812555168095219,
+        "p_wild_cluster": 0.753,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.2303712856139482,
+          0.3075637298986014
+        ]
+      },
+      "binary": {
+        "beta": 0.02270578426304375,
+        "se_cluster": 0.009058463286851913,
+        "p_cluster": 0.012190465477434579,
+        "t": 2.5065823577383717,
+        "p_wild_cluster": 0.073,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          0.0049511962208140005,
+          0.040460372305273495
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.02594625891726854,
+        "max": 0.14266372214288658,
+        "n": 25,
+        "dept_at_min": "06",
+        "dept_at_max": "13"
+      },
+      "label": "TOTAL self-employment (denom: employed)"
+    },
+    "is_informal_self_emp": {
+      "continuous": {
+        "beta": -0.021036153798455692,
+        "se_cluster": 0.12582726054943716,
+        "p_cluster": 0.86722621716286,
+        "t": -0.16718280050443163,
+        "p_wild_cluster": 0.866,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.2676575844753525,
+          0.22558527687844113
+        ]
+      },
+      "binary": {
+        "beta": 0.016175091372065683,
+        "se_cluster": 0.007161073754284725,
+        "p_cluster": 0.02389880101387307,
+        "t": 2.2587522384317786,
+        "p_wild_cluster": 0.075,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          0.002139386813667621,
+          0.030210795930463746
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.05881303565024332,
+        "max": 0.08491036317256562,
+        "n": 25,
+        "dept_at_min": "06",
+        "dept_at_max": "13"
+      },
+      "label": "INFORMAL self-employment (denom: employed)"
+    },
+    "is_formal_self_emp": {
+      "continuous": {
+        "beta": 0.05963237594080892,
+        "se_cluster": 0.061858842976183465,
+        "p_cluster": 0.3350422680773574,
+        "t": 0.9640072958326787,
+        "p_wild_cluster": 0.339,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.06161095629251068,
+          0.1808757081741285
+        ]
+      },
+      "binary": {
+        "beta": 0.006530692890977844,
+        "se_cluster": 0.004043605150238425,
+        "p_cluster": 0.1062962050182053,
+        "t": 1.6150669138881604,
+        "p_wild_cluster": 0.19,
+        "n_boot_ok": 999,
+        "n": 68831,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.0013947732034894677,
+          0.014456158985445156
+        ]
+      },
+      "loo_continuous": {
+        "min": 0.03286677673296769,
+        "max": 0.12132333744939457,
+        "n": 25,
+        "dept_at_min": "06",
+        "dept_at_max": "21"
+      },
+      "label": "FORMAL self-employment (denom: employed)"
+    }
+  },
+  "B": {
+    "dose_summary": {
+      "n_dept": 25,
+      "mean": 0.08438224092675156,
+      "min": 0.026129829489261985,
+      "max": 0.13819708553971388,
+      "median": 0.08665618685064316
+    },
+    "employed": {
+      "continuous": {
+        "beta": 0.06917922053402048,
+        "se_cluster": 0.14772287887519747,
+        "p_cluster": 0.6395671819005285,
+        "t": 0.46830403699663886,
+        "p_wild_cluster": 0.677,
+        "n_boot_ok": 999,
+        "n": 94134,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.22035762206136655,
+          0.3587160631294075
+        ]
+      },
+      "binary": {
+        "beta": -0.007963737611406507,
+        "se_cluster": 0.009319844863073794,
+        "p_cluster": 0.3928321587935405,
+        "t": -0.854492508020136,
+        "p_wild_cluster": 0.523,
+        "n_boot_ok": 999,
+        "n": 94134,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.026230633543031144,
+          0.01030315832021813
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.031758323939973465,
+        "max": 0.21820794231172025,
+        "n": 25,
+        "dept_at_min": "14",
+        "dept_at_max": "15"
+      },
+      "label": "Employment (denom: working-age urban 18-65)"
+    },
+    "formal": {
+      "continuous": {
+        "beta": -0.1358941292533049,
+        "se_cluster": 0.09190898192571008,
+        "p_cluster": 0.13925450206809037,
+        "t": -1.4785728925073718,
+        "p_wild_cluster": 0.201,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.3160357338276967,
+          0.04424747532108683
+        ]
+      },
+      "binary": {
+        "beta": -0.009880969079448132,
+        "se_cluster": 0.005471410571864089,
+        "p_cluster": 0.07092971447598084,
+        "t": -1.8059271827012102,
+        "p_wild_cluster": 0.134,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.020604933800301747,
+          0.0008429956414054834
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.17299887907472056,
+        "max": -0.07161351976622898,
+        "n": 25,
+        "dept_at_min": "22",
+        "dept_at_max": "15"
+      },
+      "label": "Formality (denom: employed)"
+    },
+    "is_self_emp": {
+      "continuous": {
+        "beta": 0.23381525680322146,
+        "se_cluster": 0.12291208230767113,
+        "p_cluster": 0.05713236811186769,
+        "t": 1.9022967670333635,
+        "p_wild_cluster": 0.165,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.007092424519813956,
+          0.4747229381262569
+        ]
+      },
+      "binary": {
+        "beta": 0.02097331866748095,
+        "se_cluster": 0.0066883096767917415,
+        "p_cluster": 0.0017137580057853831,
+        "t": 3.13581752056993,
+        "p_wild_cluster": 0.041,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          0.007864231700969138,
+          0.034082405633992764
+        ]
+      },
+      "loo_continuous": {
+        "min": 0.1325754086544404,
+        "max": 0.26455366806991876,
+        "n": 25,
+        "dept_at_min": "08",
+        "dept_at_max": "24"
+      },
+      "label": "TOTAL self-employment (denom: employed)"
+    },
+    "is_informal_self_emp": {
+      "continuous": {
+        "beta": 0.21415440978641764,
+        "se_cluster": 0.1461023694683569,
+        "p_cluster": 0.14270733854105702,
+        "t": 1.4657832762445346,
+        "p_wild_cluster": 0.253,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.07220623437156187,
+          0.5005150539443972
+        ]
+      },
+      "binary": {
+        "beta": 0.023620451538284015,
+        "se_cluster": 0.006793835774848161,
+        "p_cluster": 0.0005075355515868561,
+        "t": 3.476747498921097,
+        "p_wild_cluster": 0.025,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          0.010304533419581619,
+          0.03693636965698641
+        ]
+      },
+      "loo_continuous": {
+        "min": 0.09170634295966162,
+        "max": 0.27212670391363725,
+        "n": 25,
+        "dept_at_min": "08",
+        "dept_at_max": "14"
+      },
+      "label": "INFORMAL self-employment (denom: employed)"
+    },
+    "is_formal_self_emp": {
+      "continuous": {
+        "beta": 0.019660847016786165,
+        "se_cluster": 0.07617968803275042,
+        "p_cluster": 0.7963411838926846,
+        "t": 0.25808516055268915,
+        "p_wild_cluster": 0.819,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.12965134152740465,
+          0.16897303556097698
+        ]
+      },
+      "binary": {
+        "beta": -0.002647132870801615,
+        "se_cluster": 0.003928532324442351,
+        "p_cluster": 0.5004242657065474,
+        "t": -0.673822346918673,
+        "p_wild_cluster": 0.617,
+        "n_boot_ok": 999,
+        "n": 71423,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.010347056226708621,
+          0.005052790485105392
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.03993885640354655,
+        "max": 0.07758881236239881,
+        "n": 25,
+        "dept_at_min": "14",
+        "dept_at_max": "15"
+      },
+      "label": "FORMAL self-employment (denom: employed)"
+    }
+  },
+  "C": {
+    "dose_summary": {
+      "n_dept": 25,
+      "mean": 0.11645591005283101,
+      "min": 0.029787338412042227,
+      "max": 0.22721993071852414,
+      "median": 0.11280826349331594
+    },
+    "employed": {
+      "continuous": {
+        "beta": 0.4666655309228518,
+        "se_cluster": 0.11164858338781107,
+        "p_cluster": 2.918025645641555e-05,
+        "t": 4.179771178124941,
+        "p_wild_cluster": 0.008,
+        "n_boot_ok": 999,
+        "n": 90216,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          0.2478343074827421,
+          0.6854967543629615
+        ]
+      },
+      "binary": {
+        "beta": 0.05387622246087559,
+        "se_cluster": 0.018480545361087092,
+        "p_cluster": 0.003553536476286121,
+        "t": 2.915293970399713,
+        "p_wild_cluster": 0.018,
+        "n_boot_ok": 999,
+        "n": 90216,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          0.01765435355314489,
+          0.09009809136860629
+        ]
+      },
+      "loo_continuous": {
+        "min": 0.36684517594362465,
+        "max": 0.5164170699990185,
+        "n": 25,
+        "dept_at_min": "15",
+        "dept_at_max": "11"
+      },
+      "label": "Employment (denom: working-age urban 18-65)"
+    },
+    "formal": {
+      "continuous": {
+        "beta": -0.10940595176390011,
+        "se_cluster": 0.061269059266648336,
+        "p_cluster": 0.07415368204736836,
+        "t": -1.7856639725404593,
+        "p_wild_cluster": 0.161,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.22949330792653083,
+          0.010681404398730623
+        ]
+      },
+      "binary": {
+        "beta": -0.013659408219263106,
+        "se_cluster": 0.00710854145993582,
+        "p_cluster": 0.054662575671553026,
+        "t": -1.921548646265676,
+        "p_wild_cluster": 0.058,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.027592149480737314,
+          0.00027333304221110154
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.19011020219243324,
+        "max": -0.06076605143859615,
+        "n": 25,
+        "dept_at_min": "15",
+        "dept_at_max": "06"
+      },
+      "label": "Formality (denom: employed)"
+    },
+    "is_self_emp": {
+      "continuous": {
+        "beta": -0.11990996405300769,
+        "se_cluster": 0.09303936321909465,
+        "p_cluster": 0.19746451364124182,
+        "t": -1.288808950364767,
+        "p_wild_cluster": 0.428,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.30226711596243316,
+          0.06244718785641781
+        ]
+      },
+      "binary": {
+        "beta": -0.017031974777736852,
+        "se_cluster": 0.011368809886747003,
+        "p_cluster": 0.13409902972467286,
+        "t": -1.4981317259594242,
+        "p_wild_cluster": 0.215,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.039314842155760976,
+          0.005250892600287271
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.18465446814783149,
+        "max": 0.03399759704737315,
+        "n": 25,
+        "dept_at_min": "08",
+        "dept_at_max": "15"
+      },
+      "label": "TOTAL self-employment (denom: employed)"
+    },
+    "is_informal_self_emp": {
+      "continuous": {
+        "beta": -0.03727052343480919,
+        "se_cluster": 0.0947444762772818,
+        "p_cluster": 0.6940392962303314,
+        "t": -0.3933793810388718,
+        "p_wild_cluster": 0.749,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.22296969693828153,
+          0.14842865006866315
+        ]
+      },
+      "binary": {
+        "beta": -0.009638484424910498,
+        "se_cluster": 0.011993957563141809,
+        "p_cluster": 0.42162127364731367,
+        "t": -0.8036116831470349,
+        "p_wild_cluster": 0.463,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.033146641248668444,
+          0.013869672398847448
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.09654068797524218,
+        "max": 0.1149403140598797,
+        "n": 25,
+        "dept_at_min": "06",
+        "dept_at_max": "15"
+      },
+      "label": "INFORMAL self-employment (denom: employed)"
+    },
+    "is_formal_self_emp": {
+      "continuous": {
+        "beta": -0.08263944061819672,
+        "se_cluster": 0.02715129429090864,
+        "p_cluster": 0.0023371533726434792,
+        "t": -3.0436648703656006,
+        "p_wild_cluster": 0.024,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.13585597742837766,
+          -0.029422903808015793
+        ]
+      },
+      "binary": {
+        "beta": -0.007393490352825979,
+        "se_cluster": 0.0040778212612938665,
+        "p_cluster": 0.06981667812042837,
+        "t": -1.8130981911845916,
+        "p_wild_cluster": 0.129,
+        "n_boot_ok": 999,
+        "n": 66812,
+        "n_clusters": 25,
+        "ci95_cluster": [
+          -0.015386020024961958,
+          0.0005990393193099994
+        ]
+      },
+      "loo_continuous": {
+        "min": -0.10078794328359128,
+        "max": -0.06619501499224548,
+        "n": 25,
+        "dept_at_min": "08",
+        "dept_at_max": "06"
+      },
+      "label": "FORMAL self-employment (denom: employed)"
+    }
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "_meta": {
+    "package": "Package 1A",
+    "canonical_legacy_implementation": "row-level wage fallback",
+    "canonical_basis": [
+      "paper defines wage as p524a1 with i524a1/12 when p524a1 is missing",
+      "reported Event A N=10,059 reproduced exactly by row fallback; column priority gives 9,952"
+    ],
+    "estimator": "S/25 bins over S/0-6000; bin-CENTRE zone membership; clean zone BC > 2*MW_new; inverse-absolute weighted background, eps 1e-8; missing = negative-only bins in [0.85*MW_old, MW_new); excess = positive-only bins in [MW_new, MW_new+250)",
+    "units": "masses in percentage points of the group workforce; ratio dimensionless",
+    "status": "canonical LEGACY reconstruction, not necessarily the final headline"
+  },
+  "events": {
+    "A": {
+      "mw_old": 750.0,
+      "mw_new": 850.0,
+      "pre_year": 2015,
+      "post_year": 2017,
+      "groups": {
+        "formal_dep": {
+          "n_pre": 10059,
+          "n_post": 10895,
+          "n_clean_bins": 172,
+          "background_share": 2.15336153133435e-08,
+          "background_pp": 2.15336153133435e-06,
+          "missing_pp": 6.7068883525143415,
+          "excess_pp": 4.749919618948165,
+          "R_unrounded": 0.7082151020401988
+        },
+        "informal_dep": {
+          "n_pre": 14926,
+          "n_post": 15474,
+          "n_clean_bins": 172,
+          "background_share": 1.9994373340630146e-09,
+          "background_pp": 1.9994373340630145e-07,
+          "missing_pp": 4.420465820946986,
+          "excess_pp": 5.401464226184938,
+          "R_unrounded": 1.2219219523402616
+        },
+        "all_workers": {
+          "n_pre": 24985,
+          "n_post": 26369,
+          "n_clean_bins": 172,
+          "background_share": 2.7675193740056574e-08,
+          "background_pp": 2.7675193740056573e-06,
+          "missing_pp": 5.367553607636968,
+          "excess_pp": 4.6867624022331675,
+          "R_unrounded": 0.873165457642534
+        }
+      },
+      "sensitivity_formal_dep": {
+        "canonical_inv_abs": {
+          "background_pp": 2.15336153133435e-06,
+          "n_clean_bins": 172,
+          "missing_pp": 6.7068883525143415,
+          "excess_pp": 4.749919618948165,
+          "R_unrounded": 0.7082151020401988
+        },
+        "uniform_weights": {
+          "background_pp": 0.04219105375388603,
+          "n_clean_bins": 172,
+          "missing_pp": 7.019117845947968,
+          "excess_pp": 4.519743905322791,
+          "R_unrounded": 0.6439190799356606
+        },
+        "polynomial_deg4": {
+          "background_pp": 0.09608373376649935,
+          "n_clean_bins": 172,
+          "missing_pp": 7.450259286048874,
+          "excess_pp": 4.261116796998467,
+          "R_unrounded": 0.5719420805900947
+        },
+        "clean_at_1.5x": {
+          "background_pp": 2.2058410840645334e-06,
+          "n_clean_bins": 189,
+          "missing_pp": 6.706888667391657,
+          "excess_pp": 4.749919304070848,
+          "R_unrounded": 0.7082150218423285
+        },
+        "clean_at_2.5x": {
+          "background_pp": 1.8907261365251815e-06,
+          "n_clean_bins": 155,
+          "missing_pp": 6.706886776701972,
+          "excess_pp": 4.749921194760533,
+          "R_unrounded": 0.7082155033928047
+        },
+        "no_correction": {
+          "background_pp": 0.0,
+          "n_clean_bins": 172,
+          "missing_pp": 6.706875432345153,
+          "excess_pp": 4.749932539117352,
+          "R_unrounded": 0.7082183927570683
+        }
+      }
+    },
+    "B": {
+      "mw_old": 850.0,
+      "mw_new": 930.0,
+      "pre_year": 2017,
+      "post_year": 2019,
+      "groups": {
+        "formal_dep": {
+          "n_pre": 10895,
+          "n_post": 10922,
+          "n_clean_bins": 166,
+          "background_share": 2.2467196404306926e-08,
+          "background_pp": 2.2467196404306927e-06,
+          "missing_pp": 7.888837644280831,
+          "excess_pp": 6.639459430948171,
+          "R_unrounded": 0.8416270850448517
+        },
+        "informal_dep": {
+          "n_pre": 15474,
+          "n_post": 15162,
+          "n_clean_bins": 166,
+          "background_share": -3.36822718777729e-10,
+          "background_pp": -3.36822718777729e-08,
+          "missing_pp": 5.2326471354973,
+          "excess_pp": 5.095907029193831,
+          "R_unrounded": 0.97386789080887
+        },
+        "all_workers": {
+          "n_pre": 26369,
+          "n_post": 26084,
+          "n_clean_bins": 166,
+          "background_share": 2.5903090514622116e-08,
+          "background_pp": 2.5903090514622114e-06,
+          "missing_pp": 6.366611679057859,
+          "excess_pp": 5.7509463716418665,
+          "R_unrounded": 0.9032978076170182
+        }
+      },
+      "sensitivity_formal_dep": {
+        "canonical_inv_abs": {
+          "background_pp": 2.2467196404306927e-06,
+          "n_clean_bins": 166,
+          "missing_pp": 7.888837644280831,
+          "excess_pp": 6.639459430948171,
+          "R_unrounded": 0.8416270850448517
+        },
+        "uniform_weights": {
+          "background_pp": 0.045477323634061595,
+          "n_clean_bins": 166,
+          "missing_pp": 8.168715227421282,
+          "excess_pp": 6.374946803680115,
+          "R_unrounded": 0.7804099697685962
+        },
+        "polynomial_deg4": {
+          "background_pp": -0.07673865573952411,
+          "n_clean_bins": 166,
+          "missing_pp": 7.470915536278834,
+          "excess_pp": 7.141796069122249,
+          "R_unrounded": 0.9559465683210607
+        },
+        "clean_at_1.5x": {
+          "background_pp": 1.4978058978350614e-06,
+          "n_clean_bins": 184,
+          "missing_pp": 7.888833150798375,
+          "excess_pp": 6.639463924430624,
+          "R_unrounded": 0.8416281340363612
+        },
+        "clean_at_2.5x": {
+          "background_pp": 2.0595774891076847e-06,
+          "n_clean_bins": 147,
+          "missing_pp": 7.8888365214279235,
+          "excess_pp": 6.639460553801076,
+          "R_unrounded": 0.8416273471717597
+        },
+        "no_correction": {
+          "background_pp": 0.0,
+          "n_clean_bins": 166,
+          "missing_pp": 7.888824163962989,
+          "excess_pp": 6.639472911266009,
+          "R_unrounded": 0.841630231992728
+        }
+      }
+    },
+    "C": {
+      "mw_old": 930.0,
+      "mw_new": 1025.0,
+      "pre_year": 2021,
+      "post_year": 2023,
+      "groups": {
+        "formal_dep": {
+          "n_pre": 8946,
+          "n_post": 9838,
+          "n_clean_bins": 158,
+          "background_share": 1.1771216469546875e-07,
+          "background_pp": 1.1771216469546875e-05,
+          "missing_pp": 12.924976045002682,
+          "excess_pp": 10.76451630913696,
+          "R_unrounded": 0.832846132298942
+        },
+        "informal_dep": {
+          "n_pre": 14488,
+          "n_post": 14967,
+          "n_clean_bins": 158,
+          "background_share": 6.7422023304622215e-09,
+          "background_pp": 6.742202330462221e-07,
+          "missing_pp": 5.451802747102455,
+          "excess_pp": 4.495848931536979,
+          "R_unrounded": 0.8246536311179727
+        },
+        "all_workers": {
+          "n_pre": 23434,
+          "n_post": 24805,
+          "n_clean_bins": 158,
+          "background_share": 1.6327640366012186e-07,
+          "background_pp": 1.6327640366012185e-05,
+          "missing_pp": 8.252763607952348,
+          "excess_pp": 6.889213850048533,
+          "R_unrounded": 0.8347765884642689
+        }
+      },
+      "sensitivity_formal_dep": {
+        "canonical_inv_abs": {
+          "background_pp": 1.1771216469546875e-05,
+          "n_clean_bins": 158,
+          "missing_pp": 12.924976045002682,
+          "excess_pp": 10.76451630913696,
+          "R_unrounded": 0.832846132298942
+        },
+        "uniform_weights": {
+          "background_pp": 0.022459224340336505,
+          "n_clean_bins": 158,
+          "missing_pp": 13.104555669993617,
+          "excess_pp": 10.584936684146024,
+          "R_unrounded": 0.8077295370176545
+        },
+        "polynomial_deg4": {
+          "background_pp": -0.40064975699844463,
+          "n_clean_bins": 158,
+          "missing_pp": 11.247595629491142,
+          "excess_pp": 13.969808534856273,
+          "R_unrounded": 1.242026206759025
+        },
+        "clean_at_1.5x": {
+          "background_pp": 1.4322800248151684e-05,
+          "n_clean_bins": 178,
+          "missing_pp": 12.924996457672911,
+          "excess_pp": 10.76449589646673,
+          "R_unrounded": 0.8328432376533765
+        },
+        "clean_at_2.5x": {
+          "background_pp": 1.021297921864737e-05,
+          "n_clean_bins": 137,
+          "missing_pp": 12.924963579104675,
+          "excess_pp": 10.764528775034966,
+          "R_unrounded": 0.8328479000465111
+        },
+        "no_correction": {
+          "background_pp": 0.0,
+          "n_clean_bins": 158,
+          "missing_pp": 12.924881875270927,
+          "excess_pp": 10.764610478868716,
+          "R_unrounded": 0.8328594862800688
+        }
+      }
+    }
+  },
+  "inputs": {
+    "2015": {
+      "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2015/enaho01a-2015-500.dta",
+      "bytes": 119531100,
+      "mtime_utc": "2026-03-15T23:06:25.393414021",
+      "sha256": "8d6c6d7764556a9f6334cfa982fc66bb481698ab5d81b09729c63614f864e5fa"
+    },
+    "2017": {
+      "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2017/enaho01a-2017-500.dta",
+      "bytes": 129231878,
+      "mtime_utc": "2026-03-15T23:10:00.865940809",
+      "sha256": "36b319a54ec60209228b51e556dbece2b57a8004e79a55434fd9f49096cad24d"
+    },
+    "2019": {
+      "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2019/enaho01a-2019-500.dta",
+      "bytes": 196254665,
+      "mtime_utc": "2026-03-15T23:13:53.366859198",
+      "sha256": "19ded61e55674220184ab99b9bc5976db5b48e00aece3e2a23d3f6edc50c43ba"
+    },
+    "2021": {
+      "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2021/enaho01a-2021-500.dta",
+      "bytes": 198779086,
+      "mtime_utc": "2026-03-16T01:51:02.872714281",
+      "sha256": "41e7a31540648ba7af17d05879b65e785ca7ce968778f23de5005e09aeaa9417"
+    },
+    "2023": {
+      "path": "D:/Nexus/nexus/data/raw/enaho/cross_section/modulo_05_2023/enaho01a-2023-500.dta",
+      "bytes": 187590515,
+      "mtime_utc": "2026-03-16T01:52:28.666102409",
+      "sha256": "3a4b1d8e8f2d4c7223c5f81802f33ecf6058dbeb70b72b22e72a8892f2a1e2dc"
+    }
+  }
+}
