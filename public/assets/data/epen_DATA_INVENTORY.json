@@ -1,0 +1,7371 @@
+{
+  "archive": "D:/ENAHO_ANALYSIS/raw/epen_inei",
+  "n_dirs": 429,
+  "waves": {
+    "1001_epen_2025_bd_publicacion_dpto": {
+      "dir": "1001_epen_2025_bd_publicacion_dpto",
+      "seq": 1001,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "1002_01_amazonas_epen_anual_2025": {
+      "dir": "1002_01_amazonas_epen_anual_2025",
+      "seq": 1002,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1003_02_ancash_epen_anual_2025": {
+      "dir": "1003_02_ancash_epen_anual_2025",
+      "seq": 1003,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1004_03_apurimac_epen_anual_2025": {
+      "dir": "1004_03_apurimac_epen_anual_2025",
+      "seq": 1004,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1005_04_arequipa_epen_anual_2025": {
+      "dir": "1005_04_arequipa_epen_anual_2025",
+      "seq": 1005,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1006_05_ayacucho_epen_anual_2025": {
+      "dir": "1006_05_ayacucho_epen_anual_2025",
+      "seq": 1006,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1007_06_cajamarca_epen_anual_2025": {
+      "dir": "1007_06_cajamarca_epen_anual_2025",
+      "seq": 1007,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1008_08_cusco_epen_anual_2025": {
+      "dir": "1008_08_cusco_epen_anual_2025",
+      "seq": 1008,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1009_09_huancavelica_epen_anual_2025": {
+      "dir": "1009_09_huancavelica_epen_anual_2025",
+      "seq": 1009,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "100_ago_set_oct": {
+      "dir": "100_ago_set_oct",
+      "seq": 100,
+      "survey": "UNKNOWN",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "1010_10_huanuco_epen_anual_2025": {
+      "dir": "1010_10_huanuco_epen_anual_2025",
+      "seq": 1010,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1011_11_ica_epen_anual_2025": {
+      "dir": "1011_11_ica_epen_anual_2025",
+      "seq": 1011,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1012_12_junin_epen_anual_2025": {
+      "dir": "1012_12_junin_epen_anual_2025",
+      "seq": 1012,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1013_13_la_libertad_epen_anual_2025": {
+      "dir": "1013_13_la_libertad_epen_anual_2025",
+      "seq": 1013,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1014_14_lambayeque_epen_anual_2025": {
+      "dir": "1014_14_lambayeque_epen_anual_2025",
+      "seq": 1014,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1015_15_lima_epen_anual_2025": {
+      "dir": "1015_15_lima_epen_anual_2025",
+      "seq": 1015,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1016_16_loreto_epen_anual_2025": {
+      "dir": "1016_16_loreto_epen_anual_2025",
+      "seq": 1016,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1017_17_madre_de_dios_epen_anual_2025": {
+      "dir": "1017_17_madre_de_dios_epen_anual_2025",
+      "seq": 1017,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1018_18_moquegua_epen_anual_2025": {
+      "dir": "1018_18_moquegua_epen_anual_2025",
+      "seq": 1018,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1019_19_pasco_epen_anual_2025": {
+      "dir": "1019_19_pasco_epen_anual_2025",
+      "seq": 1019,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "101_sep_oct_nov": {
+      "dir": "101_sep_oct_nov",
+      "seq": 101,
+      "survey": "UNKNOWN",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "1020_20_piura_epen_anual_2025": {
+      "dir": "1020_20_piura_epen_anual_2025",
+      "seq": 1020,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1021_21_puno_epen_anual_2025": {
+      "dir": "1021_21_puno_epen_anual_2025",
+      "seq": 1021,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1022_22_san_martin_epen_anual_2025": {
+      "dir": "1022_22_san_martin_epen_anual_2025",
+      "seq": 1022,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1023_23_tacna_epen_anual_2025": {
+      "dir": "1023_23_tacna_epen_anual_2025",
+      "seq": 1023,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1024_24_tumbes_epen_anual_2025": {
+      "dir": "1024_24_tumbes_epen_anual_2025",
+      "seq": 1024,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1025_25_ucayali_epen_anual_2025": {
+      "dir": "1025_25_ucayali_epen_anual_2025",
+      "seq": 1025,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "1027_trim_dic_ene_feb26": {
+      "dir": "1027_trim_dic_ene_feb26",
+      "seq": 1027,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2025-12",
+        "2026-01",
+        "2026-02"
+      ]
+    },
+    "1029_trim_ene_feb_mar26": {
+      "dir": "1029_trim_ene_feb_mar26",
+      "seq": 1029,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2026-01",
+        "2026-02",
+        "2026-03"
+      ]
+    },
+    "102_epe_personas_oct_nov_dic2004": {
+      "dir": "102_epe_personas_oct_nov_dic2004",
+      "seq": 102,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2004-10",
+        "2004-11",
+        "2004-12"
+      ]
+    },
+    "1033_trim_feb_mar_abr26": {
+      "dir": "1033_trim_feb_mar_abr26",
+      "seq": 1033,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2026-02",
+        "2026-03",
+        "2026-04"
+      ]
+    },
+    "1034_nacional_epen_trim_ene_feb_mar_2026": {
+      "dir": "1034_nacional_epen_trim_ene_feb_mar_2026",
+      "seq": 1034,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2026-01",
+        "2026-02",
+        "2026-03"
+      ]
+    },
+    "1037_trim_mar_abr_may26": {
+      "dir": "1037_trim_mar_abr_may26",
+      "seq": 1037,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2026-03",
+        "2026-04",
+        "2026-05"
+      ]
+    },
+    "103_epe_personas_nov_dic2004_ene2005": {
+      "dir": "103_epe_personas_nov_dic2004_ene2005",
+      "seq": 103,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2004-11",
+        "2004-12",
+        "2005-01"
+      ]
+    },
+    "104_trim_dic04_ene_feb_2005": {
+      "dir": "104_trim_dic04_ene_feb_2005",
+      "seq": 104,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2004-12",
+        "2005-01",
+        "2005-02"
+      ]
+    },
+    "117_trim_ene_feb_mar_2005": {
+      "dir": "117_trim_ene_feb_mar_2005",
+      "seq": 117,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-01",
+        "2005-02",
+        "2005-03"
+      ]
+    },
+    "118_trim_feb_mar_abr_2005": {
+      "dir": "118_trim_feb_mar_abr_2005",
+      "seq": 118,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-02",
+        "2005-03",
+        "2005-04"
+      ]
+    },
+    "119_trim_mar_abr_may_2005": {
+      "dir": "119_trim_mar_abr_may_2005",
+      "seq": 119,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-03",
+        "2005-04",
+        "2005-05"
+      ]
+    },
+    "121_trim_abr_may_jun_2005": {
+      "dir": "121_trim_abr_may_jun_2005",
+      "seq": 121,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-04",
+        "2005-05",
+        "2005-06"
+      ]
+    },
+    "122_trim_may_jun_jul_2005": {
+      "dir": "122_trim_may_jun_jul_2005",
+      "seq": 122,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-05",
+        "2005-06",
+        "2005-07"
+      ]
+    },
+    "123_trim_jun_jul_ago_2005": {
+      "dir": "123_trim_jun_jul_ago_2005",
+      "seq": 123,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-06",
+        "2005-07",
+        "2005-08"
+      ]
+    },
+    "129_trim_jul_ago_set_2005": {
+      "dir": "129_trim_jul_ago_set_2005",
+      "seq": 129,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-07",
+        "2005-08",
+        "2005-09"
+      ]
+    },
+    "12_epe_personas_trim_dic03_ene_feb04": {
+      "dir": "12_epe_personas_trim_dic03_ene_feb04",
+      "seq": 12,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2003-12",
+        "2004-01",
+        "2004-02"
+      ]
+    },
+    "130_trim_ago_set_oct_2005": {
+      "dir": "130_trim_ago_set_oct_2005",
+      "seq": 130,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-08",
+        "2005-09",
+        "2005-10"
+      ]
+    },
+    "131_trim_set_oct_nov_2005": {
+      "dir": "131_trim_set_oct_nov_2005",
+      "seq": 131,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-09",
+        "2005-10",
+        "2005-11"
+      ]
+    },
+    "136_trim_oct_nov_dic_2005": {
+      "dir": "136_trim_oct_nov_dic_2005",
+      "seq": 136,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-10",
+        "2005-11",
+        "2005-12"
+      ]
+    },
+    "138_trim_nov_dic05_ene_2006": {
+      "dir": "138_trim_nov_dic05_ene_2006",
+      "seq": 138,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-11",
+        "2005-12",
+        "2006-01"
+      ]
+    },
+    "140_trim_dic05_ene_feb_2006": {
+      "dir": "140_trim_dic05_ene_feb_2006",
+      "seq": 140,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2005-12",
+        "2006-01",
+        "2006-02"
+      ]
+    },
+    "142_trim_ene_feb_mar_2006": {
+      "dir": "142_trim_ene_feb_mar_2006",
+      "seq": 142,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-01",
+        "2006-02",
+        "2006-03"
+      ]
+    },
+    "146_trim_feb_mar_abr_2006": {
+      "dir": "146_trim_feb_mar_abr_2006",
+      "seq": 146,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-02",
+        "2006-03",
+        "2006-04"
+      ]
+    },
+    "147_trim_mar_abr_may_2006": {
+      "dir": "147_trim_mar_abr_may_2006",
+      "seq": 147,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-03",
+        "2006-04",
+        "2006-05"
+      ]
+    },
+    "152_epe_personas_abr_may_jun2006": {
+      "dir": "152_epe_personas_abr_may_jun2006",
+      "seq": 152,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-04",
+        "2006-05",
+        "2006-06"
+      ]
+    },
+    "155_trim_may_jun_jul_2006": {
+      "dir": "155_trim_may_jun_jul_2006",
+      "seq": 155,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-05",
+        "2006-06",
+        "2006-07"
+      ]
+    },
+    "157_trim_jun_jul_ago_2006": {
+      "dir": "157_trim_jun_jul_ago_2006",
+      "seq": 157,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-06",
+        "2006-07",
+        "2006-08"
+      ]
+    },
+    "159_trim_jul_ago_set_2006": {
+      "dir": "159_trim_jul_ago_set_2006",
+      "seq": 159,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-07",
+        "2006-08",
+        "2006-09"
+      ]
+    },
+    "161_trim_ago_set_oct2006": {
+      "dir": "161_trim_ago_set_oct2006",
+      "seq": 161,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-08",
+        "2006-09",
+        "2006-10"
+      ]
+    },
+    "164_trim_set_oct_nov2006": {
+      "dir": "164_trim_set_oct_nov2006",
+      "seq": 164,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-09",
+        "2006-10",
+        "2006-11"
+      ]
+    },
+    "166_trim_oct_nov_dic2006": {
+      "dir": "166_trim_oct_nov_dic2006",
+      "seq": 166,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-10",
+        "2006-11",
+        "2006-12"
+      ]
+    },
+    "167_trim_nov_dic06_ene07": {
+      "dir": "167_trim_nov_dic06_ene07",
+      "seq": 167,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-11",
+        "2006-12",
+        "2007-01"
+      ]
+    },
+    "169_trim_dic06_ene_feb07": {
+      "dir": "169_trim_dic06_ene_feb07",
+      "seq": 169,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2006-12",
+        "2007-01",
+        "2007-02"
+      ]
+    },
+    "170_trim_ene_feb_mar07": {
+      "dir": "170_trim_ene_feb_mar07",
+      "seq": 170,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-01",
+        "2007-02",
+        "2007-03"
+      ]
+    },
+    "171_trim_feb_mar_abr07": {
+      "dir": "171_trim_feb_mar_abr07",
+      "seq": 171,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-02",
+        "2007-03",
+        "2007-04"
+      ]
+    },
+    "172_trim_mar_abr_may07": {
+      "dir": "172_trim_mar_abr_may07",
+      "seq": 172,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-03",
+        "2007-04",
+        "2007-05"
+      ]
+    },
+    "173_trim_abr_may_jun07": {
+      "dir": "173_trim_abr_may_jun07",
+      "seq": 173,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-04",
+        "2007-05",
+        "2007-06"
+      ]
+    },
+    "179_trim_may_jun_jul07": {
+      "dir": "179_trim_may_jun_jul07",
+      "seq": 179,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-05",
+        "2007-06",
+        "2007-07"
+      ]
+    },
+    "182_trim_jun_jul_ago07": {
+      "dir": "182_trim_jun_jul_ago07",
+      "seq": 182,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-06",
+        "2007-07",
+        "2007-08"
+      ]
+    },
+    "184_trim_jul_ago_set07": {
+      "dir": "184_trim_jul_ago_set07",
+      "seq": 184,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-07",
+        "2007-08",
+        "2007-09"
+      ]
+    },
+    "187_trim_ago_set_oct07": {
+      "dir": "187_trim_ago_set_oct07",
+      "seq": 187,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-08",
+        "2007-09",
+        "2007-10"
+      ]
+    },
+    "190_trim_set_oct_nov07": {
+      "dir": "190_trim_set_oct_nov07",
+      "seq": 190,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-09",
+        "2007-10",
+        "2007-11"
+      ]
+    },
+    "191_trim_oct_nov_dic07": {
+      "dir": "191_trim_oct_nov_dic07",
+      "seq": 191,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-10",
+        "2007-11",
+        "2007-12"
+      ]
+    },
+    "192_trim_nov_dic_ene08": {
+      "dir": "192_trim_nov_dic_ene08",
+      "seq": 192,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-11",
+        "2007-12",
+        "2008-01"
+      ]
+    },
+    "195_trim_dic07_ene_feb08": {
+      "dir": "195_trim_dic07_ene_feb08",
+      "seq": 195,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2007-12",
+        "2008-01",
+        "2008-02"
+      ]
+    },
+    "196_trim_ene_feb_mar08": {
+      "dir": "196_trim_ene_feb_mar08",
+      "seq": 196,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-01",
+        "2008-02",
+        "2008-03"
+      ]
+    },
+    "198_trim_feb_mar_abr08": {
+      "dir": "198_trim_feb_mar_abr08",
+      "seq": 198,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-02",
+        "2008-03",
+        "2008-04"
+      ]
+    },
+    "199_trim_mar_abr_may08": {
+      "dir": "199_trim_mar_abr_may08",
+      "seq": 199,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-03",
+        "2008-04",
+        "2008-05"
+      ]
+    },
+    "201_trim_abr_may_jun08": {
+      "dir": "201_trim_abr_may_jun08",
+      "seq": 201,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-04",
+        "2008-05",
+        "2008-06"
+      ]
+    },
+    "203_trim_may_jun_jul08": {
+      "dir": "203_trim_may_jun_jul08",
+      "seq": 203,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-05",
+        "2008-06",
+        "2008-07"
+      ]
+    },
+    "204_trim_jun_jul_ago08": {
+      "dir": "204_trim_jun_jul_ago08",
+      "seq": 204,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-06",
+        "2008-07",
+        "2008-08"
+      ]
+    },
+    "206_trim_jul_ago_set08": {
+      "dir": "206_trim_jul_ago_set08",
+      "seq": 206,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-07",
+        "2008-08",
+        "2008-09"
+      ]
+    },
+    "210_trim_ago_set_oct08": {
+      "dir": "210_trim_ago_set_oct08",
+      "seq": 210,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-08",
+        "2008-09",
+        "2008-10"
+      ]
+    },
+    "212_trim_set_oct_nov08": {
+      "dir": "212_trim_set_oct_nov08",
+      "seq": 212,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-09",
+        "2008-10",
+        "2008-11"
+      ]
+    },
+    "214_trim_oct_nov_dic08": {
+      "dir": "214_trim_oct_nov_dic08",
+      "seq": 214,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-10",
+        "2008-11",
+        "2008-12"
+      ]
+    },
+    "215_trim_nov_dic08_ene09": {
+      "dir": "215_trim_nov_dic08_ene09",
+      "seq": 215,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-11",
+        "2008-12",
+        "2009-01"
+      ]
+    },
+    "216_trim_dic08_ene_feb09": {
+      "dir": "216_trim_dic08_ene_feb09",
+      "seq": 216,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2008-12",
+        "2009-01",
+        "2009-02"
+      ]
+    },
+    "218_trim_ene_feb_mar09": {
+      "dir": "218_trim_ene_feb_mar09",
+      "seq": 218,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-01",
+        "2009-02",
+        "2009-03"
+      ]
+    },
+    "219_trim_feb_mar_abr09": {
+      "dir": "219_trim_feb_mar_abr09",
+      "seq": 219,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-02",
+        "2009-03",
+        "2009-04"
+      ]
+    },
+    "221_trim_mar_abr_may09": {
+      "dir": "221_trim_mar_abr_may09",
+      "seq": 221,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-03",
+        "2009-04",
+        "2009-05"
+      ]
+    },
+    "223_trim_abr_may_jun09": {
+      "dir": "223_trim_abr_may_jun09",
+      "seq": 223,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-04",
+        "2009-05",
+        "2009-06"
+      ]
+    },
+    "224_trim_may_jun_jul09": {
+      "dir": "224_trim_may_jun_jul09",
+      "seq": 224,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-05",
+        "2009-06",
+        "2009-07"
+      ]
+    },
+    "227_trim_jun_jul_ago09": {
+      "dir": "227_trim_jun_jul_ago09",
+      "seq": 227,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2009-06",
+        "2009-07",
+        "2009-08"
+      ]
+    },
+    "229_trim_jul_ago_set09": {
+      "dir": "229_trim_jul_ago_set09",
+      "seq": 229,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-07",
+        "2009-08",
+        "2009-09"
+      ]
+    },
+    "230_trim_ago_set_oct09": {
+      "dir": "230_trim_ago_set_oct09",
+      "seq": 230,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-08",
+        "2009-09",
+        "2009-10"
+      ]
+    },
+    "232_trim_sec_oct_nov09": {
+      "dir": "232_trim_sec_oct_nov09",
+      "seq": 232,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-09",
+        "2009-10",
+        "2009-11"
+      ]
+    },
+    "233_trim_oct_nov_dic09": {
+      "dir": "233_trim_oct_nov_dic09",
+      "seq": 233,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-10",
+        "2009-11",
+        "2009-12"
+      ]
+    },
+    "234_trim_nov_dic09_ene10": {
+      "dir": "234_trim_nov_dic09_ene10",
+      "seq": 234,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-11",
+        "2009-12",
+        "2010-01"
+      ]
+    },
+    "236_trim_dic_ene_feb10": {
+      "dir": "236_trim_dic_ene_feb10",
+      "seq": 236,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2009-12",
+        "2010-01",
+        "2010-02"
+      ]
+    },
+    "237_trim_ene_feb_mar10": {
+      "dir": "237_trim_ene_feb_mar10",
+      "seq": 237,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-01",
+        "2010-02",
+        "2010-03"
+      ]
+    },
+    "239_trim_feb_mar_abr10": {
+      "dir": "239_trim_feb_mar_abr10",
+      "seq": 239,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-02",
+        "2010-03",
+        "2010-04"
+      ]
+    },
+    "241_trim_mar_abr_may10": {
+      "dir": "241_trim_mar_abr_may10",
+      "seq": 241,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-03",
+        "2010-04",
+        "2010-05"
+      ]
+    },
+    "243_trim_abr_may_jun10": {
+      "dir": "243_trim_abr_may_jun10",
+      "seq": 243,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-04",
+        "2010-05",
+        "2010-06"
+      ]
+    },
+    "244_trim_may_jun_jul10": {
+      "dir": "244_trim_may_jun_jul10",
+      "seq": 244,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-05",
+        "2010-06",
+        "2010-07"
+      ]
+    },
+    "245_trim_jun_jul_ago10": {
+      "dir": "245_trim_jun_jul_ago10",
+      "seq": 245,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-06",
+        "2010-07",
+        "2010-08"
+      ]
+    },
+    "247_trim_jul_ago_set10": {
+      "dir": "247_trim_jul_ago_set10",
+      "seq": 247,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-07",
+        "2010-08",
+        "2010-09"
+      ]
+    },
+    "248_trim_ago_set_oct10": {
+      "dir": "248_trim_ago_set_oct10",
+      "seq": 248,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-08",
+        "2010-09",
+        "2010-10"
+      ]
+    },
+    "251_trim_set_oct_nov10": {
+      "dir": "251_trim_set_oct_nov10",
+      "seq": 251,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-09",
+        "2010-10",
+        "2010-11"
+      ]
+    },
+    "252_trim_oct_nov_dic10": {
+      "dir": "252_trim_oct_nov_dic10",
+      "seq": 252,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-10",
+        "2010-11",
+        "2010-12"
+      ]
+    },
+    "254_trim_nov_dic10_ene11": {
+      "dir": "254_trim_nov_dic10_ene11",
+      "seq": 254,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-11",
+        "2010-12",
+        "2011-01"
+      ]
+    },
+    "256_trim_dic10_ene_feb11": {
+      "dir": "256_trim_dic10_ene_feb11",
+      "seq": 256,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2010-12",
+        "2011-01",
+        "2011-02"
+      ]
+    },
+    "257_trim_ene_feb_mar11": {
+      "dir": "257_trim_ene_feb_mar11",
+      "seq": 257,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-01",
+        "2011-02",
+        "2011-03"
+      ]
+    },
+    "259_trim_feb_mar_abr11": {
+      "dir": "259_trim_feb_mar_abr11",
+      "seq": 259,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-02",
+        "2011-03",
+        "2011-04"
+      ]
+    },
+    "262_trim_mar_abr_may11": {
+      "dir": "262_trim_mar_abr_may11",
+      "seq": 262,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-03",
+        "2011-04",
+        "2011-05"
+      ]
+    },
+    "264_trim_abr_may_jun11": {
+      "dir": "264_trim_abr_may_jun11",
+      "seq": 264,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-04",
+        "2011-05",
+        "2011-06"
+      ]
+    },
+    "265_trim_may_jun_jul11": {
+      "dir": "265_trim_may_jun_jul11",
+      "seq": 265,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2011-05",
+        "2011-06",
+        "2011-07"
+      ]
+    },
+    "267_trim_jun_jul_ago11": {
+      "dir": "267_trim_jun_jul_ago11",
+      "seq": 267,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-06",
+        "2011-07",
+        "2011-08"
+      ]
+    },
+    "271_trim_jul_ago_set11": {
+      "dir": "271_trim_jul_ago_set11",
+      "seq": 271,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2011-07",
+        "2011-08",
+        "2011-09"
+      ]
+    },
+    "272_trim_ago_set_oct_2011": {
+      "dir": "272_trim_ago_set_oct_2011",
+      "seq": 272,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-08",
+        "2011-09",
+        "2011-10"
+      ]
+    },
+    "273_trim_set_oct_nov_2011": {
+      "dir": "273_trim_set_oct_nov_2011",
+      "seq": 273,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-09",
+        "2011-10",
+        "2011-11"
+      ]
+    },
+    "274_trim_oct_nov_dic_2011": {
+      "dir": "274_trim_oct_nov_dic_2011",
+      "seq": 274,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-10",
+        "2011-11",
+        "2011-12"
+      ]
+    },
+    "276_trim_nov_dic2011_ene2012": {
+      "dir": "276_trim_nov_dic2011_ene2012",
+      "seq": 276,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-11",
+        "2011-12",
+        "2012-01"
+      ]
+    },
+    "277_trim_dic2011_ene_feb2012": {
+      "dir": "277_trim_dic2011_ene_feb2012",
+      "seq": 277,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2011-12",
+        "2012-01",
+        "2012-02"
+      ]
+    },
+    "287_trim_ene_feb_mar2012": {
+      "dir": "287_trim_ene_feb_mar2012",
+      "seq": 287,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-01",
+        "2012-02",
+        "2012-03"
+      ]
+    },
+    "289_trim_feb_mar_abr12": {
+      "dir": "289_trim_feb_mar_abr12",
+      "seq": 289,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-02",
+        "2012-03",
+        "2012-04"
+      ]
+    },
+    "295_trim_mar_abr_may2012": {
+      "dir": "295_trim_mar_abr_may2012",
+      "seq": 295,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-03",
+        "2012-04",
+        "2012-05"
+      ]
+    },
+    "299_trim_abr_may_jun12": {
+      "dir": "299_trim_abr_may_jun12",
+      "seq": 299,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-04",
+        "2012-05",
+        "2012-06"
+      ]
+    },
+    "301_trim_may_jun_jul2012": {
+      "dir": "301_trim_may_jun_jul2012",
+      "seq": 301,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-05",
+        "2012-06",
+        "2012-07"
+      ]
+    },
+    "303_trim_jun_jul_ago12": {
+      "dir": "303_trim_jun_jul_ago12",
+      "seq": 303,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-06",
+        "2012-07",
+        "2012-08"
+      ]
+    },
+    "306_trim_jul_ago_set12": {
+      "dir": "306_trim_jul_ago_set12",
+      "seq": 306,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-07",
+        "2012-08",
+        "2012-09"
+      ]
+    },
+    "315_trim_ago_set_oct2012": {
+      "dir": "315_trim_ago_set_oct2012",
+      "seq": 315,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2012-08",
+        "2012-09",
+        "2012-10"
+      ]
+    },
+    "316_trim_set_oct_nov12": {
+      "dir": "316_trim_set_oct_nov12",
+      "seq": 316,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-09",
+        "2012-10",
+        "2012-11"
+      ]
+    },
+    "318_trim_oct_nov_dic12": {
+      "dir": "318_trim_oct_nov_dic12",
+      "seq": 318,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-10",
+        "2012-11",
+        "2012-12"
+      ]
+    },
+    "319_trim_nov_dic12_ene13": {
+      "dir": "319_trim_nov_dic12_ene13",
+      "seq": 319,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-11",
+        "2012-12",
+        "2013-01"
+      ]
+    },
+    "320_trim_dic12_ene_feb13": {
+      "dir": "320_trim_dic12_ene_feb13",
+      "seq": 320,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2012-12",
+        "2013-01",
+        "2013-02"
+      ]
+    },
+    "322_trim_ene_feb_mar13": {
+      "dir": "322_trim_ene_feb_mar13",
+      "seq": 322,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-01",
+        "2013-02",
+        "2013-03"
+      ]
+    },
+    "327_trim_feb_mar_abr13": {
+      "dir": "327_trim_feb_mar_abr13",
+      "seq": 327,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-02",
+        "2013-03",
+        "2013-04"
+      ]
+    },
+    "330_trim_mar_abr_may13": {
+      "dir": "330_trim_mar_abr_may13",
+      "seq": 330,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-03",
+        "2013-04",
+        "2013-05"
+      ]
+    },
+    "333_trim_abr_may_jun13": {
+      "dir": "333_trim_abr_may_jun13",
+      "seq": 333,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-04",
+        "2013-05",
+        "2013-06"
+      ]
+    },
+    "335_trim_may_jun_jul13": {
+      "dir": "335_trim_may_jun_jul13",
+      "seq": 335,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-05",
+        "2013-06",
+        "2013-07"
+      ]
+    },
+    "364_trim_jun_jul_ago13": {
+      "dir": "364_trim_jun_jul_ago13",
+      "seq": 364,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-06",
+        "2013-07",
+        "2013-08"
+      ]
+    },
+    "36_epe_mar_abr_may": {
+      "dir": "36_epe_mar_abr_may",
+      "seq": 36,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "376_epe_personas_jul_ago_set13": {
+      "dir": "376_epe_personas_jul_ago_set13",
+      "seq": 376,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-07",
+        "2013-08",
+        "2013-09"
+      ]
+    },
+    "384_epe_personas_ago_set_oct13": {
+      "dir": "384_epe_personas_ago_set_oct13",
+      "seq": 384,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-08",
+        "2013-09",
+        "2013-10"
+      ]
+    },
+    "387_trim_sec_oct_nov13": {
+      "dir": "387_trim_sec_oct_nov13",
+      "seq": 387,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-09",
+        "2013-10",
+        "2013-11"
+      ]
+    },
+    "38_epe_abr_may_jun": {
+      "dir": "38_epe_abr_may_jun",
+      "seq": 38,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "390_trim_oct_nov_dic13": {
+      "dir": "390_trim_oct_nov_dic13",
+      "seq": 390,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-10",
+        "2013-11",
+        "2013-12"
+      ]
+    },
+    "391_trim_nov_dic13_ene14": {
+      "dir": "391_trim_nov_dic13_ene14",
+      "seq": 391,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-11",
+        "2013-12",
+        "2014-01"
+      ]
+    },
+    "392_trim_dic13_ene_feb14": {
+      "dir": "392_trim_dic13_ene_feb14",
+      "seq": 392,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2013-12",
+        "2014-01",
+        "2014-02"
+      ]
+    },
+    "401_trim_ene_feb_mar14": {
+      "dir": "401_trim_ene_feb_mar14",
+      "seq": 401,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-01",
+        "2014-02",
+        "2014-03"
+      ]
+    },
+    "405_trim_feb_mar_abr14": {
+      "dir": "405_trim_feb_mar_abr14",
+      "seq": 405,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-02",
+        "2014-03",
+        "2014-04"
+      ]
+    },
+    "40_epe_may_jun_jul": {
+      "dir": "40_epe_may_jun_jul",
+      "seq": 40,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "414_trim_mar_abr_may14": {
+      "dir": "414_trim_mar_abr_may14",
+      "seq": 414,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-03",
+        "2014-04",
+        "2014-05"
+      ]
+    },
+    "419_trim_may_jun_jul14": {
+      "dir": "419_trim_may_jun_jul14",
+      "seq": 419,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-05",
+        "2014-06",
+        "2014-07"
+      ]
+    },
+    "41_epe_jun_jul_ago": {
+      "dir": "41_epe_jun_jul_ago",
+      "seq": 41,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "420_trim_abr_may_jun14": {
+      "dir": "420_trim_abr_may_jun14",
+      "seq": 420,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-04",
+        "2014-05",
+        "2014-06"
+      ]
+    },
+    "423_trim_jun_jul_ago14": {
+      "dir": "423_trim_jun_jul_ago14",
+      "seq": 423,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-06",
+        "2014-07",
+        "2014-08"
+      ]
+    },
+    "427_trim_jul_ago_set14": {
+      "dir": "427_trim_jul_ago_set14",
+      "seq": 427,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-07",
+        "2014-08",
+        "2014-09"
+      ]
+    },
+    "429_trim_ago_set_oct14": {
+      "dir": "429_trim_ago_set_oct14",
+      "seq": 429,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-08",
+        "2014-09",
+        "2014-10"
+      ]
+    },
+    "42_epe_personas_trimestre_m_vil_jul_ago_set": {
+      "dir": "42_epe_personas_trimestre_m_vil_jul_ago_set",
+      "seq": 42,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "431_trim_set_oct_nov14": {
+      "dir": "431_trim_set_oct_nov14",
+      "seq": 431,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-09",
+        "2014-10",
+        "2014-11"
+      ]
+    },
+    "434_trim_oct_nov_dic14": {
+      "dir": "434_trim_oct_nov_dic14",
+      "seq": 434,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-10",
+        "2014-11",
+        "2014-12"
+      ]
+    },
+    "435_trim_nov_dic14_ene15": {
+      "dir": "435_trim_nov_dic14_ene15",
+      "seq": 435,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-11",
+        "2014-12",
+        "2015-01"
+      ]
+    },
+    "436_trim_dic_ene_feb15": {
+      "dir": "436_trim_dic_ene_feb15",
+      "seq": 436,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2014-12",
+        "2015-01",
+        "2015-02"
+      ]
+    },
+    "439_trim_ene_feb_mar15": {
+      "dir": "439_trim_ene_feb_mar15",
+      "seq": 439,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-01",
+        "2015-02",
+        "2015-03"
+      ]
+    },
+    "43_epe_personas_trim_ago_set_oct_2001": {
+      "dir": "43_epe_personas_trim_ago_set_oct_2001",
+      "seq": 43,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2001-08",
+        "2001-09",
+        "2001-10"
+      ]
+    },
+    "444_trim_feb_mar_abr15": {
+      "dir": "444_trim_feb_mar_abr15",
+      "seq": 444,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-02",
+        "2015-03",
+        "2015-04"
+      ]
+    },
+    "445_trim_mar_abr_may15": {
+      "dir": "445_trim_mar_abr_may15",
+      "seq": 445,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-03",
+        "2015-04",
+        "2015-05"
+      ]
+    },
+    "448_trim_abr_may_jun15": {
+      "dir": "448_trim_abr_may_jun15",
+      "seq": 448,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-04",
+        "2015-05",
+        "2015-06"
+      ]
+    },
+    "450_trim_may_jun_jul15": {
+      "dir": "450_trim_may_jun_jul15",
+      "seq": 450,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-05",
+        "2015-06",
+        "2015-07"
+      ]
+    },
+    "453_trim_jun_jul_ago15": {
+      "dir": "453_trim_jun_jul_ago15",
+      "seq": 453,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-06",
+        "2015-07",
+        "2015-08"
+      ]
+    },
+    "457_trim_jul_ago_set15": {
+      "dir": "457_trim_jul_ago_set15",
+      "seq": 457,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-07",
+        "2015-08",
+        "2015-09"
+      ]
+    },
+    "46_epe_personas_trim_set_oct_nov_2001": {
+      "dir": "46_epe_personas_trim_set_oct_nov_2001",
+      "seq": 46,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2001-09",
+        "2001-10",
+        "2001-11"
+      ]
+    },
+    "47_epe_personas_trim_oct_nov_dic_2001": {
+      "dir": "47_epe_personas_trim_oct_nov_dic_2001",
+      "seq": 47,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2001-10",
+        "2001-11",
+        "2001-12"
+      ]
+    },
+    "483_trim_ago_set_oct15": {
+      "dir": "483_trim_ago_set_oct15",
+      "seq": 483,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-08",
+        "2015-09",
+        "2015-10"
+      ]
+    },
+    "485_trim_set_oct_nov15": {
+      "dir": "485_trim_set_oct_nov15",
+      "seq": 485,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-09",
+        "2015-10",
+        "2015-11"
+      ]
+    },
+    "486_trim_oct_nov_dic15": {
+      "dir": "486_trim_oct_nov_dic15",
+      "seq": 486,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-10",
+        "2015-11",
+        "2015-12"
+      ]
+    },
+    "488_trim_nov_dic_ene_16": {
+      "dir": "488_trim_nov_dic_ene_16",
+      "seq": 488,
+      "survey": "UNKNOWN",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "493_trim_dic_ene_feb16": {
+      "dir": "493_trim_dic_ene_feb16",
+      "seq": 493,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2015-12",
+        "2016-01",
+        "2016-02"
+      ]
+    },
+    "496_trim_ene_feb_mar16": {
+      "dir": "496_trim_ene_feb_mar16",
+      "seq": 496,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2016-01",
+        "2016-02",
+        "2016-03"
+      ]
+    },
+    "49_epe_personas_trim_nov_dic_ene": {
+      "dir": "49_epe_personas_trim_nov_dic_ene",
+      "seq": 49,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "501_trim_feb_mar_abr16": {
+      "dir": "501_trim_feb_mar_abr16",
+      "seq": 501,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": [
+        "2016-02",
+        "2016-03",
+        "2016-04"
+      ]
+    },
+    "509_trim_mar_abr_may16": {
+      "dir": "509_trim_mar_abr_may16",
+      "seq": 509,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-03",
+        "2016-04",
+        "2016-05"
+      ]
+    },
+    "50_epe_personas_trim_dic_ene_feb": {
+      "dir": "50_epe_personas_trim_dic_ene_feb",
+      "seq": 50,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "sav"
+      ],
+      "months": []
+    },
+    "514_trim_abr_may_jun16": {
+      "dir": "514_trim_abr_may_jun16",
+      "seq": 514,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-04",
+        "2016-05",
+        "2016-06"
+      ]
+    },
+    "519_trim_may_jun_jul16": {
+      "dir": "519_trim_may_jun_jul16",
+      "seq": 519,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-05",
+        "2016-06",
+        "2016-07"
+      ]
+    },
+    "51_epe_personas_ene_feb_mar_2002": {
+      "dir": "51_epe_personas_ene_feb_mar_2002",
+      "seq": 51,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-01",
+        "2002-02",
+        "2002-03"
+      ]
+    },
+    "527_trim_jun_jul_ago16": {
+      "dir": "527_trim_jun_jul_ago16",
+      "seq": 527,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-06",
+        "2016-07",
+        "2016-08"
+      ]
+    },
+    "531_trim_jul_ago_set16": {
+      "dir": "531_trim_jul_ago_set16",
+      "seq": 531,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-07",
+        "2016-08",
+        "2016-09"
+      ]
+    },
+    "532_trim_ago_set_oct16": {
+      "dir": "532_trim_ago_set_oct16",
+      "seq": 532,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-08",
+        "2016-09",
+        "2016-10"
+      ]
+    },
+    "535_trim_set_oct_nov16": {
+      "dir": "535_trim_set_oct_nov16",
+      "seq": 535,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-09",
+        "2016-10",
+        "2016-11"
+      ]
+    },
+    "537_trim_oct_nov_dic16": {
+      "dir": "537_trim_oct_nov_dic16",
+      "seq": 537,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-10",
+        "2016-11",
+        "2016-12"
+      ]
+    },
+    "539_trim_nov_dic_ene17": {
+      "dir": "539_trim_nov_dic_ene17",
+      "seq": 539,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-11",
+        "2016-12",
+        "2017-01"
+      ]
+    },
+    "542_trim_dic_ene_feb17": {
+      "dir": "542_trim_dic_ene_feb17",
+      "seq": 542,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2016-12",
+        "2017-01",
+        "2017-02"
+      ]
+    },
+    "545_trim_ene_feb_mar17": {
+      "dir": "545_trim_ene_feb_mar17",
+      "seq": 545,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-01",
+        "2017-02",
+        "2017-03"
+      ]
+    },
+    "549_trim_feb_mar_abr17": {
+      "dir": "549_trim_feb_mar_abr17",
+      "seq": 549,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-02",
+        "2017-03",
+        "2017-04"
+      ]
+    },
+    "54_trim_feb_mar_abr_personas_2002": {
+      "dir": "54_trim_feb_mar_abr_personas_2002",
+      "seq": 54,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-02",
+        "2002-03",
+        "2002-04"
+      ]
+    },
+    "550_trim_mar_abr_may17": {
+      "dir": "550_trim_mar_abr_may17",
+      "seq": 550,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-03",
+        "2017-04",
+        "2017-05"
+      ]
+    },
+    "553_trim_abr_may_jun17": {
+      "dir": "553_trim_abr_may_jun17",
+      "seq": 553,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-04",
+        "2017-05",
+        "2017-06"
+      ]
+    },
+    "56_epe_personas_mar_abr_may_2002": {
+      "dir": "56_epe_personas_mar_abr_may_2002",
+      "seq": 56,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-03",
+        "2002-04",
+        "2002-05"
+      ]
+    },
+    "57_epe_personas_trim_abr_may_jun_2002": {
+      "dir": "57_epe_personas_trim_abr_may_jun_2002",
+      "seq": 57,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-04",
+        "2002-05",
+        "2002-06"
+      ]
+    },
+    "580_trim_may_jun_jul17": {
+      "dir": "580_trim_may_jun_jul17",
+      "seq": 580,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-05",
+        "2017-06",
+        "2017-07"
+      ]
+    },
+    "582_trim_jun_jul_ago17": {
+      "dir": "582_trim_jun_jul_ago17",
+      "seq": 582,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-06",
+        "2017-07",
+        "2017-08"
+      ]
+    },
+    "584_trim_jul_ago_set17": {
+      "dir": "584_trim_jul_ago_set17",
+      "seq": 584,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-07",
+        "2017-08",
+        "2017-09"
+      ]
+    },
+    "586_trim_ago_set_oct17": {
+      "dir": "586_trim_ago_set_oct17",
+      "seq": 586,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-08",
+        "2017-09",
+        "2017-10"
+      ]
+    },
+    "589_trim_set_oct_nov17": {
+      "dir": "589_trim_set_oct_nov17",
+      "seq": 589,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-09",
+        "2017-10",
+        "2017-11"
+      ]
+    },
+    "591_trim_oct_nov_dic17": {
+      "dir": "591_trim_oct_nov_dic17",
+      "seq": 591,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-10",
+        "2017-11",
+        "2017-12"
+      ]
+    },
+    "593_trim_nov_dic_ene18": {
+      "dir": "593_trim_nov_dic_ene18",
+      "seq": 593,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-11",
+        "2017-12",
+        "2018-01"
+      ]
+    },
+    "598_trim_dic_ene_feb18": {
+      "dir": "598_trim_dic_ene_feb18",
+      "seq": 598,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2017-12",
+        "2018-01",
+        "2018-02"
+      ]
+    },
+    "601_trim_ene_feb_mar18": {
+      "dir": "601_trim_ene_feb_mar18",
+      "seq": 601,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-01",
+        "2018-02",
+        "2018-03"
+      ]
+    },
+    "604_trim_feb_mar_abr18": {
+      "dir": "604_trim_feb_mar_abr18",
+      "seq": 604,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-02",
+        "2018-03",
+        "2018-04"
+      ]
+    },
+    "606_trim_mar_abr_may18": {
+      "dir": "606_trim_mar_abr_may18",
+      "seq": 606,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-03",
+        "2018-04",
+        "2018-05"
+      ]
+    },
+    "60_epe_personas_may_jun_jul_2002": {
+      "dir": "60_epe_personas_may_jun_jul_2002",
+      "seq": 60,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-05",
+        "2002-06",
+        "2002-07"
+      ]
+    },
+    "610_trim_abr_may_jun18": {
+      "dir": "610_trim_abr_may_jun18",
+      "seq": 610,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-04",
+        "2018-05",
+        "2018-06"
+      ]
+    },
+    "613_trim_may_jun_jul18": {
+      "dir": "613_trim_may_jun_jul18",
+      "seq": 613,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-05",
+        "2018-06",
+        "2018-07"
+      ]
+    },
+    "616_trim_jun_jul_ago18": {
+      "dir": "616_trim_jun_jul_ago18",
+      "seq": 616,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-06",
+        "2018-07",
+        "2018-08"
+      ]
+    },
+    "618_trim_jul_ago_set18": {
+      "dir": "618_trim_jul_ago_set18",
+      "seq": 618,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-07",
+        "2018-08",
+        "2018-09"
+      ]
+    },
+    "61_epe_personas_trim_jun_jul_ago_2002": {
+      "dir": "61_epe_personas_trim_jun_jul_ago_2002",
+      "seq": 61,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-06",
+        "2002-07",
+        "2002-08"
+      ]
+    },
+    "620_trim_ago_set_oct18": {
+      "dir": "620_trim_ago_set_oct18",
+      "seq": 620,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-08",
+        "2018-09",
+        "2018-10"
+      ]
+    },
+    "621_trim_set_oct_nov18": {
+      "dir": "621_trim_set_oct_nov18",
+      "seq": 621,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-09",
+        "2018-10",
+        "2018-11"
+      ]
+    },
+    "623_trim_oct_nov_dic18": {
+      "dir": "623_trim_oct_nov_dic18",
+      "seq": 623,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-10",
+        "2018-11",
+        "2018-12"
+      ]
+    },
+    "625_trim_nov_dic_ene19": {
+      "dir": "625_trim_nov_dic_ene19",
+      "seq": 625,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-11",
+        "2018-12",
+        "2019-01"
+      ]
+    },
+    "62_epe_personas_trim_jul_ago_set_2002": {
+      "dir": "62_epe_personas_trim_jul_ago_set_2002",
+      "seq": 62,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-07",
+        "2002-08",
+        "2002-09"
+      ]
+    },
+    "631_trim_dic_ene_feb19": {
+      "dir": "631_trim_dic_ene_feb19",
+      "seq": 631,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2018-12",
+        "2019-01",
+        "2019-02"
+      ]
+    },
+    "636_trim_ene_feb_mar19": {
+      "dir": "636_trim_ene_feb_mar19",
+      "seq": 636,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-01",
+        "2019-02",
+        "2019-03"
+      ]
+    },
+    "637_trim_feb_mar_abr19": {
+      "dir": "637_trim_feb_mar_abr19",
+      "seq": 637,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-02",
+        "2019-03",
+        "2019-04"
+      ]
+    },
+    "63_epe_personas_trim_ago_set_oct_2002": {
+      "dir": "63_epe_personas_trim_ago_set_oct_2002",
+      "seq": 63,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-08",
+        "2002-09",
+        "2002-10"
+      ]
+    },
+    "640_trim_mar_abr_may19": {
+      "dir": "640_trim_mar_abr_may19",
+      "seq": 640,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-03",
+        "2019-04",
+        "2019-05"
+      ]
+    },
+    "643_trim_abr_may_jun19": {
+      "dir": "643_trim_abr_may_jun19",
+      "seq": 643,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-04",
+        "2019-05",
+        "2019-06"
+      ]
+    },
+    "644_trim_may_jun_jul19": {
+      "dir": "644_trim_may_jun_jul19",
+      "seq": 644,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-05",
+        "2019-06",
+        "2019-07"
+      ]
+    },
+    "646_trim_jun_jul_ago19": {
+      "dir": "646_trim_jun_jul_ago19",
+      "seq": 646,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-06",
+        "2019-07",
+        "2019-08"
+      ]
+    },
+    "648_trim_jul_ago_set19": {
+      "dir": "648_trim_jul_ago_set19",
+      "seq": 648,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-07",
+        "2019-08",
+        "2019-09"
+      ]
+    },
+    "649_trim_ago_set_oct19": {
+      "dir": "649_trim_ago_set_oct19",
+      "seq": 649,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-08",
+        "2019-09",
+        "2019-10"
+      ]
+    },
+    "654_trim_set_oct_nov19": {
+      "dir": "654_trim_set_oct_nov19",
+      "seq": 654,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-09",
+        "2019-10",
+        "2019-11"
+      ]
+    },
+    "655_trim_oct_nov_dic19": {
+      "dir": "655_trim_oct_nov_dic19",
+      "seq": 655,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-10",
+        "2019-11",
+        "2019-12"
+      ]
+    },
+    "657_trim_nov_dic_ene20": {
+      "dir": "657_trim_nov_dic_ene20",
+      "seq": 657,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-11",
+        "2019-12",
+        "2020-01"
+      ]
+    },
+    "65_epe_personas_ene_feb_mar_2004": {
+      "dir": "65_epe_personas_ene_feb_mar_2004",
+      "seq": 65,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2004-01",
+        "2004-02",
+        "2004-03"
+      ]
+    },
+    "66_epe_personas_trim_set_oct_nov_2002": {
+      "dir": "66_epe_personas_trim_set_oct_nov_2002",
+      "seq": 66,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-09",
+        "2002-10",
+        "2002-11"
+      ]
+    },
+    "67_epe_personas_trim_oct_nov_dic_2002": {
+      "dir": "67_epe_personas_trim_oct_nov_dic_2002",
+      "seq": 67,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-10",
+        "2002-11",
+        "2002-12"
+      ]
+    },
+    "686_trim_dic_ene_feb20": {
+      "dir": "686_trim_dic_ene_feb20",
+      "seq": 686,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2019-12",
+        "2020-01",
+        "2020-02"
+      ]
+    },
+    "688_trim_ene_feb_mar20": {
+      "dir": "688_trim_ene_feb_mar20",
+      "seq": 688,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-01",
+        "2020-02",
+        "2020-03"
+      ]
+    },
+    "689_trim_feb_mar_abr20": {
+      "dir": "689_trim_feb_mar_abr20",
+      "seq": 689,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-02",
+        "2020-03",
+        "2020-04"
+      ]
+    },
+    "692_trim_mar_abr_may20": {
+      "dir": "692_trim_mar_abr_may20",
+      "seq": 692,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-03",
+        "2020-04",
+        "2020-05"
+      ]
+    },
+    "695_trim_abr_may_jun20": {
+      "dir": "695_trim_abr_may_jun20",
+      "seq": 695,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-04",
+        "2020-05",
+        "2020-06"
+      ]
+    },
+    "696_trim_may_jun_jul20": {
+      "dir": "696_trim_may_jun_jul20",
+      "seq": 696,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-05",
+        "2020-06",
+        "2020-07"
+      ]
+    },
+    "697_trim_jun_jul_ago20": {
+      "dir": "697_trim_jun_jul_ago20",
+      "seq": 697,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-06",
+        "2020-07",
+        "2020-08"
+      ]
+    },
+    "69_epe_personas_feb_mar_abr_2004": {
+      "dir": "69_epe_personas_feb_mar_abr_2004",
+      "seq": 69,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2004-02",
+        "2004-03",
+        "2004-04"
+      ]
+    },
+    "700_trim_jul_ago_set20": {
+      "dir": "700_trim_jul_ago_set20",
+      "seq": 700,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-07",
+        "2020-08",
+        "2020-09"
+      ]
+    },
+    "706_trim_ago_set_oct20": {
+      "dir": "706_trim_ago_set_oct20",
+      "seq": 706,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-08",
+        "2020-09",
+        "2020-10"
+      ]
+    },
+    "70_epe_personas_mar_abr_may_2004": {
+      "dir": "70_epe_personas_mar_abr_may_2004",
+      "seq": 70,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2004-03",
+        "2004-04",
+        "2004-05"
+      ]
+    },
+    "71_epe_personas_trim_nov_dic_ene_2003": {
+      "dir": "71_epe_personas_trim_nov_dic_ene_2003",
+      "seq": 71,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-11",
+        "2002-12",
+        "2003-01"
+      ]
+    },
+    "725_trim_set_oct_nov20": {
+      "dir": "725_trim_set_oct_nov20",
+      "seq": 725,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-09",
+        "2020-10",
+        "2020-11"
+      ]
+    },
+    "727_trim_oct_nov_dic20": {
+      "dir": "727_trim_oct_nov_dic20",
+      "seq": 727,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-10",
+        "2020-11",
+        "2020-12"
+      ]
+    },
+    "728_trim_nov_dic_ene21": {
+      "dir": "728_trim_nov_dic_ene21",
+      "seq": 728,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-11",
+        "2020-12",
+        "2021-01"
+      ]
+    },
+    "72_epe_panelmensual_mar_jun_set_dic_2002": {
+      "dir": "72_epe_panelmensual_mar_jun_set_dic_2002",
+      "seq": 72,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-03",
+        "2002-06",
+        "2002-09",
+        "2002-12"
+      ]
+    },
+    "731_trim_dic_ene_feb21": {
+      "dir": "731_trim_dic_ene_feb21",
+      "seq": 731,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2020-12",
+        "2021-01",
+        "2021-02"
+      ]
+    },
+    "735_trim_ene_feb_mar21": {
+      "dir": "735_trim_ene_feb_mar21",
+      "seq": 735,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-01",
+        "2021-02",
+        "2021-03"
+      ]
+    },
+    "738_trim_feb_mar_abr21": {
+      "dir": "738_trim_feb_mar_abr21",
+      "seq": 738,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-02",
+        "2021-03",
+        "2021-04"
+      ]
+    },
+    "73_epe_personas_abr_may_jun2004": {
+      "dir": "73_epe_personas_abr_may_jun2004",
+      "seq": 73,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2004-04",
+        "2004-05",
+        "2004-06"
+      ]
+    },
+    "741_trim_mar_abr_may21": {
+      "dir": "741_trim_mar_abr_may21",
+      "seq": 741,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-03",
+        "2021-04",
+        "2021-05"
+      ]
+    },
+    "742_trim_abr_may_jun21": {
+      "dir": "742_trim_abr_may_jun21",
+      "seq": 742,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-04",
+        "2021-05",
+        "2021-06"
+      ]
+    },
+    "744_trim_may_jun_jul21": {
+      "dir": "744_trim_may_jun_jul21",
+      "seq": 744,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-05",
+        "2021-06",
+        "2021-07"
+      ]
+    },
+    "746_trim_jun_jul_ago21": {
+      "dir": "746_trim_jun_jul_ago21",
+      "seq": 746,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-06",
+        "2021-07",
+        "2021-08"
+      ]
+    },
+    "747_trim_jul_ago_set21": {
+      "dir": "747_trim_jul_ago_set21",
+      "seq": 747,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-07",
+        "2021-08",
+        "2021-09"
+      ]
+    },
+    "748_trim_ago_set_oct21": {
+      "dir": "748_trim_ago_set_oct21",
+      "seq": 748,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-08",
+        "2021-09",
+        "2021-10"
+      ]
+    },
+    "74_epe_personas_may_jun_jul2004": {
+      "dir": "74_epe_personas_may_jun_jul2004",
+      "seq": 74,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2004-05",
+        "2004-06",
+        "2004-07"
+      ]
+    },
+    "750_trim_set_oct_nov21": {
+      "dir": "750_trim_set_oct_nov21",
+      "seq": 750,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-09",
+        "2021-10",
+        "2021-11"
+      ]
+    },
+    "751_trim_oct_nov_dic21": {
+      "dir": "751_trim_oct_nov_dic21",
+      "seq": 751,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-10",
+        "2021-11",
+        "2021-12"
+      ]
+    },
+    "752_trim_nov_dic_ene22": {
+      "dir": "752_trim_nov_dic_ene22",
+      "seq": 752,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-11",
+        "2021-12",
+        "2022-01"
+      ]
+    },
+    "755_trim_dic_ene_feb22": {
+      "dir": "755_trim_dic_ene_feb22",
+      "seq": 755,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2021-12",
+        "2022-01",
+        "2022-02"
+      ]
+    },
+    "757_trim_ene_feb_mar22": {
+      "dir": "757_trim_ene_feb_mar22",
+      "seq": 757,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-01",
+        "2022-02",
+        "2022-03"
+      ]
+    },
+    "75_epe_personas_jun_jul_ago2004": {
+      "dir": "75_epe_personas_jun_jul_ago2004",
+      "seq": 75,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2004-06",
+        "2004-07",
+        "2004-08"
+      ]
+    },
+    "762_trim_feb_mar_abr22": {
+      "dir": "762_trim_feb_mar_abr22",
+      "seq": 762,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-02",
+        "2022-03",
+        "2022-04"
+      ]
+    },
+    "764_trim_mar_abr_may22": {
+      "dir": "764_trim_mar_abr_may22",
+      "seq": 764,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-03",
+        "2022-04",
+        "2022-05"
+      ]
+    },
+    "766_trim_abr_may_jun22": {
+      "dir": "766_trim_abr_may_jun22",
+      "seq": 766,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-04",
+        "2022-05",
+        "2022-06"
+      ]
+    },
+    "768_trim_may_jun_jul22": {
+      "dir": "768_trim_may_jun_jul22",
+      "seq": 768,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-05",
+        "2022-06",
+        "2022-07"
+      ]
+    },
+    "76_jul_ago_set": {
+      "dir": "76_jul_ago_set",
+      "seq": 76,
+      "survey": "UNKNOWN",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "771_trim_jun_jul_ago22": {
+      "dir": "771_trim_jun_jul_ago22",
+      "seq": 771,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-06",
+        "2022-07",
+        "2022-08"
+      ]
+    },
+    "773_trim_jul_ago_set22": {
+      "dir": "773_trim_jul_ago_set22",
+      "seq": 773,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-07",
+        "2022-08",
+        "2022-09"
+      ]
+    },
+    "774_trim_ago_set_oct22": {
+      "dir": "774_trim_ago_set_oct22",
+      "seq": 774,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-08",
+        "2022-09",
+        "2022-10"
+      ]
+    },
+    "776_trim_set_oct_nov22": {
+      "dir": "776_trim_set_oct_nov22",
+      "seq": 776,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-09",
+        "2022-10",
+        "2022-11"
+      ]
+    },
+    "777_trim_oct_nov_dic22": {
+      "dir": "777_trim_oct_nov_dic22",
+      "seq": 777,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-10",
+        "2022-11",
+        "2022-12"
+      ]
+    },
+    "778_trim_nov_dic_ene23": {
+      "dir": "778_trim_nov_dic_ene23",
+      "seq": 778,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-11",
+        "2022-12",
+        "2023-01"
+      ]
+    },
+    "779_trim_dic_ene_feb23": {
+      "dir": "779_trim_dic_ene_feb23",
+      "seq": 779,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-12",
+        "2023-01",
+        "2023-02"
+      ]
+    },
+    "77_epe_personaspanel_abr_jul_oct_ene": {
+      "dir": "77_epe_personaspanel_abr_jul_oct_ene",
+      "seq": 77,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "781_trim_ene_feb_mar23": {
+      "dir": "781_trim_ene_feb_mar23",
+      "seq": 781,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03"
+      ]
+    },
+    "787_trim_feb_mar_abr23": {
+      "dir": "787_trim_feb_mar_abr23",
+      "seq": 787,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-02",
+        "2023-03",
+        "2023-04"
+      ]
+    },
+    "789_trim_mar_abr_may23": {
+      "dir": "789_trim_mar_abr_may23",
+      "seq": 789,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-03",
+        "2023-04",
+        "2023-05"
+      ]
+    },
+    "78_epe_personaspanel_may_ago_nov_feb": {
+      "dir": "78_epe_personaspanel_may_ago_nov_feb",
+      "seq": 78,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_no_year",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "790_epen_2022_bd_publicaci_n_dpto": {
+      "dir": "790_epen_2022_bd_publicaci_n_dpto",
+      "seq": 790,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "791_01_amazonas_epen_2022": {
+      "dir": "791_01_amazonas_epen_2022",
+      "seq": 791,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "792_02_ancash_epen_2022": {
+      "dir": "792_02_ancash_epen_2022",
+      "seq": 792,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "793_03_apur_mac_epen_2022": {
+      "dir": "793_03_apur_mac_epen_2022",
+      "seq": 793,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "794_04_arequipa_epen_2022": {
+      "dir": "794_04_arequipa_epen_2022",
+      "seq": 794,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "795_05_ayacucho_epen_2022": {
+      "dir": "795_05_ayacucho_epen_2022",
+      "seq": 795,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "796_06_cajamarca_epen_2022": {
+      "dir": "796_06_cajamarca_epen_2022",
+      "seq": 796,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-03"
+      ]
+    },
+    "797_08_cusco_epen_2022": {
+      "dir": "797_08_cusco_epen_2022",
+      "seq": 797,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "798_09_huancavelica_epen_2022": {
+      "dir": "798_09_huancavelica_epen_2022",
+      "seq": 798,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "799_10_hu_nuco_epen_2022": {
+      "dir": "799_10_hu_nuco_epen_2022",
+      "seq": 799,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "79_epe_personas_trim_dic_ene_feb_2003": {
+      "dir": "79_epe_personas_trim_dic_ene_feb_2003",
+      "seq": 79,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-12",
+        "2003-01",
+        "2003-02"
+      ]
+    },
+    "800_11_ica_epen_2022": {
+      "dir": "800_11_ica_epen_2022",
+      "seq": 800,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "801_12_jun_n_epen_2022": {
+      "dir": "801_12_jun_n_epen_2022",
+      "seq": 801,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-06"
+      ]
+    },
+    "802_13_la_libertad_epen_2022": {
+      "dir": "802_13_la_libertad_epen_2022",
+      "seq": 802,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "803_14_lambayeque_epen_2022": {
+      "dir": "803_14_lambayeque_epen_2022",
+      "seq": 803,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "804_15_lima_incluye_la_provincia_constitucional_del_callao_epen_": {
+      "dir": "804_15_lima_incluye_la_provincia_constitucional_del_callao_epen_",
+      "seq": 804,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "805_16_loreto_epen_2022": {
+      "dir": "805_16_loreto_epen_2022",
+      "seq": 805,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "806_17_madre_de_dios_epen_2022": {
+      "dir": "806_17_madre_de_dios_epen_2022",
+      "seq": 806,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "807_18_moquegua_epen_2022": {
+      "dir": "807_18_moquegua_epen_2022",
+      "seq": 807,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "808_19_pasco_epen_2022": {
+      "dir": "808_19_pasco_epen_2022",
+      "seq": 808,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "809_20_piura_epen_2022": {
+      "dir": "809_20_piura_epen_2022",
+      "seq": 809,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "810_21_puno_epen_2022": {
+      "dir": "810_21_puno_epen_2022",
+      "seq": 810,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "811_22_san_mart_n_epen_2022": {
+      "dir": "811_22_san_mart_n_epen_2022",
+      "seq": 811,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-03"
+      ]
+    },
+    "812_23_tacna_epen_2022": {
+      "dir": "812_23_tacna_epen_2022",
+      "seq": 812,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "813_24_tumbes_epen_2022": {
+      "dir": "813_24_tumbes_epen_2022",
+      "seq": 813,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "814_25_ucayali_epen_2022": {
+      "dir": "814_25_ucayali_epen_2022",
+      "seq": 814,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "815_epen_2022_bd_publicaci_n_ciudad": {
+      "dir": "815_epen_2022_bd_publicaci_n_ciudad",
+      "seq": 815,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "843_trim_abr_may_jun23": {
+      "dir": "843_trim_abr_may_jun23",
+      "seq": 843,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-04",
+        "2023-05",
+        "2023-06"
+      ]
+    },
+    "846_trim_may_jun_jul23": {
+      "dir": "846_trim_may_jun_jul23",
+      "seq": 846,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-05",
+        "2023-06",
+        "2023-07"
+      ]
+    },
+    "847_nacional_epen_trim_ene_feb_mar_2023": {
+      "dir": "847_nacional_epen_trim_ene_feb_mar_2023",
+      "seq": 847,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03"
+      ]
+    },
+    "849_nacional_epen_trim_abr_may_jun_2023": {
+      "dir": "849_nacional_epen_trim_abr_may_jun_2023",
+      "seq": 849,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-04",
+        "2023-05",
+        "2023-06"
+      ]
+    },
+    "84_epe_personas_trim_ene_feb_mar_2003": {
+      "dir": "84_epe_personas_trim_ene_feb_mar_2003",
+      "seq": 84,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-01",
+        "2003-02",
+        "2003-03"
+      ]
+    },
+    "851_trim_jun_jul_ago23": {
+      "dir": "851_trim_jun_jul_ago23",
+      "seq": 851,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-06",
+        "2023-07",
+        "2023-08"
+      ]
+    },
+    "853_trim_jul_ago_set23": {
+      "dir": "853_trim_jul_ago_set23",
+      "seq": 853,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-07",
+        "2023-08",
+        "2023-09"
+      ]
+    },
+    "855_nacional_epen_trim_ene_feb_mar_2022": {
+      "dir": "855_nacional_epen_trim_ene_feb_mar_2022",
+      "seq": 855,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-01",
+        "2022-02",
+        "2022-03"
+      ]
+    },
+    "857_nacional_epen_trim_abr_may_jun_2022": {
+      "dir": "857_nacional_epen_trim_abr_may_jun_2022",
+      "seq": 857,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-04",
+        "2022-05",
+        "2022-06"
+      ]
+    },
+    "859_nacional_epen_trim_jul_ago_set_2022": {
+      "dir": "859_nacional_epen_trim_jul_ago_set_2022",
+      "seq": 859,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-07",
+        "2022-08",
+        "2022-09"
+      ]
+    },
+    "861_nacional_epen_trim_oct_nov_dic_2022": {
+      "dir": "861_nacional_epen_trim_oct_nov_dic_2022",
+      "seq": 861,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2022-10",
+        "2022-11",
+        "2022-12"
+      ]
+    },
+    "863_nacional_epen_trim_jul_ago_set_2023": {
+      "dir": "863_nacional_epen_trim_jul_ago_set_2023",
+      "seq": 863,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-07",
+        "2023-08",
+        "2023-09"
+      ]
+    },
+    "865_trim_ago_set_oct23": {
+      "dir": "865_trim_ago_set_oct23",
+      "seq": 865,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-08",
+        "2023-09",
+        "2023-10"
+      ]
+    },
+    "866_trim_set_oct_nov23": {
+      "dir": "866_trim_set_oct_nov23",
+      "seq": 866,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-09",
+        "2023-10",
+        "2023-11"
+      ]
+    },
+    "869_trim_oct_nov_dic23": {
+      "dir": "869_trim_oct_nov_dic23",
+      "seq": 869,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "86_epe_personas_trim_feb_mar_abr_2003": {
+      "dir": "86_epe_personas_trim_feb_mar_abr_2003",
+      "seq": 86,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-02",
+        "2003-03",
+        "2003-04"
+      ]
+    },
+    "870_trim_nov_dic_ene24": {
+      "dir": "870_trim_nov_dic_ene24",
+      "seq": 870,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-11",
+        "2023-12",
+        "2024-01"
+      ]
+    },
+    "871_nacional_epen_trim_oct_nov_dic_2023": {
+      "dir": "871_nacional_epen_trim_oct_nov_dic_2023",
+      "seq": 871,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "873_epen_bd_ciudades_anual_2023": {
+      "dir": "873_epen_bd_ciudades_anual_2023",
+      "seq": 873,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "874_epen_2023_bd_publicaci_n_dpto": {
+      "dir": "874_epen_2023_bd_publicaci_n_dpto",
+      "seq": 874,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "875_01_amazonas_epen_anual_2023": {
+      "dir": "875_01_amazonas_epen_anual_2023",
+      "seq": 875,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "876_02_ancash_epen_anual_2023": {
+      "dir": "876_02_ancash_epen_anual_2023",
+      "seq": 876,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "877_03_apur_mac_epen_anual_2023": {
+      "dir": "877_03_apur_mac_epen_anual_2023",
+      "seq": 877,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "878_04_arequipa_epen_anual_2023": {
+      "dir": "878_04_arequipa_epen_anual_2023",
+      "seq": 878,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "879_05_ayacucho_epen_anual_2023": {
+      "dir": "879_05_ayacucho_epen_anual_2023",
+      "seq": 879,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "87_epe_personas_trim_mar_abr_may_2003": {
+      "dir": "87_epe_personas_trim_mar_abr_may_2003",
+      "seq": 87,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-03",
+        "2003-04",
+        "2003-05"
+      ]
+    },
+    "880_06_cajamarca_epen_anual_2023": {
+      "dir": "880_06_cajamarca_epen_anual_2023",
+      "seq": 880,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "881_08_cusco_epen_anual_2023": {
+      "dir": "881_08_cusco_epen_anual_2023",
+      "seq": 881,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "882_09_huancavelica_epen_anual_2023": {
+      "dir": "882_09_huancavelica_epen_anual_2023",
+      "seq": 882,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "883_10_hu_nuco_epen_anual_2023": {
+      "dir": "883_10_hu_nuco_epen_anual_2023",
+      "seq": 883,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "884_11_ica_epen_anual_2023": {
+      "dir": "884_11_ica_epen_anual_2023",
+      "seq": 884,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "885_12_jun_n_epen_anual_2023": {
+      "dir": "885_12_jun_n_epen_anual_2023",
+      "seq": 885,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "886_13_la_libertad_epen_anual_2023": {
+      "dir": "886_13_la_libertad_epen_anual_2023",
+      "seq": 886,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "887_14_lambayeque_epen_anual_2023": {
+      "dir": "887_14_lambayeque_epen_anual_2023",
+      "seq": 887,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "888_15_lima_epen_anual_2023": {
+      "dir": "888_15_lima_epen_anual_2023",
+      "seq": 888,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "889_16_loreto_epen_anual_2023": {
+      "dir": "889_16_loreto_epen_anual_2023",
+      "seq": 889,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "88_epe_personas_trim_abr_may_jun_2003": {
+      "dir": "88_epe_personas_trim_abr_may_jun_2003",
+      "seq": 88,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-04",
+        "2003-05",
+        "2003-06"
+      ]
+    },
+    "890_17_madre_de_dios_epen_anual_2023": {
+      "dir": "890_17_madre_de_dios_epen_anual_2023",
+      "seq": 890,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "891_18_moquegua_epen_anual_2023": {
+      "dir": "891_18_moquegua_epen_anual_2023",
+      "seq": 891,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "892_19_pasco_epen_anual_2023": {
+      "dir": "892_19_pasco_epen_anual_2023",
+      "seq": 892,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "893_20_piura_epen_anual_2023": {
+      "dir": "893_20_piura_epen_anual_2023",
+      "seq": 893,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "894_21_puno_epen_anual_2023": {
+      "dir": "894_21_puno_epen_anual_2023",
+      "seq": 894,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "895_22_san_martin_epen_anual_2023": {
+      "dir": "895_22_san_martin_epen_anual_2023",
+      "seq": 895,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "896_23_tacna_epen_anual_2023": {
+      "dir": "896_23_tacna_epen_anual_2023",
+      "seq": 896,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "897_24_tumbes_epen_anual_2023": {
+      "dir": "897_24_tumbes_epen_anual_2023",
+      "seq": 897,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "898_25_ucayali_epen_anual_2023": {
+      "dir": "898_25_ucayali_epen_anual_2023",
+      "seq": 898,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    "89_epe_personas_trim_may_jun_jul_2003": {
+      "dir": "89_epe_personas_trim_may_jun_jul_2003",
+      "seq": 89,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-05",
+        "2003-06",
+        "2003-07"
+      ]
+    },
+    "900_trim_dic_ene_feb24": {
+      "dir": "900_trim_dic_ene_feb24",
+      "seq": 900,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2023-12",
+        "2024-01",
+        "2024-02"
+      ]
+    },
+    "904_trim_ene_feb_mar24": {
+      "dir": "904_trim_ene_feb_mar24",
+      "seq": 904,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03"
+      ]
+    },
+    "907_nacional_epen_trim_ene_feb_mar_2024": {
+      "dir": "907_nacional_epen_trim_ene_feb_mar_2024",
+      "seq": 907,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03"
+      ]
+    },
+    "909_trim_feb_mar_abr24": {
+      "dir": "909_trim_feb_mar_abr24",
+      "seq": 909,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-02",
+        "2024-03",
+        "2024-04"
+      ]
+    },
+    "90_epe_personas_trim_jun_jul_ago_2003": {
+      "dir": "90_epe_personas_trim_jun_jul_ago_2003",
+      "seq": 90,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-06",
+        "2003-07",
+        "2003-08"
+      ]
+    },
+    "911_trim_mar_abr_may24": {
+      "dir": "911_trim_mar_abr_may24",
+      "seq": 911,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-03",
+        "2024-04",
+        "2024-05"
+      ]
+    },
+    "915_trim_abr_may_jun24": {
+      "dir": "915_trim_abr_may_jun24",
+      "seq": 915,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-04",
+        "2024-05",
+        "2024-06"
+      ]
+    },
+    "916_trim_may_jun_jul24": {
+      "dir": "916_trim_may_jun_jul24",
+      "seq": 916,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-05",
+        "2024-06",
+        "2024-07"
+      ]
+    },
+    "917_nacional_epen_trim_abr_may_jun_2024": {
+      "dir": "917_nacional_epen_trim_abr_may_jun_2024",
+      "seq": 917,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-04",
+        "2024-05",
+        "2024-06"
+      ]
+    },
+    "919_trim_jun_jul_ago24": {
+      "dir": "919_trim_jun_jul_ago24",
+      "seq": 919,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-06",
+        "2024-07",
+        "2024-08"
+      ]
+    },
+    "921_trim_jul_ago_set24": {
+      "dir": "921_trim_jul_ago_set24",
+      "seq": 921,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-07",
+        "2024-08",
+        "2024-09"
+      ]
+    },
+    "923_nacional_epen_trim_jul_ago_set_2024": {
+      "dir": "923_nacional_epen_trim_jul_ago_set_2024",
+      "seq": 923,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-07",
+        "2024-08",
+        "2024-09"
+      ]
+    },
+    "925_trim_ago_set_oct24": {
+      "dir": "925_trim_ago_set_oct24",
+      "seq": 925,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-08",
+        "2024-09",
+        "2024-10"
+      ]
+    },
+    "927_trim_set_oct_nov24": {
+      "dir": "927_trim_set_oct_nov24",
+      "seq": 927,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-09",
+        "2024-10",
+        "2024-11"
+      ]
+    },
+    "929_trim_oct_nov_dic24": {
+      "dir": "929_trim_oct_nov_dic24",
+      "seq": 929,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "92_epe_personas_trim_jul_ago_set_2003": {
+      "dir": "92_epe_personas_trim_jul_ago_set_2003",
+      "seq": 92,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-07",
+        "2003-08",
+        "2003-09"
+      ]
+    },
+    "931_nacional_epen_trim_oct_nov_dic_2024": {
+      "dir": "931_nacional_epen_trim_oct_nov_dic_2024",
+      "seq": 931,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "933_epen_bd_ciudades_anual_2024": {
+      "dir": "933_epen_bd_ciudades_anual_2024",
+      "seq": 933,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "935_epen_2024_bd_publicacion_dpto": {
+      "dir": "935_epen_2024_bd_publicacion_dpto",
+      "seq": 935,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "unknown",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": []
+    },
+    "936_01_amazonas_epen_anual_2024": {
+      "dir": "936_01_amazonas_epen_anual_2024",
+      "seq": 936,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "937_02_ancash_epen_anual_2024": {
+      "dir": "937_02_ancash_epen_anual_2024",
+      "seq": 937,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "938_03_apurimac_epen_anual_2024": {
+      "dir": "938_03_apurimac_epen_anual_2024",
+      "seq": 938,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "939_04_arequipa_epen_anual_2024": {
+      "dir": "939_04_arequipa_epen_anual_2024",
+      "seq": 939,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "93_epe_personas_trim_ago_set_oct_2003": {
+      "dir": "93_epe_personas_trim_ago_set_oct_2003",
+      "seq": 93,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-08",
+        "2003-09",
+        "2003-10"
+      ]
+    },
+    "940_05_ayacucho_epen_anual_2024": {
+      "dir": "940_05_ayacucho_epen_anual_2024",
+      "seq": 940,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "941_06_cajamarca_epen_anual_2024": {
+      "dir": "941_06_cajamarca_epen_anual_2024",
+      "seq": 941,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "942_08_cusco_epen_anual_2024": {
+      "dir": "942_08_cusco_epen_anual_2024",
+      "seq": 942,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "943_09_huancavelica_epen_anual_2024": {
+      "dir": "943_09_huancavelica_epen_anual_2024",
+      "seq": 943,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "944_10_huanuco_epen_anual_2024": {
+      "dir": "944_10_huanuco_epen_anual_2024",
+      "seq": 944,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "945_11_ica_epen_anual_2024": {
+      "dir": "945_11_ica_epen_anual_2024",
+      "seq": 945,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "946_12_junin_epen_anual_2024": {
+      "dir": "946_12_junin_epen_anual_2024",
+      "seq": 946,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "947_13_la_libertad_epen_anual_2024": {
+      "dir": "947_13_la_libertad_epen_anual_2024",
+      "seq": 947,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "948_14_lambayeque_epen_anual_2024": {
+      "dir": "948_14_lambayeque_epen_anual_2024",
+      "seq": 948,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "949_15_lima_epen_anual_2024": {
+      "dir": "949_15_lima_epen_anual_2024",
+      "seq": 949,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "94_epe_personas_trim_set_oct_nov_2003": {
+      "dir": "94_epe_personas_trim_set_oct_nov_2003",
+      "seq": 94,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-09",
+        "2003-10",
+        "2003-11"
+      ]
+    },
+    "950_16_loreto_epen_anual_2024": {
+      "dir": "950_16_loreto_epen_anual_2024",
+      "seq": 950,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "951_17_madre_de_dios_epen_anual_2024": {
+      "dir": "951_17_madre_de_dios_epen_anual_2024",
+      "seq": 951,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "952_18_moquegua_epen_anual_2024": {
+      "dir": "952_18_moquegua_epen_anual_2024",
+      "seq": 952,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "953_19_pasco_epen_anual_2024": {
+      "dir": "953_19_pasco_epen_anual_2024",
+      "seq": 953,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "954_20_piura_epen_anual_2024": {
+      "dir": "954_20_piura_epen_anual_2024",
+      "seq": 954,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "955_21_puno_epen_anual_2024": {
+      "dir": "955_21_puno_epen_anual_2024",
+      "seq": 955,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "956_22_san_martin_epen_anual_2024": {
+      "dir": "956_22_san_martin_epen_anual_2024",
+      "seq": 956,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "957_23_tacna_epen_anual_2024": {
+      "dir": "957_23_tacna_epen_anual_2024",
+      "seq": 957,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "958_24_tumbes_epen_anual_2024": {
+      "dir": "958_24_tumbes_epen_anual_2024",
+      "seq": 958,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "959_25_ucayali_epen_anual_2024": {
+      "dir": "959_25_ucayali_epen_anual_2024",
+      "seq": 959,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ]
+    },
+    "95_epe_personas_trim_oct_nov_dic_2003": {
+      "dir": "95_epe_personas_trim_oct_nov_dic_2003",
+      "seq": 95,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-10",
+        "2003-11",
+        "2003-12"
+      ]
+    },
+    "960_trim_nov_dic24_ene25": {
+      "dir": "960_trim_nov_dic24_ene25",
+      "seq": 960,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-11",
+        "2024-12",
+        "2025-01"
+      ]
+    },
+    "961_trim_dic24_ene_feb25": {
+      "dir": "961_trim_dic24_ene_feb25",
+      "seq": 961,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2024-12",
+        "2025-01",
+        "2025-02"
+      ]
+    },
+    "964_trim_ene_feb_mar25": {
+      "dir": "964_trim_ene_feb_mar25",
+      "seq": 964,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03"
+      ]
+    },
+    "967_trim_feb_mar_abr25": {
+      "dir": "967_trim_feb_mar_abr25",
+      "seq": 967,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-02",
+        "2025-03",
+        "2025-04"
+      ]
+    },
+    "969_nacional_epen_trim_ene_feb_mar_2025": {
+      "dir": "969_nacional_epen_trim_ene_feb_mar_2025",
+      "seq": 969,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03"
+      ]
+    },
+    "96_epe_personas_trim_nov03_dic_ene04": {
+      "dir": "96_epe_personas_trim_nov03_dic_ene04",
+      "seq": 96,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2003-11",
+        "2003-12",
+        "2004-01"
+      ]
+    },
+    "972_trim_mar_abr_may25": {
+      "dir": "972_trim_mar_abr_may25",
+      "seq": 972,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-03",
+        "2025-04",
+        "2025-05"
+      ]
+    },
+    "977_trim_abr_may_jun25": {
+      "dir": "977_trim_abr_may_jun25",
+      "seq": 977,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-04",
+        "2025-05",
+        "2025-06"
+      ]
+    },
+    "978_trim_may_jun_jul25": {
+      "dir": "978_trim_may_jun_jul25",
+      "seq": 978,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-05",
+        "2025-06",
+        "2025-07"
+      ]
+    },
+    "979_trim_may_jun_jul25": {
+      "dir": "979_trim_may_jun_jul25",
+      "seq": 979,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-05",
+        "2025-06",
+        "2025-07"
+      ]
+    },
+    "97_epe_panelmensual_mar_jun_set_dic_2002": {
+      "dir": "97_epe_panelmensual_mar_jun_set_dic_2002",
+      "seq": 97,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-03",
+        "2002-06",
+        "2002-09",
+        "2002-12"
+      ]
+    },
+    "980_nacional_epen_trim_abr_may_jun_2025": {
+      "dir": "980_nacional_epen_trim_abr_may_jun_2025",
+      "seq": 980,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-04",
+        "2025-05",
+        "2025-06"
+      ]
+    },
+    "982_trim_jun_jul_ago25": {
+      "dir": "982_trim_jun_jul_ago25",
+      "seq": 982,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-06",
+        "2025-07",
+        "2025-08"
+      ]
+    },
+    "986_trim_jul_ago_set25": {
+      "dir": "986_trim_jul_ago_set25",
+      "seq": 986,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-07",
+        "2025-08",
+        "2025-09"
+      ]
+    },
+    "989_trim_ago_set_oct25": {
+      "dir": "989_trim_ago_set_oct25",
+      "seq": 989,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-08",
+        "2025-09",
+        "2025-10"
+      ]
+    },
+    "98_epe_panelmensual_abr_jul_oct_2002_ene_2003": {
+      "dir": "98_epe_panelmensual_abr_jul_oct_2002_ene_2003",
+      "seq": 98,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-04",
+        "2002-07",
+        "2002-10",
+        "2003-01"
+      ]
+    },
+    "990_nacional_epen_trim_jul_ago_set_2025": {
+      "dir": "990_nacional_epen_trim_jul_ago_set_2025",
+      "seq": 990,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-07",
+        "2025-08",
+        "2025-09"
+      ]
+    },
+    "994_trim_set_oct_nov25": {
+      "dir": "994_trim_set_oct_nov25",
+      "seq": 994,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-09",
+        "2025-10",
+        "2025-11"
+      ]
+    },
+    "995_trim_oct_nov_dic25": {
+      "dir": "995_trim_oct_nov_dic25",
+      "seq": 995,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "996_trim_nov_dic_ene26": {
+      "dir": "996_trim_nov_dic_ene26",
+      "seq": 996,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 0,
+      "formats": [],
+      "months": [
+        "2025-11",
+        "2025-12",
+        "2026-01"
+      ]
+    },
+    "997_nacional_epen_trim_oct_nov_dic_2025": {
+      "dir": "997_nacional_epen_trim_oct_nov_dic_2025",
+      "seq": 997,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "999_epen_bd_ciudades_anual_2025": {
+      "dir": "999_epen_bd_ciudades_anual_2025",
+      "seq": 999,
+      "survey": "EPEN",
+      "geography": "national",
+      "kind": "annual",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ]
+    },
+    "99_epe_panelmensual_may_ago_nov_2002_feb_2003": {
+      "dir": "99_epe_panelmensual_may_ago_nov_2002_feb_2003",
+      "seq": 99,
+      "survey": "EPE",
+      "geography": "Lima Metropolitana",
+      "kind": "rolling_quarter",
+      "n_microdata": 1,
+      "formats": [
+        "csv"
+      ],
+      "months": [
+        "2002-05",
+        "2002-08",
+        "2002-11",
+        "2003-02"
+      ]
+    }
+  }
+}

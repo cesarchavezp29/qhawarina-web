@@ -1,0 +1,235 @@
+{
+  "102_epe_personas_oct_nov_dic2004": {
+    "file": "Epe-Personas Oct-Nov-Dic2004.sav",
+    "rows": 20168,
+    "pmes": {
+      "n_distinct": 3,
+      "top": {
+        "10": 6764,
+        "11": 6724,
+        "12": 6680
+      }
+    },
+    "conglome": {
+      "n_distinct": 1197,
+      "top": {
+        "052291": 42,
+        "038596": 40,
+        "038975": 39,
+        "053937": 38,
+        "040939": 36,
+        "039029": 36
+      }
+    },
+    "vivienda": {
+      "n_distinct": 62,
+      "top": {
+        "012": 1034,
+        "011": 947,
+        "009": 929,
+        "013": 903,
+        "010": 880,
+        "007": 878
+      }
+    },
+    "hogar": {
+      "n_distinct": 15,
+      "top": {
+        "11": 18439,
+        "12": 731,
+        "22": 553,
+        "13": 108,
+        "23": 107,
+        "33": 84
+      }
+    },
+    "codperso": {
+      "n_distinct": 15,
+      "top": {
+        "01": 4650,
+        "02": 4360,
+        "03": 3882,
+        "04": 3061,
+        "05": 1943,
+        "06": 1089
+      }
+    },
+    "verdict": "POOLED across 3 interview months WITH a record-level month variable -> non-overlapping monthly samples CAN be rebuilt"
+  },
+  "486_trim_oct_nov_dic15": {
+    "file": "Trim Oct-Nov-Dic15.sav",
+    "rows": 17400,
+    "pmes": {
+      "n_distinct": 3,
+      "top": {
+        "11": 5843,
+        "12": 5833,
+        "10": 5724
+      }
+    },
+    "conglome": {
+      "n_distinct": 1200,
+      "top": {
+        "027781": 31,
+        "018906": 30,
+        "019500": 29,
+        "023369": 29,
+        "027623": 28,
+        "027448": 28
+      }
+    },
+    "vivienda": {
+      "n_distinct": 265,
+      "top": {
+        "0137": 299,
+        "0138": 298,
+        "0136": 286,
+        "0122": 281,
+        "0140": 269,
+        "0123": 261
+      }
+    },
+    "hogar": {
+      "n_distinct": 10,
+      "top": {
+        "11": 16603,
+        "12": 318,
+        "22": 300,
+        "13": 47,
+        "33": 44,
+        "23": 41
+      }
+    },
+    "codperso": {
+      "n_distinct": 13,
+      "top": {
+        "01": 4639,
+        "02": 4208,
+        "03": 3515,
+        "04": 2511,
+        "05": 1357,
+        "06": 645
+      }
+    },
+    "verdict": "POOLED across 3 interview months WITH a record-level month variable -> non-overlapping monthly samples CAN be rebuilt"
+  },
+  "601_trim_ene_feb_mar18": {
+    "file": "Trim Ene-Feb-Mar18.csv",
+    "rows": 17094,
+    "pmes": {
+      "n_distinct": 3,
+      "top": {
+        "1": 5734,
+        "2": 5706,
+        "3": 5654
+      }
+    },
+    "conglome": {
+      "n_distinct": 1200,
+      "top": {
+        "18220": 35,
+        "27757": 34,
+        "22204": 34,
+        "27783": 31,
+        "19253": 31,
+        "21866": 30
+      }
+    },
+    "vivienda": {
+      "n_distinct": 95,
+      "top": {
+        "8": 1005,
+        "7": 982,
+        "5": 871,
+        "9": 856,
+        "6": 852,
+        "11": 793
+      }
+    },
+    "hogar": {
+      "n_distinct": 15,
+      "top": {
+        "11": 16027,
+        "12": 397,
+        "22": 350,
+        "13": 94,
+        "23": 66,
+        "33": 55
+      }
+    },
+    "codperso": {
+      "n_distinct": 17,
+      "top": {
+        "1": 4598,
+        "2": 4165,
+        "3": 3391,
+        "4": 2398,
+        "5": 1324,
+        "6": 647
+      }
+    },
+    "verdict": "POOLED across 3 interview months WITH a record-level month variable -> non-overlapping monthly samples CAN be rebuilt"
+  },
+  "861_nacional_epen_trim_oct_nov_dic_2022": {
+    "file": "Nacional EPEN Trim. Oct-Nov-Dic 2022.csv",
+    "rows": 110450,
+    "mes": {
+      "n_distinct": 3,
+      "top": {
+        "10": 36987,
+        "11": 36749,
+        "12": 36714
+      }
+    },
+    "anio": {
+      "n_distinct": 1,
+      "top": {
+        "2022": 110450
+      }
+    },
+    "llave_panel": {
+      "n_distinct": 110450,
+      "top": {
+        "202210184321005111": 1,
+        "202210184321005112": 1,
+        "202210184321005113": 1,
+        "202210184321005114": 1,
+        "202210184321005115": 1,
+        "202210184321005211": 1
+      }
+    },
+    "conglomerado": {
+      "n_distinct": 6580,
+      "top": {
+        "38999": 108,
+        "7088": 103,
+        "7101": 102,
+        "7102": 98,
+        "38927": 96,
+        "45080": 91
+      }
+    },
+    "selviv": {
+      "n_distinct": 381,
+      "top": {
+        "39": 1374,
+        "38": 1333,
+        "26": 1275,
+        "8": 1264,
+        "24": 1246,
+        "51": 1243
+      }
+    },
+    "hogar": {
+      "n_distinct": 5,
+      "top": {
+        "1": 108019,
+        "2": 1968,
+        "3": 369,
+        "4": 83,
+        "5": 11
+      }
+    },
+    "verdict": "POOLED across 3 interview months WITH a record-level month variable -> non-overlapping monthly samples CAN be rebuilt"
+  }
+}

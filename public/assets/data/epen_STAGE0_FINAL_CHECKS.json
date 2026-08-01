@@ -1,0 +1,731 @@
+{
+  "era17": {
+    "first_dir": "401_trim_ene_feb_mar14",
+    "last_dir": "773_trim_jul_ago_set22",
+    "n_waves": 103
+  },
+  "A_weights": {
+    "531_trim_jul_ago_set16": {
+      "weight_var": "fa_jas16",
+      "total": 7503106.270078265,
+      "by_month": {
+        "7": 2529286.14925156,
+        "8": 2508216.1943100486,
+        "9": 2465603.9265166554
+      },
+      "share_of_total": {
+        "7": 0.3370985373535403,
+        "8": 0.3342903730835583,
+        "9": 0.32861108956290136
+      },
+      "n_months": 3
+    },
+    "545_trim_ene_feb_mar17": {
+      "weight_var": "fa_efm17",
+      "total": 7560696.999999922,
+      "by_month": {
+        "1": 2541212.062811793,
+        "2": 2509303.496533912,
+        "3": 2510181.440654216
+      },
+      "share_of_total": {
+        "1": 0.33610817399663273,
+        "2": 0.33188785326722364,
+        "3": 0.33200397273614346
+      },
+      "n_months": 3
+    },
+    "584_trim_jul_ago_set17": {
+      "weight_var": "fa_jas17",
+      "total": 7613728.000000058,
+      "by_month": {
+        "7": 2504139.6077386397,
+        "8": 2580949.223200435,
+        "9": 2528639.1690609837
+      },
+      "share_of_total": {
+        "7": 0.3288979600714158,
+        "8": 0.3389862657558052,
+        "9": 0.33211577417277904
+      },
+      "n_months": 3
+    },
+    "601_trim_ene_feb_mar18": {
+      "weight_var": "fa_efm18",
+      "total": 7666471.000000088,
+      "by_month": {
+        "1": 2540073.3270343323,
+        "2": 2551438.699931226,
+        "3": 2574958.973034529
+      },
+      "share_of_total": {
+        "1": 0.3313223681449135,
+        "2": 0.33280484592339776,
+        "3": 0.33587278593168873
+      },
+      "n_months": 3
+    },
+    "618_trim_jul_ago_set18": {
+      "weight_var": "fa_jas18",
+      "total": 7719501.999999961,
+      "by_month": {
+        "7": 2589487.382013759,
+        "8": 2583197.4022248276,
+        "9": 2546817.2157613747
+      },
+      "share_of_total": {
+        "7": 0.3354474656543612,
+        "8": 0.33463264887098165,
+        "9": 0.3299198854746572
+      },
+      "n_months": 3
+    },
+    "636_trim_ene_feb_mar19": {
+      "weight_var": "fa_efm19",
+      "total": 7772244.000000004,
+      "by_month": {
+        "1": 2571481.6854987484,
+        "2": 2579364.655400257,
+        "3": 2621397.6591009977
+      },
+      "share_of_total": {
+        "1": 0.33085447208023155,
+        "2": 0.331868718403624,
+        "3": 0.3372768095161444
+      },
+      "n_months": 3
+    },
+    "648_trim_jul_ago_set19": {
+      "weight_var": "fa_jas19",
+      "total": 7825786.720791258,
+      "by_month": {
+        "7": 2612314.435556823,
+        "8": 2597989.6844293564,
+        "9": 2615482.600805078
+      },
+      "share_of_total": {
+        "7": 0.33380853948096023,
+        "8": 0.3319780843920924,
+        "9": 0.3342133761269473
+      },
+      "n_months": 3
+    },
+    "688_trim_ene_feb_mar20": {
+      "weight_var": "fa_efm20",
+      "total": 7882301.84263178,
+      "by_month": {
+        "1": 2616643.6613932126,
+        "2": 2652416.468155361,
+        "3": 2613241.7130832067
+      },
+      "share_of_total": {
+        "1": 0.3319644075593476,
+        "2": 0.33650277813641294,
+        "3": 0.33153281430423953
+      },
+      "n_months": 3
+    },
+    "700_trim_jul_ago_set20": {
+      "weight_var": "fa_jas20",
+      "total": 7928671.999999956,
+      "by_month": {
+        "7": 2639777.074648495,
+        "8": 2634528.099313194,
+        "9": 2654366.8260382675
+      },
+      "share_of_total": {
+        "7": 0.33294063301502563,
+        "8": 0.33227860848742496,
+        "9": 0.3347807584975494
+      },
+      "n_months": 3
+    },
+    "735_trim_ene_feb_mar21": {
+      "weight_var": "fa_efm21",
+      "total": 7979912.99999997,
+      "by_month": {
+        "1": 2723250.818185851,
+        "2": 2618456.3173201396,
+        "3": 2638205.86449398
+      },
+      "share_of_total": {
+        "1": 0.34126322156467886,
+        "2": 0.3281309354275102,
+        "3": 0.330605843007811
+      },
+      "n_months": 3
+    },
+    "747_trim_jul_ago_set21": {
+      "weight_var": "fa_jas21",
+      "total": 8031152.9999999795,
+      "by_month": {
+        "7": 2684513.773295206,
+        "8": 2646059.389413674,
+        "9": 2700579.8372911005
+      },
+      "share_of_total": {
+        "7": 0.33426256146473776,
+        "8": 0.3294744091432053,
+        "9": 0.3362630293920571
+      },
+      "n_months": 3
+    }
+  },
+  "A_summary": {
+    "mean_month_share_of_file_total": 0.3333333333333333
+  },
+  "B_stability": {
+    "531_trim_jul_ago_set16": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 8159,
+        "min": 0.0,
+        "p50": 1290.0,
+        "max": 29000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 8241,
+        "min": 0.0,
+        "p50": 46.0,
+        "max": 105.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "545_trim_ene_feb_mar17": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7821,
+        "min": 0.0,
+        "p50": 1234.0,
+        "max": 40000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 7893,
+        "min": 0.0,
+        "p50": 48.0,
+        "max": 112.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "584_trim_jul_ago_set17": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7821,
+        "min": 0.0,
+        "p50": 1299.0,
+        "max": 80000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 7913,
+        "min": 0.0,
+        "p50": 46.0,
+        "max": 112.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "601_trim_ene_feb_mar18": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7742,
+        "min": 0.0,
+        "p50": 1275.0,
+        "max": 26000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 7827,
+        "min": 0.0,
+        "p50": 48.0,
+        "max": 112.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "618_trim_jul_ago_set18": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7723,
+        "min": 0.0,
+        "p50": 1269.0,
+        "max": 80000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 7812,
+        "min": 0.0,
+        "p50": 46.0,
+        "max": 105.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "636_trim_ene_feb_mar19": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7552,
+        "min": 0.0,
+        "p50": 1250.0,
+        "max": 25000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 7621,
+        "min": 0.0,
+        "p50": 47.0,
+        "max": 111.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "648_trim_jul_ago_set19": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7693,
+        "min": 0.0,
+        "p50": 1299.0,
+        "max": 30000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 7769,
+        "min": 0.0,
+        "p50": 45.0,
+        "max": 109.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "688_trim_ene_feb_mar20": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 7614,
+        "min": 0.0,
+        "p50": 1200.0,
+        "max": 60000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 6811,
+        "min": 0.0,
+        "p50": 46.0,
+        "max": 112.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "700_trim_jul_ago_set20": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 5510,
+        "min": 0.0,
+        "p50": 1000.0,
+        "max": 30000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 5568,
+        "min": 0.0,
+        "p50": 40.0,
+        "max": 109.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    "735_trim_ene_feb_mar21": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 5815,
+        "min": 0.0,
+        "p50": 1039.0,
+        "max": 40000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 5846,
+        "min": 0.0,
+        "p50": 45.0,
+        "max": 105.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    "747_trim_jul_ago_set21": {
+      "p206": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "ocu200": {
+        "type": "coded",
+        "codes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "ingtot": {
+        "type": "continuous",
+        "n_nonmissing": 6649,
+        "min": 0.0,
+        "p50": 1200.0,
+        "max": 50000.0
+      },
+      "p209t": {
+        "type": "continuous",
+        "n_nonmissing": 6690,
+        "min": 0.0,
+        "p50": 45.0,
+        "max": 112.0
+      },
+      "p222": {
+        "type": "coded",
+        "codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    }
+  },
+  "C_dependence": {
+    "545_trim_ene_feb_mar17|549_trim_feb_mar_abr17": {
+      "month_a": 3,
+      "month_b": 4,
+      "n_a": 122,
+      "n_b": 114,
+      "overlap": 0,
+      "frac_of_a": 0.0
+    },
+    "601_trim_ene_feb_mar18|604_trim_feb_mar_abr18": {
+      "month_a": 3,
+      "month_b": 4,
+      "n_a": 103,
+      "n_b": 158,
+      "overlap": 0,
+      "frac_of_a": 0.0
+    }
+  },
+  "C_summary": {
+    "mean_adjacent_overlap": 0.0
+  }
+}

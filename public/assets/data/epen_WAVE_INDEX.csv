@@ -1,0 +1,422 @@
+dir,survey,file,status,n_vars,month_var,year_var,n_months,first_month,last_month,middle_month,weight_candidates,id_candidates
+1001_epen_2025_bd_publicacion_dpto,EPEN,EPEN 2025 BD_Publicacion Dpto.csv,ok,132,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1002_01_amazonas_epen_anual_2025,EPEN,01 Amazonas EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1003_02_ancash_epen_anual_2025,EPEN,02 Ancash EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1004_03_apurimac_epen_anual_2025,EPEN,03 Apurimac EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1005_04_arequipa_epen_anual_2025,EPEN,04 Arequipa EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1006_05_ayacucho_epen_anual_2025,EPEN,05 Ayacucho EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1007_06_cajamarca_epen_anual_2025,EPEN,06 Cajamarca EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1008_08_cusco_epen_anual_2025,EPEN,08 Cusco EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1009_09_huancavelica_epen_anual_2025,EPEN,09 Huancavelica EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+100_ago_set_oct,EPE,Ago_Set_Oct.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+1010_10_huanuco_epen_anual_2025,EPEN,10 Huanuco EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1011_11_ica_epen_anual_2025,EPEN,11 Ica EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1012_12_junin_epen_anual_2025,EPEN,12 Junin EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1013_13_la_libertad_epen_anual_2025,EPEN,13 La Libertad EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1014_14_lambayeque_epen_anual_2025,EPEN,14 Lambayeque EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1015_15_lima_epen_anual_2025,EPEN,15 Lima EPEN Anual 2025.csv,ok,132,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1016_16_loreto_epen_anual_2025,EPEN,16 Loreto EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1017_17_madre_de_dios_epen_anual_2025,EPEN,17 Madre de Dios EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1018_18_moquegua_epen_anual_2025,EPEN,18 Moquegua EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1019_19_pasco_epen_anual_2025,EPEN,19 Pasco EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+101_sep_oct_nov,EPE,Sep_Oct_Nov.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+1020_20_piura_epen_anual_2025,EPEN,20 Piura EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1021_21_puno_epen_anual_2025,EPEN,21 Puno EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1022_22_san_martin_epen_anual_2025,EPEN,22 San Martin EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1023_23_tacna_epen_anual_2025,EPEN,23 Tacna EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1024_24_tumbes_epen_anual_2025,EPEN,24 Tumbes EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+1025_25_ucayali_epen_anual_2025,EPEN,25 Ucayali EPEN Anual 2025.csv,ok,131,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+102_epe_personas_oct_nov_dic2004,EPE,Epe-Personas Oct-Nov-Dic2004.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+1033_trim_feb_mar_abr26,EPE,Trim Feb-Mar-Abr26.csv,ok,129,mes,anio,3,2026-02,2026-04,2026-03,,conglomerado|selviv|hogar|llave_panel
+1034_nacional_epen_trim_ene_feb_mar_2026,EPEN,Nacional EPEN Trim. Ene-Feb-Mar 2026.csv,ok,132,mes,anio,3,2026-01,2026-03,2026-02,fac_t300,conglomerado|selviv|hogar|llave_panel
+1037_trim_mar_abr_may26,EPE,Trim Mar-Abr-May26.csv,ok,129,mes,anio,3,2026-03,2026-05,2026-04,,conglomerado|selviv|hogar|llave_panel
+103_epe_personas_nov_dic2004_ene2005,EPE,Epe-Personas Nov-Dic2004-Ene2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+104_trim_dic04_ene_feb_2005,EPE,Trim Dic04-Ene-Feb 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+117_trim_ene_feb_mar_2005,EPE,Trim Ene-Feb-Mar 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+118_trim_feb_mar_abr_2005,EPE,Trim Feb-Mar-Abr 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+119_trim_mar_abr_may_2005,EPE,Trim Mar-Abr-May 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+121_trim_abr_may_jun_2005,EPE,Trim Abr-May-Jun 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+122_trim_may_jun_jul_2005,EPE,Trim May-Jun-Jul 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+123_trim_jun_jul_ago_2005,EPE,Trim Jun-Jul-Ago 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+129_trim_jul_ago_set_2005,EPE,Trim Jul-Ago-Set 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+12_epe_personas_trim_dic03_ene_feb04,EPE,Epe-Personas Trim Dic03-Ene-Feb04.sav,ok,88,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+130_trim_ago_set_oct_2005,EPE,Trim Ago-Set-Oct 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+131_trim_set_oct_nov_2005,EPE,Trim Set-Oct-Nov 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+136_trim_oct_nov_dic_2005,EPE,Trim Oct-Nov-Dic 2005.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+138_trim_nov_dic05_ene_2006,EPE,Trim Nov-Dic05-Ene 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+140_trim_dic05_ene_feb_2006,EPE,Trim Dic05-Ene-Feb 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+142_trim_ene_feb_mar_2006,EPE,Trim Ene-Feb-Mar 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+146_trim_feb_mar_abr_2006,EPE,Trim Feb-Mar-Abr 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+147_trim_mar_abr_may_2006,EPE,Trim Mar-Abr-May 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+152_epe_personas_abr_may_jun2006,EPE,Epe-Personas Abr-May-Jun2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+155_trim_may_jun_jul_2006,EPE,Trim May-Jun-Jul 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+157_trim_jun_jul_ago_2006,EPE,Trim Jun-Jul-Ago 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+159_trim_jul_ago_set_2006,EPE,Trim Jul-Ago-Set 2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+161_trim_ago_set_oct2006,EPE,Trim Ago-Set-Oct2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+164_trim_set_oct_nov2006,EPE,Trim Set-Oct-Nov2006.sav,ok,90,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+166_trim_oct_nov_dic2006,EPE,Trim Oct-Nov-Dic2006.sav,ok,93,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+167_trim_nov_dic06_ene07,EPE,Trim Nov-Dic06-Ene07.sav,ok,96,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+169_trim_dic06_ene_feb07,EPE,Trim Dic06-Ene-Feb07.sav,ok,96,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+170_trim_ene_feb_mar07,EPE,Trim Ene-Feb-Mar07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+171_trim_feb_mar_abr07,EPE,Trim Feb-Mar-Abr07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+172_trim_mar_abr_may07,EPE,Trim Mar-Abr-May07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+173_trim_abr_may_jun07,EPE,Trim Abr-May-Jun07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+179_trim_may_jun_jul07,EPE,Trim May-Jun-Jul07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+182_trim_jun_jul_ago07,EPE,Trim Jun-Jul-Ago07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+184_trim_jul_ago_set07,EPE,Trim Jul-Ago-Set07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+187_trim_ago_set_oct07,EPE,Trim Ago-Set-Oct07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+190_trim_set_oct_nov07,EPE,Trim Set-Oct-Nov07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+191_trim_oct_nov_dic07,EPE,Trim Oct-Nov-Dic07.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+192_trim_nov_dic_ene08,EPE,Trim Nov-Dic-Ene08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+195_trim_dic07_ene_feb08,EPE,Trim Dic07-Ene-Feb08.sav,ok,93,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+196_trim_ene_feb_mar08,EPE,Trim Ene-Feb-Mar08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+198_trim_feb_mar_abr08,EPE,Trim Feb-Mar-Abr08.sav,ok,93,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+199_trim_mar_abr_may08,EPE,Trim Mar-Abr-May08.sav,ok,93,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+201_trim_abr_may_jun08,EPE,Trim Abr-May-Jun08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+203_trim_may_jun_jul08,EPE,Trim May-Jun-Jul08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+204_trim_jun_jul_ago08,EPE,Trim Jun-Jul-Ago08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+206_trim_jul_ago_set08,EPE,Trim Jul-Ago-Set08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+210_trim_ago_set_oct08,EPE,Trim Ago-Set-Oct08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+212_trim_set_oct_nov08,EPE,Trim Set-Oct-Nov08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+214_trim_oct_nov_dic08,EPE,Trim Oct-Nov-Dic08.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+215_trim_nov_dic08_ene09,EPE,Trim Nov-Dic08-Ene09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+216_trim_dic08_ene_feb09,EPE,Trim Dic08-Ene-Feb09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+218_trim_ene_feb_mar09,EPE,Trim Ene-Feb-Mar09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+219_trim_feb_mar_abr09,EPE,Trim Feb-Mar-Abr09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+221_trim_mar_abr_may09,EPE,Trim Mar-Abr-May09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+223_trim_abr_may_jun09,EPE,Trim Abr-May-Jun09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+224_trim_may_jun_jul09,EPE,Trim May-Jun-Jul09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+229_trim_jul_ago_set09,EPE,Trim Jul-Ago-Set09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+230_trim_ago_set_oct09,EPE,Trim Ago-Set-Oct09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+232_trim_sec_oct_nov09,EPE,Trim Sec-Oct-Nov09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+233_trim_oct_nov_dic09,EPE,Trim Oct-Nov-Dic09.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+234_trim_nov_dic09_ene10,EPE,Trim Nov-Dic09-Ene10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+236_trim_dic_ene_feb10,EPE,Trim Dic-Ene-Feb10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+237_trim_ene_feb_mar10,EPE,Trim Ene-Feb-Mar10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+239_trim_feb_mar_abr10,EPE,Trim Feb-Mar-Abr10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+241_trim_mar_abr_may10,EPE,Trim Mar-Abr-May10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+243_trim_abr_may_jun10,EPE,Trim Abr-May-Jun10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+244_trim_may_jun_jul10,EPE,Trim May-Jun-Jul10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+245_trim_jun_jul_ago10,EPE,Trim Jun-Jul-Ago10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+247_trim_jul_ago_set10,EPE,Trim Jul-Ago-Set10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+248_trim_ago_set_oct10,EPE,Trim Ago-Set-Oct10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+251_trim_set_oct_nov10,EPE,Trim Set-Oct-Nov10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+252_trim_oct_nov_dic10,EPE,Trim Oct-Nov-Dic10.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+254_trim_nov_dic10_ene11,EPE,Trim Nov-Dic10-Ene11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+256_trim_dic10_ene_feb11,EPE,Trim Dic10-Ene-Feb11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+257_trim_ene_feb_mar11,EPE,Trim Ene-Feb-Mar11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+259_trim_feb_mar_abr11,EPE,Trim Feb-Mar-Abr11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+262_trim_mar_abr_may11,EPE,Trim Mar-Abr-May11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+264_trim_abr_may_jun11,EPE,Trim Abr-May-Jun11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+267_trim_jun_jul_ago11,EPE,Trim Jun-Jul-Ago11.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+272_trim_ago_set_oct_2011,EPE,Trim Ago-Set-Oct 2011.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+273_trim_set_oct_nov_2011,EPE,Trim Set-Oct-Nov 2011.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+274_trim_oct_nov_dic_2011,EPE,Trim Oct-Nov-Dic 2011.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+276_trim_nov_dic2011_ene2012,EPE,Trim Nov-Dic2011-Ene2012.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+277_trim_dic2011_ene_feb2012,EPE,Trim Dic2011-Ene-Feb2012.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+287_trim_ene_feb_mar2012,EPE,Trim Ene-Feb-Mar2012.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+289_trim_feb_mar_abr12,EPE,Trim Feb-Mar-Abr12.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+295_trim_mar_abr_may2012,EPE,Trim Mar-Abr-May2012.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+299_trim_abr_may_jun12,EPE,Trim Abr-May-Jun12.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+301_trim_may_jun_jul2012,EPE,Trim May-Jun-Jul2012.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+303_trim_jun_jul_ago12,EPE,Trim Jun-Jul-Ago12.sav,ok,223,pmes,,0,,,,fac200|id_fact|facaju1|facaju2,conglome|vivienda|hogar|codperso|codpanel|panel|vivienda1|hogar1
+306_trim_jul_ago_set12,EPE,Trim Jul-Ago-Set12.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+316_trim_set_oct_nov12,EPE,Trim Set-Oct-Nov12.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+318_trim_oct_nov_dic12,EPE,Trim Oct-Nov-Dic12.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+319_trim_nov_dic12_ene13,EPE,Trim Nov-Dic12-Ene13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+320_trim_dic12_ene_feb13,EPE,Trim Dic12-Ene-Feb13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+322_trim_ene_feb_mar13,EPE,Trim Ene-Feb-Mar13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+327_trim_feb_mar_abr13,EPE,Trim Feb-Mar-Abr13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+330_trim_mar_abr_may13,EPE,Trim Mar-Abr-May13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+333_trim_abr_may_jun13,EPE,Trim Abr-May-Jun13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+335_trim_may_jun_jul13,EPE,Trim May-Jun-Jul13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+364_trim_jun_jul_ago13,EPE,Trim Jun-Jul-Ago13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+36_epe_mar_abr_may,EPE,Epe-Mar-Abr-May.sav,ok,79,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+376_epe_personas_jul_ago_set13,,Epe-Personas Jul-Ago-Set13.sav,UNREADABLE,0,,,0,,,,,
+384_epe_personas_ago_set_oct13,,Epe-Personas Ago-Set-Oct13.sav,UNREADABLE,0,,,0,,,,,
+387_trim_sec_oct_nov13,EPE,Trim Sec-Oct-Nov13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+38_epe_abr_may_jun,EPE,Epe-Abr-May-Jun.sav,ok,78,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+390_trim_oct_nov_dic13,EPE,Trim Oct-Nov-Dic13.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+391_trim_nov_dic13_ene14,EPE,Trim Nov-Dic13-Ene14.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+392_trim_dic13_ene_feb14,EPE,Trim Dic13-Ene-Feb14.sav,ok,92,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+401_trim_ene_feb_mar14,EPE,Trim Ene-Feb-Mar14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+405_trim_feb_mar_abr14,EPE,Trim Feb-Mar-Abr14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+40_epe_may_jun_jul,EPE,Epe-May-Jun-Jul.sav,ok,78,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+414_trim_mar_abr_may14,EPE,Trim Mar-Abr-May14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+419_trim_may_jun_jul14,EPE,Trim May-Jun-Jul14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+41_epe_jun_jul_ago,EPE,Epe-Jun-Jul-Ago.sav,ok,78,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+420_trim_abr_may_jun14,EPE,Trim Abr-May-Jun14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+423_trim_jun_jul_ago14,EPE,Trim Jun-Jul_Ago14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+427_trim_jul_ago_set14,EPE,Trim Jul-Ago-Set14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+429_trim_ago_set_oct14,EPE,Trim Ago-Set-Oct14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+42_epe_personas_trimestre_m_vil_jul_ago_set,EPE,Epe-Personas Trimestre Móvil Jul-Ago-Set.sav,ok,82,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+431_trim_set_oct_nov14,EPE,Trim Set-Oct-Nov14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+434_trim_oct_nov_dic14,EPE,Trim Oct-Nov-Dic14.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+435_trim_nov_dic14_ene15,EPE,Trim Nov-Dic14-Ene15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+436_trim_dic_ene_feb15,EPE,Trim Dic-Ene-Feb15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+439_trim_ene_feb_mar15,EPE,Trim Ene-Feb-Mar15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+43_epe_personas_trim_ago_set_oct_2001,EPE,Epe-Personas Trim Ago-Set-Oct-2001.sav,ok,88,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+444_trim_feb_mar_abr15,EPE,Trim Feb-Mar-Abr15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+445_trim_mar_abr_may15,EPE,Trim Mar-Abr-May15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+448_trim_abr_may_jun15,EPE,Trim Abr -May -Jun15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+450_trim_may_jun_jul15,EPE,Trim May -Jun-Jul15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+453_trim_jun_jul_ago15,EPE,Trim Jun-Jul-Ago15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+457_trim_jul_ago_set15,EPE,Trim Jul-Ago-Set15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+46_epe_personas_trim_set_oct_nov_2001,EPE,Epe-Personas Trim Set-Oct-Nov-2001.sav,ok,88,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+47_epe_personas_trim_oct_nov_dic_2001,EPE,Epe-Personas Trim Oct-Nov-Dic-2001.sav,ok,88,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso|codpanel
+483_trim_ago_set_oct15,EPE,Trim Ago-Set-Oct15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+485_trim_set_oct_nov15,EPE,Trim Set-Oct-Nov15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+486_trim_oct_nov_dic15,EPE,Trim Oct-Nov-Dic15.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+488_trim_nov_dic_ene_16,EPE,Trim Nov-Dic-Ene 16.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+493_trim_dic_ene_feb16,EPE,Trim Dic-Ene-Feb16.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+496_trim_ene_feb_mar16,EPE,Trim Ene-Feb-Mar16.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+49_epe_personas_trim_nov_dic_ene,EPE,Epe-Personas  Trim Nov-Dic-Ene.sav,ok,86,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+501_trim_feb_mar_abr16,EPE,Trim Feb-Mar-Abr16.sav,ok,102,pmes,,0,,,,,conglome|vivienda|hogar|codperso|codpanel
+509_trim_mar_abr_may16,EPE,Trim Mar-Abr-May16.csv,ok,102,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+50_epe_personas_trim_dic_ene_feb,EPE,Epe-Personas Trim Dic-Ene-Feb.sav,ok,86,pmes,,0,,,,factor,conglome|vivienda|hogar|codperso
+514_trim_abr_may_jun16,EPE,Trim Abr-May-Jun16.csv,ok,102,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+519_trim_may_jun_jul16,EPE,Trim May-Jun-Jul16.csv,ok,102,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+51_epe_personas_ene_feb_mar_2002,EPE,Epe Personas Ene-Feb-Mar 2002.csv,ok,86,pmes,,3,?-01,?-03,?-02,factor,conglome|vivienda|hogar|codperso
+527_trim_jun_jul_ago16,EPE,Trim Jun-Jul-Ago16.csv,ok,102,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+531_trim_jul_ago_set16,EPE,Trim Jul-Ago-Set16.csv,ok,102,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+532_trim_ago_set_oct16,EPE,Trim Ago-Set-Oct16.csv,ok,102,pmes,,3,?-08,?-10,?-09,,conglome|vivienda|hogar|codperso|codpanel
+535_trim_set_oct_nov16,EPE,Trim Set-Oct-Nov16.csv,ok,102,pmes,,3,?-09,?-11,?-10,,conglome|vivienda|hogar|codperso|codpanel
+537_trim_oct_nov_dic16,EPE,Trim Oct-Nov-Dic16.csv,ok,102,pmes,,3,?-10,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+539_trim_nov_dic_ene17,EPE,Trim Nov-Dic-Ene17.csv,ok,102,pmes,,3,?-01,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+542_trim_dic_ene_feb17,EPE,Trim Dic-Ene-Feb17.csv,ok,102,pmes,,3,?-01,?-12,?-02,,conglome|vivienda|hogar|codperso|codpanel
+545_trim_ene_feb_mar17,EPE,Trim Ene-Feb-Mar17.csv,ok,102,pmes,,3,?-01,?-03,?-02,,conglome|vivienda|hogar|codperso|codpanel
+549_trim_feb_mar_abr17,EPE,Trim Feb-Mar-Abr17.csv,ok,102,pmes,,3,?-02,?-04,?-03,,conglome|vivienda|hogar|codperso|codpanel
+54_trim_feb_mar_abr_personas_2002,EPE,Trim Feb-Mar-Abr - Personas 2002.csv,ok,91,pmes,,3,?-02,?-04,?-03,factor,conglome|vivienda|hogar|codperso
+550_trim_mar_abr_may17,EPE,Trim Mar-Abr-May17.csv,ok,102,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+553_trim_abr_may_jun17,EPE,Trim Abr-May-Jun17.csv,ok,102,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+56_epe_personas_mar_abr_may_2002,EPE,Epe-Personas Mar-Abr-May 2002.csv,ok,86,pmes,,3,?-03,?-05,?-04,factor,conglome|vivienda|hogar|codperso
+57_epe_personas_trim_abr_may_jun_2002,EPE,Epe-Personas Trim Abr-May-Jun 2002.csv,ok,92,pmes,,3,?-04,?-06,?-05,factor,conglome|vivienda|hogar|codperso
+580_trim_may_jun_jul17,EPE,Trim May-Jun-Jul17.csv,ok,102,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+582_trim_jun_jul_ago17,EPE,Trim Jun-Jul-Ago17.csv,ok,102,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+584_trim_jul_ago_set17,EPE,Trim Jul-Ago-Set17.csv,ok,102,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+586_trim_ago_set_oct17,EPE,Trim Ago-Set-Oct17.csv,ok,102,pmes,,3,?-08,?-10,?-09,,conglome|vivienda|hogar|codperso|codpanel
+589_trim_set_oct_nov17,EPE,Trim Set-Oct-Nov17.csv,ok,102,pmes,,3,?-09,?-11,?-10,,conglome|vivienda|hogar|codperso|codpanel
+591_trim_oct_nov_dic17,EPE,Trim Oct-Nov-Dic17.csv,ok,102,pmes,,3,?-10,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+593_trim_nov_dic_ene18,EPE,Trim Nov-Dic-Ene18.csv,ok,102,pmes,,3,?-01,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+598_trim_dic_ene_feb18,EPE,Trim Dic-Ene-Feb18.csv,ok,102,pmes,,3,?-01,?-12,?-02,,conglome|vivienda|hogar|codperso|codpanel
+601_trim_ene_feb_mar18,EPE,Trim Ene-Feb-Mar18.csv,ok,102,pmes,,3,?-01,?-03,?-02,,conglome|vivienda|hogar|codperso|codpanel
+604_trim_feb_mar_abr18,EPE,Trim Feb-Mar-Abr18.csv,ok,102,pmes,,3,?-02,?-04,?-03,,conglome|vivienda|hogar|codperso|codpanel
+606_trim_mar_abr_may18,EPE,Trim Mar-Abr-May18.csv,ok,102,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+60_epe_personas_may_jun_jul_2002,EPE,Epe-Personas May-Jun-Jul 2002.csv,ok,92,pmes,,3,?-05,?-07,?-06,factor,conglome|vivienda|hogar|codperso
+610_trim_abr_may_jun18,EPE,Trim Abr-May-Jun18.csv,ok,102,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+613_trim_may_jun_jul18,EPE,Trim May-Jun-Jul18.csv,ok,102,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+616_trim_jun_jul_ago18,EPE,Trim Jun-Jul-Ago18.csv,ok,102,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+618_trim_jul_ago_set18,EPE,Trim Jul-Ago-Set18.csv,ok,102,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+61_epe_personas_trim_jun_jul_ago_2002,EPE,Epe-Personas Trim Jun-Jul-Ago 2002.csv,ok,89,pmes,,3,?-06,?-08,?-07,factor,conglome|vivienda|hogar|codperso
+620_trim_ago_set_oct18,EPE,Trim Ago-Set-Oct18.csv,ok,102,pmes,,3,?-08,?-10,?-09,,conglome|vivienda|hogar|codperso|codpanel
+621_trim_set_oct_nov18,EPE,Trim Set-Oct-Nov18.csv,ok,102,pmes,,3,?-09,?-11,?-10,,conglome|vivienda|hogar|codperso|codpanel
+623_trim_oct_nov_dic18,EPE,Trim Oct-Nov-Dic18.csv,ok,102,pmes,,3,?-10,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+625_trim_nov_dic_ene19,EPE,Trim Nov-Dic-Ene19.csv,ok,102,pmes,,3,?-01,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+62_epe_personas_trim_jul_ago_set_2002,EPE,Epe-Personas Trim Jul-Ago-Set 2002.csv,ok,90,pmes,,3,?-07,?-09,?-08,factor,conglome|vivienda|hogar|codperso
+631_trim_dic_ene_feb19,EPE,Trim Dic-Ene-Feb19.csv,ok,102,pmes,,3,?-01,?-12,?-02,,conglome|vivienda|hogar|codperso|codpanel
+636_trim_ene_feb_mar19,EPE,Trim Ene-Feb-Mar19.csv,ok,102,pmes,,3,?-01,?-03,?-02,,conglome|vivienda|hogar|codperso|codpanel
+637_trim_feb_mar_abr19,EPE,Trim Feb-Mar-Abr19.csv,ok,102,pmes,,3,?-02,?-04,?-03,,conglome|vivienda|hogar|codperso|codpanel
+63_epe_personas_trim_ago_set_oct_2002,EPE,Epe-Personas Trim Ago-Set-Oct-2002.csv,ok,91,pmes,,3,?-08,?-10,?-09,factor,conglome|vivienda|hogar|codperso|codpanel
+640_trim_mar_abr_may19,EPE,Trim Mar-Abr-May19.csv,ok,102,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+643_trim_abr_may_jun19,EPE,Trim Abr-May-Jun19.csv,ok,102,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+644_trim_may_jun_jul19,EPE,Trim May-Jun-Jul19.csv,ok,102,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+646_trim_jun_jul_ago19,EPE,Trim Jun-Jul_Ago19.csv,ok,102,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+648_trim_jul_ago_set19,EPE,Trim Jul-Ago-Set19.csv,ok,102,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+649_trim_ago_set_oct19,EPE,Trim Ago-Set-Oct19.csv,ok,102,pmes,,3,?-08,?-10,?-09,,conglome|vivienda|hogar|codperso|codpanel
+654_trim_set_oct_nov19,EPE,Trim Set-Oct-Nov19.csv,ok,102,pmes,,3,?-09,?-11,?-10,,conglome|vivienda|hogar|codperso|codpanel
+655_trim_oct_nov_dic19,EPE,Trim Oct-Nov-Dic19.csv,ok,102,pmes,,3,?-10,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+657_trim_nov_dic_ene20,EPE,Trim Nov-Dic-Ene20.csv,ok,102,pmes,,3,?-01,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+65_epe_personas_ene_feb_mar_2004,EPE,Epe-Personas Ene-Feb-Mar-2004.csv,ok,87,pmes,,3,?-01,?-03,?-02,factor,conglome|vivienda|hogar|codperso|codpanel
+66_epe_personas_trim_set_oct_nov_2002,EPE,Epe-Personas Trim Set-Oct-Nov-2002.csv,ok,91,pmes,,3,?-09,?-11,?-10,factor,conglome|vivienda|hogar|codperso|codpanel
+67_epe_personas_trim_oct_nov_dic_2002,EPE,Epe-Personas Trim Oct-Nov-Dic-2002.csv,ok,91,pmes,,3,?-10,?-12,?-11,factor,conglome|vivienda|hogar|codperso|codpanel
+686_trim_dic_ene_feb20,EPE,Trim Dic-Ene-Feb20.csv,ok,102,pmes,,3,?-01,?-12,?-02,,conglome|vivienda|hogar|codperso|codpanel
+688_trim_ene_feb_mar20,EPE,Trim Ene-Feb-Mar20.csv,ok,102,pmes,,3,?-01,?-03,?-02,,conglome|vivienda|hogar|codperso|codpanel
+689_trim_feb_mar_abr20,EPE,Trim Feb-Mar-Abr20.csv,ok,102,pmes,,3,?-02,?-04,?-03,,conglome|vivienda|hogar|codperso|codpanel
+692_trim_mar_abr_may20,EPE,Trim Mar-Abr-May20.csv,ok,102,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+695_trim_abr_may_jun20,EPE,Trim Abr-May-Jun20.csv,ok,102,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+696_trim_may_jun_jul20,EPE,Trim May-Jun-Jul20.csv,ok,102,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+697_trim_jun_jul_ago20,EPE,Trim Jun-Jul-Ago20.csv,ok,102,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+69_epe_personas_feb_mar_abr_2004,EPE,Epe-Personas Feb-Mar-Abr 2004.csv,ok,87,pmes,,3,?-02,?-04,?-03,factor,conglome|vivienda|hogar|codperso|codpanel
+700_trim_jul_ago_set20,EPE,Trim Jul-Ago-Set20.csv,ok,102,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+706_trim_ago_set_oct20,EPE,Trim Ago-Set-Oct20.csv,ok,103,pmes,,3,?-08,?-10,?-09,,conglome|vivienda|hogar|codperso|codpanel
+70_epe_personas_mar_abr_may_2004,EPE,Epe-Personas Mar-Abr-May 2004.csv,ok,87,pmes,,3,?-03,?-05,?-04,factor,conglome|vivienda|hogar|codperso|codpanel
+71_epe_personas_trim_nov_dic_ene_2003,EPE,Epe-Personas Trim Nov-Dic-Ene 2003 .csv,ok,91,pmes,,3,?-01,?-12,?-11,factor,conglome|vivienda|hogar|codperso
+725_trim_set_oct_nov20,EPE,Trim Set-Oct-Nov20.csv,ok,103,pmes,,3,?-09,?-11,?-10,,conglome|vivienda|hogar|codperso|codpanel
+727_trim_oct_nov_dic20,EPE,Trim Oct-Nov-Dic20.csv,ok,103,pmes,,3,?-10,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+728_trim_nov_dic_ene21,EPE,Trim Nov-Dic-Ene21.csv,ok,103,pmes,,3,?-01,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+72_epe_panelmensual_mar_jun_set_dic_2002,EPE,Epe-PanelMensual-Mar-Jun-Set-Dic-2002.csv,ok,339,,,0,,,,b03_facm|b06_facm|facmzjn2|b09_facm|facjnse2|b12_facm|facsedi2,conglome|vivienda|codpanel
+731_trim_dic_ene_feb21,EPE,Trim Dic-Ene-Feb21.csv,ok,103,pmes,,3,?-01,?-12,?-02,,conglome|vivienda|hogar|codperso|codpanel
+735_trim_ene_feb_mar21,EPE,Trim Ene-Feb-Mar21.csv,ok,103,pmes,,3,?-01,?-03,?-02,,conglome|vivienda|hogar|codperso|codpanel
+738_trim_feb_mar_abr21,EPE,Trim Feb-Mar-Abr21.csv,ok,103,pmes,,3,?-02,?-04,?-03,,conglome|vivienda|hogar|codperso|codpanel
+73_epe_personas_abr_may_jun2004,EPE,Epe-Personas Abr-May-Jun2004.csv,ok,87,pmes,,3,?-04,?-06,?-05,factor,conglome|vivienda|hogar|codperso|codpanel
+741_trim_mar_abr_may21,EPE,Trim Mar-Abr-May21.csv,ok,103,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+742_trim_abr_may_jun21,EPE,Trim Abr-May-Jun21.csv,ok,103,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+744_trim_may_jun_jul21,EPE,Trim May-Jun-Jul21.csv,ok,103,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+746_trim_jun_jul_ago21,EPE,Trim Jun-Jul-Ago21.csv,ok,103,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+747_trim_jul_ago_set21,EPE,Trim Jul-Ago-Set21.csv,ok,103,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+748_trim_ago_set_oct21,EPE,Trim Ago-Set-Oct21.csv,ok,103,pmes,,3,?-08,?-10,?-09,,conglome|vivienda|hogar|codperso|codpanel
+74_epe_personas_may_jun_jul2004,EPE,Epe-Personas May-Jun-Jul2004.csv,ok,87,pmes,,3,?-05,?-07,?-06,factor,conglome|vivienda|hogar|codperso|codpanel
+750_trim_set_oct_nov21,EPE,Trim Set-Oct-Nov21.csv,ok,103,pmes,,3,?-09,?-11,?-10,,conglome|vivienda|hogar|codperso|codpanel
+751_trim_oct_nov_dic21,EPE,Trim Oct-Nov-Dic21.csv,ok,103,pmes,,3,?-10,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+752_trim_nov_dic_ene22,EPE,Trim Nov-Dic-Ene22.csv,ok,103,pmes,,3,?-01,?-12,?-11,,conglome|vivienda|hogar|codperso|codpanel
+755_trim_dic_ene_feb22,EPE,Trim Dic-Ene-Feb22.csv,ok,103,pmes,,3,?-01,?-12,?-02,,conglome|vivienda|hogar|codperso|codpanel
+757_trim_ene_feb_mar22,EPE,Trim Ene-Feb-Mar22.csv,ok,103,pmes,,3,?-01,?-03,?-02,,conglome|vivienda|hogar|codperso|codpanel
+75_epe_personas_jun_jul_ago2004,EPE,Epe-Personas Jun-Jul-Ago2004.csv,ok,87,pmes,,3,?-06,?-08,?-07,factor,conglome|vivienda|hogar|codperso|codpanel
+762_trim_feb_mar_abr22,EPE,Trim Feb-Mar-Abr22.csv,ok,103,pmes,,3,?-02,?-04,?-03,,conglome|vivienda|hogar|codperso|codpanel
+764_trim_mar_abr_may22,EPE,Trim Mar-Abr-May22.csv,ok,103,pmes,,3,?-03,?-05,?-04,,conglome|vivienda|hogar|codperso|codpanel
+766_trim_abr_may_jun22,EPE,Trim Abr-May-Jun22.csv,ok,103,pmes,,3,?-04,?-06,?-05,,conglome|vivienda|hogar|codperso|codpanel
+768_trim_may_jun_jul22,EPE,Trim May-Jun-Jul22.csv,ok,103,pmes,,3,?-05,?-07,?-06,,conglome|vivienda|hogar|codperso|codpanel
+76_jul_ago_set,EPE,Jul_Ago_Set.csv,ok,87,pmes,,3,?-07,?-09,?-08,factor,conglome|vivienda|hogar|codperso|codpanel
+771_trim_jun_jul_ago22,EPE,Trim Jun-Jul-Ago22.csv,ok,103,pmes,,3,?-06,?-08,?-07,,conglome|vivienda|hogar|codperso|codpanel
+773_trim_jul_ago_set22,EPE,Trim Jul-Ago-Set22.csv,ok,103,pmes,,3,?-07,?-09,?-08,,conglome|vivienda|hogar|codperso|codpanel
+774_trim_ago_set_oct22,EPE,Trim_Ago_Set_Oct22.csv,ok,96,mes,anio,3,2022-08,2022-10,2022-09,,conglomerado|selviv|hogar|llave_panel
+776_trim_set_oct_nov22,EPE,Trim_Set_Oct_Nov22.csv,ok,96,mes,anio,3,2022-09,2022-11,2022-10,,conglomerado|selviv|hogar|llave_panel
+777_trim_oct_nov_dic22,EPE,Trim_Oct_Nov_Dic22.csv,ok,96,mes,anio,3,2022-10,2022-12,2022-11,,conglomerado|selviv|hogar|llave_panel
+778_trim_nov_dic_ene23,EPE,Trim_Nov_Dic_Ene23.csv,ok,96,mes,anio,3,2022-11,2023-01,2022-12,,conglomerado|selviv|hogar|llave_panel
+779_trim_dic_ene_feb23,EPE,Trim_Dic_Ene_Feb23.csv,ok,96,mes,anio,3,2022-12,2023-02,2023-01,,conglomerado|selviv|hogar|llave_panel
+77_epe_personaspanel_abr_jul_oct_ene,EPE,Epe-PersonasPanel-Abr-Jul-Oct-Ene.csv,ok,301,,,0,,,,factor,conglome|vivienda|codpanel|mespanel
+781_trim_ene_feb_mar23,EPE,Trim_Ene_Feb_Mar23.csv,ok,96,mes,anio,3,2023-01,2023-03,2023-02,,conglomerado|selviv|hogar|llave_panel
+787_trim_feb_mar_abr23,EPE,Trim_Feb_Mar_Abr23.csv,ok,96,mes,anio,3,2023-02,2023-04,2023-03,,conglomerado|selviv|hogar|llave_panel
+789_trim_mar_abr_may23,EPE,Trim_Mar_Abr_May23.csv,ok,96,mes,anio,3,2023-03,2023-05,2023-04,,conglomerado|selviv|hogar|llave_panel
+78_epe_personaspanel_may_ago_nov_feb,EPE,Epe-PersonasPanel-May-Ago-Nov-Feb.csv,ok,309,,,0,,,,factor,conglome|vivienda|codpanel|mespanel
+790_epen_2022_bd_publicaci_n_dpto,EPEN,EPEN 2022 BD_Publicación Dpto.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+791_01_amazonas_epen_2022,EPEN,01 Amazonas EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+792_02_ancash_epen_2022,EPEN,02 Ancash EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+793_03_apur_mac_epen_2022,EPEN,03 Apurímac EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+794_04_arequipa_epen_2022,EPEN,04 Arequipa EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+795_05_ayacucho_epen_2022,EPEN,05 Ayacucho EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+796_06_cajamarca_epen_2022,EPEN,06 Cajamarca EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+797_08_cusco_epen_2022,EPEN,08 Cusco EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+798_09_huancavelica_epen_2022,EPEN,09 Huancavelica EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+799_10_hu_nuco_epen_2022,EPEN,10 Huánuco EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+79_epe_personas_trim_dic_ene_feb_2003,EPE,Epe-Personas Trim Dic-Ene-Feb 2003 .csv,ok,91,pmes,,3,?-01,?-12,?-02,factor,conglome|vivienda|hogar|codperso
+800_11_ica_epen_2022,EPEN,11 Ica EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+801_12_jun_n_epen_2022,EPEN,12 Junín EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+802_13_la_libertad_epen_2022,EPEN,13 La Libertad EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+803_14_lambayeque_epen_2022,EPEN,14 Lambayeque EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+804_15_lima_incluye_la_provincia_constitucional_del_callao_epen_,EPEN,15 Lima - Incluye la Provincia Constitucional del Callao EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+805_16_loreto_epen_2022,EPEN,16 Loreto EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+806_17_madre_de_dios_epen_2022,EPEN,17 Madre de Dios EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+807_18_moquegua_epen_2022,EPEN,18 Moquegua EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+808_19_pasco_epen_2022,EPEN,19 Pasco EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+809_20_piura_epen_2022,EPEN,20 Piura EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+810_21_puno_epen_2022,EPEN,21 Puno EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+811_22_san_mart_n_epen_2022,EPEN,22 San Martín EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+812_23_tacna_epen_2022,EPEN,23 Tacna EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+813_24_tumbes_epen_2022,EPEN,24 Tumbes EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+814_25_ucayali_epen_2022,EPEN,25 Ucayali EPEN 2022.csv,ok,131,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+815_epen_2022_bd_publicaci_n_ciudad,EPEN,EPEN 2022 BD_Publicación Ciudad.csv,ok,130,mes,anio,12,2022-01,2022-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+843_trim_abr_may_jun23,EPE,Trim_Abr_May_Jun23.csv,ok,96,mes,anio,3,2023-04,2023-06,2023-05,,conglomerado|selviv|hogar|llave_panel
+846_trim_may_jun_jul23,EPE,Trim_May_Jun_Jul23.csv,ok,96,mes,anio,3,2023-05,2023-07,2023-06,,conglomerado|selviv|hogar|llave_panel
+847_nacional_epen_trim_ene_feb_mar_2023,EPEN,Nacional EPEN Trim. Ene-Feb-Mar 2023.csv,ok,128,mes,anio,3,2023-01,2023-03,2023-02,fac_t300,llave_panel|conglomerado|selviv|hogar
+849_nacional_epen_trim_abr_may_jun_2023,EPEN,Nacional EPEN Trim. Abr-May-Jun 2023.csv,ok,128,mes,anio,3,2023-04,2023-06,2023-05,fac_t300,llave_panel|conglomerado|selviv|hogar
+84_epe_personas_trim_ene_feb_mar_2003,EPE,Epe-Personas Trim Ene-Feb-Mar 2003.csv,ok,94,pmes,,3,?-01,?-03,?-02,factor,conglome|vivienda|hogar|codperso
+851_trim_jun_jul_ago23,EPE,Trim_Jun_Jul_Ago23.csv,ok,96,mes,anio,3,2023-06,2023-08,2023-07,,conglomerado|selviv|hogar|llave_panel
+853_trim_jul_ago_set23,EPE,Trim_Jul_Ago_Set23.csv,ok,96,mes,anio,3,2023-07,2023-09,2023-08,,conglomerado|selviv|hogar|llave_panel
+855_nacional_epen_trim_ene_feb_mar_2022,EPEN,Nacional EPEN Trim. Ene-Feb-Mar 2022.csv,ok,128,mes,anio,3,2022-01,2022-03,2022-02,fac_t300,conglomerado|selviv|hogar|llave_panel
+857_nacional_epen_trim_abr_may_jun_2022,EPEN,Nacional EPEN Trim. Abr-May-Jun 2022.csv,ok,128,mes,anio,3,2022-04,2022-06,2022-05,fac_t300,conglomerado|selviv|hogar|llave_panel
+859_nacional_epen_trim_jul_ago_set_2022,EPEN,Nacional EPEN Trim. Jul-Ago-Set 2022.csv,ok,128,mes,anio,3,2022-07,2022-09,2022-08,fac_t300,conglomerado|selviv|hogar|llave_panel
+861_nacional_epen_trim_oct_nov_dic_2022,EPEN,Nacional EPEN Trim. Oct-Nov-Dic 2022.csv,ok,128,mes,anio,3,2022-10,2022-12,2022-11,fac_t300,conglomerado|selviv|hogar|llave_panel
+863_nacional_epen_trim_jul_ago_set_2023,EPEN,Nacional EPEN Trim. Jul-Ago-Set 2023.csv,ok,128,mes,anio,3,2023-07,2023-09,2023-08,fac_t300,llave_panel|conglomerado|selviv|hogar
+865_trim_ago_set_oct23,EPE,Trim_Ago_Set_Oct23.csv,ok,129,mes,anio,3,2023-08,2023-10,2023-09,,conglomerado|selviv|hogar|llave_panel
+866_trim_set_oct_nov23,EPE,Trim_Set_Oct_Nov23.csv,ok,129,mes,anio,3,2023-09,2023-11,2023-10,,conglomerado|selviv|hogar|llave_panel
+869_trim_oct_nov_dic23,EPE,Trim_Oct_Nov_Dic23.csv,ok,129,mes,anio,3,2023-10,2023-12,2023-11,,conglomerado|selviv|hogar|llave_panel
+86_epe_personas_trim_feb_mar_abr_2003,EPE,Epe-Personas Trim Feb-Mar-Abr 2003.csv,ok,96,pmes,,3,?-02,?-04,?-03,factor,conglome|vivienda|hogar|codperso
+870_trim_nov_dic_ene24,EPE,Trim_Nov_Dic_Ene24.csv,ok,129,mes,anio,3,2023-11,2024-01,2023-12,,conglomerado|selviv|hogar|llave_panel
+871_nacional_epen_trim_oct_nov_dic_2023,EPEN,Nacional EPEN Trim. Oct-Nov-Dic 2023.csv,ok,129,mes,anio,3,2023-10,2023-12,2023-11,fac_t300,llave_panel|conglomerado|selviv|hogar
+874_epen_2023_bd_publicaci_n_dpto,EPEN,EPEN 2023 BD_Publicación Dpto.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+875_01_amazonas_epen_anual_2023,EPEN,01 Amazonas EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+876_02_ancash_epen_anual_2023,EPEN,02 Ancash EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+877_03_apur_mac_epen_anual_2023,EPEN,03 Apurímac EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+878_04_arequipa_epen_anual_2023,EPEN,04 Arequipa EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+879_05_ayacucho_epen_anual_2023,EPEN,05 Ayacucho EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+87_epe_personas_trim_mar_abr_may_2003,EPE,Epe-Personas Trim Mar-Abr-May 2003.csv,ok,89,pmes,,3,?-03,?-05,?-04,factor,conglome|vivienda|hogar|codperso|codpanel
+880_06_cajamarca_epen_anual_2023,EPEN,06 Cajamarca EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+881_08_cusco_epen_anual_2023,EPEN,08 Cusco EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+882_09_huancavelica_epen_anual_2023,EPEN,09 Huancavelica EPEN Anual 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+883_10_hu_nuco_epen_anual_2023,EPEN,10 Huánuco EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+884_11_ica_epen_anual_2023,EPEN,11 Ica EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+885_12_jun_n_epen_anual_2023,EPEN,12 Junín EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+886_13_la_libertad_epen_anual_2023,EPEN,13 La Libertad EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+887_14_lambayeque_epen_anual_2023,EPEN,14 Lambayeque EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+888_15_lima_epen_anual_2023,EPEN,15 Lima EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+889_16_loreto_epen_anual_2023,EPEN,16 Loreto EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+88_epe_personas_trim_abr_may_jun_2003,EPE,Epe-Personas Trim Abr-May-Jun 2003.csv,ok,89,pmes,,3,?-04,?-06,?-05,factor,conglome|vivienda|hogar|codperso|codpanel
+890_17_madre_de_dios_epen_anual_2023,EPEN,17 Madre de Dios EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+891_18_moquegua_epen_anual_2023,EPEN,18 Moquegua EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+892_19_pasco_epen_anual_2023,EPEN,19 Pasco EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+893_20_piura_epen_anual_2023,EPEN,20 Piura EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+894_21_puno_epen_anual_2023,EPEN,21 Puno EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+895_22_san_martin_epen_anual_2023,EPEN,22 San Martin EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+896_23_tacna_epen_anual_2023,EPEN,23 Tacna EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+897_24_tumbes_epen_anual_2023,EPEN,24 Tumbes EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+898_25_ucayali_epen_anual_2023,EPEN,25 Ucayali EPEN ANUAL 2023.csv,ok,132,mes,anio,12,2023-01,2023-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+89_epe_personas_trim_may_jun_jul_2003,EPE,Epe-Personas Trim May-Jun-Jul 2003.csv,ok,89,pmes,,3,?-05,?-07,?-06,factor,conglome|vivienda|hogar|codperso|codpanel
+900_trim_dic_ene_feb24,EPE,Trim_Dic_Ene_Feb24.csv,ok,129,mes,anio,3,2023-12,2024-02,2024-01,,conglomerado|selviv|hogar|llave_panel
+904_trim_ene_feb_mar24,EPE,Trim_Ene_Feb_Mar24.csv,ok,129,mes,anio,3,2024-01,2024-03,2024-02,,conglomerado|selviv|hogar|llave_panel
+907_nacional_epen_trim_ene_feb_mar_2024,EPEN,Nacional EPEN Trim. Ene-Feb-Mar 2024.csv,ok,129,mes,anio,3,2024-01,2024-03,2024-02,fac_t300,conglomerado|selviv|hogar|llave_panel
+909_trim_feb_mar_abr24,EPE,Trim_Feb_Mar_Abr24.csv,ok,129,mes,anio,3,2024-02,2024-04,2024-03,,conglomerado|selviv|hogar|llave_panel
+90_epe_personas_trim_jun_jul_ago_2003,EPE,Epe-Personas Trim Jun-Jul-Ago 2003.csv,ok,89,pmes,,3,?-06,?-08,?-07,factor,conglome|vivienda|hogar|codperso|codpanel
+911_trim_mar_abr_may24,EPE,Trim_Mar_Abr_May24.csv,ok,129,mes,anio,3,2024-03,2024-05,2024-04,,conglomerado|selviv|hogar|llave_panel
+915_trim_abr_may_jun24,EPE,Trim_Abr_May_Jun24.csv,ok,129,mes,anio,3,2024-04,2024-06,2024-05,,conglomerado|selviv|hogar|llave_panel
+916_trim_may_jun_jul24,EPE,Trim_May_Jun_Jul24.csv,ok,129,mes,anio,3,2024-05,2024-07,2024-06,,conglomerado|selviv|hogar|llave_panel
+917_nacional_epen_trim_abr_may_jun_2024,EPEN,Nacional EPEN Trim. Abr-May-Jun 2024.csv,ok,130,mes,anio,3,2024-04,2024-06,2024-05,fac_t300,conglomerado|selviv|hogar|llave_panel
+919_trim_jun_jul_ago24,EPE,Trim_Jun_Jul_Ago24.csv,ok,129,mes,anio,3,2024-06,2024-08,2024-07,,conglomerado|selviv|hogar|llave_panel
+921_trim_jul_ago_set24,EPE,Trim_Jul_Ago_Set24.csv,ok,129,mes,anio,3,2024-07,2024-09,2024-08,,conglomerado|selviv|hogar|llave_panel
+923_nacional_epen_trim_jul_ago_set_2024,EPEN,Nacional EPEN Trim. Jul-Ago-Set 2024.csv,ok,131,mes,anio,3,2024-07,2024-09,2024-08,fac_t300,conglomerado|selviv|hogar|llave_panel
+925_trim_ago_set_oct24,EPE,Trim_Ago_Set_Oct24.csv,ok,129,mes,anio,3,2024-08,2024-10,2024-09,,conglomerado|selviv|hogar|llave_panel
+927_trim_set_oct_nov24,EPE,Trim_Set_Oct_Nov24.csv,ok,129,mes,anio,3,2024-09,2024-11,2024-10,,conglomerado|selviv|hogar|llave_panel
+929_trim_oct_nov_dic24,EPE,Trim_Oct_Nov_Dic24.csv,ok,129,mes,anio,3,2024-10,2024-12,2024-11,,conglomerado|selviv|hogar|llave_panel
+92_epe_personas_trim_jul_ago_set_2003,EPE,Epe-Personas Trim Jul-Ago-Set 2003.csv,ok,89,pmes,,3,?-07,?-09,?-08,factor,conglome|vivienda|hogar|codperso|codpanel
+931_nacional_epen_trim_oct_nov_dic_2024,EPEN,Nacional EPEN Trim. Oct-Nov-Dic 2024.csv,ok,131,mes,anio,3,2024-10,2024-12,2024-11,fac_t300,conglomerado|selviv|hogar|llave_panel
+933_epen_bd_ciudades_anual_2024,EPEN,EPEN BD Ciudades Anual 2024.csv,ok,132,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+935_epen_2024_bd_publicacion_dpto,EPEN,EPEN 2024 BD_Publicacion Dpto.csv,ok,132,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+936_01_amazonas_epen_anual_2024,EPEN,01 Amazonas EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+937_02_ancash_epen_anual_2024,EPEN,02 Ancash EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+938_03_apurimac_epen_anual_2024,EPEN,03 Apurimac EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+939_04_arequipa_epen_anual_2024,EPEN,04 Arequipa EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+93_epe_personas_trim_ago_set_oct_2003,EPE,Epe-Personas Trim Ago-Set-Oct 2003.csv,ok,89,pmes,,3,?-08,?-10,?-09,factor,conglome|vivienda|hogar|codperso|codpanel
+940_05_ayacucho_epen_anual_2024,EPEN,05 Ayacucho EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+941_06_cajamarca_epen_anual_2024,EPEN,06 Cajamarca EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+942_08_cusco_epen_anual_2024,EPEN,08 Cusco EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+943_09_huancavelica_epen_anual_2024,EPEN,09 Huancavelica EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+944_10_huanuco_epen_anual_2024,EPEN,10 Huanuco EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+945_11_ica_epen_anual_2024,EPEN,11 Ica EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+946_12_junin_epen_anual_2024,EPEN,12 Junin EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+947_13_la_libertad_epen_anual_2024,EPEN,13 La Libertad EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+948_14_lambayeque_epen_anual_2024,EPEN,14 Lambayeque EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+949_15_lima_epen_anual_2024,EPEN,15 Lima EPEN Anual 2024.csv,ok,132,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+94_epe_personas_trim_set_oct_nov_2003,EPE,Epe-Personas Trim Set-Oct-Nov 2003.csv,ok,88,pmes,,3,?-09,?-11,?-10,factor,conglome|vivienda|hogar|codperso|codpanel
+950_16_loreto_epen_anual_2024,EPEN,16 Loreto EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+951_17_madre_de_dios_epen_anual_2024,EPEN,17 Madre de Dios EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+952_18_moquegua_epen_anual_2024,EPEN,18 Moquegua EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+953_19_pasco_epen_anual_2024,EPEN,19 Pasco EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+954_20_piura_epen_anual_2024,EPEN,20 Piura EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+955_21_puno_epen_anual_2024,EPEN,21 Puno EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+956_22_san_martin_epen_anual_2024,EPEN,22 San Martin EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+957_23_tacna_epen_anual_2024,EPEN,23 Tacna EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+958_24_tumbes_epen_anual_2024,EPEN,24 Tumbes EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+959_25_ucayali_epen_anual_2024,EPEN,25 Ucayali EPEN Anual 2024.csv,ok,131,mes,anio,12,2024-01,2024-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+95_epe_personas_trim_oct_nov_dic_2003,EPE,Epe-Personas Trim Oct-Nov-Dic 2003.csv,ok,88,pmes,,3,?-10,?-12,?-11,factor,conglome|vivienda|hogar|codperso|codpanel
+960_trim_nov_dic24_ene25,EPE,Trim_Nov_Dic24_Ene25.csv,ok,129,mes,anio,3,2024-11,2025-01,2024-12,,conglomerado|selviv|hogar|llave_panel
+961_trim_dic24_ene_feb25,EPE,Trim_Dic24_Ene_Feb25.csv,ok,129,mes,anio,3,2024-12,2025-02,2025-01,,conglomerado|selviv|hogar|llave_panel
+964_trim_ene_feb_mar25,EPE,Trim_Ene_Feb_Mar25.csv,ok,129,mes,anio,3,2025-01,2025-03,2025-02,,conglomerado|selviv|hogar|llave_panel
+967_trim_feb_mar_abr25,EPE,Trim_Feb_Mar_Abr25.csv,ok,129,mes,anio,3,2025-02,2025-04,2025-03,,conglomerado|selviv|hogar|llave_panel
+969_nacional_epen_trim_ene_feb_mar_2025,EPEN,Nacional EPEN Trim. Ene-Feb-Mar 2025.csv,ok,131,mes,anio,3,2025-01,2025-03,2025-02,fac_t300,conglomerado|selviv|hogar|llave_panel
+96_epe_personas_trim_nov03_dic_ene04,EPE,Epe-Personas Trim Nov03-Dic-Ene04.csv,ok,88,pmes,,3,?-01,?-12,?-11,factor,conglome|vivienda|hogar|codperso|codpanel
+972_trim_mar_abr_may25,EPE,Trim_Mar_Abr_May25.csv,ok,129,mes,anio,3,2025-03,2025-05,2025-04,,conglomerado|selviv|hogar|llave_panel
+977_trim_abr_may_jun25,EPE,Trim_Abr_May_Jun25.csv,ok,129,mes,anio,3,2025-04,2025-06,2025-05,,conglomerado|selviv|hogar|llave_panel
+978_trim_may_jun_jul25,EPE,Trim_May_Jun_Jul25.csv,ok,129,mes,anio,3,2025-05,2025-07,2025-06,,conglomerado|selviv|hogar|llave_panel
+979_trim_may_jun_jul25,EPE,Trim_May_Jun_Jul25.csv,ok,129,mes,anio,3,2025-05,2025-07,2025-06,,conglomerado|selviv|hogar|llave_panel
+97_epe_panelmensual_mar_jun_set_dic_2002,EPE,Epe-PanelMensual-Mar-Jun-Set-Dic-2002.csv,ok,339,,,0,,,,b03_facm|b06_facm|facmzjn2|b09_facm|facjnse2|b12_facm|facsedi2,conglome|vivienda|codpanel
+980_nacional_epen_trim_abr_may_jun_2025,EPEN,Nacional EPEN Trim. Abr-May-Jun 2025.csv,ok,131,mes,anio,3,2025-04,2025-06,2025-05,fac_t300,conglomerado|selviv|hogar|llave_panel
+982_trim_jun_jul_ago25,EPE,Trim_Jun_Jul_Ago25.csv,ok,129,mes,anio,3,2025-06,2025-08,2025-07,,conglomerado|selviv|hogar|llave_panel
+986_trim_jul_ago_set25,EPE,Trim_Jul_Ago_Set25.csv,ok,129,mes,anio,3,2025-07,2025-09,2025-08,,conglomerado|selviv|hogar|llave_panel
+989_trim_ago_set_oct25,EPE,Trim_Ago_Set_Oct25.csv,ok,129,mes,anio,3,2025-08,2025-10,2025-09,,conglomerado|selviv|hogar|llave_panel
+98_epe_panelmensual_abr_jul_oct_2002_ene_2003,EPE,Epe-PanelMensual-Abr-Jul-Oct-2002-Ene-2003.csv,ok,339,,,0,,,,b04_facm|b07_facm|facabjl2|b10_facm|facjloc2|c01_facm,conglome|vivienda|codpanel
+990_nacional_epen_trim_jul_ago_set_2025,EPEN,Nacional EPEN Trim. Jul-Ago-Set 2025.csv,ok,131,mes,anio,3,2025-07,2025-09,2025-08,fac_t300,conglomerado|selviv|hogar|llave_panel
+994_trim_set_oct_nov25,EPE,Trim_Set_Oct_Nov25.csv,ok,129,mes,anio,3,2025-09,2025-11,2025-10,,conglomerado|selviv|hogar|llave_panel
+995_trim_oct_nov_dic25,EPE,Trim Oct-Nov-Dic25.csv,ok,129,mes,anio,3,2025-10,2025-12,2025-11,,conglomerado|selviv|hogar|llave_panel
+997_nacional_epen_trim_oct_nov_dic_2025,EPEN,Nacional EPEN Trim. Oct-Nov-Dic 2025.csv,ok,131,mes,anio,3,2025-10,2025-12,2025-11,fac_t300,conglomerado|selviv|hogar|llave_panel
+999_epen_bd_ciudades_anual_2025,EPEN,EPEN BD Ciudades Anual 2025.csv,ok,132,mes,anio,12,2025-01,2025-12,,fac300_anual,conglomerado|selviv|hogar|llave_panel
+99_epe_panelmensual_may_ago_nov_2002_feb_2003,EPE,Epe-PanelMensual-May-Ago-Nov-2002-Feb-2003.csv,ok,339,,,0,,,,b05_facm|b08_facm|facmyag2|b11_facm|facagno2|c02_facm,conglome|vivienda|codpanel

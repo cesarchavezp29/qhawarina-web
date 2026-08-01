@@ -1,0 +1,77 @@
+{
+  "shared_month_test": {
+    "601_trim_ene_feb_mar18": {
+      "rows_in_month": 5654,
+      "id_parts": [
+        "conglome",
+        "vivienda",
+        "hogar",
+        "codperso"
+      ],
+      "weight_var": null,
+      "n_unique_ids": 5654
+    },
+    "604_trim_feb_mar_abr18": {
+      "rows_in_month": 5654,
+      "id_parts": [
+        "conglome",
+        "vivienda",
+        "hogar",
+        "codperso"
+      ],
+      "weight_var": null,
+      "n_unique_ids": 5654
+    },
+    "606_trim_mar_abr_may18": {
+      "rows_in_month": 5654,
+      "id_parts": [
+        "conglome",
+        "vivienda",
+        "hogar",
+        "codperso"
+      ],
+      "weight_var": null,
+      "n_unique_ids": 5654
+    },
+    "601_trim_ene_feb_mar18__vs__604_trim_feb_mar_abr18": {
+      "n_a": 5654,
+      "n_b": 5654,
+      "shared_ids": 5654,
+      "jaccard": 1.0,
+      "same_row_count": true,
+      "max_abs_weight_difference_on_shared_ids": null
+    },
+    "601_trim_ene_feb_mar18__vs__606_trim_mar_abr_may18": {
+      "n_a": 5654,
+      "n_b": 5654,
+      "shared_ids": 5654,
+      "jaccard": 1.0,
+      "same_row_count": true,
+      "max_abs_weight_difference_on_shared_ids": null
+    },
+    "604_trim_feb_mar_abr18__vs__606_trim_mar_abr_may18": {
+      "n_a": 5654,
+      "n_b": 5654,
+      "shared_ids": 5654,
+      "jaccard": 1.0,
+      "same_row_count": true,
+      "max_abs_weight_difference_on_shared_ids": null
+    }
+  },
+  "middle_month_rule": {
+    "counts": {
+      "2017-11": 1,
+      "2018-12": 1,
+      "2018-01": 1,
+      "2018-02": 1,
+      "2018-03": 1,
+      "2018-04": 1,
+      "2018-05": 1,
+      "2018-06": 1,
+      "2018-07": 1,
+      "2018-08": 1
+    },
+    "duplicates": {},
+    "one_month_per_release": true
+  }
+}

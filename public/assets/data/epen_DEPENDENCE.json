@@ -1,0 +1,398 @@
+{
+  "within_release": {
+    "531_trim_jul_ago_set16": {
+      "months": [
+        7,
+        8,
+        9
+      ],
+      "pairs": {
+        "m7_m8": {
+          "person": {
+            "n_a": 5805,
+            "n_b": 5740,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1557,
+            "n_b": 1550,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m7_m9": {
+          "person": {
+            "n_a": 5805,
+            "n_b": 5816,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1557,
+            "n_b": 1582,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m8_m9": {
+          "person": {
+            "n_a": 5740,
+            "n_b": 5816,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1550,
+            "n_b": 1582,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        }
+      }
+    },
+    "601_trim_ene_feb_mar18": {
+      "months": [
+        1,
+        2,
+        3
+      ],
+      "pairs": {
+        "m1_m2": {
+          "person": {
+            "n_a": 5734,
+            "n_b": 5706,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1532,
+            "n_b": 1539,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m1_m3": {
+          "person": {
+            "n_a": 5734,
+            "n_b": 5654,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1532,
+            "n_b": 1527,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m2_m3": {
+          "person": {
+            "n_a": 5706,
+            "n_b": 5654,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1539,
+            "n_b": 1527,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        }
+      }
+    },
+    "648_trim_jul_ago_set19": {
+      "months": [
+        7,
+        8,
+        9
+      ],
+      "pairs": {
+        "m7_m8": {
+          "person": {
+            "n_a": 5589,
+            "n_b": 5635,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1494,
+            "n_b": 1527,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m7_m9": {
+          "person": {
+            "n_a": 5589,
+            "n_b": 5506,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1494,
+            "n_b": 1511,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m8_m9": {
+          "person": {
+            "n_a": 5635,
+            "n_b": 5506,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1527,
+            "n_b": 1511,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        }
+      }
+    },
+    "747_trim_jul_ago_set21": {
+      "months": [
+        7,
+        8,
+        9
+      ],
+      "pairs": {
+        "m7_m8": {
+          "person": {
+            "n_a": 5280,
+            "n_b": 5157,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1546,
+            "n_b": 1553,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m7_m9": {
+          "person": {
+            "n_a": 5280,
+            "n_b": 5234,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1546,
+            "n_b": 1557,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        },
+        "m8_m9": {
+          "person": {
+            "n_a": 5157,
+            "n_b": 5234,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "household": {
+            "n_a": 1553,
+            "n_b": 1557,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          },
+          "psu": {
+            "n_a": 400,
+            "n_b": 400,
+            "overlap": 0,
+            "frac_of_a": 0.0
+          }
+        }
+      }
+    }
+  },
+  "across_release": {
+    "601_trim_ene_feb_mar18__vs__604_trim_feb_mar_abr18": {
+      "release_offset": 1,
+      "target_month": 4,
+      "person": {
+        "n_a": 5654,
+        "n_b": 5669,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      },
+      "household": {
+        "n_a": 1527,
+        "n_b": 1533,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      },
+      "psu": {
+        "n_a": 400,
+        "n_b": 400,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      }
+    },
+    "601_trim_ene_feb_mar18__vs__606_trim_mar_abr_may18": {
+      "release_offset": 2,
+      "target_month": 5,
+      "person": {
+        "n_a": 5654,
+        "n_b": 5541,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      },
+      "household": {
+        "n_a": 1527,
+        "n_b": 1523,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      },
+      "psu": {
+        "n_a": 400,
+        "n_b": 400,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      }
+    },
+    "601_trim_ene_feb_mar18__vs__610_trim_abr_may_jun18": {
+      "release_offset": 3,
+      "target_month": 6,
+      "person": {
+        "n_a": 5654,
+        "n_b": 5487,
+        "overlap": 2516,
+        "frac_of_a": 0.44499469402193137
+      },
+      "household": {
+        "n_a": 1527,
+        "n_b": 1509,
+        "overlap": 696,
+        "frac_of_a": 0.45579567779960706
+      },
+      "psu": {
+        "n_a": 400,
+        "n_b": 400,
+        "overlap": 200,
+        "frac_of_a": 0.5
+      }
+    },
+    "601_trim_ene_feb_mar18__vs__618_trim_jul_ago_set18": {
+      "release_offset": 6,
+      "target_month": 9,
+      "person": {
+        "n_a": 5654,
+        "n_b": 5618,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      },
+      "household": {
+        "n_a": 1527,
+        "n_b": 1515,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      },
+      "psu": {
+        "n_a": 400,
+        "n_b": 400,
+        "overlap": 0,
+        "frac_of_a": 0.0
+      }
+    },
+    "601_trim_ene_feb_mar18__vs__636_trim_ene_feb_mar19": {
+      "release_offset": 12,
+      "target_month": 3,
+      "person": {
+        "n_a": 5654,
+        "n_b": 5596,
+        "overlap": 2610,
+        "frac_of_a": 0.46162009197028653
+      },
+      "household": {
+        "n_a": 1527,
+        "n_b": 1531,
+        "overlap": 736,
+        "frac_of_a": 0.4819908316961362
+      },
+      "psu": {
+        "n_a": 400,
+        "n_b": 400,
+        "overlap": 399,
+        "frac_of_a": 0.9975
+      }
+    }
+  },
+  "summary": {
+    "mean_within_person": 0.0,
+    "mean_within_household": 0.0,
+    "mean_within_psu": 0.0
+  },
+  "codpanel_note": "CODPANEL is a rotation-GROUP label with an embedded year-month (e.g. 18011101), ~390 distinct values over 17k rows. It is NOT a person key and must not be used for overlap tests."
+}

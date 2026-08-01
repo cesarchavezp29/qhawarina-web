@@ -1,0 +1,38 @@
+{
+  "bin_width": 25,
+  "wage_max": 6000,
+  "n_bins": 240,
+  "wage_var_primary": "ingprin",
+  "wage_var_sensitivity": "ingtot",
+  "dependent_codes_p206": [
+    3,
+    4,
+    6
+  ],
+  "formal_codes_p222": [
+    1,
+    3
+  ],
+  "events": {
+    "A": {
+      "mw_old": 750.0,
+      "mw_new": 850.0,
+      "eff": "2016-05"
+    },
+    "B": {
+      "mw_old": 850.0,
+      "mw_new": 930.0,
+      "eff": "2018-04"
+    },
+    "C": {
+      "mw_old": 930.0,
+      "mw_new": 1025.0,
+      "eff": "2022-05"
+    }
+  },
+  "n_windows": 103,
+  "n_psu_trajectories": 9417,
+  "n_cells": 417907,
+  "unit_of_observation": "rolling three-month window x wage bin",
+  "no_treatment_estimation": true
+}

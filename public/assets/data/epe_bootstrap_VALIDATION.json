@@ -1,0 +1,66 @@
+{
+  "B": 999,
+  "seed": 20260730,
+  "n_windows": 101,
+  "n_psu": 9405,
+  "excluded_windows_crossing_redesign": 2,
+  "resampling_unit": "full PSU trajectory across all windows in span",
+  "method": "Rao-Wu-Yue rescaled, m_h = n_h - 1 with replacement",
+  "stratum_primary": "single (unstratified)",
+  "stratum_sensitivity": "fixed modal estrato",
+  "estrato_is_degenerate": "dictionary: Estrato Geografico, single value 1 = Ciudades Capitales (Urbano), range 1; dominio constant 8 = Lima Metropolitana",
+  "validation_1_vs_taylor": {
+    "bin_850_875": {
+      "mean_share": 0.03698809343450429,
+      "mean_se_taylor": 0.003164397249519304,
+      "mean_se_boot": 0.003133599461260036,
+      "ratio_mean": 0.990947833481409,
+      "ratio_min": 0.9369627202002747,
+      "ratio_max": 1.0327158975382915,
+      "corr": 0.9966641794825682,
+      "max_abs_centering_pp": 0.029732630248674452
+    },
+    "below_1000": {
+      "mean_share": 0.292424989018445,
+      "mean_se_taylor": 0.008594925952888587,
+      "mean_se_boot": 0.0085670174412635,
+      "ratio_mean": 0.9972898753636228,
+      "ratio_min": 0.9235352015333472,
+      "ratio_max": 1.0564004371251199,
+      "corr": 0.9836461531849512,
+      "max_abs_centering_pp": 0.08529886176497081
+    }
+  },
+  "validation_2_trajectory": [
+    {
+      "gap": 1,
+      "label": "adjacent  (+1 release, shares 2 of 3 months)",
+      "se_diff_trajectory": 0.0066183640387547805,
+      "se_diff_independent": 0.01213394140010259,
+      "ratio": 0.545442228581953,
+      "mean_replicate_corr": 0.6985384765016281
+    },
+    {
+      "gap": 3,
+      "label": "+3 releases (no month overlap, ~45% persons recur)",
+      "se_diff_trajectory": 0.011276248419471863,
+      "se_diff_independent": 0.012178318785810702,
+      "ratio": 0.9259281693800078,
+      "mean_replicate_corr": 0.13524243409697118
+    },
+    {
+      "gap": 12,
+      "label": "+12 releases (no month overlap, ~99.8% PSUs recur)",
+      "se_diff_trajectory": 0.011216023285014004,
+      "se_diff_independent": 0.01219952107574364,
+      "ratio": 0.9193822622524807,
+      "mean_replicate_corr": 0.15043257934689325
+    }
+  ],
+  "validation_3_stratification": {
+    "mean_se_unstratified": 0.0085670174412635,
+    "mean_se_fixed_modal": 0.008540667572812686,
+    "ratio": 0.9970188625624696
+  },
+  "no_treatment_estimation": true
+}

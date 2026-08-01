@@ -1,0 +1,95 @@
+{
+  "EPE 2018 (csv)": {
+    "dirs": [
+      "601_trim_ene_feb_mar18",
+      "604_trim_feb_mar_abr18",
+      "606_trim_mar_abr_may18"
+    ],
+    "month": 3,
+    "n_common_cols": 101,
+    "rows": {
+      "601_trim_ene_feb_mar18": 5654,
+      "604_trim_feb_mar_abr18": 5654,
+      "606_trim_mar_abr_may18": 5654
+    },
+    "pairs": {
+      "601_trim_ene_feb_mar18__vs__604_trim_feb_mar_abr18": {
+        "shared_ids": 5654,
+        "identical_rows": 5654,
+        "fraction_identical": 1.0
+      },
+      "601_trim_ene_feb_mar18__vs__606_trim_mar_abr_may18": {
+        "shared_ids": 5654,
+        "identical_rows": 5654,
+        "fraction_identical": 1.0
+      },
+      "604_trim_feb_mar_abr18__vs__606_trim_mar_abr_may18": {
+        "shared_ids": 5654,
+        "identical_rows": 5654,
+        "fraction_identical": 1.0
+      }
+    }
+  },
+  "early EPE (sav)": {
+    "dirs": [
+      "102_epe_personas_oct_nov_dic2004",
+      "103_epe_personas_nov_dic2004_ene2005",
+      "104_trim_dic04_ene_feb_2005"
+    ],
+    "month": 12,
+    "n_common_cols": 90,
+    "rows": {
+      "102_epe_personas_oct_nov_dic2004": 6680,
+      "103_epe_personas_nov_dic2004_ene2005": 6680,
+      "104_trim_dic04_ene_feb_2005": 6680
+    },
+    "pairs": {
+      "102_epe_personas_oct_nov_dic2004__vs__103_epe_personas_nov_dic2004_ene2005": {
+        "shared_ids": 6680,
+        "identical_rows": 6680,
+        "fraction_identical": 1.0
+      },
+      "102_epe_personas_oct_nov_dic2004__vs__104_trim_dic04_ene_feb_2005": {
+        "shared_ids": 6680,
+        "identical_rows": 6680,
+        "fraction_identical": 1.0
+      },
+      "103_epe_personas_nov_dic2004_ene2005__vs__104_trim_dic04_ene_feb_2005": {
+        "shared_ids": 6680,
+        "identical_rows": 6680,
+        "fraction_identical": 1.0
+      }
+    }
+  },
+  "late EPE (csv)": {
+    "dirs": [
+      "728_trim_nov_dic_ene21",
+      "731_trim_dic_ene_feb21",
+      "735_trim_ene_feb_mar21"
+    ],
+    "month": 1,
+    "n_common_cols": 102,
+    "rows": {
+      "728_trim_nov_dic_ene21": 5230,
+      "731_trim_dic_ene_feb21": 5230,
+      "735_trim_ene_feb_mar21": 5230
+    },
+    "pairs": {
+      "728_trim_nov_dic_ene21__vs__731_trim_dic_ene_feb21": {
+        "shared_ids": 5230,
+        "identical_rows": 5230,
+        "fraction_identical": 1.0
+      },
+      "728_trim_nov_dic_ene21__vs__735_trim_ene_feb_mar21": {
+        "shared_ids": 5230,
+        "identical_rows": 3828,
+        "fraction_identical": 0.7319311663479924
+      },
+      "731_trim_dic_ene_feb21__vs__735_trim_ene_feb_mar21": {
+        "shared_ids": 5230,
+        "identical_rows": 3828,
+        "fraction_identical": 0.7319311663479924
+      }
+    }
+  }
+}

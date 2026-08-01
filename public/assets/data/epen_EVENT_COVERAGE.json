@@ -1,0 +1,80 @@
+{
+  "A": {
+    "mw": "750->850",
+    "effective": "2016-05",
+    "by_survey": {
+      "EPE": {
+        "pre_waves": 169,
+        "impl_waves": 2,
+        "post_waves": 117,
+        "distinct_pre_months": 176,
+        "distinct_post_months": 120,
+        "meets_6mo_each_side": true,
+        "meets_12mo_each_side": true,
+        "anticipation_studiable": true
+      },
+      "EPEN": {
+        "pre_waves": 0,
+        "impl_waves": 0,
+        "post_waves": 94,
+        "distinct_pre_months": 0,
+        "distinct_post_months": 51,
+        "meets_6mo_each_side": false,
+        "meets_12mo_each_side": false,
+        "anticipation_studiable": false
+      }
+    }
+  },
+  "B": {
+    "mw": "850->930",
+    "effective": "2018-04",
+    "by_survey": {
+      "EPE": {
+        "pre_waves": 192,
+        "impl_waves": 2,
+        "post_waves": 94,
+        "distinct_pre_months": 199,
+        "distinct_post_months": 97,
+        "meets_6mo_each_side": true,
+        "meets_12mo_each_side": true,
+        "anticipation_studiable": true
+      },
+      "EPEN": {
+        "pre_waves": 0,
+        "impl_waves": 0,
+        "post_waves": 94,
+        "distinct_pre_months": 0,
+        "distinct_post_months": 51,
+        "meets_6mo_each_side": false,
+        "meets_12mo_each_side": false,
+        "anticipation_studiable": false
+      }
+    }
+  },
+  "C": {
+    "mw": "930->1025",
+    "effective": "2022-05",
+    "by_survey": {
+      "EPE": {
+        "pre_waves": 241,
+        "impl_waves": 2,
+        "post_waves": 45,
+        "distinct_pre_months": 248,
+        "distinct_post_months": 48,
+        "meets_6mo_each_side": true,
+        "meets_12mo_each_side": true,
+        "anticipation_studiable": true
+      },
+      "EPEN": {
+        "pre_waves": 3,
+        "impl_waves": 1,
+        "post_waves": 90,
+        "distinct_pre_months": 4,
+        "distinct_post_months": 47,
+        "meets_6mo_each_side": false,
+        "meets_12mo_each_side": false,
+        "anticipation_studiable": false
+      }
+    }
+  }
+}
