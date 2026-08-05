@@ -1,0 +1,6 @@
+Canonical (inv-abs)          & $> 2\times\text{MW}$, inv-abs     & 0.708 & 0.842 & 0.833 \\
+Uniform weights              & $> 2\times\text{MW}$, uniform     & 0.644 & 0.780 & 0.808 \\
+Polynomial deg.\ 4           & $> 2\times\text{MW}$, poly fit    & 0.456 & 1.056 & 1.889$^{\dagger}$ \\
+Clean at $1.5\times\text{MW}$& $> 1.5\times\text{MW}$, inv-abs   & 0.708 & 0.842 & 0.833 \\
+Clean at $2.5\times\text{MW}$& $> 2.5\times\text{MW}$, inv-abs   & 0.708 & 0.842 & 0.833 \\
+No correction                & none                              & 0.708 & 0.842 & 0.833 \\
