@@ -1,0 +1,42 @@
+{
+ "mw_old": 1025.0,
+ "mw_new": 1130.0,
+ "event": [
+  2025,
+  1
+ ],
+ "bin_width": 50.0,
+ "k_range": [
+  -20,
+  20
+ ],
+ "ref_year": 2024,
+ "pre_years": [
+  2023,
+  2024
+ ],
+ "dep_codes": [
+  3,
+  6
+ ],
+ "wage": "ingtotp",
+ "weight": "fac300_anual",
+ "denominator": "working-age population, ocup300 in {1,2,3,4}",
+ "n_dept": 24,
+ "quarters": [
+  "2023Q1",
+  "2023Q2",
+  "2023Q3",
+  "2023Q4",
+  "2024Q1",
+  "2024Q2",
+  "2024Q3",
+  "2024Q4",
+  "2025Q1",
+  "2025Q2",
+  "2025Q3",
+  "2025Q4"
+ ],
+ "skipped_dirs": [],
+ "design": "Giupponi et al. 2024 eq 3-6, continuous exposure primary"
+}

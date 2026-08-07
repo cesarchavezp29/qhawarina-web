@@ -1,0 +1,212 @@
+[
+ {
+  "event": "A",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 3.461558580300229,
+  "dA": -6.540343350530346,
+  "dE_lo": 2.0689114900545014,
+  "dE_hi": 4.8626564963288175
+ },
+ {
+  "event": "A",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "CLR trend",
+  "dE": 2.3190364420537524,
+  "dA": -7.997675402710741,
+  "dE_lo": 1.0540693662152874,
+  "dE_hi": 3.496173938508658
+ },
+ {
+  "event": "A",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 2.1153083163800974,
+  "dA": -8.206707201797002,
+  "dE_lo": 0.9724456823566192,
+  "dE_hi": 3.466862523065656
+ },
+ {
+  "event": "A",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 3.4430740113601357,
+  "dA": -4.75965074518104,
+  "dE_lo": 1.5856903015943988,
+  "dE_hi": 5.299210356657124
+ },
+ {
+  "event": "A",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "CLR trend",
+  "dE": 5.497826742216285,
+  "dA": -3.041281282060072,
+  "dE_lo": 3.816065184565019,
+  "dE_hi": 8.44328095969044
+ },
+ {
+  "event": "A",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 2.946980199055421,
+  "dA": -5.42504938922635,
+  "dE_lo": 1.4694107448589655,
+  "dE_hi": 4.312570240295431
+ },
+ {
+  "event": "B",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 5.41451964653672,
+  "dA": -7.703019710539552,
+  "dE_lo": 3.9711195469482488,
+  "dE_hi": 6.898642216159609
+ },
+ {
+  "event": "B",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "CLR trend",
+  "dE": 4.898865321732373,
+  "dA": -9.07837462896563,
+  "dE_lo": 3.5857781847795147,
+  "dE_hi": 6.127131949145159
+ },
+ {
+  "event": "B",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 4.630746570584064,
+  "dA": -9.550667056789969,
+  "dE_lo": 3.3835126264473727,
+  "dE_hi": 5.936677376690021
+ },
+ {
+  "event": "B",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 3.982072235189837,
+  "dA": -5.437163604999993,
+  "dE_lo": 2.370181586664374,
+  "dE_hi": 5.317138333378077
+ },
+ {
+  "event": "B",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "CLR trend",
+  "dE": 5.342747236396128,
+  "dA": -5.428644760492579,
+  "dE_lo": 4.154304486239393,
+  "dE_hi": 8.199169612523706
+ },
+ {
+  "event": "B",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 4.405616488168704,
+  "dA": -6.424816135976007,
+  "dE_lo": 3.2341478597875812,
+  "dE_hi": 5.41623836600719
+ },
+ {
+  "event": "C",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 7.326768690906242,
+  "dA": -12.768454265842271,
+  "dE_lo": 5.480225020410913,
+  "dE_hi": 9.097614208742478
+ },
+ {
+  "event": "C",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "CLR trend",
+  "dE": 6.842512279547283,
+  "dA": -9.239887806586523,
+  "dE_lo": 5.286597508556568,
+  "dE_hi": 8.188951974246198
+ },
+ {
+  "event": "C",
+  "survey": "ENAHO national",
+  "sample": "formal dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 6.267680795469784,
+  "dA": -9.538819059620929,
+  "dE_lo": 4.2206276748782265,
+  "dE_hi": 7.157435260855756
+ },
+ {
+  "event": "C",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 0.7357356258635885,
+  "dA": -5.537828179596949,
+  "dE_lo": -1.4481322938055143,
+  "dE_hi": 3.072566290423951
+ },
+ {
+  "event": "C",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "CLR trend",
+  "dE": 1.5018717131049197,
+  "dA": -4.388588027640793,
+  "dE_lo": -0.5461009330556404,
+  "dE_hi": 3.7560060772439705
+ },
+ {
+  "event": "C",
+  "survey": "EPE Lima",
+  "sample": "all dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 1.0601232411475907,
+  "dA": -4.609755212541518,
+  "dE_lo": -0.8229328708099356,
+  "dE_hi": 2.9259810453506083
+ },
+ {
+  "event": "D",
+  "survey": "EPEN national",
+  "sample": "all dependent",
+  "baseline": "Static / matched calendar",
+  "dE": 2.455913062898747,
+  "dA": -5.169861456709913,
+  "dE_lo": 1.942651781733702,
+  "dE_hi": 2.97495147602335
+ },
+ {
+  "event": "D",
+  "survey": "EPEN national",
+  "sample": "all dependent",
+  "baseline": "CLR trend",
+  "dE": 2.7290848427145855,
+  "dA": -5.0353463244957535,
+  "dE_lo": 2.102412203087822,
+  "dE_hi": 3.143175041915066
+ },
+ {
+  "event": "D",
+  "survey": "EPEN national",
+  "sample": "all dependent",
+  "baseline": "Clean-bin factor",
+  "dE": 2.055980815993673,
+  "dA": -6.1011333830714864,
+  "dE_lo": 1.4681508646503212,
+  "dE_hi": 2.397879691198818
+ }
+]

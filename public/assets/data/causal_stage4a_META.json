@@ -1,0 +1,23 @@
+{
+ "primary_exposure": "2024Q1-Q3",
+ "decree": "DS 006-2024-TR",
+ "published": "2024-12-28",
+ "rationale": "2024Q4 is the earliest quarter in which anticipation is plausible, so the primary reference excludes it",
+ "mw_new": 1130.0,
+ "denominators": "working-age population, act in {1,2,3,4}",
+ "n_dept": 24,
+ "quarters": [
+  "2023Q1",
+  "2023Q2",
+  "2023Q3",
+  "2023Q4",
+  "2024Q1",
+  "2024Q2",
+  "2024Q3",
+  "2024Q4",
+  "2025Q1",
+  "2025Q2",
+  "2025Q3",
+  "2025Q4"
+ ]
+}
