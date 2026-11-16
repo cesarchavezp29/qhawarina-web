@@ -6,7 +6,7 @@
     "coverage_note": "Cobertura mixta: algunas series hasta mes 10 2025, otras hasta mes 11 2025. Rezagos de publicación del BCRP aplicados por serie.",
     "model": "gbr_blended",
     "blend_alpha": 0.7,
-    "last_updated": "2026-10-15T21:33:41.695269",
+    "last_updated": "2026-11-15T20:33:37.730540",
     "methodology_version": "2.0"
   },
   "national": {
